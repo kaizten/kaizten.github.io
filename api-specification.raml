@@ -1,0 +1,54 @@
+#%RAML 1.0
+---
+title: Kaizten Algorithms
+baseUri: http://api.algorithms/{version}
+version: v1
+
+/algorithms:
+    get:
+        description: It provides all the algorithms.
+    post:
+        description: It submits a new algorithm.
+    /{algorithmId}:
+        get:
+            description: It returns the information of the algorithm with identifier `id`.
+        post:
+            description: It executes the algorithm with identifier `id`.
+        put:
+            description: It updates the algorithm with identifier `id`.
+        delete:
+            description: It deletes the algorithm with identifier `id`.
+/labels:
+    get:
+        description: It provides all the labels.
+    post:
+        description: It creates a new label.   
+    /{labelId}:
+        get:
+            description: It returns the label with identifier `id`.        
+        put:
+            description: It updates the label with identifier `id`.      
+        delete:
+            description: It deletes the label with identifier `id`.       
+/tasks:
+    get:
+        description: It provides all the tasks.     
+    /{taskId}:    
+        get:
+            description: It returns the task with identifier `id`.
+        put:
+            description: It updates the task with identifier `id`.
+        delete:
+            description: It deletes the task with identifier `id`.
+/users:
+    get:
+        description: It provides all the users.   
+    post:
+        description: It creates a new user.   
+    /{userId}:
+        get:
+            description: It returns the user with identifier `id`.       
+        put:
+            description: It updates the user with identifier `id`        
+        delete:
+            description: It deletes the user with identifier `id`.       
