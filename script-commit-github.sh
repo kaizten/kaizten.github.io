@@ -1,6 +1,6 @@
 commitMessage=$1
 
-git rm --cached -r .
+git rm --cached -r . 
 git remote rm origin
 git init
 git add *
