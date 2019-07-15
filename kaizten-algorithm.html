@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Kaizten Algorithm</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -212,9 +212,6 @@
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -223,6 +220,58 @@
       <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#domain-model" class="toc-h1 toc-link" data-title="Domain model">Domain model</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#algorithm" class="toc-h2 toc-link" data-title="Algorithm">Algorithm</a>
+                  </li>
+                  <li>
+                    <a href="#data-source" class="toc-h2 toc-link" data-title="Data source">Data source</a>
+                  </li>
+                  <li>
+                    <a href="#label" class="toc-h2 toc-link" data-title="Label">Label</a>
+                  </li>
+                  <li>
+                    <a href="#user" class="toc-h2 toc-link" data-title="User">User</a>
+                  </li>
+                  <li>
+                    <a href="#input-parameter" class="toc-h2 toc-link" data-title="Input parameter">Input parameter</a>
+                  </li>
+                  <li>
+                    <a href="#output-parameter" class="toc-h2 toc-link" data-title="Output parameter">Output parameter</a>
+                  </li>
+                  <li>
+                    <a href="#task" class="toc-h2 toc-link" data-title="Task">Task</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#task-states" class="toc-h1 toc-link" data-title="Task states">Task states</a>
+          </li>
+          <li>
+            <a href="#algorithms" class="toc-h1 toc-link" data-title="Algorithms">Algorithms</a>
+          </li>
+          <li>
+            <a href="#labels" class="toc-h1 toc-link" data-title="Labels">Labels</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-labels" class="toc-h2 toc-link" data-title="Get all Labels">Get all Labels</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-new-label" class="toc-h2 toc-link" data-title="Create a New Label">Create a New Label</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-label" class="toc-h2 toc-link" data-title="Get a Specific Label">Get a Specific Label</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-specific-label" class="toc-h2 toc-link" data-title="Update a Specific Label">Update a Specific Label</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-specific-label" class="toc-h2 toc-link" data-title="Delete a Specific Label">Delete a Specific Label</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
@@ -254,11 +303,306 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
-
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
+<p>REST API used to define, store, access, and execute algorithms. The algorithms are entities that receives a set of input parameter values and return a set of output parameter values. These algorithms can be machine learning methods, optimization techniques, or simulation models, among others.</p>
+<h1 id='domain-model'>Domain model</h1><h2 id='algorithm'>Algorithm</h2>
+<ul>
+<li><code>id</code>. Identifier of the algorithm</li>
+<li><code>name</code>. Name of the algorithm.</li>
+<li><code>description</code>. Description of the algorithm.</li>
+<li><code>publishingDate</code>. Date in which the algorithm was published in the platform.</li>
+<li><code>lastUpdateDate</code>. Last date in which the algorithm was updated.</li>
+<li><code>inputParameters</code>. List of input parameters.</li>
+<li><code>outputParameters</code>. List of output parameters.</li>
+<li><code>images</code>. List composed of the URLs of the images that represent the algorithm.</li>
+<li><code>owners</code>. List of user identifiers that own the algorithm.</li>
+<li><code>allowedUsers</code>. List of users not included in the <code>owners</code> list that can be execute the algorithm.</li>
+<li><code>labels</code>. List of labels associated with the algorithm.</li>
+</ul>
+<h2 id='data-source'>Data source</h2>
+<ul>
+<li><code>url</code>. xxx</li>
+</ul>
+<h2 id='label'>Label</h2>
+<ul>
+<li><code>id</code>. Identifier of the label.</li>
+<li><code>name</code>. Name of the label.</li>
+</ul>
+<h2 id='user'>User</h2>
+<ul>
+<li><code>id</code>. Identifier of the user.</li>
+<li><code>name</code>. Name of the user.</li>
+<li><code>surname</code>. Surname of the user.</li>
+<li><code>email</code>. Email address of the user.</li>
+<li><code>webpage</code>. Webpage of the user.</li>
+<li><code>algorithms</code>. List composed of the identifiers of the algorithms owned by the user.</li>
+</ul>
+<h2 id='input-parameter'>Input parameter</h2>
+<ul>
+<li><code>id</code>. xxx</li>
+<li><code>name</code>. xxx</li>
+<li><code>description</code>. xxx</li>
+<li><code>type</code>. xxx</li>
+<li><code>required</code>. xxx</li>
+</ul>
+<h2 id='output-parameter'>Output parameter</h2>
+<ul>
+<li><code>id</code>. xxx</li>
+<li><code>name</code>. xxx</li>
+<li><code>description</code>. xxx</li>
+<li><code>type</code>. xxx</li>
+<li><code>optional</code>. xxx</li>
+</ul>
+<h2 id='task'>Task</h2>
+<ul>
+<li><code>id</code>. xxx</li>
+<li><code>name</code>. xxx</li>
+<li><code>description</code>. xxx</li>
+<li><code>userId</code>. xxx</li>
+<li><code>algorithmName</code>. xxx</li>
+<li><code>requestDate</code>. xxx</li>
+<li><code>startDate</code>. xxx</li>
+<li><code>finishDate</code>. xxx</li>
+<li><code>status</code>. xxx</li>
+</ul>
+<h1 id='task-states'>Task states</h1>
+<ul>
+<li><code>Pending</code>. La tarea aún no ha sido asignada a ningún worker para su realización</li>
+<li><code>Running</code>. La tarea se está realizando</li>
+<li><code>Canceled</code>. La tarea ha sido cancelada</li>
+<li><code>CompletedErrors</code>. La tarea ha sido finalizada porque se han encontrado errores en la ejecución</li>
+<li><code>CompletedTimeout</code>. La tarea ha sido finalizada porque se ha alcanzado el tiempo máximo de ejecución</li>
+<li><code>Completed</code>. La tarea ha sido finalizada con éxito</li>
+</ul>
+<h1 id='algorithms'>Algorithms</h1>
+<p>xxx</p>
+<h1 id='labels'>Labels</h1><h2 id='get-all-labels'>Get all Labels</h2>
+<p>It provides all the labels.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://localhost:8080/v1/variables"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"variable 0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowedValues"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="s2">"VALUE 1"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"VALUE 2"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"VALUE 3"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5d25f7c762cfb63d5874c3f3"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"variable description"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"variable 1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowedValues"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="s2">"VALUE 1"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"VALUE 2"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"VALUE 3"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5d25f7c762cfb63d5874c3f4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://localhost:8080/v1/variables</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>Name of the variable to find.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>Type of variable. It can be <code>STRING</code>, <code>LOGICAL</code>, or <code>NUMERIC</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='responses'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded and the variables are included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>The name or type of the variables to find is not valid.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The variable with the requested name is not found.</td>
+</tr>
+</tbody></table>
+<h2 id='create-a-new-label'>Create a New Label</h2>
+<p>It creates a new label.</p>
+<pre class="highlight shell tab-shell"><code>curl -X POST -d <span class="s1">'{"name":"customer name", "description":"Name of the customer", "type": "STRING"}'</span> -H <span class="s2">"Content-Type: application/json"</span> <span class="s2">"http://localhost:8080/v1/variables"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"5d25fd2e62cfb63d5874c3fd"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"customer name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"name of the customer"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"STRING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST http://localhost:8080/v1/variables</code></p>
+<h3 id='responses-2'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>201</code></td>
+<td>The request has been fulfilled and has resulted in one variable being created. The new variable is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>There is a variable with the same name.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-label'>Get a Specific Label</h2>
+<p>It provides a specific label.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://localhost:8080/v1/variables/6e34df1e62cfb63d5874c394"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"NUMERICAL"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"distance between points"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"distance"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"6e34df1e62cfb63d5874c394"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET http://localhost:8080/v1/variables/:id</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the requested variable.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-3'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded. The variable is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The variable with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h2 id='update-a-specific-label'>Update a Specific Label</h2>
+<p>It updates a specific label.</p>
+<pre class="highlight shell tab-shell"><code>curl -X PUT -d <span class="s1">'{"name":"First name"}'</span> -H <span class="s2">"Content-Type: application/json"</span> <span class="s2">"http://localhost:8080/v1/variables"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"5d25fd2e62cfb63d5874c3fd"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"First name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"name of the customer"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"STRING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT http://localhost:8080/v1/variables/:id</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the variable to update.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-4'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded. The variable is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The variable with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-specific-label'>Delete a Specific Label</h2>
+<p>It deletes a specific label.</p>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="s2">"http://localhost:8080/v1/variables/6e34df1e62cfb63d5874c394"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"NUMERICAL"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"distance between points"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"distance"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"6e34df1e62cfb63d5874c394"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE http://localhost:8080/v1/variables/:id</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the variable to delete.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-5'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>201</code></td>
+<td>The request has succeeded. The variable is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The variable with the given identifier is not found.</td>
+</tr>
+</tbody></table>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p>To authorize, use this code:</p>
@@ -325,9 +669,9 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -379,9 +723,9 @@ Remember — a happy kitten is an authenticated kitten!
 <p>This endpoint retrieves a specific kitten.</p>
 
 <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -418,9 +762,9 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -495,9 +839,6 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>
