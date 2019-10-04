@@ -228,19 +228,7 @@
                     <a href="#algorithm" class="toc-h2 toc-link" data-title="Algorithm">Algorithm</a>
                   </li>
                   <li>
-                    <a href="#data-source" class="toc-h2 toc-link" data-title="Data source">Data source</a>
-                  </li>
-                  <li>
                     <a href="#label" class="toc-h2 toc-link" data-title="Label">Label</a>
-                  </li>
-                  <li>
-                    <a href="#user" class="toc-h2 toc-link" data-title="User">User</a>
-                  </li>
-                  <li>
-                    <a href="#input-parameter" class="toc-h2 toc-link" data-title="Input parameter">Input parameter</a>
-                  </li>
-                  <li>
-                    <a href="#output-parameter" class="toc-h2 toc-link" data-title="Output parameter">Output parameter</a>
                   </li>
                   <li>
                     <a href="#task" class="toc-h2 toc-link" data-title="Task">Task</a>
@@ -306,51 +294,16 @@
 <p>REST API used to define, store, access, and execute algorithms. The algorithms are entities that receives a set of input parameter values and return a set of output parameter values. These algorithms can be machine learning methods, optimization techniques, or simulation models, among others.</p>
 <h1 id='domain-model'>Domain model</h1><h2 id='algorithm'>Algorithm</h2>
 <ul>
-<li><code>id</code>. Identifier of the algorithm</li>
-<li><code>name</code>. Name of the algorithm.</li>
-<li><code>description</code>. Description of the algorithm.</li>
-<li><code>publishingDate</code>. Date in which the algorithm was published in the platform.</li>
-<li><code>lastUpdateDate</code>. Last date in which the algorithm was updated.</li>
-<li><code>inputParameters</code>. List of input parameters.</li>
-<li><code>outputParameters</code>. List of output parameters.</li>
-<li><code>images</code>. List composed of the URLs of the images that represent the algorithm.</li>
-<li><code>owners</code>. List of user identifiers that own the algorithm.</li>
-<li><code>allowedUsers</code>. List of users not included in the <code>owners</code> list that can be execute the algorithm.</li>
-<li><code>labels</code>. List of labels associated with the algorithm.</li>
-</ul>
-<h2 id='data-source'>Data source</h2>
-<ul>
-<li><code>url</code>. xxx</li>
+<li><code>id</code> (generated). Identifier of the algorithm</li>
+<li><code>name</code> (required). Name of the algorithm.</li>
+<li><code>tagline</code> (optional). Short summary of the algorithm in only line.</li>
+<li><code>description</code> (optional). Description of the algorithm.</li>
+<li><code>sampleInput</code> (optional). Sample of the input used by the algorithm.</li>
 </ul>
 <h2 id='label'>Label</h2>
 <ul>
-<li><code>id</code>. Identifier of the label.</li>
-<li><code>name</code>. Name of the label.</li>
-</ul>
-<h2 id='user'>User</h2>
-<ul>
-<li><code>id</code>. Identifier of the user.</li>
-<li><code>name</code>. Name of the user.</li>
-<li><code>surname</code>. Surname of the user.</li>
-<li><code>email</code>. Email address of the user.</li>
-<li><code>webpage</code>. Webpage of the user.</li>
-<li><code>algorithms</code>. List composed of the identifiers of the algorithms owned by the user.</li>
-</ul>
-<h2 id='input-parameter'>Input parameter</h2>
-<ul>
-<li><code>id</code>. xxx</li>
-<li><code>name</code>. xxx</li>
-<li><code>description</code>. xxx</li>
-<li><code>type</code>. xxx</li>
-<li><code>required</code>. xxx</li>
-</ul>
-<h2 id='output-parameter'>Output parameter</h2>
-<ul>
-<li><code>id</code>. xxx</li>
-<li><code>name</code>. xxx</li>
-<li><code>description</code>. xxx</li>
-<li><code>type</code>. xxx</li>
-<li><code>optional</code>. xxx</li>
+<li><code>id</code> (generated). Identifier of the label.</li>
+<li><code>name</code> (required). Name of the label.</li>
 </ul>
 <h2 id='task'>Task</h2>
 <ul>
