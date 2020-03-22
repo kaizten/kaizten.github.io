@@ -327,6 +327,7 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>tagline</code> (optional). Short summary of the algorithm in only one line. Its maximum length is 50 characters.</li>
 <li><code>description</code> (optional). Description of the algorithm. Its maximum length is 1000 characters.</li>
 <li><code>sampleInput</code> (optional). Sample of the input used by the algorithm.</li>
+<li><code>labels</code> (optional). Set of labels used to classify the algorithm or indicate specific topics associated with.</li>
 </ul>
 <h2 id='label'>Label</h2>
 <ul>
@@ -367,19 +368,45 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70c8aca89d8d39ea0b0420"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"vrp"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tagline"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Vehicle Routing Problem"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="w">
+      </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"safs687qsdsav66134937sda"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"optimization"</span><span class="p">,</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
    </span><span class="p">},</span><span class="w">
    </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70ca01a89d8d39ea0b0422"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"qcsp"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tagline"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Quay Crane Scheduling Problem"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Hybrid estimation of distribution algorithm for the quay crane scheduling problem"</span><span class="w">
+      </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Hybrid estimation of distribution algorithm for the quay crane scheduling problem"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"safs687qsdsav66134937sda"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"optimization"</span><span class="p">,</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gsgfsr47we1dsaf7q1fsd7s4"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ports"</span><span class="p">,</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
    </span><span class="p">},</span><span class="w">
    </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70ca34a89d8d39ea0b0423"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"brp"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tagline"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Blocks Relocation Problem"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"A domain-specific knowledge-based heuristic for the blocks relocation problem"</span><span class="w">
+      </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"A domain-specific knowledge-based heuristic for the blocks relocation problem"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tys3sf49safs67sa1sfa13s7"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yard"</span><span class="p">,</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ifsghqnsdugr46saf732sdgs"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ports"</span><span class="p">,</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
    </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -429,7 +456,18 @@ IP:PORT/VERSION/API_ENDPOINT
     -d <span class="s1">'{ \
         "name": "vrp",
         "tagline": "Solver of the Vehicle Routing Problem",
-        "description": "Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"
+        "description": "Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers",
+        "labels": [
+            {
+                "id": "safs687qsdsav66134937sda"
+            },
+            {
+                "id": "5afdsa3765etsagsasafasef"
+            },
+            {
+                "id": "5a1f23sa7efsv7wesa7qgf9d"
+            }   
+        ]
     }'</span>
 </code></pre>
 <blockquote>
@@ -437,7 +475,23 @@ IP:PORT/VERSION/API_ENDPOINT
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6f565acff3233408180978"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"solver-vehicle-routing-problem"</span><span class="w">
+   </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"solver-vehicle-routing-problem"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"tagline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Vehicle Routing Problem"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"safs687qsdsav66134937sda"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"optimization"</span><span class="p">,</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5afdsa3765etsagsasafasef"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"transportation"</span><span class="p">,</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a1f23sa7efsv7wesa7qgf9d"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"logistics"</span><span class="p">,</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>It creates a new algorithm by specifying at least its name.</p>
@@ -460,7 +514,7 @@ Only administrators can perform this operation.
 </tr>
 <tr>
 <td><code>400</code></td>
-<td>There is a algorithm with the same name.</td>
+<td>There is an algorithm with the same name.</td>
 </tr>
 </tbody></table>
 <h2 id='get-a-specific-algorithm'>Get a Specific Algorithm</h2>
@@ -475,7 +529,13 @@ Only administrators can perform this operation.
    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70c8aca89d8d39ea0b0420"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"vrp"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"tagline"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Vehicle Routing Problem"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="w">
+   </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"safs687qsdsav66134937sda"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"optimization"</span><span class="p">,</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET IP:PORT/VERSION/labels/:id</code></p>
@@ -523,7 +583,13 @@ Only administrators can perform this operation.
    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70c8aca89d8d39ea0b0420"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vrp-time-windows"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"tagline"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Vehicle Routing Problem"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="w">
+   </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"safs687qsdsav66134937sda"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"optimization"</span><span class="p">,</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>It updates a specific label by indicating its identifier.</p>
