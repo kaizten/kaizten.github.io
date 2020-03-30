@@ -293,6 +293,8 @@
         <h1 id='introduction'>Introduction</h1>
 <p>REST API used to define, store, access, and execute algorithms. The algorithms are entities that receive a set of input parameter values and return a set of output parameter values. These algorithms can be machine learning methods, optimization techniques, or simulation models, among others.</p>
 
+<p>The API supports Cross Origin Resource Sharing (CORS) for AJAX requests from any origin. The following header is included in the corresponding responses: <code>Access-Control-Allow-Origin: *</code>. You can read the <a href="http://www.w3.org/TR/cors/">CORS W3C Recommendation</a> to learn more about CORS.</p>
+
 <p>In the remainder of this documentation, it is assumed that the REST API is deployed in an IP and port denoted as <code>IP</code> and <code>PORT</code>, respectively.</p>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
@@ -306,9 +308,9 @@ curl <span class="s2">"API_ENDPOINT"</span>
 <p>Make sure to replace <code>API_ENDPOINT</code> with the corresponding API endpoint and <code>YOUR_API_KEY</code> with your API key.</p>
 </blockquote>
 
-<p>API requests are authenticated by a key which is provided by Kaizten. With every call to the API, the user must be authenticated. The API has a simple means to do this by passing in your key as an HTTP “Authorization” header with the request.</p>
+<p>API requests are authenticated by a key which is provided by Kaizten. With every call to the API, the user must be authenticated. The API has a simple means to do this by passing in your key as an HTTP <code>Authorization</code> header with the request.</p>
 
-<p>When you signed up for Kaizten, a ‘default-key’ was generated for your convenience. This is the key that is used throughout the example code within algorithm pages. For these examples to work correctly, this default key must exist with all the permissions, otherwise the usage examples may result in a 401 Unauthorized error.</p>
+<p>When you signed up for Kaizten, a ‘default-key’ was generated for your convenience. This is the key that is used throughout the example code within algorithm pages. For these examples to work correctly, this default key must exist with all the permissions, otherwise the usage examples may result in a <code>401</code> Unauthorized error.</p>
 
 <aside class="notice">
 You must replace <code>YOUR_API_KEY</code> with your personal API key.
@@ -410,7 +412,7 @@ IP:PORT/VERSION/API_ENDPOINT
    </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>It provides all the algorithms.</p>
+<p>It provides all the algorithms. The returned algorithms will be paginated to 25 items by default. You can specify further pages with the <code>page</code> parameter. For some resources, you can also set a custom page size up to 100 with the <code>size</code> parameter.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET http://IP:PORT/VERSION/algorithms</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -442,7 +444,7 @@ IP:PORT/VERSION/API_ENDPOINT
 </thead><tbody>
 <tr>
 <td><code>200</code></td>
-<td>The request has succeeded and the algorithms are included in the body of the response.</td>
+<td>The request has succeeded and the algorithms are included in the body of the response. The following headers are included in the response: <ul><li><code>Pagination-Count: 1</code></li><li><code>Pagination-Size: 25</code></li><li><code>Pagination-Page: 0</code></li><li><code>Total-Count: 5</code></li></ul> where <code>Pagination-Count</code> is the number of existing pages, <code>Pagination-Size</code> is the size of each page, <code>Pagination-Page</code> is the index of the current page, and <code>Total-Count</code> is the number of entities in the server.</td>
 </tr>
 <tr>
 <td><code>404</code></td>
@@ -648,7 +650,7 @@ Only administrators can perform this operation.
    </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>It provides all the labels.</p>
+<p>It provides all the labels. The returned labels will be paginated to 25 items by default. You can specify further pages with the <code>page</code> parameter. For some resources, you can also set a custom page size up to 100 with the <code>size</code> parameter.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET http://IP:PORT/VERSION/labels</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -680,11 +682,11 @@ Only administrators can perform this operation.
 </thead><tbody>
 <tr>
 <td><code>200</code></td>
-<td>The request has succeeded and the labels are included in the body of the response.</td>
+<td>The request has succeeded and the labels are included in the body of the response. The following headers are included in the response: <ul><li><code>Pagination-Count: 1</code></li><li><code>Pagination-Size: 25</code></li><li><code>Pagination-Page: 0</code></li><li><code>Total-Count: 5</code></li></ul> where <code>Pagination-Count</code> is the number of existing pages, <code>Pagination-Size</code> is the size of each page, <code>Pagination-Page</code> is the index of the current page, and <code>Total-Count</code> is the number of entities in the server.</td>
 </tr>
 <tr>
 <td><code>404</code></td>
-<td>The label with the requested name is not found.</td>
+<td>The algorithm with the requested name is not found.</td>
 </tr>
 </tbody></table>
 <h2 id='create-a-new-label'>Create a new label</h2><pre class="highlight shell tab-shell"><code>curl -X POST IP:PORT/VERSION/labels <span class="se">\</span>
