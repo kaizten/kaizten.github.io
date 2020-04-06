@@ -259,6 +259,9 @@
                   <li>
                     <a href="#update-a-specific-algorithm" class="toc-h2 toc-link" data-title="Update a Specific Algorithm">Update a Specific Algorithm</a>
                   </li>
+                  <li>
+                    <a href="#delete-a-specific-algorithm" class="toc-h2 toc-link" data-title="Delete a Specific Algorithm">Delete a Specific Algorithm</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -496,7 +499,7 @@ IP:PORT/VERSION/API_ENDPOINT
    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>It creates a new algorithm by specifying at least its name.</p>
+<p>It creates a new algorithm by specifying at least its name. The created algorithm is provided in the response.</p>
 
 <aside class="notice">
 Only administrators can perform this operation.
@@ -520,7 +523,7 @@ Only administrators can perform this operation.
 </tr>
 </tbody></table>
 <h2 id='get-a-specific-algorithm'>Get a Specific Algorithm</h2>
-<p>It provides a specific algorithm by indicating its identifier.</p>
+<p>It provides a specific algorithm by indicating its identifier. The algorithm is provided in the response.</p>
 <pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/algorithms/:id <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
@@ -594,7 +597,7 @@ Only administrators can perform this operation.
    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>It updates a specific label by indicating its identifier.</p>
+<p>It updates a specific algorithm by indicating its identifier. The updated algorithm is provided in the response.</p>
 
 <aside class="notice">
 Only administrators can perform this operation.
@@ -614,6 +617,61 @@ Only administrators can perform this operation.
 </tr>
 </tbody></table>
 <h3 id='responses-4'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded. The algorithm is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The algorithm with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-specific-algorithm'>Delete a Specific Algorithm</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE http://IP:PORT/VERSION/algorithms/:id <span class="se">\</span>
+    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70c8aca89d8d39ea0b0420"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vrp-time-windows"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"tagline"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Vehicle Routing Problem"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"safs687qsdsav66134937sda"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"optimization"</span><span class="p">,</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It deletes a specific algorithm by indicating its identifier. The deleted algorithm is provided in the response.</p>
+
+<aside class="notice">
+Only administrators can perform this operation.
+</aside>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE http://IP:PORT/VERSION/algorithms/:id</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the algorithm to delete.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-5'>Responses</h3>
 <table><thead>
 <tr>
 <th>HTTP Code</th>
