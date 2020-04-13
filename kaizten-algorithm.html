@@ -262,6 +262,9 @@
                   <li>
                     <a href="#delete-a-specific-algorithm" class="toc-h2 toc-link" data-title="Delete a Specific Algorithm">Delete a Specific Algorithm</a>
                   </li>
+                  <li>
+                    <a href="#execute-an-algorithm" class="toc-h2 toc-link" data-title="Execute an Algorithm">Execute an Algorithm</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -344,7 +347,7 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>id</code>. Identifier of the task.</li>
 <li><code>name</code>. Name of the task.</li>
 <li><code>description</code>. Description of the task.</li>
-<li><code>userId</code>. xxx</li>
+<li><code>userId</code>. xxxx</li>
 <li><code>algorithmName</code>. xxx</li>
 <li><code>requestDate</code>. xxx</li>
 <li><code>startDate</code>. xxx</li>
@@ -543,7 +546,7 @@ Only administrators can perform this operation.
    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET IP:PORT/VERSION/labels/:id</code></p>
+<p><code>GET IP:PORT/VERSION/algorithms/:id</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -685,6 +688,58 @@ Only administrators can perform this operation.
 <tr>
 <td><code>404</code></td>
 <td>The algorithm with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h2 id='execute-an-algorithm'>Execute an Algorithm</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/algorithms/:name <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+    -H <span class="s2">"Content-Type: application/text"</span> <span class="se">\</span>
+    --data <span class="s1">'depot=0, maxLength=10000, truckCapacity=250'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"taskId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"142"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"timeout"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"360000"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"timeUnit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ms."</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"algorithmId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70c8aca89d8d39ea0b0420"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"algorithmName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"vrp-time-windows"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"parameters"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"depot"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxLength"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"truckCapacity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"250"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It executes a specific algorithm by indicating its name. The algorithm can receive parameter values in the body of the request. In this regard, the parameters are provided as key-value pairs in text format (i.e., <code>Content-Type: application/text</code>). The information about the task created is provided in the response.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET IP:PORT/VERSION/algorithms/:name</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>Name of the algorithm to execute.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-6'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>202</code></td>
+<td>The request has succeeded and the execution of the algorithm is queued. The information about the task created is provided in the response.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The algorithm with the given name is not found.</td>
 </tr>
 </tbody></table>
 <h1 id='labels'>Labels</h1><h2 id='get-all-labels'>Get all Labels</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/labels <span class="se">\</span>
