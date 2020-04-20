@@ -345,7 +345,13 @@ IP:PORT/VERSION/API_ENDPOINT
 <h1 id='domain-model'>Domain model</h1><h2 id='algorithm'>Algorithm</h2>
 <ul>
 <li><code>id</code> (generated). Identifier of the algorithm.</li>
-<li><code>name</code> (required). Name of the algorithm. Its length must be in the range <code>[2..50]</code>.</li>
+<li><code>name</code> (required). Name of the algorithm. 
+
+<ul>
+<li>Its length must be in the range <code>[2..50]</code>.</li>
+<li><code>-</code> and <code>_</code> are valid characters. </li>
+<li>No whitespaces are allowed.</li>
+</ul></li>
 <li><code>tagline</code> (optional). Short summary of the algorithm in only one line. Its maximum length is 50 characters.</li>
 <li><code>description</code> (optional). Description of the algorithm. Its maximum length is 1000 characters.</li>
 <li><code>sampleInput</code> (optional). Sample of the input used by the algorithm.</li>
