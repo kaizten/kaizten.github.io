@@ -723,7 +723,13 @@ Only administrators can perform this operation.
    </span><span class="p">},</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>It executes a specific algorithm by indicating its name. The algorithm can receive parameter values in the body of the request. In this regard, the parameters are provided as key-value pairs in text format (i.e., <code>Content-Type: application/text</code>). The information about the task created is provided in the response.</p>
+<p>It executes a specific algorithm by indicating its name. The algorithm can receive parameter values in the body of the request in the following formats:
+<ul>
+    <li><code>Content-Type: text/plain</code>. The parameter values are provided as key-value pairs in text format. The parameters must be organized by using <code>,</code>, whereas <code>=</code> is used to differentiate the parameter from its parameter value.</li>
+    <li><code>Content-Type: application/json</code>. JSON where each key is the name of the parameter and each value is the corresponding parameter value.</li>
+</ul></p>
+
+<p>The information about the task created is provided in the response.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET IP:PORT/VERSION/algorithms/:name</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
@@ -1145,7 +1151,7 @@ Only those tasks of the requesting user are provided in the response but for adm
 <p>It deletes a specific task by indicating its identifier. The deleted task is provided in the response.</p>
 
 <aside class="notice">
-Users can delete only can perform this operation on their own tasks, whereas administrators can do it on any task.
+Users can only perform this operation on their own tasks, whereas administrators can do it on any task.
 </aside>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>DELETE http://IP:PORT/VERSION/tasks/:id</code></p>
