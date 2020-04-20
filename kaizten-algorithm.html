@@ -702,7 +702,7 @@ Only administrators can perform this operation.
 <td>The algorithm with the given identifier is not found.</td>
 </tr>
 </tbody></table>
-<h2 id='execute-an-algorithm'>Execute an Algorithm</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/algorithms/:name <span class="se">\</span>
+<h2 id='execute-an-algorithm'>Execute an Algorithm</h2><pre class="highlight shell tab-shell"><code>curl -X POST http://IP:PORT/VERSION/algorithms/:name <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
     -H <span class="s2">"Content-Type: application/text"</span> <span class="se">\</span>
     --data <span class="s1">'depot=0, maxLength=10000, truckCapacity=250'</span>
@@ -725,13 +725,13 @@ Only administrators can perform this operation.
 </span></code></pre>
 <p>It executes a specific algorithm by indicating its name. The algorithm can receive parameter values in the body of the request in the following formats:
 <ul>
-    <li><code>Content-Type: text/plain</code>. The parameter values are provided as key-value pairs in text format. The parameters must be organized by using <code>,</code>, whereas <code>=</code> is used to differentiate the parameter from its parameter value.</li>
+    <li><code>Content-Type: text/plain</code>. The parameter values are provided as key-value pairs in text format (UTF-8 encoded). The parameters must be organized by using <code>,</code> whereas <code>=</code> is used to differentiate the parameter from its parameter value.</li>
     <li><code>Content-Type: application/json</code>. JSON where each key is the name of the parameter and each value is the corresponding parameter value.</li>
 </ul></p>
 
 <p>The information about the task created is provided in the response.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
-<p><code>GET IP:PORT/VERSION/algorithms/:name</code></p>
+<p><code>POST IP:PORT/VERSION/algorithms/:name</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
