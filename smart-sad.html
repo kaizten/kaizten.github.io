@@ -291,6 +291,11 @@
           </li>
           <li>
             <a href="#schedules" class="toc-h1 toc-link" data-title="Schedules">Schedules</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-a-specific-schedule" class="toc-h2 toc-link" data-title="Get a specific schedule">Get a specific schedule</a>
+                  </li>
+              </ul>
           </li>
       </ul>
         <ul class="toc-footer">
@@ -1162,8 +1167,121 @@ IP:PORT/VERSION/API_ENDPOINT
 <td>The employee with the given identifier is not found.</td>
 </tr>
 </tbody></table>
-<h1 id='schedules'>Schedules</h1>
-<p>To Do</p>
+<h1 id='schedules'>Schedules</h1><h2 id='get-a-specific-schedule'>Get a specific schedule</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/schedule/:id 
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"employees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"routes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"period"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"startingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">25200</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"endingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">32400</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">132</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"startingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">34200</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"endingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">37800</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"startingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">39600</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"endingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">61200</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">169</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"startingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">63000</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"endingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">66600</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">85</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"startingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">70200</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"endingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">73800</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">116</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"period"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                    </span><span class="nl">"startingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">45000</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"endingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">48600</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">270</span><span class="w">
+                </span><span class="p">}]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"period"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"startingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">32400</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"endingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">39600</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"startingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">46800</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"endingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">50400</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">228</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"period"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                    </span><span class="nl">"startingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">32400</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"endingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">46800</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">330</span><span class="w">
+                </span><span class="p">}]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"period"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                    </span><span class="nl">"startingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">34200</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"endingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">37800</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">272</span><span class="w">
+                </span><span class="p">}]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">4270</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre></div>
+<p>It provides a specific schedule by indicating its identifier. The schedule is provided in the response.</p>
+<h3 id='http-request'>HTTP request</h3>
+<p><code>GET IP:PORT/VERSION/schedules/:id</code></p>
+<h3 id='url-parameters'>URL parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the requested schedule.</td>
+</tr>
+</tbody></table>
+<h3 id='responses'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded. The schedule is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The schedule with the given identifier is not found.</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
