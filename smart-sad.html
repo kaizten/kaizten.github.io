@@ -245,9 +245,15 @@
                     <a href="#user" class="toc-h2 toc-link" data-title="User">User</a>
                   </li>
                   <li>
-                    <a href="#schedule" class="toc-h2 toc-link" data-title="Schedule">Schedule</a>
+                    <a href="#algorithm" class="toc-h2 toc-link" data-title="Algorithm">Algorithm</a>
+                  </li>
+                  <li>
+                    <a href="#task" class="toc-h2 toc-link" data-title="Task">Task</a>
                   </li>
               </ul>
+          </li>
+          <li>
+            <a href="#task-states" class="toc-h1 toc-link" data-title="Task states">Task states</a>
           </li>
           <li>
             <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
@@ -290,10 +296,24 @@
               </ul>
           </li>
           <li>
-            <a href="#schedules" class="toc-h1 toc-link" data-title="Schedules">Schedules</a>
+            <a href="#algorithms" class="toc-h1 toc-link" data-title="Algorithms">Algorithms</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-a-specific-schedule" class="toc-h2 toc-link" data-title="Get a specific schedule">Get a specific schedule</a>
+                    <a href="#get-a-specific-algorithm" class="toc-h2 toc-link" data-title="Get a Specific Algorithm">Get a Specific Algorithm</a>
+                  </li>
+                  <li>
+                    <a href="#execute-an-algorithm" class="toc-h2 toc-link" data-title="Execute an Algorithm">Execute an Algorithm</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#tasks" class="toc-h1 toc-link" data-title="Tasks">Tasks</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-a-specific-task" class="toc-h2 toc-link" data-title="Get a Specific Task">Get a Specific Task</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-specific-task" class="toc-h2 toc-link" data-title="Delete a Specific Task">Delete a Specific Task</a>
                   </li>
               </ul>
           </li>
@@ -328,7 +348,12 @@ IP:PORT/VERSION/API_ENDPOINT
 <li>Its length must be in the range <code>[2..50]</code>.</li>
 <li>Only alphabetic characters are allowed. </li>
 </ul></li>
-<li><code>surname</code>. Surname of the employee.</li>
+<li><code>surname</code>. Surname of the employee.
+
+<ul>
+<li>Its length must be in the range <code>[2..100]</code>.</li>
+<li>Only alphabetic characters are allowed. </li>
+</ul></li>
 <li><code>code</code>. High level identifier of the employee used by the company. It is a number composed of 4 digits.</li>
 <li><code>sex</code>. Sex of the employee. It can be <code>MAN</code> or <code>WOMAN</code>.</li>
 <li><code>birthDate</code> (optional). Birth date of the employee.</li>
@@ -342,8 +367,8 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>latitude</code>. Latitude of the address.</li>
 <li><code>longitude</code>. Latitude of the address.</li>
 </ul></li>
-<li><code>emails</code> (optional). List of emails used to contact the employee with.</li>
-<li><code>phones</code> (optional). List of phones used to contact the employee with.</li>
+<li><code>emails</code> (optional). List of emails used to contact the employee with. The length of each email must be in the range <code>[5..100]</code>.</li>
+<li><code>phones</code> (optional). List of phones used to contact the employee with. The length of each number must be composed of 9 digits`.</li>
 </ul>
 <h2 id='user'>User</h2>
 <ul>
@@ -368,8 +393,8 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>latitude</code>. Latitude of the address.</li>
 <li><code>longitude</code>. Latitude of the address.</li>
 </ul></li>
-<li><code>emails</code> (optional). List of emails used to contact the employee with.</li>
-<li><code>phones</code> (optional). List of phones used to contact the employee with.</li>
+<li><code>emails</code> (optional). List of emails used to contact the employee with. The length of each email must be in the range <code>[5..100]</code>.</li>
+<li><code>phones</code> (optional). List of phones used to contact the employee with. The length of each number must be composed of 9 digits`.</li>
 <li><code>service</code>. List of services required by the user. Each service is composed of the following elements:
 
 <ul>
@@ -380,8 +405,35 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>endTime</code>. Ending time of the service, expressed in minutes.</li>
 </ul></li>
 </ul>
-<h2 id='schedule'>Schedule</h2>
-<p><code>TO COMPLETE</code></p>
+<h2 id='algorithm'>Algorithm</h2>
+<ul>
+<li><code>id</code> (generated). Identifier of the algorithm.</li>
+<li><code>name</code> (required). Name of the algorithm. 
+
+<ul>
+<li>Its length must be in the range <code>[2..50]</code>.</li>
+<li><code>-</code> and <code>_</code> are valid characters. </li>
+<li>No whitespaces are allowed.</li>
+</ul></li>
+<li><code>description</code> (optional). Description of the algorithm. Its maximum length is 1000 characters.</li>
+</ul>
+<h2 id='task'>Task</h2>
+<ul>
+<li><code>id</code>. Identifier of the task.</li>
+<li><code>algorithmName</code>. Name of the algorithm associated with the task.</li>
+<li><code>status</code>. Status of the task when requested. See <a href="#task-states">Task States</a>.</li>
+<li><code>exitCode</code>. Status code to denote the termination of the task. The zero status is used when the execution is terminated successfully. However, a non-zero status code indicates an abnormal termination.</li>
+<li><code>output</code>. Output of the task.</li>
+</ul>
+<h1 id='task-states'>Task states</h1>
+<ul>
+<li><code>Pending</code>. La tarea aún no ha sido asignada a ningún worker para su realización.</li>
+<li><code>Running</code>. La tarea se está realizando.</li>
+<li><code>Canceled</code>. La tarea ha sido cancelada.</li>
+<li><code>CompletedErrors</code>. La tarea ha sido finalizada porque se han encontrado errores en la ejecución.</li>
+<li><code>CompletedTimeout</code>. La tarea ha sido finalizada porque se ha alcanzado el tiempo máximo de ejecución.</li>
+<li><code>Complete</code>. La tarea ha sido finalizada con éxito.</li>
+</ul>
 
 <p>In all the cases, the resource identifiers are generated by the system. This means that the client is not allowed to determine them.</p>
 <h1 id='users'>Users</h1><h2 id='get-all-users'>Get all users</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/users 
@@ -483,12 +535,16 @@ IP:PORT/VERSION/API_ENDPOINT
 <td>Name of the user to find.</td>
 </tr>
 <tr>
+<td><code>code</code></td>
+<td>Code of the user to find.</td>
+</tr>
+<tr>
 <td><code>page</code></td>
 <td>Zero-based page index. Default value: <code>0</code>.</td>
 </tr>
 <tr>
 <td><code>size</code></td>
-<td>Size of the page to be returned. Default value: <code>25</code>.</td>
+<td>Size of the page to be returned. Default value: <code>20</code>.</td>
 </tr>
 </tbody></table>
 <h3 id='responses'>Responses</h3>
@@ -912,12 +968,16 @@ IP:PORT/VERSION/API_ENDPOINT
 <td>Name of the employee to find.</td>
 </tr>
 <tr>
+<td><code>code</code></td>
+<td>Code of the employee to find.</td>
+</tr>
+<tr>
 <td><code>page</code></td>
 <td>Zero-based page index. Default value: <code>0</code>.</td>
 </tr>
 <tr>
 <td><code>size</code></td>
-<td>Size of the page to be returned. Default value: <code>25</code>.</td>
+<td>Size of the page to be returned. Default value: <code>20</code>.</td>
 </tr>
 </tbody></table>
 <h3 id='responses'>Responses</h3>
@@ -1167,94 +1227,21 @@ IP:PORT/VERSION/API_ENDPOINT
 <td>The employee with the given identifier is not found.</td>
 </tr>
 </tbody></table>
-<h1 id='schedules'>Schedules</h1><h2 id='get-a-specific-schedule'>Get a specific schedule</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/schedule/:id 
+<h1 id='algorithms'>Algorithms</h1><h2 id='get-a-specific-algorithm'>Get a Specific Algorithm</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/algorithms/:id
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"employees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"routes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"period"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="nl">"startingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">25200</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"endingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">32400</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">132</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="nl">"startingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">34200</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"endingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">37800</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="nl">"startingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">39600</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"endingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">61200</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">169</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="nl">"startingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">63000</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"endingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">66600</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">85</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="nl">"startingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">70200</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"endingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">73800</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">116</span><span class="w">
-                    </span><span class="p">}</span><span class="w">
-                </span><span class="p">]</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"period"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-                    </span><span class="nl">"startingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">45000</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"endingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">48600</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">270</span><span class="w">
-                </span><span class="p">}]</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"period"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="nl">"startingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">32400</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"endingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">39600</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="nl">"startingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">46800</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"endingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">50400</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">228</span><span class="w">
-                    </span><span class="p">}</span><span class="w">
-                </span><span class="p">]</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"period"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-                    </span><span class="nl">"startingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">32400</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"endingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">46800</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">330</span><span class="w">
-                </span><span class="p">}]</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"period"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-                    </span><span class="nl">"startingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">34200</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"endingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">37800</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">272</span><span class="w">
-                </span><span class="p">}]</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">4270</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="err">...</span><span class="w">
-</span><span class="err">}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70c8aca89d8d39ea0b0420"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduling"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Heuristic used to create a schedule for employees in sanitary environments"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>It provides a specific schedule by indicating its identifier. The schedule is provided in the response.</p>
-<h3 id='http-request'>HTTP request</h3>
-<p><code>GET IP:PORT/VERSION/schedules/:id</code></p>
-<h3 id='url-parameters'>URL parameters</h3>
+<p>It provides a specific algorithm by indicating its identifier. The algorithm is provided in the response.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET IP:PORT/VERSION/algorithms/:id</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1263,7 +1250,7 @@ IP:PORT/VERSION/API_ENDPOINT
 </thead><tbody>
 <tr>
 <td><code>id</code></td>
-<td>Identifier of the requested schedule.</td>
+<td>Identifier of the requested algorithm.</td>
 </tr>
 </tbody></table>
 <h3 id='responses'>Responses</h3>
@@ -1275,11 +1262,172 @@ IP:PORT/VERSION/API_ENDPOINT
 </thead><tbody>
 <tr>
 <td><code>200</code></td>
-<td>The request has succeeded. The schedule is included in the body of the response.</td>
+<td>The request has succeeded. The algorithm is included in the body of the response.</td>
 </tr>
 <tr>
 <td><code>404</code></td>
-<td>The schedule with the given identifier is not found.</td>
+<td>The algorithm with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h2 id='execute-an-algorithm'>Execute an Algorithm</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://IP:PORT/VERSION/algorithms/:name 
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"taskId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"142"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"timeout"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"360000"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"timeUnit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ms."</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"algorithmId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70c8aca89d8d39ea0b0420"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"algorithmName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"vrp-time-windows"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"parameters"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"depot"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"maxLength"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"truckCapacity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"250"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>It executes a specific algorithm by indicating its name. The algorithm can receive parameter values in the body of the request in the following formats:
+<ul>
+    <li><code>Content-Type: text/plain</code>. The parameter values are provided as key-value pairs in text format (UTF-8 encoded). The parameters must be organized by using <code>,</code> whereas <code>=</code> is used to differentiate the parameter from its parameter value.</li>
+    <li><code>Content-Type: application/json</code>. JSON where each key is the name of the parameter and each value is the corresponding parameter value.</li>
+</ul></p>
+
+<p>The information about the task created is provided in the response.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST IP:PORT/VERSION/algorithms/:name</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>Name of the algorithm to execute.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-2'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>202</code></td>
+<td>The request has succeeded and the execution of the algorithm is queued. The information about the task created is provided in the response.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The algorithm with the given name is not found.</td>
+</tr>
+</tbody></table>
+<h1 id='tasks'>Tasks</h1><h2 id='get-a-specific-task'>Get a Specific Task</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/tasks/:id
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"algorithmName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduling"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETE"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"exitCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"output"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"{
+      "</span><span class="err">name</span><span class="s2">": "</span><span class="err">users-santa-cruz</span><span class="s2">",
+      "</span><span class="err">periods</span><span class="s2">": 6,
+      "</span><span class="err">services</span><span class="s2">": 240,
+      ...
+   }"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>It provides a specific task by indicating its identifier. The task is provided in the response.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET IP:PORT/VERSION/tasks/:id</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the requested task.</td>
+</tr>
+</tbody></table>
+<h3 id='responses'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded. The task is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The task with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-specific-task'>Delete a Specific Task</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE http://IP:PORT/VERSION/task/:id
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"algorithmName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduling"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETE"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"exitCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"output"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"{
+      "</span><span class="err">name</span><span class="s2">": "</span><span class="err">users-santa-cruz</span><span class="s2">",
+      "</span><span class="err">periods</span><span class="s2">": 6,
+      "</span><span class="err">services</span><span class="s2">": 240,
+      ...
+   }"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>It deletes a specific task by indicating its identifier. The deleted task is provided in the response.</p>
+
+<aside class="notice">
+Users can only perform this operation on their own tasks, whereas administrators can do it on any task.
+</aside>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>DELETE http://IP:PORT/VERSION/tasks/:id</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the task to delete.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-2'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded. The task is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The user is not the owner of the task neither administrator.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The task with the given identifier is not found.</td>
 </tr>
 </tbody></table>
 
