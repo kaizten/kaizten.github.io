@@ -368,7 +368,12 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>longitude</code>. Latitude of the address.</li>
 </ul></li>
 <li><code>emails</code> (optional). List of emails used to contact the employee with. The length of each email must be in the range <code>[5..100]</code>.</li>
-<li><code>phones</code> (optional). List of phones used to contact the employee with. The length of each number must be composed of 9 digits`.</li>
+<li><code>phones</code> (optional). List of phones used to contact the employee with. Each phone is composed of the following fields:
+
+<ul>
+<li><code>number</code>. Phone number. It is a number composed of 9 digits`.</li>
+<li><code>comment</code>. Comment associated with the phone. Its maximum length is of 1000 characters`.</li>
+</ul></li>
 </ul>
 <h2 id='user'>User</h2>
 <ul>
@@ -394,7 +399,12 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>longitude</code>. Latitude of the address.</li>
 </ul></li>
 <li><code>emails</code> (optional). List of emails used to contact the employee with. The length of each email must be in the range <code>[5..100]</code>.</li>
-<li><code>phones</code> (optional). List of phones used to contact the employee with. The length of each number must be composed of 9 digits`.</li>
+<li><code>phones</code> (optional). List of phones used to contact the employee with. Each phone is composed of the following fields:
+
+<ul>
+<li><code>number</code>. Phone number. It is a number composed of 9 digits`.</li>
+<li><code>comment</code>. Comment associated with the phone. Its maximum length is of 1000 characters`.</li>
+</ul></li>
 <li><code>service</code>. List of services required by the user. Each service is composed of the following elements:
 
 <ul>
@@ -473,13 +483,27 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"8554"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+         </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Primary phone"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456780"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Secondary phone"</span><span class="w">
+      </span><span class="p">}],</span><span class="w">
       </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"WOMAN"</span><span class="w">
    </span><span class="p">},</span><span class="w">
    </span><span class="p">{</span><span class="w">
       </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"8654"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+         </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Primary phone"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456780"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Secondary phone"</span><span class="w">
+      </span><span class="p">}],</span><span class="w">
       </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MAN"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11/11/1941 0:00"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Antonio"</span><span class="p">,</span><span class="w">
@@ -603,7 +627,14 @@ IP:PORT/VERSION/API_ENDPOINT
           },
           "birthDate" : "18/11/1934 0:00",
           "sex" : "MAN",
-          "phones" : [],
+          "phones" : [{
+             "number" : "123456789",
+             "comment" : "Primary phone"
+          },
+          {
+             "number" : "123456780",
+             "comment" : "Secondary phone"
+          }],
           "civilStatus" : "UNKNOWN"
       }'</span>
 </code></pre></div>
@@ -648,7 +679,14 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"18/11/1934 0:00"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MAN"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+            </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Primary phone"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456780"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Secondary phone"</span><span class="w">
+      </span><span class="p">}],</span><span class="w">
       </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -714,7 +752,14 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"18/11/1934 0:00"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MAN"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+            </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Primary phone"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456780"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Secondary phone"</span><span class="w">
+      </span><span class="p">}],</span><span class="w">
       </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -919,7 +964,14 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"GABINO HIDALGO"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2859"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+         </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Primary phone"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456780"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Secondary phone"</span><span class="w">
+      </span><span class="p">}],</span><span class="w">
       </span><span class="nl">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
          </span><span class="nl">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38108"</span><span class="p">,</span><span class="w">
          </span><span class="nl">"street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Urbanización del Cardonal, bloque 17"</span><span class="p">,</span><span class="w">
@@ -938,7 +990,14 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="nl">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
       </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+         </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Primary phone"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456780"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Secondary phone"</span><span class="w">
+      </span><span class="p">}],</span><span class="w">
       </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CARLOS EMILIO"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
          </span><span class="nl">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SANTA CRUZ DE TENERIFE"</span><span class="p">,</span><span class="w">
@@ -1005,7 +1064,14 @@ IP:PORT/VERSION/API_ENDPOINT
             "code" : "4285",
             "sex" : "FEMALE",
             "emails" : ["andreaperezregalado@gmail.com"],
-            "phones" : [631997979],
+            "phones" : [{
+                "number" : "123456789",
+                "comment" : "Primary phone"
+            },
+            {
+                "number" : "123456780",
+                "comment" : "Secondary phone"
+            }],
             "civilStatus" : "UNKNOWN",
             "birthDate" : "10/03/1975",
             "address" : {
@@ -1033,7 +1099,14 @@ IP:PORT/VERSION/API_ENDPOINT
             </span><span class="nl">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.3477234"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38205"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">631997979</span><span class="p">],</span><span class="w">
+      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+            </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Primary phone"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456780"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Secondary phone"</span><span class="w">
+      </span><span class="p">}],</span><span class="w">
       </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"4285"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Pérez Regalado"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10/03/1975"</span><span class="w">
@@ -1076,7 +1149,14 @@ IP:PORT/VERSION/API_ENDPOINT
             </span><span class="nl">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.3477234"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38205"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">631997979</span><span class="p">],</span><span class="w">
+      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+            </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Primary phone"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456780"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Secondary phone"</span><span class="w">
+      </span><span class="p">}],</span><span class="w">
       </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"4285"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Pérez Regalado"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10/03/1975"</span><span class="w">
@@ -1135,7 +1215,14 @@ IP:PORT/VERSION/API_ENDPOINT
             </span><span class="nl">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.3477234"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38205"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">631997979</span><span class="p">],</span><span class="w">
+      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+            </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Primary phone"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456780"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Secondary phone"</span><span class="w">
+      </span><span class="p">}],</span><span class="w">
       </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"4285"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Pérez Regalado"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10/03/1975"</span><span class="w">
@@ -1190,7 +1277,14 @@ IP:PORT/VERSION/API_ENDPOINT
             </span><span class="nl">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.3477234"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38205"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">631997979</span><span class="p">],</span><span class="w">
+      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+            </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Primary phone"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456780"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Secondary phone"</span><span class="w">
+      </span><span class="p">}],</span><span class="w">
       </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"4285"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Pérez Regalado"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10/03/1975"</span><span class="w">
