@@ -315,6 +315,9 @@
                   <li>
                     <a href="#delete-a-specific-task" class="toc-h2 toc-link" data-title="Delete a Specific Task">Delete a Specific Task</a>
                   </li>
+                  <li>
+                    <a href="#delete-a-specific-task-2" class="toc-h2 toc-link" data-title="Delete a specific task">Delete a specific task</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -1437,7 +1440,8 @@ IP:PORT/VERSION/API_ENDPOINT
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
-   </span><span class="nl">"algorithmName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduling"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"taskName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Schedule of users located in SC"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-20 12:24:12.095"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETE"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"exitCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
    </span><span class="nl">"output"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1446,6 +1450,8 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="nl">"services"</span><span class="p">:</span><span class="w"> </span><span class="mi">240</span><span class="p">,</span><span class="w">
       </span><span class="err">...</span><span class="w">
    </span><span class="p">},</span><span class="w">
+   </span><span class="nl">"algorithmId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70c8aca89d8d39ea0b0420"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"algorithmName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduling"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>It provides a specific task by indicating its identifier. The task is provided in the response.</p>
@@ -1486,7 +1492,8 @@ IP:PORT/VERSION/API_ENDPOINT
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
-   </span><span class="nl">"algorithmName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduling"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"taskName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Schedule of users located in SC"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-20 12:24:12.095"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETE"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"exitCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
    </span><span class="nl">"output"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1495,6 +1502,8 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="nl">"services"</span><span class="p">:</span><span class="w"> </span><span class="mi">240</span><span class="p">,</span><span class="w">
       </span><span class="err">...</span><span class="w">
    </span><span class="p">},</span><span class="w">
+   </span><span class="nl">"algorithmId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70c8aca89d8d39ea0b0420"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"algorithmName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduling"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>It deletes a specific task by indicating its identifier. The deleted task is provided in the response.</p>
@@ -1530,6 +1539,62 @@ Users can only perform this operation on their own tasks, whereas administrators
 <tr>
 <td><code>403</code></td>
 <td>The user is not the owner of the task neither administrator.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The task with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-specific-task-2'>Delete a specific task</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE http://IP:PORT/VERSION/tasks/:id <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"257"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"taskName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Schedule of users located in SC"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-20 12:24:12.095"</span><span class="p">,</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="nl">"parameters"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="w"> </span><span class="s2">"name=users-santa-cruz"</span><span class="p">,</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="p">],</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="nl">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETE"</span><span class="p">,</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="nl">"exitCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"output"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users-santa-cruz"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"periods"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"services"</span><span class="p">:</span><span class="w"> </span><span class="mi">240</span><span class="p">,</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="nl">"algorithmId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70c8aca89d8d39ea0b0420"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"algorithmName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduling"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>It deletes a specific task by indicating its identifier. The deleted task is provided in the response.</p>
+<h3 id='http-request-3'>HTTP request</h3>
+<p><code>DELETE http://IP:PORT/VERSION/tasks/:id</code></p>
+<h3 id='url-parameters-3'>URL parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the task to delete.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-3'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded. The task is included in the body of the response.</td>
 </tr>
 <tr>
 <td><code>404</code></td>
