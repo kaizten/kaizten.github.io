@@ -361,6 +361,7 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>sex</code>. Sex of the employee. It can be <code>MAN</code> or <code>WOMAN</code>.</li>
 <li><code>birthDate</code> (optional). Birth date of the employee.</li>
 <li><code>civilStatus</code> (optional). Civil status of the employee. It can be <code>SINGLE</code>, <code>MARRIED</code>, or <code>UNKNOWN</code>.</li>
+<li><code>comment</code> (optional). Free comment associated with the employee.</li>
 <li><code>address</code>(optional). Address of the employee. It is composed of the following elements:
 
 <ul>
@@ -392,6 +393,7 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>sex</code>. Sex of the user. It can be <code>MAN</code> or <code>WOMAN</code>.</li>
 <li><code>birthDate</code> (optional). Birth date of the user.</li>
 <li><code>civilStatus</code> (optional). Civil status of the user. It can be <code>SINGLE</code>, <code>MARRIED</code>, or <code>UNKNOWN</code>.</li>
+<li><code>comment</code> (optional). Free comment associated with the user.</li>
 <li><code>address</code>. Address of the user. It is composed of the following elements:
 
 <ul>
@@ -1058,7 +1060,7 @@ IP:PORT/VERSION/API_ENDPOINT
 <td>The employee with the requested name is not found.</td>
 </tr>
 </tbody></table>
-<h2 id='create-a-new-employee'>Create a new employee</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST IP:PORT/VERSION/employee <span class="se">\</span>
+<h2 id='create-a-new-employee'>Create a new employee</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST IP:PORT/VERSION/employees <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
     <span class="nt">-d</span> <span class="s1">'{\
