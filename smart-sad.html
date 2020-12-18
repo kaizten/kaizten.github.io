@@ -245,6 +245,9 @@
                     <a href="#user" class="toc-h2 toc-link" data-title="User">User</a>
                   </li>
                   <li>
+                    <a href="#time" class="toc-h2 toc-link" data-title="Time">Time</a>
+                  </li>
+                  <li>
                     <a href="#algorithm" class="toc-h2 toc-link" data-title="Algorithm">Algorithm</a>
                   </li>
                   <li>
@@ -361,7 +364,7 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>identificationNumber</code>. Identification number of the employee. It can be a DNI, NIF, NIE, or CIF.</li>
 <li><code>sex</code> (optional). Sex of the employee. It can be <code>MAN</code> or <code>WOMAN</code>.</li>
 <li><code>birthDate</code> (optional). Birth date of the employee. It must be expressed in ISO 8601 format (e.g., <code>1986-03-17</code>).</li>
-<li><code>civilStatus</code> (optional). Civil status of the employee. It can be <code>SINGLE</code>, <code>MARRIED</code>, <code>DIVORCED</code>, <code>WIDOWER</code>. or <code>UNKNOWN</code> (default value).</li>
+<li><code>civilStatus</code> (optional). Civil status of the employee. It can be <code>SINGLE</code>, <code>MARRIED</code>, <code>DIVORCED</code>, <code>WIDOWER</code>, or <code>UNKNOWN</code> (default value).</li>
 <li><code>comment</code> (optional). Free comment associated with the employee. Its maximum length is of 1000 characters.</li>
 <li><code>address</code>(optional). Address of the employee. It is composed of the following elements:
 
@@ -394,7 +397,7 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>identificationNumber</code>. Identification number of the user. It can be a DNI, NIF, NIE, or CIF.</li>
 <li><code>sex</code>. Sex of the user. It can be <code>MAN</code> or <code>WOMAN</code>.</li>
 <li><code>birthDate</code> (optional). Birth date of the user. It must be expressed in ISO 8601 format (e.g., <code>1957-09-21</code>).</li>
-<li><code>civilStatus</code> (optional). Civil status of the user. It can be <code>SINGLE</code>, <code>MARRIED</code>, <code>DIVORCED</code>, <code>WIDOWER</code>. or <code>UNKNOWN</code> (default value).</li>
+<li><code>civilStatus</code> (optional). Civil status of the user. It can be <code>SINGLE</code>, <code>MARRIED</code>, <code>DIVORCED</code>, <code>WIDOWER</code>, or <code>UNKNOWN</code> (default value).</li>
 <li><code>comment</code> (optional). Free comment associated with the user. Its maximum length is of 1000 characters.</li>
 <li><code>address</code>. Address of the user. It is composed of the following elements:
 
@@ -421,6 +424,16 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>startingTime</code>. Starting time of the service, expressed as <code>HH:MM:SS</code>.</li>
 <li><code>finishingTime</code>. Finishing time of the service, expressed as <code>HH:MM:SS</code>.</li>
 </ul></li>
+</ul>
+<h2 id='time'>Time</h2>
+<ul>
+<li><code>id</code>. Identifier of the relationship.</li>
+<li><code>code1</code>. Code of the first point (employee or user). It is a number composed of at most 5 digits.</li>
+<li><code>code2</code>. Code of the first point (employee or user). It is a number composed of at most 5 digits.</li>
+<li><code>value</code>. Time between the points.</li>
+<li><code>mean</code>. Mean used to move between the point.</li>
+<li><code>type</code>. Origin of the time. It can be <code>GOOGLE_MAPS</code>, <code>GRAPH-HOPPER</code>, <code>PERSONALIZED</code>, or <code>DEFAULT</code> (default value).</li>
+<li><code>lastUpdate</code>. Last time in which the time was updated. It must be expressed in ISO 8601 format (e.g., <code>2020-12-17T12:57:19+00:00</code>).</li>
 </ul>
 <h2 id='algorithm'>Algorithm</h2>
 <ul>
