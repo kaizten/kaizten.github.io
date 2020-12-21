@@ -348,7 +348,7 @@ IP:PORT/VERSION/API_ENDPOINT
 <h1 id='domain-model'>Domain model</h1><h2 id='employee'>Employee</h2>
 <ul>
 <li><code>id</code> (generated). Identifier of the employee.</li>
-<li><code>name</code> (required). Name of the employee. 
+<li><code>name</code>. Name of the employee. 
 
 <ul>
 <li>Its length must be in the range <code>[2..50]</code>.</li>
@@ -386,7 +386,7 @@ IP:PORT/VERSION/API_ENDPOINT
 <h2 id='user'>User</h2>
 <ul>
 <li><code>id</code> (generated). Identifier of the user.</li>
-<li><code>name</code> (required). Name of the user. 
+<li><code>name</code>. Name of the user. 
 
 <ul>
 <li>Its length must be in the range <code>[2..50]</code>.</li>
@@ -394,7 +394,7 @@ IP:PORT/VERSION/API_ENDPOINT
 </ul></li>
 <li><code>surname</code>. Surname of the user.</li>
 <li><code>code</code>. High level identifier of the user used by the company. It is a number composed of at most 5 digits.</li>
-<li><code>identificationNumber</code>. Identification number of the user. It can be a DNI, NIF, NIE, or CIF.</li>
+<li><code>identificationNumber</code> (optional). Identification number of the user. It can be a DNI, NIF, NIE, or CIF.</li>
 <li><code>sex</code>. Sex of the user. It can be <code>MAN</code> or <code>WOMAN</code>.</li>
 <li><code>birthDate</code> (optional). Birth date of the user. It must be expressed in ISO 8601 format (e.g., <code>1957-09-21</code>).</li>
 <li><code>civilStatus</code> (optional). Civil status of the user. It can be <code>SINGLE</code>, <code>MARRIED</code>, <code>DIVORCED</code>, <code>WIDOWER</code>, or <code>UNKNOWN</code> (default value).</li>
@@ -415,7 +415,7 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>number</code>. Phone number. It is a number composed of 9 digits`.</li>
 <li><code>comment</code>. Comment associated with the phone. Its maximum length is of 1000 characters`.</li>
 </ul></li>
-<li><code>service</code>. List of services required by the user. Each service is composed of the following elements:
+<li><code>services</code>. List of services required by the user. Each service is composed of the following elements:
 
 <ul>
 <li><code>description</code>. Description of the service to do.</li>
@@ -431,14 +431,14 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>code1</code>. Code of the first user. It is a number composed of at most 5 digits.</li>
 <li><code>code2</code>. Code of the first user. It is a number composed of at most 5 digits.</li>
 <li><code>value</code>. Time between the users.</li>
-<li><code>mean</code>. Mean used to move between the users.</li>
+<li><code>mean</code>. Mean used to move between the users. It can be <code>FOOT</code> (default value), <code>CAR</code>, <code>BIKE</code>, or <code>MOTORBIKE</code>.</li>
 <li><code>type</code>. Origin of the time. It can be <code>GOOGLE_MAPS</code>, <code>GRAPH-HOPPER</code>, <code>PERSONALIZED</code>, or <code>DEFAULT</code> (default value).</li>
-<li><code>lastUpdate</code>. Last time in which the time was updated. It must be expressed in ISO 8601 format (e.g., <code>2020-12-17T12:57:19+00:00</code>).</li>
+<li><code>lastUpdate</code> (optional). Last time in which the time was updated. It must be expressed in ISO 8601 format (e.g., <code>2020-12-17T12:57:19+00:00</code>).</li>
 </ul>
 <h2 id='algorithm'>Algorithm</h2>
 <ul>
 <li><code>id</code> (generated). Identifier of the algorithm.</li>
-<li><code>name</code> (required). Name of the algorithm. 
+<li><code>name</code>. Name of the algorithm. 
 
 <ul>
 <li>Its length must be in the range <code>[2..50]</code>.</li>
