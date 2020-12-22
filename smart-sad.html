@@ -302,19 +302,13 @@
             <a href="#times" class="toc-h1 toc-link" data-title="Times">Times</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-time-between-a-pair-of-users" class="toc-h2 toc-link" data-title="Get time between a pair of users">Get time between a pair of users</a>
+                    <a href="#get-time-between-users" class="toc-h2 toc-link" data-title="Get time between users">Get time between users</a>
                   </li>
                   <li>
-                    <a href="#create-a-new-user" class="toc-h2 toc-link" data-title="Create a new user">Create a new user</a>
+                    <a href="#create-time-between-users" class="toc-h2 toc-link" data-title="Create time between users">Create time between users</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-user" class="toc-h2 toc-link" data-title="Get a specific user">Get a specific user</a>
-                  </li>
-                  <li>
-                    <a href="#update-a-specific-user" class="toc-h2 toc-link" data-title="Update a specific user">Update a specific user</a>
-                  </li>
-                  <li>
-                    <a href="#delete-a-specific-user" class="toc-h2 toc-link" data-title="Delete a specific user">Delete a specific user</a>
+                    <a href="#update-a-specific-time-between-users" class="toc-h2 toc-link" data-title="Update a specific time between users">Update a specific time between users</a>
                   </li>
               </ul>
           </li>
@@ -455,7 +449,7 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>id</code>. Identifier of the relationship.</li>
 <li><code>code1</code>. Code of the first user. It is a number composed of at most <code>5</code> digits.</li>
 <li><code>code2</code>. Code of the first user. It is a number composed of at most <code>5</code>s digits.</li>
-<li><code>value</code>. Time between the users.</li>
+<li><code>value</code>. Time between the users, expressed in seconds.</li>
 <li><code>mean</code>. Mean used to move between the users. It can be <code>FOOT</code> (default value), <code>CAR</code>, <code>BIKE</code>, or <code>MOTORBIKE</code>.</li>
 <li><code>type</code>. Origin of the time. It can be <code>GOOGLE_MAPS</code>, <code>GRAPH-HOPPER</code>, <code>PERSONALIZED</code>, or <code>DEFAULT</code> (default value).</li>
 <li><code>lastUpdate</code> (optional). Last time in which the time was updated. It must be expressed in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format (e.g., <code>2020-12-17T12:57:19+00:00</code>).</li>
@@ -1401,107 +1395,24 @@ IP:PORT/VERSION/API_ENDPOINT
 <td>The user with the given identifier is not found.</td>
 </tr>
 </tbody></table>
-<h1 id='times'>Times</h1><h2 id='get-time-between-a-pair-of-users'>Get time between a pair of users</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/users 
+<h1 id='times'>Times</h1><h2 id='get-time-between-users'>Get time between users</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/times 
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-   </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"yTvfvfRb55rkQUpZJ6Eln6u8"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nl">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"THURSDAY"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">},</span><span class="w">
-         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"12:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TUESDAY"</span><span class="w">
-         </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"13/09/1936 0:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Luisa"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-         </span><span class="nl">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SANTA CRUZ DE TENERIFE"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"28.4519711"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.2859233"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38001"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CALLE HURTADO DE MENDOZA 1"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"8554"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-         </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Primary phone"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-         </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456780"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Secondary phone"</span><span class="w">
-      </span><span class="p">}],</span><span class="w">
-      </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"WOMAN"</span><span class="w">
-   </span><span class="p">},</span><span class="w">
-   </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"8654"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-         </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Primary phone"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-         </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456780"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Secondary phone"</span><span class="w">
-      </span><span class="p">}],</span><span class="w">
-      </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MAN"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11/11/1941 0:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Antonio"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-         </span><span class="nl">"street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CALLE ANCHIETA 17"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.315212"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38320"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"28.4904514"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"LAGUNA, LA (TENERIFE)"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10:30:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MONDAY"</span><span class="w">
-         </span><span class="p">},</span><span class="w">
-         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"WEDNESDAY"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10:30:00"</span><span class="w">
-         </span><span class="p">},</span><span class="w">
-         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10:30:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"FRIDAY"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"biIBHtx3kOwfcTWDbea83ckI"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-   </span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5fe1bea8fc837c60f0a5923e"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"code1"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5358"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"code2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5356"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"43507.2"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"mean"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"FOOT"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"GOOGLE-MAPS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
-</span><span class="p">]</span><span class="w">
 </span></code></pre></div>
-<p>It provides all the users. The returned users will be paginated to 25 items by default. Further pages can be requested by means of the <code>page</code> query paramenter. It can also set a custom page size up to 100 with the <code>size</code> parameter.</p>
+<p>It provides the time existing between a pair of users.</p>
 <h3 id='http-request'>HTTP request</h3>
-<p><code>GET http://IP:PORT/VERSION/users</code></p>
+<p><code>GET http://IP:PORT/VERSION/times</code></p>
 <h3 id='query-parameters'>Query parameters</h3>
 <table><thead>
 <tr>
@@ -1510,20 +1421,12 @@ IP:PORT/VERSION/API_ENDPOINT
 </tr>
 </thead><tbody>
 <tr>
-<td><code>name</code></td>
-<td>Name of the user to find.</td>
+<td><code>code1</code></td>
+<td>High level identifier of the first user.</td>
 </tr>
 <tr>
-<td><code>code</code></td>
-<td>Code of the user to find.</td>
-</tr>
-<tr>
-<td><code>page</code></td>
-<td>Zero-based page index. Default value: <code>0</code>.</td>
-</tr>
-<tr>
-<td><code>size</code></td>
-<td>Size of the page to be returned. Default value: <code>20</code>.</td>
+<td><code>code1</code></td>
+<td>High level identifier of the second user.</td>
 </tr>
 </tbody></table>
 <h3 id='responses'>Responses</h3>
@@ -1535,119 +1438,40 @@ IP:PORT/VERSION/API_ENDPOINT
 </thead><tbody>
 <tr>
 <td><code>200</code></td>
-<td>The request has succeeded and the users are included in the body of the response. The following headers are included in the response: <ul><li><code>Pagination-Count: 1</code></li><li><code>Pagination-Size: 25</code></li><li><code>Pagination-Page: 0</code></li><li><code>Total-Count: 5</code></li></ul> where <code>Pagination-Count</code> is the number of existing pages, <code>Pagination-Size</code> is the size of each page, <code>Pagination-Page</code> is the index of the current page, and <code>Total-Count</code> is the number of entities in the server.</td>
+<td>The request has succeeded and the time is included in the body of the response.</td>
 </tr>
 <tr>
 <td><code>404</code></td>
-<td>The user with the requested name is not found.</td>
+<td>One of the users with the requested codes is not found.</td>
 </tr>
 </tbody></table>
-<h2 id='create-a-new-user'>Create a new user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST IP:PORT/VERSION/user <span class="se">\</span>
+<h2 id='create-time-between-users'>Create time between users</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST IP:PORT/VERSION/times <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
     <span class="nt">-d</span> <span class="s1">'{
-            "name" : "Victorino",
-            "code" : "8545",
-            "emails" : [],
-            "surname" : "Pérez Ascanio",
-            "services" : [
-                {
-                "day" : "FRIDAY",
-                "minutes" : 180,
-                "startingTime" : "11:00:00",
-                "description" : null,
-                "endTime" : null
-             },
-             {
-                "startingTime" : "11:00:00",
-                "description" : null,
-                "day" : "MONDAY",
-                "minutes" : 120,
-                "endTime" : null
-             },
-             {
-                "day" : "WEDNESDAY",
-                "minutes" : 120,
-                "startingTime" : "11:00:00",
-                "description" : null,
-                "endTime" : null
-             }
-          ],
-          "address" : {
-             "latitude" : "28.4599667",
-             "location" : "SANTA CRUZ DE TENERIFE",
-             "longitude" : "-16.2631665",
-             "postalCode" : "38001",
-             "street" : "AVENIDA REYES CATÓLICOS 35"
-          },
-          "birthDate" : "18/11/1934 0:00",
-          "sex" : "MAN",
-          "phones" : [{
-             "number" : "123456789",
-             "comment" : "Primary phone"
-          },
-          {
-             "number" : "123456780",
-             "comment" : "Secondary phone"
-          }],
-          "civilStatus" : "UNKNOWN"
-      }'</span>
+            "code1" : "5357",
+            "code2" : "6104",
+            "value" : "12345.6",
+            "mean" : "FOOT",
+            "type" : "PERSONALIZED"
+        }'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CKfhm3DV1BUxJVUmvbdtIUsQ"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Victorino"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Pérez Ascanio"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"8545"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nl">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"FRIDAY"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">},</span><span class="w">
-         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MONDAY"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">},</span><span class="w">
-         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"WEDNESDAY"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-         </span><span class="nl">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"28.4599667"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SANTA CRUZ DE TENERIFE"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.2631665"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38001"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AVENIDA REYES CATÓLICOS 35"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"18/11/1934 0:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MAN"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-            </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Primary phone"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456780"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Secondary phone"</span><span class="w">
-      </span><span class="p">}],</span><span class="w">
-      </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5fe1c104fc837c60f0a69885"</span><span class="p">,</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="nl">"code1"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5357"</span><span class="p">,</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="nl">"code2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"6104"</span><span class="p">,</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="nl">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"12345.6"</span><span class="p">,</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="nl">"mean"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"FOOT"</span><span class="p">,</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="nl">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"PERSONALIZED"</span><span class="p">,</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="nl">"lastUpdate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-22T09:48:52.306Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>It creates a new user by specifying at least its name. The created user is provided in the response.</p>
+<p>It defines the time between a pair of users. The created time is provided in the response.</p>
 <h3 id='http-request-2'>HTTP request</h3>
-<p><code>POST http://IP:PORT/VERSION/users</code></p>
+<p><code>POST http://IP:PORT/VERSION/times</code></p>
 <h3 id='responses-2'>Responses</h3>
 <table><thead>
 <tr>
@@ -1657,70 +1481,35 @@ IP:PORT/VERSION/API_ENDPOINT
 </thead><tbody>
 <tr>
 <td><code>201</code></td>
-<td>The request has been fulfilled and has resulted in one user being created. The new user is included in the body of the response.</td>
-</tr>
-<tr>
-<td><code>400</code></td>
-<td>There is an user with the same name.</td>
+<td>The request has been fulfilled and has resulted in one time between users being created. The new time is included in the body of the response.</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-specific-user'>Get a specific user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/users/:id 
+<h2 id='update-a-specific-time-between-users'>Update a specific time between users</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT http://IP:PORT/VERSION/times/:id <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s1">'{ \
+        "code1" : "5357",
+        "code2" : "6104",
+        "value" : "456789.1",
+        "mean" : "CAR",
+        "type" : "PERSONALIZED"
+    }'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CKfhm3DV1BUxJVUmvbdtIUsQ"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Victorino"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Pérez Ascanio"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"8545"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nl">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"FRIDAY"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">},</span><span class="w">
-         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MONDAY"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">},</span><span class="w">
-         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"WEDNESDAY"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-         </span><span class="nl">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"28.4599667"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SANTA CRUZ DE TENERIFE"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.2631665"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38001"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AVENIDA REYES CATÓLICOS 35"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"18/11/1934 0:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MAN"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-            </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Primary phone"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456780"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Secondary phone"</span><span class="w">
-      </span><span class="p">}],</span><span class="w">
-      </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5fe1c104fc837c60f0a69885"</span><span class="p">,</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="nl">"code1"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5357"</span><span class="p">,</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="nl">"code2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"6104"</span><span class="p">,</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="nl">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"456789.1"</span><span class="p">,</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="nl">"mean"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CAR"</span><span class="p">,</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="nl">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"PERSONALIZED"</span><span class="p">,</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="nl">"lastUpdate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-22T09:48:52.306Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>It provides a specific user by indicating its identifier. The user is provided in the response.</p>
+<p>It updates a specific time between users by indicating its identifier. The updated time is provided in the response.</p>
 <h3 id='http-request-3'>HTTP request</h3>
-<p><code>GET IP:PORT/VERSION/users/:id</code></p>
+<p><code>PUT http://IP:PORT/VERSION/times/:id</code></p>
 <h3 id='url-parameters'>URL parameters</h3>
 <table><thead>
 <tr>
@@ -1730,7 +1519,7 @@ IP:PORT/VERSION/API_ENDPOINT
 </thead><tbody>
 <tr>
 <td><code>id</code></td>
-<td>Identifier of the requested user.</td>
+<td>Identifier of the time to update.</td>
 </tr>
 </tbody></table>
 <h3 id='responses-3'>Responses</h3>
@@ -1742,171 +1531,11 @@ IP:PORT/VERSION/API_ENDPOINT
 </thead><tbody>
 <tr>
 <td><code>200</code></td>
-<td>The request has succeeded. The user is included in the body of the response.</td>
+<td>The request has succeeded. The time is included in the body of the response.</td>
 </tr>
 <tr>
 <td><code>404</code></td>
-<td>The user with the given identifier is not found.</td>
-</tr>
-</tbody></table>
-<h2 id='update-a-specific-user'>Update a specific user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT http://IP:PORT/VERSION/users/:id <span class="se">\</span>
-    <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-    <span class="nt">-d</span> <span class="s1">'{ \
-        "name": "Carlos Victorino"
-    }'</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CKfhm3DV1BUxJVUmvbdtIUsQ"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Carlos Victorino"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Pérez Ascanio"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"8545"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nl">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"FRIDAY"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">},</span><span class="w">
-         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MONDAY"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">},</span><span class="w">
-         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"WEDNESDAY"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-         </span><span class="nl">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"28.4599667"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SANTA CRUZ DE TENERIFE"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.2631665"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38001"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AVENIDA REYES CATÓLICOS 35"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"18/11/1934 0:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MAN"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>It updates a specific user by indicating its identifier. The updated user is provided in the response.</p>
-<h3 id='http-request-4'>HTTP request</h3>
-<p><code>PUT http://IP:PORT/VERSION/users/:id</code></p>
-<h3 id='url-parameters-2'>URL parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td>Identifier of the user to update.</td>
-</tr>
-</tbody></table>
-<h3 id='responses-4'>Responses</h3>
-<table><thead>
-<tr>
-<th>HTTP Code</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>200</code></td>
-<td>The request has succeeded. The user is included in the body of the response.</td>
-</tr>
-<tr>
-<td><code>404</code></td>
-<td>The user with the given identifier is not found.</td>
-</tr>
-</tbody></table>
-<h2 id='delete-a-specific-user'>Delete a specific user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE http://IP:PORT/VERSION/users/:id <span class="se">\</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CKfhm3DV1BUxJVUmvbdtIUsQ"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Victorino"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Pérez Ascanio"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"8545"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nl">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"FRIDAY"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">},</span><span class="w">
-         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MONDAY"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">},</span><span class="w">
-         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"WEDNESDAY"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-         </span><span class="nl">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"28.4599667"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SANTA CRUZ DE TENERIFE"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.2631665"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38001"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AVENIDA REYES CATÓLICOS 35"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"18/11/1934 0:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MAN"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>It deletes a specific user by indicating its identifier. The deleted user is provided in the response.</p>
-<h3 id='http-request-5'>HTTP request</h3>
-<p><code>DELETE http://IP:PORT/VERSION/users/:id</code></p>
-<h3 id='url-parameters-3'>URL parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td>Identifier of the user to delete.</td>
-</tr>
-</tbody></table>
-<h3 id='responses-5'>Responses</h3>
-<table><thead>
-<tr>
-<th>HTTP Code</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>200</code></td>
-<td>The request has succeeded. The user is included in the body of the response.</td>
-</tr>
-<tr>
-<td><code>404</code></td>
-<td>The user with the given identifier is not found.</td>
+<td>The time with the given identifier is not found.</td>
 </tr>
 </tbody></table>
 <h1 id='algorithms'>Algorithms</h1><h2 id='get-a-specific-algorithm'>Get a Specific Algorithm</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/algorithms/:id
