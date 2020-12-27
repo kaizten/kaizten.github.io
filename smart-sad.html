@@ -1531,12 +1531,12 @@ IP:PORT/VERSION/API_ENDPOINT
 <h1 id='algorithms'>Algorithms</h1><h2 id='get-a-specific-algorithm'>Get a Specific Algorithm</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/algorithms/:id
 </code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70c8aca89d8d39ea0b0420"</span><span class="p">,</span><span class="w">
-   </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduling"</span><span class="p">,</span><span class="w">
-   </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Heuristic used to create a schedule for employees in sanitary environments"</span><span class="w">
+    </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70c8aca89d8d39ea0b0420"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduling"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Heuristic used to create a schedule for employees in sanitary environments"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>It provides a specific algorithm by indicating its identifier. The algorithm is provided in the response.</p>
@@ -1573,26 +1573,26 @@ IP:PORT/VERSION/API_ENDPOINT
 <h2 id='execute-an-algorithm'>Execute an Algorithm</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://IP:PORT/VERSION/algorithms/:name 
     <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
     <span class="nt">-d</span> <span class="s1">'{"
-            __taskName": "Schedule of users located in SC", 
-            "days": 6, 
-            "restingTime": "8",
-            ...
-        }'</span>
+        __taskName": "Schedule of users located in SC", 
+        "days": 6, 
+        "restingTime": "8",
+        ...
+    }'</span>
 </code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="nl">"algorithmId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70c8aca89d8d39ea0b0420"</span><span class="p">,</span><span class="w">
-   </span><span class="nl">"algorithmName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduling"</span><span class="p">,</span><span class="w">
-   </span><span class="nl">"taskId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"142"</span><span class="p">,</span><span class="w">
-   </span><span class="nl">"taskName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Schedule of users located in SC"</span><span class="p">,</span><span class="w">
-   </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-20 12:24:12.095"</span><span class="p">,</span><span class="w">
-   </span><span class="nl">"parameters"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"days"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"restingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-      </span><span class="err">...</span><span class="w">
-   </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"algorithmId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70c8aca89d8d39ea0b0420"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"algorithmName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduling"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"taskId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"142"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"taskName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Schedule of users located in SC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-20 12:24:12.095"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"parameters"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"days"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"restingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+    </span><span class="p">},</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>It executes a specific algorithm by indicating its name. The algorithm can receive parameter values in the body of the request in the following formats:
@@ -1603,7 +1603,7 @@ IP:PORT/VERSION/API_ENDPOINT
 
 <p>The following, parameter values can be included in the body of the request with specific purposes:
 <ul>
-    <li><code>__taskName</code>. It is the name of the execution requested. It should be noted that the response by the API provides a parameter <code>taskName</code> with this value.</li>
+    <li><code>__taskName</code>. Name of the execution requested. It should be noted that the response by the API provides a parameter <code>taskName</code> with this value.</li>
 </ul></p>
 
 <p>The information about the task created is provided in the response.</p>
