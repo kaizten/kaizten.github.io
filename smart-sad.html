@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Smart SAD API REST</title>
+    <title>Smart SAD REST API</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -890,102 +890,79 @@ IP:PORT/VERSION/API_ENDPOINT
 <h1 id='users'>Users</h1><h2 id='get-all-users'>Get all users</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/users 
 </code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-   </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"yTvfvfRb55rkQUpZJ6Eln6u8"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nl">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"THURSDAY"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">},</span><span class="w">
-         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"12:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TUESDAY"</span><span class="w">
-         </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"13/09/1936 0:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Luisa"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-         </span><span class="nl">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SANTA CRUZ DE TENERIFE"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"28.4519711"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.2859233"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38001"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CALLE HURTADO DE MENDOZA 1"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"8554"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-         </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Primary phone"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-         </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456780"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Secondary phone"</span><span class="w">
-      </span><span class="p">}],</span><span class="w">
-      </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"WOMAN"</span><span class="w">
-   </span><span class="p">},</span><span class="w">
-   </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"8654"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-         </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Primary phone"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-         </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456780"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Secondary phone"</span><span class="w">
-      </span><span class="p">}],</span><span class="w">
-      </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MAN"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11/11/1941 0:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Antonio"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-         </span><span class="nl">"street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CALLE ANCHIETA 17"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.315212"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38320"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"28.4904514"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"LAGUNA, LA (TENERIFE)"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10:30:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MONDAY"</span><span class="w">
-         </span><span class="p">},</span><span class="w">
-         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"WEDNESDAY"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10:30:00"</span><span class="w">
-         </span><span class="p">},</span><span class="w">
-         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10:30:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"FRIDAY"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"biIBHtx3kOwfcTWDbea83ckI"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-   </span><span class="p">}</span><span class="w">
-
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5fe876aab7eb73661f256111"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ANDREA MARIA"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"PÉREZ REGALADO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MARRIED"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1936-12-03"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5359"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"WOMAN"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"identificationNumber"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"42923837A"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"612345678"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Primary phone"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"THURSDAY"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:30:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"finishingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"13:30:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"28.3624239"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38530"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.3667173"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CANDELARIA"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CALLE CRUGIOLA 6"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5fe876aab7eb73661f256113"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"identificationNumber"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"63145680B"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MARÍA"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"GUTIÉRREZ GARCÍA"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"DIVORCED"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1935-12-30"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"WOMAN"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5361"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"620792233"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"620794455"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"WEDNESDAY"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"19:30:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"finishingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"20:30:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CANDELARIA (TENERIFE)"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38530"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.3700412"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"28.3613303"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CALLE PORTUGAL 9"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
-<p>It provides all the users. The returned users will be paginated to 25 items by default. Further pages can be requested by means of the <code>page</code> query paramenter. It can also set a custom page size up to 100 with the <code>size</code> parameter.</p>
+<p>It provides all the users. The returned users will be paginated to <code>25</code> items by default. Further pages can be requested by means of the <code>page</code> query paramenter. It can also set a custom page size up to <code>100</code> with the <code>size</code> parameter.</p>
 <h3 id='http-request'>HTTP request</h3>
 <p><code>GET http://IP:PORT/VERSION/users</code></p>
 <h3 id='query-parameters'>Query parameters</h3>
@@ -1032,106 +1009,105 @@ IP:PORT/VERSION/API_ENDPOINT
     <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
     <span class="nt">-d</span> <span class="s1">'{
-            "name" : "Victorino",
-            "code" : "8545",
-            "emails" : [],
-            "surname" : "Pérez Ascanio",
-            "services" : [
-                {
+        "name" : "Victorino",
+        "surname" : "Pérez Ascanio",
+        "identificationNumber" : "31245680C",
+        "code" : "1234",
+        "birthDate" : "1934-11-18",
+        "sex" : "MAN",
+        "emails" : [],
+        "services" : [
+            {
                 "day" : "FRIDAY",
                 "minutes" : 180,
                 "startingTime" : "11:00:00",
-                "description" : null,
-                "endTime" : null
-             },
-             {
+                "endTime" : "14:00:00"
+            },
+            {
                 "startingTime" : "11:00:00",
-                "description" : null,
                 "day" : "MONDAY",
                 "minutes" : 120,
-                "endTime" : null
-             },
-             {
+                "endTime" : "13:00:00"
+            },
+            {
                 "day" : "WEDNESDAY",
                 "minutes" : 120,
                 "startingTime" : "11:00:00",
-                "description" : null,
-                "endTime" : null
-             }
-          ],
-          "address" : {
-             "latitude" : "28.4599667",
-             "location" : "SANTA CRUZ DE TENERIFE",
-             "longitude" : "-16.2631665",
-             "postalCode" : "38001",
-             "street" : "AVENIDA REYES CATÓLICOS 35"
-          },
-          "birthDate" : "18/11/1934 0:00",
-          "sex" : "MAN",
-          "phones" : [{
-             "number" : "123456789",
-             "comment" : "Primary phone"
-          },
-          {
-             "number" : "123456780",
-             "comment" : "Secondary phone"
-          }],
-          "civilStatus" : "UNKNOWN"
-      }'</span>
+                "endTime" : "13:00:00"
+            }
+        ],
+        "address" : {
+            "latitude" : "28.4599667",
+            "location" : "SANTA CRUZ DE TENERIFE",
+            "longitude" : "-16.2631665",
+            "postalCode" : "38001",
+            "street" : "AVENIDA REYES CATÓLICOS 35"
+        },
+        "phones" : [
+            {
+                "number" : "123456789",
+                "comment" : "Primary phone"
+            },
+            {
+                "number" : "123456780",
+                "comment" : "Secondary phone"
+            }
+        ]
+    }'</span>
 </code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns A JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CKfhm3DV1BUxJVUmvbdtIUsQ"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Victorino"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Pérez Ascanio"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"8545"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nl">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-         </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CKfhm3DV1BUxJVUmvbdtIUsQ"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Victorino"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Pérez Ascanio"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"identificationNumber"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"31245680C"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1934-11-18"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MAN"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
             </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"FRIDAY"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w">
             </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">},</span><span class="w">
-         </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"14:00:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
             </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MONDAY"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">},</span><span class="w">
-         </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"13:00:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
             </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"WEDNESDAY"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
             </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-         </span><span class="nl">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"28.4599667"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SANTA CRUZ DE TENERIFE"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.2631665"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38001"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AVENIDA REYES CATÓLICOS 35"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"18/11/1934 0:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MAN"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"13:00:00"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"28.4599667"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SANTA CRUZ DE TENERIFE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.2631665"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38001"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AVENIDA REYES CATÓLICOS 35"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
             </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Primary phone"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
             </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456780"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Secondary phone"</span><span class="w">
-      </span><span class="p">}],</span><span class="w">
-      </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>It creates a new user by specifying at least its name. The created user is provided in the response.</p>
+<p>It creates a new user by specifying at least its required fields. The created user is provided in the response.</p>
 <h3 id='http-request-2'>HTTP request</h3>
 <p><code>POST http://IP:PORT/VERSION/users</code></p>
 <h3 id='responses-2'>Responses</h3>
@@ -1153,55 +1129,55 @@ IP:PORT/VERSION/API_ENDPOINT
 <h2 id='get-a-specific-user'>Get a specific user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/users/:id 
 </code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CKfhm3DV1BUxJVUmvbdtIUsQ"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Victorino"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Pérez Ascanio"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"8545"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nl">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-         </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CKfhm3DV1BUxJVUmvbdtIUsQ"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Victorino"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Pérez Ascanio"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"identificationNumber"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"31245680C"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1934-11-18"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MAN"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
             </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"FRIDAY"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w">
             </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">},</span><span class="w">
-         </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"14:00:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
             </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MONDAY"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">},</span><span class="w">
-         </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"13:00:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
             </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"WEDNESDAY"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
             </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-         </span><span class="nl">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"28.4599667"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SANTA CRUZ DE TENERIFE"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.2631665"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38001"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AVENIDA REYES CATÓLICOS 35"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"18/11/1934 0:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MAN"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"13:00:00"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"28.4599667"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SANTA CRUZ DE TENERIFE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.2631665"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38001"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AVENIDA REYES CATÓLICOS 35"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
             </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Primary phone"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
             </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456780"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Secondary phone"</span><span class="w">
-      </span><span class="p">}],</span><span class="w">
-      </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>It provides a specific user by indicating its identifier. The user is provided in the response.</p>
@@ -1245,45 +1221,52 @@ IP:PORT/VERSION/API_ENDPOINT
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CKfhm3DV1BUxJVUmvbdtIUsQ"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Carlos Victorino"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Pérez Ascanio"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"8545"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nl">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-         </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CKfhm3DV1BUxJVUmvbdtIUsQ"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Carlos Victorino"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Pérez Ascanio"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"identificationNumber"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"31245680C"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1934-11-18"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MAN"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
             </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"FRIDAY"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w">
             </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">},</span><span class="w">
-         </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"14:00:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
             </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MONDAY"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">},</span><span class="w">
-         </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"13:00:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
             </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"WEDNESDAY"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
             </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-         </span><span class="nl">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"28.4599667"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SANTA CRUZ DE TENERIFE"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.2631665"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38001"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AVENIDA REYES CATÓLICOS 35"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"18/11/1934 0:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MAN"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="w">
+            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"13:00:00"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"28.4599667"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SANTA CRUZ DE TENERIFE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.2631665"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38001"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AVENIDA REYES CATÓLICOS 35"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Primary phone"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456780"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Secondary phone"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>It updates a specific user by indicating its identifier. The updated user is provided in the response.</p>
@@ -1320,48 +1303,55 @@ IP:PORT/VERSION/API_ENDPOINT
 <h2 id='delete-a-specific-user'>Delete a specific user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE http://IP:PORT/VERSION/users/:id <span class="se">\</span>
 </code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CKfhm3DV1BUxJVUmvbdtIUsQ"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Victorino"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Pérez Ascanio"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"8545"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nl">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-         </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CKfhm3DV1BUxJVUmvbdtIUsQ"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Victorino"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Pérez Ascanio"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"identificationNumber"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"31245680C"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1934-11-18"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MAN"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
             </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"FRIDAY"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w">
             </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">},</span><span class="w">
-         </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"14:00:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
             </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MONDAY"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">},</span><span class="w">
-         </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"13:00:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
             </span><span class="nl">"day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"WEDNESDAY"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"minutes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
             </span><span class="nl">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-         </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-         </span><span class="nl">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"28.4599667"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SANTA CRUZ DE TENERIFE"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.2631665"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38001"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AVENIDA REYES CATÓLICOS 35"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"18/11/1934 0:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MAN"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="w">
+            </span><span class="nl">"endTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"13:00:00"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"28.4599667"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SANTA CRUZ DE TENERIFE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.2631665"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38001"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AVENIDA REYES CATÓLICOS 35"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Primary phone"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456780"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Secondary phone"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>It deletes a specific user by indicating its identifier. The deleted user is provided in the response.</p>
