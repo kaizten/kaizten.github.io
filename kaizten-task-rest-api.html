@@ -270,13 +270,13 @@
               </ul>
           </li>
           <li>
-            <a href="#tasks" class="toc-h1 toc-link" data-title="Tasks">Tasks</a>
+            <a href="#data" class="toc-h1 toc-link" data-title="Data">Data</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-tasks" class="toc-h2 toc-link" data-title="Get all tasks">Get all tasks</a>
+                    <a href="#get-a-specific-file" class="toc-h2 toc-link" data-title="Get a Specific File">Get a Specific File</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-task" class="toc-h2 toc-link" data-title="Get a Specific Task">Get a Specific Task</a>
+                    <a href="#create-a-new-file" class="toc-h2 toc-link" data-title="Create a new file">Create a new file</a>
                   </li>
               </ul>
           </li>
@@ -713,47 +713,18 @@ Only those tasks of the requesting user are provided in the response but for adm
 <td>The task with the given identifier is not found.</td>
 </tr>
 </tbody></table>
-<h1 id='tasks'>Tasks</h1><h2 id='get-all-tasks'>Get all tasks</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/tasks <span class="se">\</span>
-    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> 
+<h1 id='data'>Data</h1><h2 id='get-a-specific-file'>Get a Specific File</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/data/:id <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns the file with the content included:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-   </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5fed1e1f09e4ee5c54df0224"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"algorithmId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5fed1e1a09e4ee5c54df0223"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"algorithmName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduling"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"clusterSC"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETED"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"finishingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:14.128Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"inputDataId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"IDgmb7fSfI8coAgacFCNpjaf"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"outputDataId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"puCq2hblyo1vctQG69RnVl26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"exitCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-   </span><span class="p">},</span><span class="w">
-   </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1a51fda51asf5a1f5a1f5as1fa"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"algorithmId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5fed1e1a09e4ee5c54df0223"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"algorithmName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduling"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"clusterLL"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETED"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"finishingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:14.128Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"inputDataId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"a1qw1ad4qs19q1ds9a4q1sa1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"outputDataId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1q141a6d19q161as916das7q"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"exitCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-   </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>It provides all the tasks of the user. The returned tasks will be paginated to <code>25</code> items by default. Further pages can be requested by means of the <code>page</code> query paramenter. It can also set a custom page size up to <code>100</code> with the <code>size</code> parameter.</p>
-
-<aside class="notice">
-Only those tasks of the requesting user are provided in the response but for administrators, for which all the tasks are provided.
-</aside>
+<pre class="highlight plaintext"><code>Example of content of file...
+</code></pre>
+<p>It provides a specific file by indicating its identifier. The content of the file is provided in the response.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://IP:PORT/VERSION/tasks</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<p><code>GET IP:PORT/VERSION/data/:id</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -761,16 +732,8 @@ Only those tasks of the requesting user are provided in the response but for adm
 </tr>
 </thead><tbody>
 <tr>
-<td><code>name</code></td>
-<td>Name of the tasks to find.</td>
-</tr>
-<tr>
-<td><code>page</code></td>
-<td>Zero-based page index. Default value: <code>0</code>.</td>
-</tr>
-<tr>
-<td><code>size</code></td>
-<td>Size of the page to be returned. Default value: <code>25</code>.</td>
+<td><code>id</code></td>
+<td>Identifier of the requested file.</td>
 </tr>
 </tbody></table>
 <h3 id='responses'>Responses</h3>
@@ -782,43 +745,34 @@ Only those tasks of the requesting user are provided in the response but for adm
 </thead><tbody>
 <tr>
 <td><code>200</code></td>
-<td>The request has succeeded and the tasks are included in the body of the response. The following headers are included in the response: <ul><li><code>Pagination-Count: 1</code></li><li><code>Pagination-Size: 25</code></li><li><code>Pagination-Page: 0</code></li><li><code>Total-Count: 5</code></li></ul> where <code>Pagination-Count</code> is the number of existing pages, <code>Pagination-Size</code> is the size of each page, <code>Pagination-Page</code> is the index of the current page, and <code>Total-Count</code> is the number of entities in the server.</td>
+<td>The request has succeeded. The content of the file is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The file with the given identifier is not found.</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-specific-task'>Get a Specific Task</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/algorithms/:id <span class="se">\</span>
-    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+<h2 id='create-a-new-file'>Create a new file</h2><pre class="highlight shell tab-shell"><code>curl -X POST IP:PORT/VERSION/data <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
+  -d <span class="s1">'{
+    "field1" : "12345",
+    "field2" : "67890",
+    ...
+  }'</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns the content of the file created:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5fed1e1f09e4ee5c54df0224"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"algorithmId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5fed1e1a09e4ee5c54df0223"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"algorithmName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduling"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"clusterSC"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETED"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"finishingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:14.128Z"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"inputDataId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"IDgmb7fSfI8coAgacFCNpjaf"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"outputDataId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"puCq2hblyo1vctQG69RnVl26"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"exitCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="s2">"field1"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"field2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"67890"</span><span class="p">,</span><span class="w">
+    </span><span class="err">...</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>It provides a specific task by indicating its identifier. The task is provided in the response.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET IP:PORT/VERSION/algorithms/:id</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td>Identifier of the requested task.</td>
-</tr>
-</tbody></table>
+<p>It creates a new file by specifying its content. The content of the file created is provided in the response.</p>
+<h3 id='http-request-2'>HTTP request</h3>
+<p><code>POST http://IP:PORT/VERSION/data</code></p>
 <h3 id='responses-2'>Responses</h3>
 <table><thead>
 <tr>
@@ -827,12 +781,8 @@ Only those tasks of the requesting user are provided in the response but for adm
 </tr>
 </thead><tbody>
 <tr>
-<td><code>200</code></td>
-<td>The request has succeeded. The task is included in the body of the response.</td>
-</tr>
-<tr>
-<td><code>404</code></td>
-<td>The task with the given identifier is not found.</td>
+<td><code>201</code></td>
+<td>The request has been fulfilled and has resulted in a file being created. The content of the new file is included in the body of the response.</td>
 </tr>
 </tbody></table>
 
