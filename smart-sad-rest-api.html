@@ -301,6 +301,9 @@
                   <li>
                     <a href="#update-a-specific-time-between-users" class="toc-h2 toc-link" data-title="Update a specific time between users">Update a specific time between users</a>
                   </li>
+                  <li>
+                    <a href="#delete-a-specific-time" class="toc-h2 toc-link" data-title="Delete a specific time">Delete a specific time</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -1458,6 +1461,52 @@ IP:PORT/VERSION/API_ENDPOINT
 </tr>
 </tbody></table>
 <h3 id='responses-3'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded. The time is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The time with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-specific-time'>Delete a specific time</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE http://IP:PORT/VERSION/times/:id
+</code></pre></div>
+<blockquote>
+<p>The above command returns a JSON structured like this when <code>id=5fe1c104fc837c60f0a69885</code>:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5fe1c104fc837c60f0a69885"</span><span class="p">,</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="nl">"code1"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5357"</span><span class="p">,</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="nl">"code2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"6104"</span><span class="p">,</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="nl">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"456789.1"</span><span class="p">,</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="nl">"mean"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CAR"</span><span class="p">,</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="nl">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"PERSONALIZED"</span><span class="p">,</span><span class="w">
+</span><span class="err"> </span><span class="w"> </span><span class="err"> </span><span class="nl">"lastUpdate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-22T09:48:52.306Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>It deletes a specific time by indicating its identifier. The deleted time is provided in the response.</p>
+<h3 id='http-request-4'>HTTP request</h3>
+<p><code>DELETE http://IP:PORT/VERSION/times/:id</code></p>
+<h3 id='url-parameters-2'>URL parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the time to delete.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-4'>Responses</h3>
 <table><thead>
 <tr>
 <th>HTTP Code</th>

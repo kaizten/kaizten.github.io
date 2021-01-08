@@ -1,21 +1,19 @@
 #!/bin/bash
-# Purpose: 
+# Purpose: It updates the current GitHub repository with the last changes. 
 # Author: Kaizten Analytics S.L. (info@kaizten.com)
 # License: GPL version 2.0 or above
 # -------------------------------------------------------------------------------------------------
 
 main () {
-  read -p "# Enter your message in the commit: " message
   git add .
   set +e
-  git status | grep modified
-  if [ $? -eq 0 ]
-  then
+  if [ -n "$(git status --porcelain)" ]; then
+    read -p "# Enter your message in the commit: " message
     set -e
     git commit -m "${message}"
     echo "# Pushing data to remote GitHub repository:"
     git push
-  echo "# Done!"
+    echo "# Done!"
   else
     set -e
     echo "# Nothing to update"
