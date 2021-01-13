@@ -393,6 +393,7 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>identificationNumber</code> (optional). Identification number of the user. It can be a DNI, NIF, NIE, or CIF.</li>
 <li><code>sex</code>. Sex of the user. It can be <code>MAN</code> or <code>WOMAN</code>.</li>
 <li><code>birthDate</code> (optional). Birth date of the user. It must be expressed in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format (e.g., <code>1957-09-21</code>).</li>
+<li><code>status</code> (optional). Status of the user. It can be <code>ACTIVE</code>, <code>LEAVE</code>, <code>TEMPORARY_LEAVE</code>, or <code>UNKNOWN</code> (default value).</li>
 <li><code>civilStatus</code> (optional). Civil status of the user. It can be <code>SINGLE</code>, <code>MARRIED</code>, <code>DIVORCED</code>, <code>WIDOWER</code>, or <code>UNKNOWN</code> (default value).</li>
 <li><code>comment</code> (optional). Free comment associated with the user. Its maximum length is of <code>1000</code> characters.</li>
 <li><code>address</code>. Address of the user. It is composed of the following elements:
@@ -846,6 +847,7 @@ IP:PORT/VERSION/API_ENDPOINT
         </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ANDREA MARIA"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"PÉREZ REGALADO"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MARRIED"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TEMPORARY_LEAVE"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1936-12-03"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5359"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
@@ -879,6 +881,7 @@ IP:PORT/VERSION/API_ENDPOINT
         </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MARÍA"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"GUTIÉRREZ GARCÍA"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"DIVORCED"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"LEAVE"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1935-12-30"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"WOMAN"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
@@ -961,6 +964,7 @@ IP:PORT/VERSION/API_ENDPOINT
         "surname" : "Pérez Ascanio",
         "identificationNumber" : "31245680C",
         "code" : "1234",
+        "status" : "ACTIVE",
         "birthDate" : "1934-11-18",
         "sex" : "MAN",
         "emails" : [],
@@ -1015,6 +1019,7 @@ IP:PORT/VERSION/API_ENDPOINT
     </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1934-11-18"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MAN"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
@@ -1087,6 +1092,7 @@ IP:PORT/VERSION/API_ENDPOINT
     </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1934-11-18"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MAN"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1176,6 +1182,7 @@ IP:PORT/VERSION/API_ENDPOINT
     </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1934-11-18"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TEMPORARY_LEAVE"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MAN"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1261,6 +1268,7 @@ IP:PORT/VERSION/API_ENDPOINT
     </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1934-11-18"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TEMPORARY_LEAVE"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"civilStatus"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MAN"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
