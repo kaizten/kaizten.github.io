@@ -273,6 +273,9 @@
             <a href="#data" class="toc-h1 toc-link" data-title="Data">Data</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#list-all-files" class="toc-h2 toc-link" data-title="List all files">List all files</a>
+                  </li>
+                  <li>
                     <a href="#get-a-specific-file" class="toc-h2 toc-link" data-title="Get a Specific File">Get a Specific File</a>
                   </li>
                   <li>
@@ -386,7 +389,7 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="s2">"tagline"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Solve to schedule employees in sanitary environments"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Heuristic used to create a schedule for employees in sanitary environments"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp sadaliar-problem-1.0-SNAPSHOT-jar-with-dependencies.jar com.kaizten.sadaliar.opt.main.MainJson %s"</span><span class="w">
-   </span><span class="p">}</span><span class="w">
+   </span><span class="p">},</span><span class="w">
    </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70c8aca89d8d39ea0b0420"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"vrp"</span><span class="p">,</span><span class="w">
@@ -716,21 +719,50 @@ Only those tasks of the requesting user are provided in the response but for adm
 <td>The task with the given identifier is not found.</td>
 </tr>
 </tbody></table>
-<h1 id='data'>Data</h1><h2 id='get-a-specific-file'>Get a Specific File</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/data/:id <span class="se">\</span>
+<h1 id='data'>Data</h1><h2 id='list-all-files'>List all files</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/data <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> 
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"xml.xls"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8080/v1/data/xml.xls"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"test.txt"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8080/v1/data/test.txt"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"users.json"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8080/v1/data/users.json"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>It provides a list containing information about all the files.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/data</code></p>
+<h3 id='responses'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded and the files are included in the body of the response.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-file'>Get a Specific File</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/data/:name <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns the file with the content included:</p>
+<p>The above command returns the file contained in the body of the response.</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"field1"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"field2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"67890"</span><span class="p">,</span><span class="w">
-    </span><span class="err">...</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>It provides a specific file by indicating its identifier (<code>:id</code>). The content of the file is provided in the response.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET IP:PORT/VERSION/data/:id</code></p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET IP:PORT/VERSION/data/:name</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -739,11 +771,11 @@ Only those tasks of the requesting user are provided in the response but for adm
 </tr>
 </thead><tbody>
 <tr>
-<td><code>id</code></td>
-<td>Identifier of the requested file.</td>
+<td><code>name</code></td>
+<td>Name of the requested file.</td>
 </tr>
 </tbody></table>
-<h3 id='responses'>Responses</h3>
+<h3 id='responses-2'>Responses</h3>
 <table><thead>
 <tr>
 <th>HTTP Code</th>
@@ -760,53 +792,22 @@ Only those tasks of the requesting user are provided in the response but for adm
 </tr>
 </tbody></table>
 <h2 id='create-a-new-file'>Create a new file</h2><pre class="highlight shell tab-shell"><code>curl -X POST IP:PORT/VERSION/data <span class="se">\</span>
-  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
-  -d <span class="s1">'{
-    "field1" : "12345",
-    "field2" : "67890",
-    ...
-  }'</span>
-</code></pre>
+  -F <span class="s2">"file=@FILE_TO_SEND"</span><span class="s1">'
+</span></code></pre>
 <blockquote>
 <p>The above command returns the content of the file created:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"field1"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"field2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"67890"</span><span class="p">,</span><span class="w">
-    </span><span class="err">...</span><span class="w">
+   </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"xml.xls"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Uploaded the file successfully"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"size"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">860515</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"created"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-14T15:45:11.841Z"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"lastUpdate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-14T15:45:11.841Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>It creates a new file by specifying its content. The content of the file created is provided in the response.</p>
-<h3 id='http-request-2'>HTTP request</h3>
+<p>It creates a new file by specifying its content. A summary of the file submitted is provided in the response.</p>
+<h3 id='http-request-3'>HTTP request</h3>
 <p><code>POST http://IP:PORT/VERSION/data</code></p>
-<h3 id='responses-2'>Responses</h3>
-<table><thead>
-<tr>
-<th>HTTP Code</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>201</code></td>
-<td>The request has been fulfilled and has resulted in a file being created. The content of the new file is included in the body of the response.</td>
-</tr>
-</tbody></table>
-<h2 id='delete-a-specific-file'>Delete a Specific File</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE IP:PORT/VERSION/data/:id 
-    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns a JSON structured like this:</p>
-</blockquote>
-<pre class="highlight plaintext"><code>{
-    "field1" : "12345",
-    "field2" : "67890",
-    ...
-}
-</code></pre>
-<p>It deletes a file using its identifier (<code>:id</code>).</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://IP:PORT/VERSION/data/:id</code></p>
 <h3 id='responses-3'>Responses</h3>
 <table><thead>
 <tr>
@@ -815,8 +816,33 @@ Only those tasks of the requesting user are provided in the response but for adm
 </tr>
 </thead><tbody>
 <tr>
+<td><code>201</code></td>
+<td>The request has been fulfilled and has resulted in a file being created. A summary of the submission of the new file is included in the body of the response.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-specific-file'>Delete a Specific File</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE IP:PORT/VERSION/data/:name 
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+   "name" : "xml.xls"
+}
+</code></pre>
+<p>It deletes a file using its identifier (<code>:name</code>).</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>DELETE http://IP:PORT/VERSION/data/:name</code></p>
+<h3 id='responses-4'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
 <td><code>200</code></td>
-<td>The request has been fulfilled and has resulted in one file being deleted. The deleted file is included in the body of the response.</td>
+<td>The request has been fulfilled and has resulted in one file being deleted. A summary of the deleted file is included in the body of the response.</td>
 </tr>
 <tr>
 <td><code>404</code></td>
