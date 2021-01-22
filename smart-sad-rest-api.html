@@ -324,7 +324,7 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>REST API used manage information about users and their services, employees, and base schedules to determine the sequence of services to do by each employee.</p>
+<p>REST API used manage information about users and their services, employees, and times between users to determine the sequence of services to do by each employee.</p>
 
 <p>The API supports Cross Origin Resource Sharing (CORS) for AJAX requests from any origin. The following header is included in the corresponding responses: <code>Access-Control-Allow-Origin: *</code>. You can read the <a href="http://www.w3.org/TR/cors/">CORS W3C Recommendation</a> to learn more about CORS.</p>
 
@@ -930,6 +930,10 @@ IP:PORT/VERSION/API_ENDPOINT
 <tr>
 <td><code>code</code></td>
 <td>Code of the user to find.</td>
+</tr>
+<tr>
+<td><code>location</code></td>
+<td>Location of the users to find.</td>
 </tr>
 <tr>
 <td><code>page</code></td>
