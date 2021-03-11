@@ -1,0 +1,367 @@
+{
+  "maximumTimePerRoute" : 26870,
+  "recyclingTypes" : {
+    "paper" : {
+      "unit" : "kg./m3",
+      "value" : 71.46
+    },
+    "mixed" : {
+      "unit" : "kg./m3",
+      "value" : 25.0
+    }
+  },
+  "depot" : {
+    "location" : {
+      "latitude" : 59.19761615263537,
+      "longitude" : 46.28078277403221
+    },
+    "direction" : {
+      "country" : "vVpWARN",
+      "street" : "aNQLHetfgOnepfBETfCR"
+    }
+  },
+  "pickupPoints" : [ {
+    "code" : "4337",
+    "containers" : [ {
+      "location" : {
+        "latitude" : 42.152058762530075,
+        "longitude" : 4.140004738165192
+      },
+      "type" : "MIXED_MATERIALS",
+      "fillingRate" : 0.05832766760386965
+    }, {
+      "location" : {
+        "latitude" : 96.89906403566036,
+        "longitude" : 32.565532544637065
+      },
+      "type" : "MIXED_MATERIALS",
+      "fillingRate" : 0.529355684295982
+    } ],
+    "serviceTime" : {
+      "unit" : "HOURS",
+      "value" : 1573055840
+    },
+    "direction" : {
+      "country" : "UnNJgfp",
+      "street" : "UBtfqyHatPctSykwpBiY"
+    }
+  }, {
+    "code" : "7254",
+    "containers" : [ {
+      "location" : {
+        "latitude" : 80.54794332705457,
+        "longitude" : 18.023635524889016
+      },
+      "type" : "MIXED_MATERIALS",
+      "fillingRate" : 0.3116278615576099
+    }, {
+      "location" : {
+        "latitude" : 35.67861348999747,
+        "longitude" : 53.986398132087864
+      },
+      "type" : "MIXED_MATERIALS",
+      "fillingRate" : 0.45532865749502194
+    }, {
+      "location" : {
+        "latitude" : 82.61639860795572,
+        "longitude" : 94.20564522258744
+      },
+      "type" : "MIXED_MATERIALS",
+      "fillingRate" : 0.6113206061672278
+    } ],
+    "serviceTime" : {
+      "unit" : "NANOSECONDS",
+      "value" : 1040818862
+    },
+    "direction" : {
+      "country" : "gIJPnFG",
+      "street" : "fAVetXIZgThIqxrlqSyV"
+    }
+  }, {
+    "code" : "7921",
+    "containers" : [ {
+      "location" : {
+        "latitude" : 6.085909862268468,
+        "longitude" : 71.4785469622005
+      },
+      "type" : "MIXED_MATERIALS",
+      "fillingRate" : 0.5242172799373168
+    }, {
+      "location" : {
+        "latitude" : 62.68796062696741,
+        "longitude" : 99.13392635201527
+      },
+      "type" : "PAPER",
+      "fillingRate" : 0.06717101182590113
+    } ],
+    "serviceTime" : {
+      "unit" : "HOURS",
+      "value" : 933210385
+    },
+    "direction" : {
+      "country" : "YHKMKwZ",
+      "street" : "cURYYzzTSmaOWmelhxeN"
+    }
+  }, {
+    "code" : "6583",
+    "containers" : [ {
+      "location" : {
+        "latitude" : 17.99112721817977,
+        "longitude" : 11.10295910133302
+      },
+      "type" : "PAPER",
+      "fillingRate" : 0.3574668454971661
+    } ],
+    "serviceTime" : {
+      "unit" : "YEARS",
+      "value" : 2043568916
+    },
+    "direction" : {
+      "country" : "SwVuDLa",
+      "street" : "fmSSKnSvciXOlymfVjti"
+    }
+  }, {
+    "code" : "5855",
+    "containers" : [ {
+      "location" : {
+        "latitude" : 98.71487909654789,
+        "longitude" : 83.31539803703554
+      },
+      "type" : "MIXED_MATERIALS",
+      "fillingRate" : 0.5402902138863445
+    } ],
+    "serviceTime" : {
+      "unit" : "DAYS",
+      "value" : 1637462680
+    },
+    "direction" : {
+      "country" : "lvBqpfL",
+      "street" : "qUFsgCSwxVEUXeTlUtFy"
+    }
+  }, {
+    "code" : "3870",
+    "containers" : [ {
+      "location" : {
+        "latitude" : 70.22932804936772,
+        "longitude" : 1.2207625144989742
+      },
+      "type" : "MIXED_MATERIALS",
+      "fillingRate" : 0.24559730557590276
+    }, {
+      "location" : {
+        "latitude" : 91.43737188582816,
+        "longitude" : 21.555781629543347
+      },
+      "type" : "MIXED_MATERIALS",
+      "fillingRate" : 0.4969296006341095
+    } ],
+    "serviceTime" : {
+      "unit" : "MINUTES",
+      "value" : 235340206
+    },
+    "direction" : {
+      "country" : "dtHXNoZ",
+      "street" : "tPxdTIrpBIYkeirIYJxM"
+    }
+  }, {
+    "code" : "6324",
+    "containers" : [ {
+      "location" : {
+        "latitude" : 78.90787470322242,
+        "longitude" : 89.2936157188555
+      },
+      "type" : "MIXED_MATERIALS",
+      "fillingRate" : 0.6819075892040799
+    }, {
+      "location" : {
+        "latitude" : 30.68479290301672,
+        "longitude" : 22.761420278929233
+      },
+      "type" : "MIXED_MATERIALS",
+      "fillingRate" : 0.5941095099654393
+    }, {
+      "location" : {
+        "latitude" : 39.62149625480153,
+        "longitude" : 46.922793415617846
+      },
+      "type" : "MIXED_MATERIALS",
+      "fillingRate" : 0.9755382915670376
+    }, {
+      "location" : {
+        "latitude" : 57.35921578266883,
+        "longitude" : 3.7573466880945205
+      },
+      "type" : "MIXED_MATERIALS",
+      "fillingRate" : 0.3889584304361293
+    }, {
+      "location" : {
+        "latitude" : 14.663127283690558,
+        "longitude" : 34.922177625540066
+      },
+      "type" : "MIXED_MATERIALS",
+      "fillingRate" : 0.49284370358844376
+    } ],
+    "serviceTime" : {
+      "unit" : "MICROSECONDS",
+      "value" : 1236149574
+    },
+    "direction" : {
+      "country" : "MfoYayT",
+      "street" : "HqoGUramspBqjCwmxlEP"
+    }
+  }, {
+    "code" : "7820",
+    "containers" : [ {
+      "location" : {
+        "latitude" : 65.56508118604418,
+        "longitude" : 79.97158519562494
+      },
+      "type" : "MIXED_MATERIALS",
+      "fillingRate" : 0.8016996865593327
+    }, {
+      "location" : {
+        "latitude" : 16.271578076757788,
+        "longitude" : 11.140688034362434
+      },
+      "type" : "PAPER",
+      "fillingRate" : 0.4466578182005868
+    }, {
+      "location" : {
+        "latitude" : 75.04340067774685,
+        "longitude" : 16.916317327205345
+      },
+      "type" : "MIXED_MATERIALS",
+      "fillingRate" : 0.471700040694379
+    } ],
+    "serviceTime" : {
+      "unit" : "SECONDS",
+      "value" : 859663523
+    },
+    "direction" : {
+      "country" : "LyEAaHo",
+      "street" : "pUEvUvkXIlRKaszBUJPa"
+    }
+  }, {
+    "code" : "9980",
+    "containers" : [ {
+      "location" : {
+        "latitude" : 34.17054864187337,
+        "longitude" : 59.162177950702755
+      },
+      "type" : "MIXED_MATERIALS",
+      "fillingRate" : 0.8102248878285694
+    }, {
+      "location" : {
+        "latitude" : 92.59299573112013,
+        "longitude" : 70.90638500642666
+      },
+      "type" : "MIXED_MATERIALS",
+      "fillingRate" : 0.5682298520645651
+    }, {
+      "location" : {
+        "latitude" : 83.42250858287112,
+        "longitude" : 52.57585194682818
+      },
+      "type" : "PAPER",
+      "fillingRate" : 0.6302174086247564
+    }, {
+      "location" : {
+        "latitude" : 83.45449742947898,
+        "longitude" : 78.10692413542034
+      },
+      "type" : "MIXED_MATERIALS",
+      "fillingRate" : 0.14377194195325427
+    }, {
+      "location" : {
+        "latitude" : 92.83494650229449,
+        "longitude" : 38.20091314920777
+      },
+      "type" : "PAPER",
+      "fillingRate" : 0.7094832811260918
+    } ],
+    "serviceTime" : {
+      "unit" : "MILLISECONDS",
+      "value" : 1631803446
+    },
+    "direction" : {
+      "country" : "RjbkIdi",
+      "street" : "MeqsSaruoKIdqbCVuIQn"
+    }
+  }, {
+    "code" : "5866",
+    "containers" : [ {
+      "location" : {
+        "latitude" : 81.99809582285287,
+        "longitude" : 16.341178521287468
+      },
+      "type" : "MIXED_MATERIALS",
+      "fillingRate" : 0.9545850092145021
+    } ],
+    "serviceTime" : {
+      "unit" : "MILLISECONDS",
+      "value" : 1003925260
+    },
+    "direction" : {
+      "country" : "IOQYPjc",
+      "street" : "FFTLwkaSRBklXtrfFwUQ"
+    }
+  } ],
+  "averageFuelConsumption" : 9.61,
+  "plants" : [ {
+    "residues" : [ "MIXED_MATERIALS", "NONE" ],
+    "location" : {
+      "latitude" : 25.438463222087847,
+      "longitude" : 36.881715497529385
+    },
+    "direction" : {
+      "country" : "PESOlmL",
+      "street" : "CdxfmtcdhITCAUkJOEsL"
+    }
+  }, {
+    "residues" : [ "PAPER" ],
+    "location" : {
+      "latitude" : 28.637015463339054,
+      "longitude" : 65.43864994812121
+    },
+    "direction" : {
+      "country" : "pwYvDrE",
+      "street" : "MZzfUjDcSsldULCrFETP"
+    }
+  }, {
+    "residues" : [ "MIXED_MATERIALS" ],
+    "location" : {
+      "latitude" : 36.371730762122986,
+      "longitude" : 24.174264490939134
+    },
+    "direction" : {
+      "country" : "wZPUCNF",
+      "street" : "wZFUiqxpNkFfGorwwuBa"
+    }
+  } ],
+  "days" : [ {
+    "month" : 5,
+    "year" : 2018,
+    "free" : 1,
+    "day" : 24
+  }, {
+    "month" : 5,
+    "year" : 2018,
+    "free" : 1,
+    "day" : 25
+  }, {
+    "month" : 5,
+    "year" : 2018,
+    "free" : 1,
+    "day" : 26
+  }, {
+    "month" : 5,
+    "year" : 2018,
+    "free" : 1,
+    "day" : 27
+  }, {
+    "month" : 5,
+    "year" : 2018,
+    "free" : 1,
+    "day" : 28
+  } ]
+}
