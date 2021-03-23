@@ -673,7 +673,7 @@ Only those tasks of the requesting user are provided in the response but for adm
 <td>The request has succeeded and the tasks are included in the body of the response. The following headers are included in the response: <ul><li><code>Pagination-Count: 1</code></li><li><code>Pagination-Size: 25</code></li><li><code>Pagination-Page: 0</code></li><li><code>Total-Count: 5</code></li></ul> where <code>Pagination-Count</code> is the number of existing pages, <code>Pagination-Size</code> is the size of each page, <code>Pagination-Page</code> is the index of the current page, and <code>Total-Count</code> is the number of entities in the server.</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-specific-task'>Get a Specific Task</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/algorithms/:id <span class="se">\</span>
+<h2 id='get-a-specific-task'>Get a Specific Task</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/tasks/:id <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
@@ -696,7 +696,7 @@ Only those tasks of the requesting user are provided in the response but for adm
 </span></code></pre>
 <p>It provides a specific task by indicating its identifier. The task is provided in the response.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET IP:PORT/VERSION/algorithms/:id</code></p>
+<p><code>GET IP:PORT/VERSION/tasks/:id</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
