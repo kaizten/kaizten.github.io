@@ -428,6 +428,13 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>startingTime</code>. Starting time of the service, expressed as <code>HH:MM:SS</code>.</li>
 <li><code>finishingTime</code>. Finishing time of the service, expressed as <code>HH:MM:SS</code>.</li>
 </ul></li>
+<li><code>incidences</code> (optional). List of incidences associated with the user. Each incidence is composed of the following fields:
+
+<ul>
+<li><code>code</code>. High level identifier of the incidence used by the company. It is a number composed of at most <code>5</code> digits.</li>
+<li><code>date</code>. Date of the incidence. It must be expressed in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format (e.g., <code>1986-03-17</code>).</li>
+<li><code>description</code>. Description of the incidence. Its maximum length is of <code>1000</code> characters.</li>
+</ul></li>
 </ul>
 <h2 id='time'>Time</h2>
 <ul>
