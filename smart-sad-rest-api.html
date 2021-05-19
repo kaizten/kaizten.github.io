@@ -373,6 +373,13 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>number</code>. Phone number. It is a number composed of <code>9</code> digits`.</li>
 <li><code>comment</code>. Comment associated with the phone. Its maximum length is of <code>1000</code> characters.</li>
 </ul></li>
+<li><code>incidences</code> (optional). List of incidences associated with the employee. Each incidence is composed of the following fields:
+
+<ul>
+<li><code>code</code>. High level identifier of the incidence used by the company. It is a number composed of at most <code>5</code> digits.</li>
+<li><code>date</code>. Date of the incidence. It must be expressed in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format (e.g., <code>1986-03-17</code>).</li>
+<li><code>description</code>. Description of the incidence. Its maximum length is of <code>1000</code> characters.</li>
+</ul></li>
 </ul>
 <h2 id='user'>User</h2>
 <ul>
@@ -429,7 +436,7 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>code2</code>. Code of the first user. It is a number composed of at most <code>5</code>s digits.</li>
 <li><code>value</code>. Time between the users, expressed in seconds.</li>
 <li><code>mean</code>. Mean used to move between the users. It can be <code>FOOT</code> (default value), <code>CAR</code>, <code>BIKE</code>, or <code>MOTORBIKE</code>.</li>
-<li><code>type</code>. Origin of the time. It can be <code>GOOGLE_MAPS</code>, <code>GRAPH-HOPPER</code>, <code>PERSONALIZED</code>, or <code>DEFAULT</code> (default value).</li>
+<li><code>type</code>. Origin of the time. It can be <code>GOOGLE_MAPS</code>, <code>GRAPH_HOPPER</code>, <code>PERSONALIZED</code>, or <code>DEFAULT</code> (default value).</li>
 <li><code>lastUpdate</code> (optional). Last time in which the time was updated. It must be expressed in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format (e.g., <code>2020-12-17T12:57:19+00:00</code>).</li>
 </ul>
 
