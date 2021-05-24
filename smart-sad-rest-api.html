@@ -366,7 +366,12 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>latitude</code>. Latitude of the address.</li>
 <li><code>longitude</code>. Latitude of the address.</li>
 </ul></li>
-<li><code>emails</code> (optional). List of at most <code>5</code> emails used to contact the employee with. The length of each email must be in the range <code>[5..100]</code>.</li>
+<li><code>emails</code> (optional). List of at most <code>5</code> emails used to contact the employee with. Each email is composed of the following fields:
+
+<ul>
+<li><code>address</code>. Email address. Its length must be in the range <code>[5..100]</code>.</li>
+<li><code>comment</code>. Comment associated with the email. Its maximum length is of <code>1000</code> characters.</li>
+</ul></li>
 <li><code>phones</code> (optional). List of phones used to contact the employee with. Each phone is composed of the following fields:
 
 <ul>
@@ -412,7 +417,12 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>latitude</code>. Latitude of the address.</li>
 <li><code>longitude</code>. Latitude of the address.</li>
 </ul></li>
-<li><code>emails</code> (optional). List of at most <code>5</code> emails used to contact the employee with. The length of each email must be in the range <code>[5..100]</code>.</li>
+<li><code>emails</code> (optional). List of at most <code>5</code> emails used to contact the user with. Each email is composed of the following fields:
+
+<ul>
+<li><code>address</code>. Email address. Its length must be in the range <code>[5..100]</code>.</li>
+<li><code>comment</code>. Comment associated with the email. Its maximum length is of <code>1000</code> characters.</li>
+</ul></li>
 <li><code>phones</code> (optional). List of phones used to contact the employee with. Each phone is composed of the following fields:
 
 <ul>
