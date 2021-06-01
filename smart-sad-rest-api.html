@@ -434,7 +434,7 @@ IP:PORT/VERSION/API_ENDPOINT
 <ul>
 <li><code>description</code> (optional). Description of the service to do.</li>
 <li><code>day</code>. Day in which the service must be do. It can be <code>MONDAY</code>, <code>TUESDAY</code>,..., <code>SUNDAY</code>.</li>
-<li><code>minutes</code> (optional). Duration time of the service, expressed in minutes.</li>
+<li><code>minutes</code> (optional). Duration time of the service, expressed in minutes. Its value must be in the range <code>(0..1440]</code>.</li>
 <li><code>startingTime</code>. Starting time of the service, expressed as <code>HH:MM:SS</code>.</li>
 <li><code>finishingTime</code>. Finishing time of the service, expressed as <code>HH:MM:SS</code>.</li>
 </ul></li>
