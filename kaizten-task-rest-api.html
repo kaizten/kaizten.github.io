@@ -286,6 +286,26 @@
                   </li>
               </ul>
           </li>
+		  <li>
+            <a href="#labels" class="toc-h1 toc-link" data-title="Labels">Labels</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-all-labels" class="toc-h2 toc-link" data-title="List all Labels">List all Labels</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-label" class="toc-h2 toc-link" data-title="Get a Specific Label">Get a Specific Label</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-new-label" class="toc-h2 toc-link" data-title="Create a new Label">Create a new Label</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-specific-label" class="toc-h2 toc-link" data-title="Delete a Specific Label">Delete a Specific Label</a>
+                  </li>
+				  <li>
+                    <a href="#put-a-specific-label" class="toc-h2 toc-link" data-title="Update a Specific Label">Update a Specific Label</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='#'>Sign Up for a Developer Key</a></li>
@@ -1003,7 +1023,7 @@ Only those tasks of the requesting user are provided in the response but for adm
 </tr>
 </tbody></table>
 
-<h2 id='put-a-specific-file'>Update a Specific Label</h2>
+<h2 id='put-a-specific-label'>Update a Specific Label</h2>
 <pre class="highlight shell tab-shell"><code>curl -X PUT IP:PORT/VERSION/labels/:id 
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
 	-d <span class="s2">"name=name"</span><span class="s1">'
@@ -1018,7 +1038,7 @@ Only those tasks of the requesting user are provided in the response but for adm
 </code></pre>
 <p>It updates a label using its identifier (<code>:id</code>).</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>DELETE http://IP:PORT/VERSION/labels/:id</code></p>
+<p><code>PUT http://IP:PORT/VERSION/labels/:id</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
