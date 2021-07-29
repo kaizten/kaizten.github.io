@@ -860,6 +860,194 @@ Only those tasks of the requesting user are provided in the response but for adm
 </tr>
 </tbody></table>
 
+
+
+
+<h1 id='data'>Label</h1>
+<h2 id='list-all-labels'>List all labels</h2>
+<pre class="highlight shell tab-shell">
+	<code>curl http://IP:PORT/VERSION/labels 
+		<span class="se">\</span>-H <span class="s2">"Authorization: YOUR_API_KEY"</span> 
+	</code>
+</pre>
+<blockquote>
+	<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61028b9ddbad8454cb62eb69"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"label1"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61028b9ddbad8454cb61eb63"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"label2"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61028b9ddbad8454cb62eb62"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"label3"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>It provides a list containing information about all the labels.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/labels</code></p>
+<h3 id='responses'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded and the labels are included in the body of the response.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-label'>Get a Specific Label</h2>
+<pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/labels/:name <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a label contained in the body of the response.</p>
+</blockquote>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET IP:PORT/VERSION/labels/:name</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>Name of the requested label.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-2'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded. The content of the label is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The lalbel with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h2 id='create-a-new-label'>Create a new label</h2>
+<pre class="highlight shell tab-shell"><code>curl -X POST IP:PORT/VERSION/label <span class="se">\</span>
+  -d <span class="s2">"name=name"</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>The above command returns the content of the label created:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61028b9ddbad8454cb61eb63"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"label1"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It creates a new label by specifying its name.</p>
+<h3 id='http-request-3'>HTTP request</h3>
+<p><code>POST http://IP:PORT/VERSION/labels</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>Name of the new label.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-3'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>201</code></td>
+<td>The request has been fulfilled and as result a label has been created.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-specific-label'>Delete a Specific Label</h2>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE IP:PORT/VERSION/labels/:id 
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<p>It deletes a label using its identifier (<code>:id</code>).</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>DELETE http://IP:PORT/VERSION/labels/:id</code></p>
+<h3 id='responses-4'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has been fulfilled and as result a label has been deleted.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The label to delete does not exist.</td>
+</tr>
+</tbody></table>
+
+<h2 id='put-a-specific-file'>Update a Specific Label</h2>
+<pre class="highlight shell tab-shell"><code>curl -X PUT IP:PORT/VERSION/labels/:id 
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+	-d <span class="s2">"name=name"</span><span class="s1">'
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+   "id" : "61028b9ddbad8454cb61eb63",
+   "name" : "label1"
+}
+</code></pre>
+<p>It updates a label using its identifier (<code>:id</code>).</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>DELETE http://IP:PORT/VERSION/labels/:id</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>New name for the specified label.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-4'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has been fulfilled and as result a label has been updated.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The file to update does not exist.</td>
+</tr>
+</tbody></table>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
