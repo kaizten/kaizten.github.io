@@ -478,6 +478,7 @@ IP:PORT/VERSION/API_ENDPOINT
 		-H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
 		-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
 		-H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+		-F <span class="s2">"file=@FILE_TO_SEND"</span><span class="s1">'
 		-d <span class="s1">'{ \
 			"name": "vrp",
 			"tagline": "Solver of the Vehicle Routing Problem",
@@ -521,6 +522,21 @@ Only administrators can perform this operation.
 </aside>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST http://IP:PORT/VERSION/algorithms</code></p>
+
+<h3 id='data-parameters'>Data Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+	<tr>
+		<td><code>file</code></td>
+		<td>The file of the algorithm executable.</td>
+	</tr>
+</tbody>
+</table>
 
 <h3 id='body-parameters'>Jason Body Parameters</h3>
 <p>Inside the JASON specified in the body it can be provided the following parameters</p>
