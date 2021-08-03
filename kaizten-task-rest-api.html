@@ -472,28 +472,45 @@ IP:PORT/VERSION/API_ENDPOINT
 <td>The algorithm with the requested name is not found.</td>
 </tr>
 </tbody></table>
-<h2 id='create-a-new-algorithm'>Create a new algorithm</h2><pre class="highlight shell tab-shell"><code>curl -X POST IP:PORT/VERSION/algorithms <span class="se">\</span>
-    -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
-    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
-    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
-    -d <span class="s1">'{ \
-        "name": "vrp",
-        "tagline": "Solver of the Vehicle Routing Problem",
-        "description": "Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers",
-        "command" : "java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"
-    }'</span>
-</code></pre>
+<h2 id='create-a-new-algorithm'>Create a new algorithm</h2>
+<pre class="highlight shell tab-shell">
+	<code>curl -X POST IP:PORT/VERSION/algorithms <span class="se">\</span>
+		-H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+		-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
+		-H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+		-d <span class="s1">'{ \
+			"name": "vrp",
+			"tagline": "Solver of the Vehicle Routing Problem",
+			"description": "Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers",
+			"command" : "java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"
+		}'</span>
+	</code>
+</pre>
 <blockquote>
-<p>The above command returns a JSON structured like this:</p>
+	<p>The above command returns a JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6f565acff3233408180978"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"solver-vehicle-routing-problem"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"tagline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Vehicle Routing Problem"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
+<pre class="highlight json tab-json">
+	<code><span class="p">{</span><span class="w"></span>
+		<span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Algorithm ID"</span><span class="p">,</span><span class="w"></span>
+		<span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"name-of-the-algorithm"</span><span class="p">,</span><span class="w"></span>
+		<span class="s2">"tagline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tagline of the algorithm."</span><span class="p">,</span><span class="w"></span>
+		<span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Description of the algorithm."</span><span class="p">,</span><span class="w"></span>
+		<span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"command"</span><span class="w"></span>
+		<span class="s2">"fileName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"file;yyyy/mm/dd-hh:mm:ss.extension"</span><span class="w"></span>
+		<span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span>yyyy/mm/dd hh:mm:ss<span class="w"></span>
+		<span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"yyyy/mm/dd hh:mm:ss"</span><span class="w"></span>
+		<span class="s2">"inputFileDescription"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Description of the input file."</span><span class="w"></span>
+		<span class="s2">"outputFileDescription"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Description of the output file."</span><span class="w"></span>
+		<span class="s2">"labels"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+		<span class="s2">"outputFileDescription"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"["</span><span class="w"></span>
+		<span class="s3">{</span><span class="w"></span>
+			<span class="s4">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label ID."</span><span class="w"></span>
+			<span class="s4">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label name."</span><span class="w"></span>
+		<span class="s3">}</span><span class="w"></span>
+		</span><span class="s2">"]"</span><span class="w"></span>
+	<span class="p">}</span><span class="w"></span>
+	</code>
+</pre>
 <p>It creates a new algorithm by specifying at least the required fields. The created algorithm is provided in the response.</p>
 
 <aside class="notice">
@@ -501,6 +518,55 @@ Only administrators can perform this operation.
 </aside>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST http://IP:PORT/VERSION/algorithms</code></p>
+
+<h3 id='body-parameters'>Jason Body Parameters</h3>
+<p>Inside the JASON specified in the body it can be provided the following parameters</p>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+	<tr>
+		<td><code>name</code></td>
+		<td>The name of the algorithm.</td>
+		<td>Yes</td>
+	</tr>
+	<tr>
+		<td><code>description</code></td>
+		<td>The description of the algorithm.</td>
+		<td>No</td>
+	</tr>
+	<tr>
+		<td><code>tagline</code></td>
+		<td>The tagline of the algorithm.</td>
+		<td>No</td>
+	</tr>
+	<tr>
+		<td><code>command</code></td>
+		<td>The command of the algorithm.</td>
+		<td>No</td>
+	</tr>
+	<tr>
+		<td><code>labels</code></td>
+		<td>The labels of the algorithm. Must be specified as array of strings representing the names of the labels.</td>
+		<td>No</td>
+	</tr>
+	<tr>
+		<td><code>inputFileDescription</code></td>
+		<td>The description of the input file of the algorithm.</td>
+		<td>No</td>
+	</tr>
+	<tr>
+		<td><code>outputFileDescription</code></td>
+		<td>The description of the output file of the algorithm.</td>
+		<td>No</td>
+	</tr>
+	</tbody>
+</table>
+
 <h3 id='responses-2'>Responses</h3>
 <table><thead>
 <tr>
