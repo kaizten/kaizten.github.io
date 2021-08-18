@@ -22,8 +22,6 @@
 .highlight .gp {
   color: #555555;
 }
-.highlight .gs {
-}
 .highlight .gu {
   color: #aaaaaa;
 }
@@ -248,13 +246,16 @@
                     <a href="#get-all-algorithms" class="toc-h2 toc-link" data-title="Get all algorithms">Get all algorithms</a>
                   </li>
                   <li>
-                    <a href="#create-a-new-algorithm" class="toc-h2 toc-link" data-title="Create a new algorithm">Create a new algorithm</a>
-                  </li>
-                  <li>
-                    <a href="#upload-a-new-executable" class="toc-h2 toc-link" data-title="Upload an algorithm executable">Upload an algorithm executable</a>
-                  </li>
-                  <li>
                     <a href="#get-a-specific-algorithm" class="toc-h2 toc-link" data-title="Get a Specific Algorithm">Get a Specific Algorithm</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-new-algorithm" class="toc-h2 toc-link" data-title="Create a new Algorithm">Create a new Algorithm</a>
+                  </li>
+                  <li>
+                    <a href="#update-an-algorithm" class="toc-h2 toc-link" data-title="Update an Algorithm">Update an Algorithm</a>
+                  </li>
+                  <li>
+                    <a href="#upload-a-new-executable" class="toc-h2 toc-link" data-title="Upload an Algorithm Executable">Upload an Algorithm Executable</a>
                   </li>
                   <li>
                     <a href="#execute-an-algorithm" class="toc-h2 toc-link" data-title="Execute an Algorithm">Execute an Algorithm</a>
@@ -475,6 +476,53 @@ IP:PORT/VERSION/API_ENDPOINT
 <td>The algorithm with the requested name is not found.</td>
 </tr>
 </tbody></table>
+
+<h2 id='get-a-specific-algorithm'>Get a Specific Algorithm</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/algorithms/:id <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6f565acff3233408180978"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"solver-vehicle-routing-problem"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"tagline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Vehicle Routing Problem"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It provides a specific algorithm by indicating its identifier. The algorithm is provided in the response.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET IP:PORT/VERSION/algorithms/:id</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the requested algorithm.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-3'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded. The algorithm is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The algorithm with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+
 <h2 id='create-a-new-algorithm'>Create a new algorithm</h2>
 <pre class="highlight shell tab-shell">
 	<code>curl -X POST IP:PORT/VERSION/algorithms <span class="se">\</span>
@@ -590,6 +638,58 @@ Only administrators can perform this operation.
 </tr>
 </tbody></table>
 
+<h2 id='update-an-algorithm'>Update an Algorithm</h2>
+<pre class="highlight shell tab-shell">
+	<code>curl -X POST IP:PORT/VERSION/algorithms <span class="se">\</span>
+		-H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+		-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
+		-H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+    -d <span class="s2">"algorithmId=611ce6fc2658564692c77912"</span><span class="se">\</span>
+		-d <span class="s1">'{ \
+			"name": "vrp",
+			"tagline": "Solver of the Vehicle Routing Problem",
+			"description": "Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers",
+			"command" : "java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"
+		}'</span>
+	</code>
+</pre>
+<p>It update the data from an algorithm by specifying the fields to be modified.</p>
+<aside class="notice">
+Only administrators can perform this operation.
+</aside>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>PUT http://IP:PORT/VERSION/algorithms</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>algorithmId</code></td>
+<td>The ID of the algorithm to be modified.</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters'>Jason Body Parameters</h3>
+<p>The parameters of the body are the exact same ones as in the create method.</p>
+<h3 id='responses-2'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request modifications are successfully updated.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>There is no algorithm found, for the specified ID.</td>
+</tr>
+</tbody></table>
+
 <h2 id='upload-a-new-executable'>Upload an algorithm executable</h2>
 <pre class="highlight shell tab-shell">
 	<code>curl -X POST IP:PORT/VERSION/algorithms/executable <span class="se">\</span>
@@ -597,9 +697,7 @@ Only administrators can perform this operation.
 		-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
 		-H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
     -F <span class="s2">"file=@FILE_TO_SEND"</span> <span class="se">\</span>
-		-d <span class="s1">'{ \
-			"algorithmId": "94847378a9e83",
-		}'</span>
+		-d <span class="s1">"algorithmId=94847378a9e83"</span>
 	</code>
 </pre>
 <p>It uploads the executable file for the specific algorithm.</p>
@@ -646,51 +744,6 @@ Only administrators can perform this operation.
 </tr>
 </tbody></table>
 
-<h2 id='get-a-specific-algorithm'>Get a Specific Algorithm</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/algorithms/:id <span class="se">\</span>
-    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6f565acff3233408180978"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"solver-vehicle-routing-problem"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"tagline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Vehicle Routing Problem"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>It provides a specific algorithm by indicating its identifier. The algorithm is provided in the response.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET IP:PORT/VERSION/algorithms/:id</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td>Identifier of the requested algorithm.</td>
-</tr>
-</tbody></table>
-<h3 id='responses-3'>Responses</h3>
-<table><thead>
-<tr>
-<th>HTTP Code</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>200</code></td>
-<td>The request has succeeded. The algorithm is included in the body of the response.</td>
-</tr>
-<tr>
-<td><code>404</code></td>
-<td>The algorithm with the given identifier is not found.</td>
-</tr>
-</tbody></table>
 <h2 id='execute-an-algorithm'>Execute an Algorithm</h2><pre class="highlight shell tab-shell"><code>curl -X POST http://IP:PORT/VERSION/algorithms/:name <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
     -H <span class="s2">"Content-Type: text/json"</span> <span class="se">\</span>
