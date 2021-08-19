@@ -260,6 +260,9 @@
                   <li>
                     <a href="#execute-an-algorithm" class="toc-h2 toc-link" data-title="Execute an Algorithm">Execute an Algorithm</a>
                   </li>
+                  <li>
+                    <a href="#delete-an-algorithm" class="toc-h2 toc-link" data-title="Delete an Algorithm">Delete an Algorithm</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -644,7 +647,7 @@ Only administrators can perform this operation.
 		-H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
 		-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
 		-H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
-    -d <span class="s2">"algorithmId=611ce6fc2658564692c77912"</span><span class="se">\</span>
+    -d <span class="s2">"algorithmId=611ce6fc2658564692c77912"</span> <span class="se">\</span>
 		-d <span class="s1">'{ \
 			"name": "vrp",
 			"tagline": "Solver of the Vehicle Routing Problem",
@@ -799,6 +802,45 @@ Only administrators can perform this operation.
 <td>The algorithm with the given name is not found.</td>
 </tr>
 </tbody></table>
+
+<h2 id='delete-an-algorithm'>Delete an Algorithm</h2><pre class="highlight shell tab-shell">
+<code>curl -X DELETE http://IP:PORT/VERSION/algorithms/:id <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+    -H <span class="s2">"Content-Type: text/json"</span> <span class="se">\</span>
+    -d <span class="s2">"algorithmId=611ce6fc2658564692c77912"</span>
+</code></pre>
+<p>It is used to remove an algorithm from the database.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>DELETE IP:PORT/VERSION/algorithms/:id</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>ID</code></td>
+<td>ID of the algorithm to be deleted.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-4'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The algorithm has been deleted successfully.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The algorithm with the given name is not found.</td>
+</tr>
+</tbody></table>
+
 <h1 id='tasks'>Tasks</h1><h2 id='get-all-tasks'>Get all tasks</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/tasks <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span> 
 </code></pre>
