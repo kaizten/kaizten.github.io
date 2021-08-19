@@ -274,6 +274,9 @@
                   <li>
                     <a href="#get-a-specific-task" class="toc-h2 toc-link" data-title="Get a Specific Task">Get a Specific Task</a>
                   </li>
+                  <li>
+                    <a href="#delete-a-task" class="toc-h2 toc-link" data-title="Delete a Task">Delete a Task</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -807,7 +810,7 @@ Only administrators can perform this operation.
 <code>curl -X DELETE http://IP:PORT/VERSION/algorithms/:id <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
     -H <span class="s2">"Content-Type: text/json"</span> <span class="se">\</span>
-    -d <span class="s2">"algorithmId=611ce6fc2658564692c77912"</span>
+    -d <span class="s2">"id=611ce6fc2658564692c77912"</span>
 </code></pre>
 <p>It is used to remove an algorithm from the database.</p>
 <aside class="notice">
@@ -840,7 +843,7 @@ Only administrators can perform this operation.
 </tr>
 <tr>
 <td><code>404</code></td>
-<td>The algorithm with the given name is not found.</td>
+<td>The algorithm with the given ID is not found.</td>
 </tr>
 </tbody></table>
 
@@ -976,6 +979,46 @@ Only those tasks of the requesting user are provided in the response but for adm
 <td>The task with the given identifier is not found.</td>
 </tr>
 </tbody></table>
+
+<h2 id='delete-a-task'>Delete a Task</h2>
+<pre class="highlight shell tab-shell">
+<code>curl -X DELETE http://IP:PORT/VERSION/tasks/:id <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+    -H <span class="s2">"Content-Type: text/json"</span> <span class="se">\</span>
+    -d <span class="s2">"id=611ce6fc2658564692c77912"</span>
+</code></pre>
+<p>It is used to remove a task from the database.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>DELETE IP:PORT/VERSION/tasks/:id</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>ID</code></td>
+<td>ID of the task to be deleted.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-4'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The task has been deleted successfully.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The task with the given ID is not found.</td>
+</tr>
+</tbody></table>
+
 <h1 id='data'>Data</h1><h2 id='list-all-files'>List all files</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/data <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span> 
 </code></pre>
