@@ -255,9 +255,6 @@
                     <a href="#update-an-algorithm" class="toc-h2 toc-link" data-title="Update an Algorithm">Update an Algorithm</a>
                   </li>
                   <li>
-                    <a href="#upload-a-new-executable" class="toc-h2 toc-link" data-title="Upload an Algorithm Executable">Upload an Algorithm Executable</a>
-                  </li>
-                  <li>
                     <a href="#execute-an-algorithm" class="toc-h2 toc-link" data-title="Execute an Algorithm">Execute an Algorithm</a>
                   </li>
                   <li>
@@ -533,9 +530,10 @@ IP:PORT/VERSION/API_ENDPOINT
 <pre class="highlight shell tab-shell">
 	<code>curl -X POST IP:PORT/VERSION/algorithms <span class="se">\</span>
 		-H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
-		-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
+		-H <span class="s2">"Content-Type: multipart/form-data"</span> <span class="se">\ </span>
 		-H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
-		-d <span class="s1">'{ \
+    -F <span class="s2">"file=@FILE_TO_SEND"</span> <span class="se">\</span>
+		-d <span class="s1">'form={ \
 			"name": "vrp",
 			"tagline": "Solver of the Vehicle Routing Problem",
 			"description": "Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers",
@@ -579,7 +577,25 @@ Only administrators can perform this operation.
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST http://IP:PORT/VERSION/algorithms</code></p>
 
-<h3 id='body-parameters'>Jason Body Parameters</h3>
+<h3 id='request-parameters'>Request Parameters</h3>
+<p>It can be provided the executable file of the algorithm as a parameter to the request, as follows.</p>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+	<tr>
+		<td><code>file</code></td>
+		<td>The file of the executable.</td>
+		<td>No</td>
+	</tr>
+	</tbody>
+</table>
+
+<h3 id='form-parameters'>Jason Form Parameters</h3>
 <p>Inside the JASON specified in the body it can be provided the following parameters</p>
 <table><thead>
 <tr>
@@ -677,8 +693,8 @@ Only administrators can perform this operation.
 <td>The ID of the algorithm to be modified.</td>
 </tr>
 </tbody></table>
-<h3 id='body-parameters'>Jason Body Parameters</h3>
-<p>The parameters of the body are the exact same ones as in the create method.</p>
+<h3 id='body-parameters'>Parameters</h3>
+<p>The parameters of the request are the exact same ones as in the create method.</p>
 <h3 id='responses-2'>Responses</h3>
 <table><thead>
 <tr>
@@ -693,60 +709,6 @@ Only administrators can perform this operation.
 <tr>
 <td><code>404</code></td>
 <td>There is no algorithm found, for the specified ID.</td>
-</tr>
-</tbody></table>
-
-<h2 id='upload-a-new-executable'>Upload an algorithm executable</h2>
-<pre class="highlight shell tab-shell">
-	<code>curl -X POST IP:PORT/VERSION/algorithms/executable <span class="se">\</span>
-		-H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
-		-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
-		-H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
-    -F <span class="s2">"file=@FILE_TO_SEND"</span> <span class="se">\</span>
-		-d <span class="s1">"algorithmId=94847378a9e83"</span>
-	</code>
-</pre>
-<p>It uploads the executable file for the specific algorithm.</p>
-
-<aside class="notice">
-Only administrators can perform this operation.
-</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST http://IP:PORT/VERSION/algorithms/executable</code></p>
-
-<h3 id='data-parameters'>Data Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-	<tr>
-		<td><code>file</code></td>
-		<td>The file of the algorithm executable. The file name must follow the regex "^[a-zA-Z0-9._ -]+\\.[A-Za-z]{2,3}$"</td>
-	</tr>
-  <tr>
-    <td><code>algorithmId</code></td>
-    <td>The id of the specific algorithm.</td>
-  </tr>
-</tbody>
-</table>
-
-<h3 id='responses-2'>Responses</h3>
-<table><thead>
-<tr>
-<th>HTTP Code</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>201</code></td>
-<td>The request has been fulfilled and the provided file was updated as executable for the algorithm.</td>
-</tr>
-<tr>
-<td><code>404</code></td>
-<td>There is no algorithm with the specified id.</td>
 </tr>
 </tbody></table>
 
