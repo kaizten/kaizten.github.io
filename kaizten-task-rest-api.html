@@ -249,9 +249,6 @@
                     <a href="#get-a-specific-algorithm" class="toc-h2 toc-link" data-title="Get a Specific Algorithm">Get a Specific Algorithm</a>
                   </li>
                   <li>
-                    <a href="#get-filtered-algorithms" class="toc-h2 toc-link" data-title="Get Filtered Algorithms">Get Filtered Algorithms</a>
-                  </li>
-                  <li>
                     <a href="#create-a-new-algorithm" class="toc-h2 toc-link" data-title="Create a new Algorithm">Create a new Algorithm</a>
                   </li>
                   <li>
@@ -443,7 +440,7 @@ IP:PORT/VERSION/API_ENDPOINT
    </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>It provides all the algorithms. The returned algorithms will be paginated to <code>20</code> items by default. Further pages can be requested by means of the <code>page</code> query paramenter. It can also set a custom page size up to <code>100</code> with the <code>size</code> parameter.</p>
+<p>It provides all the algorithms. The returned algorithms will be paginated to <code>20</code> items by default. Further pages can be requested by means of the <code>page</code> query paramenter. It can also set a custom page size up to <code>100</code> with the <code>size</code> parameter. It can also provides a list of algorithms which fit the specified filters.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET http://IP:PORT/VERSION/algorithms</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -464,6 +461,26 @@ IP:PORT/VERSION/API_ENDPOINT
 <tr>
 <td><code>size</code></td>
 <td>Size of the page to be returned. Default value: <code>20</code>.</td>
+</tr>
+<tr>
+<td><code>filters</code></td>
+<td>It is a JSON string providing the data for the filters. This parameter is required, if it is not provided the call will respond with a Bad Request status.</td>
+</tr>
+</tbody></table>
+<h3 id='jason-parameters'>JASON filters Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>Regex used to filter the name of the algorithms</td>
+</tr>
+<tr>
+<td><code>labels</code></td>
+<td>Array of labels ids used for filtering algorithms by their labels. All the algorithms that have at least one of the provided labels will be returned.</td>
 </tr>
 </tbody></table>
 <h3 id='responses'>Responses</h3>
@@ -528,101 +545,6 @@ IP:PORT/VERSION/API_ENDPOINT
 <tr>
 <td><code>404</code></td>
 <td>The algorithm with the given identifier is not found.</td>
-</tr>
-</tbody></table>
-
-<h2 id='get-filtered-algorithms'>Get Filtered Algorithms</h2>
-<pre class="highlight shell tab-shell">
-<code>curl http://IP:PORT/VERSION/algorithms/filtered <span class="se">\</span>
-    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
-    -d <span class="s1">'filters={ \
-			"name": "vrp",
-			"labels": ["label1ID", "label2ID, "label3ID"]
-		}'</span> 
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json">
-	<code><span class="p">[</span><span class="w"></span>
-  <span class="p">{</span><span class="w"></span>
-		<span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Algorithm ID"</span><span class="p">,</span><span class="w"></span>
-		<span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"name-of-the-algorithm"</span><span class="p">,</span><span class="w"></span>
-		<span class="s2">"tagline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tagline of the algorithm."</span><span class="p">,</span><span class="w"></span>
-		<span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Description of the algorithm."</span><span class="p">,</span><span class="w"></span>
-		<span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"command"</span><span class="p">,</span><span class="w"></span>
-		<span class="s2">"fileName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"file;yyyy/mm/dd-hh:mm:ss.extension"</span><span class="p">,</span><span class="w"></span>
-		<span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"yyyy/mm/dd hh:mm:ss"</span><span class="p">,</span><span class="w"></span>
-		<span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"yyyy/mm/dd hh:mm:ss"</span><span class="p">,</span><span class="w"></span>
-		<span class="s2">"inputFileDescription"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Description of the input file."</span><span class="p">,</span><span class="w"></span>
-		<span class="s2">"outputFileDescription"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Description of the output file."</span><span class="p">,</span><span class="w"></span>
-		<span class="s2">"labels"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-			<span class="p">{</span><span class="w"></span>
-				<span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label ID."</span><span class="p">,</span><span class="w"></span>
-				<span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label name."</span><span class="w"></span>
-			<span class="p">}</span><span class="w"><span class="p">,</span></span>
-			<span class="p">{</span><span class="w"></span>
-				<span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label ID."</span><span class="p">,</span><span class="w"></span>
-				<span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label name."</span><span class="w"></span>
-			<span class="p">}</span><span class="w"></span>
-		</span><span class="p">]</span><span class="w"></span>
-	<span class="p">}</span><span class="w"></span>
-  <span class="p">]</span><span class="w"></span>
-	</code>
-</pre>
-<p>It provides a list of algorithms which fit the filters specified.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET IP:PORT/VERSION/algorithms/filtered</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>filters</code></td>
-<td>It is a JSON string providing the data for the filters. This parameter is required, if it is not provided the call will respond with a Bad Request status.</td>
-</tr>
-<tr>
-<td><code>page</code></td>
-<td>Zero-based page index. Default value: <code>0</code>.</td>
-</tr>
-<tr>
-<td><code>size</code></td>
-<td>Size of the page to be returned. Default value: <code>20</code>.</td>
-</tr>
-</tbody></table>
-<h3 id='jason-parameters'>JASON filters Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>name</code></td>
-<td>Regex used to filter the name of the algorithms</td>
-</tr>
-<tr>
-<td><code>labels</code></td>
-<td>Array of labels ids used for filtering algorithms by their labels. All the algorithms that have at least one of the provided labels will be returned.</td>
-</tr>
-</tbody></table>
-<h3 id='responses-3'>Responses</h3>
-<table><thead>
-<tr>
-<th>HTTP Code</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>200</code></td>
-<td>The request has succeeded. The algorithms are included in the body of the response.</td>
-</tr>
-<tr>
-<td><code>400</code></td>
-<td>Bad request, maybe you didn't specified any filters.</td>
 </tr>
 </tbody></table>
 
