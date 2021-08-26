@@ -269,6 +269,9 @@
                     <a href="#get-all-tasks" class="toc-h2 toc-link" data-title="Get all tasks">Get all tasks</a>
                   </li>
                   <li>
+                    <a href="#get-all-tasks-statuses" class="toc-h2 toc-link" data-title="Get all the task statuses">Get all the tasks statuses</a>
+                  </li>
+                  <li>
                     <a href="#get-a-specific-task" class="toc-h2 toc-link" data-title="Get a Specific Task">Get a Specific Task</a>
                   </li>
                   <li>
@@ -467,7 +470,7 @@ IP:PORT/VERSION/API_ENDPOINT
 <td>It is a JSON string providing the data for the filters. This parameter is required, if it is not provided the call will respond with a Bad Request status.</td>
 </tr>
 </tbody></table>
-<h3 id='jason-parameters'>JASON filters Parameters</h3>
+<h3 id='json-parameters'>JSON filters Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -613,8 +616,8 @@ Only administrators can perform this operation.
 	</tbody>
 </table>
 
-<h3 id='form-parameters'>Jason Form Parameters</h3>
-<p>Inside the JASON specified in the body it can be provided the following parameters</p>
+<h3 id='form-parameters'>JSON Form Parameters</h3>
+<p>Inside the JSON specified in the body it can be provided the following parameters</p>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -864,7 +867,7 @@ Only administrators can perform this operation.
    </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>It provides all the tasks of the user. The returned tasks will be paginated to <code>25</code> items by default. Further pages can be requested by means of the <code>page</code> query paramenter. It can also set a custom page size up to <code>100</code> with the <code>size</code> parameter.</p>
+<p>It provides all the tasks of the user if there is no filters specified, otherwise will be returned only those which fit the filters. The returned tasks will be paginated to <code>25</code> items by default. Further pages can be requested by means of the <code>page</code> query paramenter. It can also set a custom page size up to <code>100</code> with the <code>size</code> parameter.</p>
 
 <aside class="notice">
 Only those tasks of the requesting user are provided in the response but for administrators, for which all the tasks are provided.
@@ -879,10 +882,6 @@ Only those tasks of the requesting user are provided in the response but for adm
 </tr>
 </thead><tbody>
 <tr>
-<td><code>name</code></td>
-<td>Name of the tasks to find.</td>
-</tr>
-<tr>
 <td><code>page</code></td>
 <td>Zero-based page index. Default value: <code>0</code>.</td>
 </tr>
@@ -891,8 +890,28 @@ Only those tasks of the requesting user are provided in the response but for adm
 <td>Size of the page to be returned. Default value: <code>25</code>.</td>
 </tr>
 <tr>
+<td><code>filters</code></td>
+<td>JSON string with all the provided filters.</td>
+</tr>
+</tbody></table>
+<h3 id='json-parameters'>JSON Filters Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>The name of the task, it is not required the full name.<td>
+</tr>
+<tr>
+<td><code>algorithmName</code></td>
+<td>The name of the algorithm, it is not required the full name.<td>
+</tr>
+<tr>
 <td><code>status</code></td>
-<td>The status of the tasks to find, used as filter.</td>
+<td>The status of the task, it is required the full name of the status.<td>
 </tr>
 </tbody></table>
 <h3 id='responses'>Responses</h3>
@@ -907,6 +926,28 @@ Only those tasks of the requesting user are provided in the response but for adm
 <td>The request has succeeded and the tasks are included in the body of the response. The following headers are included in the response: <ul><li><code>Pagination-Count: 1</code></li><li><code>Pagination-Size: 25</code></li><li><code>Pagination-Page: 0</code></li><li><code>Total-Count: 5</code></li></ul> where <code>Pagination-Count</code> is the number of existing pages, <code>Pagination-Size</code> is the size of each page, <code>Pagination-Page</code> is the index of the current page, and <code>Total-Count</code> is the number of entities in the server.</td>
 </tr>
 </tbody></table>
+
+<h2 id='get-all-tasks-statuses'>Get all the tasks Statuses</h2>
+<pre class="highlight shell tab-shell">
+<code>curl http://IP:PORT/VERSION/tasks/status <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> 
+</code></pre>
+<p>This method provides all the statuses available for any task</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/tasks/status</code></p>
+<h3 id='responses'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request was successfully.</td>
+</tr>
+</tbody></table>
+
 <h2 id='get-a-specific-task'>Get a Specific Task</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/tasks/:id <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
