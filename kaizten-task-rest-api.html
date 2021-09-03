@@ -328,7 +328,7 @@
         <h1 id='introduction'>Introduction</h1>
 <p>REST API used to define, store, access, and execute algorithms. The algorithms are entities that receive a set of input parameter values and return a set of output parameter values. These algorithms can be machine learning methods, optimization techniques, or simulation models, among others.</p>
 
-<p>The API supports Cross Origin Resource Sharing (CORS) for AJAX requests from any origin. The following header is included in the corresponding responses: <code>Access-Control-Allow-Origin: *</code>. You can read the <a href="http://www.w3.org/TR/cors/">CORS W3C Recommendation</a> to learn more about CORS.</p>
+<p>The API supports Cross Origin Resource Sharing (CORS) currently for requests from any origin. The following header is included in the corresponding responses: <code>Access-Control-Allow-Origin: *</code>. You can read the <a href="http://www.w3.org/TR/cors/">CORS W3C Recommendation</a> to learn more about CORS.</p>
 
 <p>In the remainder of this documentation, it is assumed that the REST API is deployed in an IP and port denoted as <code>IP</code> and <code>PORT</code>, respectively.</p>
 <h1 id='authentication'>Authentication</h1>
@@ -378,11 +378,48 @@ IP:PORT/VERSION/API_ENDPOINT
 <li>Its length must be in the range <code>[1..1000]</code>.</li>
 <li>Digits, whitespaces, <code>.</code>, <code>-</code> and <code>_</code> are valid characters.</li>
 </ul></li>
-<li><code>command</code> (required). Command used to execute the algorithm.
 
+<li><code>command</code> (required). Command used to execute the algorithm.
 <ul>
 <li>Its length must be in the range <code>[1..1000]</code>.</li>
 </ul></li>
+
+<li><code>fileName</code> (required). It's the name of the executable file of the algorithm. When you upload the file the server will add a ";" plus a timestamp of the upload moment with the format "yyyy-MM-dd_HH-mm-ss" before the extension.
+<ul>
+<li>Its size must be in the range <code>[1..10000]</code> MB.</li>
+</ul></li>
+
+<li><code>createDate</code> (generated). Timestamp that the server store for the algorithm in the moment of creation.
+<ul>
+<li>The format of the date is "yyyy-MM-dd_HH-mm-ss".</li>
+</ul></li>
+
+<li><code>lastUpdateDate</code> (generated). Timestamp that the server store for the algorithm when the algorithm is modified.
+<ul>
+<li>The format of the date is "yyyy-MM-dd_HH-mm-ss".</li>
+</ul></li>
+
+<li><code>labels</code> (optional). Labels that are used to classify the algorithms.
+<ul>
+<li>It is an array of names with size between the range <code>[1..100]</code>.</li>
+</ul></li>
+
+<li><code>inputFileDescription</code> (optional). It is a detailed explanation of the files used as imput for the algorithm.
+<ul>
+<li>Its length must be in the range <code>[1..1000]</code>.</li>
+</ul></li>
+
+<li><code>outputFileDescription</code> (optional). It is a detailed explanation of the file output of the algorithm.
+<ul>
+<li>Its length must be in the range <code>[1..1000]</code>.</li>
+</ul></li>
+
+<li><code>uiSchema</code> (optional). It is a Json Schema used to generate the front end form and also to validate the parameters format of the algorithm.
+<ul>
+<li>It is used the library "vjsf"(Documentation:"https://koumoul-dev.github.io/vuetify-jsonschema-form/latest/") in order to create the front-end form from the Schema</li>
+<li>If it is needed to put a file parameter for the algorithm, the file must be specified in format Base64, in order to do so it must be specified in the Schema that the "data" attribute from the file it's type "string"</li>
+</ul></li>
+
 </ul>
 <h2 id='task'>Task</h2>
 <ul>
@@ -394,15 +431,18 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>finishingTime</code>. Time in which the execution of the task finishes. It is expressed in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format (e.g., <code>2020-12-31T13:32:23Z</code>).</li>
 <li><code>status</code>. Status of the task when requested. See <a href="#task-state">Task State</a>.</li>
 <li><code>exitCode</code>. Status code to denote the termination of the task. The zero status is used when the execution is terminated successfully. However, a non-zero status code indicates an abnormal termination.</li>
-<li><code>inputDataId</code>. Identifier of the data used as input by the algorithm. See <a href="#data">Data</a>.</li>
+<li><code>inputData</code>. Name of the file which contain all the data used as input by the algorithm.</li>
 <li><code>outputDataId</code>. Identifier of the data provided as output by the algorithm. See <a href="#data">Data</a>.</li>
 </ul>
 <h2 id='task-state'>Task state</h2>
 <ul>
-<li><code>Pending</code>. The task is accepted but has not started.</li>
-<li><code>Canceled</code>. The task is cancelled.</li>
-<li><code>Running</code>. The task is being executed.</li>
-<li><code>Completed</code>. The task is completed.</li>
+<li><code>PENDING</code>. The task is accepted but has not started.</li>
+<li><code>CANCELED</code>. The task is cancelled.</li>
+<li><code>RUNNING</code>. The task is being executed.</li>
+<li><code>COMPLETED</code>. The task is completed.</li>
+<li><code>COMPLETED_ERRORS</code>. The task is completed with errors.</li>
+<li><code>COMPLETED_TIMEOUT</code>. The execution time of the task exeeded the limit.</li>
+<li><code>UNKNOWN</code>. The state is non of the above ones.</li>
 </ul>
 
 <p>In all the cases, the resource identifiers are generated by the system. This means that the client is not allowed to determine them.</p>
@@ -419,6 +459,8 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="s2">"tagline"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Solve to schedule employees in sanitary environments"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Heuristic used to create a schedule for employees in sanitary environments"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp sadaliar-problem-1.0-SNAPSHOT-jar-with-dependencies.jar com.kaizten.sadaliar.opt.main.MainJson %s"</span><span class="w">
+      </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_13-32-48"</span><span class="w"></span>
+      </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_13-32-48"</span><span class="w"></span>
    </span><span class="p">},</span><span class="w">
    </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70c8aca89d8d39ea0b0420"</span><span class="p">,</span><span class="w">
@@ -426,6 +468,8 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="s2">"tagline"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Vehicle Routing Problem"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"</span><span class="w">
+      </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_13-32-48"</span><span class="w"></span>
+      </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_13-32-48"</span><span class="w"></span>
    </span><span class="p">},</span><span class="w">
    </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70ca01a89d8d39ea0b0422"</span><span class="p">,</span><span class="w">
@@ -433,6 +477,8 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="s2">"tagline"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Quay Crane Scheduling Problem"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Hybrid estimation of distribution algorithm for the quay crane scheduling problem"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp qcsp.jar com.kaizten.qcsp.opt.main.Main %s"</span><span class="w">
+      </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_14-26-35"</span><span class="w"></span>
+      </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_14-26-35"</span><span class="w"></span>
    </span><span class="p">},</span><span class="w">
    </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70ca34a89d8d39ea0b0423"</span><span class="p">,</span><span class="w">
@@ -440,6 +486,8 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="s2">"tagline"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Blocks Relocation Problem"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"A domain-specific knowledge-based heuristic for the blocks relocation problem"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp brp.jar com.kaizten.brp.opt.main.Main %s"</span><span class="w">
+      </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_14-35-12"</span><span class="w"></span>
+      </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_14-35-12"</span><span class="w"></span>
    </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -513,6 +561,8 @@ IP:PORT/VERSION/API_ENDPOINT
    </span><span class="s2">"tagline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Vehicle Routing Problem"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"</span><span class="w">
+   </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_14-35-12"</span><span class="w"></span>
+   </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_14-35-12"</span><span class="w"></span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>It provides a specific algorithm by indicating its identifier. The algorithm is provided in the response.</p>
@@ -613,7 +663,12 @@ Only administrators can perform this operation.
 		<td>The file of the executable.</td>
 		<td>No</td>
 	</tr>
-	</tbody>
+  <tr>
+		<td><code>form</code></td>
+		<td>A Json with all the form data.</td>
+		<td>No</td>
+	</tr>
+</tbody>
 </table>
 
 <h3 id='form-parameters'>JSON Form Parameters</h3>
@@ -683,11 +738,10 @@ Only administrators can perform this operation.
 
 <h2 id='update-an-algorithm'>Update an Algorithm</h2>
 <pre class="highlight shell tab-shell">
-	<code>curl -X POST IP:PORT/VERSION/algorithms <span class="se">\</span>
+	<code>curl -X PUT IP:PORT/VERSION/algorithms/:id <span class="se">\</span>
 		-H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
 		-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
 		-H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
-    -d <span class="s2">"algorithmId=611ce6fc2658564692c77912"</span> <span class="se">\</span>
 		-d <span class="s1">'{ \
 			"name": "vrp",
 			"tagline": "Solver of the Vehicle Routing Problem",
@@ -701,8 +755,8 @@ Only administrators can perform this operation.
 Only administrators can perform this operation.
 </aside>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>PUT http://IP:PORT/VERSION/algorithms</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<p><code>PUT http://IP:PORT/VERSION/algorithms/:id</code></p>
+<h3 id='query-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -710,11 +764,11 @@ Only administrators can perform this operation.
 </tr>
 </thead><tbody>
 <tr>
-<td><code>algorithmId</code></td>
+<td><code>id</code></td>
 <td>The ID of the algorithm to be modified.</td>
 </tr>
 </tbody></table>
-<h3 id='body-parameters'>Parameters</h3>
+<h3 id='body-parameters'>Body Parameters</h3>
 <p>The parameters of the request are the exact same ones as in the create method.</p>
 <h3 id='responses-2'>Responses</h3>
 <table><thead>
@@ -733,12 +787,13 @@ Only administrators can perform this operation.
 </tr>
 </tbody></table>
 
-<h2 id='execute-an-algorithm'>Execute an Algorithm</h2><pre class="highlight shell tab-shell"><code>curl -X POST http://IP:PORT/VERSION/algorithms/:name <span class="se">\</span>
+<h2 id='execute-an-algorithm'>Execute an Algorithm</h2>
+<pre class="highlight shell tab-shell"><code>curl -X POST http://IP:PORT/VERSION/algorithms/:name <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
-    -H <span class="s2">"Content-Type: text/json"</span> <span class="se">\</span>
-    -d <span class="s1">'{ 
-            "taskName": "Schedule of users in SC",
-            "inputDataId": "123456789" 
+    -H <span class="s2">"Content-Type: multipart/form-data"</span> <span class="se">\</span>
+    -d <span class="s2">"taskName=\"Schedule of users in SC\""</span> <span class="se">\</span>
+    -F <span class="s1">'jsonForm={
+            "inputFile": "RXN0byBzb24gZGF0b3MgZGVsIGZpY2hlcm8gMg=="
     }'</span>
 </code></pre>
 <blockquote>
@@ -749,7 +804,7 @@ Only administrators can perform this operation.
     </span><span class="s2">"taskName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Schedule of users in SC"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"algorithmId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6f565acff3233408180978"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"algorithmName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"solver-vehicle-routing-problem"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"inputDataId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="w">
+    </span><span class="s2">"inputData"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"solver-vehicle-routing-problem;2021-04-16_14-23-38.json"</span><span class="p">,</span><span class="w"></span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>It executes a specific algorithm by indicating its name. The algorithm can receive parameter values in the body of the request in the following formats:
@@ -772,6 +827,20 @@ Only administrators can perform this operation.
 <td>Name of the algorithm to execute.</td>
 </tr>
 </tbody></table>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskName</code></td>
+<td>The name of the task.</td>
+</tr>
+</tbody></table>
+<h3 id='form-parameters'>Form Parameters</h3>
+<p>The parameters specified as <code>jsonForm</code> must respect the Json Schema of each algorithm specified in the field <code>uiSchema</code></p>
 <h3 id='responses-4'>Responses</h3>
 <table><thead>
 <tr>
@@ -793,7 +862,6 @@ Only administrators can perform this operation.
 <code>curl -X DELETE http://IP:PORT/VERSION/algorithms/:id <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
     -H <span class="s2">"Content-Type: text/json"</span> <span class="se">\</span>
-    -d <span class="s2">"id=611ce6fc2658564692c77912"</span>
 </code></pre>
 <p>It is used to remove an algorithm from the database.</p>
 <aside class="notice">
@@ -845,9 +913,7 @@ Only administrators can perform this operation.
       </span><span class="s2">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETED"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"finishingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:14.128Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"inputDataId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-         </span><span class="s2">"IDgmb7fSfI8coAgacFCNpjaf"</span><span class="w">
-      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"inputData"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduling;2021-04-16_14-15-38.json"</span><span class="w">
       </span><span class="s2">"outputDataId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"puCq2hblyo1vctQG69RnVl26"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"exitCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
    </span><span class="p">},</span><span class="w">
@@ -859,9 +925,7 @@ Only administrators can perform this operation.
       </span><span class="s2">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETED"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"finishingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:14.128Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"inputDataId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-         </span><span class="s2">"a1qw1ad4qs19q1ds9a4q1sa1"</span><span class="w">
-      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"inputData"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduling;2021-04-16_14-23-12.json"</span><span class="w">
       </span><span class="s2">"outputDataId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1q141a6d19q161as916das7q"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"exitCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
    </span><span class="p">}</span><span class="w">
