@@ -385,7 +385,7 @@ IP:PORT/VERSION/API_ENDPOINT
 <ul>
 <li>Its length must be in the range <code>[1..1000]</code>.</li>
 </ul></li>
-<li><code>filename</code> (required). It&#39;s the name of the executable file of the algorithm. When you upload the file the server will add a &quot;;&quot; plus a timestamp of the upload moment with the format &quot;yyyy-MM-dd_HH-mm-ss&quot; before the extension. 
+<li><code>filename</code> (required). It&#39;s the name of the executable file of the algorithm. When you upload the file the server will add a &quot;;&quot; plus a timestamp of the upload moment with the format <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> before the extension. 
 
 <ul>
 <li>Its size must be in the range [1..10] MB.</li>
@@ -393,12 +393,12 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>createDate</code> (generated). Timestamp that the server store for the algorithm in the moment of creation.
 
 <ul>
-<li>The format of the date is &quot;yyyy-MM-dd_HH-mm-ss&quot;.</li>
+<li>The format of the date is <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>.</li>
 </ul></li>
 <li><code>lastUpdateDate</code> (generated). Timestamp that the server store for the algorithm when the algorithm is modified.
 
 <ul>
-<li>The format of the date is &quot;yyyy-MM-dd_HH-mm-ss&quot;.</li>
+<li>The format of the date is <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>.</li>
 </ul></li>
 <li><code>labels</code> (optional). Labels that are used to classify the algorithms.
 
@@ -459,8 +459,8 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="s2">"tagline"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Solve to schedule employees in sanitary environments"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Heuristic used to create a schedule for employees in sanitary environments"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp sadaliar-problem-1.0-SNAPSHOT-jar-with-dependencies.jar com.kaizten.sadaliar.opt.main.MainJson %s"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_13-32-48"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_13-32-48"</span><span class="w">
+      </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="w">
    </span><span class="p">},</span><span class="w">
    </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70c8aca89d8d39ea0b0420"</span><span class="p">,</span><span class="w">
@@ -468,8 +468,8 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="s2">"tagline"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Vehicle Routing Problem"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_13-32-48"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_13-32-48"</span><span class="w">
+      </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="w">
    </span><span class="p">},</span><span class="w">
    </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70ca01a89d8d39ea0b0422"</span><span class="p">,</span><span class="w">
@@ -477,8 +477,8 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="s2">"tagline"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Quay Crane Scheduling Problem"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Hybrid estimation of distribution algorithm for the quay crane scheduling problem"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp qcsp.jar com.kaizten.qcsp.opt.main.Main %s"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_14-26-35"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_14-26-35"</span><span class="w">
+      </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="w">
    </span><span class="p">},</span><span class="w">
    </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70ca34a89d8d39ea0b0423"</span><span class="p">,</span><span class="w">
@@ -486,8 +486,8 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="s2">"tagline"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Blocks Relocation Problem"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"A domain-specific knowledge-based heuristic for the blocks relocation problem"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp brp.jar com.kaizten.brp.opt.main.Main %s"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_14-35-12"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_14-35-12"</span><span class="w">
+      </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="w">
    </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -558,8 +558,8 @@ IP:PORT/VERSION/API_ENDPOINT
    </span><span class="s2">"tagline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Vehicle Routing Problem"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_14-35-12"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_14-35-12"</span><span class="w">
+   </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>It provides a specific algorithm by indicating its identifier. The algorithm is provided in the response.</p>
@@ -614,8 +614,8 @@ IP:PORT/VERSION/API_ENDPOINT
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"fileName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"file;yyyy/mm/ddThh:mm:ss.extension"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"yyyy/mm/ddThh:mm:ss"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"yyyy/mm/ddThh:mm:ss"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"inputFileDescription"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Description of the input file."</span><span class="p">,</span><span class="w">
     </span><span class="s2">"outputFileDescription"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Description of the output file."</span><span class="p">,</span><span class="w">
     </span><span class="s2">"labels"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
