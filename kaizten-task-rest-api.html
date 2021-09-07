@@ -22,6 +22,8 @@
 .highlight .gp {
   color: #555555;
 }
+.highlight .gs {
+}
 .highlight .gu {
   color: #aaaaaa;
 }
@@ -249,16 +251,16 @@
                     <a href="#get-a-specific-algorithm" class="toc-h2 toc-link" data-title="Get a Specific Algorithm">Get a Specific Algorithm</a>
                   </li>
                   <li>
-                    <a href="#create-a-new-algorithm" class="toc-h2 toc-link" data-title="Create a new Algorithm">Create a new Algorithm</a>
+                    <a href="#create-algorithm" class="toc-h2 toc-link" data-title="Create algorithm">Create algorithm</a>
                   </li>
                   <li>
-                    <a href="#update-an-algorithm" class="toc-h2 toc-link" data-title="Update an Algorithm">Update an Algorithm</a>
+                    <a href="#update-algorithm" class="toc-h2 toc-link" data-title="Update Algorithm">Update Algorithm</a>
                   </li>
                   <li>
                     <a href="#execute-an-algorithm" class="toc-h2 toc-link" data-title="Execute an Algorithm">Execute an Algorithm</a>
                   </li>
                   <li>
-                    <a href="#delete-an-algorithm" class="toc-h2 toc-link" data-title="Delete an Algorithm">Delete an Algorithm</a>
+                    <a href="#delete-algorithm" class="toc-h2 toc-link" data-title="Delete Algorithm">Delete Algorithm</a>
                   </li>
               </ul>
           </li>
@@ -269,7 +271,7 @@
                     <a href="#get-all-tasks" class="toc-h2 toc-link" data-title="Get all tasks">Get all tasks</a>
                   </li>
                   <li>
-                    <a href="#get-all-tasks-statuses" class="toc-h2 toc-link" data-title="Get all the task statuses">Get all the tasks statuses</a>
+                    <a href="#get-all-the-tasks-statuses" class="toc-h2 toc-link" data-title="Get all the tasks Statuses">Get all the tasks Statuses</a>
                   </li>
                   <li>
                     <a href="#get-a-specific-task" class="toc-h2 toc-link" data-title="Get a Specific Task">Get a Specific Task</a>
@@ -296,23 +298,23 @@
                   </li>
               </ul>
           </li>
-		  <li>
+          <li>
             <a href="#labels" class="toc-h1 toc-link" data-title="Labels">Labels</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#list-all-labels" class="toc-h2 toc-link" data-title="List all Labels">List all Labels</a>
+                    <a href="#get-all-labels" class="toc-h2 toc-link" data-title="Get all Labels">Get all Labels</a>
                   </li>
                   <li>
                     <a href="#get-a-specific-label" class="toc-h2 toc-link" data-title="Get a Specific Label">Get a Specific Label</a>
                   </li>
                   <li>
-                    <a href="#create-a-new-label" class="toc-h2 toc-link" data-title="Create a new Label">Create a new Label</a>
+                    <a href="#create-a-new-label" class="toc-h2 toc-link" data-title="Create a new label">Create a new label</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-specific-label" class="toc-h2 toc-link" data-title="Update a Specific Label">Update a Specific Label</a>
                   </li>
                   <li>
                     <a href="#delete-a-specific-label" class="toc-h2 toc-link" data-title="Delete a Specific Label">Delete a Specific Label</a>
-                  </li>
-				  <li>
-                    <a href="#put-a-specific-label" class="toc-h2 toc-link" data-title="Update a Specific Label">Update a Specific Label</a>
                   </li>
               </ul>
           </li>
@@ -328,7 +330,7 @@
         <h1 id='introduction'>Introduction</h1>
 <p>REST API used to define, store, access, and execute algorithms. The algorithms are entities that receive a set of input parameter values and return a set of output parameter values. These algorithms can be machine learning methods, optimization techniques, or simulation models, among others.</p>
 
-<p>The API supports Cross Origin Resource Sharing (CORS) currently for requests from any origin. The following header is included in the corresponding responses: <code>Access-Control-Allow-Origin: *</code>. You can read the <a href="http://www.w3.org/TR/cors/">CORS W3C Recommendation</a> to learn more about CORS.</p>
+<p>The API supports Cross Origin Resource Sharing (CORS) for AJAX requests from any origin. The following header is included in the corresponding responses: <code>Access-Control-Allow-Origin: *</code>. You can read the <a href="http://www.w3.org/TR/cors/">CORS W3C Recommendation</a> to learn more about CORS.</p>
 
 <p>In the remainder of this documentation, it is assumed that the REST API is deployed in an IP and port denoted as <code>IP</code> and <code>PORT</code>, respectively.</p>
 <h1 id='authentication'>Authentication</h1>
@@ -378,54 +380,52 @@ IP:PORT/VERSION/API_ENDPOINT
 <li>Its length must be in the range <code>[1..1000]</code>.</li>
 <li>Digits, whitespaces, <code>.</code>, <code>-</code> and <code>_</code> are valid characters.</li>
 </ul></li>
-
 <li><code>command</code> (required). Command used to execute the algorithm.
+
 <ul>
 <li>Its length must be in the range <code>[1..1000]</code>.</li>
 </ul></li>
+<li><code>filename</code> (required). It&#39;s the name of the executable file of the algorithm. When you upload the file the server will add a &quot;;&quot; plus a timestamp of the upload moment with the format &quot;yyyy-MM-dd_HH-mm-ss&quot; before the extension. 
 
-<li><code>fileName</code> (required). It's the name of the executable file of the algorithm. When you upload the file the server will add a ";" plus a timestamp of the upload moment with the format "yyyy-MM-dd_HH-mm-ss" before the extension.
 <ul>
-<li>Its size must be in the range <code>[1..10000]</code> MB.</li>
+<li>Its size must be in the range [1..10] MB.</li>
 </ul></li>
-
 <li><code>createDate</code> (generated). Timestamp that the server store for the algorithm in the moment of creation.
-<ul>
-<li>The format of the date is "yyyy-MM-dd_HH-mm-ss".</li>
-</ul></li>
 
+<ul>
+<li>The format of the date is &quot;yyyy-MM-dd_HH-mm-ss&quot;.</li>
+</ul></li>
 <li><code>lastUpdateDate</code> (generated). Timestamp that the server store for the algorithm when the algorithm is modified.
-<ul>
-<li>The format of the date is "yyyy-MM-dd_HH-mm-ss".</li>
-</ul></li>
 
+<ul>
+<li>The format of the date is &quot;yyyy-MM-dd_HH-mm-ss&quot;.</li>
+</ul></li>
 <li><code>labels</code> (optional). Labels that are used to classify the algorithms.
-<ul>
-<li>It is an array of names with size between the range <code>[1..100]</code>.</li>
-</ul></li>
 
+<ul>
+<li>It is an array of names with size between the range [1..100].</li>
+</ul></li>
 <li><code>inputFileDescription</code> (optional). It is a detailed explanation of the files used as imput for the algorithm.
-<ul>
-<li>Its length must be in the range <code>[1..1000]</code>.</li>
-</ul></li>
 
+<ul>
+<li>Its length must be in the range [1..1000].</li>
+</ul></li>
 <li><code>outputFileDescription</code> (optional). It is a detailed explanation of the file output of the algorithm.
-<ul>
-<li>Its length must be in the range <code>[1..1000]</code>.</li>
-</ul></li>
 
-<li><code>uiSchema</code> (optional). It is a Json Schema used to generate the front end form and also to validate the parameters format of the algorithm.
 <ul>
-<li>It is used the library "vjsf"(Documentation:"https://koumoul-dev.github.io/vuetify-jsonschema-form/latest/") in order to create the front-end form from the Schema</li>
-<li>If it is needed to put a file parameter for the algorithm, the file must be specified in format Base64, in order to do so it must be specified in the Schema that the "data" attribute from the file it's type "string"</li>
+<li>Its length must be in the range [1..1000].</li>
 </ul></li>
+<li><code>jsonSchema</code> (optional). It is a Json Schema used to validate the parameters format of the algorithm.
 
+<ul>
+<li>All files parameters specified for the algorithm needs to be on base64 string format.</li>
+</ul></li>
 </ul>
 <h2 id='task'>Task</h2>
 <ul>
 <li><code>id</code>. Identifier of the task.</li>
 <li><code>name</code>. Name of the task.</li>
-<li><code>algorithmId</code>. Identifier of the algorithm associated with the task. See <a href="#algorithm">Algorithm</a>.</li>
+<li><code>algorithmId</code>. Identifier of the algorithm associated with the task. See <a href="#algorithms">Algorithm</a>.</li>
 <li><code>algorithmName</code>. Name of the algorithm associated with the task.</li>
 <li><code>startTime</code>. Time in which the execution of the task starts. It is expressed in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format (e.g., <code>2020-12-31T13:32:23Z</code>).</li>
 <li><code>finishingTime</code>. Time in which the execution of the task finishes. It is expressed in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format (e.g., <code>2020-12-31T13:32:23Z</code>).</li>
@@ -436,13 +436,13 @@ IP:PORT/VERSION/API_ENDPOINT
 </ul>
 <h2 id='task-state'>Task state</h2>
 <ul>
-<li><code>PENDING</code>. The task is accepted but has not started.</li>
-<li><code>CANCELED</code>. The task is cancelled.</li>
-<li><code>RUNNING</code>. The task is being executed.</li>
-<li><code>COMPLETED</code>. The task is completed.</li>
-<li><code>COMPLETED_ERRORS</code>. The task is completed with errors.</li>
-<li><code>COMPLETED_TIMEOUT</code>. The execution time of the task exeeded the limit.</li>
-<li><code>UNKNOWN</code>. The state is non of the above ones.</li>
+<li><code>PENDING</code> The task is accepted but has not started.</li>
+<li><code>CANCELED</code> The task is cancelled.</li>
+<li><code>RUNNING</code> The task is being executed.</li>
+<li><code>COMPLETED</code> The task is completed.</li>
+<li><code>COMPLETED_ERRORS</code> The task is completed with errors.</li>
+<li><code>COMPLETED_TIMEOUT</code> The execution time of the task exeeded the limit.</li>
+<li><code>UNKNOWN</code> The state is non of the above ones.</li>
 </ul>
 
 <p>In all the cases, the resource identifiers are generated by the system. This means that the client is not allowed to determine them.</p>
@@ -458,36 +458,36 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduling"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tagline"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Solve to schedule employees in sanitary environments"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Heuristic used to create a schedule for employees in sanitary environments"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp sadaliar-problem-1.0-SNAPSHOT-jar-with-dependencies.jar com.kaizten.sadaliar.opt.main.MainJson %s"</span><span class="w">
-      </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_13-32-48"</span><span class="w"></span>
-      </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_13-32-48"</span><span class="w"></span>
+      </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp sadaliar-problem-1.0-SNAPSHOT-jar-with-dependencies.jar com.kaizten.sadaliar.opt.main.MainJson %s"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_13-32-48"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_13-32-48"</span><span class="w">
    </span><span class="p">},</span><span class="w">
    </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70c8aca89d8d39ea0b0420"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"vrp"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tagline"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Vehicle Routing Problem"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"</span><span class="w">
-      </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_13-32-48"</span><span class="w"></span>
-      </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_13-32-48"</span><span class="w"></span>
+      </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_13-32-48"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_13-32-48"</span><span class="w">
    </span><span class="p">},</span><span class="w">
    </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70ca01a89d8d39ea0b0422"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"qcsp"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tagline"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Quay Crane Scheduling Problem"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Hybrid estimation of distribution algorithm for the quay crane scheduling problem"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp qcsp.jar com.kaizten.qcsp.opt.main.Main %s"</span><span class="w">
-      </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_14-26-35"</span><span class="w"></span>
-      </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_14-26-35"</span><span class="w"></span>
+      </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp qcsp.jar com.kaizten.qcsp.opt.main.Main %s"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_14-26-35"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_14-26-35"</span><span class="w">
    </span><span class="p">},</span><span class="w">
    </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70ca34a89d8d39ea0b0423"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"brp"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tagline"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Blocks Relocation Problem"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"A domain-specific knowledge-based heuristic for the blocks relocation problem"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp brp.jar com.kaizten.brp.opt.main.Main %s"</span><span class="w">
-      </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_14-35-12"</span><span class="w"></span>
-      </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_14-35-12"</span><span class="w"></span>
+      </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp brp.jar com.kaizten.brp.opt.main.Main %s"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_14-35-12"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_14-35-12"</span><span class="w">
    </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -515,10 +515,10 @@ IP:PORT/VERSION/API_ENDPOINT
 </tr>
 <tr>
 <td><code>filters</code></td>
-<td>It is a JSON string providing the data for the filters. This parameter is required, if it is not provided the call will respond with a Bad Request status.</td>
+<td>It is a JSON string providing the data for the filters, this parameter is not required.</td>
 </tr>
 </tbody></table>
-<h3 id='json-parameters'>JSON filters Parameters</h3>
+<h3 id='json-filters-parameters'>JSON filters Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -527,7 +527,7 @@ IP:PORT/VERSION/API_ENDPOINT
 </thead><tbody>
 <tr>
 <td><code>name</code></td>
-<td>Regex used to filter the name of the algorithms</td>
+<td>Regex used to filter the name of the algorithms.</td>
 </tr>
 <tr>
 <td><code>labels</code></td>
@@ -546,10 +546,7 @@ IP:PORT/VERSION/API_ENDPOINT
 <td>The request has succeeded and the algorithms are included in the body of the response. The following headers are included in the response: <ul><li><code>Pagination-Count: 1</code></li><li><code>Pagination-Size: 20</code></li><li><code>Pagination-Page: 0</code></li><li><code>Total-Count: 5</code></li></ul> where <code>Pagination-Count</code> is the number of existing pages, <code>Pagination-Size</code> is the size of each page, <code>Pagination-Page</code> is the index of the current page, and <code>Total-Count</code> is the number of entities in the server.</td>
 </tr>
 </tbody></table>
-
-<h2 id='get-a-specific-algorithm'>Get a Specific Algorithm</h2>
-<pre class="highlight shell tab-shell">
-<code>curl http://IP:PORT/VERSION/algorithms/:id <span class="se">\</span>
+<h2 id='get-a-specific-algorithm'>Get a Specific Algorithm</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/algorithms/:id <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
@@ -560,13 +557,13 @@ IP:PORT/VERSION/API_ENDPOINT
    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"solver-vehicle-routing-problem"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"tagline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Vehicle Routing Problem"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"</span><span class="w">
-   </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_14-35-12"</span><span class="w"></span>
-   </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_14-35-12"</span><span class="w"></span>
+   </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_14-35-12"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22_14-35-12"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>It provides a specific algorithm by indicating its identifier. The algorithm is provided in the response.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET IP:PORT/VERSION/algorithms/:id</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
@@ -580,7 +577,7 @@ IP:PORT/VERSION/API_ENDPOINT
 <td>Identifier of the requested algorithm.</td>
 </tr>
 </tbody></table>
-<h3 id='responses-3'>Responses</h3>
+<h3 id='responses-2'>Responses</h3>
 <table><thead>
 <tr>
 <th>HTTP Code</th>
@@ -596,130 +593,116 @@ IP:PORT/VERSION/API_ENDPOINT
 <td>The algorithm with the given identifier is not found.</td>
 </tr>
 </tbody></table>
-
-<h2 id='create-a-new-algorithm'>Create a new algorithm</h2>
-<pre class="highlight shell tab-shell">
-	<code>curl -X POST IP:PORT/VERSION/algorithms <span class="se">\</span>
-		-H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
-		-H <span class="s2">"Content-Type: multipart/form-data"</span> <span class="se">\ </span>
-		-H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
-    -F <span class="s2">"file=@FILE_TO_SEND"</span> <span class="se">\</span>
-		-d <span class="s1">'form={ \
-			"name": "vrp",
-			"tagline": "Solver of the Vehicle Routing Problem",
-			"description": "Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers",
-			"command" : "java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"
-		}'</span>
-	</code>
-</pre>
+<h2 id='create-algorithm'>Create algorithm</h2><pre class="highlight shell tab-shell"><code>curl -X POST IP:PORT/VERSION/algorithms <span class="se">\</span>
+    -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+    -H <span class="s2">"Content-Type: multipart/form-data"</span> <span class="se">\ </span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+    -d <span class="s1">'form={ \
+        "name": "vrp",
+        "tagline": "Solver of the Vehicle Routing Problem",
+        "description": "Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers",
+        "command" : "java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"
+    }'</span>
+</code></pre>
 <blockquote>
-	<p>The above command returns a JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json">
-	<code><span class="p">{</span><span class="w"></span>
-		<span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Algorithm ID"</span><span class="p">,</span><span class="w"></span>
-		<span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"name-of-the-algorithm"</span><span class="p">,</span><span class="w"></span>
-		<span class="s2">"tagline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tagline of the algorithm."</span><span class="p">,</span><span class="w"></span>
-		<span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Description of the algorithm."</span><span class="p">,</span><span class="w"></span>
-		<span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"command"</span><span class="p">,</span><span class="w"></span>
-		<span class="s2">"fileName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"file;yyyy/mm/dd-hh:mm:ss.extension"</span><span class="p">,</span><span class="w"></span>
-		<span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"yyyy/mm/dd hh:mm:ss"</span><span class="p">,</span><span class="w"></span>
-		<span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"yyyy/mm/dd hh:mm:ss"</span><span class="p">,</span><span class="w"></span>
-		<span class="s2">"inputFileDescription"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Description of the input file."</span><span class="p">,</span><span class="w"></span>
-		<span class="s2">"outputFileDescription"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Description of the output file."</span><span class="p">,</span><span class="w"></span>
-		<span class="s2">"labels"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-			<span class="p">{</span><span class="w"></span>
-				<span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label ID."</span><span class="p">,</span><span class="w"></span>
-				<span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label name."</span><span class="w"></span>
-			<span class="p">}</span><span class="w"><span class="p">,</span></span>
-			<span class="p">{</span><span class="w"></span>
-				<span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label ID."</span><span class="p">,</span><span class="w"></span>
-				<span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label name."</span><span class="w"></span>
-			<span class="p">}</span><span class="w"></span>
-		</span><span class="p">]</span><span class="w"></span>
-	<span class="p">}</span><span class="w"></span>
-	</code>
-</pre>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6f565acff3233408180978"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"solver-vehicle-routing-problem"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tagline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Vehicle Routing Problem"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fileName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"file;yyyy/mm/ddThh:mm:ss.extension"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"yyyy/mm/ddThh:mm:ss"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"yyyy/mm/ddThh:mm:ss"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"inputFileDescription"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Description of the input file."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"outputFileDescription"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Description of the output file."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"labels"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label ID."</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label name."</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label ID."</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label name."</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p>It creates a new algorithm by specifying at least the required fields. The created algorithm is provided in the response.</p>
 
 <aside class="notice">
 Only administrators can perform this operation.
 </aside>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST http://IP:PORT/VERSION/algorithms</code></p>
-
 <h3 id='request-parameters'>Request Parameters</h3>
-<p>It can be provided the executable file of the algorithm as a parameter to the request, as follows.</p>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Paramenter</th>
 <th>Description</th>
 <th>Required</th>
 </tr>
-</thead>
-<tbody>
-	<tr>
-		<td><code>file</code></td>
-		<td>The file of the executable.</td>
-		<td>No</td>
-	</tr>
-  <tr>
-		<td><code>form</code></td>
-		<td>A Json with all the form data.</td>
-		<td>No</td>
-	</tr>
-</tbody>
-</table>
-
-<h3 id='form-parameters'>JSON Form Parameters</h3>
+</thead><tbody>
+<tr>
+<td><code>file</code></td>
+<td>The file of the executable.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>form</code></td>
+<td>A Json with all the form data.</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h3 id='json-form-parameters'>JSON Form Parameters</h3>
 <p>Inside the JSON specified in the body it can be provided the following parameters</p>
+
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Paramenter</th>
 <th>Description</th>
 <th>Required</th>
 </tr>
-</thead>
-<tbody>
-	<tr>
-		<td><code>name</code></td>
-		<td>The name of the algorithm.</td>
-		<td>Yes</td>
-	</tr>
-	<tr>
-		<td><code>description</code></td>
-		<td>The description of the algorithm.</td>
-		<td>No</td>
-	</tr>
-	<tr>
-		<td><code>tagline</code></td>
-		<td>The tagline of the algorithm.</td>
-		<td>No</td>
-	</tr>
-	<tr>
-		<td><code>command</code></td>
-		<td>The command of the algorithm.</td>
-		<td>No</td>
-	</tr>
-	<tr>
-		<td><code>labels</code></td>
-		<td>The labels of the algorithm. Must be specified as array of strings representing the names of the labels.</td>
-		<td>No</td>
-	</tr>
-	<tr>
-		<td><code>inputFileDescription</code></td>
-		<td>The description of the input file of the algorithm.</td>
-		<td>No</td>
-	</tr>
-	<tr>
-		<td><code>outputFileDescription</code></td>
-		<td>The description of the output file of the algorithm.</td>
-		<td>No</td>
-	</tr>
-	</tbody>
-</table>
-
-<h3 id='responses-2'>Responses</h3>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>The name of the algorithm.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>The description of the algorithm.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>tagline</code></td>
+<td>The tagline of the algorithm.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>command</code></td>
+<td>The command of the algorithm.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>labels</code></td>
+<td>The labels of the algorithm. Must be specified as array of strings representing the names of the labels.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>inputFileDescription</code></td>
+<td>The description of the input file of the algorithm.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>outputFileDescription</code></td>
+<td>The description of the output file of the algorithm.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='responses-3'>Responses</h3>
 <table><thead>
 <tr>
 <th>HTTP Code</th>
@@ -735,31 +718,28 @@ Only administrators can perform this operation.
 <td>There is an algorithm with the same name.</td>
 </tr>
 </tbody></table>
-
-<h2 id='update-an-algorithm'>Update an Algorithm</h2>
-<pre class="highlight shell tab-shell">
-	<code>curl -X PUT IP:PORT/VERSION/algorithms/:id <span class="se">\</span>
-		-H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
-		-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
-		-H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
-		-d <span class="s1">'{ \
-			"name": "vrp",
-			"tagline": "Solver of the Vehicle Routing Problem",
-			"description": "Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers",
-			"command" : "java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"
-		}'</span>
-	</code>
-</pre>
+<h2 id='update-algorithm'>Update Algorithm</h2><pre class="highlight shell tab-shell"><code>curl -X POST IP:PORT/VERSION/algorithms <span class="se">\</span>
+    -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+    -H <span class="s2">"Content-Type: multipart/form-data"</span> <span class="se">\ </span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+    -d <span class="s1">'form={ \
+        "name": "vrp",
+        "tagline": "Solver of the Vehicle Routing Problem",
+        "description": "Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers",
+        "command" : "java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"
+    }'</span>
+</code></pre>
 <p>It update the data from an algorithm by specifying the fields to be modified.</p>
+
 <aside class="notice">
 Only administrators can perform this operation.
 </aside>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>PUT http://IP:PORT/VERSION/algorithms/:id</code></p>
-<h3 id='query-parameters'>URL Parameters</h3>
+<h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Parameters</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -768,9 +748,9 @@ Only administrators can perform this operation.
 <td>The ID of the algorithm to be modified.</td>
 </tr>
 </tbody></table>
-<h3 id='body-parameters'>Body Parameters</h3>
-<p>The parameters of the request are the exact same ones as in the create method.</p>
-<h3 id='responses-2'>Responses</h3>
+<h3 id='request-parameters-2'>Request Parameters</h3>
+<p>The parameters of the request are the exact same ones as in the create method. <a href="#create-algorithm">See</a></p>
+<h3 id='responses-4'>Responses</h3>
 <table><thead>
 <tr>
 <th>HTTP Code</th>
@@ -783,17 +763,15 @@ Only administrators can perform this operation.
 </tr>
 <tr>
 <td><code>404</code></td>
-<td>There is no algorithm found, for the specified ID.</td>
+<td>here is no algorithm found, for the specified ID.</td>
 </tr>
 </tbody></table>
-
-<h2 id='execute-an-algorithm'>Execute an Algorithm</h2>
-<pre class="highlight shell tab-shell"><code>curl -X POST http://IP:PORT/VERSION/algorithms/:name <span class="se">\</span>
+<h2 id='execute-an-algorithm'>Execute an Algorithm</h2><pre class="highlight shell tab-shell"><code>curl -X POST http://IP:PORT/VERSION/algorithms/:name <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
     -H <span class="s2">"Content-Type: multipart/form-data"</span> <span class="se">\</span>
-    -d <span class="s2">"taskName=\"Schedule of users in SC\""</span> <span class="se">\</span>
-    -F <span class="s1">'jsonForm={
-            "inputFile": "RXN0byBzb24gZGF0b3MgZGVsIGZpY2hlcm8gMg=="
+  -d <span class="s2">"taskName=</span><span class="se">\"</span><span class="s2">Schedule of users in SC</span><span class="se">\"</span><span class="s2">"</span> <span class="se">\</span>
+    -d <span class="s1">'{ 
+            "inputFile": "RXN0byBzb24gZGF0b3MgZGVsIGZpY2hlcm8gMg==" 
     }'</span>
 </code></pre>
 <blockquote>
@@ -804,18 +782,19 @@ Only administrators can perform this operation.
     </span><span class="s2">"taskName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Schedule of users in SC"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"algorithmId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6f565acff3233408180978"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"algorithmName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"solver-vehicle-routing-problem"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"inputData"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"solver-vehicle-routing-problem;2021-04-16_14-23-38.json"</span><span class="p">,</span><span class="w"></span>
+    </span><span class="s2">"inputData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"solver-vehicle-routing-problem;2021-04-16T14-23-38.json"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>It executes a specific algorithm by indicating its name. The algorithm can receive parameter values in the body of the request in the following formats:
+<p>It executes a specific algorithm by indicating its name. The algorithm can receive parameter values in the body of the request in the following formats:</p>
+
 <ul>
-    <li><code>Content-Type: application/json</code>. JSON where each key is the name of the parameter and each value is the corresponding parameter value.</li>
-</ul></p>
+<li><code>Content-Type: multipart/form-data</code></li>
+</ul>
 
 <p>The information about the task created is provided in the response.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>POST IP:PORT/VERSION/algorithms/:name</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -840,8 +819,8 @@ Only administrators can perform this operation.
 </tr>
 </tbody></table>
 <h3 id='form-parameters'>Form Parameters</h3>
-<p>The parameters specified as <code>jsonForm</code> must respect the Json Schema of each algorithm specified in the field <code>uiSchema</code></p>
-<h3 id='responses-4'>Responses</h3>
+<p>The parameters specified as <code>jsonForm</code> must respect the Json Schema of each algorithm specified in the field <code>jsonSchema</code>.</p>
+<h3 id='responses-5'>Responses</h3>
 <table><thead>
 <tr>
 <th>HTTP Code</th>
@@ -857,19 +836,18 @@ Only administrators can perform this operation.
 <td>The algorithm with the given name is not found.</td>
 </tr>
 </tbody></table>
-
-<h2 id='delete-an-algorithm'>Delete an Algorithm</h2><pre class="highlight shell tab-shell">
-<code>curl -X DELETE http://IP:PORT/VERSION/algorithms/:id <span class="se">\</span>
+<h2 id='delete-algorithm'>Delete Algorithm</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE http://IP:PORT/VERSION/algorithms/:id <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
     -H <span class="s2">"Content-Type: text/json"</span> <span class="se">\</span>
 </code></pre>
 <p>It is used to remove an algorithm from the database.</p>
+
 <aside class="notice">
 Only administrators can perform this operation.
 </aside>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>DELETE IP:PORT/VERSION/algorithms/:id</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -877,11 +855,11 @@ Only administrators can perform this operation.
 </tr>
 </thead><tbody>
 <tr>
-<td><code>ID</code></td>
+<td><code>id</code></td>
 <td>ID of the algorithm to be deleted.</td>
 </tr>
 </tbody></table>
-<h3 id='responses-4'>Responses</h3>
+<h3 id='responses-6'>Responses</h3>
 <table><thead>
 <tr>
 <th>HTTP Code</th>
@@ -889,7 +867,7 @@ Only administrators can perform this operation.
 </tr>
 </thead><tbody>
 <tr>
-<td><code>200</code></td>
+<td><code>202</code></td>
 <td>The algorithm has been deleted successfully.</td>
 </tr>
 <tr>
@@ -897,7 +875,6 @@ Only administrators can perform this operation.
 <td>The algorithm with the given ID is not found.</td>
 </tr>
 </tbody></table>
-
 <h1 id='tasks'>Tasks</h1><h2 id='get-all-tasks'>Get all tasks</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/tasks <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span> 
 </code></pre>
@@ -913,7 +890,7 @@ Only administrators can perform this operation.
       </span><span class="s2">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETED"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"finishingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:14.128Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"inputData"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduling;2021-04-16_14-15-38.json"</span><span class="w">
+      </span><span class="s2">"inputData"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduling;2021-04-16_14-15-38.json"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"outputDataId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"puCq2hblyo1vctQG69RnVl26"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"exitCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
    </span><span class="p">},</span><span class="w">
@@ -925,7 +902,7 @@ Only administrators can perform this operation.
       </span><span class="s2">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETED"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"finishingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:14.128Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"inputData"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduling;2021-04-16_14-23-12.json"</span><span class="w">
+      </span><span class="s2">"inputData"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduling;2021-04-16_14-23-12.json"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"outputDataId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1q141a6d19q161as916das7q"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"exitCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
    </span><span class="p">}</span><span class="w">
@@ -958,7 +935,7 @@ Only those tasks of the requesting user are provided in the response but for adm
 <td>JSON string with all the provided filters.</td>
 </tr>
 </tbody></table>
-<h3 id='json-parameters'>JSON Filters Parameters</h3>
+<h3 id='json-filters-parameters'>JSON Filters Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -967,15 +944,15 @@ Only those tasks of the requesting user are provided in the response but for adm
 </thead><tbody>
 <tr>
 <td><code>name</code></td>
-<td>The name of the task, it is not required the full name.<td>
+<td>The name of the task, it is not required the full name.</td>
 </tr>
 <tr>
 <td><code>algorithmName</code></td>
-<td>The name of the algorithm, it is not required the full name.<td>
+<td>The name of the algorithm, it is not required the full name.</td>
 </tr>
 <tr>
 <td><code>status</code></td>
-<td>The status of the task, it is required the full name of the status.<td>
+<td>The status of the task, it is required the full name of the status.</td>
 </tr>
 </tbody></table>
 <h3 id='responses'>Responses</h3>
@@ -990,29 +967,22 @@ Only those tasks of the requesting user are provided in the response but for adm
 <td>The request has succeeded and the tasks are included in the body of the response. The following headers are included in the response: <ul><li><code>Pagination-Count: 1</code></li><li><code>Pagination-Size: 25</code></li><li><code>Pagination-Page: 0</code></li><li><code>Total-Count: 5</code></li></ul> where <code>Pagination-Count</code> is the number of existing pages, <code>Pagination-Size</code> is the size of each page, <code>Pagination-Page</code> is the index of the current page, and <code>Total-Count</code> is the number of entities in the server.</td>
 </tr>
 </tbody></table>
-
-<h2 id='get-all-tasks-statuses'>Get all the tasks Statuses</h2>
-<pre class="highlight shell tab-shell">
-<code>curl http://IP:PORT/VERSION/tasks/status <span class="se">\</span>
-    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> 
+<h2 id='get-all-the-tasks-statuses'>Get all the tasks Statuses</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/tasks/status <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
-<p>This method provides all the statuses available for any task</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://IP:PORT/VERSION/tasks/status</code></p>
-<h3 id='responses'>Responses</h3>
-<table><thead>
-<tr>
-<th>HTTP Code</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>200</code></td>
-<td>The request was successfully.</td>
-</tr>
-</tbody></table>
-
-<h2 id='get-a-specific-task'>Get a Specific Task</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/tasks/:id <span class="se">\</span>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w"> 
+  </span><span class="s2">"PENDING"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"RUNNING"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"CANCELED"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"COMPLETED"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"COMPLETED_ERRORS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"COMPLETED_TIMEOUT"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"UNKNOWN"</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h2 id='get-a-specific-task'>Get a Specific Task</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/tasks/:id <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
@@ -1026,9 +996,7 @@ Only those tasks of the requesting user are provided in the response but for adm
    </span><span class="s2">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETED"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"startingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"finishingTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:14.128Z"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"inputDataId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"IDgmb7fSfI8coAgacFCNpjaf"</span><span class="w">
-   </span><span class="p">],</span><span class="w">
+   </span><span class="s2">"inputData"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduling;2021-04-16_14-23-12.json"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"outputDataId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"puCq2hblyo1vctQG69RnVl26"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"exitCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1064,16 +1032,11 @@ Only those tasks of the requesting user are provided in the response but for adm
 <td>The task with the given identifier is not found.</td>
 </tr>
 </tbody></table>
-
-<h2 id='delete-a-task'>Delete a Task</h2>
-<pre class="highlight shell tab-shell">
-<code>curl -X DELETE http://IP:PORT/VERSION/tasks/:id <span class="se">\</span>
-    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
-    -H <span class="s2">"Content-Type: text/json"</span> <span class="se">\</span>
-    -d <span class="s2">"id=611ce6fc2658564692c77912"</span>
+<h2 id='delete-a-task'>Delete a Task</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE http://IP:PORT/VERSION/tasks/:id <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <p>It is used to remove a task from the database.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>DELETE IP:PORT/VERSION/tasks/:id</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
@@ -1083,11 +1046,11 @@ Only those tasks of the requesting user are provided in the response but for adm
 </tr>
 </thead><tbody>
 <tr>
-<td><code>ID</code></td>
+<td><code>id</code></td>
 <td>ID of the task to be deleted.</td>
 </tr>
 </tbody></table>
-<h3 id='responses-4'>Responses</h3>
+<h3 id='responses-3'>Responses</h3>
 <table><thead>
 <tr>
 <th>HTTP Code</th>
@@ -1103,7 +1066,6 @@ Only those tasks of the requesting user are provided in the response but for adm
 <td>The task with the given ID is not found.</td>
 </tr>
 </tbody></table>
-
 <h1 id='data'>Data</h1><h2 id='list-all-files'>List all files</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/data <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span> 
 </code></pre>
@@ -1144,7 +1106,13 @@ Only those tasks of the requesting user are provided in the response but for adm
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns the file contained in the body of the response.</p>
+<p>The above command returns the file contained in the body of the response.
+<code>json
+{
+  &quot;name&quot; : &quot;xml.xls&quot;,
+  &quot;url&quot; : &quot;http://localhost:8080/v1/data/xml.xls&quot;
+}
+</code></p>
 </blockquote>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET IP:PORT/VERSION/data/:name</code></p>
@@ -1234,29 +1202,24 @@ Only those tasks of the requesting user are provided in the response but for adm
 <td>The file to delete does not exist.</td>
 </tr>
 </tbody></table>
-
-<h1 id='labels'>Label</h1>
-<h2 id='list-all-labels'>List all labels</h2>
-<pre class="highlight shell tab-shell">
-	<code>curl http://IP:PORT/VERSION/labels 
-		<span class="se">\</span>-H <span class="s2">"Authorization: YOUR_API_KEY"</span> 
-	</code>
-</pre>
+<h1 id='labels'>Labels</h1><h2 id='get-all-labels'>Get all Labels</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/labels <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> 
+</code></pre>
 <blockquote>
-	<p>The above command returns a JSON structured like this:</p>
+<p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61028b9ddbad8454cb62eb69"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"label1"</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6f563bcff3233408180977"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"data-science"</span><span class="w">
    </span><span class="p">},</span><span class="w">
    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61028b9ddbad8454cb61eb63"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"label2"</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6f565acff3233408180978"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"optimization"</span><span class="w">
    </span><span class="p">},</span><span class="w">
    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61028b9ddbad8454cb62eb62"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"label3"</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6f565acff3233408180979"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"simulation"</span><span class="w">
    </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -1275,13 +1238,18 @@ Only those tasks of the requesting user are provided in the response but for adm
 <td>The request has succeeded and the labels are included in the body of the response.</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-specific-label'>Get a Specific Label</h2>
-<pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/labels/:name <span class="se">\</span>
-    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+<h2 id='get-a-specific-label'>Get a Specific Label</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/labels/:name <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> 
 </code></pre>
 <blockquote>
-<p>The above command returns a label contained in the body of the response.</p>
+<p>The above command returns JSON structured like this:</p>
 </blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6f563bcff3233408180977"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"data-science"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It provides the information of the specified label.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET IP:PORT/VERSION/labels/:name</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
@@ -1305,40 +1273,34 @@ Only those tasks of the requesting user are provided in the response but for adm
 </thead><tbody>
 <tr>
 <td><code>200</code></td>
-<td>The request has succeeded. The content of the label is included in the body of the response.</td>
+<td>The request has succeeded and the labels are included in the body of the response.</td>
 </tr>
 <tr>
 <td><code>404</code></td>
 <td>The lalbel with the given identifier is not found.</td>
 </tr>
 </tbody></table>
-<h2 id='create-a-new-label'>Create a new label</h2>
-<pre class="highlight shell tab-shell"><code>curl -X POST IP:PORT/VERSION/label <span class="se">\</span>
-  -d <span class="s2">"name=name"</span><span class="s1">'
-</span></code></pre>
+<h2 id='create-a-new-label'>Create a new label</h2><pre class="highlight shell tab-shell"><code>curl -X POST IP:PORT/VERSION/labels <span class="se">\</span>
+    -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+    -d <span class="s1">'{"name": "data-science"}'</span>
+</code></pre>
 <blockquote>
-<p>The above command returns the content of the label created:</p>
+<p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61028b9ddbad8454cb61eb63"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"label1"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6f565acff3233408180978"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"data-science"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>It creates a new label by specifying its name.</p>
-<h3 id='http-request-3'>HTTP request</h3>
+
+<aside class="notice">
+Only administrators can perform this operation.
+</aside>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST http://IP:PORT/VERSION/labels</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>name</code></td>
-<td>Name of the new label.</td>
-</tr>
-</tbody></table>
 <h3 id='responses-3'>Responses</h3>
 <table><thead>
 <tr>
@@ -1348,50 +1310,34 @@ Only those tasks of the requesting user are provided in the response but for adm
 </thead><tbody>
 <tr>
 <td><code>201</code></td>
-<td>The request has been fulfilled and as result a label has been created.</td>
-</tr>
-</tbody></table>
-<h2 id='delete-a-specific-label'>Delete a Specific Label</h2>
-<pre class="highlight shell tab-shell"><code>curl -X DELETE IP:PORT/VERSION/labels/:id 
-    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
-</code></pre>
-<p>It deletes a label using its identifier (<code>:id</code>).</p>
-<h3 id='http-request-4'>HTTP Request</h3>
-<p><code>DELETE http://IP:PORT/VERSION/labels/:id</code></p>
-<h3 id='responses-4'>Responses</h3>
-<table><thead>
-<tr>
-<th>HTTP Code</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>200</code></td>
-<td>The request has been fulfilled and as result a label has been deleted.</td>
+<td>The request has been fulfilled and has resulted in one label being created. The new label is included in the body of the response.</td>
 </tr>
 <tr>
 <td><code>404</code></td>
-<td>The label to delete does not exist.</td>
+<td>There is a label with the same name.</td>
 </tr>
 </tbody></table>
-
-<h2 id='put-a-specific-label'>Update a Specific Label</h2>
-<pre class="highlight shell tab-shell"><code>curl -X PUT IP:PORT/VERSION/labels/:id 
-    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
-	-d <span class="s2">"name=name"</span><span class="s1">'
+<h2 id='update-a-specific-label'>Update a Specific Label</h2><pre class="highlight shell tab-shell"><code>curl -X PUT http://IP:PORT/VERSION/labels/:id <span class="se">\</span>
+    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+    -d <span class="s1">'{"name": "data-science2"}'</span>
 </code></pre>
 <blockquote>
-<p>The above command returns a JSON structured like this:</p>
+<p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>{
-   "id" : "61028b9ddbad8454cb61eb63",
-   "name" : "label1"
-}
-</code></pre>
-<p>It updates a label using its identifier (<code>:id</code>).</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6f565acff3233408180978"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"data-science2"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It updates a specific label by indicating its identifier (<code>:id</code>).</p>
+
+<aside class="notice">
+Only administrators can perform this operation.
+</aside>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>PUT http://IP:PORT/VERSION/labels/:id</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1399,8 +1345,8 @@ Only those tasks of the requesting user are provided in the response but for adm
 </tr>
 </thead><tbody>
 <tr>
-<td><code>name</code></td>
-<td>New name for the specified label.</td>
+<td><code>id</code></td>
+<td>Identifier of the label to update.</td>
 </tr>
 </tbody></table>
 <h3 id='responses-4'>Responses</h3>
@@ -1412,11 +1358,45 @@ Only those tasks of the requesting user are provided in the response but for adm
 </thead><tbody>
 <tr>
 <td><code>200</code></td>
-<td>The request has been fulfilled and as result a label has been updated.</td>
+<td>The request has succeeded. The label is included in the body of the response.</td>
 </tr>
 <tr>
 <td><code>404</code></td>
-<td>The file to update does not exist.</td>
+<td>The label with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-specific-label'>Delete a Specific Label</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE IP:PORT/VERSION/labels/:id 
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6f565acff3233408180978"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"data-science"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It deletes a label using its identifier (<code>:id</code>).</p>
+
+<aside class="notice">
+Only administrators can perform this operation.
+</aside>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE http://IP:PORT/VERSION/labels</code></p>
+<h3 id='responses-5'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has been fulfilled and has resulted in one label being deleted. The deleted label is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The label to delete does not exist.</td>
 </tr>
 </tbody></table>
 
