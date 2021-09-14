@@ -240,7 +240,7 @@
                     <a href="#task-state" class="toc-h2 toc-link" data-title="Task state">Task state</a>
                   </li>
                   <li>
-                    <a href="#labels" class="toc-h2 toc-link" data-title="Labels">Labels</a>
+                    <a href="#label" class="toc-h2 toc-link" data-title="Label">Label</a>
                   </li>
               </ul>
           </li>
@@ -388,12 +388,12 @@ IP:PORT/VERSION/API_ENDPOINT
 <ul>
 <li>Its length must be in the range <code>[1..1000]</code>.</li>
 </ul></li>
-<li><code>fileName</code> (required). It&#39;s the name of the executable file of the algorithm. When a file it&#39;s uploaded it will be stored in the server as algorithmId.extension. 
+<li><code>fileName</code> (required). It&#39;s the name of the executable file of the algorithm. When a file is uploaded it will be stored in the server as algorithmId.extension. 
 
 <ul>
 <li>Its length must be in the range <code>[1..100]</code>.</li>
 </ul></li>
-<li><code>creationDate</code> (generated). Timestamp that the server store for the algorithm in the moment of it&#39;s creation.
+<li><code>creationDate</code> (generated). Timestamp that the server store for the algorithm in the moment of its creation.
 
 <ul>
 <li>The format of the date is <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>.</li>
@@ -406,17 +406,17 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>labels</code> (optional). Labels that are used to classify the algorithms.
 
 <ul>
-<li>It is an array of names with size between the range [1..100].</li>
+<li>It is an array of names with size between the range <code>[1..100]</code>.</li>
 </ul></li>
 <li><code>inputFileDescription</code> (optional). It is a detailed explanation of the files used as input for the algorithm.
 
 <ul>
-<li>Its length must be in the range [1..1000].</li>
+<li>Its length must be in the range <code>[1..1000]</code>.</li>
 </ul></li>
 <li><code>outputFileDescription</code> (optional). It is a detailed explanation of the file output of the algorithm.
 
 <ul>
-<li>Its length must be in the range [1..1000].</li>
+<li>Its length must be in the range <code>[1..1000]</code>.</li>
 </ul></li>
 <li><code>jsonSchema</code> (optional). It is a JSON Schema used to validate the parameters format of the algorithm.
 
@@ -447,7 +447,7 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>COMPLETED_TIMEOUT</code> The execution time of the task exeeded the limit.</li>
 <li><code>UNKNOWN</code> The state is non of the above ones.</li>
 </ul>
-<h2 id='labels'>Labels</h2>
+<h2 id='label'>Label</h2>
 <ul>
 <li><code>id</code>. Identifier of the label.</li>
 <li><code>name</code>. Name of the label.</li>
@@ -466,7 +466,7 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Heuristic used to create a schedule for employees in sanitary environments"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp sadaliar-problem-1.0-SNAPSHOT-jar-with-dependencies.jar com.kaizten.sadaliar.opt.main.MainJson %s"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"fileName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5fec87958614ac5386471ced.jar"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creationDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="w">
    </span><span class="p">},</span><span class="w">
    </span><span class="p">{</span><span class="w">
@@ -476,7 +476,7 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"fileName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70c8aca89d8d39ea0b0420.jar"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creationDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="w">
    </span><span class="p">},</span><span class="w">
    </span><span class="p">{</span><span class="w">
@@ -486,7 +486,7 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Hybrid estimation of distribution algorithm for the quay crane scheduling problem"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp qcsp.jar com.kaizten.qcsp.opt.main.Main %s"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"fileName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70ca01a89d8d39ea0b0422.jar"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creationDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="w">
    </span><span class="p">},</span><span class="w">
    </span><span class="p">{</span><span class="w">
@@ -496,7 +496,7 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"A domain-specific knowledge-based heuristic for the blocks relocation problem"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp brp.jar com.kaizten.brp.opt.main.Main %s"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"fileName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70ca34a89d8d39ea0b0423.jar"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creationDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="w">
    </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
@@ -565,7 +565,7 @@ IP:PORT/VERSION/API_ENDPOINT
    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"fileName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6f565acff3233408180978.jar"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"creationDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -601,16 +601,16 @@ IP:PORT/VERSION/API_ENDPOINT
 </tr>
 </tbody></table>
 <h2 id='create-algorithm'>Create algorithm</h2><pre class="highlight shell tab-shell"><code>curl -X POST IP:PORT/VERSION/algorithms <span class="se">\</span>
-    -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
-    -H <span class="s2">"Content-Type: multipart/form-data"</span> <span class="se">\ </span>
-    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: multipart/form-data"</span> <span class="se">\ </span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
   -F <span class="s2">"file=@path/to/local/file"</span>
     -d <span class="s1">'form={ \
-        "name": "vrp", \
-        "tagline": "Solver of the Vehicle Routing Problem", \
-        "description": "Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers", \
-        "command" : "java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s" \
-    }'</span>
+    "name": "vrp", \
+    "tagline": "Solver of the Vehicle Routing Problem", \
+    "description": "Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers", \
+    "command" : "java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s" \
+  }'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns a JSON structured like this:</p>
@@ -622,20 +622,20 @@ IP:PORT/VERSION/API_ENDPOINT
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"fileName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6f565acff3233408180978.jar"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"inputFileDescription"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Description of the input file."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"outputFileDescription"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Description of the output file."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"labels"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label ID."</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label name."</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label ID."</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label name."</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"creationDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"inputFileDescription"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Description of the input file."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"outputFileDescription"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Description of the output file."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"labels"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label ID."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label name."</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label ID."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label name."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>It creates a new algorithm by specifying at least the required fields. The created algorithm is provided in the response.</p>
@@ -780,12 +780,12 @@ Only administrators can perform this operation.
 </tr>
 </tbody></table>
 <h2 id='execute-an-algorithm'>Execute an Algorithm</h2><pre class="highlight shell tab-shell"><code>curl -X POST http://IP:PORT/VERSION/algorithms/:name <span class="se">\</span>
-    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
-    -H <span class="s2">"Content-Type: multipart/form-data"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: multipart/form-data"</span> <span class="se">\</span>
   -d <span class="s2">"taskName=</span><span class="se">\"</span><span class="s2">Schedule of users in SC</span><span class="se">\"</span><span class="s2">"</span> <span class="se">\</span>
-    -d <span class="s1">'{ 
-            "inputFile": "RXN0byBzb24gZGF0b3MgZGVsIGZpY2hlcm8gMg==" 
-    }'</span>
+  -d <span class="s1">'{ \
+    "inputFile": "RXN0byBzb24gZGF0b3MgZGVsIGZpY2hlcm8gMg==" \
+  }'</span> <span class="se">\</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -859,20 +859,20 @@ Only administrators can perform this operation.
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"fileName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6f565acff3233408180978.jar"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"createDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"inputFileDescription"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Description of the input file."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"outputFileDescription"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Description of the output file."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"labels"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label ID."</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label name."</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label ID."</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label name."</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"creationDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"inputFileDescription"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Description of the input file."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"outputFileDescription"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Description of the output file."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"labels"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label ID."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label name."</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label ID."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label name."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>It is used to remove an algorithm from the database.</p>
