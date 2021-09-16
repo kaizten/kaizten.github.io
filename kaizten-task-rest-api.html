@@ -757,7 +757,75 @@ Only administrators can perform this operation.
 </tr>
 </tbody></table>
 <h3 id='request-parameters-2'>Request Parameters</h3>
-<p>The parameters of the request are the exact same ones as in the create method. <a href="#create-algorithm">See</a></p>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>file</code></td>
+<td>The file of the executable.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>form</code></td>
+<td>JSON containing all the form data.</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h3 id='json-form-parameters-2'>JSON Form Parameters</h3>
+<p>Inside the JSON specified in the body it can be provided the following parameters</p>
+
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>The name of the algorithm.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>The description of the algorithm.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>tagline</code></td>
+<td>The tagline of the algorithm.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>command</code></td>
+<td>The command of the algorithm.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>labels</code></td>
+<td>The labels of the algorithm. Must be specified as array of strings representing the names of the labels.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>inputFileDescription</code></td>
+<td>The description of the input file of the algorithm.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>outputFileDescription</code></td>
+<td>The description of the output file of the algorithm.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>jsonSchema</code></td>
+<td>JSON Schema which defines the input information for the algorithm.</td>
+<td>No</td>
+</tr>
+</tbody></table>
 <h3 id='responses-4'>Responses</h3>
 <table><thead>
 <tr>
