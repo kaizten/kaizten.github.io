@@ -604,8 +604,11 @@ IP:PORT/VERSION/API_ENDPOINT
   -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: multipart/form-data"</span> <span class="se">\ </span>
   -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
-  -F <span class="s1">'file=@vrp.jar'</span> <span class="se">\</span>
-    -F <span class="s1">'form={"name":"vrp"}'</span>
+  -F <span class="nv">file</span><span class="o">=</span>@vrp.jar <span class="se">\</span>
+  -F <span class="nv">form</span><span class="o">={</span> <span class="se">\</span>
+    <span class="s2">"name"</span>:<span class="s2">"vrp"</span>, <span class="se">\</span>
+    <span class="s2">"command"</span>:<span class="s2">"command EXECUTABLE INPUT_FILE"</span> <span class="se">\</span>
+  <span class="o">}</span>
 </code></pre>
 <blockquote>
 <p>The above command returns a JSON structured like this:</p>
@@ -614,6 +617,7 @@ IP:PORT/VERSION/API_ENDPOINT
    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61422080638ccc1108d8aca5"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"fileName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61422080638ccc1108d8aca5.jar"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"vrp"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"command EXECUTABLE INPUT_FILE"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-09-15T16:34:08.776Z"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"creationDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-09-15T16:34:08.753Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
