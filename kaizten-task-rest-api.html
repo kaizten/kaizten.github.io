@@ -602,7 +602,7 @@ IP:PORT/VERSION/API_ENDPOINT
 </tbody></table>
 <h2 id='create-an-algorithm'>Create an Algorithm</h2><pre class="highlight shell tab-shell"><code>curl -X POST IP:PORT/VERSION/algorithms <span class="se">\</span>
   -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: multipart/form-data"</span> <span class="se">\ </span>
+  -H <span class="s2">"Content-Type: multipart/form-data"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
   -F <span class="nv">file</span><span class="o">=</span>@vrp.jar <span class="se">\</span>
   -F <span class="nv">form</span><span class="o">={</span> <span class="se">\</span>
@@ -717,13 +717,13 @@ Only administrators can perform this operation.
 </tbody></table>
 <h2 id='update-an-algorithm'>Update an Algorithm</h2><pre class="highlight shell tab-shell"><code>curl -X PUT IP:PORT/VERSION/algorithms/61422080638ccc1108d8aca5 <span class="se">\</span>
     -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
-    -H <span class="s2">"Content-Type: multipart/form-data"</span> <span class="se">\ </span>
+    -H <span class="s2">"Content-Type: multipart/form-data"</span> <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
-    -F <span class="s1">'form={
-        "tagline":"Solver of the Vehicle Routing Problem",
-        "description":"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers",
-        "command" :"java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"
-    }'</span>
+    -F <span class="nv">form</span><span class="o">={</span> <span class="se">\</span>
+        <span class="s2">"tagline"</span>:<span class="s2">"Solver of the Vehicle Routing Problem"</span>, <span class="se">\</span>
+        <span class="s2">"description"</span>:<span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span>, <span class="se">\</span>
+        <span class="s2">"command"</span> :<span class="s2">"java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"</span> <span class="se">\</span>
+    <span class="o">}</span>
 </code></pre>
 <p>The above command returns a JSON structured like this:</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
