@@ -251,19 +251,19 @@
                     <a href="#get-all-algorithms" class="toc-h2 toc-link" data-title="Get all algorithms">Get all algorithms</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-algorithm" class="toc-h2 toc-link" data-title="Get a Specific Algorithm">Get a Specific Algorithm</a>
+                    <a href="#get-a-specific-algorithm" class="toc-h2 toc-link" data-title="Get a specific algorithm">Get a specific algorithm</a>
                   </li>
                   <li>
-                    <a href="#create-an-algorithm" class="toc-h2 toc-link" data-title="Create an Algorithm">Create an Algorithm</a>
+                    <a href="#create-an-algorithm" class="toc-h2 toc-link" data-title="Create an algorithm">Create an algorithm</a>
                   </li>
                   <li>
-                    <a href="#update-an-algorithm" class="toc-h2 toc-link" data-title="Update an Algorithm">Update an Algorithm</a>
+                    <a href="#update-an-algorithm" class="toc-h2 toc-link" data-title="Update an algorithm">Update an algorithm</a>
                   </li>
                   <li>
-                    <a href="#execute-an-algorithm" class="toc-h2 toc-link" data-title="Execute an Algorithm">Execute an Algorithm</a>
+                    <a href="#execute-an-algorithm" class="toc-h2 toc-link" data-title="Execute an algorithm">Execute an algorithm</a>
                   </li>
                   <li>
-                    <a href="#delete-an-algorithm" class="toc-h2 toc-link" data-title="Delete an Algorithm">Delete an Algorithm</a>
+                    <a href="#delete-an-algorithm" class="toc-h2 toc-link" data-title="Delete an algorithm">Delete an algorithm</a>
                   </li>
               </ul>
           </li>
@@ -383,10 +383,12 @@ IP:PORT/VERSION/API_ENDPOINT
 <li>Its length must be in the range <code>[1..1000]</code>.</li>
 <li>Digits, whitespaces, <code>.</code>, <code>-</code> and <code>_</code> are valid characters.</li>
 </ul></li>
-<li><code>command</code> (required). Command used to execute the algorithm. It requires the string <code>EXECUTABLE</code> for the executable file and <code>INPUT_FILE</code> for all the input data to the algorithm.
+<li><code>command</code> (required). Command used to execute the algorithm.
 
 <ul>
 <li>Its length must be in the range <code>[1..1000]</code>.</li>
+<li>It must include <code>EXECUTABLE</code> to indicate the position in which the executable file is located.</li>
+<li>It must include <code>INPUT_FILE</code> to indicate the position in which the input file is located.</li>
 </ul></li>
 <li><code>fileName</code> (generated). It&#39;s the name of the executable file of the algorithm. When a file is uploaded it will be stored in the server as algorithmId.extension. 
 
@@ -464,7 +466,7 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduling"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tagline"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Solve to schedule employees in sanitary environments"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Heuristic used to create a schedule for employees in sanitary environments"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp sadaliar-problem-1.0-SNAPSHOT-jar-with-dependencies.jar com.kaizten.sadaliar.opt.main.MainJson %s"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp EXECUTABLE com.kaizten.sadaliar.opt.main.MainJson INPUT_FILE"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"fileName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5fec87958614ac5386471ced.jar"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"creationDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="w">
@@ -474,7 +476,7 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"vrp"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tagline"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Vehicle Routing Problem"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp EXECUTABLE com.kaizten.vrp.opt.main.Main INPUT_FILE"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"fileName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70c8aca89d8d39ea0b0420.jar"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"creationDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="w">
@@ -484,7 +486,7 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"qcsp"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tagline"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Quay Crane Scheduling Problem"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Hybrid estimation of distribution algorithm for the quay crane scheduling problem"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp qcsp.jar com.kaizten.qcsp.opt.main.Main %s"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp EXECUTABLE com.kaizten.qcsp.opt.main.Main INPUT_FILE"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"fileName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70ca01a89d8d39ea0b0422.jar"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"creationDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="w">
@@ -494,7 +496,7 @@ IP:PORT/VERSION/API_ENDPOINT
       </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"brp"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tagline"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Blocks Relocation Problem"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"A domain-specific knowledge-based heuristic for the blocks relocation problem"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp brp.jar com.kaizten.brp.opt.main.Main %s"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp EXECUTABLE com.kaizten.brp.opt.main.Main INPUT_FILE"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"fileName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e70ca34a89d8d39ea0b0423.jar"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"creationDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="w">
@@ -552,7 +554,7 @@ IP:PORT/VERSION/API_ENDPOINT
 <td>The request has succeeded and the algorithms are included in the body of the response. The following headers are included in the response: <ul><li><code>Pagination-Count: 1</code></li><li><code>Pagination-Size: 20</code></li><li><code>Pagination-Page: 0</code></li><li><code>Total-Count: 5</code></li></ul> where <code>Pagination-Count</code> is the number of existing pages, <code>Pagination-Size</code> is the size of each page, <code>Pagination-Page</code> is the index of the current page, and <code>Total-Count</code> is the number of entities in the server.</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-specific-algorithm'>Get a Specific Algorithm</h2><pre class="highlight shell tab-shell"><code>curl https://IP:PORT/VERSION/algorithms/:id <span class="se">\</span>
+<h2 id='get-a-specific-algorithm'>Get a specific algorithm</h2><pre class="highlight shell tab-shell"><code>curl https://IP:PORT/VERSION/algorithms/:id <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
@@ -563,7 +565,7 @@ IP:PORT/VERSION/API_ENDPOINT
    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"solver-vehicle-routing-problem"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"tagline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Vehicle Routing Problem"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp EXECUTABLE com.kaizten.vrp.opt.main.Main INPUT_FILE"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"fileName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6f565acff3233408180978.jar"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"creationDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="w">
@@ -600,7 +602,7 @@ IP:PORT/VERSION/API_ENDPOINT
 <td>The algorithm with the given identifier is not found.</td>
 </tr>
 </tbody></table>
-<h2 id='create-an-algorithm'>Create an Algorithm</h2><pre class="highlight shell tab-shell"><code>curl -X POST IP:PORT/VERSION/algorithms <span class="se">\</span>
+<h2 id='create-an-algorithm'>Create an algorithm</h2><pre class="highlight shell tab-shell"><code>curl -X POST https://IP:PORT/VERSION/algorithms <span class="se">\</span>
   -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: multipart/form-data"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
@@ -676,7 +678,7 @@ Only administrators can perform this operation.
 <tr>
 <td><code>command</code></td>
 <td>The command of the algorithm.</td>
-<td>No</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td><code>labels</code></td>
@@ -715,29 +717,31 @@ Only administrators can perform this operation.
 <td>There is an algorithm with the same name.</td>
 </tr>
 </tbody></table>
-<h2 id='update-an-algorithm'>Update an Algorithm</h2><pre class="highlight shell tab-shell"><code>curl -X PUT IP:PORT/VERSION/algorithms/61422080638ccc1108d8aca5 <span class="se">\</span>
+<h2 id='update-an-algorithm'>Update an algorithm</h2><pre class="highlight shell tab-shell"><code>curl -X PUT https://IP:PORT/VERSION/algorithms/61422080638ccc1108d8aca5 <span class="se">\</span>
     -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
     -H <span class="s2">"Content-Type: multipart/form-data"</span> <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
     -F <span class="nv">form</span><span class="o">={</span> <span class="se">\</span>
         <span class="s2">"tagline"</span>:<span class="s2">"Solver of the Vehicle Routing Problem"</span>, <span class="se">\</span>
         <span class="s2">"description"</span>:<span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span>, <span class="se">\</span>
-        <span class="s2">"command"</span> :<span class="s2">"java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"</span> <span class="se">\</span>
+        <span class="s2">"command"</span> :<span class="s2">"java -cp EXECUTABLE com.kaizten.vrp.opt.main.Main INPUT_FILE"</span> <span class="se">\</span>
     <span class="o">}</span>
 </code></pre>
+<blockquote>
 <p>The above command returns a JSON structured like this:</p>
+</blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61422080638ccc1108d8aca5"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"fileName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61422080638ccc1108d8aca5.jar"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"vrp"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"tagline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Vehicle Routing Problem"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp EXECUTABLE com.kaizten.vrp.opt.main.Main INPUT_FILE"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-09-15T16:38:25.062Z"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"creationDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-09-15T16:34:08.753Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>It update the data from an algorithm by specifying the fields to be modified.</p>
+<p>It updates an algorithm by specifying the fields to be modified.</p>
 
 <aside class="notice">
 Only administrators can perform this operation.
@@ -842,7 +846,7 @@ Only administrators can perform this operation.
 <td>The algorithm with the given identifier is not found.</td>
 </tr>
 </tbody></table>
-<h2 id='execute-an-algorithm'>Execute an Algorithm</h2><pre class="highlight shell tab-shell"><code>curl -X POST https://IP:PORT/VERSION/algorithms/:name <span class="se">\</span>
+<h2 id='execute-an-algorithm'>Execute an algorithm</h2><pre class="highlight shell tab-shell"><code>curl -X POST https://IP:PORT/VERSION/algorithms/:name <span class="se">\</span>
   -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: multipart/form-data"</span> <span class="se">\</span>
   -d <span class="s2">"taskName=</span><span class="se">\"</span><span class="s2">Schedule of users in SC</span><span class="se">\"</span><span class="s2">"</span> <span class="se">\</span>
@@ -912,7 +916,7 @@ Only administrators can perform this operation.
 <td>The algorithm with the given name is not found.</td>
 </tr>
 </tbody></table>
-<h2 id='delete-an-algorithm'>Delete an Algorithm</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE https://IP:PORT/VERSION/algorithms/5e6f565acff3233408180978 <span class="se">\</span>
+<h2 id='delete-an-algorithm'>Delete an algorithm</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE https://IP:PORT/VERSION/algorithms/5e6f565acff3233408180978 <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
     -H <span class="s2">"Content-Type: text/json"</span> <span class="se">\</span>
 </code></pre>
@@ -924,7 +928,7 @@ Only administrators can perform this operation.
   </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"solver-vehicle-routing-problem"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"tagline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Solver of the Vehicle Routing Problem"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp vrp.jar com.kaizten.vrp.opt.main.Main %s"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"command"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"java -cp EXECUTABLE com.kaizten.vrp.opt.main.Main INPUT_FILE"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"fileName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6f565acff3233408180978.jar"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"creationDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"lastUpdateDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31T00:41:03.956Z"</span><span class="p">,</span><span class="w">
@@ -932,12 +936,12 @@ Only administrators can perform this operation.
   </span><span class="s2">"outputFileDescription"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Description of the output file."</span><span class="p">,</span><span class="w">
   </span><span class="s2">"labels"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label ID."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label name."</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61422080638ccc1108d8aca5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"optimization"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label ID."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Label name."</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1fas518asf1a5sf8asfdsa1s"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"metaheuristic"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
