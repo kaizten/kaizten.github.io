@@ -1190,7 +1190,7 @@ Only those tasks of the requesting user are provided in the response but for adm
 <td>The task with the given ID is not found.</td>
 </tr>
 </tbody></table>
-<h1 id='data'>Data</h1><h2 id='list-all-files'>List all files</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/data <span class="se">\</span>
+<h1 id='data'>Data</h1><h2 id='list-all-files'>List all files</h2><pre class="highlight shell tab-shell"><code>curl https://IP:PORT/VERSION/data <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span> 
 </code></pre>
 <blockquote>
@@ -1213,7 +1213,7 @@ Only those tasks of the requesting user are provided in the response but for adm
 </span></code></pre>
 <p>It provides a list containing information about all the files.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://IP:PORT/VERSION/data</code></p>
+<p><code>GET https://IP:PORT/VERSION/data</code></p>
 <h3 id='responses'>Responses</h3>
 <table><thead>
 <tr>
@@ -1226,19 +1226,17 @@ Only those tasks of the requesting user are provided in the response but for adm
 <td>The request has succeeded and the files are included in the body of the response.</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-specific-file'>Get a Specific File</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/data/:name <span class="se">\</span>
+<h2 id='get-a-specific-file'>Get a Specific File</h2><pre class="highlight shell tab-shell"><code>curl https://IP:PORT/VERSION/data/:name <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns the file contained in the body of the response.
-<code>json
-{
-  &quot;name&quot; : &quot;xml.xls&quot;,
-  &quot;url&quot; : &quot;http://localhost:8080/v1/data/xml.xls&quot;
-}
-</code></p>
+<p>The above command returns the file contained in the body of the response.</p>
 </blockquote>
-<h3 id='http-request-2'>HTTP Request</h3>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"xml.xls"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost:8080/v1/data/xml.xls"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET IP:PORT/VERSION/data/:name</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
@@ -1268,9 +1266,9 @@ Only those tasks of the requesting user are provided in the response but for adm
 <td>The file with the given identifier is not found.</td>
 </tr>
 </tbody></table>
-<h2 id='create-a-new-file'>Create a new file</h2><pre class="highlight shell tab-shell"><code>curl -X POST IP:PORT/VERSION/data <span class="se">\</span>
-  -F <span class="s2">"file=@FILE_TO_SEND"</span><span class="s1">'
-</span></code></pre>
+<h2 id='create-a-new-file'>Create a new file</h2><pre class="highlight shell tab-shell"><code>curl https://IP:PORT/VERSION/data <span class="se">\</span>
+  -F <span class="nv">file</span><span class="o">=</span>@xml.xls
+</code></pre>
 <blockquote>
 <p>The above command returns the content of the file created:</p>
 </blockquote>
@@ -1284,7 +1282,7 @@ Only those tasks of the requesting user are provided in the response but for adm
 </span></code></pre>
 <p>It creates a new file by specifying its content. A summary of the file submitted is provided in the response.</p>
 <h3 id='http-request-3'>HTTP request</h3>
-<p><code>POST http://IP:PORT/VERSION/data</code></p>
+<p><code>POST https://IP:PORT/VERSION/data</code></p>
 <h3 id='responses-3'>Responses</h3>
 <table><thead>
 <tr>
@@ -1297,7 +1295,7 @@ Only those tasks of the requesting user are provided in the response but for adm
 <td>The request has been fulfilled and has resulted in a file being created. A summary of the submission of the new file is included in the body of the response.</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-file'>Delete a Specific File</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE IP:PORT/VERSION/data/:name 
+<h2 id='delete-a-specific-file'>Delete a Specific File</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE https://IP:PORT/VERSION/data/:name 
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
@@ -1309,7 +1307,7 @@ Only those tasks of the requesting user are provided in the response but for adm
 </code></pre>
 <p>It deletes a file using its identifier (<code>:name</code>).</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>DELETE http://IP:PORT/VERSION/data/:name</code></p>
+<p><code>DELETE https://IP:PORT/VERSION/data/:name</code></p>
 <h3 id='responses-4'>Responses</h3>
 <table><thead>
 <tr>
