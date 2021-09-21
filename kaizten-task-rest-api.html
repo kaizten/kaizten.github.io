@@ -602,15 +602,15 @@ IP:PORT/VERSION/API_ENDPOINT
 <td>The algorithm with the given identifier is not found.</td>
 </tr>
 </tbody></table>
-<h2 id='create-an-algorithm'>Create an algorithm</h2><pre class="highlight shell tab-shell"><code>curl -X POST https://IP:PORT/VERSION/algorithms <span class="se">\</span>
+<h2 id='create-an-algorithm'>Create an algorithm</h2><pre class="highlight shell tab-shell"><code>curl https://IP:PORT/VERSION/algorithms <span class="se">\</span>
   -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: multipart/form-data"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
   -F <span class="nv">file</span><span class="o">=</span>@vrp.jar <span class="se">\</span>
-  -F <span class="nv">form</span><span class="o">={</span> <span class="se">\</span>
-    <span class="s2">"name"</span>:<span class="s2">"vrp"</span>, <span class="se">\</span>
-    <span class="s2">"command"</span>:<span class="s2">"command EXECUTABLE INPUT_FILE"</span> <span class="se">\</span>
-  <span class="o">}</span>
+  -F <span class="nv">form</span><span class="o">=</span><span class="s1">'{ \
+    "name":"vrp", \
+    "command":"command EXECUTABLE INPUT_FILE" \
+  }'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns a JSON structured like this:</p>
@@ -677,7 +677,7 @@ Only administrators can perform this operation.
 </tr>
 <tr>
 <td><code>command</code></td>
-<td>The command of the algorithm.</td>
+<td>The command of the algorithm. It must be specified &quot;EXECUTABLE&quot; and &quot;INPUT_FILE&quot; as strings inside the command.</td>
 <td>Yes</td>
 </tr>
 <tr>
@@ -721,11 +721,11 @@ Only administrators can perform this operation.
     -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
     -H <span class="s2">"Content-Type: multipart/form-data"</span> <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
-    -F <span class="nv">form</span><span class="o">={</span> <span class="se">\</span>
-        <span class="s2">"tagline"</span>:<span class="s2">"Solver of the Vehicle Routing Problem"</span>, <span class="se">\</span>
-        <span class="s2">"description"</span>:<span class="s2">"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers"</span>, <span class="se">\</span>
-        <span class="s2">"command"</span> :<span class="s2">"java -cp EXECUTABLE com.kaizten.vrp.opt.main.Main INPUT_FILE"</span> <span class="se">\</span>
-    <span class="o">}</span>
+    -F <span class="nv">form</span><span class="o">=</span><span class="s1">'{ \
+        "tagline":"Solver of the Vehicle Routing Problem", \
+        "description":"Variable Neighbourhood Search with 2 populations designed to create efficient delivery routes to customers", \
+        "command" :"java -cp EXECUTABLE com.kaizten.vrp.opt.main.Main INPUT_FILE" \
+    }'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns a JSON structured like this:</p>
@@ -846,11 +846,11 @@ Only administrators can perform this operation.
 <td>The algorithm with the given identifier is not found.</td>
 </tr>
 </tbody></table>
-<h2 id='execute-an-algorithm'>Execute an algorithm</h2><pre class="highlight shell tab-shell"><code>curl -X POST https://IP:PORT/VERSION/algorithms/:name <span class="se">\</span>
+<h2 id='execute-an-algorithm'>Execute an algorithm</h2><pre class="highlight shell tab-shell"><code>curl https://IP:PORT/VERSION/algorithms/:name?taskName<span class="o">=</span>Testing <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: multipart/form-data"</span> <span class="se">\</span>
-  -d <span class="s2">"taskName=</span><span class="se">\"</span><span class="s2">Schedule of users in SC</span><span class="se">\"</span><span class="s2">"</span> <span class="se">\</span>
-  -d <span class="s1">'{ \
+  -F <span class="nv">jsonForm</span><span class="o">=</span><span class="s1">'{ \
     "inputFile": "RXN0byBzb24gZGF0b3MgZGVsIGZpY2hlcm8gMg==" \
   }'</span> <span class="se">\</span>
 </code></pre>
@@ -859,9 +859,9 @@ Only administrators can perform this operation.
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"taskId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"adfas1as1df56a11as"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"taskName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Schedule of users in SC"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"taskName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testing"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"algorithmId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6f565acff3233408180978"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"algorithmName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"solver-vehicle-routing-problem"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"algorithmName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":name"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"inputData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"adfas1as1df56a11as.json"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
