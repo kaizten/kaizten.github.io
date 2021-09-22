@@ -1320,7 +1320,7 @@ Only those tasks of the requesting user are provided in the response but for adm
 <td>The file to delete does not exist.</td>
 </tr>
 </tbody></table>
-<h1 id='labels'>Labels</h1><h2 id='get-all-labels'>Get all Labels</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/labels <span class="se">\</span>
+<h1 id='labels'>Labels</h1><h2 id='get-all-labels'>Get all Labels</h2><pre class="highlight shell tab-shell"><code>curl https://IP:PORT/VERSION/labels <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span> 
 </code></pre>
 <blockquote>
@@ -1343,7 +1343,7 @@ Only those tasks of the requesting user are provided in the response but for adm
 </span></code></pre>
 <p>It provides a list containing information about all the labels.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://IP:PORT/VERSION/labels</code></p>
+<p><code>GET https://IP:PORT/VERSION/labels</code></p>
 <h3 id='responses'>Responses</h3>
 <table><thead>
 <tr>
@@ -1356,7 +1356,7 @@ Only those tasks of the requesting user are provided in the response but for adm
 <td>The request has succeeded and the labels are included in the body of the response.</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-specific-label'>Get a Specific Label</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/labels/:name <span class="se">\</span>
+<h2 id='get-a-specific-label'>Get a Specific Label</h2><pre class="highlight shell tab-shell"><code>curl https://IP:PORT/VERSION/labels/:id <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span> 
 </code></pre>
 <blockquote>
@@ -1369,7 +1369,7 @@ Only those tasks of the requesting user are provided in the response but for adm
 </span></code></pre>
 <p>It provides the information of the specified label.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET IP:PORT/VERSION/labels/:name</code></p>
+<p><code>GET https://IP:PORT/VERSION/labels/:name</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1378,8 +1378,8 @@ Only those tasks of the requesting user are provided in the response but for adm
 </tr>
 </thead><tbody>
 <tr>
-<td><code>name</code></td>
-<td>Name of the requested label.</td>
+<td><code>id</code></td>
+<td>Id of the requested label.</td>
 </tr>
 </tbody></table>
 <h3 id='responses-2'>Responses</h3>
@@ -1398,9 +1398,9 @@ Only those tasks of the requesting user are provided in the response but for adm
 <td>The lalbel with the given identifier is not found.</td>
 </tr>
 </tbody></table>
-<h2 id='create-a-new-label'>Create a new label</h2><pre class="highlight shell tab-shell"><code>curl -X POST IP:PORT/VERSION/labels <span class="se">\</span>
+<h2 id='create-a-new-label'>Create a new label</h2><pre class="highlight shell tab-shell"><code>curl -X POST https://IP:PORT/VERSION/labels <span class="se">\</span>
     -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
-    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\ </span>
+    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
     -d <span class="s1">'{"name": "data-science"}'</span>
 </code></pre>
@@ -1431,14 +1431,15 @@ Only administrators can perform this operation.
 <td>The request has been fulfilled and has resulted in one label being created. The new label is included in the body of the response.</td>
 </tr>
 <tr>
-<td><code>404</code></td>
+<td><code>409</code></td>
 <td>There is a label with the same name.</td>
 </tr>
 </tbody></table>
-<h2 id='update-a-specific-label'>Update a Specific Label</h2><pre class="highlight shell tab-shell"><code>curl -X PUT http://IP:PORT/VERSION/labels/:id <span class="se">\</span>
-    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
-    -d <span class="s1">'{"name": "data-science2"}'</span>
+<h2 id='update-a-specific-label'>Update a Specific Label</h2><pre class="highlight shell tab-shell"><code>curl -X PUT https://IP:PORT/VERSION/labels/:id <span class="se">\</span>
+   -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+   -d <span class="s1">'{"name": "data-science2"}'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1454,7 +1455,7 @@ Only administrators can perform this operation.
 Only administrators can perform this operation.
 </aside>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>PUT http://IP:PORT/VERSION/labels/:id</code></p>
+<p><code>PUT https://IP:PORT/VERSION/labels/:id</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1483,8 +1484,9 @@ Only administrators can perform this operation.
 <td>The label with the given identifier is not found.</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-label'>Delete a Specific Label</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE IP:PORT/VERSION/labels/:id 
-    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+<h2 id='delete-a-specific-label'>Delete a Specific Label</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE https://IP:PORT/VERSION/labels/:id <span class="se">\</span>
+   -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+   -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1494,13 +1496,13 @@ Only administrators can perform this operation.
    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"data-science"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>It deletes a label using its identifier (<code>:id</code>).</p>
+<p>It deletes a label using its identifier (<code>:id</code>). The request returns the removed entity.</p>
 
 <aside class="notice">
 Only administrators can perform this operation.
 </aside>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>DELETE http://IP:PORT/VERSION/labels</code></p>
+<p><code>DELETE https://IP:PORT/VERSION/labels</code></p>
 <h3 id='responses-5'>Responses</h3>
 <table><thead>
 <tr>
