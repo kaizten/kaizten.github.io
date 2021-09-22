@@ -1230,13 +1230,9 @@ Only those tasks of the requesting user are provided in the response but for adm
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns the file contained in the body of the response.</p>
+<p>The above command returns the content of the requested file.</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"xml.xls"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost:8080/v1/data/xml.xls"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET IP:PORT/VERSION/data/:name</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
@@ -1295,16 +1291,16 @@ Only those tasks of the requesting user are provided in the response but for adm
 <td>The request has been fulfilled and has resulted in a file being created. A summary of the submission of the new file is included in the body of the response.</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-file'>Delete a Specific File</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE https://IP:PORT/VERSION/data/:name 
+<h2 id='delete-a-specific-file'>Delete a Specific File</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE https://IP:PORT/VERSION/data/:name <span class="se">\</span>
     -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns a JSON structured like this:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>{
-   "name" : "xml.xls"
-}
-</code></pre>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"xml.xls"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p>It deletes a file using its identifier (<code>:name</code>).</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>DELETE https://IP:PORT/VERSION/data/:name</code></p>
