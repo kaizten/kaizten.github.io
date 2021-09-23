@@ -863,7 +863,7 @@ Only administrators can perform this operation.
 <td>The algorithm with the given identifier is not found.</td>
 </tr>
 </tbody></table>
-<h2 id='execute-an-algorithm'>Execute an algorithm</h2><pre class="highlight shell tab-shell"><code>curl https://IP:PORT/VERSION/algorithms/:name?taskName<span class="o">=</span>Testing <span class="se">\</span>
+<h2 id='execute-an-algorithm'>Execute an algorithm</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://IP:PORT/VERSION/algorithms/:name?taskName=Testing&amp;timeout=30'</span> <span class="se">\</span>
   -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: multipart/form-data"</span> <span class="se">\</span>
@@ -908,11 +908,18 @@ Only administrators can perform this operation.
 <tr>
 <th>Parameter</th>
 <th>Description</th>
+<th>Required</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>taskName</code></td>
 <td>The name of the task.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>timeout</code></td>
+<td>The limit time for the execution, provided in seconds. The timeout must be between <code>1</code> and <code>3600</code>. If is not specified the default is <code>60</code>.</td>
+<td>No</td>
 </tr>
 </tbody></table>
 <h3 id='form-parameters'>Form Parameters</h3>
@@ -931,6 +938,10 @@ Only administrators can perform this operation.
 <tr>
 <td><code>404</code></td>
 <td>The algorithm with the given name is not found.</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>The timeout is not between the required boundary values.</td>
 </tr>
 </tbody></table>
 <h2 id='delete-an-algorithm'>Delete an algorithm</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE https://IP:PORT/VERSION/algorithms/5e6f565acff3233408180978 <span class="se">\</span>
