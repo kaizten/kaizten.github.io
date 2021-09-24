@@ -387,8 +387,8 @@ IP:PORT/VERSION/API_ENDPOINT
 
 <ul>
 <li>Its length must be in the range <code>[1..1000]</code>.</li>
-<li>It must include <code>EXECUTABLE</code> to indicate the position in which the executable file is located.</li>
-<li>It must include <code>INPUT_FILE</code> to indicate the position in which the input file is located.</li>
+<li>It must include <code>EXECUTABLE</code> (required) to indicate the position in which the executable file is located.</li>
+<li>It can include <code>INPUT_FILE</code> (optional) to indicate the position in which the input file is located.</li>
 </ul></li>
 <li><code>fileName</code> (generated). It&#39;s the name of the executable file of the algorithm. When a file is uploaded it will be stored in the server as algorithmId.extension. 
 
@@ -442,7 +442,13 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>startTime</code>. Time in which the execution of the task starts. It is expressed in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format (e.g., <code>2020-12-31T13:32:23Z</code>).</li>
 <li><code>finishingTime</code>. Time in which the execution of the task finishes. It is expressed in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format (e.g., <code>2020-12-31T13:32:23Z</code>).</li>
 <li><code>status</code>. Status of the task when requested. See <a href="#task-state">Task State</a>.</li>
-<li><code>exitCode</code>. Status code to denote the termination of the task. The zero status is used when the execution is terminated successfully. However, a non-zero status code indicates an abnormal termination.</li>
+<li><code>exitCode</code>. Status code to denote the termination of the task. The possible values are:
+
+<ul>
+<li><code>0</code> The execution ended up correctly.</li>
+<li><code>1</code> The execution ended up with errors.</li>
+<li><code>-100</code> The execution consumed the maximum time available.</li>
+</ul></li>
 <li><code>inputData</code>. Name of the file which contain all the data used as input by the algorithm.</li>
 <li><code>outputDataId</code>. Identifier of the data provided as output by the algorithm. See <a href="#data">Data</a>.</li>
 <li><code>outputErrorId</code>. Idnetifier of the errors provided as a result of a wrong execution of an algorithm. See <a href="#data">Data</a>.</li>
