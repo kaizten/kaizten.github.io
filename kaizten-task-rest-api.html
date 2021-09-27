@@ -871,29 +871,31 @@ Only administrators can perform this operation.
 <td>The algorithm with the given identifier is not found.</td>
 </tr>
 </tbody></table>
-<h2 id='execute-an-algorithm'>Execute an algorithm</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://IP:PORT/VERSION/algorithms/:name?taskName=Testing&amp;timeout=30'</span> <span class="se">\</span>
-  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: multipart/form-data"</span> <span class="se">\</span>
-  -F <span class="nv">jsonForm</span><span class="o">=</span><span class="s1">'{ \
-    "inputFile": "RXN0byBzb24gZGF0b3MgZGVsIGZpY2hlcm8gMg==" \
-  }'</span> <span class="se">\</span>
-</code></pre>
+<h2 id='execute-an-algorithm'>Execute an algorithm</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://IP:PORT/VERSION/algorithms/:name \
+  -H "Accept: application/json" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '</span><span class="o">{</span>
+    <span class="s2">"taskName"</span>:<span class="s2">"Task Name"</span>, <span class="se">\</span>
+    <span class="s2">"timeout"</span>:5, <span class="se">\</span>
+    <span class="s2">"inputFileName"</span>: <span class="s2">"Input File Name.extension"</span> <span class="se">\</span>
+  <span class="o">}</span><span class="s1">'
+</span></code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"taskId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"adfas1as1df56a11as"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"taskName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testing"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"taskName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task Name"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"algorithmId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6f565acff3233408180978"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"algorithmName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":name"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"inputData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"adfas1as1df56a11as.json"</span><span class="w">
+    </span><span class="s2">"inputData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Input File Name.extension"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>It executes a specific algorithm by indicating its name. The algorithm can receive parameter values in the body of the request in the following formats:</p>
 
 <ul>
-<li><code>Content-Type: multipart/form-data</code></li>
+<li><code>Content-Type: application/json</code></li>
 </ul>
 
 <p>The information about the task created is provided in the response.</p>
@@ -911,7 +913,7 @@ Only administrators can perform this operation.
 <td>Name of the algorithm to execute.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-2'>Query Parameters</h3>
+<h3 id='body-parameters'>Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -929,9 +931,12 @@ Only administrators can perform this operation.
 <td>The limit time for the execution, provided in seconds. The timeout must be between <code>1</code> and <code>3600</code>. If is not specified the default is <code>60</code>.</td>
 <td>No</td>
 </tr>
+<tr>
+<td><code>inputFileName</code></td>
+<td>The name of the file, which will be used as input for the task execution. If the algorithm has a json schema, the content of the input file will be considered as a json and it will be validated.</td>
+<td>Yes</td>
+</tr>
 </tbody></table>
-<h3 id='form-parameters'>Form Parameters</h3>
-<p>The parameters specified as <code>jsonForm</code> must respect the Json Schema of each algorithm specified in the field <code>jsonSchema</code>.</p>
 <h3 id='responses-5'>Responses</h3>
 <table><thead>
 <tr>
@@ -944,12 +949,12 @@ Only administrators can perform this operation.
 <td>The request has succeeded and the execution of the algorithm is queued. The information about the task created is provided in the response.</td>
 </tr>
 <tr>
-<td><code>404</code></td>
-<td>The algorithm with the given name is not found.</td>
+<td><code>400</code></td>
+<td>If there is something wrong in the input parameters, it will be returned a BAD_REQUEST status with detailes about the errors.</td>
 </tr>
 <tr>
-<td><code>400</code></td>
-<td>The timeout is not between the required boundary values.</td>
+<td><code>404</code></td>
+<td>The algorithm with the given name is not found.</td>
 </tr>
 </tbody></table>
 <h2 id='delete-an-algorithm'>Delete an algorithm</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE https://IP:PORT/VERSION/algorithms/5e6f565acff3233408180978 <span class="se">\</span>
