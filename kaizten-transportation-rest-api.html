@@ -227,6 +227,14 @@
           <li>
             <a href="#api-versioning" class="toc-h1 toc-link" data-title="API versioning">API versioning</a>
           </li>
+          <li>
+            <a href="#domain-model" class="toc-h1 toc-link" data-title="Domain model">Domain model</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#client" class="toc-h2 toc-link" data-title="Client">Client</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='#'>Sign Up for a Developer Key</a></li>
@@ -266,6 +274,50 @@ IP:PORT/VERSION/API_ENDPOINT
 </code></p>
 
 <p>The current supported API version is <code>v1</code> (i.e. <code>IP:PORT/v1/API_ENDPOINT</code>).</p>
+<h1 id='domain-model'>Domain model</h1><h2 id='client'>Client</h2>
+<ul>
+<li><code>id</code> (generated). Identifier of the client.</li>
+<li><code>identityDocument</code> (required). The document number that indentifies the client.
+
+<ul>
+<li>The identity document length must be in the range [2...100].</li>
+</ul></li>
+<li><code>name</code> (optional). The name of the client.
+
+<ul>
+<li>The name length must be in the range [2...1000].</li>
+</ul></li>
+<li><code>surname</code> (optional). The surname of the client.
+
+<ul>
+<li>The surname length must be in the range [2...1000].</li>
+</ul></li>
+<li><code>phone</code> (optional). The phone is composed by two variables:
+
+<ul>
+<li><code>phoneNumber</code> (optional). The phone number of the client.</li>
+<li>The phone number length must be in the range [9...12].</li>
+<li><code>comments</code> (optional). The comments regarding to the phone number.</li>
+<li>The comments length must be in the range [2...1000].</li>
+</ul></li>
+<li><code>address</code> (optional). The address is composed by five variables:
+
+<ul>
+<li><code>street</code> (optional). The street where the client lives in.</li>
+<li>The street length must be in the range [2...100].</li>
+<li><code>postalCode</code> (optional). The postal code of the client home.</li>
+<li>The postal code length must be exactly 5.</li>
+<li><code>city</code> (optional). The city where the client lives in.</li>
+<li>The city length must be in the range [2...100].</li>
+<li><code>latitude</code> (optional). The coordinate of the latitude from the client home.</li>
+<li><code>longitude</code> (optional). The coordinate of the longitude from the client home.</li>
+</ul></li>
+<li><code>comments</code> (optional). The comments regarding to the client.
+
+<ul>
+<li>The comments length must be in the range [2...1000].</li>
+</ul></li>
+</ul>
 
       </div>
       <div class="dark-box">
