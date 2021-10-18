@@ -233,6 +233,18 @@
                   <li>
                     <a href="#client" class="toc-h2 toc-link" data-title="Client">Client</a>
                   </li>
+                  <li>
+                    <a href="#employee" class="toc-h2 toc-link" data-title="Employee">Employee</a>
+                  </li>
+                  <li>
+                    <a href="#product" class="toc-h2 toc-link" data-title="Product">Product</a>
+                  </li>
+                  <li>
+                    <a href="#vehicle" class="toc-h2 toc-link" data-title="Vehicle">Vehicle</a>
+                  </li>
+                  <li>
+                    <a href="#warehouse" class="toc-h2 toc-link" data-title="Warehouse">Warehouse</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -295,28 +307,282 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>phone</code> (optional). The phone is composed by two variables:
 
 <ul>
-<li><code>phoneNumber</code> (optional). The phone number of the client.</li>
+<li><code>phoneNumber</code> (optional). The phone number of the client.
+
+<ul>
 <li>The phone number length must be in the range [9...12].</li>
-<li><code>comments</code> (optional). The comments regarding to the phone number.</li>
+</ul></li>
+<li><code>comments</code> (optional). The comments regarding to the phone number.
+
+<ul>
 <li>The comments length must be in the range [2...1000].</li>
+</ul></li>
 </ul></li>
 <li><code>address</code> (optional). The address is composed by five variables:
 
 <ul>
-<li><code>street</code> (optional). The street where the client lives in.</li>
+<li><code>street</code> (optional). The street where the client lives in.
+
+<ul>
 <li>The street length must be in the range [2...100].</li>
-<li><code>postalCode</code> (optional). The postal code of the client home.</li>
+</ul></li>
+<li><code>postalCode</code> (optional). The postal code of the client home.
+
+<ul>
 <li>The postal code length must be exactly 5.</li>
-<li><code>city</code> (optional). The city where the client lives in.</li>
+</ul></li>
+<li><code>city</code> (optional). The city where the client lives in.
+
+<ul>
 <li>The city length must be in the range [2...100].</li>
-<li><code>latitude</code> (optional). The coordinate of the latitude from the client home.</li>
-<li><code>longitude</code> (optional). The coordinate of the longitude from the client home.</li>
+</ul></li>
+<li><code>latitude</code> (optional). The coordinate of the latitude from the client home.
+
+<ul>
+<li>The value must be numeric.</li>
+</ul></li>
+<li><code>longitude</code> (optional). The coordinate of the longitude from the client home.
+
+<ul>
+<li>The value must be numeric.</li>
+</ul></li>
 </ul></li>
 <li><code>comments</code> (optional). The comments regarding to the client.
 
 <ul>
 <li>The comments length must be in the range [2...1000].</li>
 </ul></li>
+</ul>
+<h2 id='employee'>Employee</h2>
+<ul>
+<li><code>id</code> (generated). Identifier of the employee.</li>
+<li><code>identityDocument</code> (required). The document number that indentifies the employee.
+
+<ul>
+<li>The identity document length must be in the range [2...100].</li>
+</ul></li>
+<li><code>name</code> (optional). The name of the employee.
+
+<ul>
+<li>The name length must be in the range [2...1000].</li>
+</ul></li>
+<li><code>surname</code> (optional). The surname of the employee.
+
+<ul>
+<li>The surname length must be in the range [2...1000].</li>
+</ul></li>
+<li><code>type</code> (optional). The type of employee.
+
+<ul>
+<li>Currently the options available are [DRIVER, STOREKEEPER, ADMINISTRATOR]</li>
+</ul></li>
+<li><code>phone</code> (optional). The phone is composed by two variables:
+
+<ul>
+<li><code>phoneNumber</code> (optional). The phone number of the employee.
+
+<ul>
+<li>The phone number length must be in the range [9...12].</li>
+</ul></li>
+<li><code>comments</code> (optional). The comments regarding to the phone number.
+
+<ul>
+<li>The comments length must be in the range [2...1000].</li>
+</ul></li>
+</ul></li>
+<li><code>email</code> (optional). It is composed by two variables:
+
+<ul>
+<li><code>email</code> (optional). The email of the employee.
+
+<ul>
+<li>The email length must be in the range [2...100].</li>
+</ul></li>
+<li><code>comments</code> (optional). The comments regarding to the email.
+
+<ul>
+<li>The comments length must be in the range [2...1000].</li>
+</ul></li>
+</ul></li>
+<li><code>address</code> (optional). The address is composed by five variables:
+
+<ul>
+<li><code>street</code> (optional). The street where the employee lives in.
+
+<ul>
+<li>The street length must be in the range [2...100].</li>
+</ul></li>
+<li><code>postalCode</code> (optional). The postal code of the employee home.
+
+<ul>
+<li>The postal code length must be exactly 5.</li>
+</ul></li>
+<li><code>city</code> (optional). The city where the employee lives in.
+
+<ul>
+<li>The city length must be in the range [2...100].</li>
+</ul></li>
+<li><code>latitude</code> (optional). The coordinate of the latitude from the employee home.
+
+<ul>
+<li>The value must be numeric.</li>
+</ul></li>
+<li><code>longitude</code> (optional). The coordinate of the longitude from the employee home.
+
+<ul>
+<li>The value must be numeric.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id='product'>Product</h2>
+<ul>
+<li><code>id</code> (generated). Identifier of the product.</li>
+<li><code>name</code> (optional). The name of the product.
+
+<ul>
+<li>The name length must be in the range [2...100].</li>
+</ul></li>
+<li><code>description</code> (optional). The description of the product.
+
+<ul>
+<li>The description length must be in the range [2...1000].</li>
+</ul></li>
+<li><code>weight</code> (optional). The weight of the product.
+
+<ul>
+<li>The value must be numeric greater than 0.</li>
+</ul></li>
+<li><code>dimensions</code> (optional). The dimensions of the product, which is split in 3 variables:
+
+<ul>
+<li><code>depth</code> (optional). The depth of the product.
+
+<ul>
+<li>The value must be numeric greater than 0.</li>
+</ul></li>
+<li><code>width</code> (optional). The width of the product.
+
+<ul>
+<li>The value must be numeric greater than 0.</li>
+</ul></li>
+<li><code>height</code> (optional). The height of the product.
+
+<ul>
+<li>The value must be numeric greater than 0.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id='vehicle'>Vehicle</h2>
+<ul>
+<li><code>id</code> (generated). Identifier of the vehicle.</li>
+<li><code>carPlate</code> (required). The car plate of the vehicle.
+
+<ul>
+<li>The car plate length must be in the range [2...100].</li>
+</ul></li>
+<li><code>buyYear</code> (optional). The year when the vehicle was bought.
+
+<ul>
+<li>The value must be numeric greater than 1900 and smaller than 2100.</li>
+</ul></li>
+<li><code>registeredYear</code> (optional). The year when the vehicle was registered.
+
+<ul>
+<li>The value must be numeric greater than 1900 and smaller than 2100.</li>
+</ul></li>
+<li><code>capacity</code> (optional). The storage capacity of the vehicle.
+
+<ul>
+<li>The value must be numeric greater than 0. (Default value 0)</li>
+</ul></li>
+<li><code>weight</code> (optional). The weight of the vehicle.
+
+<ul>
+<li>The value must be numeric greater than 0. (Default value 0)</li>
+</ul></li>
+<li><code>dimensions</code> (optional). The dimensions of the vehicle, which is split in 3 variables:
+
+<ul>
+<li><code>depth</code> (optional). The depth of the vehicle.
+
+<ul>
+<li>The value must be numeric greater than 0.</li>
+</ul></li>
+<li><code>width</code> (optional). The width of the vehicle.
+
+<ul>
+<li>The value must be numeric greater than 0.</li>
+</ul></li>
+<li><code>height</code> (optional). The height of the vehicle.
+
+<ul>
+<li>The value must be numeric greater than 0.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id='warehouse'>Warehouse</h2>
+<ul>
+<li><code>id</code> (generated). Identifier of the warehouse.</li>
+<li><code>name</code> (optional). The name of the warehouse.
+
+<ul>
+<li>The name length must be in the range [2...100].</li>
+</ul></li>
+<li><code>capacity</code> (optional). The storage capacity of the warehouse.
+
+<ul>
+<li>The value must be numeric greater than 0. (Default value 0)</li>
+</ul></li>
+<li><code>address</code> (optional). The address is composed by five variables:
+
+<ul>
+<li><code>street</code> (optional). The street where the warehouse is located.
+
+<ul>
+<li>The street length must be in the range [2...100].</li>
+</ul></li>
+<li><code>postalCode</code> (optional). The postal code of the warehouse lacation.
+
+<ul>
+<li>The postal code length must be exactly 5.</li>
+</ul></li>
+<li><code>city</code> (optional). The city where the warehouse is located.
+
+<ul>
+<li>The city length must be in the range [2...100].</li>
+</ul></li>
+<li><code>latitude</code> (optional). The coordinate of the latitude from the warehouse.
+
+<ul>
+<li>The value must be numeric.</li>
+</ul></li>
+<li><code>longitude</code> (optional). The coordinate of the longitude from the warehouse.
+
+<ul>
+<li>The value must be numeric.</li>
+</ul></li>
+</ul></li>
+<li><code>phone</code> (optional). The phone is composed by two variables:
+
+<ul>
+<li><code>phoneNumber</code> (optional). The phone number of the warehouse.
+
+<ul>
+<li>The phone number length must be in the range [9...12].</li>
+</ul></li>
+<li><code>comments</code> (optional). The comments regarding to the phone number.
+
+<ul>
+<li>The comments length must be in the range [2...1000].</li>
+</ul></li>
+</ul></li>
+<li><code>productUnits</code> (optional). The cuantity of the product units in the warehouse.
+
+<ul>
+<li>The value must be numeric greater than 0. (Default value 0)</li>
+</ul></li>
+<li><code>vehicles</code> (optional). A list of vehicles which are asociated with the warehouse.</li>
+<li><code>employees</code> (optional). A list of employees which are asociated with the warehouse.</li>
 </ul>
 
       </div>
