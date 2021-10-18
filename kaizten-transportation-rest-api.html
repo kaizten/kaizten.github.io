@@ -267,6 +267,26 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#employees" class="toc-h1 toc-link" data-title="Employees">Employees</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-employees" class="toc-h2 toc-link" data-title="Get all employees">Get all employees</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-employee" class="toc-h2 toc-link" data-title="Get a specific employee">Get a specific employee</a>
+                  </li>
+                  <li>
+                    <a href="#create-an-employee" class="toc-h2 toc-link" data-title="Create an employee">Create an employee</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-employee" class="toc-h2 toc-link" data-title="Update a employee">Update a employee</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-employee" class="toc-h2 toc-link" data-title="Delete a employee">Delete a employee</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='#'>Sign Up for a Developer Key</a></li>
@@ -1045,6 +1065,528 @@ IP:PORT/VERSION/API_ENDPOINT
 <tr>
 <td><code>404</code></td>
 <td>The client with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h1 id='employees'>Employees</h1><h2 id='get-all-employees'>Get all employees</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/employees <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"213124353532"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"identityDocument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"131231441Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jorge"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"surname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gonzalez Rodriguez"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DRIVER"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"658498135"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is the main phone"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"jgr@company.org"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"comments"</span><span class="p">:</span><span class="s2">"No comments"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"street"</span><span class="p">:</span><span class="s2">"Juan Carlos I"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="s2">"38450"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"La Laguna"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"latitude"</span><span class="p">:</span><span class="mf">28.48</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"longitude"</span><span class="p">:</span><span class="mf">-16.32</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"comments"</span><span class="p">:</span><span class="s2">"This employee work hard."</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"21362735532"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"identityDocument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"131238244J"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sandra"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"surname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jimenez García"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMINISTRATOR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"652443935"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is the main phone"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"sjg@company.org"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"comments"</span><span class="p">:</span><span class="s2">"No comments"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"street"</span><span class="p">:</span><span class="s2">"Juan Carlos I"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="s2">"38450"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"La Laguna"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"latitude"</span><span class="p">:</span><span class="mf">28.48</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"longitude"</span><span class="p">:</span><span class="mf">-16.32</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"comments"</span><span class="p">:</span><span class="s2">"This employee work hard."</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>It provides all the employees registered. The returned employees will be paginated to <code>20</code> items by default. Further pages can be requested by means of the <code>page</code> query paramenter. It can also set a custom page size up to <code>100</code> with the <code>size</code> parameter.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/employees</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>page</code></td>
+<td>Zero-based page index. Default value: <code>0</code>. Min value: <code>0</code>.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>Size of the page to be returned. Default value: <code>20</code>. Min value: <code>0</code>. Max value: <code>100</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='responses'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded and the employees are included in the body of the response. The following headers are included in the response: <ul><li><code>Pagination-Count: 1</code></li><li><code>Pagination-Size: 20</code></li><li><code>Pagination-Page: 0</code></li><li><code>Total-Count: 5</code></li></ul> where <code>Pagination-Count</code> is the number of existing pages, <code>Pagination-Size</code> is the size of each page, <code>Pagination-Page</code> is the index of the current page, and <code>Total-Count</code> is the number of entities in the server.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-employee'>Get a specific employee</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/employees/:id <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"21362735532"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"identityDocument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"131238244J"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sandra"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"surname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jimenez García"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMINISTRATOR"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"652443935"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is the main phone"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"sjg@company.org"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"comments"</span><span class="p">:</span><span class="s2">"No comments"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"street"</span><span class="p">:</span><span class="s2">"Juan Carlos I"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="s2">"38450"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"La Laguna"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"latitude"</span><span class="p">:</span><span class="mf">28.48</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"longitude"</span><span class="p">:</span><span class="mf">-16.32</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"comments"</span><span class="p">:</span><span class="s2">"This employee work hard."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It provides a specific employee by indicating its identifier. The employee is provided in the response body.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/employees/:id</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the requested employee.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-2'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded. The employee is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The employee with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h2 id='create-an-employee'>Create an employee</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/employees <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -d <span class="s1">'{ \
+    "identityDocument":"834237656874D", \
+    "name":"Andres", \
+    "surname": "Rosado Garcia"
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"comments"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"616d83379bbd37254785a7d6"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"identityDocument"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"834237656874D"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Andres"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Rosado Garcia"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It creates a new employee by specifying at least the required fields. The created employee is provided in the response.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST http://IP:PORT/VERSION/employees</code></p>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>identityDocument</code></td>
+<td>Identifier of the employee document.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Name of the employee.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>surname</code></td>
+<td>Surname of the employee.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>The type of the employee.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>phone</code></td>
+<td>Phone information of the employee.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>Email information of the employee</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>Address information of the employee.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='phone-parameters'>Phone Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>phoneNumber</code></td>
+<td>Phone number of the employee.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>comments</code></td>
+<td>Comments of the phone number.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='email-parameters'>Email Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>email</code></td>
+<td>Email address of the employee.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>comments</code></td>
+<td>Comments of the phone number.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='address-parameters'>Address Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>street</code></td>
+<td>Street of the employee&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>postalCode</code></td>
+<td>Postal code of the employee&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td>City of the employee&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>latitude</code></td>
+<td>Latitude of the employee&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>longitude</code></td>
+<td>Longitude of the employee&#39;s home location.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='responses-3'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>201</code></td>
+<td>The employee has been created successfully. The new employee is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Malformed body json.</td>
+</tr>
+</tbody></table>
+<h2 id='update-a-employee'>Update a employee</h2><pre class="highlight shell tab-shell"><code>curl -X PUT http://IP:PORT/VERSION/employees/616d83379bbd37254785a7d6 <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -d <span class="s1">'{ \
+    "identityDocument":"834237656874D", \
+    "name":"Andres", \
+    "surname": "Rosado Garcia"
+    "comments": "This employee work hard."
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"comments"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"This employee work hard."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"616d83379bbd37254785a7d6"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"identityDocument"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"834237656874D"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Andres"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Rosado Garcia"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It updates a employee by specifying his id and at least the required fields. The updated employee is provided in the response.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT http://IP:PORT/VERSION/employees/:id</code></p>
+<h3 id='body-parameters-2'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>identityDocument</code></td>
+<td>Identifier of the employee document.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Name of the employee.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>surname</code></td>
+<td>Surname of the employee.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>The type of the employee.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>phone</code></td>
+<td>Phone information of the employee.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>Email information of the employee</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>Address information of the employee.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='phone-parameters-2'>Phone Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>phoneNumber</code></td>
+<td>Phone number of the employee.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>comments</code></td>
+<td>Comments of the phone number.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='email-parameters-2'>Email Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>email</code></td>
+<td>Email address of the employee.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>comments</code></td>
+<td>Comments of the phone number.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='address-parameters-2'>Address Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>street</code></td>
+<td>Street of the employee&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>postalCode</code></td>
+<td>Postal code of the employee&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td>City of the employee&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>latitude</code></td>
+<td>Latitude of the employee&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>longitude</code></td>
+<td>Longitude of the employee&#39;s home location.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='responses-4'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The employee has been updated successfully. The employee is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Malformed body json.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>Employee not found.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-employee'>Delete a employee</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE http://IP:PORT/VERSION/employees/5e6f565acff3233408180978 <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+    -H <span class="s2">"Content-Type: text/json"</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"comments"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"This employee work hard."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6f565acff3233408180978"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"identityDocument"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"834237656874D"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Andres"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Rosado Garcia"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It is used to remove a employee from the database. It returns the removed employee in the body of the response.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE http://IP:PORT/VERSION/employees/:id</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the employee to be deleted.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-5'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The employee has been deleted successfully.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The employee with the given identifier is not found.</td>
 </tr>
 </tbody></table>
 
