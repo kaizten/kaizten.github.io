@@ -287,6 +287,66 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#products" class="toc-h1 toc-link" data-title="Products">Products</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-products" class="toc-h2 toc-link" data-title="Get all products">Get all products</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-product" class="toc-h2 toc-link" data-title="Get a specific product">Get a specific product</a>
+                  </li>
+                  <li>
+                    <a href="#create-an-product" class="toc-h2 toc-link" data-title="Create an product">Create an product</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-product" class="toc-h2 toc-link" data-title="Update a product">Update a product</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-product" class="toc-h2 toc-link" data-title="Delete a product">Delete a product</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#vehicles" class="toc-h1 toc-link" data-title="Vehicles">Vehicles</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-vehicles" class="toc-h2 toc-link" data-title="Get all vehicles">Get all vehicles</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-vehicle" class="toc-h2 toc-link" data-title="Get a specific vehicle">Get a specific vehicle</a>
+                  </li>
+                  <li>
+                    <a href="#create-an-vehicle" class="toc-h2 toc-link" data-title="Create an vehicle">Create an vehicle</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-vehicle" class="toc-h2 toc-link" data-title="Update a vehicle">Update a vehicle</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-vehicle" class="toc-h2 toc-link" data-title="Delete a vehicle">Delete a vehicle</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#warehouses" class="toc-h1 toc-link" data-title="Warehouses">Warehouses</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-warehouses" class="toc-h2 toc-link" data-title="Get all warehouses">Get all warehouses</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-warehouse" class="toc-h2 toc-link" data-title="Get a specific warehouse">Get a specific warehouse</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-warehouse" class="toc-h2 toc-link" data-title="Create a warehouse">Create a warehouse</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-warehouse" class="toc-h2 toc-link" data-title="Update a warehouse">Update a warehouse</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-warehouse" class="toc-h2 toc-link" data-title="Delete a warehouse">Delete a warehouse</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='#'>Sign Up for a Developer Key</a></li>
@@ -723,7 +783,7 @@ IP:PORT/VERSION/API_ENDPOINT
     </span><span class="s2">"longitude"</span><span class="p">:</span><span class="mf">-16.32</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"comments"</span><span class="p">:</span><span class="s2">"This client use to buy Bridgestone"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>It provides a specific client by indicating its identifier. The client is provided in the response body.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
@@ -1587,6 +1647,1253 @@ IP:PORT/VERSION/API_ENDPOINT
 <tr>
 <td><code>404</code></td>
 <td>The employee with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h1 id='products'>Products</h1><h2 id='get-all-products'>Get all products</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/products <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"213124353532"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bridgestone"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wheel"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"5520052565412"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Michelin"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wheel"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>It provides all the products registered. The returned products will be paginated to <code>20</code> items by default. Further pages can be requested by means of the <code>page</code> query paramenter. It can also set a custom page size up to <code>100</code> with the <code>size</code> parameter.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/products</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>page</code></td>
+<td>Zero-based page index. Default value: <code>0</code>. Min value: <code>0</code>.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>Size of the page to be returned. Default value: <code>20</code>. Min value: <code>0</code>. Max value: <code>100</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='responses'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded and the products are included in the body of the response. The following headers are included in the response: <ul><li><code>Pagination-Count: 1</code></li><li><code>Pagination-Size: 20</code></li><li><code>Pagination-Page: 0</code></li><li><code>Total-Count: 5</code></li></ul> where <code>Pagination-Count</code> is the number of existing pages, <code>Pagination-Size</code> is the size of each page, <code>Pagination-Page</code> is the index of the current page, and <code>Total-Count</code> is the number of entities in the server.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-product'>Get a specific product</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/products/:id <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"5520052565412"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Michelin"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wheel"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It provides a specific product by indicating its identifier. The product is provided in the response body.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/products/:id</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the requested product.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-2'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded. The product is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The product with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h2 id='create-an-product'>Create an product</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/products <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -d <span class="s1">'{ \
+    "name":"michelin", \
+    "description":"Truck wheel", \
+    "weight":10
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"5520451225512"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Michelin"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Truck wheel"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It creates a new product by specifying at least the required fields. The created product is provided in the response.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST http://IP:PORT/VERSION/products</code></p>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>Name of the product.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>Description of the product.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>weight</code></td>
+<td>Weight of the product.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>dimensions</code></td>
+<td>Dimensions of the product.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='dimensions-parameters'>Dimensions Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>depth</code></td>
+<td>Depth dimension of the product.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td>Width dimension of the product.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td>Height dimension of the product.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='responses-3'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>201</code></td>
+<td>The product has been created successfully. The new product is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Malformed body json.</td>
+</tr>
+</tbody></table>
+<h2 id='update-a-product'>Update a product</h2><pre class="highlight shell tab-shell"><code>curl -X PUT http://IP:PORT/VERSION/products/616d83379bbd37254785a7d6 <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -d <span class="s1">'{ \
+    "name":"michelin", \
+    "description":"Truck wheel", \
+    "weight":10, \
+    "dimensions": {
+      "depth": 0.4,
+      "width": 1,
+      "height": 1
+    }
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"616d83379bbd37254785a7d6"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"michelin"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Truck wheel"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"weight"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It updates a product by specifying his id and at least the required fields. The updated product is provided in the response.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT http://IP:PORT/VERSION/products/:id</code></p>
+<h3 id='body-parameters-2'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>Name of the product.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>Description of the product.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>weight</code></td>
+<td>Weight of the product.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>dimensions</code></td>
+<td>Dimensions of the product.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='dimensions-parameters-2'>Dimensions Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>depth</code></td>
+<td>Depth dimension of the product.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td>Width dimension of the product.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td>Height dimension of the product.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='responses-4'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The product has been updated successfully. The product is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Malformed body json.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>Product not found.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-product'>Delete a product</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE http://IP:PORT/VERSION/products/5520451225512 <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+    -H <span class="s2">"Content-Type: text/json"</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"5520451225512"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"michelin"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Truck wheel"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"weight"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It is used to remove a product from the database. It returns the removed product in the body of the response.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE http://IP:PORT/VERSION/products/:id</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the product to be deleted.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-5'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The product has been deleted successfully.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The product with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h1 id='vehicles'>Vehicles</h1><h2 id='get-all-vehicles'>Get all vehicles</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/vehicles <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"213123454353532"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"carPlate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3498-krs"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buyYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2008</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"registeredYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2007</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">2200</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.5</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"2131534645532"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"carPlate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3238-gef"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buyYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"registeredYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2012</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">2100</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.9</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.8</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>It provides all the vehicles registered. The returned vehicles will be paginated to <code>20</code> items by default. Further pages can be requested by means of the <code>page</code> query paramenter. It can also set a custom page size up to <code>100</code> with the <code>size</code> parameter.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/vehicles</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>page</code></td>
+<td>Zero-based page index. Default value: <code>0</code>. Min value: <code>0</code>.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>Size of the page to be returned. Default value: <code>20</code>. Min value: <code>0</code>. Max value: <code>100</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='responses'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded and the vehicles are included in the body of the response. The following headers are included in the response: <ul><li><code>Pagination-Count: 1</code></li><li><code>Pagination-Size: 20</code></li><li><code>Pagination-Page: 0</code></li><li><code>Total-Count: 5</code></li></ul> where <code>Pagination-Count</code> is the number of existing pages, <code>Pagination-Size</code> is the size of each page, <code>Pagination-Page</code> is the index of the current page, and <code>Total-Count</code> is the number of entities in the server.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-vehicle'>Get a specific vehicle</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/vehicles/:id <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"2131534645532"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"carPlate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3238-gef"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"buyYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"registeredYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2012</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">2100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.9</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.8</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It provides a specific vehicle by indicating its identifier. The vehicle is provided in the response body.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/vehicles/:id</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the requested vehicle.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-2'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded. The vehicle is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The vehicle with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h2 id='create-an-vehicle'>Create an vehicle</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/vehicles <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -d <span class="s1">'{ \
+    "carPlate":"8574-let", \
+    "buyYear": 2016, \
+    "registeredYear":2015
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"2131534645532"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"carPlate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8574-let"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"buyYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2016</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"registeredYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2015</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It creates a new vehicle by specifying at least the required fields. The created vehicle is provided in the response.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST http://IP:PORT/VERSION/vehicles</code></p>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>carPlate</code></td>
+<td>Car Plate of the vehicle.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>buyYear</code></td>
+<td>Year when the vehicle was bought.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>registeredYear</code></td>
+<td>Year when the vehicle was registered.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>capacity</code></td>
+<td>Capacity of the vehicle.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>weight</code></td>
+<td>Weight of the vehicle.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>dimensions</code></td>
+<td>Dimensions of the vehicle.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='dimensions-parameters'>Dimensions Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>depth</code></td>
+<td>Depth dimension of the vehicle.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td>Width dimension of the vehicle.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td>Height dimension of the vehicle.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='responses-3'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>201</code></td>
+<td>The vehicle has been created successfully. The new vehicle is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Malformed body json.</td>
+</tr>
+</tbody></table>
+<h2 id='update-a-vehicle'>Update a vehicle</h2><pre class="highlight shell tab-shell"><code>curl -X PUT http://IP:PORT/VERSION/vehicles/616d83379bbd37254785a7d6 <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -d <span class="s1">'{ \
+    "carPlate":"8574-let", \
+    "buyYear": 2016, \
+    "registeredYear":2015
+    "capacity":500
+    "weight":2400
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"616d83379bbd37254785a7d6"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"carPlate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8574-let"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"buyYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2016</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"registeredYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2015</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">2400</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It updates a vehicle by specifying his id and at least the required fields. The updated vehicle is provided in the response.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT http://IP:PORT/VERSION/vehicles/:id</code></p>
+<h3 id='body-parameters-2'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>carPlate</code></td>
+<td>Car Plate of the vehicle.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>buyYear</code></td>
+<td>Year when the vehicle was bought.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>registeredYear</code></td>
+<td>Year when the vehicle was registered.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>capacity</code></td>
+<td>Capacity of the vehicle.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>weight</code></td>
+<td>Weight of the vehicle.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>dimensions</code></td>
+<td>Dimensions of the vehicle.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='dimensions-parameters-2'>Dimensions Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>depth</code></td>
+<td>Depth dimension of the vehicle.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td>Width dimension of the vehicle.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td>Height dimension of the vehicle.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='responses-4'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The vehicle has been updated successfully. The vehicle is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Malformed body json.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>Vehicle not found.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-vehicle'>Delete a vehicle</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE http://IP:PORT/VERSION/vehicles/2131534645532 <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+    -H <span class="s2">"Content-Type: text/json"</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"2131534645532"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"carPlate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8574-let"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"buyYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2016</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"registeredYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2015</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">2400</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It is used to remove a vehicle from the database. It returns the removed vehicle in the body of the response.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE http://IP:PORT/VERSION/vehicles/:id</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the vehicle to be deleted.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-5'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The vehicle has been deleted successfully.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The vehicle with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h1 id='warehouses'>Warehouses</h1><h2 id='get-all-warehouses'>Get all warehouses</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/warehouses <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"213124353532"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Almacen Santa Cruz"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"street"</span><span class="p">:</span><span class="s2">"Juan Carlos I"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="s2">"38450"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Santa Cruz"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"latitude"</span><span class="p">:</span><span class="mf">28.48</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"longitude"</span><span class="p">:</span><span class="mf">-16.32</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"658498135"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is the main phone"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"productUnits"</span><span class="p">:</span><span class="mi">235</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vehicles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"98151132563251"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"74651635065468"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"46532501651485"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"employees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"98651874733213"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"84631651616497"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"64648993217986"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"93154762858463"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"7946214532132"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Almacen Los Cristianos"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"street"</span><span class="p">:</span><span class="s2">"Juan XXIII"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="s2">"38450"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Los Cristianos"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"latitude"</span><span class="p">:</span><span class="mf">28.42</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"longitude"</span><span class="p">:</span><span class="mf">-16.12</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"658498135"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is the main phone"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"productUnits"</span><span class="p">:</span><span class="mi">128</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vehicles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"98151132563251"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"74651635065468"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"46532501651485"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"employees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"98651874733213"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"84631651616497"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"64648993217986"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"93154762858463"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>It provides all the warehouses registered. The returned warehouses will be paginated to <code>20</code> items by default. Further pages can be requested by means of the <code>page</code> query paramenter. It can also set a custom page size up to <code>100</code> with the <code>size</code> parameter.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/warehouses</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>page</code></td>
+<td>Zero-based page index. Default value: <code>0</code>. Min value: <code>0</code>.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>Size of the page to be returned. Default value: <code>20</code>. Min value: <code>0</code>. Max value: <code>100</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='responses'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded and the warehouses are included in the body of the response. The following headers are included in the response: <ul><li><code>Pagination-Count: 1</code></li><li><code>Pagination-Size: 20</code></li><li><code>Pagination-Page: 0</code></li><li><code>Total-Count: 5</code></li></ul> where <code>Pagination-Count</code> is the number of existing pages, <code>Pagination-Size</code> is the size of each page, <code>Pagination-Page</code> is the index of the current page, and <code>Total-Count</code> is the number of entities in the server.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-warehouse'>Get a specific warehouse</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/warehouses/:id <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"7946214532132"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Almacen Los Cristianos"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"street"</span><span class="p">:</span><span class="s2">"Juan XXIII"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="s2">"38450"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Los Cristianos"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"latitude"</span><span class="p">:</span><span class="mf">28.42</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"longitude"</span><span class="p">:</span><span class="mf">-16.12</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"658498135"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is the main phone"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"productUnits"</span><span class="p">:</span><span class="mi">128</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"vehicles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"98151132563251"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"74651635065468"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"46532501651485"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"employees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"98651874733213"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"84631651616497"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"64648993217986"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"93154762858463"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It provides a specific warehouse by indicating its identifier. The warehouse is provided in the response body.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/warehouses/:id</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the requested warehouse.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-2'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded. The warehouse is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The warehouse with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h2 id='create-a-warehouse'>Create a warehouse</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/warehouses <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -d <span class="s1">'{ \
+    "name":"Almacen Pto Cruz", \
+    "capacity":40000, \
+    "productUnits": 156
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"7946214532132"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Almacen Pto Cruz"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">40000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"productUnits"</span><span class="p">:</span><span class="mi">156</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"vehicles"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"employees"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It creates a new warehouse by specifying at least the required fields. The created warehouse is provided in the response.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST http://IP:PORT/VERSION/warehouses</code></p>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>Name of the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>capacity</code></td>
+<td>Capacity of the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>Address information of the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>phone</code></td>
+<td>Phone information of the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>productUnits</code></td>
+<td>Units of products present in the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>vehicles</code></td>
+<td>List of Vehicles available for the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>employees</code></td>
+<td>List of Employees available for the warehouse.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='phone-parameters'>Phone Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>phoneNumber</code></td>
+<td>Phone number of the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>comments</code></td>
+<td>Comments of the phone number.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='address-parameters'>Address Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>street</code></td>
+<td>Street of the warehouse&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>postalCode</code></td>
+<td>Postal code of the warehouse&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td>City of the warehouse&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>latitude</code></td>
+<td>Latitude of the warehouse&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>longitude</code></td>
+<td>Longitude of the warehouse&#39;s home location.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='responses-3'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>201</code></td>
+<td>The warehouse has been created successfully. The new warehouse is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Malformed body json.</td>
+</tr>
+</tbody></table>
+<h2 id='update-a-warehouse'>Update a warehouse</h2><pre class="highlight shell tab-shell"><code>curl -X PUT http://IP:PORT/VERSION/warehouses/616d83379bbd37254785a7d6 <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -d <span class="s1">'{ \
+    "name":"Almacen Pto Cruz", \
+    "capacity":40000, \
+    "productUnits": 156, \
+    "phone": { \
+      "phoneNumber": "658498135", \
+      "comments": "this is the main phone" \
+    } \
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"616d83379bbd37254785a7d6"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Almacen Pto Cruz"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">40000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"658498135"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is the main phone"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"productUnits"</span><span class="p">:</span><span class="mi">156</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"vehicles"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"employees"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It updates a warehouse by specifying his id and at least the required fields. The updated warehouse is provided in the response.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT http://IP:PORT/VERSION/warehouses/:id</code></p>
+<h3 id='body-parameters-2'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>Name of the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>capacity</code></td>
+<td>Capacity of the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>Address information of the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>phone</code></td>
+<td>Phone information of the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>productUnits</code></td>
+<td>Units of products present in the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>vehicles</code></td>
+<td>List of Vehicles available for the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>employees</code></td>
+<td>List of Employees available for the warehouse.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='phone-parameters-2'>Phone Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>phoneNumber</code></td>
+<td>Phone number of the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>comments</code></td>
+<td>Comments of the phone number.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='address-parameters-2'>Address Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>street</code></td>
+<td>Street of the warehouse&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>postalCode</code></td>
+<td>Postal code of the warehouse&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td>City of the warehouse&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>latitude</code></td>
+<td>Latitude of the warehouse&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>longitude</code></td>
+<td>Longitude of the warehouse&#39;s home location.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='responses-4'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The warehouse has been updated successfully. The warehouse is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Malformed body json.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>Warehouse not found.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-warehouse'>Delete a warehouse</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE http://IP:PORT/VERSION/warehouses/5e6f565acff3233408180978 <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+    -H <span class="s2">"Content-Type: text/json"</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"5e6f565acff3233408180978"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Almacen Pto Cruz"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">40000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"658498135"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is the main phone"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"productUnits"</span><span class="p">:</span><span class="mi">156</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"vehicles"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"employees"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It is used to remove a warehouse from the database. It returns the removed warehouse in the body of the response.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE http://IP:PORT/VERSION/warehouses/:id</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the warehouse to be deleted.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-5'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The warehouse has been deleted successfully.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The warehouse with the given identifier is not found.</td>
 </tr>
 </tbody></table>
 
