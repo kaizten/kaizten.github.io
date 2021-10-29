@@ -280,10 +280,13 @@
                     <a href="#create-an-employee" class="toc-h2 toc-link" data-title="Create an employee">Create an employee</a>
                   </li>
                   <li>
-                    <a href="#update-a-employee" class="toc-h2 toc-link" data-title="Update a employee">Update a employee</a>
+                    <a href="#update-an-employee" class="toc-h2 toc-link" data-title="Update an employee">Update an employee</a>
                   </li>
                   <li>
-                    <a href="#delete-a-employee" class="toc-h2 toc-link" data-title="Delete a employee">Delete a employee</a>
+                    <a href="#delete-an-employee" class="toc-h2 toc-link" data-title="Delete an employee">Delete an employee</a>
+                  </li>
+                  <li>
+                    <a href="#get-an-employee-type" class="toc-h2 toc-link" data-title="Get an employee type">Get an employee type</a>
                   </li>
               </ul>
           </li>
@@ -410,7 +413,7 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>phoneNumber</code> (optional). The phone number of the client.
 
 <ul>
-<li>The phone number length must be in the range [9...12].</li>
+<li>The phone number length must be in the range [9...13].</li>
 </ul></li>
 <li><code>comments</code> (optional). The comments regarding to the phone number.
 
@@ -464,12 +467,12 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>name</code> (optional). The name of the employee.
 
 <ul>
-<li>The name length must be in the range [2...1000].</li>
+<li>The name length must be in the range [2...100].</li>
 </ul></li>
 <li><code>surname</code> (optional). The surname of the employee.
 
 <ul>
-<li>The surname length must be in the range [2...1000].</li>
+<li>The surname length must be in the range [2...100].</li>
 </ul></li>
 <li><code>type</code> (optional). The type of employee.
 
@@ -482,7 +485,7 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>phoneNumber</code> (optional). The phone number of the employee.
 
 <ul>
-<li>The phone number length must be in the range [9...12].</li>
+<li>The phone number length must be in the range [9...13].</li>
 </ul></li>
 <li><code>comments</code> (optional). The comments regarding to the phone number.
 
@@ -668,7 +671,7 @@ IP:PORT/VERSION/API_ENDPOINT
 <li><code>phoneNumber</code> (optional). The phone number of the warehouse.
 
 <ul>
-<li>The phone number length must be in the range [9...12].</li>
+<li>The phone number length must be in the range [9...13].</li>
 </ul></li>
 <li><code>comments</code> (optional). The comments regarding to the phone number.
 
@@ -1434,7 +1437,7 @@ IP:PORT/VERSION/API_ENDPOINT
 <td>Malformed body json.</td>
 </tr>
 </tbody></table>
-<h2 id='update-a-employee'>Update a employee</h2><pre class="highlight shell tab-shell"><code>curl -X PUT http://IP:PORT/VERSION/employees/616d83379bbd37254785a7d6 <span class="se">\</span>
+<h2 id='update-an-employee'>Update an employee</h2><pre class="highlight shell tab-shell"><code>curl -X PUT http://IP:PORT/VERSION/employees/616d83379bbd37254785a7d6 <span class="se">\</span>
   -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
@@ -1599,9 +1602,9 @@ IP:PORT/VERSION/API_ENDPOINT
 <td>Employee not found.</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-employee'>Delete a employee</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE http://IP:PORT/VERSION/employees/5e6f565acff3233408180978 <span class="se">\</span>
-    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
-    -H <span class="s2">"Content-Type: text/json"</span> <span class="se">\</span>
+<h2 id='delete-an-employee'>Delete an employee</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE http://IP:PORT/VERSION/employees/5e6f565acff3233408180978 <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: text/json"</span> <span class="se">\</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1647,6 +1650,29 @@ IP:PORT/VERSION/API_ENDPOINT
 <tr>
 <td><code>404</code></td>
 <td>The employee with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h2 id='get-an-employee-type'>Get an employee type</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/employees/types <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a string like the following:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>["DRIVER","STOREKEEPER","ADMINISTRATOR"]
+</code></pre>
+<p>It returns the different types of wmployees available.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/employees/types</code></p>
+<h3 id='responses-6'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The types are returned successfully</td>
 </tr>
 </tbody></table>
 <h1 id='products'>Products</h1><h2 id='get-all-products'>Get all products</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/products <span class="se">\</span>
