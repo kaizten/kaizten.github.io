@@ -265,6 +265,9 @@
                   <li>
                     <a href="#delete-an-algorithm" class="toc-h2 toc-link" data-title="Delete an algorithm">Delete an algorithm</a>
                   </li>
+                  <li>
+                    <a href="#get-algorithm-executable" class="toc-h2 toc-link" data-title="Get Algorithm Executable">Get Algorithm Executable</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -1016,6 +1019,44 @@ Only administrators can perform this operation.
 <tr>
 <td><code>200</code></td>
 <td>The algorithm has been deleted successfully.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The algorithm with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h2 id='get-algorithm-executable'>Get Algorithm Executable</h2><pre class="highlight shell tab-shell"><code>curl https://IP:PORT/VERSION/algorithms/executable/:id
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns the binary file in the body of the response.</p>
+</blockquote>
+
+<p>It provides a specific algorithm executable by indicating its identifier. The algorithm executable is provided in the body response as binary.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET https://IP:PORT/VERSION/algorithms/executable/:id</code></p>
+<h3 id='url-parameters-5'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the requested algorithm.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-7'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded. The algorithm executable is included in the body of the response.</td>
 </tr>
 <tr>
 <td><code>404</code></td>
