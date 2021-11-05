@@ -397,15 +397,20 @@ IP:PORT/VERSION/API_ENDPOINT
 <ul>
 <li>The identity document length must be in the range [2...100].</li>
 </ul></li>
-<li><code>name</code> (optional). The name of the client.
+<li><code>name</code> (required). The name of the client.
 
 <ul>
 <li>The name length must be in the range [2...100].</li>
 </ul></li>
-<li><code>surname</code> (optional). The surname of the client.
+<li><code>firstSurname</code> (required). The first surname of the client.
 
 <ul>
-<li>The surname length must be in the range [2...100].</li>
+<li>The first surname length must be in the range [2...100].</li>
+</ul></li>
+<li><code>secondSurname</code> (optional). The second surname of the client.
+
+<ul>
+<li>The second surname length must be in the range [2...100].</li>
 </ul></li>
 <li><code>phone</code> (optional). The phone is composed by two variables:
 
@@ -428,6 +433,11 @@ IP:PORT/VERSION/API_ENDPOINT
 
 <ul>
 <li>The street length must be in the range [2...100].</li>
+</ul></li>
+<li><code>number</code> (optional) The number of the building in the street.
+
+<ul>
+<li>The number must be integer positive.</li>
 </ul></li>
 <li><code>postalCode</code> (optional). The postal code of the client home.
 
@@ -464,15 +474,20 @@ IP:PORT/VERSION/API_ENDPOINT
 <ul>
 <li>The identity document length must be in the range [2...100].</li>
 </ul></li>
-<li><code>name</code> (optional). The name of the employee.
+<li><code>name</code> (required). The name of the employee.
 
 <ul>
 <li>The name length must be in the range [2...100].</li>
 </ul></li>
-<li><code>surname</code> (optional). The surname of the employee.
+<li><code>firstSurname</code> (required). The first surname of the employee.
 
 <ul>
-<li>The surname length must be in the range [2...100].</li>
+<li>The first surname length must be in the range [2...100].</li>
+</ul></li>
+<li><code>secondSurname</code> (optional). The second surname of the employee.
+
+<ul>
+<li>The second surname length must be in the range [2...100].</li>
 </ul></li>
 <li><code>type</code> (optional). The type of employee.
 
@@ -514,6 +529,11 @@ IP:PORT/VERSION/API_ENDPOINT
 
 <ul>
 <li>The street length must be in the range [2...100].</li>
+</ul></li>
+<li><code>number</code> (optional) The number of the building in the street.
+
+<ul>
+<li>The number must be integer positive.</li>
 </ul></li>
 <li><code>postalCode</code> (optional). The postal code of the employee home.
 
@@ -644,6 +664,11 @@ IP:PORT/VERSION/API_ENDPOINT
 <ul>
 <li>The street length must be in the range [2...100].</li>
 </ul></li>
+<li><code>number</code> (optional) The number of the building in the street.
+
+<ul>
+<li>The number must be integer positive.</li>
+</ul></li>
 <li><code>postalCode</code> (optional). The postal code of the warehouse lacation.
 
 <ul>
@@ -698,13 +723,15 @@ IP:PORT/VERSION/API_ENDPOINT
     </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"213124353532"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"identityDocument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"131231441Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jorge"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"surname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gonzalez Rodriguez"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"firstSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gonzalez"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"secondSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rodriguez"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"658498135"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is the main phone"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"street"</span><span class="p">:</span><span class="s2">"Juan Carlos I"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="s2">"38450"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"La Laguna"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"latitude"</span><span class="p">:</span><span class="mf">28.48</span><span class="p">,</span><span class="w">
@@ -716,13 +743,15 @@ IP:PORT/VERSION/API_ENDPOINT
     </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"21362735532"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"identityDocument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"131238244J"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sandra"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"surname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jimenez García"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"firstSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jimenez"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"secondSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"García"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"652443935"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is the main phone"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"street"</span><span class="p">:</span><span class="s2">"Juan Carlos I"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="s2">"38450"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"La Laguna"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"latitude"</span><span class="p">:</span><span class="mf">28.48</span><span class="p">,</span><span class="w">
@@ -773,13 +802,15 @@ IP:PORT/VERSION/API_ENDPOINT
   </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"21362735532"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"identityDocument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"131238244J"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sandra"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"surname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jimenez García"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"firstSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jimenez"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"secondSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"García"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"652443935"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is the main phone"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"street"</span><span class="p">:</span><span class="s2">"Juan Carlos I"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"number"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
     </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="s2">"38450"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"La Laguna"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"latitude"</span><span class="p">:</span><span class="mf">28.48</span><span class="p">,</span><span class="w">
@@ -826,7 +857,8 @@ IP:PORT/VERSION/API_ENDPOINT
   -d <span class="s1">'{ \
     "identityDocument":"834237656874D", \
     "name":"Andres", \
-    "surname": "Rosado Garcia"
+    "firstSurname": "Rosado",
+    "secondSurname": "Garcia"
   }'</span>
 </code></pre>
 <blockquote>
@@ -839,7 +871,8 @@ IP:PORT/VERSION/API_ENDPOINT
   </span><span class="s2">"identityDocument"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"834237656874D"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Andres"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Rosado Garcia"</span><span class="w">
+  </span><span class="s2">"firstSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rosado"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"secondSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Garcia"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>It creates a new client by specifying at least the required fields. The created client is provided in the response.</p>
@@ -861,11 +894,16 @@ IP:PORT/VERSION/API_ENDPOINT
 <tr>
 <td><code>name</code></td>
 <td>Name of the client.</td>
-<td>No</td>
+<td>Yes</td>
 </tr>
 <tr>
-<td><code>surname</code></td>
-<td>Surname of the client.</td>
+<td><code>firstSurname</code></td>
+<td>First surname of the client.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>secondSurname</code></td>
+<td>Second surname of the client.</td>
 <td>No</td>
 </tr>
 <tr>
@@ -912,6 +950,11 @@ IP:PORT/VERSION/API_ENDPOINT
 <td>No</td>
 </tr>
 <tr>
+<td><code>number</code></td>
+<td>The number of the building in the street.</td>
+<td>No</td>
+</tr>
+<tr>
 <td><code>postalCode</code></td>
 <td>Postal code of the client&#39;s home location.</td>
 <td>No</td>
@@ -955,7 +998,8 @@ IP:PORT/VERSION/API_ENDPOINT
   -d <span class="s1">'{ \
     "identityDocument":"834237656874D", \
     "name":"Andres", \
-    "surname": "Rosado Garcia"
+    "firstSurname": "Rosado",
+    "secondSurname": "Garcia"
     "comments": "This client use to buy Bridgestone"
   }'</span>
 </code></pre>
@@ -969,7 +1013,8 @@ IP:PORT/VERSION/API_ENDPOINT
   </span><span class="s2">"identityDocument"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"834237656874D"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Andres"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Rosado Garcia"</span><span class="w">
+  </span><span class="s2">"firstSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rosado"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"secondSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Garcia"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>It updates a client by specifying his id and at least the required fields. The updated client is provided in the response.</p>
@@ -991,11 +1036,16 @@ IP:PORT/VERSION/API_ENDPOINT
 <tr>
 <td><code>name</code></td>
 <td>Name of the client.</td>
-<td>No</td>
+<td>Yes</td>
 </tr>
 <tr>
-<td><code>surname</code></td>
-<td>Surname of the client.</td>
+<td><code>firstSurname</code></td>
+<td>First surname of the client.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>secondSurname</code></td>
+<td>Second surname of the client.</td>
 <td>No</td>
 </tr>
 <tr>
@@ -1039,6 +1089,11 @@ IP:PORT/VERSION/API_ENDPOINT
 <tr>
 <td><code>street</code></td>
 <td>Street of the client&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>number</code></td>
+<td>The number of the building in the street.</td>
 <td>No</td>
 </tr>
 <tr>
@@ -1096,7 +1151,8 @@ IP:PORT/VERSION/API_ENDPOINT
   </span><span class="s2">"identityDocument"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"834237656874D"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Andres"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Rosado Garcia"</span><span class="w">
+  </span><span class="s2">"firstSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rosado"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"secondSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Garcia"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>It is used to remove a client from the database. It returns the removed client in the body of the response.</p>
@@ -1141,7 +1197,8 @@ IP:PORT/VERSION/API_ENDPOINT
     </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"213124353532"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"identityDocument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"131231441Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jorge"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"surname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gonzalez Rodriguez"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"firstSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gonzalez"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"secondSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rodriguez"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DRIVER"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"658498135"</span><span class="p">,</span><span class="w">
@@ -1153,6 +1210,7 @@ IP:PORT/VERSION/API_ENDPOINT
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"street"</span><span class="p">:</span><span class="s2">"Juan Carlos I"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="s2">"38450"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"La Laguna"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"latitude"</span><span class="p">:</span><span class="mf">28.48</span><span class="p">,</span><span class="w">
@@ -1164,7 +1222,8 @@ IP:PORT/VERSION/API_ENDPOINT
     </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"21362735532"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"identityDocument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"131238244J"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sandra"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"surname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jimenez García"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"firstSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jimenez"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"secondSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"García"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMINISTRATOR"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"652443935"</span><span class="p">,</span><span class="w">
@@ -1176,6 +1235,7 @@ IP:PORT/VERSION/API_ENDPOINT
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"street"</span><span class="p">:</span><span class="s2">"Juan Carlos I"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="s2">"38450"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"La Laguna"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"latitude"</span><span class="p">:</span><span class="mf">28.48</span><span class="p">,</span><span class="w">
@@ -1226,7 +1286,8 @@ IP:PORT/VERSION/API_ENDPOINT
   </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"21362735532"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"identityDocument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"131238244J"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sandra"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"surname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jimenez García"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"firstSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jimenez"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"secondSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"García"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMINISTRATOR"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"652443935"</span><span class="p">,</span><span class="w">
@@ -1238,6 +1299,7 @@ IP:PORT/VERSION/API_ENDPOINT
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"street"</span><span class="p">:</span><span class="s2">"Juan Carlos I"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"number"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
     </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="s2">"38450"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"La Laguna"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"latitude"</span><span class="p">:</span><span class="mf">28.48</span><span class="p">,</span><span class="w">
@@ -1284,7 +1346,8 @@ IP:PORT/VERSION/API_ENDPOINT
   -d <span class="s1">'{ \
     "identityDocument":"834237656874D", \
     "name":"Andres", \
-    "surname": "Rosado Garcia"
+    "firstSurname": "Rosado",
+    "secondSurname": "Garcia"
   }'</span>
 </code></pre>
 <blockquote>
@@ -1299,7 +1362,8 @@ IP:PORT/VERSION/API_ENDPOINT
   </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Rosado Garcia"</span><span class="w">
+  </span><span class="s2">"firstSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rosado"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"secondSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Garcia"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>It creates a new employee by specifying at least the required fields. The created employee is provided in the response.</p>
@@ -1321,11 +1385,16 @@ IP:PORT/VERSION/API_ENDPOINT
 <tr>
 <td><code>name</code></td>
 <td>Name of the employee.</td>
-<td>No</td>
+<td>Yes</td>
 </tr>
 <tr>
-<td><code>surname</code></td>
-<td>Surname of the employee.</td>
+<td><code>firstSurname</code></td>
+<td>First surname of the employee.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>secondSurname</code></td>
+<td>Second surname of the employee.</td>
 <td>No</td>
 </tr>
 <tr>
@@ -1401,6 +1470,11 @@ IP:PORT/VERSION/API_ENDPOINT
 <td>No</td>
 </tr>
 <tr>
+<td><code>number</code></td>
+<td>The number of the building in the street.</td>
+<td>No</td>
+</tr>
+<tr>
 <td><code>postalCode</code></td>
 <td>Postal code of the employee&#39;s home location.</td>
 <td>No</td>
@@ -1444,7 +1518,8 @@ IP:PORT/VERSION/API_ENDPOINT
   -d <span class="s1">'{ \
     "identityDocument":"834237656874D", \
     "name":"Andres", \
-    "surname": "Rosado Garcia"
+    "firstSurname": "Rosado",
+    "secondSurname": "Garcia"
     "comments": "This employee work hard."
   }'</span>
 </code></pre>
@@ -1460,7 +1535,8 @@ IP:PORT/VERSION/API_ENDPOINT
   </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Rosado Garcia"</span><span class="w">
+  </span><span class="s2">"firstSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rosado"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"secondSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Garcia"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>It updates a employee by specifying his id and at least the required fields. The updated employee is provided in the response.</p>
@@ -1482,11 +1558,16 @@ IP:PORT/VERSION/API_ENDPOINT
 <tr>
 <td><code>name</code></td>
 <td>Name of the employee.</td>
-<td>No</td>
+<td>Yes</td>
 </tr>
 <tr>
-<td><code>surname</code></td>
-<td>Surname of the employee.</td>
+<td><code>firstSurname</code></td>
+<td>First surname of the employee.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>secondSurname</code></td>
+<td>Second surname of the employee.</td>
 <td>No</td>
 </tr>
 <tr>
@@ -1562,6 +1643,11 @@ IP:PORT/VERSION/API_ENDPOINT
 <td>No</td>
 </tr>
 <tr>
+<td><code>number</code></td>
+<td>The number of the building in the street.</td>
+<td>No</td>
+</tr>
+<tr>
 <td><code>postalCode</code></td>
 <td>Postal code of the employee&#39;s home location.</td>
 <td>No</td>
@@ -1618,7 +1704,8 @@ IP:PORT/VERSION/API_ENDPOINT
   </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"surname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Rosado Garcia"</span><span class="w">
+  </span><span class="s2">"firstSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rosado"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"secondSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Garcia"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>It is used to remove a employee from the database. It returns the removed employee in the body of the response.</p>
@@ -2430,6 +2517,7 @@ IP:PORT/VERSION/API_ENDPOINT
     </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
     </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"street"</span><span class="p">:</span><span class="s2">"Juan Carlos I"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="s2">"38450"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Santa Cruz"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"latitude"</span><span class="p">:</span><span class="mf">28.48</span><span class="p">,</span><span class="w">
@@ -2458,6 +2546,7 @@ IP:PORT/VERSION/API_ENDPOINT
     </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span><span class="w">
     </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"street"</span><span class="p">:</span><span class="s2">"Juan XXIII"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="s2">"38450"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Los Cristianos"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"latitude"</span><span class="p">:</span><span class="mf">28.42</span><span class="p">,</span><span class="w">
@@ -2525,6 +2614,7 @@ IP:PORT/VERSION/API_ENDPOINT
   </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span><span class="w">
   </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"street"</span><span class="p">:</span><span class="s2">"Juan XXIII"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"number"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="s2">"38450"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Los Cristianos"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"latitude"</span><span class="p">:</span><span class="mf">28.42</span><span class="p">,</span><span class="w">
@@ -2683,6 +2773,11 @@ IP:PORT/VERSION/API_ENDPOINT
 <td>No</td>
 </tr>
 <tr>
+<td><code>number</code></td>
+<td>The number of the building in the street.</td>
+<td>No</td>
+</tr>
+<tr>
 <td><code>postalCode</code></td>
 <td>Postal code of the warehouse&#39;s home location.</td>
 <td>No</td>
@@ -2827,6 +2922,11 @@ IP:PORT/VERSION/API_ENDPOINT
 <tr>
 <td><code>street</code></td>
 <td>Street of the warehouse&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>number</code></td>
+<td>The number of the building in the street.</td>
 <td>No</td>
 </tr>
 <tr>
