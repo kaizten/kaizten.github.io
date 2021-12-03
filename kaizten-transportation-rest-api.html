@@ -237,6 +237,9 @@
                     <a href="#employee" class="toc-h2 toc-link" data-title="Employee">Employee</a>
                   </li>
                   <li>
+                    <a href="#order" class="toc-h2 toc-link" data-title="Order">Order</a>
+                  </li>
+                  <li>
                     <a href="#product" class="toc-h2 toc-link" data-title="Product">Product</a>
                   </li>
                   <li>
@@ -287,6 +290,26 @@
                   </li>
                   <li>
                     <a href="#get-an-employee-type" class="toc-h2 toc-link" data-title="Get an employee type">Get an employee type</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#orders" class="toc-h1 toc-link" data-title="Orders">Orders</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-orders" class="toc-h2 toc-link" data-title="Get all orders">Get all orders</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-order" class="toc-h2 toc-link" data-title="Get a specific order">Get a specific order</a>
+                  </li>
+                  <li>
+                    <a href="#create-an-order" class="toc-h2 toc-link" data-title="Create an order">Create an order</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-order" class="toc-h2 toc-link" data-title="Update a order">Update a order</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-order" class="toc-h2 toc-link" data-title="Delete a order">Delete a order</a>
                   </li>
               </ul>
           </li>
@@ -575,6 +598,42 @@ IP:PORT/VERSION/API_ENDPOINT
 <ul>
 <li>The comment length must be in the range [0...1000].</li>
 </ul></li>
+</ul>
+<h2 id='order'>Order</h2>
+<ul>
+<li><code>id</code> (generated). Identifier of the order.</li>
+<li><code>reference</code> (required). Reference name for the order.
+
+<ul>
+<li>The reference length must be in the range [3...50].</li>
+</ul></li>
+<li><code>creationDate</code> (generated). Date of the moment when the order has been created.
+
+<ul>
+<li>The creation date is in ISO8601 format.</li>
+</ul></li>
+<li><code>deliveryDate</code> (required). Date when the delivery was made.
+
+<ul>
+<li>The delivery date must be in ISO8601 format.</li>
+</ul></li>
+<li><code>preferedDates</code> (optional). Array of dates when the client prefers to get the delivery.
+
+<ul>
+<li>The prefered dates must be in ISO8601 format.</li>
+</ul></li>
+<li><code>clientId</code> (required). Id of the client who made the order.
+
+<ul>
+<li>The client must be already created before registering an order.</li>
+</ul></li>
+<li><code>orderUnits</code> (required). Array of units composed by a product and the requested quantity of it.</li>
+<li><code>productId</code> (required). Id of the product included by unit.
+
+<ul>
+<li>The product must be already created before registering an order.</li>
+</ul></li>
+<li><code>quantity</code> (required). Quantity of each product included by unit.</li>
 </ul>
 <h2 id='product'>Product</h2>
 <ul>
@@ -1886,6 +1945,590 @@ IP:PORT/VERSION/API_ENDPOINT
 <tr>
 <td><code>200</code></td>
 <td>The types are returned successfully</td>
+</tr>
+</tbody></table>
+<h1 id='orders'>Orders</h1><h2 id='get-all-orders'>Get all orders</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/orders <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+     </span><span class="s2">"client"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+           </span><span class="s2">"city"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Adeje"</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">28.0850624356968</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">-16.7264503188073</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38660"</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CataluÃ±a"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Este cliente compra mucho."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+           </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"correo electrÃ³nico principal"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"cmdraghici.92@gmail.com"</span><span class="w">
+           </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"firstSurname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Draghici"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61895971ec0bca3aeba2b85a"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"identityDocument"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"X5307677J"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Cezar Mihai"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"orderIds"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+           </span><span class="s2">"61a8a202a382e40966c9db92"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+           </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"telÃ©fono personal"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"phoneNumber"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"697231149"</span><span class="w">
+           </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"secondSurname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Voinea"</span><span class="w">
+     </span><span class="p">},</span><span class="w">
+     </span><span class="s2">"creationDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-03T15:17:59.189Z"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"deliveryDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61a8a202a382e40966c9db92"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"preferedDates"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"2021-12-02T10:49:25.169Z"</span><span class="w">
+     </span><span class="p">],</span><span class="w">
+     </span><span class="s2">"referece"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"prueba2"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"units"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+           </span><span class="s2">"product"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Marca Bridgestone"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"dimensions"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                 </span><span class="s2">"depth"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"height"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"width"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"618d23ce41acdc0cee8f93d9"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Neumatico"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"weight"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="w">
+           </span><span class="p">},</span><span class="w">
+           </span><span class="s2">"quantity"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+     </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+</span></code></pre>
+<p>It provides all the orders registered. The returned orders will be paginated to <code>20</code> items by default. Further pages can be requested by means of the <code>page</code> query paramenter. It can also set a custom page size up to <code>100</code> with the <code>size</code> parameter.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/orders</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>page</code></td>
+<td>Zero-based page index. Default value: <code>0</code>. Min value: <code>0</code>.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>Size of the page to be returned. Default value: <code>20</code>. Min value: <code>0</code>. Max value: <code>100</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='responses'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded and the orders are included in the body of the response. The following headers are included in the response: <ul><li><code>Pagination-Count: 1</code></li><li><code>Pagination-Size: 20</code></li><li><code>Pagination-Page: 0</code></li><li><code>Total-Count: 5</code></li></ul> where <code>Pagination-Count</code> is the number of existing pages, <code>Pagination-Size</code> is the size of each page, <code>Pagination-Page</code> is the index of the current page, and <code>Total-Count</code> is the number of entities in the server.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-order'>Get a specific order</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/orders/:id <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"client"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"city"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Adeje"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">28.0850624356968</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">-16.7264503188073</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38660"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CataluÃ±a"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Este cliente compra mucho."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"correo electrÃ³nico principal"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"cmdraghici.92@gmail.com"</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"firstSurname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Draghici"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61895971ec0bca3aeba2b85a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"identityDocument"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"X5307677J"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Cezar Mihai"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"orderIds"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="s2">"61a8a202a382e40966c9db92"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"telÃ©fono personal"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"phoneNumber"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"697231149"</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"secondSurname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Voinea"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"creationDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-03T15:17:59.189Z"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"deliveryDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61a8a202a382e40966c9db92"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"preferedDates"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"2021-12-02T10:49:25.169Z"</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+   </span><span class="s2">"referece"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"prueba2"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"units"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"product"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Marca Bridgestone"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dimensions"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"depth"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"height"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"width"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"618d23ce41acdc0cee8f93d9"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Neumatico"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"weight"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="s2">"quantity"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It provides a specific order by indicating its identifier. The order is provided in the response body.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/orders/:id</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the requested order.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-2'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded. The order is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The order with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h2 id='create-an-order'>Create an order</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/orders <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "reference":"prueba2",
+    "preferedDates": [
+      "2021-12-02T10:49:25.169Z"
+    ],
+    "clientId":"61895971ec0bca3aeba2b85a",
+    "orderUnits":[
+      {
+        "productId":"618d23ce41acdc0cee8f93d9",
+        "quantity":"10"
+      }
+    ]
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"client"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"city"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Adeje"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">28.0850624356968</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">-16.7264503188073</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38660"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CataluÃ±a"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Este cliente compra mucho."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"correo electrÃ³nico principal"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"cmdraghici.92@gmail.com"</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"firstSurname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Draghici"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61895971ec0bca3aeba2b85a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"identityDocument"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"X5307677J"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Cezar Mihai"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"orderIds"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="s2">"61a8a202a382e40966c9db92"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"telÃ©fono personal"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"phoneNumber"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"697231149"</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"secondSurname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Voinea"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"creationDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-03T15:17:59.189Z"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"deliveryDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61a8a202a382e40966c9db92"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"preferedDates"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"2021-12-02T10:49:25.169Z"</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+   </span><span class="s2">"referece"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"prueba2"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"units"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"product"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Marca Bridgestone"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dimensions"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"depth"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"height"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"width"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"618d23ce41acdc0cee8f93d9"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Neumatico"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"weight"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="s2">"quantity"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It creates a new order by specifying at least the required fields. The created order is provided in the response.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST http://IP:PORT/VERSION/orders</code></p>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>reference</code></td>
+<td>Reference name for the order.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>preferedDates</code></td>
+<td>Dates which are prefered for the delivery.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>deliveryDate</code></td>
+<td>Date when the delivery was made.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>clientId</code></td>
+<td>The client who made the order.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>units</code></td>
+<td>Array of units which contains a product id and the quantity requested.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>productId</code></td>
+<td>Id of the product included in each unit.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>quantity</code></td>
+<td>Quantity of each product requested in the order.</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h3 id='responses-3'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>201</code></td>
+<td>The order has been created successfully. The new order is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Malformed body json.</td>
+</tr>
+</tbody></table>
+<h2 id='update-a-order'>Update a order</h2><pre class="highlight shell tab-shell"><code>curl -X PUT http://IP:PORT/VERSION/orders/616d83379bbd37254785a7d6 <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "reference":"prueba2",
+    "preferedDates": [
+      "2021-12-02T10:49:25.169Z"
+    ],
+    "clientId":"61895971ec0bca3aeba2b85a",
+    "orderUnits":[
+      {
+        "productId":"618d23ce41acdc0cee8f93d9",
+        "quantity":"10"
+      }
+    ]
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"client"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"city"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Adeje"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">28.0850624356968</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">-16.7264503188073</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38660"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CataluÃ±a"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Este cliente compra mucho."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"correo electrÃ³nico principal"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"cmdraghici.92@gmail.com"</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"firstSurname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Draghici"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61895971ec0bca3aeba2b85a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"identityDocument"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"X5307677J"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Cezar Mihai"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"orderIds"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="s2">"61a8a202a382e40966c9db92"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"telÃ©fono personal"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"phoneNumber"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"697231149"</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"secondSurname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Voinea"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"creationDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-03T15:17:59.189Z"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"deliveryDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61a8a202a382e40966c9db92"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"preferedDates"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"2021-12-02T10:49:25.169Z"</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+   </span><span class="s2">"referece"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"prueba2"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"units"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"product"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Marca Bridgestone"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dimensions"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"depth"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"height"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"width"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"618d23ce41acdc0cee8f93d9"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Neumatico"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"weight"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="s2">"quantity"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It updates a order by specifying his id and at least the required fields. The updated order is provided in the response.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT http://IP:PORT/VERSION/orders/:id</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the order to be updated.</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters-2'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>reference</code></td>
+<td>Reference name for the order.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>preferedDates</code></td>
+<td>Dates which are prefered for the delivery.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>deliveryDate</code></td>
+<td>Date when the delivery was made.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>clientId</code></td>
+<td>The client who made the order.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>units</code></td>
+<td>Array of units which contains a product id and the quantity requested.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>productId</code></td>
+<td>Id of the product included in each unit.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>quantity</code></td>
+<td>Quantity of each product requested in the order.</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h3 id='responses-4'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The order has been updated successfully. The order is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Malformed body json.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>Order not found.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-order'>Delete a order</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE http://IP:PORT/VERSION/orders/61a8a202a382e40966c9db92 <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+    -H <span class="s2">"Content-Type: text/json"</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"client"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"city"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Adeje"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">28.0850624356968</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">-16.7264503188073</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"38660"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CataluÃ±a"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Este cliente compra mucho."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"correo electrÃ³nico principal"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"cmdraghici.92@gmail.com"</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"firstSurname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Draghici"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61895971ec0bca3aeba2b85a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"identityDocument"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"X5307677J"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Cezar Mihai"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"orderIds"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="s2">"61a8a202a382e40966c9db92"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"telÃ©fono personal"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"phoneNumber"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"697231149"</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"secondSurname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Voinea"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"creationDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-03T15:17:59.189Z"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"deliveryDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61a8a202a382e40966c9db92"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"preferedDates"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"2021-12-02T10:49:25.169Z"</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+   </span><span class="s2">"referece"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"prueba2"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"units"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"product"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Marca Bridgestone"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dimensions"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"depth"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"height"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"width"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"618d23ce41acdc0cee8f93d9"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Neumatico"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"weight"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="s2">"quantity"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It is used to remove a order from the database. It returns the removed order in the body of the response.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE http://IP:PORT/VERSION/orders/:id</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the order to be deleted.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-5'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The order has been deleted successfully.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The order with the given identifier is not found.</td>
 </tr>
 </tbody></table>
 <h1 id='products'>Products</h1><h2 id='get-all-products'>Get all products</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/products <span class="se">\</span>
