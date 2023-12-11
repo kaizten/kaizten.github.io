@@ -20,7 +20,7 @@ services:
     ports:
       - 80:80
     environment:
-      - VITE_KAIZTEN_TASK_LITE_URL=${URL:-http://localhost}:8080
+      - VISUALIZER_KAIZTEN_TASK_LITE_URL==${URL:-http://localhost}:8080
 
   # Kaizten Task Lite
   kaizten-task-lite:
