@@ -1,8 +1,10 @@
 # Run:
-#    docker-compose up -d
-#    Ports:
-#        - Kaizten Task Lite:                   8080
-#        - Production Planner visualizer:         80
+#   URL=<IP_OF_MACHINE> docker-compose up
+#   Ports:
+#   - Kaizten Task Lite:             8080
+#   - Production Planner visualizer:   80
+#   Variables:
+#   - URL: URL of the machine in which Docker Compose is up 
 # Stop:
 #    docker-compose down
 
@@ -18,7 +20,7 @@ services:
     ports:
       - 80:80
     environment:
-      - VITE_KAIZTEN_TASK_LITE_URL=http://localhost:8080
+      - VITE_KAIZTEN_TASK_LITE_URL=${URL:-http://localhost}:8080
 
   # Kaizten Task Lite
   kaizten-task-lite:
