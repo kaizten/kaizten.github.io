@@ -1,8 +1,14 @@
 #!/bin/bash
-# Purpose: It updates the current GitHub repository with the last changes. 
-# Author: Kaizten Analytics S.L. (info@kaizten.com)
-# License: GPL version 2.0 or above
-# -------------------------------------------------------------------------------------------------
+
+#####################################################################################################################################################
+#  DESCRIPTION: It updates the current GitHub repository with the last changes. 
+#  USAGE: ./script-commit-github.sh [options]
+#  OPTIONS:
+#    -h   Display help message
+#  NOTES:
+#    - This script requires git to be installed.
+#  AUTHOR: Kaizten Analytics S.L. (info@kaizten.com)
+#####################################################################################################################################################
 
 main () {
   echo "# Pulling repository:"
