@@ -1,0 +1,50 @@
+# Run:
+#   URL=<IP_OF_MACHINE> docker-compose up
+#   Ports:
+#   - Kaizten Task Lite:             8080
+#   - Production Planner visualizer:   80
+#   Variables:
+#   - URL: URL of the machine in which Docker Compose is up 
+# Stop:
+#    docker-compose down
+
+version: '3.7'
+
+services:
+
+  # Production planning visualizer
+  production-planner-visualizer:
+    image: kaizten/production-planner_visualizer:latest
+    container_name: production-planner-visualizer
+    privileged: true
+    ports:
+      - 80:80
+    environment:
+      - VISUALIZER_KAIZTEN_TASK_LITE_URL=${URL:-http://localhost}:8080
+
+  # Kaizten Task Lite
+  kaizten-task-lite:
+    image: kaizten/kaizten-task-lite:latest
+    container_name: kaizten-task-lite
+    privileged: true
+    ports:
+      - 8080:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - algorithm_assets:/tmp
+
+  # Watchtower
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    restart: always
+    environment:
+      WATCHTOWER_CLEANUP: "true"
+      WATCHTOWER_DEBUG: "true"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 3600 kaizten/production-planner-visualizer kaizten/kaizten-task-lite
+
+volumes:
+  algorithm_assets:
+    name: algorithm_assets

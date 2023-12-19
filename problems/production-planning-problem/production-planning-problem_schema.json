@@ -1,0 +1,354 @@
+{
+	"$schema": "https://json-schema.org/draft/2019-09/schema",
+	"title": "Production Planning Problem",
+	"description": "Definition of instance of the Production Planning Problem",
+	"type": "object",
+	"properties": {
+		"references": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"internalId": {
+						"type": "string"
+					},
+					"coil": {
+						"type": "object",
+						"properties": {
+							"id": {
+								"type": "integer"
+							},
+							"value": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": true,
+						"required": [
+							"id",
+							"value"
+						]
+					},
+					"product": {
+						"type": "string"
+					},
+					"packageFormat": {
+						"type": "object",
+						"properties": {
+							"id": {
+								"type": "integer"
+							},
+							"value": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": true,
+						"required": [
+							"id",
+							"value"
+						]
+					},
+					"id": {
+						"type": "integer"
+					},
+					"productType": {
+						"type": "object",
+						"properties": {
+							"id": {
+								"type": "integer"
+							},
+							"value": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": true,
+						"required": [
+							"id",
+							"value"
+						]
+					}
+				},
+				"additionalProperties": true,
+				"required": [
+					"internalId",
+					"coil",
+					"product",
+					"packageFormat",
+					"id",
+					"productType"
+				]
+			},
+			"additionalItems": true
+		},
+		"orders": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"reference": {
+						"type": "integer"
+					},
+					"internalId": {
+						"type": "string"
+					},
+					"staff": {
+						"type": "integer"
+					},
+					"id": {
+						"type": "integer"
+					},
+					"time": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"line": {
+									"type": "integer"
+								},
+								"time": {
+									"type": "integer"
+								}
+							},
+							"additionalProperties": true,
+							"required": [
+								"line",
+								"time"
+							]
+						},
+						"additionalItems": true
+					},
+					"type": {
+						"type": "object",
+						"properties": {
+							"id": {
+								"type": "integer"
+							},
+							"value": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": true,
+						"required": [
+							"id",
+							"value"
+						]
+					},
+					"deadline": {
+						"type": "object",
+						"properties": {
+							"day": {
+								"type": "integer",
+							},
+							"date": {
+								"type": "string",
+								"format": "date"
+							}
+						},
+						"additionalProperties": true,
+						"required": [
+							"day",
+							"date"
+						]
+					},
+					"first": {
+						"type": "integer",
+						"enum": [
+							0,
+							1
+						]
+					},
+					"last": {
+						"type": "integer",
+						"enum": [
+							0,
+							1
+						]
+					},
+					"previousOrder": {
+						"type": "integer"
+					},
+					"preassignedLines": {
+						"type": "array",
+						"items": {
+							"type": "integer"
+						},
+						"additionalItems": true
+					},
+					"quantity": {
+						"type": "integer"
+					}
+				},
+				"additionalProperties": true,
+				"required": [
+					"reference",
+					"internalId",
+					"staff",
+					"id",
+					"time",
+					"type",
+					"deadline"
+				]
+			},
+			"additionalItems": true
+		},
+		"staff": {
+			"type": "integer"
+		},
+		"lines": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"setups": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"sourceId": {
+									"type": "integer"
+								},
+								"targetId": {
+									"type": "integer"
+								},
+								"time": {
+									"type": "integer"
+								}
+							},
+							"additionalProperties": true,
+							"required": [
+								"sourceId",
+								"targetId",
+								"time"
+							]
+						},
+						"additionalItems": true
+					},
+					"id": {
+						"type": "integer"
+					},
+					"time": {
+						"type": "integer"
+					},
+					"type": {
+						"type": "object",
+						"properties": {
+							"id": {
+								"type": "integer"
+							},
+							"value": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": true,
+						"required": [
+							"id",
+							"value"
+						]
+					}
+				},
+				"additionalProperties": true,
+				"required": [
+					"setups",
+					"id",
+					"time",
+					"type"
+				]
+			},
+			"additionalItems": true
+		},
+		"staffPerDay": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"staff": {
+						"type": "number"
+					},
+					"day": {
+						"type": "integer"
+					},
+				},
+				"additionalProperties": true,
+				"required": [
+					"staff",
+					"day",
+				]
+			},
+			"additionalItems": true
+		},
+		"planningHorizon": {
+			"type": "object",
+			"properties": {
+				"openDays": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"weight": {
+								"type": "number"
+							},
+							"day": {
+								"type": "integer"
+							},
+							"date": {
+								"type": "string",
+								"format": "date"
+							}
+						},
+						"additionalProperties": true,
+						"required": [
+							"weight",
+							"day",
+							"date"
+						]
+					},
+					"additionalItems": true
+				}
+			},
+			"additionalProperties": true,
+			"required": [
+				"openDays"
+			]
+		},
+		"tubes": {
+		  "type": "array",
+		  "items": [
+			{
+			  "type": "object",
+			  "properties": {
+				"packageFormat": {
+					"type": "object",
+					"properties": {
+						"id": {
+							"type": "integer"
+						},
+						"value": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": true,
+					"required": [
+						"id",
+						"value"
+					]
+				},
+				"value": {
+				  "type": "integer"
+				}
+			  },
+			  "required": [
+				"packageFormat",
+				"value"
+			  ]
+			}
+		  ]
+		}
+	},
+	"additionalProperties": true,
+	"required": [
+		"references",
+		"orders",
+		"staff",
+		"lines",
+		"planningHorizon"
+	]
+}

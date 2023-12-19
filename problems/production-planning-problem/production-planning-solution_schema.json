@@ -1,0 +1,706 @@
+{
+	"$schema": "https://json-schema.org/draft/2019-09/schema",
+    "title": "Production Planning Solution",
+    "description": "Definition of solution of the Production Planning Problem",
+	"type": "object",
+	"properties": {
+		"objectiveFunctions": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"value": {
+						"type": "number"
+					}
+				},
+				"additionalProperties": true,
+				"required": [
+					"value"
+				]
+			},
+			"additionalItems": true
+		},
+		"days": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"date": {
+						"type": "string"
+					},
+					"id": {
+						"type": "integer"
+					},
+					"lines": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"orders": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"referenceInternalId": {
+												"type": "string"
+											},
+											"productType": {
+												"type": "object",
+												"properties": {
+													"id": {
+														"type": "integer"
+													},
+													"value": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": true,
+												"required": [
+													"id",
+													"value"
+												]
+											},
+											"product": {
+												"type": "string",
+												"enum": [
+													"ISOLA_ALMENDRA_AL_CHOCOLATE_CON_LECHE_TARRINA_250_G",
+													"ISOLA_ALMENDRAS_FRITAS_SALADAS_1_KG",
+													"ISOLA_ALMENDRAS_FRITAS_MARCONA_TARRINA_450_G",
+													"ISOLA_ALMENDRAS_FRITAS_SALADAS_150_G",
+													"ISOLA_ALMENDRAS_GARRAPINADAS_150_G",
+													"ISOLA_ALMENDRAS_NATURALES_1_KG",
+													"ISOLA_ALMENDRAS_NATURALES_200_G",
+													"ISOLA_ALMENDRAS_NATURALES_125_G",
+													"ISOLA_ALMENDRA_NATURAL_TARRINA_500_G",
+													"ISOLA_ALMENDRAS_REPELADAS_1_KG",
+													"ISOLA_ALMENDRA_MARCONA_REPELADA_TARRINA_500_G",
+													"ISOLA_ALMENDRAS_REPELADAS_125_G",
+													"ISOLA_ALMENDRAS_TOSTADAS_SALADAS_1_KG",
+													"ISOLA_ALMENDRAS_REPELADAS_TOSTADAS_SIN_SAL_5_KG",
+													"ISOLA_ALMENDRAS_REPELADAS_TUESTE_FUERTE_SIN_SAL_5_KG",
+													"ISOLA_ANACARDOS_CRUDOS_1_KG",
+													"ISOLA_ANACARDOS_FRITOS_SALADOS_1_KG",
+													"ISOLA_ANACARDOS_FRITOS_SALADOS_125_G",
+													"ISOLA_ANACARDOS_FRITOS_SALADOS_200_G",
+													"ISOLA_AVELLANA_TRUFADA_CANELA_TARRINA_175_G",
+													"ISOLA_AVELLANAS_NATURALES_1_KG",
+													"ISOLA_AVELLANAS_TOSTADAS_1_KG",
+													"ISOLA_AVELLANA_TOSTADA_REPELADA_TARRINA_430_G",
+													"ISOLA_AVELLANAS_TOSTADAS_200_G",
+													"ISOLA_CIRUELAS_PASAS_SIN_SEMILLA_1_KG",
+													"ISOLA_CIRUELAS_PASAS_SIN_SEMILLA_250_G",
+													"ISOLA_CIRUELAS_PASAS_SIN_HUESO_PREMIUM_TARRINA_500_G",
+													"ISOLA_COCKTAIL_DE_FRUTOS_SECOS_1_KG",
+													"ISOLA_COCKTAIL_FRUTOS_SECOS_TARRINA_200_G",
+													"ISOLA_COCKTAIL_DE_FRUTOS_SECOS_200_G",
+													"ISOLA_COCKTAIL_TROPICAL_800_G",
+													"ISOLA_COCKTAIL_TROPICAL_200_G",
+													"ISOLA_COCO_RALLADO_800_G",
+													"ISOLA_COCO_RALLADO_100_G",
+													"ISOLA_COMBINADO_DE_FRUTOS_SECOS_1_KG",
+													"ISOLA_COMBINADO_DE_FRUTOS_SECOS_125_G",
+													"ISOLA_MONODOSIS_COMBINADO_DE_FRUTOS_SECOS_40x25_G",
+													"ISOLA_MONODOSIS_PROMOCIONAL_25_G",
+													"ISOLA_COMBINADO_DE_FRUTOS_SECOS_200_G",
+													"ISOLA_MONODOSIS_PROMOCIONAL_25_G_CAJA_DE_80_UNIDADES",
+													"ISOLA_COQUITOS_MONDADOS_1_KG",
+													"ISOLA_COQUITOS_MONDADOS_125_G",
+													"ISOLA_DATIL_DESHUESADO_TARRINA_500_G",
+													"ISOLA_DATIL_MEDJOUL_SELECCION_TARRINA_500_G",
+													"ISOLA_FILETE_DE_ALMENDRAS_1_KG",
+													"ISOLA_GARBANZOS_TOSTADOS_125_G",
+													"ISOLA_GRANULADO_DE_ALMENDRAS_1_KG",
+													"ISOLA_HARINA_DE_ALMENDRAS_1_KG",
+													"ISOLA_HARINA_DE_ALMENDRAS_100_G",
+													"ISOLA_HARINA_DE_ALMENDRAS_TARRINA_120G",
+													"ISOLA_HIGOS_SECOS_500_G",
+													"ISOLA_HIGOS_TURCOS_PREMIUM_TARRINA_500_G",
+													"ISOLA_KIKOS_FRITOS_SALADOS_3_KG",
+													"ISOLA_KIKOS_FRITOS_SALADOS_150_G",
+													"ISOLA_MANISES_CASCARA_BRASIL_TOSTADOS_3_KG",
+													"ISOLA_MANISES_CASCARA_YUMBO_3_KG",
+													"ISOLA_MANISES_CASCARA_TOSTADOS_250_G",
+													"ISOLA_CACAHUETE_AL_CHOCOLATE_CON_LECHE_TARRINA_250_G",
+													"ISOLA_MANISES_CON_CHOCOLATE_200_G",
+													"ISOLA_MANISES_GARRAPINADOS_250_G",
+													"ISOLA_MANISES_REPELADOS_CRUDOS_1_KG",
+													"ISOLA_MANISES_FRITOS_SALADOS_1_KG",
+													"ISOLA_MANISES_FRITOS_SALADOS_125_G",
+													"ISOLA_CACAHUETE_REPELADO_FRITO_TARRINA_500_G",
+													"ISOLA_MONODOSIS_MANISES_SALADOS_40x25_G",
+													"ISOLA_MANISES_FRITOS_SALADOS_200_G",
+													"ISOLA_MAIZ_DE_PALOMITAS_250_G",
+													"ISOLA_MILLO_FRITO_SALADO_1_KG",
+													"ISOLA_MILLO_FRITO_SALADO_200_G",
+													"ISOLA_NUECES_MONDADAS_800_G",
+													"ISOLA_NUECES_MONDADAS_175_G",
+													"ISOLA_NUECES_MONDADAS_MITADES_TARRINA_300_G",
+													"ISOLA_NUECES_PECANAS_TARRINA_700_G",
+													"ISOLA_NUECES_PECANAS_TARRINA_150_G",
+													"ISOLA_NUECES_MONDADAS_100_G",
+													"ISOLA_OREJONES_1_KG",
+													"ISOLA_OREJONES_250_G",
+													"ISOLA_OREJONES_PREMIUM_TARRINA_500_G",
+													"ISOLA_PASAS_MOSCATEL_SIN_SEMILLA_1_KG",
+													"ISOLA_PASAS_MOSCATEL_SIN_SEMILLA_250_G",
+													"ISOLA_PASAS_MOSCATEL_SIN_PIPAS_TARRINA_500_G",
+													"ISOLA_PAPAYA_TROPICAL_VERDE_DADOS_1_KG",
+													"ISOLA_PAPAYA_TROPICAL_NATURAL_DADOS_1_KG",
+													"ISOLA_PASAS_AL_CHOCOLATE_CON_LECHE_TARRINA_250_G",
+													"ISOLA_PASAS_CON_CHOCOLATE_200_G",
+													"ISOLA_PASAS_SULTANAS_1_KG",
+													"ISOLA_PASAS_SULTANAS_250_G",
+													"ISOLA_PASAS_SULTANAS_PREMIUM_TARRINA_500_G",
+													"ISOLA_PINA_TROPICAL_DADOS_1_KG",
+													"ISOLA_PINA_DADOS_TARRINA_250_G",
+													"ISOLA_PINONES_MONDADOS_CHINOS_1_KG",
+													"ISOLA_PIPAS_GIRASOL_PELADAS_CRUDAS_1_KG",
+													"ISOLA_PIPAS_GIRASOL_MONDADA_FRITA_TARRINA_480_G",
+													"ISOLA_PISTACHOS_TOSTADOS_SALADOS_1_KG",
+													"ISOLA_PISTACHOS_TOSTADOS_SALADOS_175_G",
+													"ISOLA_PISTACHOS_TOSTADOS_SALADOS_125_G",
+													"ISOLA_PISTACHOS_TOSTADOS_TARRINA_300_G",
+													"ISOLA_PISTACHOS_TOSTADOS_TARRINA_600_G",
+													"ISOLA_PLATANO_CHIP_125_G",
+													"ISOLA_MACADAMIAS_1_KG",
+													"ISOLA_PISTACHOS_MONDADOS_CRUDOS_1_KG",
+													"ISOLA_PISTACHOS_MONDADOS_TARRINA_175_G",
+													"ISOLA_PIPAS_DE_CALABAZA_MONDADAS_1_KG",
+													"ISOLA_COCKTAIL_CANARIAS_1_KG",
+													"ISOLA_COCKTAIL_CANARIAS_TARRINA_400_G",
+													"ISOLA_COCKTAIL_NATURAL_1_KG",
+													"ISOLA_COCKTAIL_NATURAL_250_G",
+													"ISOLA_COCKTAIL_NATURAL_125_G",
+													"ISOLA_COCKTAIL_NATURAL_TARRINA_180_G",
+													"ISOLA_MONODOSIS_COCKTAIL_NATURAL_30_G",
+													"ISOLA_GOMINOLAS_ALUBIAS_250_G",
+													"ISOLA_GOMINOLAS_MELOCOTONES_150_G",
+													"ISOLA_GOMINOLAS_BESOS_150_G",
+													"ISOLA_GOMINOLAS_MORAS_150_G",
+													"ISOLA_COCKTAIL_CHOCOLATE_200_G",
+													"ISOLA_APERITIVO_ORIENTAL_125_G",
+													"ISOLA_MIX_ENSALADAS_125_G",
+													"ISOLA_NUEZ_AL_CHOCOLATE_CON_LECHE_TARRINA_200_G",
+													"ISOLA_BAYAS_DEL_GOJI_800_G",
+													"ISOLA_BAYAS_DEL_GOJI_100_G",
+													"ISOLA_BAYAS_DEL_GOJI_TARRINA_200_G",
+													"ISOLA_FRESAS_TARRINA_250_G",
+													"ISOLA_JENGIBRE_TROZOS_AZUCARADO_TARRINA_1_KG",
+													"ISOLA_JENGIBRE_TARRINA_250_G",
+													"ISOLA_ALOE_VERA_DESHIDRATADO_TARRINA_150_G",
+													"ISOLA_MELON_DESHIDRATADO_EN_DADOS_TARRINA_250_G",
+													"ISOLA_ARANDANOS_ROJOS_TARRINA_1_KG",
+													"ISOLA_ARANDANOS_TARRINA_250_G",
+													"ISOLA_FRUTA_ITALIANA_TARRINA_250_G",
+													"ISOLA_SEMILLAS_AMAPOLA_1_KG",
+													"ISOLA_SEMILLAS_DE_LINO_1_KG",
+													"ISOLA_SEMILLAS_DE_SESAMO_BLANCO_1_KG",
+													"ISOLA_COPOS_DE_AVENA_1_KG",
+													"ISOLA_COPOS_DE_CEBADA_1_KG",
+													"ISOLA_COPOS_DE_TRIGO_1_KG",
+													"ISOLA_COPOS_DE_CENTENO_1_KG",
+													"ISOLA_MUESLI_CEREALES_1_KG",
+													"ISOLA_MUESLI_FRUTAS_TROPICAL_1_KG",
+													"ISOLA_MUESLI_CHOCOLATE_1_KG",
+													"ISOLA_MEZCLA_PANADERIA_4_SEMILLAS_Y_CEREAL_5_KG",
+													"ISOLA_COCKTAIL_CRUJIENTE_125_G",
+													"NAJOR_ANACARDOS_NATURALES_TARRINA_120_G",
+													"NAJOR_AVELLANA_TRUFADA_CANELA_TARRINA_125_G",
+													"NAJOR_CIRUELAS_PASAS_SIN_HUESO_PREMIUM_TARRINA_170_G",
+													"NAJOR_NUECES_MONDADAS_MITADES_TARRINA_100_G",
+													"NAJOR_NUECES_PECANAS_MONDADAS_TARRINA_110_G",
+													"NAJOR_PINONES_MONDADOS_TARRINA_60_G",
+													"NAJOR_PLATANO_CHIP_TARRINA_90_G",
+													"NAJOR_MACADAMIAS_TARRINA_130_G",
+													"NAJOR_COCKTAIL_CANARIAS_TARRINA_160_G",
+													"NAJOR_COCKTAIL_NATURAL_TARRINA_130_G",
+													"NAJOR_NUECES_CON_CHOCOLATE_TARRINA_140_G",
+													"NAJOR_ARANDANOS_ROJOS_ENTEROS_TARRINA_120_G",
+													"NAJOR_FRUTA_ITALIANA_TARRINA_200_G",
+													"NAJOR_DADOS_DE_FRUTA_TARRINA_160_G",
+													"SM_ALMENDRAS_FRITAS_SALADAS_COMUNA_S_14_25_KG",
+													"SM_ALMENDRAS_FRITAS_SALADAS_MARCONA_S_16_25_KG",
+													"SM_ALMENDRAS_FRITAS_SALADAS_COMUNA_12_14_25_KG",
+													"SM_ALMENDRAS_FRITAS_SIN_SAL_MARCONA_S_16_25_KG",
+													"SM_ALMENDRAS_TOSTADAS_SALADAS_MARCONA_14_16_25_KG",
+													"SM_ALMENDRAS_TOSTADAS_SALADAS_COMUNA_12_14__25_KG",
+													"SM_ALMENDRAS_TOSTADAS_SIN_SAL_MARCONA_14_16_25_KG",
+													"SM_ALMENDRAS_TOSTADAS_SIN_SAL_COMUNA_12_14__25_KG",
+													"SM_ALMENDRAS_REPELADAS_TOSTADAS_SIN_SAL_COMUNA_12_14_25_KG",
+													"SM_ALMENDRAS_REPELADAS_TUESTE_FUERTE_SIN_SAL_COMUNA_12_14_25_KG",
+													"SM_ANACARDOS_FRITOS_SALADOS_25_KG",
+													"SM_ANACARDOS_FRITOS_SIN_SAL_25_KG",
+													"SM_ANACARDOS_TOSTADOS_SIN_SAL_25_KG",
+													"SM_AVELLANAS_TOSTADAS_25_KG",
+													"SM_COCKTAIL_FRUTOS_SECOS_25_KG",
+													"SM_COCKTAIL_FRUTOS_DE_SECOS_SIN_SAL_25_KG",
+													"SM_COCKTAIL_TROPICAL_25_KG",
+													"SM_COMBINADO_SALADO_23_KG",
+													"SM_COMBINADO_DE_FRUTOS_SECOS_23_KG",
+													"SM_VEGO_COMBINADO_DE_FRUTOS_SECOS_23_KG",
+													"SM_MANISES_CASCARA_BRASIL_15_KG",
+													"SM_MANISES_CASCARA_TOSTADO_YUMBO_15_KG",
+													"SM_MANISES_FRITOS_SALADOS_25_KG",
+													"SM_MANISES_FRITOS_SIN_SAL_25_KG",
+													"SM_PIPAS_GIRASOL_TOSTADAS_SALADAS_16_KG",
+													"SM_PIPAS_GIRASOL_TOSTADAS_SIN_SAL_16_KG",
+													"SM_PISTACHOS_TOSTADOS_SALADOS_USA_25_KG",
+													"SM_PISTACHOS_TOSTADOS_SIN_SAL_USA_25_KG",
+													"SM_MANISES_REPELADOS_TOSTADOS_SIN_SAL_25_KG",
+													"SM_COCKTAIL_CANARIAS_25_KG",
+													"SM_COCKTAIL_NATURAL_25_KG",
+													"SM_VEGO_GORDILLO_COCKTAIL_NATURAL_25_KG",
+													"SM_MIX_ENSALADA_25_KG",
+													"SM_DADOS_DE_FRUTAS_25_KG",
+													"SM_DADOS_DE_FRUTAS_MUESLI_25_KG",
+													"SM_MUESLI_CEREALES_21_KG",
+													"SM_MUESLI_FRUTAS_TROPICAL_22_KG",
+													"SM_MUESLI_CHOCOLATE_20_KG",
+													"SM_MEZCLA_PANADERIA_4_SEMILLAS_Y_CEREAL_25_KG",
+													"SM_MEZCLA_PANADERIA_3_SEMILLAS_Y_CEREAL_25_KG",
+													"DINO_ALMENDRA_REPELADA_FRITA_200_GR",
+													"DINO_ALMENDRA_REPELADA_FRITA_125_GR",
+													"DINO_ALMENDRAS_NATURALES_PIEL_200_GR",
+													"DINO_ALMENDRAS_NATURALES_PIEL_125_GR",
+													"DINO_ALMENDRAS_TOSTADAS_SIN_SAL_150_GR",
+													"DINO_ANACARDO_FRITO_SALADO_200_GR",
+													"DINO_ANACARDO_FRITO_SALADO_125_GR",
+													"DINO_AVELLANA_TOSTADA_200_GR",
+													"DINO_AVELLANA_TOSTADA_125_GR",
+													"DINO_CIRUELAS_SIN_HUESO_250_GR",
+													"DINO_COCKTAIL_DE_FRUTOS_SECOS_SIN_SAL_150_GR",
+													"DINO_COCKTAIL_TROPICAL_200_GR",
+													"DINO_COCO_RALLADO_125_GR",
+													"DINO_COCKTAIL_SALADO_200_GR",
+													"DINO_COCKTAIL_SALADO_500_GR",
+													"DINO_GARBANZOS_TOSTADOS_125_GR",
+													"DINO_MAIZ_FRITO_GIGANTE_150_GR",
+													"DINO_MANISES_CASCARA_TOSTADOS_200_GR",
+													"DINO_MANISES_FRITOS_SALADOS_250_GR",
+													"DINO_MANISES_FRITOS_SALADOS_500_GR",
+													"DINO_MAIZ_DE_PALOMITAS_250_GR",
+													"DINO_MAIZ_FRITO_PEQUENO_200_GR",
+													"DINO_NUECES_CON_CASCARA_600_GR",
+													"DINO_NUECES_MONDADAS_200_GR",
+													"DINO_NUECES_MONDADAS_100_GR",
+													"DINO_OREJONES_ALBARICOQUE_200_GR",
+													"DINO_PASAS_MOSCATEL_SIN_SEMILLA_250_GR",
+													"DINO_PASAS_SULTANAS_250_GR",
+													"DINO_PIPA_GIRASOL_MONDADA_FRITA_125_GR",
+													"DINO_PIPA_GIRASOL_TOSTADA_SALADA_200_GR",
+													"DINO_PIPA_GIRASOL_TOSTADA_SALADA_125_GR",
+													"DINO_PIPA_GIRASOL_TOSTADA_SIN_SAL_125_GR",
+													"DINO_PISTACHOS_TOSTADOS_SALADOS_200_GR",
+													"DINO_PISTACHOS_TOSTADOS_SALADOS_125_GR",
+													"DINO_PISTACHOS_TOSTADOS_SIN_SAL_200_GR",
+													"DINO_MANISES_REPELADOS_TOSTADOS_SIN_SAL_250_GR",
+													"DINO_PIPA_CALABAZA_TOSTADA_SALADA_125_GR",
+													"DINO_COCKTAIL_DULCE_200_GR",
+													"DINO_COCKTAIL_ORIENTAL_250_GR",
+													"DINO_COCKTAIL_CRAKY_150_G",
+													"SPAR_ALMENDRAS_FRITAS_125_G",
+													"SPAR_ALMENDRAS_FRITAS_200_G",
+													"SPAR_ALMENDRAS_NATURALES_125_G",
+													"SPAR_ALMENDRAS_NATURALES_200_G",
+													"SPAR_ALMENDRAS_REPELADAS_125_G",
+													"SPAR_ANACARDOS_FRITOS_125_G",
+													"SPAR_AVELLANAS_TOSTADAS_125_G",
+													"SPAR_AVELLANAS_TOSTADAS_200_G",
+													"SPAR_CIRUELAS_SIN_HUESO_250_G",
+													"SPAR_COCKTAIL_TROPICAL_200_GR",
+													"SPAR_COCO_RALLADO_150_G",
+													"SPAR_COCKTAIL_SALADO_200_G",
+													"SPAR_HIGO_TURCO_300_G",
+													"SPAR_MAIZ_FRITO_GIGANTE_150_G",
+													"SPAR_CACAHUETE_C_TOSTADO_125_G",
+													"SPAR_CACAHUETE_C_TOSTADO_400_G",
+													"SPAR_CACAHUETE_CHOCOLATE_250_G",
+													"SPAR_CACAHUETE_FRITOS_125_G",
+													"SPAR_CACAHUETE_FRITOS_200_G",
+													"SPAR_MAIZ_DE_PALOMITAS_250_G",
+													"SPAR_MAIZ_DE_PALOMITAS_400_G",
+													"SPAR_MAIZ_FRITO_PEQUENO_200_G",
+													"SPAR_NUECES_MONDADAS_100_G",
+													"SPAR_NUECES_MONDADAS_175_G",
+													"SPAR_OREJONES_250_G",
+													"SPAR_PASAS_MOSCATEL_SIN_SEMILLA_250_G",
+													"SPAR_PASAS_SULTANAS_250_G",
+													"SPAR_PIPA_GIRASOL_CASC_CRUDA_500_G",
+													"SPAR_PIPA_GIRASOL_MONDADA_FRITA_200_G",
+													"SPAR_PIPA_GIRASOL_TOSTADA_SALADA_125_G",
+													"SPAR_PISTACHOS_TOSTADOS_125_G",
+													"SPAR_PISTACHOS_TOSTADOS_200_G",
+													"SPAR_PIPAS_CALABAZA_TOSTADAS_150_G",
+													"SPAR_COCKTAIL_DULCE_125_G",
+													"SPAR_COCKTAIL_DULCE_200_G",
+													"SPAR_APERITIVO_ORIENTAL_125_G",
+													"SPAR_ARANDANOS_125_GR",
+													"VEGO_ALMENDRAS_FRITAS_SALADAS_150_G",
+													"VEGO_ALMENDRAS_NATURALES_150_G",
+													"VEGO_ANACARDOS_FRITOS_SALADOS_150_G",
+													"VEGO_COCO_RALLADO_90_G",
+													"VEGO_COMBINADO_DE_FRUTOS_SECOS_150_G",
+													"VEGO_KIKOS_FRITOS_SALADOS_250_G",
+													"VEGO_KIKOS_FRITOS_SALADOS_130_G",
+													"VEGO_MANISES_CASCARA_CRUDOS_350_G",
+													"VEGO_MANISES_CASCARA_TOSTADOS_150_G",
+													"VEGO_MANISES_CASCARA_TOSTADOS_400_G",
+													"VEGO_MANISES_FRITOS_SALADOS_250_G",
+													"VEGO_MANISES_FRITOS_SALADOS_150_G",
+													"VEGO_MAIZ_DE_PALOMITAS_225_G",
+													"VEGO_MILLO_FRITO_SALADO_250_G",
+													"VEGO_MILLO_FRITO_SALADO_130_G",
+													"VEGO_NUECES_MONDADAS_100_G",
+													"VEGO_PASAS_MOSCATEL_SIN_SEMILLA_150_G",
+													"VEGO_PIPAS_GIRASOL_CASC_CRUDAS_600_G",
+													"VEGO_PIPAS_GIRASOL_TOSTADAS_SALADAS_200_G",
+													"VEGO_PISTACHOS_TOSTADOS_SALADOS_125_G",
+													"VEGO_COCKTAIL_NATURAL_150_G",
+													"VEGO_GOMINOLAS_JUDIAS_100_G",
+													"VEGO_GOMINOLAS_PLATANOS_100_G",
+													"VEGO_GOMINOLAS_MORAS_100_G",
+													"VEGO_GOMINOLAS_BESOS_100_G",
+													"VEGO_CHICLES_MELONES_100_G",
+													"VEGO_GOMINOLAS_SURTIDAS_100_G",
+													"GORDILLO_ALMENDRAS_FRITAS_SALADAS_150_G",
+													"GORDILLO_COMBINADO_DE_FRUTOS_SECOS_200_G",
+													"GORDILLO_KIKOS_FRITOS_SALADOS_200G",
+													"GORDILLO_MANISES_FRITOS_SALADOS_175_G",
+													"GORDILLO_MILLO_FRITO_SALADO_200_G",
+													"GORDILLO_PIPAS_GIRASOL_TOSTADAS_SALADAS_150_G",
+													"GORDILLO_PISTACHOS_TOSTADOS_SALADOS_150_G",
+													"GORDILLO_COCKTAIL_NATURAL_200_G",
+													"GORDILLO_GOMINOLAS_ALUBIAS_200G",
+													"GORDILLO_GOMINOLAS_SURTIDAS_200_G",
+													"ICHH_MONODOSIS_COCKTAIL_NATURAL_30_G",
+													"NOT_DEFINED",
+													"MANTENIMIENTO",
+													"LIMPIEZA"
+												]
+											},
+											"quantity": {
+												"type": "integer"
+											},
+											"startingTime": {
+												"type": "integer"
+											},
+											"finishingTime": {
+												"type": "integer"
+											},
+											"orderInternalId": {
+												"type": "string"
+											},
+											"packageFormat": {
+												"type": "object",
+												"properties": {
+													"id": {
+														"type": "integer"
+													},
+													"value": {
+														"type": "string",
+														"enum": [
+															"NOT_DEFINED",
+															"BOLSA",
+															"TARRINA",
+															"W210",
+															"W245",
+															"W290",
+															"W340",
+															"W410"
+														]
+													}
+												},
+												"additionalProperties": true,
+												"required": [
+													"id",
+													"value"
+												]
+											},
+											"id": {
+												"type": "integer"
+											},
+											"type": {
+												"type": "object",
+												"properties": {
+													"id": {
+														"type": "integer"
+													},
+													"value": {
+														"type": "string",
+														"enum": [
+															"ENVASADO_MANUAL",
+															"ENVASADO_AUTOMATICO",
+															"ENVASADO_SEMIAUTOMATICO",
+															"FRITO",
+															"TUESTE",
+															"MEZCLA"
+														]
+													}
+												},
+												"additionalProperties": true,
+												"required": [
+													"id",
+													"value"
+												]
+											},
+											"minimumAvailableStaff": {
+												"type": "integer"
+											},
+											"requiredStaff": {
+												"type": "integer"
+											}
+										},
+										"additionalProperties": true,
+										"required": [
+											"referenceInternalId",
+											"product",
+											"quantity",
+											"startingTime",
+											"finishingTime",
+											"orderInternalId",
+											"packageFormat",
+											"id",
+											"type",
+											"minimumAvailableStaff",
+											"requiredStaff"
+										]
+									},
+									"additionalItems": true
+								},
+								"id": {
+									"type": "integer"
+								},
+								"time": {
+									"type": "integer"
+								},
+								"metrics": {
+									"type": "object",
+									"properties": {
+										"absoluteTimeOrders": {
+											"type": "number"
+										},
+										"percentageTimeIdle": {
+											"type": "number"
+										},
+										"percentageTimeOrders": {
+											"type": "number"
+										},
+										"quantity": {
+											"type": "integer",
+										},
+										"productivity": {
+											"type": "number"
+										},
+										"absoluteTimeContextSwitch": {
+											"type": "number"
+										},
+										"percentageRemainingTime": {
+											"type": "number"
+										},
+										"absoluteRemainingTime": {
+											"type": "number"
+										},
+										"percentageTimeContextSwitch": {
+											"type": "number"
+										},
+										"absoluteTimeIdle": {
+											"type": "number"
+										}
+									},
+									"additionalProperties": true,
+									"required": [
+										"absoluteTimeOrders",
+										"percentageTimeIdle",
+										"percentageTimeOrders",
+										"quantity",
+										"productivity",
+										"absoluteTimeContextSwitch",
+										"percentageRemainingTime",
+										"absoluteRemainingTime",
+										"percentageTimeContextSwitch",
+										"absoluteTimeIdle"
+									]
+								}
+							},
+							"additionalProperties": true,
+							"required": [
+								"orders",
+								"id",
+								"time",
+								"metrics"
+							]
+						},
+						"additionalItems": true
+					}
+				},
+				"additionalProperties": true,
+				"required": [
+					"date",
+					"id",
+					"lines"
+				]
+			},
+			"additionalItems": true
+		},
+		"metrics": {
+			"type": "object",
+			"properties": {
+				"absoluteTimeOrders": {
+					"type": "number"
+				},
+				"quantity": {
+					"type": "integer"
+				},
+				"percentageRemainingTime": {
+					"type": "number"
+				},
+				"absoluteRemainingTime": {
+					"type": "number"
+				},
+				"percentageTimeContextSwitch": {
+					"type": "number"
+				},
+				"absoluteTimeIdle": {
+					"type": "number"
+				},
+				"feasabilityMetrics": {
+					"type": "object",
+					"properties": {
+						"overlappingNumber": {
+							"type": "integer"
+						},
+						"incorrectFirstNumber": {
+							"type": "integer"
+						},
+						"overlapping": {
+							"type": "array",
+							"items": {
+								"type": "integer"
+							},
+							"additionalItems": true
+						},
+						"incorrectFirst": {
+							"type": "array",
+							"items": {
+								"type": "integer"
+							},
+							"additionalItems": true
+						},
+						"incompatibleLine": {
+							"type": "array",
+							"items": {
+								"type": "integer"
+							},
+							"additionalItems": true
+						},
+						"incorrectDaysNumber": {
+							"type": "integer"
+						},
+						"excessLineTime": {
+							"type": "array",
+							"items": {
+								"type": "integer"
+							},
+							"additionalItems": true
+						},
+						"incompatibleLineNumber": {
+							"type": "integer"
+						},
+						"excessLineTimeNumber": {
+							"type": "integer"
+						},
+						"incorrectDays": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"line": {
+										"type": "integer"
+									},
+									"orders": {
+										"type": "array",
+										"items": {
+											"type": "integer"
+										},
+										"additionalItems": true
+									},
+									"day": {
+										"type": "integer"
+									}
+								},
+								"additionalProperties": true,
+								"required": [
+									"line",
+									"orders",
+									"day"
+								]
+							},
+							"additionalItems": true
+						}
+					},
+					"additionalProperties": true,
+					"required": [
+						"overlappingNumber",
+						"incorrectFirstNumber",
+						"overlapping",
+						"incorrectFirst",
+						"incompatibleLine",
+						"incorrectDaysNumber",
+						"excessLineTime",
+						"incompatibleLineNumber",
+						"excessLineTimeNumber",
+						"incorrectDays"
+					]
+				},
+				"percentageTimeIdle": {
+					"type": "number"
+				},
+				"percentageTimeOrders": {
+					"type": "number"
+				},
+				"productivity": {
+					"type": "number"
+				},
+				"days": {
+					"type": "integer"
+				},
+				"absoluteTimeContextSwitch": {
+					"type": "number"
+				},
+				"orders": {
+					"type": "integer"
+				},
+				"lines": {
+					"type": "integer"
+				},
+				"solutionTime": {
+					"type": "number"
+				}
+			},
+			"additionalProperties": true,
+			"required": [
+				"absoluteTimeOrders",
+				"quantity",
+				"percentageRemainingTime",
+				"absoluteRemainingTime",
+				"percentageTimeContextSwitch",
+				"absoluteTimeIdle",
+				"feasabilityMetrics",
+				"percentageTimeIdle",
+				"percentageTimeOrders",
+				"productivity",
+				"days",
+				"absoluteTimeContextSwitch",
+				"orders",
+				"lines",
+				"solutionTime"
+			]
+		}
+	},
+	"additionalProperties": true,
+	"required": [
+		"objectiveFunctions",
+		"days",
+		"metrics"
+	]
+}

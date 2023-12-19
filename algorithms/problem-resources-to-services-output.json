@@ -1,0 +1,286 @@
+{
+   "solution": [
+      {
+         "service": 0,
+         "startingTime": 2,
+         "arrivingTime": 2,
+         "processingTime": 5,
+         "resourcesRequired": [
+            {
+               "resources": 0,
+               "typeResource": 0
+            },
+            {
+               "resources": 0,
+               "typeResource": 1
+            },
+            {
+               "resources": 1,
+               "typeResource": 2
+            },
+            {
+               "resources": 0,
+               "typeResource": 3
+            },
+            {
+               "resources": 0,
+               "typeResource": 4
+            },
+            {
+               "resources": 0,
+               "typeResource": 5
+            }
+         ]
+      },
+      {
+         "service": 1,
+         "startingTime": 4,
+         "arrivingTime": 4,
+         "processingTime": 1,
+         "resourcesRequired": [
+            {
+               "resources": 0,
+               "typeResource": 0
+            },
+            {
+               "resources": 1,
+               "typeResource": 1
+            },
+            {
+               "resources": 0,
+               "typeResource": 2
+            },
+            {
+               "resources": 0,
+               "typeResource": 3
+            },
+            {
+               "resources": 0,
+               "typeResource": 4
+            },
+            {
+               "resources": 0,
+               "typeResource": 5
+            }
+         ]
+      },
+      {
+         "service": 2,
+         "startingTime": 4,
+         "arrivingTime": 4,
+         "processingTime": 3,
+         "resourcesRequired": [
+            {
+               "resources": 0,
+               "typeResource": 0
+            },
+            {
+               "resources": 1,
+               "typeResource": 1
+            },
+            {
+               "resources": 0,
+               "typeResource": 2
+            },
+            {
+               "resources": 0,
+               "typeResource": 3
+            },
+            {
+               "resources": 1,
+               "typeResource": 4
+            },
+            {
+               "resources": 1,
+               "typeResource": 5
+            }
+         ]
+      },
+      {
+         "service": 3,
+         "startingTime": 8,
+         "arrivingTime": 4,
+         "processingTime": 4,
+         "resourcesRequired": [
+            {
+               "resources": 1,
+               "typeResource": 0
+            },
+            {
+               "resources": 1,
+               "typeResource": 1
+            },
+            {
+               "resources": 1,
+               "typeResource": 2
+            },
+            {
+               "resources": 1,
+               "typeResource": 3
+            },
+            {
+               "resources": 1,
+               "typeResource": 4
+            },
+            {
+               "resources": 1,
+               "typeResource": 5
+            }
+         ]
+      },
+      {
+         "service": 4,
+         "startingTime": 5,
+         "arrivingTime": 5,
+         "processingTime": 4,
+         "resourcesRequired": [
+            {
+               "resources": 1,
+               "typeResource": 0
+            },
+            {
+               "resources": 0,
+               "typeResource": 1
+            },
+            {
+               "resources": 1,
+               "typeResource": 2
+            },
+            {
+               "resources": 0,
+               "typeResource": 3
+            },
+            {
+               "resources": 0,
+               "typeResource": 4
+            },
+            {
+               "resources": 0,
+               "typeResource": 5
+            }
+         ]
+      },
+      {
+         "service": 5,
+         "startingTime": 5,
+         "arrivingTime": 5,
+         "processingTime": 1,
+         "resourcesRequired": [
+            {
+               "resources": 0,
+               "typeResource": 0
+            },
+            {
+               "resources": 1,
+               "typeResource": 1
+            },
+            {
+               "resources": 1,
+               "typeResource": 2
+            },
+            {
+               "resources": 0,
+               "typeResource": 3
+            },
+            {
+               "resources": 1,
+               "typeResource": 4
+            },
+            {
+               "resources": 0,
+               "typeResource": 5
+            }
+         ]
+      },
+      {
+         "service": 6,
+         "startingTime": 6,
+         "arrivingTime": 6,
+         "processingTime": 2,
+         "resourcesRequired": [
+            {
+               "resources": 1,
+               "typeResource": 0
+            },
+            {
+               "resources": 1,
+               "typeResource": 1
+            },
+            {
+               "resources": 1,
+               "typeResource": 2
+            },
+            {
+               "resources": 0,
+               "typeResource": 3
+            },
+            {
+               "resources": 1,
+               "typeResource": 4
+            },
+            {
+               "resources": 1,
+               "typeResource": 5
+            }
+         ]
+      },
+      {
+         "service": 7,
+         "startingTime": 9,
+         "arrivingTime": 7,
+         "processingTime": 1,
+         "resourcesRequired": [
+            {
+               "resources": 1,
+               "typeResource": 0
+            },
+            {
+               "resources": 1,
+               "typeResource": 1
+            },
+            {
+               "resources": 1,
+               "typeResource": 2
+            },
+            {
+               "resources": 1,
+               "typeResource": 3
+            },
+            {
+               "resources": 1,
+               "typeResource": 4
+            },
+            {
+               "resources": 1,
+               "typeResource": 5
+            }
+         ]
+      }
+   ],
+   "availableResources": [
+      {
+         "resources": 2,
+         "typeResource": 0
+      },
+      {
+         "resources": 2,
+         "typeResource": 1
+      },
+      {
+         "resources": 3,
+         "typeResource": 2
+      },
+      {
+         "resources": 3,
+         "typeResource": 3
+      },
+      {
+         "resources": 3,
+         "typeResource": 4
+      },
+      {
+         "resources": 3,
+         "typeResource": 5
+      }
+   ]
+}

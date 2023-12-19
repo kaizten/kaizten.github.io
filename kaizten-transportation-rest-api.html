@@ -1,0 +1,3666 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Kaizten Transportation REST API</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#api-versioning" class="toc-h1 toc-link" data-title="API versioning">API versioning</a>
+          </li>
+          <li>
+            <a href="#domain-model" class="toc-h1 toc-link" data-title="Domain model">Domain model</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#client" class="toc-h2 toc-link" data-title="Client">Client</a>
+                  </li>
+                  <li>
+                    <a href="#employee" class="toc-h2 toc-link" data-title="Employee">Employee</a>
+                  </li>
+                  <li>
+                    <a href="#order" class="toc-h2 toc-link" data-title="Order">Order</a>
+                  </li>
+                  <li>
+                    <a href="#product" class="toc-h2 toc-link" data-title="Product">Product</a>
+                  </li>
+                  <li>
+                    <a href="#vehicle" class="toc-h2 toc-link" data-title="Vehicle">Vehicle</a>
+                  </li>
+                  <li>
+                    <a href="#warehouse" class="toc-h2 toc-link" data-title="Warehouse">Warehouse</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#clients" class="toc-h1 toc-link" data-title="Clients">Clients</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-clients" class="toc-h2 toc-link" data-title="Get all clients">Get all clients</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-client" class="toc-h2 toc-link" data-title="Get a specific client">Get a specific client</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-client" class="toc-h2 toc-link" data-title="Create a client">Create a client</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-client" class="toc-h2 toc-link" data-title="Update a client">Update a client</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-client" class="toc-h2 toc-link" data-title="Delete a client">Delete a client</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#employees" class="toc-h1 toc-link" data-title="Employees">Employees</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-employees" class="toc-h2 toc-link" data-title="Get all employees">Get all employees</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-employee" class="toc-h2 toc-link" data-title="Get a specific employee">Get a specific employee</a>
+                  </li>
+                  <li>
+                    <a href="#create-an-employee" class="toc-h2 toc-link" data-title="Create an employee">Create an employee</a>
+                  </li>
+                  <li>
+                    <a href="#update-an-employee" class="toc-h2 toc-link" data-title="Update an employee">Update an employee</a>
+                  </li>
+                  <li>
+                    <a href="#delete-an-employee" class="toc-h2 toc-link" data-title="Delete an employee">Delete an employee</a>
+                  </li>
+                  <li>
+                    <a href="#get-an-employee-type" class="toc-h2 toc-link" data-title="Get an employee type">Get an employee type</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#orders" class="toc-h1 toc-link" data-title="Orders">Orders</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-orders" class="toc-h2 toc-link" data-title="Get all orders">Get all orders</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-order" class="toc-h2 toc-link" data-title="Get a specific order">Get a specific order</a>
+                  </li>
+                  <li>
+                    <a href="#create-an-order" class="toc-h2 toc-link" data-title="Create an order">Create an order</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-order" class="toc-h2 toc-link" data-title="Update a order">Update a order</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-order" class="toc-h2 toc-link" data-title="Delete a order">Delete a order</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#products" class="toc-h1 toc-link" data-title="Products">Products</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-products" class="toc-h2 toc-link" data-title="Get all products">Get all products</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-product" class="toc-h2 toc-link" data-title="Get a specific product">Get a specific product</a>
+                  </li>
+                  <li>
+                    <a href="#create-an-product" class="toc-h2 toc-link" data-title="Create an product">Create an product</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-product" class="toc-h2 toc-link" data-title="Update a product">Update a product</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-product" class="toc-h2 toc-link" data-title="Delete a product">Delete a product</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#vehicles" class="toc-h1 toc-link" data-title="Vehicles">Vehicles</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-vehicles" class="toc-h2 toc-link" data-title="Get all vehicles">Get all vehicles</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-vehicle" class="toc-h2 toc-link" data-title="Get a specific vehicle">Get a specific vehicle</a>
+                  </li>
+                  <li>
+                    <a href="#create-an-vehicle" class="toc-h2 toc-link" data-title="Create an vehicle">Create an vehicle</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-vehicle" class="toc-h2 toc-link" data-title="Update a vehicle">Update a vehicle</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-vehicle" class="toc-h2 toc-link" data-title="Delete a vehicle">Delete a vehicle</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#warehouses" class="toc-h1 toc-link" data-title="Warehouses">Warehouses</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-warehouses" class="toc-h2 toc-link" data-title="Get all warehouses">Get all warehouses</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-warehouse" class="toc-h2 toc-link" data-title="Get a specific warehouse">Get a specific warehouse</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-warehouse" class="toc-h2 toc-link" data-title="Create a warehouse">Create a warehouse</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-warehouse" class="toc-h2 toc-link" data-title="Update a warehouse">Update a warehouse</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-warehouse" class="toc-h2 toc-link" data-title="Delete a warehouse">Delete a warehouse</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='#'>Sign Up for a Developer Key</a></li>
+            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>REST API used to define, store, access, transportation information objects.</p>
+
+<p>In the remainder of this documentation, it is assumed that the REST API is deployed in an IP and port denoted as <code>IP</code> and <code>PORT</code>, respectively.</p>
+<h1 id='authentication'>Authentication</h1>
+<blockquote>
+<p>To authorize, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl <span class="s2">"API_ENDPOINT"</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>API_ENDPOINT</code> with the corresponding API endpoint and <code>YOUR_API_KEY</code> with your API key.</p>
+</blockquote>
+
+<p>API requests are authenticated by a key which is provided by Kaizten. With every call to the API, the user must be authenticated. The API has a simple means to do this by passing in your key as an HTTP <code>Authorization</code> header with the request.</p>
+
+<p>When you signed up for Kaizten, a ‘default-key’ was generated for your convenience. This is the key that is used throughout the example code within algorithm pages. For these examples to work correctly, this default key must exist with all the permissions, otherwise the usage examples may result in a <code>401</code> Unauthorized error.</p>
+
+<aside class="notice">
+You must replace <code>YOUR_API_KEY</code> with your personal API key.
+</aside>
+<h1 id='api-versioning'>API versioning</h1>
+<p>Kaizten Transportation REST API is versioned with the version specified on the URL route:
+<code>
+IP:PORT/VERSION/API_ENDPOINT
+</code></p>
+
+<p>The current supported API version is <code>v1</code> (i.e. <code>IP:PORT/v1/API_ENDPOINT</code>).</p>
+<h1 id='domain-model'>Domain model</h1><h2 id='client'>Client</h2>
+<ul>
+<li><code>id</code> (generated). Identifier of the client.</li>
+<li><code>identityDocument</code> (required). The document number that indentifies the client.
+
+<ul>
+<li>The identity document length must be in the range [2...100].</li>
+</ul></li>
+<li><code>name</code> (required). The name of the client.
+
+<ul>
+<li>The name length must be in the range [2...100].</li>
+</ul></li>
+<li><code>firstSurname</code> (required). The first surname of the client.
+
+<ul>
+<li>The first surname length must be in the range [2...100].</li>
+</ul></li>
+<li><code>secondSurname</code> (optional). The second surname of the client.
+
+<ul>
+<li>The second surname length must be in the range [2...100].</li>
+</ul></li>
+<li><code>phones</code> (optional). The phones is composed by a list of phone elements, which are composed by two variables:
+
+<ul>
+<li><code>phoneNumber</code> (optional). The phone number of the client.
+
+<ul>
+<li>The phone number length must be in the range [9...13].</li>
+</ul></li>
+<li><code>comment</code> (optional). The comment regarding to the phone number.
+
+<ul>
+<li>The comment length must be in the range [0...1000].</li>
+</ul></li>
+</ul></li>
+<li><code>emails</code> (optional). The emails is composed by a list of email elements, which are composed by two variables:
+
+<ul>
+<li><code>email</code> (optional). The email of the employee.
+
+<ul>
+<li>The email length must be in the range [2...100].</li>
+</ul></li>
+<li><code>comment</code> (optional). The comment regarding to the email.
+
+<ul>
+<li>The comment length must be in the range [0...1000].</li>
+</ul></li>
+</ul></li>
+<li><code>address</code> (optional). The address is composed by five variables:
+
+<ul>
+<li><code>street</code> (optional). The street where the client lives in.
+
+<ul>
+<li>The street length must be in the range [2...100].</li>
+</ul></li>
+<li><code>number</code> (optional) The number of the building in the street.
+
+<ul>
+<li>The number must be integer positive.</li>
+</ul></li>
+<li><code>postalCode</code> (optional). The postal code of the client home.
+
+<ul>
+<li>The postal code length must be exactly 5.</li>
+</ul></li>
+<li><code>city</code> (optional). The city where the client lives in.
+
+<ul>
+<li>The city length must be in the range [2...100].</li>
+</ul></li>
+<li><code>latitude</code> (optional). The coordinate of the latitude from the client home.
+
+<ul>
+<li>The value must be numeric.</li>
+</ul></li>
+<li><code>longitude</code> (optional). The coordinate of the longitude from the client home.
+
+<ul>
+<li>The value must be numeric.</li>
+</ul></li>
+</ul></li>
+<li><code>comment</code> (optional). The comment regarding to the client.
+
+<ul>
+<li>The comment length must be in the range [0...1000].</li>
+</ul></li>
+<li><code>orderIds</code> (optional). An array with the ids of all the orders made by the client.</li>
+</ul>
+<h2 id='employee'>Employee</h2>
+<ul>
+<li><code>id</code> (generated). Identifier of the employee.</li>
+<li><code>identityDocument</code> (required). The document number that indentifies the employee.
+
+<ul>
+<li>The identity document length must be in the range [2...100].</li>
+</ul></li>
+<li><code>name</code> (required). The name of the employee.
+
+<ul>
+<li>The name length must be in the range [2...100].</li>
+</ul></li>
+<li><code>firstSurname</code> (required). The first surname of the employee.
+
+<ul>
+<li>The first surname length must be in the range [2...100].</li>
+</ul></li>
+<li><code>secondSurname</code> (optional). The second surname of the employee.
+
+<ul>
+<li>The second surname length must be in the range [2...100].</li>
+</ul></li>
+<li><code>type</code> (optional). The type of employee.
+
+<ul>
+<li>Currently the options available are [DRIVER, STOREKEEPER, ADMINISTRATOR]</li>
+</ul></li>
+<li><code>phones</code> (optional). The phones is composed by a list of phone elements, which are composed by two variables:
+
+<ul>
+<li><code>phoneNumber</code> (optional). The phone number of the employee.
+
+<ul>
+<li>The phone number length must be in the range [9...13].</li>
+</ul></li>
+<li><code>comment</code> (optional). The comment regarding to the phone number.
+
+<ul>
+<li>The comment length must be in the range [0...1000].</li>
+</ul></li>
+</ul></li>
+<li><code>emails</code> (optional). The emails is composed by a list of email elements, which are composed by two variables:
+
+<ul>
+<li><code>email</code> (optional). The email of the employee.
+
+<ul>
+<li>The email length must be in the range [2...100].</li>
+</ul></li>
+<li><code>comment</code> (optional). The comments regarding to the email.
+
+<ul>
+<li>The comment length must be in the range [0...1000].</li>
+</ul></li>
+</ul></li>
+<li><code>address</code> (optional). The address is composed by five variables:
+
+<ul>
+<li><code>street</code> (optional). The street where the employee lives in.
+
+<ul>
+<li>The street length must be in the range [2...100].</li>
+</ul></li>
+<li><code>number</code> (optional) The number of the building in the street.
+
+<ul>
+<li>The number must be integer positive.</li>
+</ul></li>
+<li><code>postalCode</code> (optional). The postal code of the employee home.
+
+<ul>
+<li>The postal code length must be exactly 5.</li>
+</ul></li>
+<li><code>city</code> (optional). The city where the employee lives in.
+
+<ul>
+<li>The city length must be in the range [2...100].</li>
+</ul></li>
+<li><code>latitude</code> (optional). The coordinate of the latitude from the employee home.
+
+<ul>
+<li>The value must be numeric.</li>
+</ul></li>
+<li><code>longitude</code> (optional). The coordinate of the longitude from the employee home.
+
+<ul>
+<li>The value must be numeric.</li>
+</ul></li>
+</ul></li>
+<li><code>comment</code> (optional). The comment regarding to the employee.
+
+<ul>
+<li>The comment length must be in the range [0...1000].</li>
+</ul></li>
+</ul>
+<h2 id='order'>Order</h2>
+<ul>
+<li><code>id</code> (generated). Identifier of the order.</li>
+<li><code>reference</code> (required). Reference name for the order.
+
+<ul>
+<li>The reference length must be in the range [3...50].</li>
+</ul></li>
+<li><code>creationDate</code> (generated). Date of the moment when the order has been created.
+
+<ul>
+<li>The creation date is in ISO8601 format.</li>
+</ul></li>
+<li><code>deliveryDate</code> (required). Date when the delivery was made.
+
+<ul>
+<li>The delivery date must be in ISO8601 format.</li>
+</ul></li>
+<li><code>preferedDates</code> (optional). Array of dates when the client prefers to get the delivery.
+
+<ul>
+<li>The prefered dates must be in ISO8601 format.</li>
+</ul></li>
+<li><code>clientId</code> (required). Id of the client who made the order.
+
+<ul>
+<li>The client must be already created before registering an order.</li>
+</ul></li>
+<li><code>orderUnits</code> (required). Array of units composed by a product and the requested quantity of it.</li>
+<li><code>productId</code> (required). Id of the product included by unit.
+
+<ul>
+<li>The product must be already created before registering an order.</li>
+</ul></li>
+<li><code>quantity</code> (required). Quantity of each product included by unit.</li>
+</ul>
+<h2 id='product'>Product</h2>
+<ul>
+<li><code>id</code> (generated). Identifier of the product.</li>
+<li><code>name</code> (optional). The name of the product.
+
+<ul>
+<li>The name length must be in the range [2...100].</li>
+</ul></li>
+<li><code>description</code> (optional). The description of the product.
+
+<ul>
+<li>The description length must be in the range [2...1000].</li>
+</ul></li>
+<li><code>weight</code> (optional). The weight of the product.
+
+<ul>
+<li>The value must be numeric greater than 0.</li>
+</ul></li>
+<li><code>dimensions</code> (optional). The dimensions of the product, which is split in 3 variables:
+
+<ul>
+<li><code>depth</code> (optional). The depth of the product.
+
+<ul>
+<li>The value must be numeric greater than 0.</li>
+</ul></li>
+<li><code>width</code> (optional). The width of the product.
+
+<ul>
+<li>The value must be numeric greater than 0.</li>
+</ul></li>
+<li><code>height</code> (optional). The height of the product.
+
+<ul>
+<li>The value must be numeric greater than 0.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id='vehicle'>Vehicle</h2>
+<ul>
+<li><code>id</code> (generated). Identifier of the vehicle.</li>
+<li><code>carPlate</code> (required). The car plate of the vehicle.
+
+<ul>
+<li>The car plate length must be in the range [2...100].</li>
+</ul></li>
+<li><code>buyYear</code> (optional). The year when the vehicle was bought.
+
+<ul>
+<li>The value must be numeric greater than 1900 and smaller than 2100.</li>
+</ul></li>
+<li><code>registeredYear</code> (optional). The year when the vehicle was registered.
+
+<ul>
+<li>The value must be numeric greater than 1900 and smaller than 2100.</li>
+</ul></li>
+<li><code>capacity</code> (optional). The storage capacity of the vehicle.
+
+<ul>
+<li>The value must be numeric greater than 0. (Default value 0)</li>
+</ul></li>
+<li><code>weight</code> (optional). The weight of the vehicle.
+
+<ul>
+<li>The value must be numeric greater than 0. (Default value 0)</li>
+</ul></li>
+<li><code>dimensions</code> (optional). The dimensions of the vehicle, which is split in 3 variables:
+
+<ul>
+<li><code>depth</code> (optional). The depth of the vehicle.
+
+<ul>
+<li>The value must be numeric greater than 0.</li>
+</ul></li>
+<li><code>width</code> (optional). The width of the vehicle.
+
+<ul>
+<li>The value must be numeric greater than 0.</li>
+</ul></li>
+<li><code>height</code> (optional). The height of the vehicle.
+
+<ul>
+<li>The value must be numeric greater than 0.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id='warehouse'>Warehouse</h2>
+<ul>
+<li><code>id</code> (generated). Identifier of the warehouse.</li>
+<li><code>name</code> (optional). The name of the warehouse.
+
+<ul>
+<li>The name length must be in the range [2...100].</li>
+</ul></li>
+<li><code>capacity</code> (optional). The storage capacity of the warehouse.
+
+<ul>
+<li>The value must be numeric greater than 0. (Default value 0)</li>
+</ul></li>
+<li><code>address</code> (optional). The address is composed by five variables:
+
+<ul>
+<li><code>street</code> (optional). The street where the warehouse is located.
+
+<ul>
+<li>The street length must be in the range [2...100].</li>
+</ul></li>
+<li><code>number</code> (optional) The number of the building in the street.
+
+<ul>
+<li>The number must be integer positive.</li>
+</ul></li>
+<li><code>postalCode</code> (optional). The postal code of the warehouse lacation.
+
+<ul>
+<li>The postal code length must be exactly 5.</li>
+</ul></li>
+<li><code>city</code> (optional). The city where the warehouse is located.
+
+<ul>
+<li>The city length must be in the range [2...100].</li>
+</ul></li>
+<li><code>latitude</code> (optional). The coordinate of the latitude from the warehouse.
+
+<ul>
+<li>The value must be numeric.</li>
+</ul></li>
+<li><code>longitude</code> (optional). The coordinate of the longitude from the warehouse.
+
+<ul>
+<li>The value must be numeric.</li>
+</ul></li>
+</ul></li>
+<li><code>phones</code> (optional). The phones is composed by a list of phone elements, which are composed by two variables:
+
+<ul>
+<li><code>phoneNumber</code> (optional). The phone number of the warehouse.
+
+<ul>
+<li>The phone number length must be in the range [9...13].</li>
+</ul></li>
+<li><code>comment</code> (optional). The comment regarding to the phone number.
+
+<ul>
+<li>The comment length must be in the range [0...1000].</li>
+</ul></li>
+</ul></li>
+<li><code>productUnits</code> (optional). The cuantity of the product units in the warehouse.
+
+<ul>
+<li>The value must be numeric greater than 0. (Default value 0)</li>
+</ul></li>
+<li><code>vehicles</code> (optional). A list of vehicles which are asociated with the warehouse.</li>
+<li><code>employees</code> (optional). A list of employees which are asociated with the warehouse.</li>
+</ul>
+<h1 id='clients'>Clients</h1><h2 id='get-all-clients'>Get all clients</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/clients <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"213124353532"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"identityDocument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"131231441Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jorge"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"firstSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gonzalez"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"secondSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rodriguez"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"658498135"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is the main phone"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"jgr@company.org"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"comment"</span><span class="p">:</span><span class="s2">"No comments"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"street"</span><span class="p">:</span><span class="s2">"Juan Carlos I"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="s2">"38450"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"La Laguna"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"latitude"</span><span class="p">:</span><span class="mf">28.48</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"longitude"</span><span class="p">:</span><span class="mf">-16.32</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"comment"</span><span class="p">:</span><span class="s2">"This client use to buy Bridgestone"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"21362735532"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"identityDocument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"131238244J"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sandra"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"firstSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jimenez"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"secondSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"García"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"658498135"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is the main phone"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"jgr@company.org"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"comment"</span><span class="p">:</span><span class="s2">"No comments"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"street"</span><span class="p">:</span><span class="s2">"Juan Carlos I"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="s2">"38450"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"La Laguna"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"latitude"</span><span class="p">:</span><span class="mf">28.48</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"longitude"</span><span class="p">:</span><span class="mf">-16.32</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"comment"</span><span class="p">:</span><span class="s2">"This client use to buy Bridgestone"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>It provides all the clients registered. The returned clients will be paginated to <code>20</code> items by default. Further pages can be requested by means of the <code>page</code> query paramenter. It can also set a custom page size up to <code>100</code> with the <code>size</code> parameter.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/clients</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>page</code></td>
+<td>Zero-based page index. Default value: <code>0</code>. Min value: <code>0</code>.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>Size of the page to be returned. Default value: <code>20</code>. Min value: <code>0</code>. Max value: <code>100</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='responses'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded and the clients are included in the body of the response. The following headers are included in the response: <ul><li><code>Pagination-Count: 1</code></li><li><code>Pagination-Size: 20</code></li><li><code>Pagination-Page: 0</code></li><li><code>Total-Count: 5</code></li></ul> where <code>Pagination-Count</code> is the number of existing pages, <code>Pagination-Size</code> is the size of each page, <code>Pagination-Page</code> is the index of the current page, and <code>Total-Count</code> is the number of entities in the server.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-client'>Get a specific client</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/clients/:id <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"21362735532"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"identityDocument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"131238244J"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sandra"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"firstSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jimenez"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"secondSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"García"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"658498135"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is the main phone"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"jgr@company.org"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"comment"</span><span class="p">:</span><span class="s2">"No comments"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"street"</span><span class="p">:</span><span class="s2">"Juan Carlos I"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"number"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="s2">"38450"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"La Laguna"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"latitude"</span><span class="p">:</span><span class="mf">28.48</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"longitude"</span><span class="p">:</span><span class="mf">-16.32</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"comment"</span><span class="p">:</span><span class="s2">"This client use to buy Bridgestone"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It provides a specific client by indicating its identifier. The client is provided in the response body.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/clients/:id</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the requested client.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-2'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded. The client is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The client with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h2 id='create-a-client'>Create a client</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/clients <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -d <span class="s1">'{ \
+    "identityDocument":"834237656874D", \
+    "name":"Andres", \
+    "firstSurname": "Rosado",
+    "secondSurname": "Garcia"
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"616d83379bbd37254785a7d6"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"identityDocument"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"834237656874D"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Andres"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"firstSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rosado"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"secondSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Garcia"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It creates a new client by specifying at least the required fields. The created client is provided in the response.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST http://IP:PORT/VERSION/clients</code></p>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>identityDocument</code></td>
+<td>Identifier of the client document.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Name of the client.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>firstSurname</code></td>
+<td>First surname of the client.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>secondSurname</code></td>
+<td>Second surname of the client.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>phones</code></td>
+<td>List of client phones.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>emails</code></td>
+<td>List of client emails.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>Address information of the client.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>comment</code></td>
+<td>Comment regarding to the client.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='phone-parameters'>Phone Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>phoneNumber</code></td>
+<td>Phone number of the client.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>comment</code></td>
+<td>Comment regarding to the phone number.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='email-parameters'>Email Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>email</code></td>
+<td>Email address of the client.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>comment</code></td>
+<td>Comment regarding to the email.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='address-parameters'>Address Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>street</code></td>
+<td>Street of the client&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>number</code></td>
+<td>The number of the building in the street.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>postalCode</code></td>
+<td>Postal code of the client&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td>City of the client&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>latitude</code></td>
+<td>Latitude of the client&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>longitude</code></td>
+<td>Longitude of the client&#39;s home location.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='responses-3'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>201</code></td>
+<td>The client has been created successfully. The new client is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Malformed body json.</td>
+</tr>
+</tbody></table>
+<h2 id='update-a-client'>Update a client</h2><pre class="highlight shell tab-shell"><code>curl -X PUT http://IP:PORT/VERSION/clients/616d83379bbd37254785a7d6 <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -d <span class="s1">'{ \
+    "identityDocument":"834237656874D", \
+    "name":"Andres", \
+    "firstSurname": "Rosado",
+    "secondSurname": "Garcia"
+    "comment": "This client use to buy Bridgestone"
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"This client use to buy Bridgestone"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"616d83379bbd37254785a7d6"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"identityDocument"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"834237656874D"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Andres"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"firstSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rosado"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"secondSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Garcia"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It updates a client by specifying his id and at least the required fields. The updated client is provided in the response.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT http://IP:PORT/VERSION/clients/:id</code></p>
+<h3 id='body-parameters-2'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>identityDocument</code></td>
+<td>Identifier of the client document.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Name of the client.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>firstSurname</code></td>
+<td>First surname of the client.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>secondSurname</code></td>
+<td>Second surname of the client.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>phones</code></td>
+<td>List of client phones.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>emails</code></td>
+<td>List of client emails.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>Address information of the client.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>comment</code></td>
+<td>Comment regarding to the client.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='phone-parameters-2'>Phone Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>phoneNumber</code></td>
+<td>Phone number of the client.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>comment</code></td>
+<td>Comment of the phone number.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='email-parameters-2'>Email Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>email</code></td>
+<td>Email address of the client.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>comment</code></td>
+<td>Comment regarding to the email.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='address-parameters-2'>Address Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>street</code></td>
+<td>Street of the client&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>number</code></td>
+<td>The number of the building in the street.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>postalCode</code></td>
+<td>Postal code of the client&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td>City of the client&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>latitude</code></td>
+<td>Latitude of the client&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>longitude</code></td>
+<td>Longitude of the client&#39;s home location.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='responses-4'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The client has been updated successfully. The client is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Malformed body json.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>Client not found.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-client'>Delete a client</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE http://IP:PORT/VERSION/clients/5e6f565acff3233408180978 <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+    -H <span class="s2">"Content-Type: text/json"</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"This client use to buy Bridgestone"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6f565acff3233408180978"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"identityDocument"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"834237656874D"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Andres"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"firstSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rosado"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"secondSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Garcia"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It is used to remove a client from the database. It returns the removed client in the body of the response.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE http://IP:PORT/VERSION/clients/:id</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the client to be deleted.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-5'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The client has been deleted successfully.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The client with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h1 id='employees'>Employees</h1><h2 id='get-all-employees'>Get all employees</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/employees <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"213124353532"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"identityDocument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"131231441Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jorge"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"firstSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gonzalez"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"secondSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rodriguez"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DRIVER"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"658498135"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is the main phone"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"jgr@company.org"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"comment"</span><span class="p">:</span><span class="s2">"No comments"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"street"</span><span class="p">:</span><span class="s2">"Juan Carlos I"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="s2">"38450"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"La Laguna"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"latitude"</span><span class="p">:</span><span class="mf">28.48</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"longitude"</span><span class="p">:</span><span class="mf">-16.32</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"comment"</span><span class="p">:</span><span class="s2">"This employee work hard."</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"21362735532"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"identityDocument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"131238244J"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sandra"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"firstSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jimenez"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"secondSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"García"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMINISTRATOR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"652443935"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is the main phone"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"sjg@company.org"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"comment"</span><span class="p">:</span><span class="s2">"No comments"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"street"</span><span class="p">:</span><span class="s2">"Juan Carlos I"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="s2">"38450"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"La Laguna"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"latitude"</span><span class="p">:</span><span class="mf">28.48</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"longitude"</span><span class="p">:</span><span class="mf">-16.32</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"comment"</span><span class="p">:</span><span class="s2">"This employee work hard."</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>It provides all the employees registered. The returned employees will be paginated to <code>20</code> items by default. Further pages can be requested by means of the <code>page</code> query paramenter. It can also set a custom page size up to <code>100</code> with the <code>size</code> parameter.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/employees</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>page</code></td>
+<td>Zero-based page index. Default value: <code>0</code>. Min value: <code>0</code>.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>Size of the page to be returned. Default value: <code>20</code>. Min value: <code>0</code>. Max value: <code>100</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='responses'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded and the employees are included in the body of the response. The following headers are included in the response: <ul><li><code>Pagination-Count: 1</code></li><li><code>Pagination-Size: 20</code></li><li><code>Pagination-Page: 0</code></li><li><code>Total-Count: 5</code></li></ul> where <code>Pagination-Count</code> is the number of existing pages, <code>Pagination-Size</code> is the size of each page, <code>Pagination-Page</code> is the index of the current page, and <code>Total-Count</code> is the number of entities in the server.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-employee'>Get a specific employee</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/employees/:id <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"21362735532"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"identityDocument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"131238244J"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sandra"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"firstSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jimenez"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"secondSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"García"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMINISTRATOR"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"652443935"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is the main phone"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"sjg@company.org"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"comment"</span><span class="p">:</span><span class="s2">"No comments"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"street"</span><span class="p">:</span><span class="s2">"Juan Carlos I"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"number"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="s2">"38450"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"La Laguna"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"latitude"</span><span class="p">:</span><span class="mf">28.48</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"longitude"</span><span class="p">:</span><span class="mf">-16.32</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"comments"</span><span class="p">:</span><span class="s2">"This employee work hard."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It provides a specific employee by indicating its identifier. The employee is provided in the response body.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/employees/:id</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the requested employee.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-2'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded. The employee is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The employee with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h2 id='create-an-employee'>Create an employee</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/employees <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -d <span class="s1">'{ \
+    "identityDocument":"834237656874D", \
+    "name":"Andres", \
+    "firstSurname": "Rosado",
+    "secondSurname": "Garcia"
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"616d83379bbd37254785a7d6"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"identityDocument"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"834237656874D"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Andres"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"firstSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rosado"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"secondSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Garcia"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It creates a new employee by specifying at least the required fields. The created employee is provided in the response.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST http://IP:PORT/VERSION/employees</code></p>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>identityDocument</code></td>
+<td>Identifier of the employee document.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Name of the employee.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>firstSurname</code></td>
+<td>First surname of the employee.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>secondSurname</code></td>
+<td>Second surname of the employee.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>The type of the employee.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>phones</code></td>
+<td>List of employee phones.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>emails</code></td>
+<td>List of employee emails.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>Address information of the employee.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>comment</code></td>
+<td>Comment regarding to the employee.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='phone-parameters'>Phone Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>phoneNumber</code></td>
+<td>Phone number of the employee.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>comment</code></td>
+<td>Comment of the phone number.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='email-parameters'>Email Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>email</code></td>
+<td>Email address of the employee.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>comment</code></td>
+<td>Comment of the phone number.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='address-parameters'>Address Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>street</code></td>
+<td>Street of the employee&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>number</code></td>
+<td>The number of the building in the street.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>postalCode</code></td>
+<td>Postal code of the employee&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td>City of the employee&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>latitude</code></td>
+<td>Latitude of the employee&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>longitude</code></td>
+<td>Longitude of the employee&#39;s home location.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='responses-3'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>201</code></td>
+<td>The employee has been created successfully. The new employee is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Malformed body json.</td>
+</tr>
+</tbody></table>
+<h2 id='update-an-employee'>Update an employee</h2><pre class="highlight shell tab-shell"><code>curl -X PUT http://IP:PORT/VERSION/employees/616d83379bbd37254785a7d6 <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -d <span class="s1">'{ \
+    "identityDocument":"834237656874D", \
+    "name":"Andres", \
+    "firstSurname": "Rosado",
+    "secondSurname": "Garcia"
+    "comment": "This employee work hard."
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"This employee work hard."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"616d83379bbd37254785a7d6"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"identityDocument"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"834237656874D"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Andres"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"firstSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rosado"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"secondSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Garcia"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It updates a employee by specifying his id and at least the required fields. The updated employee is provided in the response.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT http://IP:PORT/VERSION/employees/:id</code></p>
+<h3 id='body-parameters-2'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>identityDocument</code></td>
+<td>Identifier of the employee document.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Name of the employee.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>firstSurname</code></td>
+<td>First surname of the employee.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>secondSurname</code></td>
+<td>Second surname of the employee.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>The type of the employee.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>phones</code></td>
+<td>List of employee phones.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>emails</code></td>
+<td>List of employee emails.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>Address information of the employee.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>comment</code></td>
+<td>Comment regarding to the employee.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='phone-parameters-2'>Phone Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>phoneNumber</code></td>
+<td>Phone number of the employee.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>comment</code></td>
+<td>Comment of the phone number.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='email-parameters-2'>Email Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>email</code></td>
+<td>Email address of the employee.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>comment</code></td>
+<td>Comment of the phone number.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='address-parameters-2'>Address Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>street</code></td>
+<td>Street of the employee&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>number</code></td>
+<td>The number of the building in the street.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>postalCode</code></td>
+<td>Postal code of the employee&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td>City of the employee&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>latitude</code></td>
+<td>Latitude of the employee&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>longitude</code></td>
+<td>Longitude of the employee&#39;s home location.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='responses-4'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The employee has been updated successfully. The employee is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Malformed body json.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>Employee not found.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-an-employee'>Delete an employee</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE http://IP:PORT/VERSION/employees/5e6f565acff3233408180978 <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: text/json"</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"comment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"This employee work hard."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6f565acff3233408180978"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"identityDocument"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"834237656874D"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Andres"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"emails"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phones"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"firstSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rosado"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"secondSurname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Garcia"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It is used to remove a employee from the database. It returns the removed employee in the body of the response.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE http://IP:PORT/VERSION/employees/:id</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the employee to be deleted.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-5'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The employee has been deleted successfully.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The employee with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h2 id='get-an-employee-type'>Get an employee type</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/employees/types <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a string like the following:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>["DRIVER","STOREKEEPER","ADMINISTRATOR"]
+</code></pre>
+<p>It returns the different types of wmployees available.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/employees/types</code></p>
+<h3 id='responses-6'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The types are returned successfully</td>
+</tr>
+</tbody></table>
+<h1 id='orders'>Orders</h1><h2 id='get-all-orders'>Get all orders</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/orders <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+     </span><span class="s2">"clientId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61895971ec0bca3aeba2b85a"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"creationDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-03T15:17:59.189Z"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"deliveryDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61a8a202a382e40966c9db92"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"preferedDates"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"2021-12-02T10:49:25.169Z"</span><span class="w">
+     </span><span class="p">],</span><span class="w">
+     </span><span class="s2">"referece"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"prueba2"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"units"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+           </span><span class="s2">"product"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Marca Bridgestone"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"dimensions"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                 </span><span class="s2">"depth"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"height"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"width"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"618d23ce41acdc0cee8f93d9"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Neumatico"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"weight"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="w">
+           </span><span class="p">},</span><span class="w">
+           </span><span class="s2">"quantity"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+     </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+</span></code></pre>
+<p>It provides all the orders registered. The returned orders will be paginated to <code>20</code> items by default. Further pages can be requested by means of the <code>page</code> query paramenter. It can also set a custom page size up to <code>100</code> with the <code>size</code> parameter.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/orders</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>page</code></td>
+<td>Zero-based page index. Default value: <code>0</code>. Min value: <code>0</code>.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>Size of the page to be returned. Default value: <code>20</code>. Min value: <code>0</code>. Max value: <code>100</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='responses'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded and the orders are included in the body of the response. The following headers are included in the response: <ul><li><code>Pagination-Count: 1</code></li><li><code>Pagination-Size: 20</code></li><li><code>Pagination-Page: 0</code></li><li><code>Total-Count: 5</code></li></ul> where <code>Pagination-Count</code> is the number of existing pages, <code>Pagination-Size</code> is the size of each page, <code>Pagination-Page</code> is the index of the current page, and <code>Total-Count</code> is the number of entities in the server.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-order'>Get a specific order</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/orders/:id <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"clientId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61895971ec0bca3aeba2b85a"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"creationDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-03T15:17:59.189Z"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"deliveryDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61a8a202a382e40966c9db92"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"preferedDates"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"2021-12-02T10:49:25.169Z"</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+   </span><span class="s2">"referece"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"prueba2"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"units"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"product"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Marca Bridgestone"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dimensions"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"depth"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"height"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"width"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"618d23ce41acdc0cee8f93d9"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Neumatico"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"weight"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="s2">"quantity"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It provides a specific order by indicating its identifier. The order is provided in the response body.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/orders/:id</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the requested order.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-2'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded. The order is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The order with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h2 id='create-an-order'>Create an order</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/orders <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "reference":"prueba2",
+    "preferedDates": [
+      "2021-12-02T10:49:25.169Z"
+    ],
+    "clientId":"61895971ec0bca3aeba2b85a",
+    "orderUnits":[
+      {
+        "productId":"618d23ce41acdc0cee8f93d9",
+        "quantity":"10"
+      }
+    ]
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"clientId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61895971ec0bca3aeba2b85a"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"creationDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-03T15:17:59.189Z"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"deliveryDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61a8a202a382e40966c9db92"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"preferedDates"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"2021-12-02T10:49:25.169Z"</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+   </span><span class="s2">"referece"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"prueba2"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"units"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"product"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Marca Bridgestone"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dimensions"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"depth"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"height"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"width"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"618d23ce41acdc0cee8f93d9"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Neumatico"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"weight"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="s2">"quantity"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It creates a new order by specifying at least the required fields. The created order is provided in the response.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST http://IP:PORT/VERSION/orders</code></p>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>reference</code></td>
+<td>Reference name for the order.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>preferedDates</code></td>
+<td>Dates which are prefered for the delivery.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>deliveryDate</code></td>
+<td>Date when the delivery was made.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>clientId</code></td>
+<td>The client who made the order.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>units</code></td>
+<td>Array of units which contains a product id and the quantity requested.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>productId</code></td>
+<td>Id of the product included in each unit.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>quantity</code></td>
+<td>Quantity of each product requested in the order.</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h3 id='responses-3'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>201</code></td>
+<td>The order has been created successfully. The new order is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Malformed body json.</td>
+</tr>
+</tbody></table>
+<h2 id='update-a-order'>Update a order</h2><pre class="highlight shell tab-shell"><code>curl -X PUT http://IP:PORT/VERSION/orders/616d83379bbd37254785a7d6 <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "reference":"prueba2",
+    "preferedDates": [
+      "2021-12-02T10:49:25.169Z"
+    ],
+    "clientId":"61895971ec0bca3aeba2b85a",
+    "orderUnits":[
+      {
+        "productId":"618d23ce41acdc0cee8f93d9",
+        "quantity":"10"
+      }
+    ]
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"clientId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61895971ec0bca3aeba2b85a"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"creationDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-03T15:17:59.189Z"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"deliveryDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61a8a202a382e40966c9db92"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"preferedDates"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"2021-12-02T10:49:25.169Z"</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+   </span><span class="s2">"referece"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"prueba2"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"units"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"product"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Marca Bridgestone"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dimensions"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"depth"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"height"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"width"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"618d23ce41acdc0cee8f93d9"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Neumatico"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"weight"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="s2">"quantity"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It updates a order by specifying his id and at least the required fields. The updated order is provided in the response.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT http://IP:PORT/VERSION/orders/:id</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the order to be updated.</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters-2'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>reference</code></td>
+<td>Reference name for the order.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>preferedDates</code></td>
+<td>Dates which are prefered for the delivery.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>deliveryDate</code></td>
+<td>Date when the delivery was made.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>clientId</code></td>
+<td>The client who made the order.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>units</code></td>
+<td>Array of units which contains a product id and the quantity requested.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>productId</code></td>
+<td>Id of the product included in each unit.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>quantity</code></td>
+<td>Quantity of each product requested in the order.</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h3 id='responses-4'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The order has been updated successfully. The order is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Malformed body json.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>Order not found.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-order'>Delete a order</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE http://IP:PORT/VERSION/orders/61a8a202a382e40966c9db92 <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+    -H <span class="s2">"Content-Type: text/json"</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"clientId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61895971ec0bca3aeba2b85a"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"creationDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-03T15:17:59.189Z"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"deliveryDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61a8a202a382e40966c9db92"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"preferedDates"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"2021-12-02T10:49:25.169Z"</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+   </span><span class="s2">"referece"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"prueba2"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"units"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"product"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Marca Bridgestone"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dimensions"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"depth"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"height"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"width"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"618d23ce41acdc0cee8f93d9"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Neumatico"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"weight"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="s2">"quantity"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It is used to remove a order from the database. It returns the removed order in the body of the response.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE http://IP:PORT/VERSION/orders/:id</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the order to be deleted.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-5'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The order has been deleted successfully.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The order with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h1 id='products'>Products</h1><h2 id='get-all-products'>Get all products</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/products <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"213124353532"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bridgestone"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wheel"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"5520052565412"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Michelin"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wheel"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>It provides all the products registered. The returned products will be paginated to <code>20</code> items by default. Further pages can be requested by means of the <code>page</code> query paramenter. It can also set a custom page size up to <code>100</code> with the <code>size</code> parameter.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/products</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>page</code></td>
+<td>Zero-based page index. Default value: <code>0</code>. Min value: <code>0</code>.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>Size of the page to be returned. Default value: <code>20</code>. Min value: <code>0</code>. Max value: <code>100</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='responses'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded and the products are included in the body of the response. The following headers are included in the response: <ul><li><code>Pagination-Count: 1</code></li><li><code>Pagination-Size: 20</code></li><li><code>Pagination-Page: 0</code></li><li><code>Total-Count: 5</code></li></ul> where <code>Pagination-Count</code> is the number of existing pages, <code>Pagination-Size</code> is the size of each page, <code>Pagination-Page</code> is the index of the current page, and <code>Total-Count</code> is the number of entities in the server.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-product'>Get a specific product</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/products/:id <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"5520052565412"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Michelin"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wheel"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It provides a specific product by indicating its identifier. The product is provided in the response body.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/products/:id</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the requested product.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-2'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded. The product is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The product with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h2 id='create-an-product'>Create an product</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/products <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -d <span class="s1">'{ \
+    "name":"michelin", \
+    "description":"Truck wheel", \
+    "weight":10
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"5520451225512"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Michelin"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Truck wheel"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It creates a new product by specifying at least the required fields. The created product is provided in the response.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST http://IP:PORT/VERSION/products</code></p>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>Name of the product.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>Description of the product.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>weight</code></td>
+<td>Weight of the product.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>dimensions</code></td>
+<td>Dimensions of the product.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='dimensions-parameters'>Dimensions Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>depth</code></td>
+<td>Depth dimension of the product.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td>Width dimension of the product.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td>Height dimension of the product.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='responses-3'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>201</code></td>
+<td>The product has been created successfully. The new product is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Malformed body json.</td>
+</tr>
+</tbody></table>
+<h2 id='update-a-product'>Update a product</h2><pre class="highlight shell tab-shell"><code>curl -X PUT http://IP:PORT/VERSION/products/616d83379bbd37254785a7d6 <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -d <span class="s1">'{ \
+    "name":"michelin", \
+    "description":"Truck wheel", \
+    "weight":10, \
+    "dimensions": {
+      "depth": 0.4,
+      "width": 1,
+      "height": 1
+    }
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"616d83379bbd37254785a7d6"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"michelin"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Truck wheel"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"weight"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It updates a product by specifying his id and at least the required fields. The updated product is provided in the response.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT http://IP:PORT/VERSION/products/:id</code></p>
+<h3 id='body-parameters-2'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>Name of the product.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>Description of the product.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>weight</code></td>
+<td>Weight of the product.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>dimensions</code></td>
+<td>Dimensions of the product.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='dimensions-parameters-2'>Dimensions Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>depth</code></td>
+<td>Depth dimension of the product.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td>Width dimension of the product.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td>Height dimension of the product.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='responses-4'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The product has been updated successfully. The product is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Malformed body json.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>Product not found.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-product'>Delete a product</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE http://IP:PORT/VERSION/products/5520451225512 <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+    -H <span class="s2">"Content-Type: text/json"</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"5520451225512"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"michelin"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Truck wheel"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"weight"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It is used to remove a product from the database. It returns the removed product in the body of the response.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE http://IP:PORT/VERSION/products/:id</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the product to be deleted.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-5'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The product has been deleted successfully.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The product with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h1 id='vehicles'>Vehicles</h1><h2 id='get-all-vehicles'>Get all vehicles</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/vehicles <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"213123454353532"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"carPlate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3498-krs"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buyYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2008</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"registeredYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2007</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">2200</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.5</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"2131534645532"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"carPlate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3238-gef"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buyYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"registeredYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2012</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">2100</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.9</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.8</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>It provides all the vehicles registered. The returned vehicles will be paginated to <code>20</code> items by default. Further pages can be requested by means of the <code>page</code> query paramenter. It can also set a custom page size up to <code>100</code> with the <code>size</code> parameter.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/vehicles</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>page</code></td>
+<td>Zero-based page index. Default value: <code>0</code>. Min value: <code>0</code>.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>Size of the page to be returned. Default value: <code>20</code>. Min value: <code>0</code>. Max value: <code>100</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='responses'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded and the vehicles are included in the body of the response. The following headers are included in the response: <ul><li><code>Pagination-Count: 1</code></li><li><code>Pagination-Size: 20</code></li><li><code>Pagination-Page: 0</code></li><li><code>Total-Count: 5</code></li></ul> where <code>Pagination-Count</code> is the number of existing pages, <code>Pagination-Size</code> is the size of each page, <code>Pagination-Page</code> is the index of the current page, and <code>Total-Count</code> is the number of entities in the server.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-vehicle'>Get a specific vehicle</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/vehicles/:id <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"2131534645532"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"carPlate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3238-gef"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"buyYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"registeredYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2012</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">2100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.9</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.8</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It provides a specific vehicle by indicating its identifier. The vehicle is provided in the response body.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/vehicles/:id</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the requested vehicle.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-2'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded. The vehicle is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The vehicle with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h2 id='create-an-vehicle'>Create an vehicle</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/vehicles <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -d <span class="s1">'{ \
+    "carPlate":"8574-let", \
+    "buyYear": 2016, \
+    "registeredYear":2015
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"2131534645532"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"carPlate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8574-let"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"buyYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2016</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"registeredYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2015</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It creates a new vehicle by specifying at least the required fields. The created vehicle is provided in the response.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST http://IP:PORT/VERSION/vehicles</code></p>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>carPlate</code></td>
+<td>Car Plate of the vehicle.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>buyYear</code></td>
+<td>Year when the vehicle was bought.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>registeredYear</code></td>
+<td>Year when the vehicle was registered.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>capacity</code></td>
+<td>Capacity of the vehicle.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>weight</code></td>
+<td>Weight of the vehicle.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>dimensions</code></td>
+<td>Dimensions of the vehicle.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='dimensions-parameters'>Dimensions Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>depth</code></td>
+<td>Depth dimension of the vehicle.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td>Width dimension of the vehicle.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td>Height dimension of the vehicle.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='responses-3'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>201</code></td>
+<td>The vehicle has been created successfully. The new vehicle is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Malformed body json.</td>
+</tr>
+</tbody></table>
+<h2 id='update-a-vehicle'>Update a vehicle</h2><pre class="highlight shell tab-shell"><code>curl -X PUT http://IP:PORT/VERSION/vehicles/616d83379bbd37254785a7d6 <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -d <span class="s1">'{ \
+    "carPlate":"8574-let", \
+    "buyYear": 2016, \
+    "registeredYear":2015
+    "capacity":500
+    "weight":2400
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"616d83379bbd37254785a7d6"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"carPlate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8574-let"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"buyYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2016</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"registeredYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2015</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">2400</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It updates a vehicle by specifying his id and at least the required fields. The updated vehicle is provided in the response.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT http://IP:PORT/VERSION/vehicles/:id</code></p>
+<h3 id='body-parameters-2'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>carPlate</code></td>
+<td>Car Plate of the vehicle.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>buyYear</code></td>
+<td>Year when the vehicle was bought.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>registeredYear</code></td>
+<td>Year when the vehicle was registered.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>capacity</code></td>
+<td>Capacity of the vehicle.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>weight</code></td>
+<td>Weight of the vehicle.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>dimensions</code></td>
+<td>Dimensions of the vehicle.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='dimensions-parameters-2'>Dimensions Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>depth</code></td>
+<td>Depth dimension of the vehicle.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td>Width dimension of the vehicle.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td>Height dimension of the vehicle.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='responses-4'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The vehicle has been updated successfully. The vehicle is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Malformed body json.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>Vehicle not found.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-vehicle'>Delete a vehicle</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE http://IP:PORT/VERSION/vehicles/2131534645532 <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+    -H <span class="s2">"Content-Type: text/json"</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"2131534645532"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"carPlate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8574-let"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"buyYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2016</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"registeredYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2015</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">2400</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It is used to remove a vehicle from the database. It returns the removed vehicle in the body of the response.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE http://IP:PORT/VERSION/vehicles/:id</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the vehicle to be deleted.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-5'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The vehicle has been deleted successfully.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The vehicle with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h1 id='warehouses'>Warehouses</h1><h2 id='get-all-warehouses'>Get all warehouses</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/warehouses <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"213124353532"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Almacen Santa Cruz"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"street"</span><span class="p">:</span><span class="s2">"Juan Carlos I"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="s2">"38450"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Santa Cruz"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"latitude"</span><span class="p">:</span><span class="mf">28.48</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"longitude"</span><span class="p">:</span><span class="mf">-16.32</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"658498135"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is the main phone"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"productUnits"</span><span class="p">:</span><span class="mi">235</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vehicles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"98151132563251"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"74651635065468"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"46532501651485"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"employees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"98651874733213"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"84631651616497"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"64648993217986"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"93154762858463"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"7946214532132"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Almacen Los Cristianos"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"street"</span><span class="p">:</span><span class="s2">"Juan XXIII"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="s2">"38450"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Los Cristianos"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"latitude"</span><span class="p">:</span><span class="mf">28.42</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"longitude"</span><span class="p">:</span><span class="mf">-16.12</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"658498135"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is the main phone"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"productUnits"</span><span class="p">:</span><span class="mi">128</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vehicles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"98151132563251"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"74651635065468"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"46532501651485"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"employees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"98651874733213"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"84631651616497"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"64648993217986"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"93154762858463"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>It provides all the warehouses registered. The returned warehouses will be paginated to <code>20</code> items by default. Further pages can be requested by means of the <code>page</code> query paramenter. It can also set a custom page size up to <code>100</code> with the <code>size</code> parameter.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/warehouses</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>page</code></td>
+<td>Zero-based page index. Default value: <code>0</code>. Min value: <code>0</code>.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>Size of the page to be returned. Default value: <code>20</code>. Min value: <code>0</code>. Max value: <code>100</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='responses'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded and the warehouses are included in the body of the response. The following headers are included in the response: <ul><li><code>Pagination-Count: 1</code></li><li><code>Pagination-Size: 20</code></li><li><code>Pagination-Page: 0</code></li><li><code>Total-Count: 5</code></li></ul> where <code>Pagination-Count</code> is the number of existing pages, <code>Pagination-Size</code> is the size of each page, <code>Pagination-Page</code> is the index of the current page, and <code>Total-Count</code> is the number of entities in the server.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-warehouse'>Get a specific warehouse</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/warehouses/:id <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"7946214532132"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Almacen Los Cristianos"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"street"</span><span class="p">:</span><span class="s2">"Juan XXIII"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"number"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="s2">"38450"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Los Cristianos"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"latitude"</span><span class="p">:</span><span class="mf">28.42</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"longitude"</span><span class="p">:</span><span class="mf">-16.12</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"658498135"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is the main phone"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"productUnits"</span><span class="p">:</span><span class="mi">128</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"vehicles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"98151132563251"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"74651635065468"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"46532501651485"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"employees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"98651874733213"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"84631651616497"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"64648993217986"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"93154762858463"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It provides a specific warehouse by indicating its identifier. The warehouse is provided in the response body.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://IP:PORT/VERSION/warehouses/:id</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the requested warehouse.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-2'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The request has succeeded. The warehouse is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The warehouse with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+<h2 id='create-a-warehouse'>Create a warehouse</h2><pre class="highlight shell tab-shell"><code>curl http://IP:PORT/VERSION/warehouses <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -d <span class="s1">'{ \
+    "name":"Almacen Pto Cruz", \
+    "capacity":40000, \
+    "productUnits": 156
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"7946214532132"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Almacen Pto Cruz"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">40000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phones"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"productUnits"</span><span class="p">:</span><span class="mi">156</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"vehicles"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"employees"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It creates a new warehouse by specifying at least the required fields. The created warehouse is provided in the response.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST http://IP:PORT/VERSION/warehouses</code></p>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>Name of the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>capacity</code></td>
+<td>Capacity of the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>Address information of the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>phones</code></td>
+<td>List of warehouse phones.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>productUnits</code></td>
+<td>Units of products present in the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>vehicles</code></td>
+<td>List of Vehicles available for the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>employees</code></td>
+<td>List of Employees available for the warehouse.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='phone-parameters'>Phone Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>phoneNumber</code></td>
+<td>Phone number of the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>comment</code></td>
+<td>Comment of the phone number.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='address-parameters'>Address Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>street</code></td>
+<td>Street of the warehouse&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>number</code></td>
+<td>The number of the building in the street.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>postalCode</code></td>
+<td>Postal code of the warehouse&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td>City of the warehouse&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>latitude</code></td>
+<td>Latitude of the warehouse&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>longitude</code></td>
+<td>Longitude of the warehouse&#39;s home location.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='responses-3'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>201</code></td>
+<td>The warehouse has been created successfully. The new warehouse is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Malformed body json.</td>
+</tr>
+</tbody></table>
+<h2 id='update-a-warehouse'>Update a warehouse</h2><pre class="highlight shell tab-shell"><code>curl -X PUT http://IP:PORT/VERSION/warehouses/616d83379bbd37254785a7d6 <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -d <span class="s1">'{ \
+    "name":"Almacen Pto Cruz", \
+    "capacity":40000, \
+    "productUnits": 156, \
+    "phones": [ \
+      { \
+        "phoneNumber": "658498135", \
+        "comment": "this is the main phone" \
+      } \
+    ] \
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"616d83379bbd37254785a7d6"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Almacen Pto Cruz"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">40000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"658498135"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is the main phone"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"productUnits"</span><span class="p">:</span><span class="mi">156</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"vehicles"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"employees"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It updates a warehouse by specifying his id and at least the required fields. The updated warehouse is provided in the response.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT http://IP:PORT/VERSION/warehouses/:id</code></p>
+<h3 id='body-parameters-2'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>Name of the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>capacity</code></td>
+<td>Capacity of the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>Address information of the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>phones</code></td>
+<td>List of warehouse phones.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>productUnits</code></td>
+<td>Units of products present in the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>vehicles</code></td>
+<td>List of Vehicles available for the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>employees</code></td>
+<td>List of Employees available for the warehouse.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='phone-parameters-2'>Phone Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>phoneNumber</code></td>
+<td>Phone number of the warehouse.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>comment</code></td>
+<td>Comment of the phone number.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='address-parameters-2'>Address Parameters</h3>
+<table><thead>
+<tr>
+<th>Paramenter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>street</code></td>
+<td>Street of the warehouse&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>number</code></td>
+<td>The number of the building in the street.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>postalCode</code></td>
+<td>Postal code of the warehouse&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td>City of the warehouse&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>latitude</code></td>
+<td>Latitude of the warehouse&#39;s home location.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>longitude</code></td>
+<td>Longitude of the warehouse&#39;s home location.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='responses-4'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The warehouse has been updated successfully. The warehouse is included in the body of the response.</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Malformed body json.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>Warehouse not found.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-warehouse'>Delete a warehouse</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE http://IP:PORT/VERSION/warehouses/5e6f565acff3233408180978 <span class="se">\</span>
+    -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+    -H <span class="s2">"Content-Type: text/json"</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"5e6f565acff3233408180978"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Almacen Pto Cruz"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">40000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"658498135"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is the main phone"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"productUnits"</span><span class="p">:</span><span class="mi">156</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"vehicles"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"employees"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>It is used to remove a warehouse from the database. It returns the removed warehouse in the body of the response.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE http://IP:PORT/VERSION/warehouses/:id</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Identifier of the warehouse to be deleted.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-5'>Responses</h3>
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>The warehouse has been deleted successfully.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The warehouse with the given identifier is not found.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
