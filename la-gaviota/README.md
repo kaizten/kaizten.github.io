@@ -10,14 +10,14 @@
 
 ## :notebook_with_decorative_cover: Description
 
-This project is aimed at solving the Production Planning Problem. It is an optimization problem where there is a set of production lines dedicated to do working orders.
+This docker compose is aimed at solving the Production Planning Problem. It is an optimization problem where there is a set of production lines dedicated to do working orders.
 
 ## :hammer_and_wrench: Components
 
 The docker-compose is composed of the following components:
 
-* `kaizten-task-lite`. Component that allows the execution of the algorithm.
-* `production-planning-problem-vizualizer`. A front-end to execute the optimization techniques and show the solutions reported by them.
+* `kaizten-task-lite (8080)`. Component that allows the execution of the algorithm.
+* `production-planning-problem-vizualizer (80)`. A front-end to execute the optimization techniques and show the solutions reported by them.
 * `watchtower`. A process for automating Docker container base image updates.
 
 ## :gear: How to use
