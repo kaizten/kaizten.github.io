@@ -1,0 +1,290 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Persons with Reduced Mobility Problem",
+  "description": "Definition of instance of the Persons with Reduced Mobility Problem",
+  "type": "object",
+  "properties": {
+    "lastPlanningDays": {
+      "type": "integer"
+    },
+    "qualifications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "id": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "name",
+          "id"
+        ]
+      }
+    },
+    "services": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "qualifications": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "workersRequired": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "period": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 48,
+                  "exclusiveMaximum": true
+                },
+                "day": {
+                  "type": "integer"
+                },
+                "required": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "period",
+                "day",
+                "required"
+              ]
+            }
+          }
+        },
+        "required": [
+          "qualifications",
+          "name",
+          "id",
+          "workersRequired"
+        ]
+      }
+    },
+    "workers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "qualifications": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "consolidatedShift": {
+            "type": "boolean"
+          },
+          "consolidatedDays": {
+            "type": "boolean"
+          },
+          "timeWindows": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "endingPeriod": {
+                  "type": "integer"
+                },
+                "startingPeriod": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "endingPeriod",
+                "startingPeriod"
+              ]
+            }
+          },
+          "consolidatedDaysList": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "MONDAY",
+                "TUESDAY",
+                "WEDNESDAY",
+                "THURSDAY",
+                "FRIDAY",
+                "SATURDAY",
+                "SUNDAY"
+              ]
+            }
+          },
+          "freeWeekendYear": {
+            "type": "integer"
+          },
+          "freeWeekYear": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "dailyWorkingHours": {
+            "type": "integer"
+          },
+          "maxWeekShifts": {
+            "type": "integer"
+          },
+          "lastDifferentShift": {
+            "type": "object",
+            "properties": {
+              "service": {
+                "type": "integer"
+              },
+              "day": {
+                "type": "integer"
+              },
+              "startingPeriod": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "service",
+              "day",
+              "startingPeriod"
+            ]
+          },
+          "continuosWorkingDaysPreference": {
+            "type": "integer"
+          },
+          "lastFree": {
+            "type": "integer"
+          },
+          "lastShift": {
+            "type": "object",
+            "properties": {
+              "service": {
+                "type": "integer"
+              },
+              "day": {
+                "type": "integer"
+              },
+              "startingPeriod": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "service",
+              "day",
+              "startingPeriod"
+            ]
+          },
+          "preassignedShifts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "service": {
+                  "type": "integer"
+                },
+                "day": {
+                  "type": "integer"
+                },
+                "startingPeriod": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "service",
+                "day",
+                "startingPeriod"
+              ]
+            }
+          },
+          "lastFreeDaysSequence": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "MONDAY",
+                "TUESDAY",
+                "WEDNESDAY",
+                "THURSDAY",
+                "FRIDAY",
+                "SATURDAY",
+                "SUNDAY"
+              ]
+            }
+          },
+          "consecutiveDaysWithSameFreeSequence": {
+            "type": "integer"
+          },
+          "freeDaysLastMonth": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          "workingDaysLastWeek": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "qualifications",
+          "consolidatedShift",
+          "consolidatedDays",
+          "timeWindows",
+          "freeWeekendYear",
+          "freeWeekYear",
+          "name",
+          "id",
+          "dailyWorkingHours"
+        ]
+      }
+    },
+    "planningHorizon": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "WORKING",
+              "WEEKEND"
+            ]
+          }
+        },
+        "required": [
+          "date",
+          "id",
+          "type"
+        ]
+      }
+    }
+  },
+  "required": [
+    "qualifications",
+    "services",
+    "workers",
+    "planningHorizon"
+  ]
+}
