@@ -1,6 +1,45 @@
 {
+    "$schema": "https://json-schema.org/draft/2020-12",
+    "title": "Employee Scheduling Problem",
+    "description": "Description of instances of the Employee Scheduling Problem",
     "type": "object",
     "properties": {
+        "flights": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 7
+                    },
+                    "employees": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 100
+                    },
+                    "startTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "finishTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "serviceTime": {
+                        "type": "duration"
+                    }
+                },
+                "required": [
+                    "code",
+                    "employees",                    
+                    "startTime",
+                    "finishTime",
+                    "serviceTime"
+                ]
+            }
+        },
         "employees": {
             "type": "object",
             "properties": {
@@ -33,13 +72,13 @@
                                 "type": "string",
                                 "format": "time"
                             },
-                            "startingTime": {
+                            "enterTime": {
                                 "type": "duration"
                             },
                             "breakTime": {
                                 "type": "duration"
                             },
-                            "finishingTime": {
+                            "leaveTime": {
                                 "type": "duration"
                             },
                             "notAvailableDates": {
@@ -48,35 +87,12 @@
                                     "type": "string",
                                     "format": "date"
                                 }
-                            },
-
-                            "finishing": {
-                                "type": "string",
-                                "format": "time"
-                            },
-                            "hoursDay": {
-                                "type": "number",
-                                "minimum": 1,
-                                "maximum": 12
-                            },
-                            "hoursWeek": {
-                                "type": "integer",
-                                "minimum": 1,
-                                "maximum": 40
-                            },                           
-                            "starting": {
-                                "type": "string",
-                                "format": "time"
-                            },
+                            }
                         },
                         "required": [
                             "code",                           
                             "timePerDay",
-                            "timePerWeek",
-                            "timeBetweenWorkingDays"
-
-                            "hoursDay",
-                            "hoursWeek",
+                            "timePerWeek"                        
                         ]
                     }
                 },
@@ -84,66 +100,26 @@
                     "type": "object",
                     "additionalProperties": true,
                     "properties": {
+                        "enterTime": {
+                            "type": "duration"
+                        },
                         "breakTime": {
-                            "type": "integer",
-                            "minimum": 0
+                            "type": "duration"
                         },
-                        "finishingTime": {
-                            "type": "integer",
-                            "minimum": 0
-                        },
-                        "startingTime": {
-                            "type": "integer",
-                            "minimum": 0
+                        "leaveTime": {
+                            "type": "duration"
                         },
                         "timeBetweenWorkingDays": {
-                            "type": "integer",
-                            "minimum": 0
+                            "type": "duration"
                         }
                     },
                     "required": [
-                        "timeBetweenWorkingDays",
-                        "startingTime",
+                        "enterTime",
                         "breakTime",
-                        "finishingTime"
+                        "leaveTime",
+                        "timeBetweenWorkingDays"                        
                     ]
                 }
-            }
-        },
-        "flights": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "code": {
-                        "type": "string",
-                        "minLength": 1,
-                        "maxLength": 7
-                    },
-                    "employees": {
-                        "type": "integer",
-                        "minimum": 1,
-                        "maximum": 100
-                    },
-                    "finishingTime": {
-                        "type": "string",
-                        "format": "date-time"
-                    },
-                    "startingTime": {
-                        "type": "string",
-                        "format": "date-time"
-                    },
-                    "serviceTime": {
-                        "type": "duration"
-                    }
-                },
-                "required": [
-                    "code",
-                    "startingTime",
-                    "finishingTime",
-                    "employees",
-                    "serviceTime"
-                ]
             }
         },
         "airport": {
@@ -156,7 +132,5 @@
     "required": [
         "flights",
         "employees"
-    ],
-    "title": "Employee Scheduling Problem",
-    "description": "Description of instances of the Employee Scheduling Problem"
+    ]
 }
