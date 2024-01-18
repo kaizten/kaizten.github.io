@@ -1,99 +1,8 @@
 {
+    "title": "Aviation Workforce Management Problem",
+    "description": "Description of instances of the Aviation Workforce Management Problem",
     "type": "object",
     "properties": {
-        "employees": {
-            "type": "object",
-            "properties": {
-                "individuals": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "additionalProperties": true,
-                        "properties": {
-                            "breakTime": {
-                                "type": "integer",
-                                "minimum": 0
-                            },
-                            "code": {
-                                "type": "string",
-                                "minLength": 1,
-                                "maxLength": 4
-                            },
-                            "finishing": {
-                                "type": "string",
-                                "format": "time"
-                            },
-                            "finishingTime": {
-                                "type": "integer",
-                                "minimum": 0
-                            },
-                            "hoursDay": {
-                                "type": "number",
-                                "minimum": 1,
-                                "maximum": 12
-                            },
-                            "hoursWeek": {
-                                "type": "integer",
-                                "minimum": 1,
-                                "maximum": 40
-                            },
-                            "notAvailableDates": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string",
-                                    "format": "date"
-                                }
-                            },
-                            "starting": {
-                                "type": "string",
-                                "format": "time"
-                            },
-                            "startingTime": {
-                                "type": "integer",
-                                "minimum": 0
-                            },
-                            "timeBetweenWorkingDays": {
-                                "type": "integer",
-                                "minimum": 0
-                            }
-                        },
-                        "required": [
-                            "code",
-                            "hoursDay",
-                            "hoursWeek"
-                        ]
-                    }
-                },
-                "parameters": {
-                    "type": "object",
-                    "additionalProperties": true,
-                    "properties": {
-                        "breakTime": {
-                            "type": "integer",
-                            "minimum": 0
-                        },
-                        "finishingTime": {
-                            "type": "integer",
-                            "minimum": 0
-                        },
-                        "startingTime": {
-                            "type": "integer",
-                            "minimum": 0
-                        },
-                        "timeBetweenWorkingDays": {
-                            "type": "integer",
-                            "minimum": 0
-                        }
-                    },
-                    "required": [
-                        "timeBetweenWorkingDays",
-                        "startingTime",
-                        "breakTime",
-                        "finishingTime"
-                    ]
-                }
-            }
-        },
         "flights": {
             "type": "array",
             "items": {
@@ -104,36 +13,122 @@
                         "minLength": 1,
                         "maxLength": 7
                     },
-                    "duration": {
-                        "type": "integer",
-                        "minimum": 1,
-                        "maximum": 120
-                    },
                     "employees": {
                         "type": "integer",
                         "minimum": 1,
                         "maximum": 100
                     },
-                    "finishingTime": {
+                    "startTime": {
                         "type": "string",
                         "format": "date-time"
                     },
-                    "landTime": {
-                        "type": "integer",
-                        "minimum": 1
-                    },
-                    "startingTime": {
+                    "finishTime": {
                         "type": "string",
                         "format": "date-time"
+                    },
+                    "serviceTime": {
+                        "type": "string",
+                        "format": "duration"
                     }
                 },
                 "required": [
                     "code",
-                    "startingTime",
-                    "finishingTime",
-                    "employees",
-                    "duration"
+                    "employees",                    
+                    "startTime",
+                    "finishTime",
+                    "serviceTime"
                 ]
+            }
+        },
+        "employees": {
+            "type": "object",
+            "properties": {
+                "individuals": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": true,
+                        "properties": {
+                            "code": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 4
+                            },
+                            "timePerDay": {
+                                "type": "string",
+                                "format": "duration"
+                            },
+                            "timePerWeek": {
+                                "type": "string",
+                                "format": "duration"
+                            },
+                            "timeBetweenWorkingDays": {
+                                "type": "string",
+                                "format": "duration"
+                            },
+                            "startTime": {
+                                "type": "string",
+                                "format": "time"
+                            },
+                            "finishTime": {
+                                "type": "string",
+                                "format": "time"
+                            },
+                            "enterTime": {
+                                "type": "string",
+                                "format": "duration"
+                            },
+                            "breakTime": {
+                                "type": "string",
+                                "format": "duration"
+                            },
+                            "leaveTime": {
+                                "type": "string",
+                                "format": "duration"
+                            },
+                            "notAvailableDates": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "format": "date"
+                                }
+                            }
+                        },
+                        "required": [
+                            "code",                           
+                            "timePerDay",
+                            "timePerWeek"                        
+                        ]
+                    }
+                },
+                "parameters": {
+                    "type": "object",
+                    "additionalProperties": true,
+                    "properties": {
+                        "enterTime": {
+                            "type": "string",
+                            "format": "duration"
+                        },
+                        "breakTime": {
+                            "type": "string",
+                            "format": "duration"
+                        },
+                        "leaveTime": {
+                            "type": "string",
+                            "format": "duration"
+                        },
+                        "timeBetweenWorkingDays": {
+                            "type": "string",
+                            "format": "duration"
+                        }
+                    },
+                    "required": [
+                        "enterTime",
+                        "breakTime",
+                        "leaveTime",
+                        "timeBetweenWorkingDays"                        
+                    ]
+                }
             }
         },
         "airport": {
@@ -146,7 +141,5 @@
     "required": [
         "flights",
         "employees"
-    ],
-    "title": "Aviation Workforce Management Problem",
-    "description": "Description of instances of the Aviation Workforce Management Problem"
+    ]
 }
