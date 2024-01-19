@@ -1,4 +1,6 @@
 {
+    "title": "Aviation Workforce Management Solution",
+    "description": "Description of solutions of the Aviation Workforce Management Problem",
     "type": "object",
     "properties": {
         "dates": {
@@ -141,7 +143,5 @@
     "required": [
         "dates",
         "indicators"
-    ],
-    "title": "Aviation Workforce Management Solution",
-    "description": "Description of solutions of the Aviation Workforce Management Problem"
+    ]
 }
