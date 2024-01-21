@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Persons with Reduced Mobility Problem",
-  "description": "Definition of instance of the Persons with Reduced Mobility Problem",
+  "description": "Definition of instances of the Persons with Reduced Mobility Problem",
   "type": "object",
   "properties": {
     "lastPlanningDays": {
