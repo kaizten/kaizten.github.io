@@ -23,21 +23,23 @@
                       "type": "string"
                     },
                     "startingTime": {
-                      "type": "string"
+                      "type": "string",
+                      "format": "date-time"
                     },
                     "finishingTime": {
-                      "type": "string"
+                      "type": "string",
+                      "format": "date-time"
                     },
                     "remote": {
                       "type": "boolean"
                     },
-                    "requiredSkillEmployees": {
+                    "requiredRoles": {
                       "type": "array",
                       "items": [
                         {
                           "type": "object",
                           "properties": {
-                            "skill": {
+                            "role": {
                               "type": "string"
                             },
                             "employees": {
@@ -45,14 +47,14 @@
                             }
                           },
                           "required": [
-                            "skill",
+                            "role",
                             "employees"
                           ]
                         },
                         {
                           "type": "object",
                           "properties": {
-                            "skill": {
+                            "role": {
                               "type": "string"
                             },
                             "employees": {
@@ -60,7 +62,7 @@
                             }
                           },
                           "required": [
-                            "skill",
+                            "role",
                             "employees"
                           ]
                         }
@@ -72,7 +74,7 @@
                     "startingTime",
                     "finishingTime",
                     "remote",
-                    "requiredSkillEmployees"
+                    "requiredRoles"
                   ]
                 }
               ]
@@ -100,34 +102,34 @@
                 {
                   "type": "object",
                   "properties": {
-                    "skill": {
+                    "role": {
                       "type": "string"
                     }
                   },
                   "required": [
-                    "skill"
+                    "role"
                   ]
                 },
                 {
                   "type": "object",
                   "properties": {
-                    "skill": {
+                    "role": {
                       "type": "string"
                     }
                   },
                   "required": [
-                    "skill"
+                    "role"
                   ]
                 },
                 {
                   "type": "object",
                   "properties": {
-                    "skill": {
+                    "role": {
                       "type": "string"
                     }
                   },
                   "required": [
-                    "skill"
+                    "role"
                   ]
                 }
               ]
