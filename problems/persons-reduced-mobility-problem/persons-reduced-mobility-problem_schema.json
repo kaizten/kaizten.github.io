@@ -24,11 +24,11 @@
                     },
                     "startingTime": {
                       "type": "string",
-                      "format": "date-time"
+                      "format": "time"
                     },
                     "finishingTime": {
                       "type": "string",
-                      "format": "date-time"
+                      "format": "time"
                     },
                     "remote": {
                       "type": "boolean"
