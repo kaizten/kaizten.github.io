@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Timetabling Problem Services Solution",
+  "description": "Definition of solution for the Timetabling Problem Services",
+  "type": "object",
+  "properties": {
+    "objectiveFunctions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "value"
+        ]
+      }
+    },
+    "days": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+			"format": "date"
+          },
+          "assignments": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "endingPeriod": {
+                  "type": "integer"
+                },
+                "service": {
+                  "type": "integer"
+                },
+                "worker": {
+                  "type": "integer"
+                },
+                "startingPeriod": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "endingPeriod",
+                "service",
+                "worker",
+                "startingPeriod"
+              ]
+            }
+          },
+          "id": {
+            "type": "integer"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "WORKING",
+              "WEEKEND"
+            ]
+          }
+        },
+        "required": [
+          "date",
+          "assignments",
+          "id",
+          "type"
+        ]
+      }
+    },
+    "metrics": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "objectiveFunctions",
+    "days",
+    "metrics"
+  ]
+}
