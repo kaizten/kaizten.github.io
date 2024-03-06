@@ -2,185 +2,104 @@
   "title": "Persons with Reduced Mobility Problem",
   "description": "Definition of instances of the Persons with Reduced Mobility Problem",
   "type": "object",
-  "properties": {
-    "dates": {
-      "type": "array",
-      "items": [
-        {
-          "type": "object",
-          "properties": {
-            "date": {
-              "type": "string",
-              "formate": "date"
-            },
-            "shifts": {
-              "type": "array",
-              "items": [
-                {
-                  "type": "object",
-                  "properties": {
+    "properties": {
+        "services": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
                     "code": {
-                      "type": "string"
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 7
                     },
-                    "startingTime": {
-                      "type": "string",
-                      "format": "time"
+                    "agents": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 100
                     },
-                    "finishingTime": {
-                      "type": "string",
-                      "format": "time"
+                    "startTime": {
+                        "type": "string",
+                        "format": "date-time"
                     },
-                    "remote": {
-                      "type": "boolean"
+                    "finishTime": {
+                        "type": "string",
+                        "format": "date-time"
                     },
-                    "requiredRoles": {
-                      "type": "array",
-                      "items": [
-                        {
-                          "type": "object",
-                          "properties": {
-                            "role": {
-                              "type": "string"
-                            },
-                            "employees": {
-                              "type": "integer"
-                            }
-                          },
-                          "required": [
-                            "role",
-                            "employees"
-                          ]
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "role": {
-                              "type": "string"
-                            },
-                            "employees": {
-                              "type": "integer"
-                            }
-                          },
-                          "required": [
-                            "role",
-                            "employees"
-                          ]
-                        }
-                      ]
+                    "serviceTime": {
+                        "type": "string",
+                        "format": "duration"
                     }
-                  },
-                  "required": [
+                },
+                "required": [
                     "code",
-                    "startingTime",
-                    "finishingTime",
-                    "remote",
-                    "requiredRoles"
-                  ]
-                }
-              ]
+                    "agents",                    
+                    "startTime",
+                    "finishTime",
+                    "serviceTime"
+                ]
             }
-          },
-          "required": [
-            "date",
-            "shifts"
-          ]
+        },
+        "agents": {
+            "type": "object",
+            "properties": {
+                "individuals": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": true,
+                        "properties": {
+                            "code": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 4
+                            },
+                            "timePerDay": {
+                                "type": "string",
+                                "format": "duration"
+                            },
+                            "timePerWeek": {
+                                "type": "string",
+                                "format": "duration"
+                            },
+                            "timeBetweenWorkingDays": {
+                                "type": "string",
+                                "format": "duration"
+                            },
+                            "startTime": {
+                                "type": "string",
+                                "format": "time"
+                            },
+                            "finishTime": {
+                                "type": "string",
+                                "format": "time"
+                            },
+                            "notAvailableDates": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "format": "date"
+                                }
+                            }
+                        },
+                        "required": [
+                            "code",                           
+                            "timePerDay",
+                            "timePerWeek"                        
+                        ]
+                    }
+                }
+            }
+        },
+        "airport": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 3,
+            "pattern": "^[A-Z]{3}$"
         }
-      ]
     },
-    "employees": {
-      "type": "array",
-      "items": [
-        {
-          "type": "object",
-          "properties": {
-            "identifier": {
-              "type": "string"
-            },
-            "roles": {
-              "type": "array",
-              "items": [
-                {
-                  "type": "object",
-                  "properties": {
-                    "role": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "role"
-                  ]
-                },
-                {
-                  "type": "object",
-                  "properties": {
-                    "role": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "role"
-                  ]
-                },
-                {
-                  "type": "object",
-                  "properties": {
-                    "role": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "role"
-                  ]
-                }
-              ]
-            },
-            "timeBetweenWorkingDays": {
-              "type": "integer"
-            },
-            "unavailabilityDates": {
-              "type": "object",
-              "properties": {
-                "lastUnavailabilityDates": {
-                  "type": "integer"
-                },
-                "firstUnavailabilityDates": {
-                  "type": "integer"
-                }
-              },
-              "required": [
-                "lastUnavailabilityDates",
-                "firstUnavailabilityDates"
-              ]
-            },
-            "minutesPerDay": {
-              "type": "object",
-              "properties": {
-                "minimumMinutesPerDay": {
-                  "type": "integer"
-                },
-                "maximumMinutesPerDay": {
-                  "type": "integer"
-                }
-              },
-              "required": [
-                "minimumMinutesPerDay",
-                "maximumMinutesPerDay"
-              ]
-            }
-          },
-          "required": [
-            "identifier",
-            "roles",
-            "timeBetweenWorkingDays",
-            "unavailabilityDates",
-            "minutesPerDay"
-          ]
-        }
-      ]
-    }
-  },
-  "required": [
-    "dates",
-    "employees"
-  ]
+    "required": [
+        "services",
+        "agents"
+    ]
 }
