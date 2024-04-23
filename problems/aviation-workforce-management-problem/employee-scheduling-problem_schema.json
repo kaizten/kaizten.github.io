@@ -1,6 +1,6 @@
 {
-    "title": "Aviation Workforce Management Problem",
-    "description": "Description of instances of the Aviation Workforce Management Problem",
+    "title": "Employee Scheduling Problem",
+    "description": "Description of instances of the Employee Scheduling Problem",
     "type": "object",
     "properties": {
         "flights": {
@@ -25,18 +25,13 @@
                     "finishTime": {
                         "type": "string",
                         "format": "date-time"
-                    },
-                    "serviceTime": {
-                        "type": "string",
-                        "format": "duration"
                     }
                 },
                 "required": [
                     "code",
                     "employees",                    
                     "startTime",
-                    "finishTime",
-                    "serviceTime"
+                    "finishTime"
                 ]
             }
         },
@@ -139,7 +134,6 @@
         }
     },
     "required": [
-        "flights",
-        "employees"
+        "flights"
     ]
 }
