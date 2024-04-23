@@ -1,0 +1,147 @@
+{
+    "title": "Aviation Workforce Management Solution",
+    "description": "Description of solutions of the Aviation Workforce Management Problem",
+    "type": "object",
+    "properties": {
+        "dates": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "date": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "employees": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 4
+                                },
+                                "flights": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "code": {
+                                                "type": "string",
+                                                "minLength": 1,
+                                                "maxLength": 7
+                                            },
+                                            "startTime": {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            },
+                                            "finishTime": {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            }
+                                        },
+                                        "required": [
+                                            "code",
+                                            "startTime",
+                                            "finishTime"
+                                        ]
+                                    }
+                                },
+                                "indicators": {
+                                    "type": "object",
+                                    "properties": {
+                                        "flights": {
+                                            "type": "integer",
+                                            "minimum": 0
+                                        },
+                                        "startTime": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "finishTime": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "time": {
+                                            "type": "integer",
+                                            "minimum": 0
+                                        },
+                                        "workingTime": {
+                                            "type": "integer",
+                                            "minimum": 0
+                                        },
+                                        "breakTime": {
+                                            "type": "integer",
+                                            "minimum": 0
+                                        }
+                                    },
+                                    "required": [
+                                        "flights",
+                                        "startTime",
+                                        "finishTime",
+                                        "time",
+                                        "workingTime",
+                                        "breakTime"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "code",
+                                "flights",
+                                "indicators"
+                            ]
+                        }
+                    },
+                    "indicators": {
+                        "type": "object",
+                        "properties": {
+                            "flights": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "employees": {
+                                "type": "integer"
+                            }
+                        },
+                        "required": [
+                            "flights",
+                            "employees"
+                        ]
+                    }
+                },
+                "required": [
+                    "date",
+                    "employees",
+                    "indicators"
+                ]
+            }
+        },
+        "indicators": {
+            "type": "object",
+            "properties": {
+                "flights": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "coveredFlights": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "nonCoveredFlights": {
+                    "type": "integer",
+                    "minimum": 0
+                }
+            },
+            "required": [
+                "flights",
+                "coveredFlights",
+                "nonCoveredFlights"
+            ]
+        }
+    },
+    "required": [
+        "dates",
+        "indicators"
+    ]
+}
