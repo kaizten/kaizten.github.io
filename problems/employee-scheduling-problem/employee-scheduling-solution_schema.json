@@ -90,6 +90,11 @@
                                         "breakTime": {
                                             "type": "string",
                                             "format": "duration"
+                                        },
+                                        "productivity": {
+                                            "type": "number",
+                                            "minimum": 0,
+                                            "maximum": 100
                                         }
                                     },
                                     "required": [
