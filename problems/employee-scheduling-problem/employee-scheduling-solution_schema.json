@@ -1,6 +1,6 @@
 {
     "title": "Employee Scheduling Solution",
-    "description": "Description of solutions of the Aviation Workforce Management Problem",
+    "description": "Description of solutions of the Employee Scheduling Solution",
     "type": "object",
     "properties": {
         "dates": {
@@ -64,16 +64,16 @@
                                             "format": "date-time"
                                         },
                                         "time": {
-                                            "type": "integer",
-                                            "minimum": 0
+                                            "type": "string",
+                                            "format": "duration"
                                         },
                                         "workingTime": {
-                                            "type": "integer",
-                                            "minimum": 0
+                                            "type": "string",
+                                            "format": "duration"
                                         },
                                         "breakTime": {
-                                            "type": "integer",
-                                            "minimum": 0
+                                            "type": "string",
+                                            "format": "duration"
                                         }
                                     },
                                     "required": [
