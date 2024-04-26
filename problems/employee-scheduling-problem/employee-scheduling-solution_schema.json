@@ -109,12 +109,39 @@
                                 "minimum": 0
                             },
                             "employees": {
-                                "type": "integer"
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "coveredFlights": {
+                                "type": "object",
+                                "properties": {
+                                    "absolute": {
+                                        "type": "integer",
+                                        "minimum": 0
+                                    },
+                                    "percentage": {
+                                        "type": "number"
+                                    }
+                                }
+                            },
+                            "uncoveredFlights": {
+                                "type": "object",
+                                "properties": {
+                                    "absolute": {
+                                        "type": "integer",
+                                        "minimum": 0
+                                    },
+                                    "percentage": {
+                                        "type": "number"
+                                    }
+                                }
                             }
                         },
                         "required": [
                             "flights",
-                            "employees"
+                            "employees",
+                            "coveredFlights",
+                            "uncoveredFlights"
                         ]
                     }
                 },
@@ -145,7 +172,7 @@
                             "minimum": 0
                         },
                         "percentage": {
-                            "type": "integer"
+                            "type": "number"
                         }
                     }
                 },
@@ -157,7 +184,7 @@
                             "minimum": 0
                         },
                         "percentage": {
-                            "type": "integer"
+                            "type": "number"
                         }
                     }
                 }
