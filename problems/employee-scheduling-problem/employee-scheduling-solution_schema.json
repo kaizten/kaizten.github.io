@@ -71,6 +71,18 @@
                                             "type": "string",
                                             "format": "duration"
                                         },
+                                        "serviceStartTime": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "serviceFinishTime": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "serviceTime": {
+                                            "type": "string",
+                                            "format": "duration"
+                                        },
                                         "workingTime": {
                                             "type": "string",
                                             "format": "duration"
