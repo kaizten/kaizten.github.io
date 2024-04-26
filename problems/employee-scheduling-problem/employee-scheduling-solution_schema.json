@@ -93,6 +93,14 @@
                             ]
                         }
                     },
+                    "uncoveredFlights": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 4
+                        }
+                    },
                     "indicators": {
                         "type": "object",
                         "properties": {
@@ -113,6 +121,7 @@
                 "required": [
                     "date",
                     "employees",
+                    "uncoveredFlights",
                     "indicators"
                 ]
             }
@@ -128,7 +137,7 @@
                     "type": "integer",
                     "minimum": 0
                 },
-                "nonCoveredFlights": {
+                "uncoveredFlights": {
                     "type": "integer",
                     "minimum": 0
                 }
@@ -136,7 +145,7 @@
             "required": [
                 "flights",
                 "coveredFlights",
-                "nonCoveredFlights"
+                "uncoveredFlights"
             ]
         }
     },
