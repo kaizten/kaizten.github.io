@@ -133,17 +133,38 @@
                     "type": "integer",
                     "minimum": 0
                 },
-                "coveredFlights": {
+                "employees": {
                     "type": "integer",
                     "minimum": 0
                 },
+                "coveredFlights": {
+                    "type": "object",
+                    "properties": {
+                        "absolute": {
+                            "type": "integer",
+                            "minimum": 0
+                        },
+                        "percentage": {
+                            "type": "integer"
+                        }
+                    }
+                },
                 "uncoveredFlights": {
-                    "type": "integer",
-                    "minimum": 0
+                    "type": "object",
+                    "properties": {
+                        "absolute": {
+                            "type": "integer",
+                            "minimum": 0
+                        },
+                        "percentage": {
+                            "type": "integer"
+                        }
+                    }
                 }
             },
             "required": [
                 "flights",
+                "employees",
                 "coveredFlights",
                 "uncoveredFlights"
             ]
