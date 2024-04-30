@@ -14,8 +14,9 @@
           "selectedDays": {
             "type": "array",
             "items": {
-              "type": "integer"
-            }
+				"type": "string",
+				"format": "date"
+			}
           },
           "availableDays": {
             "type": "integer"
@@ -34,8 +35,9 @@
         "type": "object",
         "properties": {
           "day": {
-            "type": "integer"
-          },
+			"type": "string",
+		    "format": "date"
+		  },
           "required": {
             "type": "integer"
           }
