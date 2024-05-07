@@ -25,10 +25,6 @@
                     "finishTime": {
                         "type": "string",
                         "format": "date-time"
-                    },
-                    "serviceTime": {
-                        "type": "string",
-                        "format": "duration"
                     }
                 },
                 "required": [
