@@ -1,121 +1,125 @@
 {
-    "title": "Holiday Scheduling Solution",
-    "description": "Description of solutions of the Holiday Scheduling Solution",
-    "type": "object",
-	  "properties": {
+	"title": "Holiday Scheduling Solution",
+	"description": "Description of solutions of the Holiday Scheduling Solution",
+	"type": "object",
+	"properties": {
 		"dates": {
-		  "type": "array",
-		  "items": {
-			"type": "object",
-			"properties": {
-			  "date": {
-				"type": "string"
-			  },
-			  "onHoliday": {
-				"type": "array",
-				"items": {
-				  "type": "object",
-				  "properties": {
-					"code": {
-					  "type": "string"
-					}
-				  },
-				  "required": [
-					"code"
-				  ]
-				}
-			  },
-			  "indicators": {
+			"type": "array",
+			"items": {
 				"type": "object",
 				"properties": {
-				  "onHoliday": {
-					"type": "number"
-				  },
-				  "selectedHoliday": {
-					"type": "number"
-				  },
-				  "exceed": {
-					"type": "number"
-				  },
-				  "working": {
-					"type": "number"
-				  },
-				  "requiredEmployees": {
-					"type": "number"
-				  },
-				  "onSelectedHoliday": {
-					"type": "number"
-				  }
+					"date": {
+						"type": "string"
+					},
+					"onHoliday": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"code"
+							]
+						}
+					},
+					"indicators": {
+						"type": "object",
+						"properties": {
+							"requiredEmployees": {
+								"type": "number"
+							},
+							"working": {
+								"type": "number"
+							},
+							"exceed": {
+								"type": "number"
+							},							
+							"onHoliday": {
+								"type": "number"
+							},
+							"selectedHoliday": {
+								"type": "number"
+							},							
+							"onSelectedHoliday": {
+								"type": "number"
+							},
+							"selectedNotAssigned": {
+								"type": "number"
+							}
+						},
+						"required": [
+							"requiredEmployees",
+							"working",
+							"exceed",
+							"onHoliday",
+							"selectedHoliday",							
+							"onSelectedHoliday",
+							"selectedNotAssigned"
+						]
+					}
 				},
 				"required": [
-				  "onHoliday",
-				  "selectedHoliday",
-				  "exceed",
-				  "working",
-				  "requiredEmployees",
-				  "onSelectedHoliday"
+					"date",
+					"onHoliday",
+					"indicators"
 				]
-			  }
-			},
-			"required": [
-			  "date",
-			  "onHoliday",
-			  "indicators"
-			]
-		  }
+			}
 		},
 		"employees": {
-		  "type": "array",
-		  "items": {
-			"type": "object",
-			"properties": {
-			  "onHoliday": {
-				"type": "array",
-				"items": {
-				  "type": "string"
-				}
-			  },
-			  "code": {
-				"type": "string"
-			  },
-			  "indicators": {
+			"type": "array",
+			"items": {
 				"type": "object",
 				"properties": {
-				  "onHoliday": {
-					"type": "number"
-				  },
-				  "selectedHoliday": {
-					"type": "number"
-				  },
-				  "availableHolidays": {
-					"type": "number"
-				  },
-				  "notAssigned": {
-					"type": "number"
-				  },
-				  "onSelectedHoliday": {
-					"type": "number"
-				  }
+					"onHoliday": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
+					"code": {
+						"type": "string"
+					},
+					"indicators": {
+						"type": "object",
+						"properties": {
+							"onHoliday": {
+								"type": "number"
+							},
+							"selectedHoliday": {
+								"type": "number"
+							},
+							"availableHolidays": {
+								"type": "number"
+							},
+							"notAssigned": {
+								"type": "number"
+							},
+							"onSelectedHoliday": {
+								"type": "number"
+							}
+						},
+						"required": [
+							"onHoliday",
+							"selectedHoliday",
+							"availableHolidays",
+							"notAssigned",
+							"onSelectedHoliday"
+						]
+					}
 				},
 				"required": [
-				  "onHoliday",
-				  "selectedHoliday",
-				  "availableHolidays",
-				  "notAssigned",
-				  "onSelectedHoliday"
+					"onHoliday",
+					"code",
+					"indicators"
 				]
-			  }
-			},
-			"required": [
-			  "onHoliday",
-			  "code",
-			  "indicators"
-			]
-		  }
+			}
 		}
-	  },
-	  "required": [
+	},
+	"required": [
 		"dates",
 		"employees"
-	  ]
+	]
 }
