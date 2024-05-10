@@ -1,0 +1,103 @@
+{
+	"$schema": "https://json-schema.org/draft/2019-09/schema",
+	"title": "Automated Guided Vehicles Solution",
+	"description": "Definition of solution of the Automated Guided Vehicles",
+	"type": "object",
+	"properties": {
+		"routes": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"route": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"job": {
+									"type": "object",
+									"properties": {
+										"initialTime": {
+											"type": "integer"
+										},
+										"id": {
+											"type": "integer"
+										},
+										"initialPos": {
+											"type": "integer"
+										},
+										"endTime": {
+											"type": "integer"
+										},
+										"endPos": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"initialTime",
+										"id",
+										"initialPos",
+										"endTime",
+										"endPos"
+									]
+								},
+								"order": {
+									"type": "integer"
+								}
+							},
+							"required": [
+								"job",
+								"order"
+							]
+						}
+					},
+					"vehicle": {
+						"type": "object",
+						"properties": {
+							"id": {
+								"type": "integer"
+							},
+							"time": {
+								"type": "integer"
+							},
+							"initialPos": {
+								"type": "integer"
+							},
+							"priority": {
+								"type": "integer"
+							}
+						},
+						"required": [
+							"id",
+							"time",
+							"initialPos",
+							"priority"
+						]
+					}
+				},
+				"required": [
+					"route",
+					"vehicle"
+				]
+			}
+		},
+		"objectiveFunctions": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"value": {
+						"type": "number"
+					}
+				},
+				"required": [
+					"value"
+				]
+			}
+		}
+	},
+	"required": [
+		"routes",
+		"objectiveFunctions"
+	]
+}

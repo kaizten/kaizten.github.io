@@ -1,0 +1,103 @@
+{
+	"$schema": "https://json-schema.org/draft/2019-09/schema",
+	"title": "Automated Guided Vehicles",
+	"description": "Definition of instance of the Automated Guided Vehicles",
+	"type": "object",
+	"properties": {
+		"distances": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"source": {
+						"type": "integer"
+					},
+					"value": {
+						"type": "integer"
+					},
+					"target": {
+						"type": "integer"
+					}
+				},
+				"required": [
+					"source",
+					"value",
+					"target"
+				]
+			}
+		},
+		"numPositions": {
+			"type": "integer"
+		},
+		"jobs": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"initialTime": {
+						"type": "integer"
+					},
+					"id": {
+						"type": "integer"
+					},
+					"initialPos": {
+						"type": "integer"
+					},
+					"endTime": {
+						"type": "integer"
+					},
+					"endPos": {
+						"type": "integer"
+					}
+				},
+				"required": [
+					"initialTime",
+					"id",
+					"initialPos",
+					"endTime",
+					"endPos"
+				]
+			}
+		},
+		"vehicles": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "integer"
+					},
+					"time": {
+						"type": "integer"
+					},
+					"initialPos": {
+						"type": "integer"
+					},
+					"priority": {
+						"type": "integer"
+					}
+				},
+				"required": [
+					"id",
+					"time",
+					"initialPos",
+					"priority"
+				]
+			}
+		},
+		"numJobs": {
+			"type": "integer"
+		},
+		"numVehicles": {
+			"type": "integer"
+		}
+	},
+	"required": [
+		"distances",
+		"numPositions",
+		"jobs",
+		"vehicles",
+		"numJobs",
+		"numVehicles"
+	]
+}
