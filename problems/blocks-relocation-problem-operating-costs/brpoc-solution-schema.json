@@ -1,0 +1,96 @@
+{
+	"$schema": "https://json-schema.org/draft/2019-09/schema",
+	"title": "Blocks Relocation Problem with Operating Costs Solution",
+	"description": "Definition of solution of the Blocks Relocation Problem with Operating Costs",
+	"type": "object",
+	"properties": {
+		"objectiveFunctions": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"value": {
+						"type": "number"
+					}
+				},
+				"required": [
+					"value"
+				]
+			}
+		},
+		"movements": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"targetStack": {
+						"type": "integer"
+					},
+					"targetTier": {
+						"type": "integer"
+					},
+					"sourceStack": {
+						"type": "integer"
+					},
+					"block": {
+						"type": "integer"
+					},
+					"id": {
+						"type": "integer"
+					},
+					"sourceTier": {
+						"type": "integer"
+					},
+					"value": {
+						"type": "number"
+					}
+				},
+				"required": [
+					"targetStack",
+					"targetTier",
+					"sourceStack",
+					"block",
+					"id",
+					"sourceTier",
+					"value"
+				]
+			}
+		},
+		"metrics": {
+			"type": "object",
+			"properties": {
+				"tiers": {
+					"type": "integer"
+				},
+				"numBlocks": {
+					"type": "integer"
+				},
+				"stacks": {
+					"type": "integer"
+				},
+				"relocations": {
+					"type": "integer"
+				},
+				"deliveries": {
+					"type": "integer"
+				},
+				"empty": {
+					"type": "integer"
+				}
+			},
+			"required": [
+				"tiers",
+				"numBlocks",
+				"stacks",
+				"relocations",
+				"deliveries",
+				"empty"
+			]
+		}
+	},
+	"required": [
+		"objectiveFunctions",
+		"movements",
+		"metrics"
+	]
+}
