@@ -1,7 +1,7 @@
 {
-  "title": "Persons with Reduced Mobility Problem",
-  "description": "Definition of instances of the Persons with Reduced Mobility Problem",
-  "type": "object",
+    "title": "Persons with Reduced Mobility Problem",
+    "description": "Definition of instances of the Persons with Reduced Mobility Problem",
+    "type": "object",
     "properties": {
         "services": {
             "type": "array",
@@ -13,8 +13,17 @@
                         "minLength": 1,
                         "maxLength": 7
                     },
-                    "agents": {
-                        "type": "integer",
+                    "role": {
+                        "type": "string",
+                        "enum": [
+                            "AGENT",
+                            "DRIVER",
+                            "RAMP_MANAGER",
+                            "MANAGER"
+                        ]
+                    },
+                    "employees": {
+                        "type": "number",
                         "minimum": 1,
                         "maximum": 100
                     },
@@ -29,13 +38,14 @@
                 },
                 "required": [
                     "code",
-                    "agents",                    
+                    "role",
+                    "employees",
                     "startTime",
                     "finishTime"
                 ]
             }
         },
-        "agents": {
+        "employees": {
             "type": "object",
             "properties": {
                 "individuals": {
@@ -75,26 +85,42 @@
                                     "type": "string",
                                     "format": "date"
                                 }
+                            },
+                            "roles": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "AGENT",
+                                        "DRIVER",
+                                        "RAMP_MANAGER",
+                                        "MANAGER"
+                                    ]
+                                },
+                                "uniqueItems": true,
+                                "minItems": 1
                             }
-                        },
-                        "required": [
-                            "code",                           
-                            "timePerDay",
-                            "timePerWeek"                        
-                        ]
-                    }
+                        }
+                    },
+                    "required": [
+                        "code",
+                        "timePerDay",
+                        "timePerWeek",
+                        "roles"
+                    ]
                 }
             }
-        },
-        "airport": {
-            "type": "string",
-            "minLength": 3,
-            "maxLength": 3,
-            "pattern": "^[A-Z]{3}$"
         }
     },
-    "required": [
-        "services",
-        "agents"
-    ]
+    "airport": {
+        "type": "string",
+        "minLength": 3,
+        "maxLength": 3,
+        "pattern": "^[A-Z]{3}$"
+    }
+},
+"required": [
+    "services",
+    "employees"
+]
 }
