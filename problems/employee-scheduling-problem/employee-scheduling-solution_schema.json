@@ -101,7 +101,6 @@
                                         "flights",
                                         "startTime",
                                         "finishTime",
-                                        "time",
                                         "workingTime",
                                         "breakTime"
                                     ]
