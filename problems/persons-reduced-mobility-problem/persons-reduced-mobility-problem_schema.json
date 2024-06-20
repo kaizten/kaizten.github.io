@@ -110,17 +110,16 @@
                     ]
                 }
             }
+        },
+        "airport": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 3,
+            "pattern": "^[A-Z]{3}$"
         }
     },
-    "airport": {
-        "type": "string",
-        "minLength": 3,
-        "maxLength": 3,
-        "pattern": "^[A-Z]{3}$"
-    }
-},
-"required": [
-    "services",
-    "employees"
-]
+    "required": [
+        "services",
+        "employees"
+    ]
 }
