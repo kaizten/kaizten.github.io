@@ -280,6 +280,30 @@
       }
     }
   },
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "consolidationLimit": {
+          "type": "integer"
+        },
+        "consecutiveWorkingDaysLimit": {
+          "type": "integer"
+        },
+        "consecutiveFreeHours": {
+          "type": "integer"
+        },
+        "consecutiveFreeDays": {
+          "type": "integer"
+        },
+        "freeDaysPerMonth": {
+          "type": "integer"
+        },
+        "monthDays": {
+          "type": "integer"
+        }
+      }
+    }
+  },
   "required": [
     "qualifications",
     "services",
