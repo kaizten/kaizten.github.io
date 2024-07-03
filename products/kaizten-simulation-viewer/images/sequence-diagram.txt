@@ -1,0 +1,22 @@
+participant html
+participant data manager
+participant websockets
+participant orm
+participant app
+
+data manager --> html: not-ready
+
+html ->+ data manager: setUp
+data manager -> websockets: setUp
+data manager -> orm: setUp
+data manager -> app: setUp
+
+data manager -> orm: initialize
+data manager -> app: initialize
+
+data manager -->-html: ready
+
+html ->+ data manager: connect
+data manager -> websockets: connect
+
+data manager --> html: connected

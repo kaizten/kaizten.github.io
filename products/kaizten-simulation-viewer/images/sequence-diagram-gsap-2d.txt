@@ -1,0 +1,32 @@
+participant html
+participant data manager
+participant websockets
+participant orm
+participant gsap
+participant 2d
+
+data manager --> html: not-ready
+
+html ->+ data manager: setUp
+data manager -> websockets: setUp
+data manager -> orm: setUp
+data manager -> gsap: setUp
+gsap -> 2d: setUp
+
+data manager -> orm: initialize
+data manager -> gsap: initialize
+gsap -> 2d: initialize
+
+data manager -->-html: ready
+
+html ->+ data manager: connect
+data manager -> websockets: connect
+data manager -->-html: connected
+
+gsap ->+data manager: get
+data manager ->+ websockets: get
+websockets ->- data manager: data
+data manager -> orm: data
+data manager-->-gsap: data
+
+
