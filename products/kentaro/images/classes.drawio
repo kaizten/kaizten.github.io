@@ -1,0 +1,79 @@
+<mxfile host="65bd71144e">
+    <diagram name="classes" id="T04jiVfKLJ1x2FZM-1_Q">
+        <mxGraphModel dx="733" dy="1458" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+            <root>
+                <mxCell id="FZ2FZ6DYbbDXQQriU7j4-0"/>
+                <mxCell id="FZ2FZ6DYbbDXQQriU7j4-1" value="Main" style="" parent="FZ2FZ6DYbbDXQQriU7j4-0"/>
+                <mxCell id="oTSn3qhex7sNqdMPgVfe-0" value="&lt;ul&gt;&lt;li&gt;kaiztenSimulation: KaiztenDataManager&lt;/li&gt;&lt;li&gt;parentApp: KaiztenApp&lt;/li&gt;&lt;li&gt;apps: Array&amp;lt;KaiztenApp&amp;gt;&lt;/li&gt;&lt;/ul&gt;-&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="FZ2FZ6DYbbDXQQriU7j4-1" vertex="1">
+                    <mxGeometry x="80" y="1080" width="240" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="oTSn3qhex7sNqdMPgVfe-4" value="KaiztenApp" style="rounded=0;whiteSpace=wrap;html=1;" parent="FZ2FZ6DYbbDXQQriU7j4-1" vertex="1">
+                    <mxGeometry x="80" y="1040" width="240" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="Q3b5Dak2PGNYaJwPYXiY-6" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=1;" parent="FZ2FZ6DYbbDXQQriU7j4-1" source="Q3b5Dak2PGNYaJwPYXiY-4" target="oTSn3qhex7sNqdMPgVfe-0" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Q3b5Dak2PGNYaJwPYXiY-4" value="KaiztenMap" style="rounded=0;whiteSpace=wrap;html=1;" parent="FZ2FZ6DYbbDXQQriU7j4-1" vertex="1">
+                    <mxGeometry x="240" y="1240" width="160" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="Q3b5Dak2PGNYaJwPYXiY-9" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=1;" parent="FZ2FZ6DYbbDXQQriU7j4-1" source="Q3b5Dak2PGNYaJwPYXiY-8" target="oTSn3qhex7sNqdMPgVfe-0" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Q3b5Dak2PGNYaJwPYXiY-8" value="Kaizten2d" style="rounded=0;whiteSpace=wrap;html=1;" parent="FZ2FZ6DYbbDXQQriU7j4-1" vertex="1">
+                    <mxGeometry y="1240" width="160" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="aJQR5nv6ZFt9ETLN0sHL-0" value="&lt;ul&gt;&lt;li&gt;status&lt;/li&gt;&lt;li&gt;storageManager: KaiztenMemory&lt;/li&gt;&lt;li&gt;websocketManager: KaiztenWebSockets&lt;/li&gt;&lt;li&gt;gsapManager: KaiztenGsap&lt;/li&gt;&lt;li&gt;apps: Array&amp;lt;KaiztenApp&amp;gt;&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="FZ2FZ6DYbbDXQQriU7j4-1" vertex="1">
+                    <mxGeometry x="40" y="-360" width="280" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="aJQR5nv6ZFt9ETLN0sHL-1" value="KaiztenDataManager" style="rounded=0;whiteSpace=wrap;html=1;" parent="FZ2FZ6DYbbDXQQriU7j4-1" vertex="1">
+                    <mxGeometry x="40" y="-400" width="280" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="8QDKgDCPJ21E1XgS_FQ2-0" value="&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;timeEventsQueue: Map&amp;lt;number, any&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;structure: Array&amp;lt;KaiztenMemoryData&amp;gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;minimumTime: number&lt;/span&gt;&lt;/li&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); background-color: initial;&quot;&gt;maximumTime: number&lt;/span&gt;&lt;/li&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); background-color: initial;&quot;&gt;startTime: number&lt;/span&gt;&lt;/li&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); background-color: initial;&quot;&gt;endTime: number&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="FZ2FZ6DYbbDXQQriU7j4-1" vertex="1">
+                    <mxGeometry x="40" y="520" width="280" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="8QDKgDCPJ21E1XgS_FQ2-1" value="KaiztenMemory" style="rounded=0;whiteSpace=wrap;html=1;" parent="FZ2FZ6DYbbDXQQriU7j4-1" vertex="1">
+                    <mxGeometry x="40" y="480" width="280" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="8QDKgDCPJ21E1XgS_FQ2-2" value="Storage:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="FZ2FZ6DYbbDXQQriU7j4-1" vertex="1">
+                    <mxGeometry y="440" width="200" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="8QDKgDCPJ21E1XgS_FQ2-3" value="&lt;ul&gt;&lt;li&gt;time: number&lt;/li&gt;&lt;li&gt;type: string&lt;/li&gt;&lt;li&gt;previousTime: number&lt;/li&gt;&lt;li&gt;events: Map&amp;lt;number, any&amp;gt;&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="FZ2FZ6DYbbDXQQriU7j4-1" vertex="1">
+                    <mxGeometry x="360" y="520" width="280" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="8QDKgDCPJ21E1XgS_FQ2-4" value="KaiztenMemoryData" style="rounded=0;whiteSpace=wrap;html=1;" parent="FZ2FZ6DYbbDXQQriU7j4-1" vertex="1">
+                    <mxGeometry x="360" y="480" width="280" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="8QDKgDCPJ21E1XgS_FQ2-5" value="WebSocket:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="FZ2FZ6DYbbDXQQriU7j4-1" vertex="1">
+                    <mxGeometry width="200" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="8QDKgDCPJ21E1XgS_FQ2-7" value="Apps:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="FZ2FZ6DYbbDXQQriU7j4-1" vertex="1">
+                    <mxGeometry y="1000" width="200" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="7qwZFCp4uRThvjLnKtzu-0" value="&lt;ul&gt;&lt;li&gt;webSocket: WebSocket&lt;/li&gt;&lt;li&gt;status: KaiztenWebSocketsStatus&lt;/li&gt;&lt;li&gt;minRequiredTime: number&lt;/li&gt;&lt;li&gt;maxRequiredTime: number&lt;/li&gt;&lt;li&gt;lastMessage: any&lt;/li&gt;&lt;li&gt;numberOfReceivedMessages: number&lt;/li&gt;&lt;li&gt;numberOfSentMessages: number&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="FZ2FZ6DYbbDXQQriU7j4-1" vertex="1">
+                    <mxGeometry x="40" y="80" width="280" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="7qwZFCp4uRThvjLnKtzu-1" value="KaiztenWebSockets" style="rounded=0;whiteSpace=wrap;html=1;" parent="FZ2FZ6DYbbDXQQriU7j4-1" vertex="1">
+                    <mxGeometry x="40" y="40" width="280" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="0cZL7R6wZh2J8Kqb1ysJ-0" value="&lt;ul&gt;&lt;li&gt;setUp()&lt;/li&gt;&lt;li&gt;initialize()&lt;/li&gt;&lt;li&gt;connect()&lt;/li&gt;&lt;li&gt;disconnect()&lt;/li&gt;&lt;li&gt;requestData()&lt;/li&gt;&lt;li&gt;onOpenHandler()&lt;/li&gt;&lt;li&gt;onCloseHandler()&lt;/li&gt;&lt;li&gt;onMessageHandler()&lt;/li&gt;&lt;li&gt;onErrorHandler()&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="FZ2FZ6DYbbDXQQriU7j4-1" vertex="1">
+                    <mxGeometry x="40" y="240" width="280" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="A9pNXliypEvB8Hqt_SME-0" value="&lt;ul&gt;&lt;li&gt;setUp()&lt;/li&gt;&lt;li&gt;onSetUp()&lt;/li&gt;&lt;li&gt;initialize()&lt;/li&gt;&lt;li&gt;onInitialize()&lt;/li&gt;&lt;li&gt;connect()&lt;/li&gt;&lt;li&gt;disconnect()&lt;/li&gt;&lt;li&gt;getData()&lt;/li&gt;&lt;li&gt;handlerMessage()&lt;/li&gt;&lt;li&gt;handlerNewObject()&lt;/li&gt;&lt;li&gt;handlerUpdateObject()&lt;/li&gt;&lt;li&gt;handlerDeleteObject()&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="FZ2FZ6DYbbDXQQriU7j4-1" vertex="1">
+                    <mxGeometry x="40" y="-240" width="280" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="gu8q4O0BQ-qjl86mzqlC-0" value="KaiztenDataManager:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="FZ2FZ6DYbbDXQQriU7j4-1" vertex="1">
+                    <mxGeometry y="-440" width="200" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="k-eQwrXxgW_FNznKDQwV-0" value="&lt;ul&gt;&lt;li&gt;kaiztenSimulation: KaiztenDataManager&lt;/li&gt;&lt;li&gt;timeline: gsap&lt;/li&gt;&lt;li&gt;status: KaiztenGsapStatus&lt;/li&gt;&lt;li&gt;tweenLabels: any&lt;/li&gt;&lt;li&gt;timeFirstTween: any&lt;/li&gt;&lt;li&gt;timeLastTween: any&lt;/li&gt;&lt;li&gt;currentTime: number&lt;/li&gt;&lt;li&gt;progress: number&lt;/li&gt;&lt;li&gt;minRequestedTime: any&lt;/li&gt;&lt;li&gt;maxRequestedTime: any&lt;/li&gt;&lt;li&gt;increment: 6000&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="FZ2FZ6DYbbDXQQriU7j4-1" vertex="1">
+                    <mxGeometry y="760" width="280" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="k-eQwrXxgW_FNznKDQwV-1" value="KaiztenGsap" style="rounded=0;whiteSpace=wrap;html=1;" parent="FZ2FZ6DYbbDXQQriU7j4-1" vertex="1">
+                    <mxGeometry y="720" width="280" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="k-eQwrXxgW_FNznKDQwV-2" value="GSAP" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="FZ2FZ6DYbbDXQQriU7j4-1" vertex="1">
+                    <mxGeometry y="680" width="200" height="40" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
