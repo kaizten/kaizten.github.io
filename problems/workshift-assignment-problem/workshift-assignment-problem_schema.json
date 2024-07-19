@@ -1,0 +1,52 @@
+{
+    "title": "Workshift Assignment Problem",
+    "description": "Description of instances of the Workshift Assignment Problem",
+    "type": "object",
+   "properties": {
+      "employees": {
+         "type": "array",
+         "items": {
+            "type": "object",
+            "properties": {
+               "planning": {
+                  "type": "array",
+                  "items": {
+                     "type": "object",
+                     "properties": {
+                        "startingTime": {
+                           "type": "string",
+                           "format": "date-time"
+                        },
+                        "finishingTime": {
+                           "type": "string",
+						   "format": "date-time"
+                        },
+                        "workDay": {
+                           "type": "string",
+                           "format": "duration"
+                        }
+                     },
+                     "required": [
+                        "startingTime",
+                        "finishingTime",
+                        "workDay"
+                     ]
+                  }
+               },
+               "code": {
+                  "type": "string",
+				  "minLength": 1,
+                  "maxLength": 7
+               }
+            },
+            "required": [
+               "planning",
+               "code"
+            ]
+         }
+      }
+   },
+   "required": [
+      "employees"
+   ]
+}
