@@ -29,6 +29,8 @@ services:
     privileged: true
     ports:
       - 8080:8080
+    environment:
+      - TASK-LITE_VOLUME=algorithm_assets
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - algorithm_assets:/tmp
