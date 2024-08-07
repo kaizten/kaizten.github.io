@@ -1,0 +1,62 @@
+{
+    "title": "Employee Routing Solution",
+    "description": "Description of solutions of the Employee Routing Problem",
+    "type": "object",
+    "properties": {
+        "employeesAssignments": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "employeeAssignment": {
+                        "type": "integer"
+                    },
+                    "employee": {
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "employeeAssignment",
+                    "employee"
+                ]
+            }
+        },
+        "vehiclesAssignments": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "vehicleAssignments": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    },
+                    "vehicle": {
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "vehicleAssignments",
+                    "vehicle"
+                ]
+            }
+        },
+        "metrics": {
+            "type": "object",
+            "properties": {
+                "objectiveFunction": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "objectiveFunction"
+            ]
+        }
+    },
+    "required": [
+        "employeesAssignments",
+        "vehiclesAssignments",
+        "metrics"
+    ]
+}
