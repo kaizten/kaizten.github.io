@@ -22,7 +22,7 @@
                                     "minLength": 1,
                                     "maxLength": 4
                                 },
-                                "flights": {
+                                "services": {
                                     "type": "array",
                                     "items": {
                                         "type": "object",
@@ -55,7 +55,7 @@
                                 "indicators": {
                                     "type": "object",
                                     "properties": {
-                                        "flights": {
+                                        "services": {
                                             "type": "integer",
                                             "minimum": 0
                                         },
@@ -98,7 +98,7 @@
                                         }
                                     },
                                     "required": [
-                                        "flights",
+                                        "services",
                                         "startTime",
                                         "finishTime",
                                         "workingTime",
@@ -108,12 +108,12 @@
                             },
                             "required": [
                                 "code",
-                                "flights",
+                                "services",
                                 "indicators"
                             ]
                         }
                     },
-                    "uncoveredFlights": {
+                    "uncoveredServices": {
                         "type": "array",
                         "items": {
                             "type": "string",
@@ -124,7 +124,7 @@
                     "indicators": {
                         "type": "object",
                         "properties": {
-                            "flights": {
+                            "services": {
                                 "type": "integer",
                                 "minimum": 0
                             },
@@ -132,7 +132,7 @@
                                 "type": "integer",
                                 "minimum": 0
                             },
-                            "coveredFlights": {
+                            "coveredServices": {
                                 "type": "object",
                                 "properties": {
                                     "absolute": {
@@ -144,7 +144,7 @@
                                     }
                                 }
                             },
-                            "uncoveredFlights": {
+                            "uncoveredServices": {
                                 "type": "object",
                                 "properties": {
                                     "absolute": {
@@ -158,17 +158,17 @@
                             }
                         },
                         "required": [
-                            "flights",
+                            "services",
                             "employees",
-                            "coveredFlights",
-                            "uncoveredFlights"
+                            "coveredServices",
+                            "uncoveredServices"
                         ]
                     }
                 },
                 "required": [
                     "date",
                     "employees",
-                    "uncoveredFlights",
+                    "uncoveredServices",
                     "indicators"
                 ]
             }
@@ -176,7 +176,7 @@
         "indicators": {
             "type": "object",
             "properties": {
-                "flights": {
+                "services": {
                     "type": "integer",
                     "minimum": 0
                 },
@@ -184,7 +184,7 @@
                     "type": "integer",
                     "minimum": 0
                 },
-                "coveredFlights": {
+                "coveredServices": {
                     "type": "object",
                     "properties": {
                         "absolute": {
@@ -196,7 +196,7 @@
                         }
                     }
                 },
-                "uncoveredFlights": {
+                "uncoveredServices": {
                     "type": "object",
                     "properties": {
                         "absolute": {
@@ -210,10 +210,10 @@
                 }
             },
             "required": [
-                "flights",
+                "services",
                 "employees",
-                "coveredFlights",
-                "uncoveredFlights"
+                "coveredServices",
+                "uncoveredServices"
             ]
         }
     },
