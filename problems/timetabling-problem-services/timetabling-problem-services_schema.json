@@ -5,8 +5,8 @@
   "type": "object",
   "properties": {
     "lastPlanningDays": {
-	  "type": "integer"
-	},
+      "type": "integer"
+    },
     "qualifications": {
       "type": "array",
       "items": {
@@ -14,7 +14,7 @@
         "properties": {
           "name": {
             "type": "string",
-			"maxLength": 100
+            "maxLength": 100
           },
           "id": {
             "type": "integer"
@@ -45,6 +45,7 @@
           },
           "workersRequired": {
             "type": "array",
+            "minItems": 1,
             "items": {
               "type": "object",
               "properties": {
@@ -90,7 +91,7 @@
           "consolidatedShift": {
             "type": "boolean"
           },
-		  "consolidatedDays": {
+          "consolidatedDays": {
             "type": "boolean"
           },
           "timeWindows": {
@@ -111,21 +112,21 @@
               ]
             }
           },
-		  "consolidatedDaysList": {
-			"type": "array",
-			"items": {
-			  "type": "string",
-			  "enum": [
-				"MONDAY",
-				"TUESDAY",
-				"WEDNESDAY",
-				"THURSDAY",
-				"FRIDAY",
-				"SATURDAY",
-				"SUNDAY"
-			  ]
-			}
-		  },
+          "consolidatedDaysList": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "MONDAY",
+                "TUESDAY",
+                "WEDNESDAY",
+                "THURSDAY",
+                "FRIDAY",
+                "SATURDAY",
+                "SUNDAY"
+              ]
+            }
+          },
           "freeWeekendYear": {
             "type": "integer"
           },
@@ -210,39 +211,39 @@
               ]
             }
           },
-		  "lastFreeDaysSequence": {
-			"type": "array",
-			"items": {
-			  "type": "string",
-			  "enum": [
-				"MONDAY",
-				"TUESDAY",
-				"WEDNESDAY",
-				"THURSDAY",
-				"FRIDAY",
-				"SATURDAY",
-				"SUNDAY"
-			  ]
-			}
-		  },
-		  "consecutiveDaysWithSameFreeSequence": {
-		    "type": "integer"
-		  },
-		  "freeDaysLastMonth": {
-		    "type": "array",
-			"items": {
-			  "type": "string",
-			  "format": "date"
-			}
-		  },
-		  "workingDaysLastWeek": {
-		    "type": "integer"
-		  }
+          "lastFreeDaysSequence": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "MONDAY",
+                "TUESDAY",
+                "WEDNESDAY",
+                "THURSDAY",
+                "FRIDAY",
+                "SATURDAY",
+                "SUNDAY"
+              ]
+            }
+          },
+          "consecutiveDaysWithSameFreeSequence": {
+            "type": "integer"
+          },
+          "freeDaysLastMonth": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          "workingDaysLastWeek": {
+            "type": "integer"
+          }
         },
         "required": [
           "qualifications",
           "consolidatedShift",
-		  "consolidatedDays",
+          "consolidatedDays",
           "timeWindows",
           "freeWeekendYear",
           "freeWeekYear",
@@ -259,7 +260,7 @@
         "properties": {
           "date": {
             "type": "string",
-			"format": "date"
+            "format": "date"
           },
           "id": {
             "type": "integer"
@@ -280,34 +281,34 @@
       }
     }
   },
-    "constraints": {
-      "type": "object",
-      "properties": {
-        "consolidationLimit": {
-          "type": "integer"
-        },
-        "consecutiveWorkingDaysLimit": {
-          "type": "integer"
-        },
-        "consecutiveFreeHours": {
-          "type": "integer"
-        },
-        "consecutiveFreeDays": {
-          "type": "integer"
-        },
-        "freeDaysPerMonth": {
-          "type": "integer"
-        },
-        "monthDays": {
-          "type": "integer"
-        }
+  "constraints": {
+    "type": "object",
+    "properties": {
+      "consolidationLimit": {
+        "type": "integer"
+      },
+      "consecutiveWorkingDaysLimit": {
+        "type": "integer"
+      },
+      "consecutiveFreeHours": {
+        "type": "integer"
+      },
+      "consecutiveFreeDays": {
+        "type": "integer"
+      },
+      "freeDaysPerMonth": {
+        "type": "integer"
+      },
+      "monthDays": {
+        "type": "integer"
       }
     }
-  },
-  "required": [
-    "qualifications",
-    "services",
-    "workers",
-    "planningHorizon"
-  ]
+  }
+},
+"required": [
+  "qualifications",
+  "services",
+  "workers",
+  "planningHorizon"
+]
 }
