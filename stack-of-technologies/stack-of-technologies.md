@@ -38,7 +38,7 @@
 <dependency>
   <groupId>org.apache.poi</groupId>
   <artifactId>poi</artifactId>
-	<version>5.3.0</version>
+  <version>5.3.0</version>
 </dependency>
 ```
 
@@ -72,9 +72,9 @@
 ### [JJWT](https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api)
 ```xml
 <dependency>
-	<groupId>io.jsonwebtoken</groupId>
-	<artifactId>jjwt</artifactId>
-	<version>0.12.6</version>
+  <groupId>io.jsonwebtoken</groupId>
+  <artifactId>jjwt</artifactId>
+  <version>0.12.6</version>
 </dependency>
 ```
 
@@ -125,9 +125,9 @@
 ###  [XML APIS](https://mvnrepository.com/artifact/xml-apis/xml-apis)
 ```xml
 <dependency>
-	<groupId>xml-apis</groupId>
-	<artifactId>xml-apis</artifactId>
-	<version>1.0.b2</version>
+  <groupId>xml-apis</groupId>
+  <artifactId>xml-apis</artifactId>
+  <version>1.0.b2</version>
 </dependency>
 ```
 
