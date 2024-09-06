@@ -1,8 +1,8 @@
 {
-    "title": "Holiday Scheduling Problem",
-    "description": "Description of instances of the Holiday Scheduling Problem",
-    "type": "object",
-    "properties": {
+  "title": "Holiday Scheduling Problem",
+  "description": "Description of instances of the Holiday Scheduling Problem",
+  "type": "object",
+  "properties": {
     "employees": {
       "type": "array",
       "items": {
@@ -14,9 +14,9 @@
           "selectedDays": {
             "type": "array",
             "items": {
-				"type": "string",
-				"format": "date"
-			}
+              "type": "string",
+              "format": "date"
+            }
           },
           "availableDays": {
             "type": "integer"
@@ -35,9 +35,9 @@
         "type": "object",
         "properties": {
           "day": {
-			"type": "string",
-		    "format": "date"
-		  },
+            "type": "string",
+            "format": "date"
+          },
           "required": {
             "type": "integer"
           }
