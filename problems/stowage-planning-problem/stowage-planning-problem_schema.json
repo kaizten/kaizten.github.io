@@ -1,0 +1,86 @@
+{
+    "title": "Stowage Planning Problem Schema",
+    "description": "Description of instances of the Stowage Planning Problem",
+    "type": "object",
+    "required": ["ship", "ports", "containersByPort"],
+    "properties": {
+      "ship": {
+        "type": "object",
+        "required": ["name", "bays", "rows", "tiers", "maxWeightCapacity"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "bays": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "rows": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "tiers": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "maxWeightCapacity": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "additionalProperties": false
+      },
+      "ports": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 1
+      },
+      "containersByPort": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["port", "containers"],
+          "properties": {
+            "port": {
+              "type": "string"
+            },
+            "containers": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["id", "weight", "size", "loadingPort", "dischargePort", "type"],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "weight": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "size": {
+                    "type": "integer",
+                    "enum": [20, 40]
+                  },
+                  "loadingPort": {
+                    "type": "string"
+                  },
+                  "dischargePort": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": ["NORMAL", "REFRIGERATED", "DANGEROUS"]
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "additionalProperties": false
+  }

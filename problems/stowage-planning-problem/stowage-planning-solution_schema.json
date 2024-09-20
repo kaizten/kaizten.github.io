@@ -1,0 +1,128 @@
+{
+    "title": "Stowage Planning Solution Schema",
+    "description": "Description of solutions of the Stowage Planning Problem",
+    "type": "object",
+    "required": ["totalWeight", "totalRehandles", "containerAssignments", "slots"],
+    "properties": {
+      "totalWeight": {
+        "type": "number",
+        "minimum": 0
+      },
+      "totalRehandles": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "containerAssignments": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["id", "weight", "size", "loadingPort", "dischargePort", "type", "slot"],
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "weight": {
+              "type": "number",
+              "minimum": 0
+            },
+            "size": {
+              "type": "integer",
+              "enum": [20, 40]
+            },
+            "loadingPort": {
+              "type": "string"
+            },
+            "dischargePort": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string",
+              "enum": ["NORMAL", "REFRIGERATED", "DANGEROUS"]
+            },
+            "slot": {
+              "type": "object",
+              "required": ["bay", "row", "tier", "slotNumber"],
+              "properties": {
+                "bay": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "row": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "tier": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "slotNumber": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "slots": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["bay", "row", "tier", "slotNumber", "containers"],
+          "properties": {
+            "bay": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "row": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "tier": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "slotNumber": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "containers": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["id", "weight", "size", "loadingPort", "dischargePort", "type"],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "weight": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "size": {
+                    "type": "integer",
+                    "enum": [20, 40]
+                  },
+                  "loadingPort": {
+                    "type": "string"
+                  },
+                  "dischargePort": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": ["NORMAL", "REFRIGERATED", "DANGEROUS"]
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "additionalProperties": false
+  }
