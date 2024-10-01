@@ -138,12 +138,9 @@
 ## TypeScript
 
 * [TypeScript](https://www.npmjs.com/package/typescript): `^5.0.0`
-
-## Vue
-
 * [Vue](https://www.npmjs.com/package/vue): `^3.2.47`
 * [Pinia](https://www.npmjs.com/package/pinia): `^2.0.35`
-* [Vuetify](https://www.npmjs.com/package/vuetify): `^3.6.13`
+* [Vuetify](https://www.npmjs.com/package/vuetify): `^3.7.2`
 * [vue-i18n](https://vue-i18n.intlify.dev/): `^9.2.2`
 * [vue-router](https://www.npmjs.com/package/vue-router): `^4.1.6`
 * [Jest](https://jestjs.io/): `^29.7`
