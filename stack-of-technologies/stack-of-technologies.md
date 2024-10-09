@@ -15,7 +15,6 @@
   - [XML APIS](#xml-apis)
 - [Python](#python)
 - [TypeScript](#typescript)
-- [Vue](#vue)
 - [GitHub actions](#github-actions)
 
 ## Tools
@@ -138,13 +137,57 @@
 ## TypeScript
 
 * [TypeScript](https://www.npmjs.com/package/typescript): `^5.0.0`
-* [Vue](https://www.npmjs.com/package/vue): `^3.2.47`
-* [Pinia](https://www.npmjs.com/package/pinia): `^2.0.35`
+* [Vue](https://www.npmjs.com/package/vue): `^3.5.11`
+* [Pinia](https://www.npmjs.com/package/pinia): `^2.1.7`
 * [Vuetify](https://www.npmjs.com/package/vuetify): `^3.7.2`
-* [vue-i18n](https://vue-i18n.intlify.dev/): `^9.2.2`
-* [vue-router](https://www.npmjs.com/package/vue-router): `^4.1.6`
-* [Jest](https://jestjs.io/): `^29.7`
+* [vue-i18n](https://vue-i18n.intlify.dev/): `^9.14.1`
+* [vue-router](https://www.npmjs.com/package/vue-router): `^4.4.5`
+* [Jest](https://jestjs.io/): `^29.7.0`
 * [Cypress](https://docs.cypress.io/guides/references/changelog): `^12.10.0`
+* [@infectoone/vue-ganttastic](https://www.npmjs.com/package/@infectoone/vue-ganttastic): `^2.3.2`
+* [@kaizten/kaizten-typescript](https://github.com/kaizten/kaizten-typescript): `1.0.0`
+* [@kaizten/kaizten-vue](https://github.com/kaizten/kaizten-vue): `^1.0.0`
+* [keycloak-js](https://www.npmjs.com/package/keycloak-js): `^26.0.0`
+* [d3](https://www.npmjs.com/package/d3): `^7.9.0`
+* [chart.js](https://github.com/chartjs/Chart.js): `^4.4.4`
+* [jspdf](https://www.npmjs.com/package/jspdf): `^2.5.2`
+* [jsonata](https://www.npmjs.com/package/jsonata): `^2.0.5`
+* [leaflet](https://leafletjs.com/download.html): `1.9.4`
+* [xlsx](https://www.npmjs.com/package/xlsx): `^0.18.5`
+
+<!-- AIdel
+    "@vuepic/vue-datepicker": "^8.1.1",
+    "date-fns": "^2.30.0",
+    "dayjs": "^1.11.5",
+    "luxon": "^3.4.4",
+    "mdi": "^2.2.43",
+    "pinia-plugin-persistedstate": "^3.2.1",
+    "qalendar": "^3.8.1",
+    "uuid": "^9.0.1",
+    "vue-chartjs": "^5.0.0",
+-->
+
+<!-- Entomology manager
+    "html2canvas": "^1.4.1",
+    "js-kml-parser": "^1.0.2",
+    "pdfmake": "^0.2.7",
+    "pinia-plugin-persistedstate": "^2.1.1",
+    "read-excel-file": "^5.6.1",
+    "vue3-datepicker": "0.4.0",
+    "webfontloader": "^1.6.28"
+-->
+
+<!-- Vessel tracker
+    "geojson": "^0.5.0",
+    "jspdf-autotable": "^3.8.3",
+    "leaflet-editable": "^1.2.0",
+    "mdi": "^2.2.43",
+    "pinia-plugin-persistedstate": "^3.2.1",
+    "read-excel-file": "^5.8.5",
+    "vue-chartjs": "^5.3.1",
+    "vue-leaflet": "^0.1.0",
+    "vue-toastification": "^1.7.14",
+-->
 
 ## GitHub actions
 
