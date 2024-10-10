@@ -159,12 +159,12 @@
     "@vuepic/vue-datepicker": "^8.1.1",
     "date-fns": "^2.30.0",
     "dayjs": "^1.11.5",
-    "luxon": "^3.4.4",
+    "luxon": "^3.4.4", // PARA FECHAS
     "mdi": "^2.2.43",
     "pinia-plugin-persistedstate": "^3.2.1",
     "qalendar": "^3.8.1",
     "uuid": "^9.0.1",
-    "vue-chartjs": "^5.0.0",
+    "vue-chartjs": "^5.0.0", -> REVISAR SI PODEMOS CARGARNOS CHART.JS O VUE-CHART.JS
 -->
 
 <!-- Entomology manager
