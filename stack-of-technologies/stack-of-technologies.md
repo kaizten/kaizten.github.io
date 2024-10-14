@@ -150,7 +150,7 @@
 * [keycloak-js](https://www.npmjs.com/package/keycloak-js): `^26.0.0`
 * [leaflet](https://leafletjs.com/download.html): `1.9.4`
 * [Pinia](https://www.npmjs.com/package/pinia): `^2.1.7`
-* [TypeScript](https://www.npmjs.com/package/typescript): `^5.0.0`
+* [TypeScript](https://www.npmjs.com/package/typescript): `^5.6.3`
 * [Vue](https://www.npmjs.com/package/vue): `^3.5.11`
 * [vue-i18n](https://vue-i18n.intlify.dev/): `^9.14.1`
 * [vue-router](https://www.npmjs.com/package/vue-router): `^4.4.5`
