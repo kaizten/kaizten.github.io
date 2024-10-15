@@ -1,21 +1,22 @@
 # Stack of technologies
 
-- [Tools](#tools)
-- [Java](#java)
-  - [Apache POI](#apache-poi)
-  - [Apache POI OOXML](#apache-poi-ooxml)
-  - [Hamcrest](#hamcrest)
-  - [JCommander](#jcommander)
-  - [JJWT](#jjwt)
-  - [JUnit](#junit)
-  - [OptaPlanner](#optaplanner)
-  - [Oshi](#oshi)
-  - [Spring Boot](#spring-boot)
-  - [SpringDoc OpenAPI Starter WebMVC UI](#springdoc-openapi-starter-webmvc-ui)
-  - [XML APIS](#xml-apis)
-- [Python](#python)
-- [TypeScript](#typescript)
-- [GitHub actions](#github-actions)
+- [Stack of technologies](#stack-of-technologies)
+  - [Tools](#tools)
+  - [Java](#java)
+    - [Apache POI](#apache-poi)
+    - [Apache POI OOXML](#apache-poi-ooxml)
+    - [Hamcrest](#hamcrest)
+    - [JCommander](#jcommander)
+    - [JJWT](#jjwt)
+    - [JUnit](#junit)
+    - [OptaPlanner](#optaplanner)
+    - [Oshi](#oshi)
+    - [Spring Boot](#spring-boot)
+    - [SpringDoc OpenAPI Starter WebMVC UI](#springdoc-openapi-starter-webmvc-ui)
+    - [XML APIS](#xml-apis)
+  - [Python](#python)
+  - [TypeScript](#typescript)
+  - [GitHub actions](#github-actions)
 
 ## Tools
 
@@ -151,7 +152,9 @@
 * [keycloak-js](https://www.npmjs.com/package/keycloak-js): `^26.0.0`
 * [leaflet](https://leafletjs.com/download.html): `^1.9.4`
 * [Pinia](https://www.npmjs.com/package/pinia): `^2.1.7`
+* [pinia-plugin-persistedstate](https://www.npmjs.com/package/pinia-plugin-persistedstate): `^4.1.1`
 * [prettier](https://www.npmjs.com/package/prettier): `^3.3.3`
+* [qalendar](https://www.npmjs.com/package/qalendar): `^3.9.0`
 * [TypeScript](https://www.npmjs.com/package/typescript): `^5.6.3`
 * [vitest](https://www.npmjs.com/package/vitest): `^2.1.3`
 * [Vue](https://www.npmjs.com/package/vue): `^3.5.11`

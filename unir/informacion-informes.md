@@ -18,13 +18,13 @@ La historia de Kaizten Analytics SL está marcada por su enfoque en la innovaci�
 
 Kaizten Analytics SL cuenta con una estructura organizativa ágil y multidisciplinar. Está dividida en varios departamentos que trabajan de manera colaborativa para ofrecer soluciones integrales a sus clientes. Entre los principales departamentos se encuentran:
 
-- **Departamento de Desarrollo de Software y Tecnología**: Encargado de diseñar, implementar y mantener las soluciones tecnológicas que ofrece la empresa. Aquí se desarrollan aplicaciones personalizadas, sistemas de integración de datos y herramientas de análisis avanzado, utilizando tecnologías modernas como Python, R, SQL, y frameworks como TensorFlow o PyTorch.
+- **Departamento de Desarrollo de Software y Tecnología**. Encargado de diseñar, implementar y mantener las soluciones tecnológicas que ofrece la empresa. Aquí se desarrollan aplicaciones personalizadas, sistemas de integración de datos y herramientas de análisis avanzado, utilizando tecnologías modernas como Python, InfluxDB, Prometheus o Grafana, entre otras, y también frameworks como TensorFlow o PyTorch.
   
-- **Departamento de Análisis de Datos y Machine Learning**: Se dedica a la creación de modelos predictivos, algoritmos de machine learning y soluciones de inteligencia artificial para optimizar los procesos de negocio. El equipo colabora estrechamente con el resto de departamentos para diseñar soluciones basadas en datos que respondan a las necesidades específicas de los clientes.
+- **Departamento de Análisis de Datos y Machine Learning**. Se dedica a la creación de modelos predictivos, algoritmos de machine learning y soluciones de inteligencia artificial para optimizar los procesos de negocio. El equipo colabora estrechamente con el resto de departamentos para diseñar soluciones basadas en datos que respondan a las necesidades específicas de los clientes.
 
-- **Departamento de Consultoría**: Ofrece asesoramiento estratégico a empresas que buscan implementar soluciones basadas en datos. Los consultores trabajan directamente con los clientes para identificar áreas de oportunidad, establecer planes de acción y garantizar que los proyectos estén alineados con los objetivos comerciales de cada organización.
+- **Departamento de Consultoría**. Ofrece asesoramiento estratégico a empresas que buscan implementar soluciones basadas en datos. Los consultores trabajan directamente con los clientes para identificar áreas de oportunidad, establecer planes de acción y garantizar que los proyectos estén alineados con los objetivos comerciales de cada organización.
 
-- **Departamento de Investigación**: El departamento tiene un rol clave en el avance y la implementación de soluciones innovadoras. Su enfoque principal es el diseño, implementación y validación de técnicas algorítmicas avanzadas y modelos de simulación. Este departamento está compuesto por un equipo multidisciplinario de científicos de datos, ingenieros de software y expertos en inteligencia artificial y modelado matemático.
+- **Departamento de Investigación**. El departamento tiene un rol clave en el avance y la implementación de soluciones innovadoras. Su enfoque principal es el diseño, implementación y validación de técnicas algorítmicas avanzadas y modelos de simulación. Este departamento está compuesto por un equipo multidisciplinario de científicos de datos, ingenieros de software y expertos en inteligencia artificial y modelado matemático.
 
 # Cultura organizacional
 

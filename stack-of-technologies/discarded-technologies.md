@@ -1,6 +1,7 @@
 # Discarded technologies
 
-- [TypeScript](#typescript)
+- [Discarded technologies](#discarded-technologies)
+  - [TypeScript](#typescript)
 
 ## TypeScript
 
@@ -13,10 +14,10 @@
 * [uuid](https://www.npmjs.com/package/uuid): `^0.0.0`
 
 <!-- AIdel
-    "@vuepic/vue-datepicker": "^8.1.1",
-    "pinia-plugin-persistedstate": "^3.2.1",
-    "qalendar": "^3.8.1",
-    "vue-chartjs": "^5.0.0", -> REVISAR SI PODEMOS CARGARNOS CHART.JS O VUE-CHART.JS
+*     "@vuepic/vue-datepicker": "^8.1.1", // Utilizada para la selección de fechas y horas, actualmente en vuetify no tienen definido un componente por el que se pueda sustituir
+*     "dayjs": "^1.11.13" // Es una peerDependency del componente utilizado para visualizar el diagrama gantt
+*     "vue-chartjs": "^5.0.0", // Utilizado para mostrar gráficos
+    
 -->
 
 <!-- Entomology manager
@@ -31,7 +32,6 @@
 <!-- Vessel tracker
     "jspdf-autotable": "^3.8.3",
     "leaflet-editable": "^1.2.0",
-    "pinia-plugin-persistedstate": "^3.2.1",
     "read-excel-file": "^5.8.5",
     "vue-chartjs": "^5.3.1",
     "vue-toastification": "^1.7.14",
