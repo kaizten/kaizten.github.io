@@ -137,9 +137,9 @@
 ## TypeScript
 
 * [@infectoone/vue-ganttastic](https://www.npmjs.com/package/@infectoone/vue-ganttastic): `^2.3.2`
-* [@kaizten/kaizten-typescript](https://github.com/kaizten/kaizten-typescript): `1.0.0`
+* [@kaizten/kaizten-typescript](https://github.com/kaizten/kaizten-typescript): `^1.0.0`
 * [@kaizten/kaizten-vue](https://github.com/kaizten/kaizten-vue): `^1.0.0`
-* [@mdi/font](https://www.npmjs.com/package/@mdi/font): `7.4.47`
+* [@mdi/font](https://www.npmjs.com/package/@mdi/font): `^7.4.47`
 * [chart.js](https://github.com/chartjs/Chart.js): `^4.4.4`
 * [Cypress](https://docs.cypress.io/guides/references/changelog): `^12.10.0`
 * [d3](https://www.npmjs.com/package/d3): `^7.9.0`
@@ -148,8 +148,9 @@
 * [jspdf](https://www.npmjs.com/package/jspdf): `^2.5.2`
 * [jsonata](https://www.npmjs.com/package/jsonata): `^2.0.5`
 * [keycloak-js](https://www.npmjs.com/package/keycloak-js): `^26.0.0`
-* [leaflet](https://leafletjs.com/download.html): `1.9.4`
+* [leaflet](https://leafletjs.com/download.html): `^1.9.4`
 * [Pinia](https://www.npmjs.com/package/pinia): `^2.1.7`
+* [prettier](https://www.npmjs.com/package/prettier): `^3.3.3`
 * [TypeScript](https://www.npmjs.com/package/typescript): `^5.6.3`
 * [Vue](https://www.npmjs.com/package/vue): `^3.5.11`
 * [vue-i18n](https://vue-i18n.intlify.dev/): `^9.14.1`
