@@ -6,7 +6,7 @@
 
 * [axios](https://www.npmjs.com/package/axios): `^0.0.0`
 * [date-fns](https://www.npmjs.com/package/date-fns): `^0.0.0`
-* [datejs](https://www.npmjs.com/package/datejs): `^0.0.0`
+* [dayjs](https://www.npmjs.com/package/dayjs): `^0.0.0`
 * [geojson](https://www.npmjs.com/package/geojson): `^0.0.0`
 * [luxon](https://www.npmjs.com/package/luxon): `^0.0.0`
 * [mdi](https://www.npmjs.com/package/mdi): `^0.0.0`
