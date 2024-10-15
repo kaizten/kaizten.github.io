@@ -143,6 +143,7 @@
 * [chart.js](https://github.com/chartjs/Chart.js): `^4.4.4`
 * [Cypress](https://docs.cypress.io/guides/references/changelog): `^12.10.0`
 * [d3](https://www.npmjs.com/package/d3): `^7.9.0`
+* [eslint](https://www.npmjs.com/package/eslint): `^9.12.0`
 * [Jest](https://jestjs.io/): `^29.7.0`
 * [js-kml-parser](https://www.npmjs.com/package/js-kml-parser): `^1.0.2`
 * [jspdf](https://www.npmjs.com/package/jspdf): `^2.5.2`
@@ -152,6 +153,7 @@
 * [Pinia](https://www.npmjs.com/package/pinia): `^2.1.7`
 * [prettier](https://www.npmjs.com/package/prettier): `^3.3.3`
 * [TypeScript](https://www.npmjs.com/package/typescript): `^5.6.3`
+* [vitest](https://www.npmjs.com/package/vitest): `^2.1.3`
 * [Vue](https://www.npmjs.com/package/vue): `^3.5.11`
 * [vue-i18n](https://vue-i18n.intlify.dev/): `^9.14.1`
 * [vue-router](https://www.npmjs.com/package/vue-router): `^4.4.5`
