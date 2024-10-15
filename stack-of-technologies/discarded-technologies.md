@@ -7,17 +7,16 @@
 
 * [axios](https://www.npmjs.com/package/axios): `^0.0.0`
 * [date-fns](https://www.npmjs.com/package/date-fns): `^0.0.0`
-* [dayjs](https://www.npmjs.com/package/dayjs): `^0.0.0`
 * [geojson](https://www.npmjs.com/package/geojson): `^0.0.0`
 * [luxon](https://www.npmjs.com/package/luxon): `^0.0.0`
 * [mdi](https://www.npmjs.com/package/mdi): `^0.0.0`
 * [uuid](https://www.npmjs.com/package/uuid): `^0.0.0`
 
 <!-- AIdel
+*     "dayjs": "^1.11.13" // Es una peerDependency del componente utilizado para visualizar el diagrama gantt
 *     "@vuepic/vue-datepicker": "^8.1.1", // Utilizada para la selección de fechas y horas, actualmente en vuetify no tienen definido un componente por el que se pueda sustituir
 *     "dayjs": "^1.11.13" // Es una peerDependency del componente utilizado para visualizar el diagrama gantt
 *     "vue-chartjs": "^5.0.0", // Utilizado para mostrar gráficos
-    
 -->
 
 <!-- Entomology manager
