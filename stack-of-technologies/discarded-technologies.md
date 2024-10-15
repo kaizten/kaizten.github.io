@@ -4,13 +4,13 @@
 
 ## TypeScript
 
-* [axios](https://www.npmjs.com/package/axios)
-* [date-fns](https://www.npmjs.com/package/date-fns)
-* [datejs](https://www.npmjs.com/package/datejs)
-* [geojson](https://www.npmjs.com/package/geojson)
-* [luxon](https://www.npmjs.com/package/luxon)
-* [mdi](https://www.npmjs.com/package/mdi)
-* [uuid](https://www.npmjs.com/package/uuid)
+* [axios](https://www.npmjs.com/package/axios): `^0.0.0`
+* [date-fns](https://www.npmjs.com/package/date-fns): `^0.0.0`
+* [datejs](https://www.npmjs.com/package/datejs): `^0.0.0`
+* [geojson](https://www.npmjs.com/package/geojson): `^0.0.0`
+* [luxon](https://www.npmjs.com/package/luxon): `^0.0.0`
+* [mdi](https://www.npmjs.com/package/mdi): `^0.0.0`
+* [uuid](https://www.npmjs.com/package/uuid): `^0.0.0`
 
 <!-- AIdel
     "@vuepic/vue-datepicker": "^8.1.1",
