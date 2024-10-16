@@ -54,12 +54,26 @@
             "type": "string",
             "format": "duration",
             "description": "Time to pick up a person at this point"
+          },
+          "latitude": {
+            "type": "number",
+            "minimum": -90,
+            "maximum": 90,
+            "description": "Latitude of the point"
+          },
+          "longitude": {
+            "type": "number",
+            "minimum": -180,
+            "maximum": 180,
+            "description": "Longitude of the point"
           }
         },
         "required": [
           "name",
           "id",
-          "time"
+          "time",
+          "latitude",
+          "longitude"
         ]
       }
     },
@@ -75,10 +89,24 @@
           "type": "string",
           "pattern": "^[a-zA-Z0-9 ]+$",
           "description": "Optional name of the target point"
+        },
+        "latitude": {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90,
+          "description": "Latitude of the target point"
+        },
+        "longitude": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180,
+          "description": "Longitude of the target point"
         }
       },
       "required": [
-        "id"
+        "id",
+        "latitude",
+        "longitude"
       ]
     },
     "vehicles": {
