@@ -10,6 +10,7 @@
         "properties": {
           "vehicleId": {
             "type": "integer",
+            "minimum": 0,
             "description": "ID of the vehicle"
           },
           "route": {
@@ -19,6 +20,7 @@
               "properties": {
                 "pointId": {
                   "type": "integer",
+                  "minimum": 0,
                   "description": "ID of the point in the route"
                 },
                 "arrivalTime": {
@@ -53,19 +55,23 @@
         "properties": {
           "employeeId": {
             "type": "integer",
+            "minimum": 0,
             "description": "ID of the employee"
           },
           "assignedVehicleId": {
             "type": "integer",
+            "minimum": 0,
             "description": "ID of the vehicle assigned to the employee"
           },
           "pickupPointId": {
             "type": "integer",
+            "minimum": 0,
             "description": "ID of the pickup point where the employee is picked up"
           },
           "targetPoint": {
             "type": "integer",
-            "description": "ID of the point where the employee is dropped off (typically the target point)"
+            "minimum": 0,
+            "description": "ID of the target point where the employee is dropped off"
           },
           "pickupTime": {
             "type": "string",
@@ -93,7 +99,7 @@
       "properties": {
         "objectiveFunction": {
           "type": "number",
-          "description": "The value of the objective function for the solution"
+          "description": "Value of the objective function for the solution"
         }
       },
       "required": [
