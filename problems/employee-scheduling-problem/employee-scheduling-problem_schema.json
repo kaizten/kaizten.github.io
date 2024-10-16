@@ -1,6 +1,6 @@
 {
   "title": "Employee Routing Solution",
-  "description": "Description of a solution to the Employee Routing Problem",
+  "description": "Description of instances of the Employee Routing Problem",
   "type": "object",
   "properties": {
     "times": {
