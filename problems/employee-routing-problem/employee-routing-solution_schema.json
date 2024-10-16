@@ -1,62 +1,109 @@
 {
-    "title": "Employee Routing Solution",
-    "description": "Description of solutions of the Employee Routing Problem",
-    "type": "object",
-    "properties": {
-        "employeesAssignments": {
+  "title": "Employee Routing Solution",
+  "description": "Description of a solution to the Employee Routing Problem",
+  "type": "object",
+  "properties": {
+    "vehicleRoutes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "vehicleId": {
+            "type": "integer",
+            "description": "ID of the vehicle"
+          },
+          "route": {
             "type": "array",
             "items": {
-                "type": "object",
-                "properties": {
-                    "employeeAssignment": {
-                        "type": "integer"
-                    },
-                    "employee": {
-                        "type": "integer"
-                    }
+              "type": "object",
+              "properties": {
+                "pointId": {
+                  "type": "integer",
+                  "description": "ID of the point in the route"
                 },
-                "required": [
-                    "employeeAssignment",
-                    "employee"
-                ]
-            }
-        },
-        "vehiclesAssignments": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "vehicleAssignments": {
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        }
-                    },
-                    "vehicle": {
-                        "type": "integer"
-                    }
+                "arrivalTime": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "Arrival time at the point"
                 },
-                "required": [
-                    "vehicleAssignments",
-                    "vehicle"
-                ]
-            }
-        },
-        "metrics": {
-            "type": "object",
-            "properties": {
-                "objectiveFunction": {
-                    "type": "number"
+                "departureTime": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "Departure time from the point"
                 }
-            },
-            "required": [
-                "objectiveFunction"
-            ]
-        }
+              },
+              "required": [
+                "pointId",
+                "arrivalTime",
+                "departureTime"
+              ]
+            }
+          }
+        },
+        "required": [
+          "vehicleId",
+          "route"
+        ]
+      }
     },
-    "required": [
-        "employeesAssignments",
-        "vehiclesAssignments",
-        "metrics"
-    ]
+    "employeeSchedules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "employeeId": {
+            "type": "integer",
+            "description": "ID of the employee"
+          },
+          "assignedVehicleId": {
+            "type": "integer",
+            "description": "ID of the vehicle assigned to the employee"
+          },
+          "pickupPointId": {
+            "type": "integer",
+            "description": "ID of the pickup point where the employee is picked up"
+          },
+          "targetPoint": {
+            "type": "integer",
+            "description": "ID of the point where the employee is dropped off (typically the target point)"
+          },
+          "pickupTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Time when the employee is picked up"
+          },
+          "targetTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Time when the employee arrives at the target point"
+          }
+        },
+        "required": [
+          "employeeId",
+          "assignedVehicleId",
+          "pickupPointId",
+          "targetPoint",
+          "pickupTime",
+          "targetTime"
+        ]
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "objectiveFunction": {
+          "type": "number",
+          "description": "The value of the objective function for the solution"
+        }
+      },
+      "required": [
+        "objectiveFunction"
+      ]
+    }
+  },
+  "required": [
+    "vehicleRoutes",
+    "employeeSchedules",
+    "metrics"
+  ]
 }
