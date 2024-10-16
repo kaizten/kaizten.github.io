@@ -1,139 +1,160 @@
 {
-    "title": "Employee Scheduling Problem",
-    "description": "Description of instances of the Employee Scheduling Problem",
-    "type": "object",
-    "properties": {
-        "flights": {
+  "title": "Employee Routing Solution",
+  "description": "Description of a solution to the Employee Routing Problem",
+  "type": "object",
+  "properties": {
+    "times": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "duration": {
+            "type": "string",
+            "format": "duration",
+            "description": "Time taken between point1 and point2"
+          },
+          "point1": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "ID of the starting point"
+          },
+          "point2": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "ID of the ending point"
+          },
+          "symmetric": {
+            "type": "boolean",
+            "description": "Whether the time between point1 and point2 is symmetric"
+          }
+        },
+        "required": [
+          "duration",
+          "point1",
+          "point2"
+        ]
+      }
+    },
+    "points": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9 ]+$",
+            "description": "Name of the point (alphanumeric and spaces)"
+          },
+          "id": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "ID of the point"
+          },
+          "time": {
+            "type": "string",
+            "format": "duration",
+            "description": "Time to pick up a person at this point"
+          }
+        },
+        "required": [
+          "name",
+          "id",
+          "time"
+        ]
+      }
+    },
+    "targetPoint": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "ID of the target point"
+        },
+        "name": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9 ]+$",
+          "description": "Optional name of the target point"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "vehicles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "startingPoint": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Starting point of the vehicle (origin)"
+          },
+          "name": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9 ]+$",
+            "description": "Name of the vehicle"
+          },
+          "id": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "ID of the vehicle"
+          },
+          "capacity": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Capacity of the vehicle"
+          }
+        },
+        "required": [
+          "startingPoint",
+          "id",
+          "capacity"
+        ]
+      }
+    },
+    "employees": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "ID of the employee"
+          },
+          "name": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9 ]+$",
+            "description": "Name of the employee"
+          },
+          "pickupPoints": {
             "type": "array",
             "items": {
-                "type": "object",
-                "properties": {
-                    "code": {
-                        "type": "string",
-                        "minLength": 1,
-                        "maxLength": 7
-                    },
-                    "employees": {
-                        "type": "integer",
-                        "minimum": 1,
-                        "maximum": 100
-                    },
-                    "startTime": {
-                        "type": "string",
-                        "format": "date-time"
-                    },
-                    "finishTime": {
-                        "type": "string",
-                        "format": "date-time"
-                    }
-                },
-                "required": [
-                    "code",
-                    "employees",                    
-                    "startTime",
-                    "finishTime"
-                ]
+                "type": "integer"
             }
-        },
-        "employees": {
-            "type": "object",
-            "properties": {
-                "individuals": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "additionalProperties": true,
-                        "properties": {
-                            "code": {
-                                "type": "string",
-                                "minLength": 1,
-                                "maxLength": 4
-                            },
-                            "timePerDay": {
-                                "type": "string",
-                                "format": "duration"
-                            },
-                            "timePerWeek": {
-                                "type": "string",
-                                "format": "duration"
-                            },
-                            "timeBetweenWorkingDays": {
-                                "type": "string",
-                                "format": "duration"
-                            },
-                            "startTime": {
-                                "type": "string",
-                                "format": "time"
-                            },
-                            "finishTime": {
-                                "type": "string",
-                                "format": "time"
-                            },
-                            "enterTime": {
-                                "type": "string",
-                                "format": "duration"
-                            },
-                            "breakTime": {
-                                "type": "string",
-                                "format": "duration"
-                            },
-                            "leaveTime": {
-                                "type": "string",
-                                "format": "duration"
-                            },
-                            "notAvailableDates": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string",
-                                    "format": "date"
-                                }
-                            }
-                        },
-                        "required": [
-                            "code",                           
-                            "timePerDay",
-                            "timePerWeek"                        
-                        ]
-                    }
-                },
-                "parameters": {
-                    "type": "object",
-                    "additionalProperties": true,
-                    "properties": {
-                        "enterTime": {
-                            "type": "string",
-                            "format": "duration"
-                        },
-                        "breakTime": {
-                            "type": "string",
-                            "format": "duration"
-                        },
-                        "leaveTime": {
-                            "type": "string",
-                            "format": "duration"
-                        },
-                        "timeBetweenWorkingDays": {
-                            "type": "string",
-                            "format": "duration"
-                        }
-                    },
-                    "required": [
-                        "enterTime",
-                        "breakTime",
-                        "leaveTime",
-                        "timeBetweenWorkingDays"                        
-                    ]
-                }
-            }
-        },
-        "airport": {
+          },
+          "startTime": {
             "type": "string",
-            "minLength": 3,
-            "maxLength": 3,
-            "pattern": "^[A-Z]{3}$"
-        }
-    },
-    "required": [
-        "flights"
-    ]
+            "format": "time",
+            "description": "Start time of the employee's schedule"
+          }
+        },
+        "required": [
+          "id",
+          "pickupPoints",
+          "startTime"
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "times",
+    "points",
+    "targetPoint",
+    "vehicles",
+    "employees"
+  ]
 }
