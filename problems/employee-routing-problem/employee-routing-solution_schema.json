@@ -23,6 +23,18 @@
                   "minimum": 0,
                   "description": "ID of the point in the route"
                 },
+                "latitude": {
+                  "type": "number",
+                  "minimum": -90,
+                  "maximum": 90,
+                  "description": "Latitude of the point"
+                },
+                "longitude": {
+                  "type": "number",
+                  "minimum": -180,
+                  "maximum": 180,
+                  "description": "Longitude of the point"
+                },
                 "arrivalTime": {
                   "type": "string",
                   "format": "date-time",
@@ -36,6 +48,8 @@
               },
               "required": [
                 "pointId",
+                "latitude",
+                "longitude",
                 "arrivalTime",
                 "departureTime"
               ]
@@ -68,10 +82,34 @@
             "minimum": 0,
             "description": "ID of the pickup point where the employee is picked up"
           },
-          "targetPoint": {
+          "pickupLatitude": {
+            "type": "number",
+            "minimum": -90,
+            "maximum": 90,
+            "description": "Latitude of the pickup point"
+          },
+          "pickupLongitude": {
+            "type": "number",
+            "minimum": -180,
+            "maximum": 180,
+            "description": "Longitude of the pickup point"
+          },
+          "targetPointId": {
             "type": "integer",
             "minimum": 0,
             "description": "ID of the target point where the employee is dropped off"
+          },
+          "targetLatitude": {
+            "type": "number",
+            "minimum": -90,
+            "maximum": 90,
+            "description": "Latitude of the target point"
+          },
+          "targetLongitude": {
+            "type": "number",
+            "minimum": -180,
+            "maximum": 180,
+            "description": "Longitude of the target point"
           },
           "pickupTime": {
             "type": "string",
@@ -88,7 +126,11 @@
           "employeeId",
           "assignedVehicleId",
           "pickupPointId",
-          "targetPoint",
+          "pickupLatitude",
+          "pickupLongitude",
+          "targetPointId",
+          "targetLatitude",
+          "targetLongitude",
           "pickupTime",
           "targetTime"
         ]
