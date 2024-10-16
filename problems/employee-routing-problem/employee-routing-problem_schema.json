@@ -1,114 +1,160 @@
 {
-    "title": "Employee Routing Problem",
-    "description": "Description of instances of the Employee Routing Problem",
-    "type": "object",
-    "properties": {
-        "distances": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "distance": {
-                        "type": "integer"
-                    },
-                    "point1": {
-                        "type": "integer"
-                    },
-                    "point2": {
-                        "type": "integer"
-                    }
-                },
-                "required": [
-                    "distance",
-                    "point1",
-                    "point2"
-                ]
-            }
+  "title": "Employee Routing Problem",
+  "description": "Description of instances of the Employee Routing Problem",
+  "type": "object",
+  "properties": {
+    "times": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "duration": {
+            "type": "string",
+            "format": "duration",
+            "description": "Time taken between point1 and point2"
+          },
+          "point1": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "ID of the starting point"
+          },
+          "point2": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "ID of the ending point"
+          },
+          "symmetric": {
+            "type": "boolean",
+            "description": "Whether the time between point1 and point2 is symmetric"
+          }
         },
-        "pickupPoints": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "name": {
-                        "type": "string"
-                    },
-                    "id": {
-                        "type": "integer"
-                    },
-                    "mandatory": {
-                        "type": "boolean"
-                    }
-                },
-                "required": [
-                    "name",
-                    "id"
-                ]
-            }
-        },
-        "targetPoint": {
-            "type": "integer"
-        },
-        "vehicles": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "startingPoints": {
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        }
-                    },
-                    "name": {
-                        "type": "string"
-                    },
-                    "id": {
-                        "type": "integer"
-                    },
-                    "capacity": {
-                        "type": "integer"
-                    }
-                },
-                "required": [
-                    "startingPoints",
-                    "name",
-                    "id",
-                    "capacity"
-                ]
-            }
-        },
-        "employees": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "pickupPoints": {
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        }
-                    },
-                    "name": {
-                        "type": "string"
-                    },
-                    "id": {
-                        "type": "integer"
-                    }
-                },
-                "required": [
-                    "pickupPoints",
-                    "name",
-                    "id"
-                ]
-            }
-        }
+        "required": [
+          "duration",
+          "point1",
+          "point2"
+        ]
+      }
     },
-    "required": [
-        "distances",
-        "pickupPoints",
-        "targetPoint",
-        "vehicles",
-        "employees"
-    ]
+    "points": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9 ]+$",
+            "description": "Name of the point (alphanumeric and spaces)"
+          },
+          "id": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "ID of the point"
+          },
+          "time": {
+            "type": "string",
+            "format": "duration",
+            "description": "Time to pick up a person at this point"
+          }
+        },
+        "required": [
+          "name",
+          "id",
+          "time"
+        ]
+      }
+    },
+    "targetPoint": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "ID of the target point"
+        },
+        "name": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9 ]+$",
+          "description": "Optional name of the target point"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "vehicles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "startingPoint": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Starting point of the vehicle (origin)"
+          },
+          "name": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9 ]+$",
+            "description": "Name of the vehicle"
+          },
+          "id": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "ID of the vehicle"
+          },
+          "capacity": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Capacity of the vehicle"
+          }
+        },
+        "required": [
+          "startingPoint",
+          "id",
+          "capacity"
+        ]
+      }
+    },
+    "employees": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "ID of the employee"
+          },
+          "name": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9 ]+$",
+            "description": "Name of the employee"
+          },
+          "pickupPoints": {
+            "type": "array",
+            "items": {
+                "type": "integer"
+            }
+          },
+          "startTime": {
+            "type": "string",
+            "format": "time",
+            "description": "Start time of the employee's schedule"
+          }
+        },
+        "required": [
+          "id",
+          "pickupPoints",
+          "startTime"
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "times",
+    "points",
+    "targetPoint",
+    "vehicles",
+    "employees"
+  ]
 }
