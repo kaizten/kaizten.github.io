@@ -1,86 +1,104 @@
 {
-    "title": "Stowage Planning Problem Schema",
-    "description": "Description of instances of the Stowage Planning Problem",
-    "type": "object",
-    "required": ["ship", "ports", "containersByPort"],
-    "properties": {
-      "ship": {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Stowage Planning Problem Schema",
+  "description": "Description of instances of the Stowage Planning Problem",
+  "type": "object",
+  "required": ["ship", "ports", "containersByPort"],
+  "properties": {
+    "ship": {
+      "type": "object",
+      "description": "Details of the ship used for stowage planning",
+      "required": ["name", "bays", "rows", "tiers", "maxWeightCapacity"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name identifier of the ship"
+        },
+        "bays": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Number of bays (longitudinal divisions) in the ship"
+        },
+        "rows": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Number of rows (transverse divisions) in the ship"
+        },
+        "tiers": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Number of tiers (vertical levels) in the ship"
+        },
+        "maxWeightCapacity": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Maximum weight capacity of the ship"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ports": {
+      "type": "array",
+      "description": "List of ports in the ship's route",
+      "items": {
+        "type": "string",
+        "description": "Name of a port"
+      },
+      "minItems": 1
+    },
+    "containersByPort": {
+      "type": "array",
+      "description": "Mapping of loading ports to the containers to be loaded at each port",
+      "items": {
         "type": "object",
-        "required": ["name", "bays", "rows", "tiers", "maxWeightCapacity"],
+        "required": ["port", "containers"],
         "properties": {
-          "name": {
-            "type": "string"
+          "port": {
+            "type": "string",
+            "description": "Name of the loading port"
           },
-          "bays": {
-            "type": "integer",
-            "minimum": 1
-          },
-          "rows": {
-            "type": "integer",
-            "minimum": 1
-          },
-          "tiers": {
-            "type": "integer",
-            "minimum": 1
-          },
-          "maxWeightCapacity": {
-            "type": "number",
-            "minimum": 0
+          "containers": {
+            "type": "array",
+            "description": "List of containers to be loaded at the specified port",
+            "items": {
+              "type": "object",
+              "required": ["id", "weight", "size", "loadingPort", "dischargePort", "type"],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "Unique identifier of the container"
+                },
+                "weight": {
+                  "type": "number",
+                  "minimum": 0,
+                  "description": "Weight of the container"
+                },
+                "size": {
+                  "type": "integer",
+                  "enum": [20, 40],
+                  "description": "Size of the container in feet (20 or 40)"
+                },
+                "loadingPort": {
+                  "type": "string",
+                  "description": "Port where the container is loaded onto the ship"
+                },
+                "dischargePort": {
+                  "type": "string",
+                  "description": "Port where the container is to be unloaded from the ship"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": ["NORMAL", "REFRIGERATED", "DANGEROUS"],
+                  "description": "Type of the container"
+                }
+              },
+              "additionalProperties": false
+            }
           }
         },
         "additionalProperties": false
-      },
-      "ports": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        },
-        "minItems": 1
-      },
-      "containersByPort": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "required": ["port", "containers"],
-          "properties": {
-            "port": {
-              "type": "string"
-            },
-            "containers": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "required": ["id", "weight", "size", "loadingPort", "dischargePort", "type"],
-                "properties": {
-                  "id": {
-                    "type": "string"
-                  },
-                  "weight": {
-                    "type": "number",
-                    "minimum": 0
-                  },
-                  "size": {
-                    "type": "integer",
-                    "enum": [20, 40]
-                  },
-                  "loadingPort": {
-                    "type": "string"
-                  },
-                  "dischargePort": {
-                    "type": "string"
-                  },
-                  "type": {
-                    "type": "string",
-                    "enum": ["NORMAL", "REFRIGERATED", "DANGEROUS"]
-                  }
-                },
-                "additionalProperties": false
-              }
-            }
-          },
-          "additionalProperties": false
-        }
       }
-    },
-    "additionalProperties": false
-  }
+    }
+  },
+  "additionalProperties": false
+}
