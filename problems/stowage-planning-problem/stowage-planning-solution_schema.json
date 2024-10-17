@@ -1,128 +1,161 @@
 {
-    "title": "Stowage Planning Solution Schema",
-    "description": "Description of solutions of the Stowage Planning Problem",
-    "type": "object",
-    "required": ["totalWeight", "totalRehandles", "containerAssignments", "slots"],
-    "properties": {
-      "totalWeight": {
-        "type": "number",
-        "minimum": 0
-      },
-      "totalRehandles": {
-        "type": "integer",
-        "minimum": 0
-      },
-      "containerAssignments": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "required": ["id", "weight", "size", "loadingPort", "dischargePort", "type", "slot"],
-          "properties": {
-            "id": {
-              "type": "string"
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Stowage Planning Solution Schema",
+  "description": "Description of solutions of the Stowage Planning Problem",
+  "type": "object",
+  "required": ["totalWeight", "totalRehandles", "containerAssignments", "slots"],
+  "properties": {
+    "totalWeight": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Total weight of the containers stowed on the ship"
+    },
+    "totalRehandles": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total number of rehandles required to unload containers"
+    },
+    "containerAssignments": {
+      "type": "array",
+      "description": "Assignments of containers to specific slots on the ship",
+      "items": {
+        "type": "object",
+        "required": ["id", "weight", "size", "loadingPort", "dischargePort", "type", "slot"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the container",
+            "pattern": "^[A-Za-z0-9]+$"
+          },
+          "weight": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Weight of the container"
+          },
+          "size": {
+            "type": "integer",
+            "enum": [20, 40],
+            "description": "Size of the container in feet (20 or 40)"
+          },
+          "loadingPort": {
+            "type": "string",
+            "description": "Port where the container is loaded onto the ship",
+            "pattern": "^[A-Za-z0-9]+$"
+          },
+          "dischargePort": {
+            "type": "string",
+            "description": "Port where the container is to be unloaded from the ship",
+            "pattern": "^[A-Za-z0-9]+$"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["NORMAL", "REFRIGERATED", "DANGEROUS"],
+            "description": "Type of the container"
+          },
+          "slot": {
+            "type": "object",
+            "required": ["bay", "row", "tier", "slotNumber"],
+            "properties": {
+              "bay": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Bay number of the slot"
+              },
+              "row": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Row number of the slot"
+              },
+              "tier": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Tier number of the slot"
+              },
+              "slotNumber": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Slot number within the cell (0 for 40', 1 and 2 for 20')"
+              }
             },
-            "weight": {
-              "type": "number",
-              "minimum": 0
-            },
-            "size": {
-              "type": "integer",
-              "enum": [20, 40]
-            },
-            "loadingPort": {
-              "type": "string"
-            },
-            "dischargePort": {
-              "type": "string"
-            },
-            "type": {
-              "type": "string",
-              "enum": ["NORMAL", "REFRIGERATED", "DANGEROUS"]
-            },
-            "slot": {
+            "additionalProperties": false,
+            "description": "Details of the slot where the container is assigned"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "slots": {
+      "type": "array",
+      "description": "Details of the slots used on the ship and the containers assigned to each",
+      "items": {
+        "type": "object",
+        "required": ["bay", "row", "tier", "slotNumber", "containers"],
+        "properties": {
+          "bay": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Bay number of the slot"
+          },
+          "row": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Row number of the slot"
+          },
+          "tier": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Tier number of the slot"
+          },
+          "slotNumber": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Slot number within the cell (0 for 40', 1 and 2 for 20')"
+          },
+          "containers": {
+            "type": "array",
+            "description": "List of containers assigned to this slot, ordered from bottom to top",
+            "items": {
               "type": "object",
-              "required": ["bay", "row", "tier", "slotNumber"],
+              "required": ["id", "weight", "size", "loadingPort", "dischargePort", "type"],
               "properties": {
-                "bay": {
-                  "type": "integer",
-                  "minimum": 1
+                "id": {
+                  "type": "string",
+                  "description": "Unique identifier of the container",
+                  "pattern": "^[A-Za-z0-9]+$"
                 },
-                "row": {
-                  "type": "integer",
-                  "minimum": 1
+                "weight": {
+                  "type": "number",
+                  "minimum": 0,
+                  "description": "Weight of the container"
                 },
-                "tier": {
+                "size": {
                   "type": "integer",
-                  "minimum": 1
+                  "enum": [20, 40],
+                  "description": "Size of the container in feet (20 or 40)"
                 },
-                "slotNumber": {
-                  "type": "integer",
-                  "minimum": 0
+                "loadingPort": {
+                  "type": "string",
+                  "description": "Port where the container is loaded onto the ship",
+                  "pattern": "^[A-Za-z0-9]+$"
+                },
+                "dischargePort": {
+                  "type": "string",
+                  "description": "Port where the container is to be unloaded from the ship",
+                  "pattern": "^[A-Za-z0-9]+$"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": ["NORMAL", "REFRIGERATED", "DANGEROUS"],
+                  "description": "Type of the container"
                 }
               },
               "additionalProperties": false
             }
-          },
-          "additionalProperties": false
-        }
-      },
-      "slots": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "required": ["bay", "row", "tier", "slotNumber", "containers"],
-          "properties": {
-            "bay": {
-              "type": "integer",
-              "minimum": 1
-            },
-            "row": {
-              "type": "integer",
-              "minimum": 1
-            },
-            "tier": {
-              "type": "integer",
-              "minimum": 1
-            },
-            "slotNumber": {
-              "type": "integer",
-              "minimum": 0
-            },
-            "containers": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "required": ["id", "weight", "size", "loadingPort", "dischargePort", "type"],
-                "properties": {
-                  "id": {
-                    "type": "string"
-                  },
-                  "weight": {
-                    "type": "number",
-                    "minimum": 0
-                  },
-                  "size": {
-                    "type": "integer",
-                    "enum": [20, 40]
-                  },
-                  "loadingPort": {
-                    "type": "string"
-                  },
-                  "dischargePort": {
-                    "type": "string"
-                  },
-                  "type": {
-                    "type": "string",
-                    "enum": ["NORMAL", "REFRIGERATED", "DANGEROUS"]
-                  }
-                },
-                "additionalProperties": false
-              }
-            }
-          },
-          "additionalProperties": false
-        }
+          }
+        },
+        "additionalProperties": false
       }
-    },
-    "additionalProperties": false
-  }
+    }
+  },
+  "additionalProperties": false
+}
