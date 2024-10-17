@@ -1,4 +1,5 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Stowage Planning Problem Schema",
   "description": "Description of instances of the Stowage Planning Problem",
   "type": "object",
@@ -11,7 +12,8 @@
       "properties": {
         "name": {
           "type": "string",
-          "description": "Name identifier of the ship"
+          "description": "Name identifier of the ship",
+          "pattern": "^[A-Za-z0-9]+$"
         },
         "bays": {
           "type": "integer",
@@ -41,7 +43,8 @@
       "description": "List of ports in the ship's route",
       "items": {
         "type": "string",
-        "description": "Name of a port"
+        "description": "Name of a port",
+        "pattern": "^[A-Za-z0-9]+$"
       },
       "minItems": 1
     },
@@ -54,7 +57,8 @@
         "properties": {
           "port": {
             "type": "string",
-            "description": "Name of the loading port"
+            "description": "Name of the loading port",
+            "pattern": "^[A-Za-z0-9]+$"
           },
           "containers": {
             "type": "array",
@@ -65,7 +69,8 @@
               "properties": {
                 "id": {
                   "type": "string",
-                  "description": "Unique identifier of the container"
+                  "description": "Unique identifier of the container",
+                  "pattern": "^[A-Za-z0-9]+$"
                 },
                 "weight": {
                   "type": "number",
@@ -79,11 +84,13 @@
                 },
                 "loadingPort": {
                   "type": "string",
-                  "description": "Port where the container is loaded onto the ship"
+                  "description": "Port where the container is loaded onto the ship",
+                  "pattern": "^[A-Za-z0-9]+$"
                 },
                 "dischargePort": {
                   "type": "string",
-                  "description": "Port where the container is to be unloaded from the ship"
+                  "description": "Port where the container is to be unloaded from the ship",
+                  "pattern": "^[A-Za-z0-9]+$"
                 },
                 "type": {
                   "type": "string",
