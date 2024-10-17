@@ -1,5 +1,4 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Stowage Planning Problem Schema",
   "description": "Description of instances of the Stowage Planning Problem",
   "type": "object",
