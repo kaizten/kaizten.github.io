@@ -1,67 +1,118 @@
 {
-  "title": "Stowage Planning Problem Schema",
-  "description": "Description of instances of the Stowage Planning Problem",
+  "title": "Stowage Planning Solution Schema",
+  "description": "Description of solutions of the Stowage Planning Problem",
   "type": "object",
-  "required": ["ship", "ports", "containersByPort"],
+  "required": ["totalWeight", "totalRehandles", "containerAssignments", "slots"],
   "properties": {
-    "ship": {
-      "type": "object",
-      "description": "Details of the ship used for stowage planning",
-      "required": ["name", "bays", "rows", "tiers", "maxWeightCapacity"],
-      "properties": {
-        "name": {
-          "type": "string",
-          "description": "Name identifier of the ship",
-          "pattern": "^[A-Za-z0-9-]+$"
-        },
-        "bays": {
-          "type": "integer",
-          "minimum": 1,
-          "description": "Number of bays (longitudinal divisions) in the ship"
-        },
-        "rows": {
-          "type": "integer",
-          "minimum": 1,
-          "description": "Number of rows (transverse divisions) in the ship"
-        },
-        "tiers": {
-          "type": "integer",
-          "minimum": 1,
-          "description": "Number of tiers (vertical levels) in the ship"
-        },
-        "maxWeightCapacity": {
-          "type": "number",
-          "minimum": 0,
-          "description": "Maximum weight capacity of the ship"
-        }
-      },
-      "additionalProperties": false
+    "totalWeight": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Total weight of the containers stowed on the ship"
     },
-    "ports": {
-      "type": "array",
-      "description": "List of ports in the ship's route",
-      "items": {
-        "type": "string",
-        "description": "Name of a port",
-        "pattern": "^[A-Za-z0-9-]+$"
-      },
-      "minItems": 1
+    "totalRehandles": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total number of rehandles required to unload containers"
     },
-    "containersByPort": {
+    "containerAssignments": {
       "type": "array",
-      "description": "Mapping of loading ports to the containers to be loaded at each port",
+      "description": "Assignments of containers to specific slots on the ship",
       "items": {
         "type": "object",
-        "required": ["port", "containers"],
+        "required": ["id", "weight", "size", "loadingPort", "dischargePort", "type", "slot"],
         "properties": {
-          "port": {
+          "id": {
             "type": "string",
-            "description": "Name of the loading port",
+            "description": "Unique identifier of the container",
+            "pattern": "^[A-Za-z0-9]+$"
+          },
+          "weight": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Weight of the container"
+          },
+          "size": {
+            "type": "integer",
+            "enum": [20, 40],
+            "description": "Size of the container in feet (20 or 40)"
+          },
+          "loadingPort": {
+            "type": "string",
+            "description": "Port where the container is loaded onto the ship",
             "pattern": "^[A-Za-z0-9-]+$"
+          },
+          "dischargePort": {
+            "type": "string",
+            "description": "Port where the container is to be unloaded from the ship",
+            "pattern": "^[A-Za-z0-9-]+$"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["NORMAL", "REFRIGERATED", "DANGEROUS"],
+            "description": "Type of the container"
+          },
+          "slot": {
+            "type": "object",
+            "required": ["bay", "row", "tier", "slotNumber"],
+            "properties": {
+              "bay": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Bay number of the slot"
+              },
+              "row": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Row number of the slot"
+              },
+              "tier": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Tier number of the slot"
+              },
+              "slotNumber": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Slot number within the cell (0 for 40', 1 and 2 for 20')"
+              }
+            },
+            "additionalProperties": false,
+            "description": "Details of the slot where the container is assigned"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "slots": {
+      "type": "array",
+      "description": "Details of the slots used on the ship and the containers assigned to each",
+      "items": {
+        "type": "object",
+        "required": ["bay", "row", "tier", "slotNumber", "containers"],
+        "properties": {
+          "bay": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Bay number of the slot"
+          },
+          "row": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Row number of the slot"
+          },
+          "tier": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Tier number of the slot"
+          },
+          "slotNumber": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Slot number within the cell (0 for 40', 1 and 2 for 20')"
           },
           "containers": {
             "type": "array",
-            "description": "List of containers to be loaded at the specified port",
+            "description": "List of containers assigned to this slot, ordered from bottom to top",
             "items": {
               "type": "object",
               "required": ["id", "weight", "size", "loadingPort", "dischargePort", "type"],
