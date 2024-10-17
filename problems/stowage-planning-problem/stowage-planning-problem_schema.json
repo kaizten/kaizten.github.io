@@ -12,7 +12,7 @@
         "name": {
           "type": "string",
           "description": "Name identifier of the ship",
-          "pattern": "^[A-Za-z0-9]+$"
+          "pattern": "^[A-Za-z0-9-]+$"
         },
         "bays": {
           "type": "integer",
@@ -43,7 +43,7 @@
       "items": {
         "type": "string",
         "description": "Name of a port",
-        "pattern": "^[A-Za-z0-9]+$"
+        "pattern": "^[A-Za-z0-9-]+$"
       },
       "minItems": 1
     },
@@ -57,7 +57,7 @@
           "port": {
             "type": "string",
             "description": "Name of the loading port",
-            "pattern": "^[A-Za-z0-9]+$"
+            "pattern": "^[A-Za-z0-9-]+$"
           },
           "containers": {
             "type": "array",
@@ -84,12 +84,12 @@
                 "loadingPort": {
                   "type": "string",
                   "description": "Port where the container is loaded onto the ship",
-                  "pattern": "^[A-Za-z0-9]+$"
+                  "pattern": "^[A-Za-z0-9-]+$"
                 },
                 "dischargePort": {
                   "type": "string",
                   "description": "Port where the container is to be unloaded from the ship",
-                  "pattern": "^[A-Za-z0-9]+$"
+                  "pattern": "^[A-Za-z0-9-]+$"
                 },
                 "type": {
                   "type": "string",
