@@ -46,6 +46,7 @@ El resultado debe ser similar a éste:
     ...
 ]
 ```
+
 2. Crear un array donde los elementos impares recojan la información de los elementos que nos interesa visualizar como filas en el [state timeline](https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/state-timeline/) y los elementos pares sean un objeto con el valor `""`. Esto se hace tal como sigue:
 ```shell
 $reduce(services.[
@@ -59,6 +60,7 @@ $reduce(services.[
   
 ], $append)
 ```
+
 El resultado debe ser similar a éste:
 ```json
 [
@@ -79,6 +81,9 @@ El resultado debe ser similar a éste:
 ```
 
 3. En [Grafana](https://grafana.com), añadir un [state timeline](https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/state-timeline/).
+
 4. En la sección `Query` añadir como `Fields` los códigos en [JSONata](https://jsonata.org) descritos en los puntos anteriores. Es importante establecer en el desplegable de cada `Field` el valor `JSONata`. Finalmente comprobar que en la vista de tabla `Table view` se muestran los datos tal como se describen en los puntos anteriores.
+
 5. En la sección `Transform data` desagregar la segunda columna de los datos.
+
 6. En la sección `Transform data` ocultar la columna original obtenida del segundo `Field` incorporado.
