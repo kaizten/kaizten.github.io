@@ -79,7 +79,7 @@ Mediante un notebook de [JSONata](https://jsonata.org), la forma de construir un
       {
         "service 0038": ""
       },
-        ....
+      ...
     ]
     ```
 
