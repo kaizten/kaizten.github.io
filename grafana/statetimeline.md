@@ -104,9 +104,9 @@ Mediante un notebook de [JSONata](https://jsonata.org), la forma de construir un
        ]
        ```
 
-3. En [Grafana](https://grafana.com), añadir un [state timeline](https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/state-timeline/) al cuadro de mandos.
-
 ### Grafana
+
+1. En [Grafana](https://grafana.com), añadir un [state timeline](https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/state-timeline/) al cuadro de mandos.
 
 #### Consultas
 
