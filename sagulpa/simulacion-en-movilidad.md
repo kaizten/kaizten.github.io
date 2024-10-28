@@ -21,3 +21,8 @@ El código empleado a lo largo del curso puede encontrarse en el siguiente [repo
 * [07/11/2024]()
 * [08/11/2024]()
 * [12/11/2024]()
+
+## Enlaces de interés
+
+* [SimPy](https://simpy.readthedocs.io/en/latest/)
+* [SUMO](https://eclipse.dev/sumo/)
