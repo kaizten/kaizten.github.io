@@ -15,7 +15,7 @@ El código empleado a lo largo del curso puede encontrarse en el siguiente [repo
 
 ## Grabaciones de las sesiones
 
-* [29/10/2024]()
+* [29/10/2024](https://drive.google.com/file/d/1JFEJeV0xRoyrG1S3eA8zdZ9o40J0iQ5i/view?usp=drive_link)
 * [04/11/2024]()
 * [05/11/2024]()
 * [07/11/2024]()
