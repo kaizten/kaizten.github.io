@@ -24,5 +24,6 @@ El código empleado a lo largo del curso puede encontrarse en el siguiente [repo
 
 ## Enlaces de interés
 
+* [Anylogic in three days](https://www.anylogic.com/upload/al-in-3-days/anylogic-in-3-days.pdf)
 * [SimPy](https://simpy.readthedocs.io/en/latest/)
 * [SUMO](https://eclipse.dev/sumo/)
