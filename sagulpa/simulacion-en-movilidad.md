@@ -6,6 +6,7 @@
 * [1. Fundamentos de simulación](https://docs.google.com/presentation/d/1vh8tUACR4RnxDDgQafLAd_z6GGmpfSY-Uhdb_yP98dU/edit?usp=sharing)
 * [2. Modelo conceptual y entrada de datos](https://docs.google.com/presentation/d/1JlZ3oSp-K_B4k7QDFeSHUMJkfA08neFIlXQGwj7rQgY/edit?usp=sharing)
 * [3. Simulación con Python](https://docs.google.com/presentation/d/1HdEK78BbvraDY2AN6-PL9gtT-QXe5x1vRgq5WCusFPM/edit?usp=sharing)
+  * [Google Colab `primeros-pasos-con-simpy.ipynb`](https://colab.research.google.com/drive/1G-ZugnNdMzEeJ1045zWDAL8xNex8JjPq?usp=drive_link)
 * [4. Experimentación y validación](https://docs.google.com/presentation/d/15t3oyByPUqRuEPt8KT4vjt8tJW9NB8yS9OwUcfpVKAQ/edit?usp=sharing)
 * [5. Simulación con SUMO](https://docs.google.com/presentation/d/18pKYVqultzMk3-EFU40r3KkVyJdeMOl9ZlI7nyKmFN4/edit?usp=sharing)
 
