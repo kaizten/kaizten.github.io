@@ -19,7 +19,7 @@ El código empleado a lo largo del curso puede encontrarse en el siguiente [repo
 
 * [29/10/2024](https://drive.google.com/file/d/1JFEJeV0xRoyrG1S3eA8zdZ9o40J0iQ5i/view?usp=drive_link)
 * [04/11/2024](https://drive.google.com/file/d/1LaNZQasPqe42T6A9IR_POUj4k3twEhut/view?usp=drive_link)
-* [05/11/2024]()
+* [05/11/2024](https://drive.google.com/file/d/10eIX76e_Q-0m28EC6iSmI8gta3inQE2u/view?usp=sharing)
 * [07/11/2024]()
 * [08/11/2024]()
 * [12/11/2024]()
