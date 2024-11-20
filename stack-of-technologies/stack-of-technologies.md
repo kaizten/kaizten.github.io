@@ -1,22 +1,21 @@
 # Stack of technologies
 
-- [Stack of technologies](#stack-of-technologies)
-  - [Tools](#tools)
-  - [Java](#java)
-    - [Apache POI](#apache-poi)
-    - [Apache POI OOXML](#apache-poi-ooxml)
-    - [Hamcrest](#hamcrest)
-    - [JCommander](#jcommander)
-    - [JJWT](#jjwt)
-    - [JUnit](#junit)
-    - [OptaPlanner](#optaplanner)
-    - [Oshi](#oshi)
-    - [Spring Boot](#spring-boot)
-    - [SpringDoc OpenAPI Starter WebMVC UI](#springdoc-openapi-starter-webmvc-ui)
-    - [XML APIS](#xml-apis)
-  - [Python](#python)
-  - [TypeScript](#typescript)
-  - [GitHub actions](#github-actions)
+- [Tools](#tools)
+- [Java](#java)
+  - [Apache POI](#apache-poi)
+  - [Apache POI OOXML](#apache-poi-ooxml)
+  - [Hamcrest](#hamcrest)
+  - [JCommander](#jcommander)
+  - [JJWT](#jjwt)
+  - [JUnit](#junit)
+  - [OptaPlanner](#optaplanner)
+  - [Oshi](#oshi)
+  - [Spring Boot](#spring-boot)
+  - [SpringDoc OpenAPI Starter WebMVC UI](#springdoc-openapi-starter-webmvc-ui)
+  - [XML APIS](#xml-apis)
+- [Python](#python)
+- [TypeScript](#typescript)
+- [GitHub actions](#github-actions)
 
 ## Tools
 
@@ -110,7 +109,7 @@
 <dependency>
   <groupId>org.springframework.boot</groupId>
   <artifactId>spring-boot</artifactId>
-  <version>3.3.5</version>
+  <version>3.3.3</version>
 </dependency>
 ```
 
@@ -152,9 +151,7 @@
 * [keycloak-js](https://www.npmjs.com/package/keycloak-js): `^26.0.0`
 * [leaflet](https://leafletjs.com/download.html): `^1.9.4`
 * [Pinia](https://www.npmjs.com/package/pinia): `^2.1.7`
-* [pinia-plugin-persistedstate](https://www.npmjs.com/package/pinia-plugin-persistedstate): `^4.1.1`
 * [prettier](https://www.npmjs.com/package/prettier): `^3.3.3`
-* [qalendar](https://www.npmjs.com/package/qalendar): `^3.9.0`
 * [TypeScript](https://www.npmjs.com/package/typescript): `^5.6.3`
 * [vitest](https://www.npmjs.com/package/vitest): `^2.1.3`
 * [Vue](https://www.npmjs.com/package/vue): `^3.5.11`
@@ -164,15 +161,10 @@
 * [xlsx](https://www.npmjs.com/package/xlsx): `^0.18.5`
 
 <!-- AIdel
-    "@vuepic/vue-datepicker": "^8.1.1",
-    "date-fns": "^2.30.0",
-    "dayjs": "^1.11.5",
-    "luxon": "^3.4.4", // PARA FECHAS
-    "mdi": "^2.2.43",
-    "pinia-plugin-persistedstate": "^3.2.1",
-    "qalendar": "^3.8.1",
-    "uuid": "^9.0.1",
-    "vue-chartjs": "^5.0.0", -> REVISAR SI PODEMOS CARGARNOS CHART.JS O VUE-CHART.JS
+    "qalendar": "^3.8.1", --> Confirmada, mejor versión de calendario encontrado
+    "@vuepic/vue-datepicker": "^8.1.1", --> Intentando ser sustituida por (https://vuetifyjs.com/en/components/date-pickers/#usage)
+    "vue-chartjs": "^5.0.0", -> Actualizaría a última versión 5.3.2 y la conservaría en conjunto con chartjs. No estamos en el momento de dedicar a tener gráficos propios y reactivos
+    "pinia-plugin-persistedstate": "^3.2.1", --> En revisión
 -->
 
 <!-- Entomology manager
