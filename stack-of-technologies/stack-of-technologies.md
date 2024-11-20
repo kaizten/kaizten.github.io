@@ -177,14 +177,9 @@
 -->
 
 <!-- Vessel tracker
-    "geojson": "^0.5.0",
-    "jspdf-autotable": "^3.8.3",
-    "leaflet-editable": "^1.2.0",
-    "mdi": "^2.2.43", -> CAMBIAR POR @MDI/FONT
+    "jspdf-autotable": "^3.8.3", --> En revisión
     "pinia-plugin-persistedstate": "^3.2.1",
-    "read-excel-file": "^5.8.5",
-    "vue-chartjs": "^5.3.1",
-    "vue-toastification": "^1.7.14",
+    "vue-chartjs": "^5.3.1", -> Actualizaría a última versión 5.3.2 y la conservaría en conjunto con chartjs. No estamos en el momento de dedicar a tener gráficos propios y reactivos
 -->
 
 ## GitHub actions
