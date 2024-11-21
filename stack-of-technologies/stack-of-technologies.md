@@ -8,6 +8,7 @@
   - [JCommander](#jcommander)
   - [JJWT](#jjwt)
   - [JUnit](#junit)
+  - [PostgreSQL](#postgresql)
   - [OptaPlanner](#optaplanner)
   - [Oshi](#oshi)
   - [Spring Boot](#spring-boot)
@@ -83,6 +84,15 @@
   <groupId>org.junit.jupiter</groupId>
   <artifactId>junit-jupiter-engine</artifactId>
   <version>5.10.2</version>
+</dependency>
+```
+
+### [PostgreSQL](https://mvnrepository.com/artifact/org.postgresql/postgresql)
+```xml
+<dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <version>42.7.4</version>
 </dependency>
 ```
 
