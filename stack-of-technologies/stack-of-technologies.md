@@ -175,7 +175,7 @@
 * [TypeScript](https://www.npmjs.com/package/typescript): `^5.6.3`
 * [vitest](https://www.npmjs.com/package/vitest): `^2.1.3`
 * [Vue](https://www.npmjs.com/package/vue): `^3.5.11`
-* [vue-i18n](https://vue-i18n.intlify.dev/): `^9.14.1`
+* [vue-i18n](https://vue-i18n.intlify.dev/): `^10.0.4`
 * [vue-router](https://www.npmjs.com/package/vue-router): `^4.4.5`
 * [Vuetify](https://www.npmjs.com/package/vuetify): `^3.7.2`
 * [xlsx](https://www.npmjs.com/package/xlsx): `^0.18.5`
