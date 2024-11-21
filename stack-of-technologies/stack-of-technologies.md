@@ -7,6 +7,7 @@
   - [Hamcrest](#hamcrest)
   - [JCommander](#jcommander)
   - [JJWT](#jjwt)
+  - [JSoup](#jsoup)
   - [JUnit](#junit)
   - [PostgreSQL](#postgresql)
   - [OptaPlanner](#optaplanner)
@@ -75,6 +76,15 @@
   <groupId>io.jsonwebtoken</groupId>
   <artifactId>jjwt</artifactId>
   <version>0.12.6</version>
+</dependency>
+```
+
+### [JSoup](https://mvnrepository.com/artifact/org.jsoup/jsoup)
+```xml
+<dependency>
+    <groupId>org.jsoup</groupId>
+    <artifactId>jsoup</artifactId>
+    <version>1.18.1</version>
 </dependency>
 ```
 
