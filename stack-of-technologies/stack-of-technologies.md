@@ -159,6 +159,7 @@
 * [vue-router](https://www.npmjs.com/package/vue-router): `^4.4.5`
 * [Vuetify](https://www.npmjs.com/package/vuetify): `^3.7.2`
 * [xlsx](https://www.npmjs.com/package/xlsx): `^0.18.5`
+* [jsonforms](https://www.npmjs.com/package/@jsonforms/vue): `^3.4.1`
 
 <!-- AIdel
     "qalendar": "^3.8.1", --> Confirmada, mejor versión de calendario encontrado
