@@ -160,6 +160,7 @@
 * [@kaizten/kaizten-typescript](https://github.com/kaizten/kaizten-typescript): `^1.0.0`
 * [@kaizten/kaizten-vue](https://github.com/kaizten/kaizten-vue): `^1.0.0`
 * [@mdi/font](https://www.npmjs.com/package/@mdi/font): `^7.4.47`
+* [@vuepic/vue-datepicker](https://www.npmjs.com/package/@vuepic/vue-datepicker): `^10.0.0`
 * [chart.js](https://github.com/chartjs/Chart.js): `^4.4.4`
 * [Cypress](https://docs.cypress.io/guides/references/changelog): `^12.10.0`
 * [d3](https://www.npmjs.com/package/d3): `^7.9.0`
@@ -167,40 +168,29 @@
 * [Jest](https://jestjs.io/): `^29.7.0`
 * [js-kml-parser](https://www.npmjs.com/package/js-kml-parser): `^1.0.2`
 * [jspdf](https://www.npmjs.com/package/jspdf): `^2.5.2`
+* [jspdf-autotable](https://www.npmjs.com/package/jspdf-autotable): `^3.8.4`
 * [jsonata](https://www.npmjs.com/package/jsonata): `^2.0.5`
 * [keycloak-js](https://www.npmjs.com/package/keycloak-js): `^26.0.0`
 * [leaflet](https://leafletjs.com/download.html): `^1.9.4`
 * [Pinia](https://www.npmjs.com/package/pinia): `^2.1.7`
+* [pinia-plugin-persistedstate](https://www.npmjs.com/package/pinia-plugin-persistedstate): `^4.1.3`
 * [prettier](https://www.npmjs.com/package/prettier): `^3.3.3`
+* [qalendar](https://www.npmjs.com/package/qalendar): `^3.9.0`
+* [read-excel-file](https://www.npmjs.com/package/read-excel-file): `^5.8.6`
 * [TypeScript](https://www.npmjs.com/package/typescript): `^5.6.3`
 * [vitest](https://www.npmjs.com/package/vitest): `^2.1.3`
 * [Vue](https://www.npmjs.com/package/vue): `^3.5.11`
+* [vue-chartjs](https://www.npmjs.com/package/vue-chartjs): `^5.3.2`
 * [vue-i18n](https://vue-i18n.intlify.dev/): `^10.0.4`
 * [vue-router](https://www.npmjs.com/package/vue-router): `^4.4.5`
 * [Vuetify](https://www.npmjs.com/package/vuetify): `^3.7.2`
 * [xlsx](https://www.npmjs.com/package/xlsx): `^0.18.5`
 * [jsonforms](https://www.npmjs.com/package/@jsonforms/vue): `^3.4.1`
 
-<!-- AIdel
-    "qalendar": "^3.8.1", --> Confirmada, mejor versión de calendario encontrado
-    "@vuepic/vue-datepicker": "^8.1.1", --> Intentando ser sustituida por (https://vuetifyjs.com/en/components/date-pickers/#usage)
-    "vue-chartjs": "^5.0.0", -> Actualizaría a última versión 5.3.2 y la conservaría en conjunto con chartjs. No estamos en el momento de dedicar a tener gráficos propios y reactivos
-    "pinia-plugin-persistedstate": "^3.2.1", --> En revisión
--->
-
 <!-- Entomology manager
     "html2canvas": "^1.4.1",
     "pdfmake": "^0.2.7",
-    "pinia-plugin-persistedstate": "^2.1.1",
-    "read-excel-file": "^5.6.1",
-    "vue3-datepicker": "0.4.0",
     "webfontloader": "^1.6.28"
--->
-
-<!-- Vessel tracker
-    "jspdf-autotable": "^3.8.3", --> En revisión
-    "pinia-plugin-persistedstate": "^3.2.1",
-    "vue-chartjs": "^5.3.1", -> Actualizaría a última versión 5.3.2 y la conservaría en conjunto con chartjs. No estamos en el momento de dedicar a tener gráficos propios y reactivos
 -->
 
 ## GitHub actions
