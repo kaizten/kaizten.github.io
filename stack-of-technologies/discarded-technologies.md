@@ -12,11 +12,11 @@
 * [mdi](https://www.npmjs.com/package/mdi): `^0.0.0`
 * [uuid](https://www.npmjs.com/package/uuid): `^0.0.0`
 * [vue-toastification](https://www.npmjs.com/package/vue-toastification): `^0.0.0`
+* [webfontloader](https://www.npmjs.com/package/webfontloader): `^0.0.0`
 
 <!-- Entomology manager
     "html2canvas": "^1.4.1",
     "pdfmake": "^0.2.7",
-    "webfontloader": "^1.6.28"
 -->
 
 <!-- Vessel tracker

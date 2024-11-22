@@ -179,7 +179,7 @@
 * [read-excel-file](https://www.npmjs.com/package/read-excel-file): `^5.8.6`
 * [TypeScript](https://www.npmjs.com/package/typescript): `^5.6.3`
 * [vitest](https://www.npmjs.com/package/vitest): `^2.1.3`
-* [Vue](https://www.npmjs.com/package/vue): `^3.5.11`
+* [Vue](https://www.npmjs.com/package/vue): `^3.5.13`
 * [vue-chartjs](https://www.npmjs.com/package/vue-chartjs): `^5.3.2`
 * [vue-i18n](https://vue-i18n.intlify.dev/): `^10.0.4`
 * [vue-router](https://www.npmjs.com/package/vue-router): `^4.4.5`
