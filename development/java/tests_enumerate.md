@@ -1,14 +1,15 @@
 # Tests: Enumerate
 
-- [`fromString()`](#fromstring)
-- [`indexOf()`](#indexof)
-- [`isValid()`](#isvalid)
-  - [Valid value](#valid-value)
-  - [Not valid value](#not-valid-value)
-- [`random()`](#random)
-- [`valueOf()`](#valueof)
+- [Tests: Enumerate](#tests-enumerate)
+  - [`fromString()`](#fromstring)
+  - [`indexOf()`](#indexof)
+  - [`isValid()`](#isvalid)
+    - [Valid value](#valid-value)
+    - [Not valid value](#not-valid-value)
+  - [`random()`](#random)
+  - [`valueOf()`](#valueof)
 
-Given an enumerate `<Enum>` defined in `<Enum>.java`, there must be a file `<Enum>Tests.java` located in folder `test` of the Java component. This file should contain at least the tests described below depending on the methods defined in the enumerate. The following list uses the example provided [here](https://github.com/kaizten/kaizten-base/blob/main/java/example_enumerate.md) as reference to illustrate the tests.
+Given an enumerate `<Enum>` defined in `<Enum>.java`, there must be a file `<Enum>Tests.java` located in folder `test` of the Java component. This file should contain at least the tests described below depending on the methods defined in the enumerate. The following list uses the example provided [here](https://kaizten.github.io/development/java/example_enumerate) as reference to illustrate the tests.
 
 ## `fromString()`
 
