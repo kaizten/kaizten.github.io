@@ -1,23 +1,24 @@
 # Stack of technologies
 
-- [Tools](#tools)
-- [Java](#java)
-  - [Apache POI](#apache-poi)
-  - [Apache POI OOXML](#apache-poi-ooxml)
-  - [Hamcrest](#hamcrest)
-  - [JCommander](#jcommander)
-  - [JJWT](#jjwt)
-  - [JSoup](#jsoup)
-  - [JUnit](#junit)
-  - [PostgreSQL](#postgresql)
-  - [OptaPlanner](#optaplanner)
-  - [Oshi](#oshi)
-  - [Spring Boot](#spring-boot)
-  - [SpringDoc OpenAPI Starter WebMVC UI](#springdoc-openapi-starter-webmvc-ui)
-  - [XML APIS](#xml-apis)
-- [Python](#python)
-- [TypeScript](#typescript)
-- [GitHub actions](#github-actions)
+- [Stack of technologies](#stack-of-technologies)
+  - [Tools](#tools)
+  - [Java](#java)
+    - [Apache POI](#apache-poi)
+    - [Apache POI OOXML](#apache-poi-ooxml)
+    - [Hamcrest](#hamcrest)
+    - [JCommander](#jcommander)
+    - [JJWT](#jjwt)
+    - [JSoup](#jsoup)
+    - [JUnit](#junit)
+    - [PostgreSQL](#postgresql)
+    - [OptaPlanner](#optaplanner)
+    - [Oshi](#oshi)
+    - [Spring Boot](#spring-boot)
+    - [SpringDoc OpenAPI Starter WebMVC UI](#springdoc-openapi-starter-webmvc-ui)
+    - [XML APIS](#xml-apis)
+  - [Python](#python)
+  - [TypeScript](#typescript)
+  - [GitHub actions](#github-actions)
 
 ## Tools
 
@@ -129,7 +130,7 @@
 <dependency>
   <groupId>org.springframework.boot</groupId>
   <artifactId>spring-boot</artifactId>
-  <version>3.3.3</version>
+  <version>3.4.0</version>
 </dependency>
 ```
 
