@@ -1,15 +1,14 @@
-# Vue
+# Vue.js
 
-## Table of Contents
-
-1. [Basics](#basics)
-2. [SOLID](#solid)
+- [Vue.js](#vuejs)
+  - [Basics](#basics)
+  - [SOLID](#solid)
 
 ## Basics
 
 The style guide we follow for the TypeScript programming language is the Google TypeScript style guide. This style guide can be found at the following URL: [Vue.js Style Guide](https://vuejs.org/style-guide/).
 
-Additionally, below we outline basic considerations that all code implemented in a .vue file must meet:
+Additionally, below we outline basic considerations that all code implemented in a `.vue` file must meet:
 
 **1. Each component or view must have its own .vue file.**
 
@@ -21,13 +20,13 @@ Additionally, below we outline basic considerations that all code implemented in
 
 **5. Language tags should always be camelCase.**
 
-**6. For each CRUD (Create, Read, Update, and Delete) operation of any entity** , there must be a corresponding view in Vue whose file should be named using the format EntityName+OperationName+View.vue (for instance; TaskCreateView.vue, TaskReadView.vue, TaskUpdateView.vue, ...). In other words, there cannot be a view for both creating and updating, or for creating, updating, and reading.
+**6. For each CRUD (Create, Read, Update, and Delete) operation of any entity** , there must be a corresponding view in Vue whose file should be named using the format `EntityName+OperationName+View.vue` (for instance, `TaskCreateView.vue`, `TaskReadView.vue`, `TaskUpdateView.vue`,...). In other words, there cannot be a view for both creating and updating, or for creating, updating, and reading.
 
 **7. The source code, documentation, images, and any other assets must be written in English.** Additionally, the names of files must also be written in English.
 
 **8. Each attribute of a value object or entity must be documented using multi-line comments.** Additionally, optional and computed attributes must be indicated in the corresponding comments.
 
-**9. Always use inside v-for.** Using the key attribute with the v-for directive helps your application be constant and predictable whenever you want to manipulate the data. This is necessary so that Vue can track your component state as well as have a constant reference to your different elements. An example where keys are extremely useful is when using animations or Vue transitions. Without keys, Vue will just try to make the DOM has efficient as possible. This may mean elements in the v-for may appear out of order or their behavior will be less predictable. If we have a _unique_ key reference to each element, then we can better predict how exactly our Vue application will handle DOM manipulation.
+**9. Always use inside v-for.** Using the key attribute with the v-for directive helps your application be constant and predictable whenever you want to manipulate the data. This is necessary so that Vue can track your component state as well as have a constant reference to your different elements. An example where keys are extremely useful is when using animations or Vue transitions. Without keys, Vue will just try to make the DOM has efficient as possible. This may mean elements in the v-for may appear out of order or their behavior will be less predictable. If we have a `_unique_` key reference to each element, then we can better predict how exactly our Vue application will handle DOM manipulation.
 
 ```javascript
 <template>
@@ -511,7 +510,7 @@ If you wish for components rendered with the ```<component>``` tag (or rendered 
 </template>
 ```
 
-**23. Patterns. Functional component.** A functional component is a special SFC, it is basically a component that is stateless (meaning no script tag). It only accepts props in order to display data. In order to make a SFC a functional one you add the the functional attribute to the <template> tag like this: <template functional>
+**23. Patterns. Functional component.** A functional component is a special SFC, it is basically a component that is stateless (meaning no `script` tag). It only accepts props in order to display data. In order to make a SFC a functional one you add the the functional attribute to the `<template>` tag like this: `<template functional>`
 
 ```javascript
 fp-component.vue
@@ -640,7 +639,7 @@ export default {
 
 **26. Patterns. Hight order components.** Higher Order Component is a function which takes as an argument a component and returns newly created component. Returned component is usually augmented with features provided by HOC (Higher Order Component). Higher Order Component is not a piece of software which can be grabbed and installed, it’s a technique which may be helpful in writing reusable and maintainable code.
 
-**Step 1. Components Setup.** The artificial application I created for the purpose of this article consists of two components: CommentsList and BlogPost. Both components are rendered inside App component, the main component of the application.
+**Step 1. Components Setup.** The artificial application I created for the purpose of this article consists of two components: `CommentsList` and `BlogPost`. Both components are rendered inside `App` component, the main component of the application.
 **App.vue**
 ```javascript
 <template>
@@ -662,7 +661,7 @@ import BlogPost from './components/BlogPost'export default {
 </script>
 ```
 
-CommentsList component displays list of comments fetched from the external data source. Additionally, on mounted hook an event listener is added which listens to changes in the data source and updates comment’s list accordingly. On hook beforeDestroy the listener is removed.
+`CommentsList` component displays list of comments fetched from the external data source. Additionally, on mounted hook an event listener is added which listens to changes in the data source and updates comment’s list accordingly. On hook beforeDestroy the listener is removed.
 
 **components/CommentsList.vue**
 ```javascript
@@ -700,7 +699,7 @@ CommentsList component displays list of comments fetched from the external data 
 </script>
 ```
 
-BlogPost component displays a blog post content. Similarly as CommentsList , it fetches its data from the external data source and updates the post’s content on every change in external data source.
+`BlogPost` component displays a blog post content. Similarly as CommentsList , it fetches its data from the external data source and updates the post’s content on every change in external data source.
 **components/BlogPost.vue**
 ```javascript
 <template>
@@ -733,13 +732,13 @@ BlogPost component displays a blog post content. Similarly as CommentsList , it 
 </script>
 ```
 
-BlogPost and CommentsList components share four functionalities:
+`BlogPost` and `CommentsList` components share four functionalities:
 - Fetch the data from the external data source (in this case from DataSource ) inside mounted hook
 - Update the data on every update in the external data source
 - Add the change listener to the data source
 - Remove the change listener from the data source
 
-In order to avoid code repetitions the shared logic between BlogPost and CommentsList can be extracted to Higher Order Component.
+In order to avoid code repetitions the shared logic between `BlogPost` and `CommentsList` can be extracted to Higher Order Component.
 
 **Step 2. Higher Order Component.** In this step I’ll move the duplicated code to Higher Order Component called withSubscription. Higher Order Component is a function that takes a component as an argument and returns a new component. Let’s write it in Vue
 
@@ -781,7 +780,7 @@ const withSubscription = (component) => {
 export default withSubscription
 ```
 
-Now the new component returned by the Higher Order Component has required lifecycle hooks. The handleChange method is left empty. Both components havehandleChange method, however, this method has slightly different implementation in each component. Higher Order Component can accept more than one argument. Currently, withSubscription accepts only component as an argument. In order to call custom logic inside handleChange second argument is needed. The second argument is the method which should be called on every data source change. Passed method returns updated data which has to be passed down to the newly created component as a prop.
+Now the new component returned by the Higher Order Component has required lifecycle hooks. The `handleChange` method is left empty. Both components havehandleChange method, however, this method has slightly different implementation in each component. Higher Order Component can accept more than one argument. Currently, withSubscription accepts only component as an argument. In order to call custom logic inside `handleChange` second argument is needed. The second argument is the method which should be called on every data source change. Passed method returns updated data which has to be passed down to the newly created component as a prop.
 
 **hocs/withSubscription.js**
 ```javascript
@@ -816,7 +815,7 @@ const withSubscription = (component, selectData) => {return Vue.component('withS
 export default withSubscription
 ```
 
-The usage of Higher Order Component inside App.vue looks as follows
+The usage of Higher Order Component inside `App.vue` looks as follows
 **App.vue**
 ```javascript
 <template>
@@ -844,7 +843,7 @@ export default {
 </script>
 ```
 
-And here is the code of BlogPost and CommentsList
+And here is the code of `BlogPost` and `CommentsList`
 **components/BlogPost.vue**
 ```javascript
 <template>
@@ -876,7 +875,7 @@ And here is the code of BlogPost and CommentsList
 
 It all looks very nice but there is one missing piece. What if I need to pass a blog post ID to BlogPost ? Or what if I need to emit an event from BlogPost to App component? With current implementation it won’t work.
 
-**Step 3. Handling Props and Events in Higher Order Component.** Firstly, let’s change a bit the implementation of the getBlogPost method in DataSource . It needs to take the post’s id as an argument in order to know which post to fetch and return. Since the actual getBlogPost call happens inside BlogPost component it makes sense to pass as a prop the desired blog post id and make use of it when the getBlogPost method is called. In order to do so I need to do two things: pass theid prop from the App component down to the BlogPost component and change the function I pass to the Higher Order Component so it accepts the second argument — the props it has to pass down further to the BlogPost.
+**Step 3. Handling Props and Events in Higher Order Component.** Firstly, let’s change a bit the implementation of the getBlogPost method in DataSource . It needs to take the post’s id as an argument in order to know which post to fetch and return. Since the actual getBlogPost call happens inside `BlogPost` component it makes sense to pass as a prop the desired blog post id and make use of it when the getBlogPost method is called. In order to do so I need to do two things: pass theid prop from the App component down to the BlogPost component and change the function I pass to the Higher Order Component so it accepts the second argument — the props it has to pass down further to the `BlogPost`.
 **App.vue**
 ```javascript
 <template>
@@ -959,7 +958,7 @@ return Vue.component('withSubscription', {
 }
 ```
 
-The last piece which was updated is the selectData function call inside thehandleChange method. The second argument was added — the props of the Higher Order Component — this.$props. The $props property is a Vue Component instance property available since Vue version 2.2. I covered passing down the props to a child component, the last piece missing is events emission from a child component up to its parent. Let’s add event listener inside App.vue component and something that emits an event inside BlogPost.vue .
+The last piece which was updated is the selectData function call inside thehandleChange method. The second argument was added — the props of the Higher Order Component — `this.$props`. The `$props` property is a Vue Component instance property available since Vue version 2.2. I covered passing down the props to a child component, the last piece missing is events emission from a child component up to its parent. Let’s add event listener inside App.vue component and something that emits an event inside `BlogPost.vue`.
 
 **App.vue**
 ```javascript
@@ -989,7 +988,7 @@ return Vue.component('withSubscription', {
     on: {...this.$listeners} # <= this line,
 })
 ```
-Similarly as with this.$props , there is an instance property $listener which contains the parent-scope v-on event listeners.
+Similarly as with `this.$props`, there is an instance property `$listener` which contains the parent-scope v-on event listeners.
 
 **27. Provider/Consumer.** The Provider/Consumer pattern is very simple, it aims at separating stateful logic from the presentation. We need two components to create this pattern.
 
@@ -1037,7 +1036,7 @@ Provider.vue is responsible for containing all the stateful logic, we are succes
 </template>
 ```
 
-Consumer.vue is responsible for containing the presentation, note that we are using a Functional Component.
+`Consumer.vue` is responsible for containing the presentation, note that we are using a Functional Component.
 
 **App.vue**
 
