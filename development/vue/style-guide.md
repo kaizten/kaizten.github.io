@@ -1,6 +1,6 @@
-# Vue.js
+# Vue.js Style Guide
 
-- [Vue.js](#vuejs)
+- [Vue.js Style Guide](#vuejs-style-guide)
   - [Basics](#basics)
   - [SOLID](#solid)
 
@@ -10,9 +10,9 @@ The style guide we follow for the TypeScript programming language is the Google 
 
 Additionally, below we outline basic considerations that all code implemented in a `.vue` file must meet:
 
-**1. Each component or view must have its own .vue file.**
+**1. Each component or view must have its own `.vue` file.**
 
-**2. The components used by the views must be 99% within kaizten-vue library.**, meaning the number of files in the components folder should tend to 0, with a few exceptions.
+**2. The components used by the views must be 99% within kaizten-vue library**, meaning the number of files in the `components` folder should tend to 0, with a few exceptions.
 
 **3. Filenames of Single-File Components should always be PascalCase.**
 
@@ -133,9 +133,10 @@ export default {
 
 **15. Stay consistent with your directive shorthand.**
 Vue developers is to use shorthand for directives. For example,
-- @ is short for v-on:
-- : is short for v-bind
-- \# is short for v-slot
+- `@` is short for `v-on`
+- `:` is short for `v-bind`
+- `#` is short for `v-slot`
+
 It is great to use these shorthands in your Vue project. But to create some sort of convention across your project, you should either always use them or never use them. This will make your project more cohesive and readable.
 
 **16. Don’t call a method on created AND watch.** A common mistake Vue developers make (or maybe it was just me) is they unnecessarily call a method in created and watch. The thought behind this is that we want to run the watch hook as soon as a component is initialized.
@@ -186,18 +187,17 @@ export default {
 </script>
 ```
 
-**17. Template expressions should only have basic JavaScript expressions.** It’s natural to want to add as much inline functionality in your templates as possible. But this makes our template less declarative and more complex. Meaning that our template just gets extremely cluttered. For this, let’s check out another example from the Vue style guide.Look how confusing it is.
+**17. Template expressions should only have basic JavaScript expressions.** It is natural to want to add as much inline functionality in your templates as possible. But this makes our template less declarative and more complex. Meaning that our template just gets extremely cluttered. For this, let’s check out another example from the Vue style guide. Look how confusing it is.
 
 ```javascript
 <template>
-  {{
-    fullName
+  { { fullName
       .split(' ')
       .map(function (word) {
         return word[0].toUpperCase() + word.slice(1)
       })
       .join(' ')
-  }}
+  } }
 </template>
 ```
 
@@ -207,7 +207,6 @@ Basically, we want everything in our template to be intuitive as to what it is d
 <template>{{ normalizedFullName }}</template>
 <script>
 export default {
-  // The complex expression has been moved to a computed property
   computed: {
     normalizedFullName: function () {
       return this.fullName
@@ -222,7 +221,7 @@ export default {
 </script>
 ```
 
-**18. Vue Single-File Components (a.k.a. \*.vue files, abbreviated as SFC).** is a special file format that allows us to encapsulate the template, logic, and styling of a Vue component in a single file. Here's an example SFC:
+**18. Vue Single-File Components (a.k.a. `\*.vue` files, abbreviated as SFC).** is a special file format that allows us to encapsulate the template, logic, and styling of a Vue component in a single file. Here's an example SFC:
 
 ```javascript
 <script setup>
@@ -240,7 +239,7 @@ const greeting = ref('Hello World!')
 </style>
 ```
 
-**19. Patterns. Component Communication. Props and Events.** Basically, vue components follow one-way data flow, that is props down (See official guide) and events up. Props are read-only data, so it's impossible to change props from child components. When props change, child components will be rerendered automatically (props are a reactive data source). Child components can only emit events to their direct parent, so that the parent component may change data, mapped to the child component's props.
+**19. Patterns. Component Communication. Props and Events.** Basically, vue components follow one-way data flow, that is props down (see official guide) and events up. Props are read-only data, so it's impossible to change props from child components. When props change, child components will be rerendered automatically (props are a reactive data source). Child components can only emit events to their direct parent, so that the parent component may change data, mapped to the child component's props.
 ```javascript
 <template>
   <button @click="$emit('click');">{{ text }}</button>
