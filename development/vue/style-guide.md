@@ -190,7 +190,6 @@ export default {
 
 ```javascript
 <template>
-  <!--BAD-->
   {{
     fullName
       .split(' ')
