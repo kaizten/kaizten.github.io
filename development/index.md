@@ -1,6 +1,9 @@
 - [**Clean code guide**](clean-code-guide.md)
 
 - **Domain driven design:**
+  - **Enumerates:**
+    - [Description](./ddd/enumerates.md)
+    - [Example in Java](./ddd/OrderStatus.java)
   - **Value objects:**
     - [Description](./ddd/value-objects.md)
     - [Example in Java](./ddd/Address.java)
@@ -37,3 +40,6 @@
   - [Style guide](./vue/style-guide.md)
   - Forms:
     - [Tests](./vue/tests_form.md)
+
+- **Windows:**
+  - [Git Bash](./windows/git-bash.md)
