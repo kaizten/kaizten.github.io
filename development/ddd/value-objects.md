@@ -2,7 +2,7 @@
 
 - [Objetos valor](#objetos-valor)
   - [Características principales](#características-principales)
-  - [Ejemplo ilustrativos](#ejemplo-ilustrativos)
+  - [Ejemplo ilustrativo en Java](#ejemplo-ilustrativo-en-java)
     - [Explicación del código](#explicación-del-código)
 
 Los **objetos valor** (value objects) son un concepto fundamental en el diseño dirigido por el dominio (**Domain-Driven Design** o DDD). Un objeto valor representa una entidad sin identidad propia dentro del dominio del negocio. En otras palabras, se trata de un conjunto de atributos que definen completamente su valor y se consideran iguales si todos sus atributos coinciden. Se diferencian de las entidades, las cuales poseen una identidad única que las distingue.
@@ -15,7 +15,7 @@ Los objetos valor son **inmutables**, lo que significa que no pueden cambiar des
 - **Inmutabilidad**. Una vez creado, su estado no pueden cambiar.
 - **Composición**. Son frecuentemente utilizados para modelar atributos complejos de entidades.
 
-## Ejemplo ilustrativos
+## Ejemplo ilustrativo en Java
 
 Para ilustrar cómo son los objetos valor, podemos usar un ejemplo en **Java**. Supongamos que tenemos un dominio de pedidos donde necesitamos representar una **dirección**. Una dirección puede estar compuesta por atributos como la calle, la ciudad, y el código postal. No tiene sentido darle una identidad única a una dirección, ya que lo importante es su valor completo.
 
