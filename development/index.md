@@ -6,7 +6,6 @@
     - [Example in Java](./ddd/Address.java)
 
 - **Grafana:**
-
   - [Arrays](./grafana/arrays.md)
   - [Duration](./grafana/duration.md)
   - [State Timeline](./grafana/statetimeline.md)
