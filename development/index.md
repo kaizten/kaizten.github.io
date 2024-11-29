@@ -22,6 +22,8 @@
 
 - **PostgreSQL:**
   - [Load data from Python](./postgresql/load-data-from-python.md)
+  - [PostgreSQL mediante Docker](./postgresql/postgresql-docker.md)
+  - [PostgreSQL mediante Docker Compose](./postgresql/postgresql-docker-compose.yml)
 
 - **SimPy:**
   - [Resource with identifier](./simpy/resource-with-identifier.py)
