@@ -1,6 +1,6 @@
-# PostgreSQL mediante Docker
+# PostgreSQL mediante Docker Compose
 
-- [PostgreSQL mediante Docker](#postgresql-mediante-docker)
+- [PostgreSQL mediante Docker Compose](#postgresql-mediante-docker-compose)
   - [Conectar al contenedor](#conectar-al-contenedor)
   - [Conectar a `psql`](#conectar-a-psql)
 
