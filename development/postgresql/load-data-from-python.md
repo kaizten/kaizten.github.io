@@ -105,6 +105,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    image: kaizten/postgresql-python:latest
     container_name: python_container
     volumes:
       - ./scripts:/scripts
