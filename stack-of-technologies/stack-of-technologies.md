@@ -3,9 +3,11 @@
 - [Stack of technologies](#stack-of-technologies)
   - [Tools](#tools)
   - [Java](#java)
+    - [Angus Mail Provider](#angus-mail-provider)
     - [Apache POI](#apache-poi)
     - [Apache POI OOXML](#apache-poi-ooxml)
     - [Hamcrest](#hamcrest)
+    - [JASYPT](#jasypt)
     - [JCommander](#jcommander)
     - [JJWT](#jjwt)
     - [JSoup](#jsoup)
@@ -38,6 +40,15 @@
 
 * [Java](https://en.wikipedia.org/wiki/Java_version_history): `^17`
 
+### [Angus Mail Provider](https://mvnrepository.com/artifact/org.eclipse.angus/angus-mail)
+```xml
+<dependency>
+    <groupId>org.eclipse.angus</groupId>
+    <artifactId>angus-mail</artifactId>
+    <version>2.0.3</version>
+</dependency>
+```
+
 ### [Apache POI](https://mvnrepository.com/artifact/org.apache.poi/poi)
 ```xml
 <dependency>
@@ -62,6 +73,15 @@
   <groupId>org.hamcrest</groupId>
   <artifactId>hamcrest</artifactId>
   <version>3.0</version>
+</dependency>
+```
+
+### [JASYPT](https://mvnrepository.com/artifact/org.jasypt/jasypt)
+```xml
+<dependency>
+    <groupId>org.jasypt</groupId>
+    <artifactId>jasypt</artifactId>
+    <version>1.9.3</version>
 </dependency>
 ```
 
