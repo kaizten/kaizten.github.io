@@ -10,6 +10,9 @@
     - [JJWT](#jjwt)
     - [JSoup](#jsoup)
     - [JUnit](#junit)
+    - [Kaizten Optimization](#kaizten-optimization)
+    - [Kaizten Optimization CPLEX](#kaizten-optimization-cplex)
+    - [Kaizten Utils](#kaizten-utils)
     - [PostgreSQL](#postgresql)
     - [OptaPlanner](#optaplanner)
     - [Oshi](#oshi)
@@ -95,6 +98,33 @@
   <groupId>org.junit.jupiter</groupId>
   <artifactId>junit-jupiter-engine</artifactId>
   <version>5.10.2</version>
+</dependency>
+```
+
+### [Kaizten Optimization](https://github.com/kaizten/kaizten-optimization/)
+```xml
+<dependency>
+  <groupId>com.kaizten</groupId>
+  <artifactId>kaizten-optimization</artifactId>
+  <version>1.0-SNAPSHOT</version>
+</dependency>
+```
+
+### [Kaizten Optimization CPLEX](https://github.com/kaizten/kaizten-optimization-cplex/)
+```xml
+<dependency>
+  <groupId>com.kaizten</groupId>
+  <artifactId>kaizten-optimization-cplex</artifactId>
+  <version>1.0-SNAPSHOT</version>
+</dependency>
+```
+
+### [Kaizten Utils](https://github.com/kaizten/kaizten-utils/)
+```xml
+<dependency>
+  <groupId>com.kaizten</groupId>
+  <artifactId>kaizten-utils</artifactId>
+  <version>1.0-SNAPSHOT</version>
 </dependency>
 ```
 
