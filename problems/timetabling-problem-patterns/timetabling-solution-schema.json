@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "title": "Timetabling Problem Solution",
+  "description": "Definition of solution for the Timetabling Problem",
+  "type": "object",
+  "properties": {
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "numberOfWorkers": {
+          "type": "integer"
+        },
+        "maxDaysWorked": {
+          "type": "integer"
+        },
+        "minDaysWorked": {
+          "type": "integer"
+        },
+        "numberOfCompetences": {
+          "type": "integer"
+        },
+        "varianceMinMaxDaysWorked": {
+          "type": "number"
+        },
+        "workShiftAndWorkers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "workersidCount": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "workerid": {
+                      "type": "integer"
+                    },
+                    "count": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "workerid",
+                    "count"
+                  ]
+                }
+              },
+              "workshiftid": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "workersidCount",
+              "workshiftid"
+            ]
+          }
+        },
+        "numberOfWorkShiftTypes": {
+          "type": "integer"
+        },
+        "patternFulfillment": {
+          "type": "integer"
+        },
+        "averageDaysWorked": {
+          "type": "integer"
+        },
+        "workShiftAndNumberOfWorkers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "numberOfWorkers": {
+                "type": "integer"
+              },
+              "workshiftid": {
+                "type": "integer"
+              },
+              "coveragePercent": {
+                "type": "integer"
+              },
+              "varianceMinMax": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "numberOfWorkers",
+              "workshiftid",
+              "coveragePercent",
+              "varianceMinMax"
+            ]
+          }
+        },
+        "workersAndDaysWorked": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "workerid": {
+                "type": "integer"
+              },
+              "maxConsecutiveDaysWorked": {
+                "type": "integer"
+              },
+              "daysWorked": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "workerid",
+              "maxConsecutiveDaysWorked",
+              "daysWorked"
+            ]
+          }
+        }
+      },
+      "required": [
+        "numberOfWorkers",
+        "maxDaysWorked",
+        "minDaysWorked",
+        "numberOfCompetences",
+        "varianceMinMaxDaysWorked",
+        "workShiftAndWorkers",
+        "numberOfWorkShiftTypes",
+        "patternFulfillment",
+        "averageDaysWorked",
+        "workShiftAndNumberOfWorkers",
+        "workersAndDaysWorked"
+      ]
+    },
+    "planningHorizon": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "workersWorkShift": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "workerid": {
+                  "type": "integer"
+                },
+                "workshiftid": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "workerid",
+                "workshiftid"
+              ]
+            }
+          },
+          "day": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "workersWorkShift",
+          "day"
+        ]
+      }
+    }
+  },
+  "required": [
+    "metrics",
+    "planningHorizon"
+  ]
+}

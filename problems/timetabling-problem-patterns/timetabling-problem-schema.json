@@ -1,0 +1,203 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "title": "Timetabling Problem",
+  "description": "Definition of instance of the Timetabling Problem",
+  "type": "object",
+  "properties": {
+    "competences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "name",
+          "id"
+        ]
+      }
+    },
+    "max_shifts": {
+      "type": "integer"
+    },
+    "patterns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "pattern": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "id": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "pattern",
+          "id"
+        ]
+      }
+    },
+    "shifts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "schedule": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          }, 
+          "startTime": {
+            "type": "string", 
+            "format": "time"
+          }, 
+          "finishTime": {
+            "type": "string", 
+            "format": "time"
+          }
+        },
+        "required": [
+          "schedule",
+          "name",
+          "id"
+        ]
+      }
+    },
+    "days": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "shifts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "competences": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "min": {
+                        "type": "integer"
+                      },
+                      "max": {
+                        "type": "integer"
+                      },
+                      "id": {
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "min",
+                      "max",
+                      "id"
+                    ]
+                  }
+                },
+                "maxWorkers": {
+                  "type": "integer"
+                },
+                "id": {
+                  "type": "integer"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "minWorkers": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "competences",
+                "maxWorkers",
+                "id",
+                "minWorkers"
+              ]
+            }
+          },
+          "id": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "shifts",
+          "id"
+        ]
+      }
+    },
+    "workers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "competences": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "name": {
+            "type": "string"
+          },
+          "fixed": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "shift": {
+                  "type": "integer"
+                },
+                "day": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "shift",
+                "day"
+              ]
+            }
+          },
+          "id": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "competences",
+          "name",
+          "fixed",
+          "id"
+        ]
+      }
+    },
+    "min_shifts": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "competences",
+    "max_shifts",
+    "patterns",
+    "shifts",
+    "days",
+    "workers",
+    "min_shifts"
+  ]
+}
