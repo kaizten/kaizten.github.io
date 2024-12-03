@@ -131,6 +131,11 @@
             "minLength": 3,
             "maxLength": 3,
             "pattern": "^[A-Z]{3}$"
+        }, 
+        "group": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 20
         }
     },
     "required": [
