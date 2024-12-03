@@ -16,6 +16,7 @@
     - [Kaizten Optimization](#kaizten-optimization)
     - [Kaizten Optimization CPLEX](#kaizten-optimization-cplex)
     - [Kaizten Utils](#kaizten-utils)
+    - [Micrometer Registry Prometheus](#micrometer-registry-prometheus)
     - [MinIO](#minio)
     - [PostgreSQL](#postgresql)
     - [OptaPlanner](#optaplanner)
@@ -156,6 +157,15 @@
   <groupId>com.kaizten</groupId>
   <artifactId>kaizten-utils</artifactId>
   <version>1.0-SNAPSHOT</version>
+</dependency>
+```
+
+### [Micrometer Registry Prometheus](https://mvnrepository.com/artifact/io.micrometer/micrometer-registry-prometheus)
+```xml
+<dependency>
+    <groupId>io.micrometer</groupId>
+    <artifactId>micrometer-registry-prometheus</artifactId>
+    <version>1.14.1</version>
 </dependency>
 ```
 
