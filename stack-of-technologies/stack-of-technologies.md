@@ -10,11 +10,13 @@
     - [JASYPT](#jasypt)
     - [JCommander](#jcommander)
     - [JJWT](#jjwt)
+    - [JSON](#json)
     - [JSoup](#jsoup)
     - [JUnit](#junit)
     - [Kaizten Optimization](#kaizten-optimization)
     - [Kaizten Optimization CPLEX](#kaizten-optimization-cplex)
     - [Kaizten Utils](#kaizten-utils)
+    - [MinIO](#minio)
     - [PostgreSQL](#postgresql)
     - [OptaPlanner](#optaplanner)
     - [Oshi](#oshi)
@@ -103,12 +105,21 @@
 </dependency>
 ```
 
-### [JSoup](https://mvnrepository.com/artifact/org.jsoup/jsoup)
+### [JSON](https://mvnrepository.com/artifact/org.json/json)
 ```xml
 <dependency>
     <groupId>org.jsoup</groupId>
     <artifactId>jsoup</artifactId>
     <version>1.18.1</version>
+</dependency>
+```
+
+### [JSoup](https://mvnrepository.com/artifact/org.jsoup/jsoup)
+```xml
+<dependency>
+    <groupId>org.json</groupId>
+    <artifactId>json</artifactId>
+    <version>20240303</version>
 </dependency>
 ```
 
@@ -145,6 +156,15 @@
   <groupId>com.kaizten</groupId>
   <artifactId>kaizten-utils</artifactId>
   <version>1.0-SNAPSHOT</version>
+</dependency>
+```
+
+### [MinIO](https://mvnrepository.com/artifact/io.minio/minio)
+```xml
+<dependency>
+    <groupId>io.minio</groupId>
+    <artifactId>minio</artifactId>
+    <version>8.5.14</version>
 </dependency>
 ```
 
