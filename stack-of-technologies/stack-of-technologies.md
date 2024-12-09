@@ -278,5 +278,6 @@
 
 * [Checkout](https://github.com/actions/checkout): `v4`
 * [Docker Build Push](https://github.com/mr-smithers-excellent/docker-build-push): `v6`
+* [GitHub App Token](https://github.com/tibdex/github-app-token): `v2.1.0`
 * [Setup Java](https://github.com/actions/setup-java): `v4`
 * [Setup Node](https://github.com/actions/setup-node): `v4`
