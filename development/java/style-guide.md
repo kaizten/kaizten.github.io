@@ -7,3 +7,7 @@
 * Defined tests must be available for each value object.
 * Defined tests must be available for each enum.
 * OpenAPI documentation must be available for each REST controller.
+* `pom.xml` files must have the following features:
+  * Tag `name` should be defined.
+  * Tag `description` should be defined.
+  * Tag `url` should be defined. Its value must be `https://www.kaizten.com`
