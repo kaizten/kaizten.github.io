@@ -40,6 +40,7 @@
 
 - **Vue.js:**
   - [Style guide](./vue/style-guide.md)
+  - [View data model](./vue/view-model.md)
   - Forms:
     - [Tests](./vue/tests_form.md)
 
