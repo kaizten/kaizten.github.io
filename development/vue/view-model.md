@@ -13,7 +13,7 @@ En base a lo anterior, supongamos que existe una vista `VehicleAddView.vue` dest
 - Capacidad del vehículo en términos de número de asientos 
 - Nombre del conductor. Este campo es opcional en el formulario.
 
-Por tanto, para esta vista su modelo de datos sería `adapter/vuejs/data-model/vehicle-add-view-data-model.ts` y su contenido, tal como sigue:
+Por tanto, para esta vista su modelo de datos sería `adapter/vuejs/views/data-model/vehicle-add-view-data-model.ts` y su contenido, tal como sigue:
 
 ```ts
 import type { EmployeeName } from '../value-object/employee-name';
