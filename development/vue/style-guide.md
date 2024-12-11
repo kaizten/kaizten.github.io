@@ -1,35 +1,40 @@
 # Vue.js Style Guide
 
 - [Vue.js Style Guide](#vuejs-style-guide)
-  - [Basics](#basics)
+  - [Filenames](#filenames)
+  - [Views](#views)
+  - [Tags](#tags)
+  - [Others](#others)
   - [SOLID](#solid)
-
-## Basics
 
 The style guide we follow for the TypeScript programming language is the Google TypeScript style guide. This style guide can be found at the following URL: [Vue.js Style Guide](https://vuejs.org/style-guide/).
 
-Additionally, below we outline basic considerations that all code implemented in a `.vue` file must meet:
+Additionally, below we outline basic considerations that all code implemented in a `.vue` file must meet.
 
-1. Each component or view must have its own `.vue` file.
-2. **Filenames:**
-   1. Filenames of Single-File Components should always be PascalCase. For example, `MyFooter.vue`.
-   2. Folders should always be kebab-case. For example, `../data-components/header-elements/..`
-3. **Views:**
-   1. Each view file must have `.vue` extension.
-   2. Each view must be named `<NAME>View.vue`, where `<NAME>` is the selected name for the view.
-   3. Each view must be located in folder `../vuejs/views/..`
-   4. For each CRUD (Create, Read, Update, and Delete) operation of any entity , there must be a corresponding view in Vue whose file should be named using the format `EntityName+OperationName+View.vue` (for instance, `TaskCreateView.vue`, `TaskReadView.vue`, `TaskUpdateView.vue`,...). In other words, there cannot be a view for both creating and updating, or for creating, updating, and reading.
-   5. Each view containing a form must include a data model. Read [this](view-model.md) for more information.
-4. **Tags:**
-   1. Language tags should always be camelCase.
+## Filenames
 
-5. The components used by the views must be 99% within kaizten-vue library, meaning the number of files in the `components` folder should tend to 0, with a few exceptions.
+1. Filenames of Single-File Components should always be PascalCase. For example, `MyFooter.vue`.
+2. Folders should always be kebab-case. For example, `../data-components/header-elements/..`
 
-6.  The source code, documentation, images, and any other assets must be written in English. Additionally, the names of files must also be written in English.
+## Views
+1. Each view file must have `.vue` extension.
+2. Each view must be named `<NAME>View.vue`, where `<NAME>` is the selected name for the view.
+3. Each view must be located in folder `../vuejs/views/..`
+4. For each CRUD (Create, Read, Update, and Delete) operation of any entity , there must be a corresponding view in Vue whose file should be named using the format `EntityName+OperationName+View.vue` (for instance, `TaskCreateView.vue`, `TaskReadView.vue`, `TaskUpdateView.vue`,...). In other words, there cannot be a view for both creating and updating, or for creating, updating, and reading.
+5. Each view containing a form must include a data model. Read [this](view-model.md) for more information.
 
-7.  Each attribute of a value object or entity must be documented using multi-line comments. Additionally, optional and computed attributes must be indicated in the corresponding comments.
+## Tags
+1. Language tags should always be camelCase.
 
-8.  Always use inside v-for. Using the key attribute with the v-for directive helps your application be constant and predictable whenever you want to manipulate the data. This is necessary so that Vue can track your component state as well as have a constant reference to your different elements. An example where keys are extremely useful is when using animations or Vue transitions. Without keys, Vue will just try to make the DOM has efficient as possible. This may mean elements in the v-for may appear out of order or their behavior will be less predictable. If we have a `_unique_` key reference to each element, then we can better predict how exactly our Vue application will handle DOM manipulation.
+## Others
+
+2. The components used by the views must be 99% within kaizten-vue library, meaning the number of files in the `components` folder should tend to 0, with a few exceptions.
+
+3.  The source code, documentation, images, and any other assets must be written in English. Additionally, the names of files must also be written in English.
+
+4.  Each attribute of a value object or entity must be documented using multi-line comments. Additionally, optional and computed attributes must be indicated in the corresponding comments.
+
+5.  Always use inside v-for. Using the key attribute with the v-for directive helps your application be constant and predictable whenever you want to manipulate the data. This is necessary so that Vue can track your component state as well as have a constant reference to your different elements. An example where keys are extremely useful is when using animations or Vue transitions. Without keys, Vue will just try to make the DOM has efficient as possible. This may mean elements in the v-for may appear out of order or their behavior will be less predictable. If we have a `_unique_` key reference to each element, then we can better predict how exactly our Vue application will handle DOM manipulation.
 
 ```javascript
 <template>
