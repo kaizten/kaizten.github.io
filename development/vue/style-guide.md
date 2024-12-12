@@ -17,8 +17,9 @@ Additionally, below we outline basic considerations that all code implemented in
 2. Folders should always be kebab-case. For example, `../data-components/header-elements/..`
 
 ## Views
-1. Each view file must have `.vue` extension.
-2. Each view must be named `<NAME>View.vue`, where `<NAME>` is the selected name for the view.
+
+1. Each view must be named `<NAME>View.vue`, where `<NAME>` is the selected name for the view.
+2. The name of each view must be in Pascal case.
 3. Each view must be located in folder `../vuejs/views/..`
 4. For each CRUD (Create, Read, Update, and Delete) operation of any entity , there must be a corresponding view in Vue whose file should be named using the format `EntityName+OperationName+View.vue` (for instance, `TaskCreateView.vue`, `TaskReadView.vue`, `TaskUpdateView.vue`,...). In other words, there cannot be a view for both creating and updating, or for creating, updating, and reading.
 5. Each view containing a form must include a data model. Read [this](view-model.md) for more information.
