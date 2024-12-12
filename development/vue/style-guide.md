@@ -2,6 +2,7 @@
 
 - [Vue.js Style Guide](#vuejs-style-guide)
   - [Filenames](#filenames)
+  - [Components](#components)
   - [Views](#views)
   - [Tags](#tags)
   - [Others](#others)
@@ -16,6 +17,14 @@ Additionally, below we outline basic considerations that all code implemented in
 1. Filenames of Single-File Components should always be PascalCase. For example, `MyFooter.vue`.
 2. Folders should always be kebab-case. For example, `../data-components/header-elements/..`
 
+## Components
+
+1. Each component must be named `<NAME>.vue`, where `<NAME>` is the selected name for the component.
+2. The name of each component must be in Pascal case.
+3. Each view must be located in folder `../vuejs/components/..`
+4. The components used must be 99% within [kaizten-vue](https://github.com/kaizten/kaizten-vue) library. That is, the number of files in the `components` folder should tend to `0`, with a few exceptions.
+5. Each component containing a form must include a data model. Read [this](view-model.md) for more information.
+
 ## Views
 
 1. Each view must be named `<NAME>View.vue`, where `<NAME>` is the selected name for the view.
@@ -25,11 +34,10 @@ Additionally, below we outline basic considerations that all code implemented in
 5. Each view containing a form must include a data model. Read [this](view-model.md) for more information.
 
 ## Tags
+
 1. Language tags should always be camelCase.
 
 ## Others
-
-2. The components used by the views must be 99% within kaizten-vue library, meaning the number of files in the `components` folder should tend to 0, with a few exceptions.
 
 3.  The source code, documentation, images, and any other assets must be written in English. Additionally, the names of files must also be written in English.
 
