@@ -4,6 +4,7 @@
   - [Filenames](#filenames)
   - [Components](#components)
   - [Views](#views)
+  - [Router](#router)
   - [Tags](#tags)
   - [Others](#others)
   - [SOLID](#solid)
@@ -32,6 +33,10 @@ Additionally, below we outline basic considerations that all code implemented in
 3. Each view must be located in folder `../vuejs/views/..`
 4. For each CRUD (Create, Read, Update, and Delete) operation of any entity , there must be a corresponding view in Vue whose file should be named using the format `EntityName+OperationName+View.vue` (for instance, `TaskCreateView.vue`, `TaskReadView.vue`, `TaskUpdateView.vue`,...). In other words, there cannot be a view for both creating and updating, or for creating, updating, and reading.
 5. Each view containing a form must include a data model. Read [this](view-model.md) for more information.
+
+## Router
+
+1. Routes must be in kebab-case format.
 
 ## Tags
 
