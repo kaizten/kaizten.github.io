@@ -11,6 +11,7 @@
     - [JCommander](#jcommander)
     - [JJWT](#jjwt)
     - [JSON](#json)
+    - [JSON Schema Validator](#json-schema-validator)
     - [JSoup](#jsoup)
     - [JUnit](#junit)
     - [Kaizten Optimization](#kaizten-optimization)
@@ -18,6 +19,7 @@
     - [Kaizten Utils](#kaizten-utils)
     - [Micrometer Registry Prometheus](#micrometer-registry-prometheus)
     - [MinIO](#minio)
+    - [MongoDB](#mongodb)
     - [PostgreSQL](#postgresql)
     - [OptaPlanner](#optaplanner)
     - [Oshi](#oshi)
@@ -115,6 +117,15 @@
 </dependency>
 ```
 
+### [JSON Schema Validator](https://mvnrepository.com/artifact/com.networknt/json-schema-validator)
+```xml
+<dependency>
+    <groupId>com.networknt</groupId>
+    <artifactId>json-schema-validator</artifactId>
+    <version>1.5.4</version>
+</dependency>
+```
+
 ### [JSoup](https://mvnrepository.com/artifact/org.jsoup/jsoup)
 ```xml
 <dependency>
@@ -124,12 +135,12 @@
 </dependency>
 ```
 
-### [JUnit](https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api)
+### [JUnit](https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter)
 ```xml
 <dependency>
   <groupId>org.junit.jupiter</groupId>
-  <artifactId>junit-jupiter-engine</artifactId>
-  <version>5.10.2</version>
+  <artifactId>junit-jupiter</artifactId>
+  <version>5.11.3</version>
 </dependency>
 ```
 
@@ -175,6 +186,15 @@
     <groupId>io.minio</groupId>
     <artifactId>minio</artifactId>
     <version>8.5.14</version>
+</dependency>
+```
+
+### [MongoDB](https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-sync)
+```xml
+<dependency>
+    <groupId>org.mongodb</groupId>
+    <artifactId>mongodb-driver-sync</artifactId>
+    <version>5.2.1</version>
 </dependency>
 ```
 
