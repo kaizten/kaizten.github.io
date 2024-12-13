@@ -23,6 +23,7 @@
     - [PostgreSQL](#postgresql)
     - [OptaPlanner](#optaplanner)
     - [Oshi](#oshi)
+    - [SLF4J](#slf4j)
     - [Spring Boot](#spring-boot)
     - [SpringDoc OpenAPI Starter WebMVC UI](#springdoc-openapi-starter-webmvc-ui)
     - [XML APIS](#xml-apis)
@@ -222,6 +223,15 @@
   <groupId>com.github.oshi</groupId>
   <artifactId>oshi-core</artifactId>
   <version>6.6.3</version>
+</dependency>
+```
+
+###  [SLF4J](https://mvnrepository.com/artifact/org.slf4j/slf4j-api)
+```xml
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+    <version>2.0.16</version>
 </dependency>
 ```
 
