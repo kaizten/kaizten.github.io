@@ -4,7 +4,7 @@
 - **Entities:**
   - [Description](./typescript_entity.md)
   - [Tests](./tests_entity.md)
-- **Enumerate:**    
+- **Enumerates:**    
   - [Description](./typescript_enumerate.md)
   - [Tests](./tests_enumerate.md)
 - **Value objects:**

@@ -1,4 +1,6 @@
-# Java Style Guide
+# Java. Style Guide
+
+- [Java. Style Guide](#java-style-guide)
 
 * The source code, documentation (including source code, OpenAPI, etc.), images, and any other assets must be written in English. Additionally, the names of files must be also written in English.
 * Each attribute of a value object or entity must be documented using multi-line comments (`/** */`). Additionally, optional and computed attributes must be indicated in the corresponding comments as follows:
