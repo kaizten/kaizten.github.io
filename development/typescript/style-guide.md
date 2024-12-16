@@ -26,7 +26,9 @@
 
 1. Each entity must follow the rules defined for them, as can be read [read](./typescript_entity.md).
 2. The tests defined for entities defined [here](./tests_entity.md) must be implemented.
-3. Each attribute of an entity must be documented using multi-line comments (`/** */`). Additionally, optional and computed attributes must be indicated in the corresponding comments.
+3. Each attribute of an entity must be documented using multi-line comments (`/** */`). Additionally, optional and computed attributes must be indicated in the corresponding comments as follows:
+  * `It is an optional attribute.`
+  * `It is a computed attribute.`
 
 ## Enumerates
 
@@ -37,4 +39,6 @@
 
 1. Each value object must follow the rules defined for them, as can be read [read](./typescript_value-object.md).
 2. The tests defined for value objects defined [here](./tests_value-object.md) must be implemented.
-3. Each attribute of a value object must be documented using multi-line comments (`/** */`). Additionally, optional and computed attributes must be indicated in the corresponding comments.
+3. Each attribute of a value object must be documented using multi-line comments (`/** */`). Additionally, optional and computed attributes must be indicated in the corresponding comments as follows:
+  * `It is an optional attribute.`
+  * `It is a computed attribute.`
