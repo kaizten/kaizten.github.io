@@ -1,4 +1,5 @@
-**TypeScript:**
+## TypeScript
+
 - [Style guide](./style-guide.md)
 - **Entities:**
   - [Description](./typescript_entity.md)
