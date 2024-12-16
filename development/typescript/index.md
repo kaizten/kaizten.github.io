@@ -1,4 +1,4 @@
-## TypeScript
+# TypeScript
 
 - [Style guide](./style-guide.md)
 - **Entities:**

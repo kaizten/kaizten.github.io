@@ -1,4 +1,4 @@
-## Java
+# Java
 
 - [Style guide](./style-guide.md)
 - **Entities:**
