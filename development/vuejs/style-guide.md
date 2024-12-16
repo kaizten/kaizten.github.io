@@ -15,8 +15,10 @@ Additionally, below we outline basic considerations that all code implemented in
 
 ## Filenames
 
-1. Filenames of Single-File Components should always be PascalCase. For example, `MyFooter.vue`.
-2. Folders should always be [kebab-case](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case). For example, `../data-components/header-elements/..`
+1. Filenames must be written in English.
+2. Folders must be written in English.
+3. Filenames of Single-File Components should always be PascalCase. For example, `MyFooter.vue`.
+4. Folders should always be [kebab-case](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case). For example, `../data-components/header-elements/..`
 
 ## Components
 

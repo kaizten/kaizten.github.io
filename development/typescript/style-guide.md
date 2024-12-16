@@ -10,9 +10,10 @@
 
 ## Filenames
 
-1. Filenames must be always in [kebab-case](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case). For example, `my-kpi.ts`.
-2. Filenames must be always written in English.
-3. Folders should always be [kebab-case](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case). For example, `../data-components/header-elements/..`
+1. Filenames must be written in English.
+2. Folders must be written in English.
+3. Filenames must be always in [kebab-case](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case). For example, `my-kpi.ts`.
+4. Folders should always be [kebab-case](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case). For example, `../data-components/header-elements/..`
 
 ## Language
 

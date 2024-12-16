@@ -11,7 +11,8 @@
 
 ## Filenames
 
-1. Filenames must be also written in English.
+1. Filenames must be written in English.
+2. Folders must be written in English.
 
 ## Language
 
