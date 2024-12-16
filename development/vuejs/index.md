@@ -1,4 +1,5 @@
 **Vue.js:**
-- [Style guide](./view-model.md)
+- [Style guide](./style-guide.md)
+- [Modelo de datos de vista y componentes](./view-model.md)
 - **Forms:**
   - [Tests](./tests_form.md)

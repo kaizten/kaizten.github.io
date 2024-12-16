@@ -16,7 +16,7 @@ Additionally, below we outline basic considerations that all code implemented in
 ## Filenames
 
 1. Filenames of Single-File Components should always be PascalCase. For example, `MyFooter.vue`.
-2. Folders should always be kebab-case. For example, `../data-components/header-elements/..`
+2. Folders should always be [kebab-case](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case). For example, `../data-components/header-elements/..`
 
 ## Components
 
@@ -36,7 +36,7 @@ Additionally, below we outline basic considerations that all code implemented in
 
 ## Router
 
-1. Routes must be in kebab-case format.
+1. Routes must be in [kebab-case](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case).
 
 ## Tags
 
@@ -60,7 +60,7 @@ Additionally, below we outline basic considerations that all code implemented in
 </template>
 ```
 
-10. Use kebab-case for events. When it comes to emitting custom events, it’s always best to use kebab-case. This is because in the parent component, that’s the same syntax we use to listen to that event. So for consistency across our components, and to make your code more readable, stick to using kebab-case in both places.
+10. Use [kebab-case](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case) for events. When it comes to emitting custom events, it’s always best to use [kebab-case](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case). This is because in the parent component, that’s the same syntax we use to listen to that event. So for consistency across our components, and to make your code more readable, stick to using [kebab-case](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case) in both places.
 
 ```javascript
 this.$emit("close-window");
@@ -70,7 +70,7 @@ this.$emit("close-window");
 </template>
 ```
 
-11. Declare props with camelCase and use kebab-case in templates. This best practice simply just follows the conventions for each language. In JavaScript, camelCase is the standard and in HTML, it’s kebab-case Therefore, we use them accordingly. Luckily for us, VueJS converts between kebab-case and camelCase for us so we don’t have to worry about anything besides actually declaring them. In JavaScript, camelCase is the standard and in HTML, it’s kebab-case Therefore, we use them accordingly.
+11. Declare props with camelCase and use [kebab-case](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case) in templates. This best practice simply just follows the conventions for each language. In JavaScript, camelCase is the standard and in HTML, it’s [kebab-case](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case). Therefore, we use them accordingly. Luckily for us, VueJS converts between [kebab-case](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case) and camelCase for us so we don’t have to worry about anything besides actually declaring them. In JavaScript, camelCase is the standard and in HTML, it’s [kebab-case](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case). Therefore, we use them accordingly.
 
 ```javascript
 <template>
