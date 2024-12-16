@@ -1,6 +1,6 @@
-# Vue.js Style Guide
+# Vue.js. Style Guide
 
-- [Vue.js Style Guide](#vuejs-style-guide)
+- [Vue.js. Style Guide](#vuejs-style-guide)
   - [Filenames](#filenames)
   - [Components](#components)
   - [Views](#views)
