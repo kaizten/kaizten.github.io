@@ -13,12 +13,7 @@
   - [Duration](./grafana/duration.md)
   - [State Timeline](./grafana/statetimeline.md)
 
-- **Java:**
-  - **Enumerate:**
-    - [Example](./java/example_enumerate.md)
-    - [Tests](./java/tests_enumerate.md)
-  - **Value objects:**
-    - [Tests](./java/tests_value-object.md)
+- [**Java**](./java/index.md)
 
 - **PostgreSQL:**
   - [Load data from Python](./postgresql/load-data-from-python.md)
@@ -28,21 +23,9 @@
 - **SimPy:**
   - [Resource with identifier](./simpy/resource-with-identifier.py)
 
-- **TypeScript:**
-  - [Style guide](./typescript/style-guide.md)
-  - Entity:
-    - [Tests](./typescript/tests_entity.md)
-  - Enumerate:
-    - [Example](./typescript/example_enumerate.md)
-    - [Tests](./typescript/tests_enumerate.md)
-  - Value objects:
-    - [Tests](./typescript/tests_value-object.md)
+- [**TypeScript**](./typescript/index.md)
 
-- **Vue.js:**
-  - [Style guide](./vue/style-guide.md)
-  - [View data model](./vue/view-model.md)
-  - Forms:
-    - [Tests](./vue/tests_form.md)
+- [**Vue.js**](./vuejs/index.md)
 
 - **Windows:**
   - [Git Bash](./windows/git-bash.md)
