@@ -12,3 +12,4 @@
   - [Tests](./tests_value-object.md)
 - [Good practices](./good-practices.md)
 - [SOLID principles](./solid-principles.md)
+- [Access to private repositories](./access-private-repositories.md)
