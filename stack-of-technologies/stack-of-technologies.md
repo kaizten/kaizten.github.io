@@ -295,7 +295,7 @@
 * [vue-chartjs](https://www.npmjs.com/package/vue-chartjs): `^5.3.2`
 * [vue-i18n](https://vue-i18n.intlify.dev/): `^10.0.4`
 * [vue-router](https://www.npmjs.com/package/vue-router): `^4.5.0`
-* [Vuetify](https://www.npmjs.com/package/vuetify): `^3.7.26`
+* [Vuetify](https://www.npmjs.com/package/vuetify): `^3.7.5`
 * [xlsx](https://www.npmjs.com/package/xlsx): `^0.18.5`
 * [jsonforms](https://www.npmjs.com/package/@jsonforms/vue): `^3.4.1`
 
