@@ -4,8 +4,12 @@
   - [Filenames](#filenames)
   - [Language](#language)
   - [Entities](#entities)
+    - [Tests](#tests)
+    - [Comments](#comments)
   - [Enumerates](#enumerates)
   - [Value objects](#value-objects)
+    - [Tests](#tests-1)
+    - [Comments](#comments-1)
   - [OpenAPI documentation](#openapi-documentation)
   - [`pom.xml`](#pomxml)
 
@@ -21,10 +25,18 @@
 ## Entities
 
 1. Each entity must follow the rules defined for them, as can be read [here](./java_entity.md).
-2. The tests defined for entities defined [here](./tests_entity.md) must be implemented.
-3. Each attribute of an entity must be documented using multi-line comments (`/** */`). Additionally, optional and computed attributes must be indicated in the corresponding comments as follows:
-     * `It is an optional attribute.`
-     * `It is a computed attribute.`
+
+### Tests
+
+1. The tests defined for entities defined [here](./tests_entity.md) must be implemented.
+
+### Comments
+
+1. Each attribute of a value object must be documented using multi-line comments (`/** */`). 
+2. Comment of each non-static attribute must indicate if it is required, optional or computed, as follows:
+   * `It is a required attribute.`
+   * `It is an optional attribute.`
+   * `It is a computed attribute.`
 
 ## Enumerates
 
@@ -34,10 +46,18 @@
 ## Value objects
 
 1. Each value object must follow the rules defined for them, as can be read [here](./java_value-object.md).
-2. The tests defined for value objects defined [here](./tests_value-object.md) must be implemented.
-3. Each attribute of a value object must be documented using multi-line comments (`/** */`). Additionally, optional and computed attributes must be indicated in the corresponding comments as follows:
-     * `It is an optional attribute.`
-     * `It is a computed attribute.`
+
+### Tests
+
+1. The tests defined for value objects defined [here](./tests_value-object.md) must be implemented.
+
+### Comments
+
+1. Each attribute of a value object must be documented using multi-line comments (`/** */`). 
+2. Comment of each non-static attribute must indicate if it is required, optional or computed, as follows:
+   * `It is a required attribute.`
+   * `It is an optional attribute.`
+   * `It is a computed attribute.`
 
 ## OpenAPI documentation
 
