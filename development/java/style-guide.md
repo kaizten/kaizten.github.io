@@ -7,8 +7,9 @@
     - [Tests](#tests)
     - [Comments](#comments)
   - [Enumerates](#enumerates)
-  - [Value objects](#value-objects)
     - [Tests](#tests-1)
+  - [Value objects](#value-objects)
+    - [Tests](#tests-2)
     - [Comments](#comments-1)
   - [OpenAPI documentation](#openapi-documentation)
   - [`pom.xml`](#pomxml)
@@ -32,7 +33,7 @@
 
 ### Comments
 
-1. Each attribute of a value object must be documented using multi-line comments (`/** */`). 
+1. Each attribute must be documented using JavaDoc comments (`/** */`). 
 2. Comment of each non-static attribute must indicate if it is required, optional or computed, as follows:
    * `It is a required attribute.`
    * `It is an optional attribute.`
@@ -41,7 +42,10 @@
 ## Enumerates
 
 1. Each enumerate must follow the rules defined for them, as can be read [here](./java_enumerate.md).
-2. The tests defined for enumerates defined [here](./tests_enumerate.md) must be implemented.
+
+### Tests
+
+1. The tests defined for enumerates defined [here](./tests_enumerate.md) must be implemented.
 
 ## Value objects
 
@@ -53,7 +57,7 @@
 
 ### Comments
 
-1. Each attribute of a value object must be documented using multi-line comments (`/** */`). 
+1. Each attribute must be documented using JavaDoc comments (`/** */`). 
 2. Comment of each non-static attribute must indicate if it is required, optional or computed, as follows:
    * `It is a required attribute.`
    * `It is an optional attribute.`
