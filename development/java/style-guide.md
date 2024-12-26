@@ -4,6 +4,7 @@
   - [Filenames](#filenames)
   - [Language](#language)
   - [Entities](#entities)
+    - [Constructors](#constructors)
     - [Tests](#tests)
     - [Comments](#comments)
   - [Enumerates](#enumerates)
@@ -26,6 +27,12 @@
 ## Entities
 
 1. Each entity must follow the rules defined for them, as can be read [here](./java_entity.md).
+
+### Constructors
+
+1. Each entity must have a restore constructor to be used exclusively by databases. The parameters of the restore constructor must be the same and provided in the same order as the attributes of the entity.
+2. The restore constructor must be commented with `Restore constructor`.
+3. The restore constructor must be documented using JavaDoc comments (`/** */`).
 
 ### Tests
 
