@@ -2,9 +2,9 @@
 
 - [Style guide](./style-guide.md)
 - **Entities:**
-  - [Tests](./tests_entity.md)
+  - [Tests](./entity_tests.md)
 - **Enumerates:**
   - [Example](./example_enumerate.md)
-  - [Tests](./tests_enumerate.md)
+  - [Tests](./enumerate_tests.md)
 - **Value objects:**
-  - [Tests](./tests_value-object.md)
+  - [Tests](./value-object_tests.md)
