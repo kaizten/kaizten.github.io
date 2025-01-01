@@ -26,8 +26,6 @@
 
 ## Entities
 
-1. Each entity must follow the rules defined for them, as can be read [here](./java_entity.md).
-
 ### Constructors
 
 1. Each entity must have a copy constructor.
@@ -37,7 +35,7 @@
 
 ### Tests
 
-1. The tests defined for entities defined [here](./tests_entity.md) must be implemented.
+1. The tests defined for entities defined [here](./entity_tests.md) must be implemented.
 
 ### Comments
 
@@ -49,19 +47,15 @@
 
 ## Enumerates
 
-1. Each enumerate must follow the rules defined for them, as can be read [here](./java_enumerate.md).
-
 ### Tests
 
-1. The tests defined for enumerates defined [here](./tests_enumerate.md) must be implemented.
+1. The tests defined for enumerates defined [here](./enumerate_tests.md) must be implemented.
 
 ## Value objects
 
-1. Each value object must follow the rules defined for them, as can be read [here](./java_value-object.md).
-
 ### Tests
 
-1. The tests defined for value objects defined [here](./tests_value-object.md) must be implemented.
+1. The tests defined for value objects defined [here](./value-object_tests.md) must be implemented.
 
 ### Comments
 

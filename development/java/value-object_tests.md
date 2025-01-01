@@ -1,6 +1,6 @@
-# Tests: Value object
+# Value object. Tests
 
-- [Tests: Value object](#tests-value-object)
+- [Value object. Tests](#value-object-tests)
   - [Constructor](#constructor)
     - [Valid value](#valid-value)
     - [Not defined value](#not-defined-value)

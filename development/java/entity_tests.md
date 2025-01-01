@@ -1,35 +1,36 @@
-# Tests: Entity
+# Entity. Tests
 
-- [Tests: Entity](#tests-entity)
-  - [Constructor](#constructor)
+- [Entity. Tests](#entity-tests)
+  - [Public constructors](#public-constructors)
     - [Right](#right)
     - [Undefined required attribute](#undefined-required-attribute)
   - [Copy constructor](#copy-constructor)
-    - [Valid value](#valid-value)
-    - [Not defined value](#not-defined-value)
+    - [Right](#right-1)
+    - [Undefined object](#undefined-object)
   - [`clone()`](#clone)
   - [`equals()`](#equals)
   - [`hashCode()`](#hashcode)
   - [State modifier](#state-modifier)
   - [`toString()`](#tostring)
 
-Given an entity `<Entity>` defined in `<Entity>.java`, there must be a file `<Entity>Tests.java` located in folder `test` of the Java component. This file should contain at least the tests described below depending on the methods defined in the entity.
+Given an entity `<Entity>` (defined in `<Entity>.java`), there must be a file `<Entity>Tests.java` located in folder `test` of the Java component. This file should contain at least the tests described below depending on the methods defined in the entity.
 
-## Constructor
+## Public constructors
 
-There must be at least one test for each validation criterion used in each constructor of the class. 
+The following tests must be defined for each constructor of the entity. It should be noted that, copy and restore constructors are not considered here.
 
 ### Right
 
-* **Test name:** `constructor_right()`
+* **Test name:** `constructor_<INDEX>_right()`
+  * `INDEX`: index of the public constructor to test. It value goes from `1` up to `numberOfPublicConstructors-1`.
 * **Issues to check:**
-  * Attribute values in the entity's state are equal to those set using the constructor.
+  * Attribute values in the entity's state are equal to those set using the constructor with index `INDEX`.
   * Default values are assigned to all the attributes that are not required in the constructor. For example, `null` values are assigned to optional attributes not set in the constructor.
   * Attribute values are set for computed attributes. For example, the identifier of the entity.
 * **Example:**
-```java
+    ```java
     @Test
-    void constructor_right() {
+    void constructor_3_right() {
         EntryPointName name = EntryPointName.random();
         Island island = Island.random();
         KaiztenJWTPreferredUsername creator = KaiztenJWTPreferredUsername.random();
@@ -46,71 +47,74 @@ There must be at least one test for each validation criterion used in each const
         assertTrue(entryPoint.getAreas().isEmpty());
         assertTrue(entryPoint.getComments().isEmpty());
     }
-```
+    ```
 
 ### Undefined required attribute
 
-* **Test name:** `constructor_<ATTRIBUTE>_undefined()` 
+* **Test name:** `constructor_<INDEX>_<ATTRIBUTE>_undefined()`
+  * `INDEX`: index of the public constructor to test. It value goes from `1` up to `numberOfPublicConstructors-1`. Copy and restore constructors are not considered.
+  * `ATTRIBUTE`: required attribute of the entity to test.
 * **Issues to check:**
-  * An `IllegalArgumentException` is thrown when creating an object with `ATTRIBUTE = null`, where `ATTRIBUTE` is a required attribute.
+  * An `IllegalArgumentException` is thrown when creating an object with `ATTRIBUTE = null`.
   * The message of the exception thrown is `<Entity>.ERROR_<ATTRIBUTE>_UNDEFINED`.
 * **Example:**
-```java
+    ```java
     @Test
-    void constructor_name_undefined() {
+    void constructor_3_name_undefined() {
         EntryPointName name = null;
         Island island = Island.random();
         KaiztenJWTPreferredUsername creator = KaiztenJWTPreferredUsername.random();
         IllegalArgumentException exception = assertThrows(
-                IllegalArgumentException.class,
+            IllegalArgumentException.class,
                 () -> new EntryPoint(name, island, creator));
         assertEquals(EntryPoint.ERROR_NAME_UNDEFINED, exception.getMessage());
     }
-```
+    ```
 
 ## Copy constructor
 
 The following tests must be defined for the copy constructor of the entity. 
 
-### Valid value
+### Right
 
 * **Test name:** `copyConstructor_right()`
 * **Issues to check:**
   * Attribute values of the copy are equal to those in the original entity, but the identifier of the entity.
 * **Example:**
-```java
-@Test
-    void copyConstructor_right() {
-        EntryPoint original = EntryPoint.random();
-        EntryPoint copy = new EntryPoint(original);
-        assertNotEquals(original.getId(), copy.getId());
-        assertEquals(original.getName(), copy.getName());
-        assertEquals(original.getIsland(), copy.getIsland());
-        assertEquals(original.getCreator(), copy.getCreator());
-        assertEquals(original.getDescription(), copy.getDescription());
-        assertEquals(original.getAreas(), copy.getAreas());
-        assertEquals(original.getComments(), copy.getComments());
-        assertEquals(original.getCreationTimestamp(), copy.getCreationTimestamp());
-    }
-```
+  ```java
+  @Test
+  void copyConstructor_right() {
+      EntryPoint original = EntryPoint.random();
+      EntryPoint copy = new EntryPoint(original);
+      assertNotEquals(original.getId(), copy.getId());
+      assertEquals(original.getName(), copy.getName());
+      assertEquals(original.getIsland(), copy.getIsland());
+      assertEquals(original.getCreator(), copy.getCreator());
+      assertEquals(original.getDescription(), copy.getDescription());
+      assertEquals(original.getAreas(), copy.getAreas());
+      assertEquals(original.getComments(), copy.getComments());
+      assertEquals(original.getCreationTimestamp(), copy.getCreationTimestamp());
+  }
+  ```
 
-### Not defined value
+### Undefined object
 
-* **Test name:** `copyConstructor_undefined()` 
+* **Test name:** `copyConstructor_undefined()`
+  * `CLASS`: name of the class in which the constructor is located. 
 * **Issues to check:**
   * An `IllegalArgumentException` is thrown when copying an object with the argument `null`.
-  * The message of the exception thrown is `<Entity>.ERROR_<ATTRIBUTE>_UNDEFINED`.
+  * The message of the exception thrown is `<Entity>.ERROR_<CLASS>_UNDEFINED`.
 * **Example:**
-```java
-    @Test
-    void copyConstructor_undefined() {
-        EntryPoint original = null;
-        IllegalArgumentException exception = assertThrows(
-                IllegalArgumentException.class,
-                () -> new EntryPoint(original));
-        assertEquals(EntryPoint.ERROR_ENTRY_POINT_UNDEFINED, exception.getMessage());
+  ```java
+  @Test
+  void copyConstructor_undefined() {
+      EntryPoint original = null;
+      IllegalArgumentException exception = assertThrows(
+          IllegalArgumentException.class,
+              () -> new EntryPoint(original));
+      assertEquals(EntryPoint.ERROR_ENTRY_POINT_UNDEFINED, exception.getMessage());
     }
-```
+  ```
 
 ## `clone()`
 
@@ -119,7 +123,7 @@ The following tests must be defined for the copy constructor of the entity.
   * The object resulting from the `clone` method has a different identifier than the original object.
   * The `clone` method creates a copy of the object by copying all its attributes.
 * **Example:**
-```java
+    ```java
     @Test
     void cloneMethod() {
         EntryPoint original = EntryPoint.random();
@@ -133,7 +137,7 @@ The following tests must be defined for the copy constructor of the entity.
         assertEquals(original.getComments(), cloned.getComments());
         assertEquals(original.getCreationTimestamp(), cloned.getCreationTimestamp());
     }
-```
+    ```
 
 ## `equals()`
 
@@ -144,7 +148,7 @@ The following tests must be defined for the copy constructor of the entity.
   * `equals` method returns `false` when an object of other class is used.
   * `equals` method of the object works correctly. The test checks different objects are considered as not equal because their identifiers must be different.
 * **Example:**
-```java
+    ```java
     @Test
     void equalsMethod() {
         EntryPoint entryPoint1 = EntryPoint.random();
@@ -161,7 +165,7 @@ The following tests must be defined for the copy constructor of the entity.
         assertNotEquals(entryPoint1, entryPoint3);
         assertNotEquals(entryPoint1.getId(), entryPoint3.getId());
     }
-```
+    ```
 
 ## `hashCode()`
 
@@ -170,7 +174,7 @@ The following tests must be defined for the copy constructor of the entity.
   * The hash code of a given object is consistent. That is, `hashCode` returns the same value for a given object.
   * The hash codes of different objects are different.
 * **Example:**
-```java
+    ```java
     @Test
     void hashCodeMethod() {
         EntryPoint entryPoint1 = EntryPoint.random();
@@ -180,7 +184,7 @@ The following tests must be defined for the copy constructor of the entity.
         assertNotEquals(entryPoint1.hashCode(), entryPoint2.hashCode());
         assertNotEquals(entryPoint1.hashCode(), entryPoint3.hashCode());
     }
-```
+    ```
 
 ## State modifier
 
@@ -190,7 +194,7 @@ The following tests must be defined for the copy constructor of the entity.
   * Exceptions thrown.
   * Returned value.
 * **Example:**
-```java
+    ```java
     @Test
     void addComment_valid() {
         EntryPoint entryPoint = EntryPoint.random();
@@ -200,7 +204,7 @@ The following tests must be defined for the copy constructor of the entity.
         assertEquals(1, entryPoint.getComments().get().size());
         assertEquals(comment, entryPoint.getComments().get().get(0));
     }
-```
+    ```
 
 ## `toString()`
 
@@ -208,7 +212,7 @@ The following tests must be defined for the copy constructor of the entity.
 * **Issues to check:**
   * `toString` method returns a complete representation of of the entity's state. The resulting `String` must follow the structure `<Entity>={ATTRIBUTE1=VALUE,ATTRIBUTE2=VALUE,...}`. `null` values must be shown in optional attributes when not set.
 * **Example:**
-```java
+    ```java
     @Test
     void toStringMethod() {
         EntryPoint entryPoint = EntryPoint.random();
@@ -226,4 +230,4 @@ The following tests must be defined for the copy constructor of the entity.
                 expectedValue,
                 entryPoint.toString());
     }
-```
+    ```
