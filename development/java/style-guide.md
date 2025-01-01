@@ -30,9 +30,10 @@
 
 ### Constructors
 
-1. Each entity must have a restore constructor to be used exclusively by databases. The parameters of the restore constructor must be the same and provided in the same order as the attributes of the entity.
-2. The restore constructor must be commented with `Restore constructor`.
-3. The restore constructor must be documented using JavaDoc comments (`/** */`).
+1. Each entity must have a copy constructor.
+2. Each entity must have a restore constructor to be used exclusively by databases. The parameters of the restore constructor must be the same and provided in the same order as the attributes of the entity.
+3. The restore constructor must be commented with `Restore constructor`.
+4. The restore constructor must be documented using JavaDoc comments (`/** */`).
 
 ### Tests
 
