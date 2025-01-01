@@ -1,21 +1,22 @@
 # Tests: Value object
 
-- [Constructor](#constructor)
-  - [Valid value](#valid-value)
-  - [Not defined value](#not-defined-value)
-  - [Empty value](#empty-value)
-  - [Minimum length value](#minimum-length-value)
-  - [Maximum length value](#maximum-length-value)
-  - [Wrong format value](#wrong-format-value)
-- [Getters](#getters)
-  - [Collection as attribute](#collection-as-attribute)
-- [Setters](#setters)
-  - [Required attributes](#required-attributes)
-  - [Optional attributes](#optional-attributes)
-- [`clone()`](#clone)
-- [`equals()`](#equals)
-- [`hashCode()`](#hashcode)
-- [`toString()`](#tostring)
+- [Tests: Value object](#tests-value-object)
+  - [Constructor](#constructor)
+    - [Valid value](#valid-value)
+    - [Not defined value](#not-defined-value)
+    - [Empty value](#empty-value)
+    - [Minimum length value](#minimum-length-value)
+    - [Maximum length value](#maximum-length-value)
+    - [Wrong format value](#wrong-format-value)
+  - [Getters](#getters)
+    - [Collection as attribute](#collection-as-attribute)
+  - [Setters](#setters)
+    - [Required attributes](#required-attributes)
+    - [Optional attributes](#optional-attributes)
+  - [`clone()`](#clone)
+  - [`equals()`](#equals)
+  - [`hashCode()`](#hashcode)
+  - [`toString()`](#tostring)
 
 Given a value object `<ValueObject>` defined in `<ValueObject>.java`, there must be a file `<ValueObject>Tests.java` located in folder `test` of the Java component. This file should contain at least the tests described below depending on the properties and their types defined in the value object.
 
@@ -39,18 +40,10 @@ There must be at least one test for each validation criterion used in each const
         Person person = Person.random();
         Larva larva = Larva.random();
         Analysis analysis = new Analysis(type, date, person, larva);
-        assertEquals(
-                type,
-                analysis.getType());
-        assertEquals(
-                date,
-                analysis.getDate());
-        assertEquals(
-                person,
-                analysis.getPerson());
-        assertEquals(
-                larva,
-                analysis.getLarva());
+        assertEquals(type, analysis.getType());
+        assertEquals(date, analysis.getDate());
+        assertEquals(person, analysis.getPerson());
+        assertEquals(larva, analysis.getLarva());
         assertTrue(analysis.getSlide().isEmpty());
         assertTrue(analysis.getImages().isEmpty());
         assertTrue(analysis.getResults().isEmpty());

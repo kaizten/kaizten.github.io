@@ -1,13 +1,17 @@
 # Tests: Entity
 
-- [Constructor](#constructor)
-  - [Valid value](#valid-value)
-  - [Not defined value](#not-defined-value)
-- [`clone()`](#clone)
-- [`equals()`](#equals)
-- [`hashCode()`](#hashcode)
-- [State modifier](#state-modifier)
-- [`toString()`](#tostring)
+- [Tests: Entity](#tests-entity)
+  - [Constructor](#constructor)
+    - [Right](#right)
+    - [Undefined required attribute](#undefined-required-attribute)
+  - [Copy constructor](#copy-constructor)
+    - [Valid value](#valid-value)
+    - [Not defined value](#not-defined-value)
+  - [`clone()`](#clone)
+  - [`equals()`](#equals)
+  - [`hashCode()`](#hashcode)
+  - [State modifier](#state-modifier)
+  - [`toString()`](#tostring)
 
 Given an entity `<Entity>` defined in `<Entity>.java`, there must be a file `<Entity>Tests.java` located in folder `test` of the Java component. This file should contain at least the tests described below depending on the methods defined in the entity.
 
@@ -15,9 +19,9 @@ Given an entity `<Entity>` defined in `<Entity>.java`, there must be a file `<En
 
 There must be at least one test for each validation criterion used in each constructor of the class. 
 
-### Valid value
+### Right
 
-* **Test name:** `constructor_validValue()`
+* **Test name:** `constructor_right()`
 * **Issues to check:**
   * Attribute values in the entity's state are equal to those set using the constructor.
   * Default values are assigned to all the attributes that are not required in the constructor. For example, `null` values are assigned to optional attributes not set in the constructor.
@@ -25,39 +29,86 @@ There must be at least one test for each validation criterion used in each const
 * **Example:**
 ```java
     @Test
-    void constructor_validValue() {
+    void constructor_right() {
         EntryPointName name = EntryPointName.random();
         Island island = Island.random();
         KaiztenJWTPreferredUsername creator = KaiztenJWTPreferredUsername.random();
         EntryPoint entryPoint = new EntryPoint(name, island, creator);
+        // Required attributes:
         assertEquals(name, entryPoint.getName());
         assertEquals(island, entryPoint.getIsland());
         assertEquals(creator, entryPoint.getCreator());
+        // Computed attributes:
         assertNotNull(entryPoint.getId());
+        assertNotNull(entryPoint.getCreationTimestamp());
+        // Optional attributes:
         assertTrue(entryPoint.getDescription().isEmpty());
         assertTrue(entryPoint.getAreas().isEmpty());
         assertTrue(entryPoint.getComments().isEmpty());
-        assertNotNull(entryPoint.getCreationTimestamp());
     }
 ```
 
-### Not defined value
+### Undefined required attribute
 
-* **Test name:** `constructor_notDefinedValue_<ATTRIBUTE>()` 
+* **Test name:** `constructor_<ATTRIBUTE>_undefined()` 
 * **Issues to check:**
   * An `IllegalArgumentException` is thrown when creating an object with `ATTRIBUTE = null`, where `ATTRIBUTE` is a required attribute.
-  * The message of the exception thrown is `<Entity>.ERROR_<ATTRIBUTE>_NOT_DEFINED`.
+  * The message of the exception thrown is `<Entity>.ERROR_<ATTRIBUTE>_UNDEFINED`.
 * **Example:**
 ```java
     @Test
-    void constructor_notDefinedValue_name() {
+    void constructor_name_undefined() {
         EntryPointName name = null;
         Island island = Island.random();
         KaiztenJWTPreferredUsername creator = KaiztenJWTPreferredUsername.random();
         IllegalArgumentException exception = assertThrows(
                 IllegalArgumentException.class,
                 () -> new EntryPoint(name, island, creator));
-        assertEquals(EntryPoint.ERROR_NAME_NOT_DEFINED, exception.getMessage());
+        assertEquals(EntryPoint.ERROR_NAME_UNDEFINED, exception.getMessage());
+    }
+```
+
+## Copy constructor
+
+The following tests must be defined for the copy constructor of the entity. 
+
+### Valid value
+
+* **Test name:** `copyConstructor_right()`
+* **Issues to check:**
+  * Attribute values of the copy are equal to those in the original entity, but the identifier of the entity.
+* **Example:**
+```java
+@Test
+    void copyConstructor_right() {
+        EntryPoint original = EntryPoint.random();
+        EntryPoint copy = new EntryPoint(original);
+        assertNotEquals(original.getId(), copy.getId());
+        assertEquals(original.getName(), copy.getName());
+        assertEquals(original.getIsland(), copy.getIsland());
+        assertEquals(original.getCreator(), copy.getCreator());
+        assertEquals(original.getDescription(), copy.getDescription());
+        assertEquals(original.getAreas(), copy.getAreas());
+        assertEquals(original.getComments(), copy.getComments());
+        assertEquals(original.getCreationTimestamp(), copy.getCreationTimestamp());
+    }
+```
+
+### Not defined value
+
+* **Test name:** `copyConstructor_undefined()` 
+* **Issues to check:**
+  * An `IllegalArgumentException` is thrown when copying an object with the argument `null`.
+  * The message of the exception thrown is `<Entity>.ERROR_<ATTRIBUTE>_UNDEFINED`.
+* **Example:**
+```java
+    @Test
+    void copyConstructor_undefined() {
+        EntryPoint original = null;
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> new EntryPoint(original));
+        assertEquals(EntryPoint.ERROR_ENTRY_POINT_UNDEFINED, exception.getMessage());
     }
 ```
 
