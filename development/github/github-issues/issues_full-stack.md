@@ -211,7 +211,7 @@ Hola, para la creación del front-end será utilizar un administrador de paquete
 
 **Pasos a realizar:**
 
-1. Instala [Yarn](https://yarnpkg.com) siguiendo alguna de las siguientes opciones:
+1. Instala [Yarn](https://yarnpkg.com) siguiendo alguna de las siguientes 2 opciones:
     - Instalación a través de repositorio:
         ```shell
         $ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/yarn.gpg
@@ -321,7 +321,7 @@ Hola, el back-end de la aplicación vamos a realizarla mediante [Spring Boot](ht
 1. Accede a [Spring Initializr](https://start.spring.io/). En el formulario debes establecer lo siguiente:
       * `Project`: `Maven`
       * `Language`: `Java`
-      * `Spring Boot`: `3.3.5`
+      * `Spring Boot`: `3.4.0`
       * `Project Metadata`:
         * `Group`: `com.kaizten`
         * `Artifact`: `back-end`
@@ -408,13 +408,7 @@ Hola, desde hace un tiempo hemos ido trabajando en una librería de utilidades p
       <version>1.0-SNAPSHOT</version>
     </dependency>
     ```
-5. Haz uso de cualquier elemento de la librería. Por ejemplo, añade las siguientes líneas a tu código:
-    ```java
-    import com.kaizten.utils.string.KaiztenString;
-    ...
-    System.out.println(KaiztenString.isBoolean("hola"));
-    ```
-6. Compila el proyecto para comprobar que la dependencia está disponible: `mvn clean package`.
+5. Compila el proyecto para comprobar que la dependencia está disponible: `mvn clean package`.
 
 ### Dockerfile
 
@@ -609,6 +603,7 @@ Los casos de uso son esenciales para definir los requisitos funcionales de un si
 A continuación, un ejemplo básico de un caso de uso para procesar pagos:
 ```java
 public interface ProcessPaymentUseCase {
+
     /**
      * Processes the payment based on the provided amount and payment details.
      *
@@ -631,7 +626,7 @@ Hola, una vez tengas los casos de uso de la aplicación definidos sería necesar
 
 **Ejemplo:**
 
-Te paso un extracto básico:
+Te paso un ejemplo básico:
 ```java
 public class ProcessPaymentService {
 
@@ -683,33 +678,33 @@ Hola, en la aplicación se empleará [MongoDB](https://www.mongodb.com) como sis
 **Pasos a realizar:**
 
 1. Para poder trabajar con [MongoDB](https://www.mongodb.com) en tu back-end debes modificar el archivo `pom.xml` añadiendo a la sección `<dependencies>` la siguiente dependencia:
-```xml
-<dependency>
-  <groupId>org.springframework.boot</groupId>
-  <artifactId>spring-boot-starter-data-mongodb</artifactId>
-</dependency>
-```
+    ```xml
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-mongodb</artifactId>
+    </dependency>
+    ```
 
 2. Una vez añadida la dependencia, crea la carpeta `adapter/mongodb` dentro de tu código. En esta carpeta debes incluirse todo lo relacionado con el uso de la base de datos en el back-end. Concretamente, debes añadir la implementación de los repositorios de datos definidos en el back-end. Esto es, hay que implementar cómo realizar las operaciones CRUD (Create, Read, Update y Delete) de las diferentes entidades. 
 
 3. En base a lo anterior, por cada repositorio definido en tu back-end añade una implementación del mismo. A continuación puedes encontrar un pequeño extracto de cómo sería:
-```java
-import org.springframework.data.mongodb.core.MongoTemplate;
+    ```java
+    import org.springframework.data.mongodb.core.MongoTemplate;
 
-public class <ENTITY>MongoRepository implements <ENTITY>Repository {
+    public class <ENTITY>MongoRepository implements <ENTITY>Repository {
 
-    public static final String COLLECTION_NAME = "<ENTITY>";
-    @Autowired
-    private MongoTemplate mongoTemplate;
+        public static final String COLLECTION_NAME = "<ENTITY>";
+        @Autowired
+        private MongoTemplate mongoTemplate;
 
-    public List<<ENTITY>> findAll() {
-        return this.mongoTemplate.findAll(<ENTITY>.class, COLLECTION_NAME);
+        public List<<ENTITY>> findAll() {
+            return this.mongoTemplate.findAll(<ENTITY>.class, COLLECTION_NAME);
+        }
+
+        ...
     }
-
-    ...
-}
-```
-En este caso, debes sustituir `<ENTITY>` por el nombre de tu entidad. Es también importante que te fijes en `mongoTemplate`, se trata del conector con [MongoDB](https://www.mongodb.com) y, por tanto, el elemento a través del cual se realizarán las consultas. Éste es el caso de `findAll`. Al mismo tiempo, está definida `COLLECTION_NAME` para simplemente explicitar el nombre de la colección donde guardar las entidades dentro de [MongoDB](https://www.mongodb.com).
+    ```
+    En este caso, debes sustituir `<ENTITY>` por el nombre de tu entidad. Es también importante que te fijes en `mongoTemplate`, se trata del conector con [MongoDB](https://www.mongodb.com) y, por tanto, el elemento a través del cual se realizarán las consultas. Éste es el caso de `findAll`. Al mismo tiempo, está definida `COLLECTION_NAME` para simplemente explicitar el nombre de la colección donde guardar las entidades dentro de [MongoDB](https://www.mongodb.com).
 
 #### Configuración
 
@@ -719,73 +714,73 @@ Hola, una vez definidas las implementaciones de los repositorios para [MongoDB](
 
 1. Si no está creada previamente, crea la carpeta `configuration/` en el código del back-end. 
 2. Crea la clase `configuration/MongoConfiguration.java`. A continuación puedes ver un extracto de cómo sería esta clase:
-```java
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.data.mongodb.MongoDatabaseFactory;
-import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
-import org.springframework.data.mongodb.core.convert.DbRefResolver;
-import org.springframework.data.mongodb.core.convert.DefaultDbRefResolver;
-import org.springframework.data.mongodb.core.convert.DefaultMongoTypeMapper;
-import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
-import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
-import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
+    ```java
+    import org.springframework.context.annotation.Bean;
+    import org.springframework.context.annotation.Configuration;
+    import org.springframework.data.mongodb.MongoDatabaseFactory;
+    import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
+    import org.springframework.data.mongodb.core.convert.DbRefResolver;
+    import org.springframework.data.mongodb.core.convert.DefaultDbRefResolver;
+    import org.springframework.data.mongodb.core.convert.DefaultMongoTypeMapper;
+    import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
+    import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
+    import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
 
-@Configuration
-public class MongoConfiguration extends AbstractMongoClientConfiguration {
-    
-    @Value("${spring.data.mongodb.uri}")
-    private String uri;
-    @Value("${spring.data.mongodb.database}")
-    private String databaseName;
+    @Configuration
+    public class MongoConfiguration extends AbstractMongoClientConfiguration {
+        
+        @Value("${spring.data.mongodb.uri}")
+        private String uri;
+        @Value("${spring.data.mongodb.database}")
+        private String databaseName;
 
-    @Bean
-    public MongoClient mongoClient() {
-        ConnectionString connectionString = new ConnectionString(this.uri);
-        MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
-                .uuidRepresentation(UuidRepresentation.STANDARD)
-                .applyConnectionString(connectionString)
-                .build();
-        return MongoClients.create(mongoClientSettings);
+        @Bean
+        public MongoClient mongoClient() {
+            ConnectionString connectionString = new ConnectionString(this.uri);
+            MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
+                    .uuidRepresentation(UuidRepresentation.STANDARD)
+                    .applyConnectionString(connectionString)
+                    .build();
+            return MongoClients.create(mongoClientSettings);
+        }
+
+        @Bean
+        public MappingMongoConverter mappingMongoConverter(
+                MongoDatabaseFactory databaseFactory,
+                MongoCustomConversions customConversions,
+                MongoMappingContext mappingContext) {
+            DbRefResolver dbRefResolver = new DefaultDbRefResolver(mongoDbFactory());
+            MappingMongoConverter converter = new MappingMongoConverte(dbRefResolver, mappingContext);
+            converter.setTypeMapper(new DefaultMongoTypeMapper(null));
+            converter.setCustomConversions(customConversions());
+            converter.afterPropertiesSet();
+            return converter;
+        }
+
+        @Bean
+        public MongoCustomConversions customConversions() {
+            return new MongoCustomConversions(
+                    Arrays.asList());
+        }
+
+        @Bean
+        public <NAME_OF_REPOSITORY> <NAME_OF_REPOSITORY>() {
+            return new <NAME_OF_MONGO_REPOSITORY>();
+        }
+        ...
     }
-
-    @Bean
-    public MappingMongoConverter mappingMongoConverter(
-            MongoDatabaseFactory databaseFactory,
-            MongoCustomConversions customConversions,
-            MongoMappingContext mappingContext) {
-        DbRefResolver dbRefResolver = new DefaultDbRefResolver(mongoDbFactory());
-        MappingMongoConverter converter = new MappingMongoConverte(dbRefResolver, mappingContext);
-        converter.setTypeMapper(new DefaultMongoTypeMapper(null));
-        converter.setCustomConversions(customConversions());
-        converter.afterPropertiesSet();
-        return converter;
-    }
-
-    @Bean
-    public MongoCustomConversions customConversions() {
-        return new MongoCustomConversions(
-                Arrays.asList());
-    }
-
-    @Bean
-    public <NAME_OF_REPOSITORY> <NAME_OF_REPOSITORY>() {
-        return new <NAME_OF_MONGO_REPOSITORY>();
-    }
-    ...
-}
-```
+    ```
 3. En esta clase de configuración se deben crear tantos beans como implementaciones de [MongoDB](https://www.mongodb.com) tengas en tu back-end. Además esta clase define métodos para personalizar conversiones de datos o para poder almacenar `UUID` como identificadores de las entidades del dominio. Éstos son aspectos por los que no hay que preocuparse en este momento. 
 
 4. En `configuration/MongoConfiguration.java` es importante la definición de `uri` y `databaseName`. Son 2 propiedades que se pueden definir en el back-end para indicar dónde encontrar la base de datos y cuál es su nombre. Estas propiedades se definen en el archivo `resources/application.yml` de tu back-end. Si tienes un archivo `resources/application.properties` simplemente cámbiale la extensión para poder trabajar con él siendo un archivo `yaml`. El contenido de este archivo debe ser el siguiente:
-```yaml
-spring:
-  data:
-    mongodb:
-      uri: mongodb://localhost:27017/db-application # URI of MongoDB
-      database: db-application # Database name 
-```
-Tal como puede verse, se está definiendo la ubicación y nombre de la base de datos. De esta forma, si la base de datos estuviera en otro lugar que no fuera la misma máquina (`localhost`) o estuviera en disponible en otro puerto (actualmente `27017`), simplemente con cambiar este archivo o sobreescribir la propiedad en cuestión al arrancar el back-end sería suficiente.
+    ```yaml
+    spring:
+      data:
+        mongodb:
+          uri: mongodb://localhost:27017/db-application # URI of MongoDB
+          database: db-application # Database name 
+    ```
+    Tal como puede verse, se está definiendo la ubicación y nombre de la base de datos. De esta forma, si la base de datos estuviera en otro lugar que no fuera la misma máquina (`localhost`) o estuviera en disponible en otro puerto (actualmente `27017`), simplemente con cambiar este archivo o sobreescribir la propiedad en cuestión al arrancar el back-end sería suficiente.
 
 #### Escritores
 
@@ -858,18 +853,17 @@ Como puede verse, utilizar un `@WritingConverter` es especialmente útil cuando 
 1. Escribe una clase llamada `<ENTITY>WritingConverter.java` anotada como `@WritingConverter` para cada entidad del dominio de la aplicación dentro de la carpeta `adapter/mongodb/writter`. De este modo, se asegurará que cada entidad tiene un proceso de conversión único y bien definido.
 2. Escribe una clase `adapter/mongodb/MongoFields.java` donde definas el conjunto de campos de los documentos a crear por los conversores.
 3. Añade el siguiente método a `configuration/MongoConfiguration.java`:
-```java
-@Bean
-    public MongoCustomConversions customConversions() {
-        return new MongoCustomConversions(
-                Arrays.asList(
-                        ...
-                        new TrapWritingConverter(this),
-                        ...));
-    }
-```
-para registrar cada uno de los conversores que escribiste previamente.
-
+    ```java
+    @Bean
+        public MongoCustomConversions customConversions() {
+            return new MongoCustomConversions(
+                    Arrays.asList(
+                            ...
+                            new TrapWritingConverter(this),
+                            ...));
+        }
+    ```
+    para registrar cada uno de los conversores que escribiste previamente.
 4. Prueba cómo funciona la escritura de las entidades. Guarda alguna entidad en la base de datos y accede a [MongoDB](https://www.mongodb.com) para revisar cómo se ha persistido.
 
 #### Lectores
@@ -965,17 +959,17 @@ Como puede verse, utilizar un `@ReadingConverter` es especialmente útil cuando 
 1. Escribe una clase llamada `<ENTITY>ReadingConverter.java` anotada como `@ReadingConverter` para cada entidad del dominio de la aplicación dentro de la carpeta `adapter/mongodb/reader`. De este modo, se asegurará que cada entidad tiene un proceso de lectura único y bien definido.
 2. Escribe una clase `adapter/mongodb/MongoFields.java` donde definas el conjunto de campos de los documentos a leer por los conversores.
 Añade el siguiente método a `configuration/MongoConfiguration.java`:
-```java
-@Bean
+    ```java
+    @Bean
     public MongoCustomConversions customConversions() {
         return new MongoCustomConversions(
-                Arrays.asList(
-                        ...
-                        new TrapReadingConverter(this),
-                        ...));
+                    Arrays.asList(
+                            ...
+                            new TrapReadingConverter(this),
+                            ...));
     }
-```
-para registrar cada uno de los conversores que escribiste previamente.
+    ```
+    para registrar cada uno de los conversores que escribiste previamente.
 
 3. Prueba cómo funciona la lectura de las entidades. Recupera alguna entidad de la base de datos y verifica que todos los campos se mapean correctamente desde los documentos en [MongoDB](https://www.mongodb.com).
 
@@ -988,32 +982,32 @@ Hola, una [API REST](https://www.moesif.com/blog/technical/api-development/Rest-
 **Pasos a realizar:**
 
 1. Para poder crear una API REST en la aplicación debes añadir la siguiente dependencia al archivo `pom.xml` de tu back-end:
-```xml
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-web</artifactId>
-</dependency>
-```
+    ```xml
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    ```
 
 2. Una vez añadida la dependencia, crea la carpeta `adapter/rest` dentro de tu código. En esta carpeta debes incluirse todo lo relacionado con el uso de la API REST en el back-end. Dentro de esta carpeta hay que definir los controladores. Un controlador REST es una clase dentro de una aplicación web que maneja las solicitudes HTTP entrantes, define y mapea endpoints (URLs) y proporciona respuestas adecuadas a esas solicitudes mediante el uso de métodos anotados con operaciones HTTP como `GET`, `POST`, `PUT`, `DELETE`, entre otros, siguiendo los principios de la arquitectura RESTful. Con este objetivo en mente, sería necesario crear la carpeta `adapter/rest/controller` e incluir en ella un controlador por cada una de las entidades de tu dominio. A continuación se muestra un extracto de un controlador:
-```java
-@RestController
-@RequestMapping("/<entities>")
-public class <ENTITY>Controller {
+    ```java
+    @RestController
+    @RequestMapping("/<entities>")
+    public class <ENTITY>Controller {
 
-    @Autowired
-    private <NAME_OF_USE_CASE> <nameOfUseCase>;
+        @Autowired
+        private <NAME_OF_USE_CASE> <nameOfUseCase>;
 
-    @GetMapping("/")
-    public ResponseEntity<List<ENTITY>> getEntities() {
-        List<ENTITY> entities = this.<nameOfUseCase>.fetchAll();
-        return new ResponseEntity<>(entities, HttpStatus.OK);
+        @GetMapping("/")
+        public ResponseEntity<List<ENTITY>> getEntities() {
+            List<ENTITY> entities = this.<nameOfUseCase>.fetchAll();
+            return new ResponseEntity<>(entities, HttpStatus.OK);
+        }
+
+        // Other methods to manage entities
     }
-
-    // Other methods to manage entities
-}
-```
-Tal como puede comprobarse, el controlador previo es capaz de manejar peticiones de tipo `GET` (véase la notación `GetMapping`) y emplea el caso de uso correspondiente para atender a las peticiones recibidas. Es importante aquí sustituir `<ENTITY>` por la entidad en cuestión y además sustituir `<entities>` por el nombre de las entidades en plural.
+    ```
+    Tal como puede comprobarse, el controlador previo es capaz de manejar peticiones de tipo `GET` (véase la notación `GetMapping`) y emplea el caso de uso correspondiente para atender a las peticiones recibidas. Es importante aquí sustituir `<ENTITY>` por la entidad en cuestión y además sustituir `<entities>` por el nombre de las entidades en plural.
 
 3. Una vez creado los controladores necesarios, la API REST puede probarse, entre otras, mediante la herramienta [curl](https://curl.se) o el plugin [Thunder client](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client) de [Visual Studio Code](https://code.visualstudio.com).
 
@@ -1026,368 +1020,368 @@ Hola, los clientes que empleen el API REST definida en el back-end deberían emp
 **Pasos a realizar:**
 
 1. Dentro de la carpeta creada, debes crear una clase `<ENTITY>PostRequestBody.java`, otra `<ENTITY>PutRequestBody.java` y otra `<ENTITY>ResponseBody.java` por cada entidad de tu dominio `<ENTITY>`. A continuación te paso un ejemplo ilustrativo para una entidad `Trap.java`:
-```java
-public class TrapPostRequestBody {
+    ```java
+    public class TrapPostRequestBody {
 
-    private TrapName name;
-    private TrapDescription description;
-    private TrapType type;
-    private UUID entryPoint;
-    private KaiztenGeolocationPoint geolocation;
-    private LocalDate installationDate;
-    private LocalDate leavingDate;
-    private ContactInformation contactInformation;
-    private List<Comment> comments;
-    private List<UUID> imageUUID;
+        private TrapName name;
+        private TrapDescription description;
+        private TrapType type;
+        private UUID entryPoint;
+        private KaiztenGeolocationPoint geolocation;
+        private LocalDate installationDate;
+        private LocalDate leavingDate;
+        private ContactInformation contactInformation;
+        private List<Comment> comments;
+        private List<UUID> imageUUID;
 
-    public LocalDate getInstallationDate() {
-        return this.installationDate;
-    }
-
-    public void setInstallationDate(LocalDate installationDate) {
-        this.installationDate = installationDate;
-    }
-
-    public LocalDate getLeavingDate() {
-        return this.leavingDate;
-    }
-
-    public void setLeavingDate(LocalDate leavingDate) {
-        this.leavingDate = leavingDate;
-    }
-
-    public TrapName getName() {
-        return this.name;
-    }
-
-    public void setName(TrapName name) {
-        this.name = name;
-    }
-
-    public TrapDescription getDescription() {
-        return this.description;
-    }
-
-    public void setDescription(TrapDescription description) {
-        this.description = description;
-    }
-
-    public ContactInformation getContactInformation() {
-        return this.contactInformation;
-    }
-
-    public void setContactInformation(ContactInformation contactInformation) {
-        this.contactInformation = contactInformation;
-    }
-
-    public void setGeolocation(KaiztenGeolocationPoint geolocation) {
-        this.geolocation = geolocation;
-    }
-
-    public KaiztenGeolocationPoint getGeolocation() {
-        return this.geolocation;
-    }
-
-    public List<Comment> getComments() {
-        return this.comments;
-    }
-
-    public TrapType getType() {
-        return this.type;
-    }
-
-    public List<UUID> getImageUUID() {
-        return this.imageUUID;
-    }
-
-    public UUID getEntryPoint() {
-        return this.entryPoint;
-    }
-
-    public int getNumberOfImages() {
-        return (this.hasImages()) ? this.imageUUID.size() : 0;
-    }
-
-    private boolean hasComments() {
-        return this.comments != null && !this.comments.isEmpty();
-    }
-
-    public boolean hasImages() {
-        return this.imageUUID != null && !this.imageUUID.isEmpty();
-    }
-
-    public boolean hasGeolocation() {
-        return this.geolocation != null;
-    }
-
-    public boolean hasType() {
-        return (this.type != null);
-    }
-
-    public void setEntryPoint(UUID entryPoint) {
-        this.entryPoint = entryPoint;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
-
-    public void setImageUUID(List<UUID> images) {
-        this.imageUUID = images;
-    }
-
-    public void setType(TrapType type) {
-        this.type = type;
-    }
-
-    public Trap toTrap(
-            FetchEntryPointUseCase fetchEntryPointUseCase,
-            FetchFileUseCase fetchFileUseCase,
-            JwtAuthConverter authConverter,
-            Authentication authentication) {
-        EntryPoint ep = fetchEntryPointUseCase.fetchEntryPointById(this.entryPoint).orElseThrow();
-        JwtAuthenticationToken jwtAuthenticationToken = (JwtAuthenticationToken) authentication;
-        Jwt jwt = jwtAuthenticationToken.getToken();
-        String principalAttribute = authConverter.getPrincipleClaimName(jwt);
-        KaiztenJWTPreferredUsername preferredUsername = new KaiztenJWTPreferredUsername(principalAttribute);
-        Trap trap = new Trap(
-                this.getName(),
-                this.getType(),
-                ep,
-                this.getGeolocation(),
-                preferredUsername);
-        // Optional attributes:
-        trap.setContactInformation(this.getContactInformation());
-        trap.setDescription(this.getDescription());
-        if (this.hasComments()) {
-            for (Comment comment : this.comments) {
-                trap.addComment(comment);
-            }
+        public LocalDate getInstallationDate() {
+            return this.installationDate;
         }
-        if (this.hasImages()) {
-            for (UUID uuid : this.imageUUID) {
-                fetchFileUseCase.fetchFileById(uuid).ifPresent((image) -> {
-                    trap.addImage(image);
-                });
-            }
+
+        public void setInstallationDate(LocalDate installationDate) {
+            this.installationDate = installationDate;
         }
-        trap.setInstallationDate(this.getInstallationDate());
-        trap.setLeavingDate(this.getLeavingDate());
-        return trap;
-    }
 
-    public String toString() {
-        final String representationType = (this.hasType()) ? this.type.toString() : "null";
-        final String representationGeolocation = (this.hasGeolocation()) ? this.geolocation.toString() : "null";
-        final String representationImages = (this.hasImages()) ? this.imageUUID.toString() : "null";
-        return "TrapPostRequestBody={" +
-                "name=" + this.name + "," +
-                "contactInformation=" + this.contactInformation + "," +
-                "description=" + this.description + "," +
-                "type=" + representationType + "," +
-                "entryPoint=" + this.entryPoint + "," +
-                "geolocation=" + representationGeolocation + "," +
-                "images=" + representationImages + "," +
-                "installationDate=" + this.installationDate + "," +
-                "leavingDate=" + this.leavingDate +
-                "}";
-    }
-}
-```
-y 
-```java
-public class TrapResponseBody {
-
-    private UUID id;
-    private TrapName name;
-    private TrapDescription description;
-    private TrapType type;
-    private UUID entryPoint;
-    private KaiztenGeolocationPoint geolocation;
-    private LocalDate installationDate;
-    private LocalDate leavingDate;
-    private ContactInformation contactInformation;
-    private List<UUID> images;
-    private List<Comment> comments;
-    private KaiztenJWTPreferredUsername creator;
-
-    public Optional<LocalDate> getInstallationDate() {
-        return Optional.ofNullable(this.installationDate);
-    }
-
-    public void setInstallationDate(LocalDate installationDate) {
-        this.installationDate = installationDate;
-    }
-
-    public Optional<LocalDate> getLeavingDate() {
-        return Optional.ofNullable(this.leavingDate);
-    }
-
-    public KaiztenJWTPreferredUsername getCreator() {
-        return this.creator;
-    }
-
-    public void setLeavingDate(LocalDate leavingDate) {
-        this.leavingDate = leavingDate;
-    }
-
-    public UUID getId() {
-        return this.id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public TrapName getName() {
-        return this.name;
-    }
-
-    public void setName(TrapName name) {
-        this.name = name;
-    }
-
-    public Optional<TrapDescription> getDescription() {
-        return Optional.ofNullable(this.description);
-    }
-
-    public void setDescription(TrapDescription description) {
-        this.description = description;
-    }
-
-    public Optional<ContactInformation> getContactInformation() {
-        return Optional.ofNullable(this.contactInformation);
-    }
-
-    public void setContactInformation(ContactInformation contactInformation) {
-        this.contactInformation = contactInformation;
-    }
-
-    public void setGeolocation(KaiztenGeolocationPoint geolocation) {
-        this.geolocation = geolocation;
-    }
-
-    public KaiztenGeolocationPoint getGeolocation() {
-        return this.geolocation;
-    }
-
-    public void setType(TrapType type) {
-        this.type = type;
-    }
-
-    public TrapType getType() {
-        return this.type;
-    }
-
-    public List<UUID> getImages() {
-        return this.images;
-    }
-
-    public boolean hasImages() {
-        return this.images != null;
-    }
-
-    public void setImages(List<UUID> images) {
-        this.images = images;
-    }
-
-    public List<Comment> getComments() {
-        return this.comments;
-    }
-
-    public boolean hasComments() {
-        return this.comments != null && !this.comments.isEmpty();
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
-
-    public UUID getEntryPoint() {
-        return this.entryPoint;
-    }
-
-    public void setEntryPoint(UUID entryPoint) {
-        this.entryPoint = entryPoint;
-    }
-
-    public void setCreator(KaiztenJWTPreferredUsername creator) {
-        this.creator = creator;
-    }
-
-    public boolean hasDescription() {
-        return this.description != null;
-    }
-
-    public boolean hasContactInformation() {
-        return this.contactInformation != null;
-    }
-
-    public boolean hasInstallationDate() {
-        return this.installationDate != null;
-    }
-
-    public boolean hasLeavingDate() {
-        return this.leavingDate != null;
-    }
-
-    public static TrapResponseBody from(Trap trap) {
-        TrapResponseBody responseBody = new TrapResponseBody();
-        responseBody.id = trap.getId();
-        responseBody.name = trap.getName();
-        responseBody.type = trap.getType();
-        responseBody.entryPoint = trap.getEntryPoint().getId();
-        responseBody.geolocation = trap.getGeolocation();
-        responseBody.creator = trap.getCreator();
-        if (trap.hasImages()) {
-            responseBody.images = new ArrayList<>(trap.getNumberOfImages());
-            for (File image : trap.getImages().get()) {
-                responseBody.images.add(image.getId());
-            }
+        public LocalDate getLeavingDate() {
+            return this.leavingDate;
         }
-        if (trap.hasComments()) {
-            responseBody.comments = new ArrayList<>(trap.getNumberOfComments());
-            for (Comment comment : trap.getComments().get()) {
-                responseBody.comments.add(comment);
-            }
-        }
-        // Optional attributes:
-        trap.getDescription().ifPresent((description) -> {
-            responseBody.description = description;
-        });
-        trap.getInstallationDate().ifPresent((installationDate) -> {
-            responseBody.installationDate = installationDate;
-        });
-        trap.getLeavingDate().ifPresent((leavingDate) -> {
-            responseBody.leavingDate = leavingDate;
-        });
-        trap.getContactInformation().ifPresent((contactInformation) -> {
-            responseBody.contactInformation = contactInformation;
-        });
-        return responseBody;
-    }
 
-    public String toString() {
-        final String representationComments = (this.hasComments()) ? this.comments.toString() : "null";
-        final String imagesId = (this.hasImages()) ? this.images.toString() : "null";
-        return "TrapResponseBody={" +
-                "id=" + this.id + "," +
-                "name=" + this.name + "," +
-                "contactInformation=" + this.contactInformation + "," +
-                "description=" + this.description + "," +
-                "type=" + type + "," +
-                "entryPoint=" + this.entryPoint + "," +
-                "geolocation=" + geolocation + "," +
-                "comments=" + representationComments + "," +
-                "images=" + imagesId + "," +
-                "installationDate=" + this.installationDate + "," +
-                "leavingDate=" + this.leavingDate + "," +
-                "creator=" + this.creator +
-                "}";
+        public void setLeavingDate(LocalDate leavingDate) {
+            this.leavingDate = leavingDate;
+        }
+
+        public TrapName getName() {
+            return this.name;
+        }
+
+        public void setName(TrapName name) {
+            this.name = name;
+        }
+
+        public TrapDescription getDescription() {
+            return this.description;
+        }
+
+        public void setDescription(TrapDescription description) {
+            this.description = description;
+        }
+
+        public ContactInformation getContactInformation() {
+            return this.contactInformation;
+        }
+
+        public void setContactInformation(ContactInformation contactInformation) {
+            this.contactInformation = contactInformation;
+        }
+
+        public void setGeolocation(KaiztenGeolocationPoint geolocation) {
+            this.geolocation = geolocation;
+        }
+
+        public KaiztenGeolocationPoint getGeolocation() {
+            return this.geolocation;
+        }
+
+        public List<Comment> getComments() {
+            return this.comments;
+        }
+
+        public TrapType getType() {
+            return this.type;
+        }
+
+        public List<UUID> getImageUUID() {
+            return this.imageUUID;
+        }
+
+        public UUID getEntryPoint() {
+            return this.entryPoint;
+        }
+
+        public int getNumberOfImages() {
+            return (this.hasImages()) ? this.imageUUID.size() : 0;
+        }
+
+        private boolean hasComments() {
+            return this.comments != null && !this.comments.isEmpty();
+        }
+
+        public boolean hasImages() {
+            return this.imageUUID != null && !this.imageUUID.isEmpty();
+        }
+
+        public boolean hasGeolocation() {
+            return this.geolocation != null;
+        }
+
+        public boolean hasType() {
+            return (this.type != null);
+        }
+
+        public void setEntryPoint(UUID entryPoint) {
+            this.entryPoint = entryPoint;
+        }
+
+        public void setComments(List<Comment> comments) {
+            this.comments = comments;
+        }
+
+        public void setImageUUID(List<UUID> images) {
+            this.imageUUID = images;
+        }
+
+        public void setType(TrapType type) {
+            this.type = type;
+        }
+
+        public Trap toTrap(
+                FetchEntryPointUseCase fetchEntryPointUseCase,
+                FetchFileUseCase fetchFileUseCase,
+                JwtAuthConverter authConverter,
+                Authentication authentication) {
+            EntryPoint ep = fetchEntryPointUseCase.fetchEntryPointById(this.entryPoint).orElseThrow();
+            JwtAuthenticationToken jwtAuthenticationToken = (JwtAuthenticationToken) authentication;
+            Jwt jwt = jwtAuthenticationToken.getToken();
+            String principalAttribute = authConverter.getPrincipleClaimName(jwt);
+            KaiztenJWTPreferredUsername preferredUsername = new KaiztenJWTPreferredUsername(principalAttribute);
+            Trap trap = new Trap(
+                    this.getName(),
+                    this.getType(),
+                    ep,
+                    this.getGeolocation(),
+                    preferredUsername);
+            // Optional attributes:
+            trap.setContactInformation(this.getContactInformation());
+            trap.setDescription(this.getDescription());
+            if (this.hasComments()) {
+                for (Comment comment : this.comments) {
+                    trap.addComment(comment);
+                }
+            }
+            if (this.hasImages()) {
+                for (UUID uuid : this.imageUUID) {
+                    fetchFileUseCase.fetchFileById(uuid).ifPresent((image) -> {
+                        trap.addImage(image);
+                    });
+                }
+            }
+            trap.setInstallationDate(this.getInstallationDate());
+            trap.setLeavingDate(this.getLeavingDate());
+            return trap;
+        }
+
+        public String toString() {
+            final String representationType = (this.hasType()) ? this.type.toString() : "null";
+            final String representationGeolocation = (this.hasGeolocation()) ? this.geolocation.toString() : "null";
+            final String representationImages = (this.hasImages()) ? this.imageUUID.toString() : "null";
+            return "TrapPostRequestBody={" +
+                    "name=" + this.name + "," +
+                    "contactInformation=" + this.contactInformation + "," +
+                    "description=" + this.description + "," +
+                    "type=" + representationType + "," +
+                    "entryPoint=" + this.entryPoint + "," +
+                    "geolocation=" + representationGeolocation + "," +
+                    "images=" + representationImages + "," +
+                    "installationDate=" + this.installationDate + "," +
+                    "leavingDate=" + this.leavingDate +
+                    "}";
+        }
     }
-}
-```
-Fíjate en la implementación de los métodos estáticos que tienen las clases anteriores. Están diseñados para convertir el DTO correspondiente en entidad (o viceversa) así como para generar objetos aleatoriamente. También es particularmente importante en que te fijes en que se retorna `Optional` en los getters de aquellos atributos que son opcionales en la entidad.
+    ```
+    y 
+    ```java
+    public class TrapResponseBody {
+
+        private UUID id;
+        private TrapName name;
+        private TrapDescription description;
+        private TrapType type;
+        private UUID entryPoint;
+        private KaiztenGeolocationPoint geolocation;
+        private LocalDate installationDate;
+        private LocalDate leavingDate;
+        private ContactInformation contactInformation;
+        private List<UUID> images;
+        private List<Comment> comments;
+        private KaiztenJWTPreferredUsername creator;
+
+        public Optional<LocalDate> getInstallationDate() {
+            return Optional.ofNullable(this.installationDate);
+        }
+
+        public void setInstallationDate(LocalDate installationDate) {
+            this.installationDate = installationDate;
+        }
+
+        public Optional<LocalDate> getLeavingDate() {
+            return Optional.ofNullable(this.leavingDate);
+        }
+
+        public KaiztenJWTPreferredUsername getCreator() {
+            return this.creator;
+        }
+
+        public void setLeavingDate(LocalDate leavingDate) {
+            this.leavingDate = leavingDate;
+        }
+
+        public UUID getId() {
+            return this.id;
+        }
+
+        public void setId(UUID id) {
+            this.id = id;
+        }
+
+        public TrapName getName() {
+            return this.name;
+        }
+
+        public void setName(TrapName name) {
+            this.name = name;
+        }
+
+        public Optional<TrapDescription> getDescription() {
+            return Optional.ofNullable(this.description);
+        }
+
+        public void setDescription(TrapDescription description) {
+            this.description = description;
+        }
+
+        public Optional<ContactInformation> getContactInformation() {
+            return Optional.ofNullable(this.contactInformation);
+        }
+
+        public void setContactInformation(ContactInformation contactInformation) {
+            this.contactInformation = contactInformation;
+        }
+
+        public void setGeolocation(KaiztenGeolocationPoint geolocation) {
+            this.geolocation = geolocation;
+        }
+
+        public KaiztenGeolocationPoint getGeolocation() {
+            return this.geolocation;
+        }
+
+        public void setType(TrapType type) {
+            this.type = type;
+        }
+
+        public TrapType getType() {
+            return this.type;
+        }
+
+        public List<UUID> getImages() {
+            return this.images;
+        }
+
+        public boolean hasImages() {
+            return this.images != null;
+        }
+
+        public void setImages(List<UUID> images) {
+            this.images = images;
+        }
+
+        public List<Comment> getComments() {
+            return this.comments;
+        }
+
+        public boolean hasComments() {
+            return this.comments != null && !this.comments.isEmpty();
+        }
+
+        public void setComments(List<Comment> comments) {
+            this.comments = comments;
+        }
+
+        public UUID getEntryPoint() {
+            return this.entryPoint;
+        }
+
+        public void setEntryPoint(UUID entryPoint) {
+            this.entryPoint = entryPoint;
+        }
+
+        public void setCreator(KaiztenJWTPreferredUsername creator) {
+            this.creator = creator;
+        }
+
+        public boolean hasDescription() {
+            return this.description != null;
+        }
+
+        public boolean hasContactInformation() {
+            return this.contactInformation != null;
+        }
+
+        public boolean hasInstallationDate() {
+            return this.installationDate != null;
+        }
+
+        public boolean hasLeavingDate() {
+            return this.leavingDate != null;
+        }
+
+        public static TrapResponseBody from(Trap trap) {
+            TrapResponseBody responseBody = new TrapResponseBody();
+            responseBody.id = trap.getId();
+            responseBody.name = trap.getName();
+            responseBody.type = trap.getType();
+            responseBody.entryPoint = trap.getEntryPoint().getId();
+            responseBody.geolocation = trap.getGeolocation();
+            responseBody.creator = trap.getCreator();
+            if (trap.hasImages()) {
+                responseBody.images = new ArrayList<>(trap.getNumberOfImages());
+                for (File image : trap.getImages().get()) {
+                    responseBody.images.add(image.getId());
+                }
+            }
+            if (trap.hasComments()) {
+                responseBody.comments = new ArrayList<>(trap.getNumberOfComments());
+                for (Comment comment : trap.getComments().get()) {
+                    responseBody.comments.add(comment);
+                }
+            }
+            // Optional attributes:
+            trap.getDescription().ifPresent((description) -> {
+                responseBody.description = description;
+            });
+            trap.getInstallationDate().ifPresent((installationDate) -> {
+                responseBody.installationDate = installationDate;
+            });
+            trap.getLeavingDate().ifPresent((leavingDate) -> {
+                responseBody.leavingDate = leavingDate;
+            });
+            trap.getContactInformation().ifPresent((contactInformation) -> {
+                responseBody.contactInformation = contactInformation;
+            });
+            return responseBody;
+        }
+
+        public String toString() {
+            final String representationComments = (this.hasComments()) ? this.comments.toString() : "null";
+            final String imagesId = (this.hasImages()) ? this.images.toString() : "null";
+            return "TrapResponseBody={" +
+                    "id=" + this.id + "," +
+                    "name=" + this.name + "," +
+                    "contactInformation=" + this.contactInformation + "," +
+                    "description=" + this.description + "," +
+                    "type=" + type + "," +
+                    "entryPoint=" + this.entryPoint + "," +
+                    "geolocation=" + geolocation + "," +
+                    "comments=" + representationComments + "," +
+                    "images=" + imagesId + "," +
+                    "installationDate=" + this.installationDate + "," +
+                    "leavingDate=" + this.leavingDate + "," +
+                    "creator=" + this.creator +
+                    "}";
+        }
+    }
+    ```
+    Fíjate en la implementación de los métodos estáticos que tienen las clases anteriores. Están diseñados para convertir el DTO correspondiente en entidad (o viceversa) así como para generar objetos aleatoriamente. También es particularmente importante en que te fijes en que se retorna `Optional` en los getters de aquellos atributos que son opcionales en la entidad.
 
 2. Una vez creados los DTO, debes eliminar las entidades en los parámetros y los valores de retorno de los controladores creados en el adaptador. Esto significa que los controladores deben recibir DTO y devolver DTO en lugar de entidades de tu dominio.
 
@@ -1400,354 +1394,352 @@ Hola, cuando el usuario realiza una petición de tipo `POST` o `PUT`, el cuerpo 
 **Pasos a realizar:**
 
 1. Crea una carpeta `adapter/rest/serialization`. Dentro de esta carpeta, crea un deserializador por cada DTO de petición definido en la carpeta `adapter/rest/dto`. A continuación tienes un ejemplo:
-```java
-public class TrapPostRequestBodyDeserializer extends KaiztenJsonDeserializer<TrapPostRequestBody> {
+    ```java
+    public class TrapPostRequestBodyDeserializer extends KaiztenJsonDeserializer<TrapPostRequestBody> {
 
-    private static final Logger logger = LoggerFactory.getLogger(TrapPostRequestBodyDeserializer.class);
-    private FetchEntryPointUseCase fetchEntryPointUseCase;
+        private static final Logger logger = LoggerFactory.getLogger(TrapPostRequestBodyDeserializer.class);
+        private FetchEntryPointUseCase fetchEntryPointUseCase;
 
-    public TrapPostRequestBodyDeserializer(FetchEntryPointUseCase fetchEntryPointUseCase) {
-        this.fetchEntryPointUseCase = fetchEntryPointUseCase;
-    }
-
-    @Override
-    protected TrapPostRequestBody parse(JsonNode trapNode) {
-        // Required attributes:
-        final UUID entryPoint = UUID.fromString(trapNode.get(JsonFields.ENTRYPOINT).asText());
-        final TrapName name = new TrapName(trapNode.get(JsonFields.NAME).textValue());
-        final TrapType type = TrapType.valueOf(trapNode.get(JsonFields.TYPE).textValue().trim().toUpperCase());
-        final JsonNode nodeGeolocation = (trapNode.get(JsonFields.GEOLOCATION));
-        final KaiztenGeolocationPoint geolocation = KaiztenGeolocationPoint.from(nodeGeolocation);
-        // Optional attributes:
-        final TrapDescription description = (trapNode.has(JsonFields.DESCRIPTION)) ? new TrapDescription(trapNode.get(JsonFields.DESCRIPTION).textValue()) : null;
-        final ContactInformation contactInformation = (trapNode.has(JsonFields.CONTACT_INFORMATION)) ? new ContactInformation(trapNode.get(JsonFields.CONTACT_INFORMATION).textValue()) : null;
-        final List<Comment> comments = this.parseComments(trapNode);
-        final List<UUID> images = this.parseImages(trapNode);
-        final LocalDate installationDate = (trapNode.has(JsonFields.INSTALLATION_DATE)) ? LocalDate.parse(trapNode.get(JsonFields.INSTALLATION_DATE).textValue()) : null;
-        final LocalDate leavingDate = (trapNode.has(JsonFields.LEAVING_DATE)) ? LocalDate.parse(trapNode.get(JsonFields.LEAVING_DATE).textValue()) : null;
-        //
-        TrapPostRequestBody requestBody = new TrapPostRequestBody();
-        requestBody.setEntryPoint(entryPoint);
-        requestBody.setName(name);
-        requestBody.setDescription(description);
-        requestBody.setType(type);
-        requestBody.setGeolocation(geolocation);
-        requestBody.setContactInformation(contactInformation);
-        requestBody.setComments(comments);
-        requestBody.setImageUUID(images);
-        requestBody.setInstallationDate(installationDate);
-        requestBody.setLeavingDate(leavingDate);
-        return requestBody;
-    }
-
-    @Override
-    protected Optional<List<ApiSubError>> validate(JsonNode trap) {
-        List<ApiSubError> errors = new ArrayList<>();
-        errors.addAll(this.validateEntryPoint(trap));
-        errors.addAll(this.validateName(trap));
-        errors.addAll(this.validateDescription(trap));
-        errors.addAll(this.validateType(trap));
-        errors.addAll(this.validateGeolocation(trap));
-        errors.addAll(this.validateContactInformation(trap));
-        errors.addAll(this.validateComments(trap));
-        errors.addAll(this.validateImages(trap));
-        errors.addAll(this.validateInstallationDate(trap));
-        errors.addAll(this.validateLeavingDate(trap));
-        return (errors.isEmpty()) ? Optional.empty() : Optional.of(errors);
-    }
-
-    private List<Comment> parseComments(JsonNode trapNode) {
-        List<Comment> comments = new ArrayList<>();
-        if (trapNode.has(JsonFields.COMMENTS)) {
-            ArrayNode arrayComments = (ArrayNode) trapNode.get(JsonFields.COMMENTS);
-            for (final JsonNode commentNode : arrayComments) {
-                final CommentMessage message = new CommentMessage(commentNode.get(JsonFields.MESSAGE).asText());
-                final ZonedDateTime zonedDateTime = ZonedDateTime.parse(commentNode.get(JsonFields.TIMESTAMP).asText(), DateTimeFormatter.ISO_DATE_TIME);
-                final LocalDateTime date = zonedDateTime.toLocalDateTime();
-                Comment comment = new Comment(message, date);
-                comments.add(comment);
-            }
+        public TrapPostRequestBodyDeserializer(FetchEntryPointUseCase fetchEntryPointUseCase) {
+            this.fetchEntryPointUseCase = fetchEntryPointUseCase;
         }
-        return comments;
-    }
 
-    private List<UUID> parseImages(JsonNode trapNode) {
-        List<UUID> images = new ArrayList<UUID>();
-        if (trapNode.has(JsonFields.IMAGES)) {
-            JsonNode nodeImages = (trapNode.get(JsonFields.IMAGES));
-            Iterator<JsonNode> iteratorImages = nodeImages.elements();
-            while (iteratorImages.hasNext()) {
-                JsonNode imageNode = iteratorImages.next();
-                UUID uuid = UUID.fromString(imageNode.textValue());
-                images.add(uuid);
-            }
-        }
-        return images;
-    }
-
-    private List<ApiSubError> validateName(JsonNode trapNode) {
-        List<ApiSubError> errors = new ArrayList<>();
-        if (trapNode.has(JsonFields.NAME)) {
-            final String name = trapNode.get(JsonFields.NAME).textValue();
-            try {
-                new TrapName(name);
-            } catch (Exception exception) {
-                errors.add(new ApiSubErrorMessageRejectedValueField(
-                        exception.getMessage(),
-                        name,
-                        JsonFields.NAME));
-            }
-        } else {
-            errors.add(new ApiSubErrorMessageRejectedValueField(
-                    TrapName.ERROR_NOT_DEFINED,
-                    JsonFields.NAME));
-        }
-        return errors;
-    }
-
-    private List<ApiSubError> validateDescription(JsonNode trapNode) {
-        List<ApiSubError> errors = new ArrayList<>();
-        if (trapNode.has(JsonFields.DESCRIPTION)) {
-            final String description = trapNode.get(JsonFields.DESCRIPTION).textValue();
-            try {
-                new TrapDescription(description);
-            } catch (Exception exception) {
-                errors.add(new ApiSubErrorMessageRejectedValueField(
-                        exception.getMessage(),
-                        description,
-                        JsonFields.DESCRIPTION));
-            }
-        }
-        return errors;
-    }
-
-    private List<ApiSubError> validateContactInformation(JsonNode trapNode) {
-        List<ApiSubError> errors = new ArrayList<>();
-        if (trapNode.has(JsonFields.CONTACT_INFORMATION)) {
-            final String contactInformation = trapNode.get(JsonFields.CONTACT_INFORMATION).textValue();
-            try {
-                new ContactInformation(contactInformation);
-            } catch (Exception exception) {
-                errors.add(new ApiSubErrorMessageRejectedValueField(
-                        exception.getMessage(),
-                        contactInformation,
-                        JsonFields.CONTACT_INFORMATION));
-            }
-        }
-        return errors;
-    }
-
-    private List<ApiSubError> validateEntryPoint(JsonNode trapNode) {
-        List<ApiSubError> errors = new ArrayList<>();
-        if (trapNode.has(JsonFields.ENTRYPOINT)) {
-            try {
-                UUID uuid = UUID.fromString(trapNode.get(JsonFields.ENTRYPOINT).asText());
-                Optional<EntryPoint> optionalEntryPoint = this.fetchEntryPointUseCase.fetchEntryPointById(uuid);
-                if (!optionalEntryPoint.isPresent()) {
-                    errors.add(new ApiSubErrorMessageRejectedValueField(
-                            String.format(SamplingPostRequestBodyDeserializer.ERROR_TRAP_ID_NOT_FOUND, uuid.toString()),
-                            JsonFields.TRAP_ID));
-                }
-            } catch (IllegalArgumentException exception) {
-                errors.add(new ApiSubErrorMessage(SamplingPostRequestBody.ERROR_TRAP_ID_WRONG_FORMAT));
-            }
-        } else {
-            errors.add(new ApiSubErrorMessageRejectedValueField(
-                    SamplingPostRequestBodyDeserializer.ERROR_TRAP_ID_NOT_DEFINED,
-                    JsonFields.TRAP_ID));
-        }
-        return errors;
-    }
-
-    
-
-    private List<ApiSubError> validateType(JsonNode trapNode) {
-        List<ApiSubError> errors = new ArrayList<>();
-        if (trapNode.has(JsonFields.TYPE)) {
-            final String originalType = trapNode.get(JsonFields.TYPE).textValue();
-            final String type = originalType.trim().toUpperCase();
-            if (!TrapType.isValid(type)) {
-                errors.add(new ApiSubErrorMessageRejectedValueField(
-                        TrapControllerValidator.ERROR_TYPE_WRONG_FORMAT,
-                        originalType,
-                        JsonFields.TYPE));
-            }
-        } else {
-            errors.add(new ApiSubErrorMessageRejectedValueField(
-                    TrapControllerValidator.ERROR_TYPE_NOT_DEFINED,
-                    JsonFields.TYPE));
-        }
-        return errors;
-    }
-
-    private List<ApiSubError> validateGeolocation(JsonNode trapNode) {
-        List<ApiSubError> errors = new ArrayList<>();
-        if (trapNode.has(JsonFields.GEOLOCATION)) {
+        @Override
+        protected TrapPostRequestBody parse(JsonNode trapNode) {
+            // Required attributes:
+            final UUID entryPoint = UUID.fromString(trapNode.get(JsonFields.ENTRYPOINT).asText());
+            final TrapName name = new TrapName(trapNode.get(JsonFields.NAME).textValue());
+            final TrapType type = TrapType.valueOf(trapNode.get(JsonFields.TYPE).textValue().trim().toUpperCase());
             final JsonNode nodeGeolocation = (trapNode.get(JsonFields.GEOLOCATION));
-            try {
-                KaiztenGeolocationPoint.from(nodeGeolocation);
-            } catch (Exception exception) {
-                errors.add(new ApiSubErrorMessageRejectedValueField(
-                        exception.getMessage(),
-                        JsonFields.GEOLOCATION));
-            }
-        } else {
-            errors.add(new ApiSubErrorMessageRejectedValueField(
-                    TrapControllerValidator.ERROR_GEOLOCATION_NOT_DEFINED,
-                    JsonFields.GEOLOCATION));
+            final KaiztenGeolocationPoint geolocation = KaiztenGeolocationPoint.from(nodeGeolocation);
+            // Optional attributes:
+            final TrapDescription description = (trapNode.has(JsonFields.DESCRIPTION)) ? new TrapDescription(trapNode.get(JsonFields.DESCRIPTION).textValue()) : null;
+            final ContactInformation contactInformation = (trapNode.has(JsonFields.CONTACT_INFORMATION)) ? new ContactInformation(trapNode.get(JsonFields.CONTACT_INFORMATION).textValue()) : null;
+            final List<Comment> comments = this.parseComments(trapNode);
+            final List<UUID> images = this.parseImages(trapNode);
+            final LocalDate installationDate = (trapNode.has(JsonFields.INSTALLATION_DATE)) ? LocalDate.parse(trapNode.get(JsonFields.INSTALLATION_DATE).textValue()) : null;
+            final LocalDate leavingDate = (trapNode.has(JsonFields.LEAVING_DATE)) ? LocalDate.parse(trapNode.get(JsonFields.LEAVING_DATE).textValue()) : null;
+            //
+            TrapPostRequestBody requestBody = new TrapPostRequestBody();
+            requestBody.setEntryPoint(entryPoint);
+            requestBody.setName(name);
+            requestBody.setDescription(description);
+            requestBody.setType(type);
+            requestBody.setGeolocation(geolocation);
+            requestBody.setContactInformation(contactInformation);
+            requestBody.setComments(comments);
+            requestBody.setImageUUID(images);
+            requestBody.setInstallationDate(installationDate);
+            requestBody.setLeavingDate(leavingDate);
+            return requestBody;
         }
-        return errors;
-    }
 
-    private List<ApiSubError> validateComments(JsonNode trapNode) {
-        List<ApiSubError> errors = new ArrayList<>();
-        if (trapNode.has(JsonFields.COMMENTS)) {
-            ArrayNode comments = (ArrayNode) trapNode.get(JsonFields.COMMENTS);
-            for (final JsonNode comment : comments) {
-                if (comment.has(JsonFields.MESSAGE)) {
-                    final String message = comment.get(JsonFields.MESSAGE).asText();
-                    try {
-                        new CommentMessage(message);
-                    } catch (Exception exception) {
-                        errors.add(new ApiSubErrorMessageRejectedValueField(
-                                exception.getMessage(),
-                                JsonFields.MESSAGE));
-                    }
-                } else {
-                    errors.add(new ApiSubErrorMessageRejectedValueField(
-                            CommentMessage.ERROR_NOT_DEFINED,
-                            JsonFields.MESSAGE));
+        @Override
+        protected Optional<List<ApiSubError>> validate(JsonNode trap) {
+            List<ApiSubError> errors = new ArrayList<>();
+            errors.addAll(this.validateEntryPoint(trap));
+            errors.addAll(this.validateName(trap));
+            errors.addAll(this.validateDescription(trap));
+            errors.addAll(this.validateType(trap));
+            errors.addAll(this.validateGeolocation(trap));
+            errors.addAll(this.validateContactInformation(trap));
+            errors.addAll(this.validateComments(trap));
+            errors.addAll(this.validateImages(trap));
+            errors.addAll(this.validateInstallationDate(trap));
+            errors.addAll(this.validateLeavingDate(trap));
+            return (errors.isEmpty()) ? Optional.empty() : Optional.of(errors);
+        }
+
+        private List<Comment> parseComments(JsonNode trapNode) {
+            List<Comment> comments = new ArrayList<>();
+            if (trapNode.has(JsonFields.COMMENTS)) {
+                ArrayNode arrayComments = (ArrayNode) trapNode.get(JsonFields.COMMENTS);
+                for (final JsonNode commentNode : arrayComments) {
+                    final CommentMessage message = new CommentMessage(commentNode.get(JsonFields.MESSAGE).asText());
+                    final ZonedDateTime zonedDateTime = ZonedDateTime.parse(commentNode.get(JsonFields.TIMESTAMP).asText(), DateTimeFormatter.ISO_DATE_TIME);
+                    final LocalDateTime date = zonedDateTime.toLocalDateTime();
+                    Comment comment = new Comment(message, date);
+                    comments.add(comment);
                 }
             }
+            return comments;
         }
-        return errors;
-    }
 
-    private List<ApiSubError> validateImages(JsonNode trapNode) {
-        List<ApiSubError> errors = new ArrayList<>();
-        if (trapNode.has(JsonFields.IMAGES)) {
-            JsonNode nodeImages = (trapNode.get(JsonFields.IMAGES));
-            if (nodeImages.isArray()) {
+        private List<UUID> parseImages(JsonNode trapNode) {
+            List<UUID> images = new ArrayList<UUID>();
+            if (trapNode.has(JsonFields.IMAGES)) {
+                JsonNode nodeImages = (trapNode.get(JsonFields.IMAGES));
                 Iterator<JsonNode> iteratorImages = nodeImages.elements();
                 while (iteratorImages.hasNext()) {
                     JsonNode imageNode = iteratorImages.next();
-                    errors.addAll(this.validateImageIdentifier(imageNode));
+                    UUID uuid = UUID.fromString(imageNode.textValue());
+                    images.add(uuid);
+                }
+            }
+            return images;
+        }
+
+        private List<ApiSubError> validateName(JsonNode trapNode) {
+            List<ApiSubError> errors = new ArrayList<>();
+            if (trapNode.has(JsonFields.NAME)) {
+                final String name = trapNode.get(JsonFields.NAME).textValue();
+                try {
+                    new TrapName(name);
+                } catch (Exception exception) {
+                    errors.add(new ApiSubErrorMessageRejectedValueField(
+                            exception.getMessage(),
+                            name,
+                            JsonFields.NAME));
                 }
             } else {
                 errors.add(new ApiSubErrorMessageRejectedValueField(
-                        TrapControllerValidator.ERROR_IMAGES_WRONG_FORMAT,
-                        JsonFields.IMAGES));
+                        TrapName.ERROR_NOT_DEFINED,
+                        JsonFields.NAME));
             }
+            return errors;
         }
-        return errors;
-    }
 
-    private List<ApiSubError> validateImageIdentifier(JsonNode imageNode) {
-        List<ApiSubError> errors = new ArrayList<>();
-        if (imageNode.isTextual()) {
-            try {
-                UUID.fromString(imageNode.textValue());
-            } catch (Exception exception) {
-                errors.add(new ApiSubErrorMessage(TrapControllerValidator.ERROR_ID_WRONG_FORMAT));
+        private List<ApiSubError> validateDescription(JsonNode trapNode) {
+            List<ApiSubError> errors = new ArrayList<>();
+            if (trapNode.has(JsonFields.DESCRIPTION)) {
+                final String description = trapNode.get(JsonFields.DESCRIPTION).textValue();
+                try {
+                    new TrapDescription(description);
+                } catch (Exception exception) {
+                    errors.add(new ApiSubErrorMessageRejectedValueField(
+                            exception.getMessage(),
+                            description,
+                            JsonFields.DESCRIPTION));
+                }
             }
-        } else {
-            errors.add(new ApiSubErrorMessage(TrapControllerValidator.ERROR_ID_NOT_TEXT));
+            return errors;
         }
-        return errors;
-    }
 
-    private List<ApiSubError> validateInstallationDate(JsonNode trapNode) {
-        List<ApiSubError> errors = new ArrayList<>();
-        if (trapNode.has(JsonFields.INSTALLATION_DATE)) {
-            final String installationDate = trapNode.get(JsonFields.INSTALLATION_DATE).textValue();
-            try {
-                LocalDate.parse(installationDate);
-            } catch (Exception exception) {
-                errors.add(new ApiSubErrorMessage(
-                        TrapControllerValidator.ERROR_INSTALLATION_DATE_WRONG_FORMAT));
+        private List<ApiSubError> validateContactInformation(JsonNode trapNode) {
+            List<ApiSubError> errors = new ArrayList<>();
+            if (trapNode.has(JsonFields.CONTACT_INFORMATION)) {
+                final String contactInformation = trapNode.get(JsonFields.CONTACT_INFORMATION).textValue();
+                try {
+                    new ContactInformation(contactInformation);
+                } catch (Exception exception) {
+                    errors.add(new ApiSubErrorMessageRejectedValueField(
+                            exception.getMessage(),
+                            contactInformation,
+                            JsonFields.CONTACT_INFORMATION));
+                }
             }
+            return errors;
         }
-        return errors;
-    }
 
-    private List<ApiSubError> validateLeavingDate(JsonNode trapNode) {
-        List<ApiSubError> errors = new ArrayList<>();
-        if (trapNode.has(JsonFields.LEAVING_DATE)) {
-            final String leavingDate = trapNode.get(JsonFields.LEAVING_DATE).textValue();
-            try {
-                LocalDate.parse(leavingDate);
-            } catch (Exception exception) {
-                errors.add(new ApiSubErrorMessage(
-                        TrapControllerValidator.ERROR_LEAVING_DATE_WRONG_FORMAT));
+        private List<ApiSubError> validateEntryPoint(JsonNode trapNode) {
+            List<ApiSubError> errors = new ArrayList<>();
+            if (trapNode.has(JsonFields.ENTRYPOINT)) {
+                try {
+                    UUID uuid = UUID.fromString(trapNode.get(JsonFields.ENTRYPOINT).asText());
+                    Optional<EntryPoint> optionalEntryPoint = this.fetchEntryPointUseCase.fetchEntryPointById(uuid);
+                    if (!optionalEntryPoint.isPresent()) {
+                        errors.add(new ApiSubErrorMessageRejectedValueField(
+                                String.format(SamplingPostRequestBodyDeserializer.ERROR_TRAP_ID_NOT_FOUND, uuid.toString()),
+                                JsonFields.TRAP_ID));
+                    }
+                } catch (IllegalArgumentException exception) {
+                    errors.add(new ApiSubErrorMessage(SamplingPostRequestBody.ERROR_TRAP_ID_WRONG_FORMAT));
+                }
+            } else {
+                errors.add(new ApiSubErrorMessageRejectedValueField(
+                        SamplingPostRequestBodyDeserializer.ERROR_TRAP_ID_NOT_DEFINED,
+                        JsonFields.TRAP_ID));
             }
+            return errors;
         }
-        return errors;
+
+        private List<ApiSubError> validateType(JsonNode trapNode) {
+            List<ApiSubError> errors = new ArrayList<>();
+            if (trapNode.has(JsonFields.TYPE)) {
+                final String originalType = trapNode.get(JsonFields.TYPE).textValue();
+                final String type = originalType.trim().toUpperCase();
+                if (!TrapType.isValid(type)) {
+                    errors.add(new ApiSubErrorMessageRejectedValueField(
+                            TrapControllerValidator.ERROR_TYPE_WRONG_FORMAT,
+                            originalType,
+                            JsonFields.TYPE));
+                }
+            } else {
+                errors.add(new ApiSubErrorMessageRejectedValueField(
+                        TrapControllerValidator.ERROR_TYPE_NOT_DEFINED,
+                        JsonFields.TYPE));
+            }
+            return errors;
+        }
+
+        private List<ApiSubError> validateGeolocation(JsonNode trapNode) {
+            List<ApiSubError> errors = new ArrayList<>();
+            if (trapNode.has(JsonFields.GEOLOCATION)) {
+                final JsonNode nodeGeolocation = (trapNode.get(JsonFields.GEOLOCATION));
+                try {
+                    KaiztenGeolocationPoint.from(nodeGeolocation);
+                } catch (Exception exception) {
+                    errors.add(new ApiSubErrorMessageRejectedValueField(
+                            exception.getMessage(),
+                            JsonFields.GEOLOCATION));
+                }
+            } else {
+                errors.add(new ApiSubErrorMessageRejectedValueField(
+                        TrapControllerValidator.ERROR_GEOLOCATION_NOT_DEFINED,
+                        JsonFields.GEOLOCATION));
+            }
+            return errors;
+        }
+
+        private List<ApiSubError> validateComments(JsonNode trapNode) {
+            List<ApiSubError> errors = new ArrayList<>();
+            if (trapNode.has(JsonFields.COMMENTS)) {
+                ArrayNode comments = (ArrayNode) trapNode.get(JsonFields.COMMENTS);
+                for (final JsonNode comment : comments) {
+                    if (comment.has(JsonFields.MESSAGE)) {
+                        final String message = comment.get(JsonFields.MESSAGE).asText();
+                        try {
+                            new CommentMessage(message);
+                        } catch (Exception exception) {
+                            errors.add(new ApiSubErrorMessageRejectedValueField(
+                                    exception.getMessage(),
+                                    JsonFields.MESSAGE));
+                        }
+                    } else {
+                        errors.add(new ApiSubErrorMessageRejectedValueField(
+                                CommentMessage.ERROR_NOT_DEFINED,
+                                JsonFields.MESSAGE));
+                    }
+                }
+            }
+            return errors;
+        }
+
+        private List<ApiSubError> validateImages(JsonNode trapNode) {
+            List<ApiSubError> errors = new ArrayList<>();
+            if (trapNode.has(JsonFields.IMAGES)) {
+                JsonNode nodeImages = (trapNode.get(JsonFields.IMAGES));
+                if (nodeImages.isArray()) {
+                    Iterator<JsonNode> iteratorImages = nodeImages.elements();
+                    while (iteratorImages.hasNext()) {
+                        JsonNode imageNode = iteratorImages.next();
+                        errors.addAll(this.validateImageIdentifier(imageNode));
+                    }
+                } else {
+                    errors.add(new ApiSubErrorMessageRejectedValueField(
+                            TrapControllerValidator.ERROR_IMAGES_WRONG_FORMAT,
+                            JsonFields.IMAGES));
+                }
+            }
+            return errors;
+        }
+
+        private List<ApiSubError> validateImageIdentifier(JsonNode imageNode) {
+            List<ApiSubError> errors = new ArrayList<>();
+            if (imageNode.isTextual()) {
+                try {
+                    UUID.fromString(imageNode.textValue());
+                } catch (Exception exception) {
+                    errors.add(new ApiSubErrorMessage(TrapControllerValidator.ERROR_ID_WRONG_FORMAT));
+                }
+            } else {
+                errors.add(new ApiSubErrorMessage(TrapControllerValidator.ERROR_ID_NOT_TEXT));
+            }
+            return errors;
+        }
+
+        private List<ApiSubError> validateInstallationDate(JsonNode trapNode) {
+            List<ApiSubError> errors = new ArrayList<>();
+            if (trapNode.has(JsonFields.INSTALLATION_DATE)) {
+                final String installationDate = trapNode.get(JsonFields.INSTALLATION_DATE).textValue();
+                try {
+                    LocalDate.parse(installationDate);
+                } catch (Exception exception) {
+                    errors.add(new ApiSubErrorMessage(
+                            TrapControllerValidator.ERROR_INSTALLATION_DATE_WRONG_FORMAT));
+                }
+            }
+            return errors;
+        }
+
+        private List<ApiSubError> validateLeavingDate(JsonNode trapNode) {
+            List<ApiSubError> errors = new ArrayList<>();
+            if (trapNode.has(JsonFields.LEAVING_DATE)) {
+                final String leavingDate = trapNode.get(JsonFields.LEAVING_DATE).textValue();
+                try {
+                    LocalDate.parse(leavingDate);
+                } catch (Exception exception) {
+                    errors.add(new ApiSubErrorMessage(
+                            TrapControllerValidator.ERROR_LEAVING_DATE_WRONG_FORMAT));
+                }
+            }
+            return errors;
+        }
     }
-}
-```
+    ```
 
 2. Crea un serializador por cada DTO de respuesta dentro de `adapter/rest/serialization`. A continuación tienes un ejemplo:
-```java
-public class TrapResponseBodySerializer extends StdSerializer<TrapResponseBody> {
+    ```java
+    public class TrapResponseBodySerializer extends StdSerializer<TrapResponseBody> {
 
-    private static final Logger logger = LoggerFactory.getLogger(TrapResponseBodySerializer.class);
+        private static final Logger logger = LoggerFactory.getLogger(TrapResponseBodySerializer.class);
 
-    public TrapResponseBodySerializer() {
-        this(null);
-    }
-
-    public TrapResponseBodySerializer(Class<TrapResponseBody> t) {
-        super(t);
-    }
-
-    @Override
-    public void serialize(TrapResponseBody entity, JsonGenerator generator, SerializerProvider provider) throws IOException {
-        generator.writeStartObject();
-        // Required attributes:
-        generator.writeStringField(JsonFields.ID, entity.getId().toString());
-        generator.writeStringField(JsonFields.ENTRYPOINT, entity.getEntryPoint().toString());
-        generator.writeStringField(JsonFields.NAME, entity.getName().getValue().toString());
-        generator.writeStringField(JsonFields.TYPE, entity.getType().toString());
-        generator.writeFieldName(JsonFields.GEOLOCATION);
-        generator.writeStartObject(JsonFields.GEOLOCATION);
-        generator.writeNumberField(JsonFields.LONGITUDE, entity.getGeolocation().getLongitude());
-        generator.writeNumberField(JsonFields.LATITUDE, entity.getGeolocation().getLatitude());
-        generator.writeEndObject();
-        generator.writeStringField(JsonFields.CREATOR, entity.getCreator().toString());
-        // Optional attributes:
-        if (entity.hasDescription()) {
-            generator.writeStringField(JsonFields.DESCRIPTION, entity.getDescription().get().getValue());
+        public TrapResponseBodySerializer() {
+            this(null);
         }
-        if (entity.hasContactInformation()) {
-            generator.writeStringField(JsonFields.CONTACT_INFORMATION, entity.getContactInformation().get().getValue());
+
+        public TrapResponseBodySerializer(Class<TrapResponseBody> t) {
+            super(t);
         }
-        if (entity.hasComments()) {
-            generator.writeArrayFieldStart(JsonFields.COMMENTS);
-            for (Comment comment : entity.getComments()) {
-                generator.writeStartObject();
-                generator.writeStringField(JsonFields.MESSAGE, comment.getMessage().getValue());
-                generator.writeStringField(JsonFields.TIMESTAMP, comment.getTimestamp().toString());
-                generator.writeEndObject();
+
+        @Override
+        public void serialize(TrapResponseBody entity, JsonGenerator generator, SerializerProvider provider) throws IOException {
+            generator.writeStartObject();
+            // Required attributes:
+            generator.writeStringField(JsonFields.ID, entity.getId().toString());
+            generator.writeStringField(JsonFields.ENTRYPOINT, entity.getEntryPoint().toString());
+            generator.writeStringField(JsonFields.NAME, entity.getName().getValue().toString());
+            generator.writeStringField(JsonFields.TYPE, entity.getType().toString());
+            generator.writeFieldName(JsonFields.GEOLOCATION);
+            generator.writeStartObject(JsonFields.GEOLOCATION);
+            generator.writeNumberField(JsonFields.LONGITUDE, entity.getGeolocation().getLongitude());
+            generator.writeNumberField(JsonFields.LATITUDE, entity.getGeolocation().getLatitude());
+            generator.writeEndObject();
+            generator.writeStringField(JsonFields.CREATOR, entity.getCreator().toString());
+            // Optional attributes:
+            if (entity.hasDescription()) {
+                generator.writeStringField(JsonFields.DESCRIPTION, entity.getDescription().get().getValue());
             }
-            generator.writeEndArray();
-        }
-        if (entity.hasImages()) {
-            generator.writeArrayFieldStart(JsonFields.IMAGES);
-            for (UUID imageUUID : entity.getImages()) {
-                generator.writeString(imageUUID.toString());
+            if (entity.hasContactInformation()) {
+                generator.writeStringField(JsonFields.CONTACT_INFORMATION, entity.getContactInformation().get().getValue());
             }
-            generator.writeEndArray();
+            if (entity.hasComments()) {
+                generator.writeArrayFieldStart(JsonFields.COMMENTS);
+                for (Comment comment : entity.getComments()) {
+                    generator.writeStartObject();
+                    generator.writeStringField(JsonFields.MESSAGE, comment.getMessage().getValue());
+                    generator.writeStringField(JsonFields.TIMESTAMP, comment.getTimestamp().toString());
+                    generator.writeEndObject();
+                }
+                generator.writeEndArray();
+            }
+            if (entity.hasImages()) {
+                generator.writeArrayFieldStart(JsonFields.IMAGES);
+                for (UUID imageUUID : entity.getImages()) {
+                    generator.writeString(imageUUID.toString());
+                }
+                generator.writeEndArray();
+            }
+            if (entity.hasInstallationDate()) {
+                generator.writeStringField(JsonFields.INSTALLATION_DATE, entity.getInstallationDate().get().toString());
+            }
+            if (entity.hasLeavingDate()) {
+                generator.writeStringField(JsonFields.LEAVING_DATE, entity.getLeavingDate().get().toString());
+            }
+            generator.writeEndObject();
         }
-        if (entity.hasInstallationDate()) {
-            generator.writeStringField(JsonFields.INSTALLATION_DATE, entity.getInstallationDate().get().toString());
-        }
-        if (entity.hasLeavingDate()) {
-            generator.writeStringField(JsonFields.LEAVING_DATE, entity.getLeavingDate().get().toString());
-        }
-        generator.writeEndObject();
     }
-}
-```
+    ```
 
 #### Configuración
 
@@ -1756,45 +1748,45 @@ Hola, vamos a crear un archivo de configuración del adaptador REST.
 **Pasos a realizar:**
 
 1. Crea `configuration/RestConfiguration.java` con el siguiente contenido:
-```java
-@Configuration
-public class RestConfiguration {
+    ```java
+    @Configuration
+    public class RestConfiguration {
 
-    @Bean
-    public Module dynamoDemoEntityDeserializer() {
-        SimpleModule module = new SimpleModule();
-        module.addDeserializer(
-                TrapPostRequestBody.class,
-                new TrapPostRequestBodyDeserializer(this.fetchEntryPointUseCase));
-        module.addDeserializer(
-                TrapPutRequestBody.class,
-                new TrapPutRequestBodyDeserializer(this.fetchEntryPointUseCase));
-        module.addSerializer(
-                TrapResponseBody.class,
-                new TrapResponseBodySerializer());
-        // Remaining serializers and deserializers
-        return module;
+        @Bean
+        public Module dynamoDemoEntityDeserializer() {
+            SimpleModule module = new SimpleModule();
+            module.addDeserializer(
+                    TrapPostRequestBody.class,
+                    new TrapPostRequestBodyDeserializer(this.fetchEntryPointUseCase));
+            module.addDeserializer(
+                    TrapPutRequestBody.class,
+                    new TrapPutRequestBodyDeserializer(this.fetchEntryPointUseCase));
+            module.addSerializer(
+                    TrapResponseBody.class,
+                    new TrapResponseBodySerializer());
+            // Remaining serializers and deserializers
+            return module;
+        }
+
+        @Bean
+        public ResponseEntityExceptionHandler responseEntityExceptionHandler() {
+            return new KaiztenExceptionHandler();
+        }
+
+        @Bean
+        public FilterConditionBuilder filterConditionBuilder() {
+            return new FilterConditionBuilder();
+        }
+
+        @Bean
+        public JwtAuthConverter jwtAuthConverter() {
+            return new JwtAuthConverter();
+        }
     }
+    ```
+    Tal como puedes comprobar, `RestConfiguration.java` define qué deserializador va a encargarse de convertir el cuerpo de la petición enviada en el DTO correspondiente. Hace lo propio con los serializadores. Por tanto, debes registrar cada serializador y deserializador que tengas definido en `adapter/rest/serialization`.
 
-    @Bean
-    public ResponseEntityExceptionHandler responseEntityExceptionHandler() {
-        return new KaiztenExceptionHandler();
-    }
-
-    @Bean
-    public FilterConditionBuilder filterConditionBuilder() {
-        return new FilterConditionBuilder();
-    }
-
-    @Bean
-    public JwtAuthConverter jwtAuthConverter() {
-        return new JwtAuthConverter();
-    }
-}
-```
-Tal como puedes comprobar, `RestConfiguration.java` define qué deserializador va a encargarse de convertir el cuerpo de la petición enviada en el DTO correspondiente. Hace lo propio con los serializadores. Por tanto, debes registrar cada serializador y deserializador que tengas definido en `adapter/rest/serialization`.
-
-Por último, `RestConfiguration.java` crea un objeto `ResponseEntityExceptionHandler` que ayuda a homogeneizar las respuestas de error que pueda emitir el back-end, así como crea los objetos `FilterConditionBuilder` y `JwtAuthConverter` que permiten gestionar filtros en las peticiones y JSON Web Token para securizar las mismas.
+    Por último, `RestConfiguration.java` crea un objeto `ResponseEntityExceptionHandler` que ayuda a homogeneizar las respuestas de error que pueda emitir el back-end, así como crea los objetos `FilterConditionBuilder` y `JwtAuthConverter` que permiten gestionar filtros en las peticiones y JSON Web Token para securizar las mismas.
 
 #### Documentación
 
@@ -1916,18 +1908,15 @@ Respuesta Ejemplo:
 
 **Pasos a realizar:**
 
-1. Capa de Aplicación (Casos de Uso)
-- Crear los casos de uso y servicios para gestionar operaciones bulk específicas como por ejemplo, `BulkRetrieveTraps` y `BulkCreateTraps` en recursos específicos como `Trap`
-- Encapsular la lógica de cada operación en métodos individuales dentro de los casos de uso y servicios, gestionando las siguientes tareas:
-
-2. Adaptador de Entrada HTTP (src/adapter/http)
-- Extender endpoints: Crear o modificar endpoints en el adaptador HTTP para procesar solicitudes bulk de recursos específicos. Por ejemplo: `GET /traps/bulk` para recuperar múltiples trampas, o `POST /traps/bulk` para crear múltiples trampas.
-- Deserialización de solicitudes: Asegurarse de que el adaptador HTTP pueda deserializar el cuerpo JSON de las solicitudes bulk en una lista de operaciones individuales, delegándolas a los casos de uso adecuados.
-- Gestión de errores y respuestas: Configurar el adaptador para devolver respuestas detalladas, con la posibilidad de usar el código `HTTP 200 OK`.
-
-3. Adaptador de Persistencia (Repositorio)
-- Implementación de operaciones para múltiples recursos: Modificar los repositorios para soportar la inserción, actualización o borrado de múltiples recursos.
-
+1. Capa de Aplicación (Casos de uso)
+   - Crear los casos de uso y servicios para gestionar operaciones bulk específicas como por ejemplo, `BulkRetrieveTraps` y `BulkCreateTraps` en recursos específicos como `Trap`
+   - Encapsular la lógica de cada operación en métodos individuales dentro de los casos de uso y servicios, gestionando las siguientes tareas:
+2. Adaptador de Entrada HTTP (`src/adapter/http`)
+   - Extender endpoints: Crear o modificar endpoints en el adaptador HTTP para procesar solicitudes bulk de recursos específicos. Por ejemplo: `GET /traps/bulk` para recuperar múltiples trampas, o `POST /traps/bulk` para crear múltiples trampas.
+   - Deserialización de solicitudes: Asegurarse de que el adaptador HTTP pueda deserializar el cuerpo JSON de las solicitudes bulk en una lista de operaciones individuales, delegándolas a los casos de uso adecuados.
+   - Gestión de errores y respuestas: Configurar el adaptador para devolver respuestas detalladas, con la posibilidad de usar el código `HTTP 200 OK`.
+3. Adaptador de Persistencia (repositorio)
+   - Implementación de operaciones para múltiples recursos: Modificar los repositorios para soportar la inserción, actualización o borrado de múltiples recursos.
 
 ### Configuración
 
@@ -1938,20 +1927,20 @@ Hola, una vez definidos e implementados los casos de uso de la aplicación, es n
 **Pasos a realizar:**
 
 1. En base a lo anterior, para poder tener accesible cada uno de los casos de uso (servicios) de la aplicación, es necesario crear los beans correspondientes. Con este objetivo en mente, si no está creada previamente, crea la carpeta `configuration/` en el código del back-end. Añade a esta carpeta la clase `ApplicationConfiguration`. A continuación puedes ver un extracto de cómo sería esta clase:
-```java
-...
-import org.springframework.context.annotation.Configuration;
-
-@Configuration
-public class ApplicationConfiguration {
-
-    @Bean
-    public <NAME_OF_USE_CASE> <NAME_OF_USE_CASE>() {
-        return new <NAME_OF_SERVICE>();
-    }
+    ```java
     ...
-}
-```
+    import org.springframework.context.annotation.Configuration;
+
+    @Configuration
+    public class ApplicationConfiguration {
+
+        @Bean
+        public <NAME_OF_USE_CASE> <NAME_OF_USE_CASE>() {
+            return new <NAME_OF_SERVICE>();
+        }
+        ...
+    }
+    ```
 
 2. En este caso, debes crear un método que instancie (a través del operador `new`) un servicio de los que tengas definidos en tu aplicación, implementando de esta forma el caso de uso en cuestión. Este método debe estar anotado con `@Bean` para indicarle a [Spring Boot](https://spring.io/projects/spring-boot) que se trata de un bean. Por tanto, debes crear tantos beans como servicios tengas en tu aplicación. Por último, fíjate que la clase debe estar anotada con `@Configuration` para indicar que en ella se encuentra la definición de beans.
 
@@ -1993,28 +1982,28 @@ Hola, dentro del repositorio habría que crear un front-end para la aplicación 
 **Pasos a realizar:**
 
 1. Ejecuta lo siguiente:
-```shell
-$ yarn create vite
-```
-Es importante que establezcas los siguientes datos cuando crees el proyecto:
-* `Project name`: `front-end`
-* `Select a framework`: `Vue`
-* `Select a variant`: `TypeScript`
+    ```shell
+    $ yarn create vite
+    ```
+    Es importante que establezcas los siguientes datos cuando crees el proyecto:
+    * `Project name`: `front-end`
+    * `Select a framework`: `Vue`
+    * `Select a variant`: `TypeScript`
 
 2. Una vez creado el proyecto, ejecuta lo siguiente para poder desplegar tu front-end en local:
-```shell
-$ cd front-end
-$ yarn
-$ yarn dev
-```
-De esta manera, tu front-end estará desplegado en tu máquina local en la dirección indicada por [Vite](https://vitejs.dev). A continuación puedes ver un ejemplo de cómo debería ser la salida:
-```shell
-  VITE v4.5.0  ready in 318 ms
+    ```shell
+    $ cd front-end
+    $ yarn
+    $ yarn dev
+    ```
+    De esta manera, tu front-end estará desplegado en tu máquina local en la dirección indicada por [Vite](https://vitejs.dev). A continuación puedes ver un ejemplo de cómo debería ser la salida:
+    ```shell
+      VITE v4.5.0  ready in 318 ms
 
-  ➜  Local:   http://localhost:5173/
-  ➜  Network: use --host to expose
-  ➜  press h to show help
-```
+      ➜  Local:   http://localhost:5173/
+      ➜  Network: use --host to expose
+      ➜  press h to show help
+    ```
 
 3. Comprueba que puedes acceder a la URL `http://localhost:5173/` (o a la indicada por [Vite](https://vitejs.dev) en el despliegue) a través de tu navegador. Si todo funciona correctamente, debes poder visualizar un front-end por defecto.
 
@@ -2025,14 +2014,14 @@ Hola, hemos creado una pequeña librería de utilidades en [TypeScript](https://
 **Pasos a realizar:**
 
 1. Añade [`kaizten-typescript`](https://github.com/kaizten/kaizten-typescript) al front-end de la aplicación, tal como sigue:
-```shell
-$ touch .npmrc
-$ echo "//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}" >> .npmrc
-$ echo "@kaizten:registry=https://npm.pkg.github.com" >> .npmrc
-$ export GITHUB_TOKEN=<PERSONAL_ACCESS_TOKEN>
-$ yarn add @kaizten/kaizten-typescript@1.0.0
-```
-Es importante que sustituyas `<PERSONAL_ACCESS_TOKEN>` por tu token personal de [GitHub](https://www.github.com). Si no lo tienes, crea un token personal en tu cuenta de GitHub. Aquí tienes los [pasos](https://docs.github.com/es/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). El tipo de token que debes crear es `Personal access tokens (classic)`. Además, es importante que cuando crees el token marques la opción `read-packages`.
+    ```shell
+    $ touch .npmrc
+    $ echo "//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}" >> .npmrc
+    $ echo "@kaizten:registry=https://npm.pkg.github.com" >> .npmrc
+    $ export GITHUB_TOKEN=<PERSONAL_ACCESS_TOKEN>
+    $ yarn add @kaizten/kaizten-typescript@1.0.0
+    ```
+    Es importante que sustituyas `<PERSONAL_ACCESS_TOKEN>` por tu token personal de [GitHub](https://www.github.com). Si no lo tienes, crea un token personal en tu cuenta de GitHub. Aquí tienes los [pasos](https://docs.github.com/es/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). El tipo de token que debes crear es `Personal access tokens (classic)`. Además, es importante que cuando crees el token marques la opción `read-packages`.
 
 ### Dockerfile
 
@@ -2041,51 +2030,51 @@ Hola, actualmente, el proyecto carece de un Dockerfile para el front-end, lo que
 **Pasos a realizar:**
 
 1. Crea un archivo `front-end/Dockerfile`. El contenido debe ser el siguiente:
-```shell
-# Develop stage
-FROM node:alpine as develop-stage
-LABEL maintainer="development@kaizten.com"
+    ```shell
+    # Develop stage
+    FROM node:alpine as develop-stage
+    LABEL maintainer="development@kaizten.com"
 
-ARG GITHUB_TOKEN
-ENV GITHUB_TOKEN $GITHUB_TOKEN
+    ARG GITHUB_TOKEN
+    ENV GITHUB_TOKEN $GITHUB_TOKEN
 
-WORKDIR /app
+    WORKDIR /app
 
-RUN echo @kaizten:registry=https://npm.pkg.github.com/ >> ./.npmrc
-RUN echo //npm.pkg.github.com/:_authToken=$GITHUB_TOKEN >> ./.npmrc
+    RUN echo @kaizten:registry=https://npm.pkg.github.com/ >> ./.npmrc
+    RUN echo //npm.pkg.github.com/:_authToken=$GITHUB_TOKEN >> ./.npmrc
 
-COPY package*.json ./
-RUN yarn install
-COPY . .
+    COPY package*.json ./
+    RUN yarn install
+    COPY . .
 
-# Build stage
-FROM develop-stage as build-stage
-RUN yarn build
+    # Build stage
+    FROM develop-stage as build-stage
+    RUN yarn build
 
-# Production stage
-FROM nginx:stable-alpine as production-stage
-COPY --from=build-stage /app/dist /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
-```
-Una vez creado el `Dockerfile`, puedes crear la imagen Docker de tu front-end. Para ello, ejecuta lo siguiente:
-```shell
-$ cd front-end
-$ docker build -t dockerizedfrontend .
-```
+    # Production stage
+    FROM nginx:stable-alpine as production-stage
+    COPY --from=build-stage /app/dist /usr/share/nginx/html
+    EXPOSE 80
+    CMD ["nginx", "-g", "daemon off;"]
+    ```
+    Una vez creado el `Dockerfile`, puedes crear la imagen Docker de tu front-end. Para ello, ejecuta lo siguiente:
+    ```shell
+    $ cd front-end
+    $ docker build -t dockerizedfrontend .
+    ```
 
 2. Comprueba que la imagen Docker se ha generado correctamente. Esto es, debes tener la imagen Docker generada en tu máquina:
-```shell
-$ docker images
-REPOSITORY                              TAG       IMAGE ID       CREATED         SIZE
-dockerizedfrontend                      latest    030e16f22f48   6 seconds ago   17.8MB
-```
+    ```shell
+    $ docker images
+    REPOSITORY                              TAG       IMAGE ID       CREATED         SIZE
+    dockerizedfrontend                      latest    030e16f22f48   6 seconds ago   17.8MB
+    ```
 
 3. Comprueba que puedes crear un contenedor Docker de la imagen previamente generada. Tal como sigue:
-```shell
-$ docker run -p 80:80 --name mycontainer dockerizedfrontend
-```
-El resultado debe ser que el front-end se ejecute de forma convencional, pero ahora no como una aplicación [Vue.js](https://vuejs.org) sino como un contenedor. Concretamente, se está creando un contenedor llamado `mycontainer` de la imagen previamente creada `dockerizedfrontend`. Además, se está mapeando el puerto `80` del contenedor en el puerto `80` de tu máquina.
+    ```shell
+    $ docker run -p 80:80 --name mycontainer dockerizedfrontend
+    ```
+    El resultado debe ser que el front-end se ejecute de forma convencional, pero ahora no como una aplicación [Vue.js](https://vuejs.org) sino como un contenedor. Concretamente, se está creando un contenedor llamado `mycontainer` de la imagen previamente creada `dockerizedfrontend`. Además, se está mapeando el puerto `80` del contenedor en el puerto `80` de tu máquina.
 
 ### GitHub action
 
@@ -2096,51 +2085,51 @@ Hola, la generación de la imagen Docker correspondiente requiere pasos manuales
 1. Las [GitHub action](https://github.com/features/actions) se definen en la carpeta `.github/workflows`. Crea esta carpeta dentro del repositorio si no la tienes aún creada. Es importante que te fijes bien en que se trata de una carpeta oculta. 
 
 2. Dentro de la carpeta `.github/workflows` crea el archivo `front-end_publish-docker-image.yml` con el siguiente contenido:
-```yaml
-name: Front-end. Publish Docker image
+    ```yaml
+    name: Front-end. Publish Docker image
 
-# Events that trigger the workflow
-on:
-  push:
-    branches: 
-      - main
-    paths: 
-      - front-end/**
-      - '!**.md'
-  workflow_dispatch:
+    # Events that trigger the workflow
+    on:
+      push:
+        branches: 
+          - main
+        paths: 
+          - front-end/**
+          - '!**.md'
+      workflow_dispatch:
 
-# Working directory
-defaults:
-  run:
-    working-directory: front-end
+    # Working directory
+    defaults:
+      run:
+        working-directory: front-end
 
-# Environment variables
-env:
-  WORKING_DIRECTORY: front-end
-  DOCKER_IMAGE_NAME: kaizten/<NOMBRE_PROYECTO>_front-end
+    # Environment variables
+    env:
+      WORKING_DIRECTORY: front-end
+      DOCKER_IMAGE_NAME: kaizten/<NOMBRE_PROYECTO>_front-end
 
-jobs:
-  publish-docker-image:
-    runs-on: ubuntu-latest
-    steps:
-      # Checkout of the repository
-      - uses: actions/checkout@v4
-        name: Check out code
-      # Build and publish Docker image in DockerHub
-      - name: Build and push Docker image
-        uses: mr-smithers-excellent/docker-build-push@v6
-        with:
-          image: ${{ env.DOCKER_IMAGE_NAME }}
-          tags: latest
-          registry: docker.io
-          directory: ${{ env.WORKING_DIRECTORY }}
-          dockerfile: ${{ env.WORKING_DIRECTORY }}/Dockerfile
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          buildArgs: GITHUB_TOKEN=${{ secrets.KAIZTEN_DEVELOPMENT_PASSWORD }}
-```
+    jobs:
+      publish-docker-image:
+        runs-on: ubuntu-latest
+        steps:
+          # Checkout of the repository
+          - uses: actions/checkout@v4
+            name: Check out code
+          # Build and publish Docker image in DockerHub
+          - name: Build and push Docker image
+            uses: mr-smithers-excellent/docker-build-push@v6
+            with:
+              image: ${{ env.DOCKER_IMAGE_NAME }}
+              tags: latest
+              registry: docker.io
+              directory: ${{ env.WORKING_DIRECTORY }}
+              dockerfile: ${{ env.WORKING_DIRECTORY }}/Dockerfile
+              username: ${{ secrets.DOCKERHUB_USERNAME }}
+              password: ${{ secrets.DOCKERHUB_PASSWORD }}
+              buildArgs: GITHUB_TOKEN=${{ secrets.KAIZTEN_DEVELOPMENT_PASSWORD }}
+    ```
 
-La [GitHub action](https://github.com/features/actions) creada está destinada a que, cada vez que hagas un cambio en `front-end/` y lo subas al repositorio, se genere la imagen Docker correspondiente y se publique en [Docker Hub](https://hub.docker.com). Fíjate que en el archivo hay definida una variable `DOCKER_IMAGE_NAME` que indica el nombre de la imagen Docker que se genera con el lanzamiento de la [GitHub action](https://github.com/features/actions). En este punto es importante que sustituyas `<NOMBRE_PROYECTO>` por el nombre de tu proyecto.
+    La [GitHub action](https://github.com/features/actions) creada está destinada a que, cada vez que hagas un cambio en `front-end/` y lo subas al repositorio, se genere la imagen Docker correspondiente y se publique en [Docker Hub](https://hub.docker.com). Fíjate que en el archivo hay definida una variable `DOCKER_IMAGE_NAME` que indica el nombre de la imagen Docker que se genera con el lanzamiento de la [GitHub action](https://github.com/features/actions). En este punto es importante que sustituyas `<NOMBRE_PROYECTO>` por el nombre de tu proyecto.
 
 3. Revisa la [GitHub action](https://github.com/features/actions) y prueba a ejecutarla haciendo algún cambio en alguno de los archivos de `front-end/` y subiéndolos al repositorio. Indícame si se ha ejecutado correctamente (puedes verlo en la pestaña `Actions` del repositorio). En caso de que se produzca algún error en la ejecución de la [GitHub action](https://github.com/features/actions) te llegará un correo indicando el error.
 
@@ -2156,30 +2145,30 @@ Hola, el objetivo es replicar la estructura y las clases del dominio existente e
 2. Crea la carpeta `front-end/src/domain/valueobject` en el mismo directorio para almacenar los objetos de valor del dominio.
 3. Para cada clase y enumerado Java en el dominio del back-end, crea una clase equivalente en [TypeScript](https://www.typescriptlang.org) siguiendo la nomenclatura y la funcionalidad correspondiente. Las clases deben replicar la lógica de negocio y las propiedades definidas en el back-end.
 
-Una cuestión a tener en cuenta es que en [TypeScript](https://www.typescriptlang.org), a diferencia de Java (que utilizamos en el back-end), no existe soporte para la sobrecarga de constructores. En Java, es común definir múltiples constructores para las entidades de dominio, como uno que acepte un ID (típicamente para entidades ya existentes) y otro que genere el ID automáticamente (para entidades nuevas). Sin embargo, dado que [TypeScript](https://www.typescriptlang.org) carece de esta funcionalidad, debemos adoptar un enfoque diferente para manejar la construcción de entidades de dominio.
+    Una cuestión a tener en cuenta es que en [TypeScript](https://www.typescriptlang.org), a diferencia de Java (que utilizamos en el back-end), no existe soporte para la sobrecarga de constructores. En Java, es común definir múltiples constructores para las entidades de dominio, como uno que acepte un ID (típicamente para entidades ya existentes) y otro que genere el ID automáticamente (para entidades nuevas). Sin embargo, dado que [TypeScript](https://www.typescriptlang.org) carece de esta funcionalidad, debemos adoptar un enfoque diferente para manejar la construcción de entidades de dominio.
 
-Una alternativa para solventar esto es emplear parámetros opcionales en el constructor. De forma que definimos un solo constructor que acepta un parámetro opcional para el ID. Si se proporciona el ID, la entidad lo utiliza; de lo contrario, se genera uno automáticamente. Esto permite que el mismo constructor maneje ambas situaciones. A continuación un ejemplo:
+    Una alternativa para solventar esto es emplear parámetros opcionales en el constructor. De forma que definimos un solo constructor que acepta un parámetro opcional para el ID. Si se proporciona el ID, la entidad lo utiliza; de lo contrario, se genera uno automáticamente. Esto permite que el mismo constructor maneje ambas situaciones. A continuación un ejemplo:
 
-```ts
-class Order {
+    ```ts
+    class Order {
 
-    id: string;
-    items: string[];
+        id: string;
+        items: string[];
 
-    constructor(items: string[], id?: string) {
-        this.id = id || this.generateUniqueId(); // If no ID is provided, generate a new one
-        this.items = items;
+        constructor(items: string[], id?: string) {
+            this.id = id || this.generateUniqueId(); // If no ID is provided, generate a new one
+            this.items = items;
+        }
+
+        private generateUniqueId(): string {
+            return Math.random().toString(36).substring(2, 15); // Example of generating a unique ID
+        }
     }
 
-    private generateUniqueId(): string {
-        return Math.random().toString(36).substring(2, 15); // Example of generating a unique ID
-    }
-}
-
-// Usage examples
-const existingOrder = new Order(['item1', 'item2'], '12345'); // Using an existing ID
-const newOrder = new Order(['item1', 'item2']); // Generating an ID automatically
-```
+    // Usage examples
+    const existingOrder = new Order(['item1', 'item2'], '12345'); // Using an existing ID
+    const newOrder = new Order(['item1', 'item2']); // Generating an ID automatically
+    ```
 
 ### Aplicación
 
@@ -2253,7 +2242,7 @@ export class ProcessPaymentService implements ProcessPaymentUseCase {
 
 2. El servicio emplea un repository `PaymentRepository` que se encarga de realizar las peticiones a la API. Así se desacopla la lógica de negocio de la implementación de las llamadas `HTTP`. En tu caso, deberás disponer de repository: `<ENTITY>Repository`, donde <ENTITY> será el nombre la entidad correspondiente en cada caso.
 
-De esta forma, los servicios en el front-end se encargan de implementar la lógica de los casos de uso definidos. En este caso, `ProcessPaymentService` implementa la lógica para procesar pagos, utilizando `PaymentRepository` para realizar la comunicación con el back-end. De manera que desacoplamos la lógica de los servicios de la implementación de las llamadas HTTP, facilitando su mantenimiento.
+    De esta forma, los servicios en el front-end se encargan de implementar la lógica de los casos de uso definidos. En este caso, `ProcessPaymentService` implementa la lógica para procesar pagos, utilizando `PaymentRepository` para realizar la comunicación con el back-end. De manera que desacoplamos la lógica de los servicios de la implementación de las llamadas HTTP, facilitando su mantenimiento.
 
 #### Repositorios
 
@@ -2264,29 +2253,28 @@ Hola, el objetivo de este issue es crear la capa de repositorios en el front-end
 1. Crear la carpeta `front-end/src/application/repository`. En esta carpeta se añadirán las interfaces de repositorios que definirán las operaciones necesarias para cada entidad.
 
 2. Definir la interfaz del repositorio para la entidad `Payment`: Crea una interfaz que represente el repositorio de tu `ENTITY`. Esta interfaz debe incluir los métodos necesarios para realizar las operaciones básicas (CRUD). Aquí tienes un ejemplo de cómo puede verse:
+    ```ts
+    // PaymentRepository.ts
+    import { Either } from '@kaizten/kaizten-typescript';
+    import { DataError } from '@kaizten/kaizten-typescript';
+    import { Payment } from '../domain/entity/Payment';
+    import { PaymentResponse } from '../domain/entity/PaymentResponse';
 
-```ts
-// PaymentRepository.ts
-import { Either } from '@kaizten/kaizten-typescript';
-import { DataError } from '@kaizten/kaizten-typescript';
-import { Payment } from '../domain/entity/Payment';
-import { PaymentResponse } from '../domain/entity/PaymentResponse';
+    export interface PaymentRepository {
+        getPayments(): Promise<Either<DataError, PaymentResponse>>;
+        getPayment(id: string): Promise<Either<DataError, Payment>>;
+        savePayment(payment: Payment): Promise<Either<DataError, Payment>>;
+        deletePayment(id: string): Promise<Either<DataError, Payment>>;
+        updatePayment(id: string, payment: Payment): Promise<Either<DataError, Payment>>;
+        processPayment(amount: Amount, paymentDetails: PaymentDetails): Promise<Either<DataError, PaymentResponse>>;
+    }
+    ```
 
-export interface PaymentRepository {
-    getPayments(): Promise<Either<DataError, PaymentResponse>>;
-    getPayment(id: string): Promise<Either<DataError, Payment>>;
-    savePayment(payment: Payment): Promise<Either<DataError, Payment>>;
-    deletePayment(id: string): Promise<Either<DataError, Payment>>;
-    updatePayment(id: string, payment: Payment): Promise<Either<DataError, Payment>>;
-    processPayment(amount: Amount, paymentDetails: PaymentDetails): Promise<Either<DataError, PaymentResponse>>;
-}
-```
+    En este ejemplo, la interfaz `PaymentRepository` define los métodos que serán utilizados por los servicios para gestionar los pagos. Cada método devuelve una promesa (`Promise`) que contiene una respuesta de tipo `Either`, lo que permite manejar tanto el resultado esperado como los errores (con `DataError`).
 
-En este ejemplo, la interfaz `PaymentRepository` define los métodos que serán utilizados por los servicios para gestionar los pagos. Cada método devuelve una promesa (`Promise`) que contiene una respuesta de tipo `Either`, lo que permite manejar tanto el resultado esperado como los errores (con `DataError`).
+    Posteriormente, para cada interfaz, se puede crear una clase que implemente la lógica concreta de acceso a los datos, pero eso lo dejamos para otro issue. En este caso, simplemente necesitamos definir las interfaces.
 
-Posteriormente, para cada interfaz, se puede crear una clase que implemente la lógica concreta de acceso a los datos, pero eso lo dejamos para otro issue. En este caso, simplemente necesitamos definir las interfaces.
-
-Este enfoque te permite trabajar con una arquitectura limpia y desacoplada en el front-end, lo que facilita el mantenimiento del código.
+    Este enfoque te permite trabajar con una arquitectura limpia y desacoplada en el front-end, lo que facilita el mantenimiento del código.
 
 3. Por último, te paso una referencia sobre el funcionamiento de las [promesas en TypeScript](https://www.codecademy.com/resources/docs/typescript/promises). Léela con calma y plantea las dudas que puedan surgirte.
 
@@ -2600,18 +2588,15 @@ export class VehiclePutJsonRequest {
 
 1. Crea la carpeta `src/adapter/http/dto` en el front-end. 
 2. Para cada entidad del dominio, incluye un archivo con una clase en [TypeScript](https://www.typescriptlang.org) para cada petición y otro archivo para cada posible respuesta desde el back-end. A diferencia de las entidades, estos DTO deben tener `string` u otros tipos básicos para definir los atributos. Más específicamente, deberíamos para cada `<ENTITY>` disponer de:
-
-**Crear DTO `<ENTITY>JsonResponse`:**
-- Ubicación: `src/adapter/http/dto/entity-json-response.ts`
-- Descripción: Implementar un DTO para representar la respuesta de una entidad en formato JSON desde la API. El DTO debe incluir los atributos con tipos básicos necesarios que reflejen la estructura de la entidad en el dominio, así como las relaciones con otras entidades que se recogeran a través de su ID. Debe disponer de un método estático `toDomainEntity` que convierte la respuesta JSON en una entidad del dominio usando los value objects y entidades definidos. 
-
-**Crear DTO `<ENTITY>PostJsonRequest`:**
-- Ubicación: `src/adapter/http/dto/entity-post-json-request.ts`
-- Descripción: Desarrollar un DTO que represente las solicitudes POST para la creación de una entidad en la API. Este DTO deberá gestionar la serialización de los atributos necesarios para crear una nueva entidad. Debe disponer de un método estático `toRequest` que convierte un objeto de entrada en una instancia de `<ENTITY>PostJsonRequest`.
-
-**Crear DTO `<ENTITY>PutJsonRequest`:**
-- Ubicación: `src/adapter/http/dto/entity-put-json-request.ts`
-- Descripción: Definir un DTO para las solicitudes PUT de actualización de una entidad, que permita modificar uno o varios atributos de forma parcial. Este DTO deberá soportar atributos opcionales. Debe disponer de un método estático `toRequest` que convierte un objeto de actualización en una instancia de `<ENTITY>PutJsonRequest`.
+   * **Crear DTO `<ENTITY>JsonResponse`:**
+     - Ubicación: `src/adapter/http/dto/entity-json-response.ts`
+     - Descripción: Implementar un DTO para representar la respuesta de una entidad en formato JSON desde la API. El DTO debe incluir los atributos con tipos básicos necesarios que reflejen la estructura de la entidad en el dominio, así como las relaciones con otras entidades que se recogeran a través de su ID. Debe disponer de un método estático `toDomainEntity` que convierte la respuesta JSON en una entidad del dominio usando los value objects y entidades definidos. 
+   * **Crear DTO `<ENTITY>PostJsonRequest`:**
+     - Ubicación: `src/adapter/http/dto/entity-post-json-request.ts`
+     - Descripción: Desarrollar un DTO que represente las solicitudes POST para la creación de una entidad en la API. Este DTO deberá gestionar la serialización de los atributos necesarios para crear una nueva entidad. Debe disponer de un método estático `toRequest` que convierte un objeto de entrada en una instancia de `<ENTITY>PostJsonRequest`.
+   * **Crear DTO `<ENTITY>PutJsonRequest`:**
+     - Ubicación: `src/adapter/http/dto/entity-put-json-request.ts`
+     - Descripción: Definir un DTO para las solicitudes PUT de actualización de una entidad, que permita modificar uno o varios atributos de forma parcial. Este DTO deberá soportar atributos opcionales. Debe disponer de un método estático `toRequest` que convierte un objeto de actualización en una instancia de `<ENTITY>PutJsonRequest`.
 
 #### Probar adaptador HTTP
 
@@ -2620,91 +2605,91 @@ Hola, este issue tiene como objetivo probar la funcionalidad del repositorio HTT
 **Pasos a realizar:**
 
 1. Vamos a suponer que nuestra entidad de trabajo es `Vehicle`, por lo que para probar dicha entidad, el primer paso es abrir el archivo `App.vue` y agregar las importaciones necesarias y setup para probar las operaciones del repositorio HTTP:
-```ts
-<script lang="ts" setup>
-import { ref, onMounted } from 'vue';
-import { VehicleHttpRepository } from '@/adapter/http/repository/vehicle-http-repository';
-import { Vehicle } from '../../../domain/entity/vehicle';
+    ```ts
+    <script lang="ts" setup>
+    import { ref, onMounted } from 'vue';
+    import { VehicleHttpRepository } from '@/adapter/http/repository/vehicle-http-repository';
+    import { Vehicle } from '../../../domain/entity/vehicle';
 
-const vehicleRepo = new VehicleHttpRepository();
+    const vehicleRepo = new VehicleHttpRepository();
 
-const vehicleList = ref([]);
-const vehicleDetails = ref();
-const newVehicle = new Vehicle('ABC123', 4, 'John Doe');
-const updatedVehicle = new Vehicle('ABC123', 5, 'Jane Doe');
+    const vehicleList = ref([]);
+    const vehicleDetails = ref();
+    const newVehicle = new Vehicle('ABC123', 4, 'John Doe');
+    const updatedVehicle = new Vehicle('ABC123', 5, 'Jane Doe');
 
-// Métodos de prueba
+    // Métodos de prueba
 
-const getVehicles = async () => {
-  const result = await vehicleRepo.get(1, 10);
-  result.fold(
-    error => console.error('Error getting vehicles:', error),
-    data => (vehicleList.value = data.vehiclesResponse)
-  );
-};
+    const getVehicles = async () => {
+      const result = await vehicleRepo.get(1, 10);
+      result.fold(
+        error => console.error('Error getting vehicles:', error),
+        data => (vehicleList.value = data.vehiclesResponse)
+      );
+    };
 
-const getVehicleById = async (id: string) => {
-  const result = await vehicleRepo.getById(id);
-  result.fold(
-    error => console.error('Error getting vehicle:', error),
-    data => (vehicleDetails.value = data)
-  );
-};
+    const getVehicleById = async (id: string) => {
+      const result = await vehicleRepo.getById(id);
+      result.fold(
+        error => console.error('Error getting vehicle:', error),
+        data => (vehicleDetails.value = data)
+      );
+    };
 
-const registerVehicle = async () => {
-  const result = await vehicleRepo.register(newVehicle);
-  result.fold(
-    error => console.error('Error registering vehicle:', error),
-    data => console.log('Vehicle registered successfully:', data)
-  );
-};
+    const registerVehicle = async () => {
+      const result = await vehicleRepo.register(newVehicle);
+      result.fold(
+        error => console.error('Error registering vehicle:', error),
+        data => console.log('Vehicle registered successfully:', data)
+      );
+    };
 
-const updateVehicle = async (id: string) => {
-  const result = await vehicleRepo.update(id, updatedVehicle);
-  result.fold(
-    error => console.error('Error updating vehicle:', error),
-    data => console.log('Vehicle updated successfully:', data)
-  );
-};
+    const updateVehicle = async (id: string) => {
+      const result = await vehicleRepo.update(id, updatedVehicle);
+      result.fold(
+        error => console.error('Error updating vehicle:', error),
+        data => console.log('Vehicle updated successfully:', data)
+      );
+    };
 
-const deleteVehicle = async (id: string) => {
-  const result = await vehicleRepo.delete(id);
-  result.fold(
-    error => console.error('Error deleting vehicle:', error),
-    data => console.log('Vehicle deleted successfully:', data)
-  );
-};
+    const deleteVehicle = async (id: string) => {
+      const result = await vehicleRepo.delete(id);
+      result.fold(
+        error => console.error('Error deleting vehicle:', error),
+        data => console.log('Vehicle deleted successfully:', data)
+      );
+    };
 
-// Ejecutar pruebas al cargar el componente
-onMounted(() => {
-  getVehicles();
-  getVehicleById('b79cb3ba-745e-5d9a-8903-4a02327a7e09'); // Usar ID de prueba
-  registerVehicle();
-  updateVehicle('b79cb3ba-745e-5d9a-8903-4a02327a7e09');  // Usar ID de prueba
-  deleteVehicle('b79cb3ba-745e-5d9a-8903-4a02327a7e09');  // Usar ID de prueba
-});
-</script>
-```
+    // Ejecutar pruebas al cargar el componente
+    onMounted(() => {
+      getVehicles();
+      getVehicleById('b79cb3ba-745e-5d9a-8903-4a02327a7e09'); // Usar ID de prueba
+      registerVehicle();
+      updateVehicle('b79cb3ba-745e-5d9a-8903-4a02327a7e09');  // Usar ID de prueba
+      deleteVehicle('b79cb3ba-745e-5d9a-8903-4a02327a7e09');  // Usar ID de prueba
+    });
+    </script>
+    ```
 2. Modificar la plantilla de `App.vue`. Agrega los resultados de las pruebas al template para mostrar en la interfaz el estado de las operaciones:
-```ts
-<template>
-  <div>
-    <h1>HTTP Repository Test</h1>
-    <h2>Vehicles List:</h2>
-    <ul>
-      <li v-for="vehicle in vehicleList" :key="vehicle.id">
-        {{ vehicle.numberPlate }} - {{ vehicle.capacity }} seats
-      </li>
-    </ul>
-    <h2>Vehicle Details (ID: 1):</h2>
-    <p v-if="vehicleDetails">
-      Number Plate: {{ vehicleDetails.numberPlate }}<br />
-      Capacity: {{ vehicleDetails.capacity }}<br />
-      Driver: {{ vehicleDetails.driver }}
-    </p>
-  </div>
-</template>
-```
+    ```ts
+    <template>
+      <div>
+        <h1>HTTP Repository Test</h1>
+        <h2>Vehicles List:</h2>
+        <ul>
+          <li v-for="vehicle in vehicleList" :key="vehicle.id">
+            {{ vehicle.numberPlate }} - {{ vehicle.capacity }} seats
+          </li>
+        </ul>
+        <h2>Vehicle Details (ID: 1):</h2>
+        <p v-if="vehicleDetails">
+          Number Plate: {{ vehicleDetails.numberPlate }}<br />
+          Capacity: {{ vehicleDetails.capacity }}<br />
+          Driver: {{ vehicleDetails.driver }}
+        </p>
+      </div>
+    </template>
+    ```
 3. Verifica en la consola que los métodos `get`, `getById`, `register`, `update` y `delete` están funcionando correctamente. Asegúrate de que los vehículos (o entidad usada) listados, los detalles de un vehículo (o entidad usada) específico, y los mensajes de registro, actualización y eliminación se muestren correctamente.
 
 ### Adaptador Vue.js
@@ -2743,48 +2728,48 @@ Dentro de la carpeta `adapter/vuejs/router/`, deberás configurar el archivo `in
 **Pasos a realizar:**
 
 1. El primer paso a realizar es su instalación en el front-end. Esto puedes hacerlo tal como se indica [aquí](https://router.vuejs.org/installation.html): 
-```yml
-$ yarn add vue-router@4
-```
+    ```yml
+    $ yarn add vue-router@4
+    ```
 2. Una vez instalado, debes añadir el gestor de rutas al archivo de entrada del front-end (`main.ts`). Para ello, importa el gestor de rutas y úsalo en la aplicación:
-```ts
-...
-import router from './router'; // Importa el router
-...
-const app = createApp(App);
-app.use(router); // Usa el router
-app.mount('#app');
-```
+    ```ts
+    ...
+    import router from './router'; // Importa el router
+    ...
+    const app = createApp(App);
+    app.use(router); // Usa el router
+    app.mount('#app');
+    ```
 3. Crea la carpeta `adapter/vuejs/router` e introduce `router.ts`. Éste será el archivo de configuración del gestor de rutas del front-end. A continuación puedes ver un extracto de un archivo  `router.ts` donde se definen 2 rutas, de tal manera que cuando el usuario accede a cada una de ellas se le muestra el componente correspondiente:
-```ts
-import {
-  createRouter,
-  createWebHistory,
-  type Router,
-  type NavigationGuardNext,
-  type RouteLocationNormalized,
-  type RouteRecordRaw,
-} from 'vue-router';
+    ```ts
+    import {
+      createRouter,
+      createWebHistory,
+      type Router,
+      type NavigationGuardNext,
+      type RouteLocationNormalized,
+      type RouteRecordRaw,
+    } from 'vue-router';
 
-const routes: RouteRecordRaw[] = [
-  {
-    path: '/', // first route
-    name: 'Info',
-    component: InfoPage, // component to be showed
-  },
-  {
-    path: '/dashboard', // second route
-    name: 'Dashboard',
-    component: DashboardPage, // component to be showed
-  },
-  // additional routes must be here
-}
+    const routes: RouteRecordRaw[] = [
+      {
+        path: '/', // first route
+        name: 'Info',
+        component: InfoPage, // component to be showed
+      },
+      {
+        path: '/dashboard', // second route
+        name: 'Dashboard',
+        component: DashboardPage, // component to be showed
+      },
+      // additional routes must be here
+    }
 
-const router: Router = createRouter({
-    routes,
-});
-export default router;
-```
+    const router: Router = createRouter({
+        routes,
+    });
+    export default router;
+    ```
 4. Configura el gestor de rutas en tu aplicación de tal manera que se pueda acceder a las diferentes vistas a medida que se modifica la URL.
 
 #### Gestor de estados
@@ -2804,158 +2789,156 @@ Objetivos del store:
 **Pasos a realizar:**
 
 1. El primer paso para usar [Pinia](https://pinia.vuejs.org) es instalarlo:
-```shell
-$ yarn add pinia
-```
+    ```shell
+    $ yarn add pinia
+    ```
 2. Una vez instalado, crea una instancia de [Pinia](https://pinia.vuejs.org) en el archivo principal del front-end (`main.ts`):
-```ts
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import App from './App.vue'
+    ```ts
+    import { createApp } from 'vue'
+    import { createPinia } from 'pinia'
+    import App from './App.vue'
 
-const pinia = createPinia()
-const app = createApp(App)
+    const pinia = createPinia()
+    const app = createApp(App)
 
-app.use(pinia)
-app.mount('#app')
-```
+    app.use(pinia)
+    app.mount('#app')
+    ```
 3. Crea la carpeta `adapter/vuejs/store` e introduce `store.ts`. Dentro de la carpeta `adapter/vuejs/store`, debes crear un archivo store específico para cada entidad del dominio con la que estés trabajando. Por ejemplo, si tu entidad es `Vehicle`, el archivo será `vehicle-store.ts`.
 4. Configuración inicial del store. Cada store debe ser creado utilizando Pinia. Un store básico tendrá un estado inicial que contiene las propiedades relevantes de la entidad y un servicio para interactuar con el back-end. Un ejemplo básico sería:
-```ts
-import { defineStore } from 'pinia';
-import { VehicleService } from '../../../application/service/vehicle-service';
-import { VehicleHttpRepository } from '../../http/repository/vehicle-http-repository';
-import type { Vehicle } from '../../../domain/entity/vehicle';
+    ```ts
+    import { defineStore } from 'pinia';
+    import { VehicleService } from '../../../application/service/vehicle-service';
+    import { VehicleHttpRepository } from '../../http/repository/vehicle-http-repository';
+    import type { Vehicle } from '../../../domain/entity/vehicle';
 
-export const useVehicleStore = defineStore('Vehicle', {
-  state: () => ({
-    vehicles: [] as Vehicle[], // Estado que almacena todas las entidades recuperadas
-    vehicle: undefined as Vehicle | undefined, // Entidad seleccionada
-    service: new VehicleService(new VehicleHttpRepository()), // Servicio que interactúa con el repositorio HTTP
-    loading: false, // Indicador de estado de carga
-    vehicleNotification: {
-      flag: false,
-      title: '',
-      msg: '',
-      icon: '',
-      timeout: 4000,
-      color: '',
-    },
-  }),
-});
-```
+    export const useVehicleStore = defineStore('Vehicle', {
+      state: () => ({
+        vehicles: [] as Vehicle[], // Estado que almacena todas las entidades recuperadas
+        vehicle: undefined as Vehicle | undefined, // Entidad seleccionada
+        service: new VehicleService(new VehicleHttpRepository()), // Servicio que interactúa con el repositorio HTTP
+        loading: false, // Indicador de estado de carga
+        vehicleNotification: {
+          flag: false,
+          title: '',
+          msg: '',
+          icon: '',
+          timeout: 4000,
+          color: '',
+        },
+      }),
+    });
+    ```
 5. Definir los getters. Los getters proporcionan una forma eficiente de acceder a propiedades del estado. Deben ser añadidos para facilitar la obtención de datos o propiedades calculadas en la aplicación.
-```ts
-getters: {
-  getLoading: (state) => state.loading, // Getter para saber si el store está en proceso de cargar datos
-  getNumberOfVehicles: (state) => state.vehicles.length, // Número total de vehículos
-}
-```
+    ```ts
+    getters: {
+      getLoading: (state) => state.loading, // Getter para saber si el store está en proceso de cargar datos
+      getNumberOfVehicles: (state) => state.vehicles.length, // Número total de vehículos
+    }
+    ```
 6. Implementar las actions. Las acciones son donde ocurre la lógica de negocio en el store. Cada store debe contener acciones que interactúen con los servicios para realizar peticiones al back-end. Las acciones deben ser responsables de:
-- Obtener todas las entidades.
-- Obtener una entidad por su ID.
-- Registrar una nueva entidad.
-- Actualizar una entidad existente.
-- Eliminar una entidad.
-- Manejar los errores en cada acción.
+   - Obtener todas las entidades.
+   - Obtener una entidad por su ID.
+   - Registrar una nueva entidad.
+   - Actualizar una entidad existente.
+   - Eliminar una entidad.
+   - Manejar los errores en cada acción.
   
-Ejemplo de actions para `Vehicle`:
-```ts
-actions: {
-  async getVehicles(page?: number, rowsPerPage?: number, filters?: string) {
-    this.loading = true;
-    this.vehicles = [];
-    const result = await this.service.get(page, rowsPerPage, filters);
+    Ejemplo de actions para `Vehicle`:
 
-    result.fold(
-      error => {
-        this.handleError(error);
-        this.loading = false;
+    ```ts
+    actions: {
+      async getVehicles(page?: number, rowsPerPage?: number, filters?: string) {
+        this.loading = true;
+        this.vehicles = [];
+        const result = await this.service.get(page, rowsPerPage, filters);
+        result.fold(
+          error => {
+            this.handleError(error);
+            this.loading = false;
+          },
+          data => {
+            this.vehicles = data.vehiclesResponse;
+            this.loading = false;
+          }
+        );
       },
-      data => {
-        this.vehicles = data.vehiclesResponse;
-        this.loading = false;
-      }
-    );
-  },
 
-  async getVehicleById(id: string) {
-    this.vehicle = undefined;
-    const result = await this.service.getById(id);
+      async getVehicleById(id: string) {
+        this.vehicle = undefined;
+        const result = await this.service.getById(id);
 
-    result.fold(
-      error => {
-        this.handleError(error);
+        result.fold(
+          error => {
+            this.handleError(error);
+          },
+          data => {
+            this.vehicle = data;
+          }
+        );
       },
-      data => {
-        this.vehicle = data;
-      }
-    );
-  },
 
-  async registerVehicle(vehicle: Vehicle) {
-    const result = await this.service.register(vehicle);
-
-    result.fold(
-      error => {
-        this.handleError(error);
+      async registerVehicle(vehicle: Vehicle) {
+        const result = await this.service.register(vehicle);
+        result.fold(
+          error => {
+            this.handleError(error);
+          },
+          data => {
+            this.vehicles.push(data);
+            this.setNotification('Success', 'Vehicle added successfully', 'mdi-check', 'success');
+          }
+        );
       },
-      data => {
-        this.vehicles.push(data);
-        this.setNotification('Success', 'Vehicle added successfully', 'mdi-check', 'success');
-      }
-    );
-  },
 
-  async updateVehicle(id: string, vehicle: Vehicle) {
-    const result = await this.service.update(id, vehicle);
-
-    result.fold(
-      error => {
-        this.handleError(error);
+      async updateVehicle(id: string, vehicle: Vehicle) {
+        const result = await this.service.update(id, vehicle);
+        result.fold(
+          error => {
+            this.handleError(error);
+          },
+          data => {
+            this.vehicles = this.vehicles.map(v => (v.getId() === data.getId() ? data : v));
+            this.setNotification('Success', 'Vehicle updated successfully', 'mdi-check', 'success');
+          }
+        );
       },
-      data => {
-        this.vehicles = this.vehicles.map(v => (v.getId() === data.getId() ? data : v));
-        this.setNotification('Success', 'Vehicle updated successfully', 'mdi-check', 'success');
-      }
-    );
-  },
 
-  async deleteVehicle(id: string) {
-    const result = await this.service.delete(id);
-
-    result.fold(
-      error => {
-        this.handleError(error);
+      async deleteVehicle(id: string) {
+        const result = await this.service.delete(id);
+          result.fold(
+          error => {
+            this.handleError(error);
+          },
+          data => {
+            this.vehicles = this.vehicles.filter(vehicle => vehicle.getId() !== data.getId());
+            this.setNotification('Success', 'Vehicle deleted successfully', 'mdi-check', 'success');
+          }
+        );
       },
-      data => {
-        this.vehicles = this.vehicles.filter(vehicle => vehicle.getId() !== data.getId());
-        this.setNotification('Success', 'Vehicle deleted successfully', 'mdi-check', 'success');
-      }
-    );
-  },
-}
-```
-7. Manejo de errores y notificaciones. Cada store debe tener mecanismos claros para gestionar errores y notificaciones al usuario. Esto se puede hacer mediante una función que defina cómo manejar los errores del back-end y otra para definir las notificaciones que se mostrarán al usuario.
-```ts
-actions: {
-  setNotification(title: string, msg: string, icon: string, color: string) {
-    this.vehicleNotification = {
-      flag: true,
-      title,
-      msg,
-      icon,
-      timeout: 4000,
-      color,
-    };
-  },
+    }
+    ```
 
-  handleError(error: any) {
-    console.error(error);
-    this.setNotification('Error', 'An unexpected error occurred', 'mdi-alert', 'error');
-  },
-}
-```
+1. Manejo de errores y notificaciones. Cada store debe tener mecanismos claros para gestionar errores y notificaciones al usuario. Esto se puede hacer mediante una función que defina cómo manejar los errores del back-end y otra para definir las notificaciones que se mostrarán al usuario.
+    ```ts
+    actions: {
+      setNotification(title: string, msg: string, icon: string, color: string) {
+        this.vehicleNotification = {
+          flag: true,
+          title,
+          msg,
+          icon,
+          timeout: 4000,
+          color,
+        };
+      },
+
+      handleError(error: any) {
+        console.error(error);
+        this.setNotification('Error', 'An unexpected error occurred', 'mdi-alert', 'error');
+      },
+    }
+    ```
 8. Manejo de errores y notificaciones. Cada store debe tener mecanismos claros para gestionar errores y notificaciones al usuario. Esto se puede hacer mediante una función que defina cómo manejar los errores del back-end y otra para definir las notificaciones que se mostrarán al usuario.
 
 **Aspectos básicos a tener en cuenta:**
@@ -2969,272 +2952,271 @@ Hola, las vistas y componentes que se emplean en el adaptador [Vue.js](https://v
 
 Por ello, dentro del adaptador de [Vue.js](https://vuejs.org) `adapter/vuejs` crea una carpeta `dto` donde añadir [Data Transfer Objects](https://www.baeldung.com/java-dto-pattern).
 
-Objetivos:
+**Objetivos:**
 - Los Data Transfer Objects (DTOs) permiten desacoplar las entidades del dominio de las vistas en el front-end. Esto evita que las entidades se utilicen directamente en las vistas, lo que podría causar acoplamiento indebido y facilitar errores. Los DTOs gestionan la lógica específica de las operaciones básicas de la aplicación, como agregar, editar y visualizar datos en las vistas. También son esenciales para validar los campos de los formularios y garantizar que las interacciones con el back-end estén bien estructuradas.
 
-Dentro de la carpeta creada, debes crear una clase `<entity>-add.ts`, `<entity>-edit.ts` y otra `<entity>-info.ts` por cada entidad de tu dominio `<entity>`. Cada uno de estos DTO tendrá una correspondencia directa con las vistas de operaciones básicas en [Vue.js](https://vuejs.org). Una vista para añadir una nueva entidad, una vista para editar una entidad existente y otra vista para ver la información de una entidad existente. Es por ello que cada DTO tiene características diferentes como se ilustra a continuación. Estos DTO tienen como funciones principales recoger los valores de los campos de los formularios de [Vue.js](https://vuejs.org) y validar en el campo del formulario los valores.
+  Dentro de la carpeta creada, debes crear una clase `<entity>-add.ts`, `<entity>-edit.ts` y otra `<entity>-info.ts` por cada entidad de tu dominio `<entity>`. Cada uno de estos DTO tendrá una correspondencia directa con las vistas de operaciones básicas en [Vue.js](https://vuejs.org). Una vista para añadir una nueva entidad, una vista para editar una entidad existente y otra vista para ver la información de una entidad existente. Es por ello que cada DTO tiene características diferentes como se ilustra a continuación. Estos DTO tienen como funciones principales recoger los valores de los campos de los formularios de [Vue.js](https://vuejs.org) y validar en el campo del formulario los valores.
 
 **Pasos a realizar:**
 
 1. Crear `DTO EntityAdd.ts`. Su ubicación debe estar en `adapter/vuejs/dto/entity-add.ts`. Este DTO representa los datos necesarios para agregar una nueva entidad en el sistema. Contendrá los atributos básicos con tipos simples como string o number, y métodos para validar campos de formularios. Concretamente métodos estáticos como: `validateAttribute`, método para validar los campos antes de enviar los datos al back-end y `toDomainEntity` que convierte el DTO en una entidad del dominio que será utilizada por los stores. A continuación te paso un ejemplo ilustrativo para una entidad `Vehicle`:
 
-```ts
-import type { EmployeeName } from '../value-object/employee-name';
-import type { VehicleCapacity } from '../value-object/vehicle-capacity';
-import type { VehicleNumberPlate } from '../value-object/vehicle-number-plate';
+    ```ts
+    import type { EmployeeName } from '../value-object/employee-name';
+    import type { VehicleCapacity } from '../value-object/vehicle-capacity';
+    import type { VehicleNumberPlate } from '../value-object/vehicle-number-plate';
 
-export class VehicleAdd {
+    export class VehicleAdd {
 
-  /**
-   * Number plate of the vehicle.
-   */
-  public numberPlate: string;
-  /**
-   * Number of seats in the vehicle.
-   */
-  public capacity: number;
-  /**
-   * Driver of the vehicle. It is an optional attribute.
-   */
-  public driver?: string;
+      /**
+       * Number plate of the vehicle.
+      */
+      public numberPlate: string;
+      /**
+       * Number of seats in the vehicle.
+      */
+      public capacity: number;
+      /**
+       * Driver of the vehicle. It is an optional attribute.
+      */
+      public driver?: string;
 
-  constructor(
-    numberPlate: string,
-    capacity: number,
-    driver?: string
-  ) {
-    this.validate<string>(
-      numberPlate,
-      Vehicle.ERROR_NUMBER_PLATE_NOT_DEFINED
-    );
-    this.validate<number>(
-      capacity,
-      Vehicle.ERROR_CAPACITY_NOT_DEFINED
-    );
-    this.numberPlate = numberPlate;
-    this.capacity = capacity;
-    this.driver = driver;
-  }
+      constructor(
+        numberPlate: string,
+        capacity: number,
+        driver?: string
+      ) {
+        this.validate<string>(
+          numberPlate,
+          Vehicle.ERROR_NUMBER_PLATE_NOT_DEFINED
+        );
+        this.validate<number>(
+          capacity,
+          Vehicle.ERROR_CAPACITY_NOT_DEFINED
+        );
+        this.numberPlate = numberPlate;
+        this.capacity = capacity;
+        this.driver = driver;
+      }
 
-  private validate<T>(
-    attribute: T | undefined,
-    errorMessage: string
-  ): asserts attribute is T {
-    if (attribute === undefined || attribute === null) {
-      throw new Error(errorMessage);
+      private validate<T>(
+        attribute: T | undefined,
+        errorMessage: string
+      ): asserts attribute is T {
+        if (attribute === undefined || attribute === null) {
+          throw new Error(errorMessage);
+        }
+      }
+
+      static externalValidateNumberPlate(value: string): boolean | string {
+        try {
+          new VehicleNumberPlate(value);
+          return true;
+        } catch (error: any) {
+          return error.message;
+        }
+      }
+
+      static externalValidateCapacity(value: number): boolean | string {
+        try {
+          new VehicleCapacity(value);
+          return true;
+        } catch (error: any) {
+          return error.message;
+        }
+      }
+
+      static externalValidateDriver(value: string): boolean | string {
+        try {
+          new EmployeeName(value);
+          return true;
+        } catch (error: any) {
+          return error.message;
+        }
+      }
+
+      static random(): VehicleAdd {
+        const numberPlate: = VehicleNumberPlate.random().getValue();
+        const capacity: = VehicleCapacity.random().getValue();
+        const driver: = EmployeeName.random().getValue();
+        return new VehicleAdd(numberPlate, capacity, driver);
+      }
+
+      static toVehicle(vehicleAdd: VehicleAdd): Vehicle {
+        return new Vehicle(
+          new VehicleNumberPlate(vehicleAdd.numberPlate),
+          new VehicleCapacity(vehicleAdd.capacity),
+          vehicleAdd.driver ? new EmployeeName(vehicleAdd.driver) : undefined
+        );
+      }
+
     }
-  }
-
-  static externalValidateNumberPlate(value: string): boolean | string {
-    try {
-      new VehicleNumberPlate(value);
-      return true;
-    } catch (error: any) {
-      return error.message;
-    }
-  }
-
-  static externalValidateCapacity(value: number): boolean | string {
-    try {
-      new VehicleCapacity(value);
-      return true;
-    } catch (error: any) {
-      return error.message;
-    }
-  }
-
-  static externalValidateDriver(value: string): boolean | string {
-    try {
-      new EmployeeName(value);
-      return true;
-    } catch (error: any) {
-      return error.message;
-    }
-  }
-
-  static random(): VehicleAdd {
-    const numberPlate: = VehicleNumberPlate.random().getValue();
-    const capacity: = VehicleCapacity.random().getValue();
-    const driver: = EmployeeName.random().getValue();
-    return new VehicleAdd(numberPlate, capacity, driver);
-  }
-
-  static toVehicle(vehicleAdd: VehicleAdd): Vehicle {
-    return new Vehicle(
-      new VehicleNumberPlate(vehicleAdd.numberPlate),
-      new VehicleCapacity(vehicleAdd.capacity),
-      vehicleAdd.driver ? new EmployeeName(vehicleAdd.driver) : undefined
-    );
-  }
-
-}
-```
+    ```
 
 2. Crear DTO `EntityEdit.ts`. Su ubicación debe estar en `adapter/vuejs/dto/entity-edit.ts`. Este DTO maneja los datos necesarios para editar una entidad existente en el sistema. Contendrá los atributos que pueden ser modificados y métodos estáticos para convertir los DTOs en entidades del dominio.  A continuación te paso un ejemplo ilustrativo para una entidad `Vehicle`:
 
-```ts
-import type { EmployeeName } from '../value-object/employee-name';
-import type { VehicleCapacity } from '../value-object/vehicle-capacity';
-import type { VehicleNumberPlate } from '../value-object/vehicle-number-plate';
+    ```ts
+    import type { EmployeeName } from '../value-object/employee-name';
+    import type { VehicleCapacity } from '../value-object/vehicle-capacity';
+    import type { VehicleNumberPlate } from '../value-object/vehicle-number-plate';
 
-export class VehicleEdit {
-  /**
-   * Number plate of the vehicle.
-   */
-  public numberPlate: string;
-  /**
-   * Number of seats in the vehicle.
-   */
-  public capacity: number;
-  /**
-   * Driver of the vehicle. It is an optional attribute.
-   */
-  public driver?: string;
+    export class VehicleEdit {
+      /**
+       * Number plate of the vehicle.
+      */
+      public numberPlate: string;
+      /**
+       * Number of seats in the vehicle.
+      */
+      public capacity: number;
+      /**
+       * Driver of the vehicle. It is an optional attribute.
+      */
+      public driver?: string;
 
-  constructor(
-    numberPlate: string,
-    capacity: number,
-    driver?: string
-  ) {
-    this.validate<string>(
-      numberPlate,
-      Vehicle.ERROR_NUMBER_PLATE_NOT_DEFINED
-    );
-    this.validate<number>(
-      capacity,
-      Vehicle.ERROR_CAPACITY_NOT_DEFINED
-    );
-    this.numberPlate = numberPlate;
-    this.capacity = capacity;
-    this.driver = driver;
-  }
+      constructor(
+        numberPlate: string,
+        capacity: number,
+        driver?: string
+      ) {
+        this.validate<string>(
+          numberPlate,
+          Vehicle.ERROR_NUMBER_PLATE_NOT_DEFINED
+        );
+        this.validate<number>(
+          capacity,
+          Vehicle.ERROR_CAPACITY_NOT_DEFINED
+        );
+        this.numberPlate = numberPlate;
+        this.capacity = capacity;
+        this.driver = driver;
+      }
 
-  private validate<T>(
-    attribute: T | undefined,
-    errorMessage: string
-  ): asserts attribute is T {
-    if (attribute === undefined || attribute === null) {
-      throw new Error(errorMessage);
+      private validate<T>(
+        attribute: T | undefined,
+        errorMessage: string
+      ): asserts attribute is T {
+        if (attribute === undefined || attribute === null) {
+          throw new Error(errorMessage);
+        }
+      }
+
+      static externalValidateNumberPlate(value: string): boolean | string {
+        try {
+          new VehicleNumberPlate(value);
+          return true;
+        } catch (error: any) {
+          return error.message;
+        }
+      }
+
+      static externalValidateCapacity(value: number): boolean | string {
+        try {
+          new VehicleCapacity(value);
+          return true;
+        } catch (error: any) {
+          return error.message;
+        }
+      }
+
+      static externalValidateDriver(value: string): boolean | string {
+        try {
+          new EmployeeName(value);
+          return true;
+        } catch (error: any) {
+          return error.message;
+        }
+      }
+
+      static random(): VehicleEdit {
+        const numberPlate: = VehicleNumberPlate.random().getValue();
+        const capacity: = VehicleCapacity.random().getValue();
+        const driver: = EmployeeName.random().getValue();
+        return new VehicleEdit(numberPlate, capacity, driver);
+      }
+
+      static toVehicle(vehicleEdit: VehicleEdit): Vehicle {
+        return new Vehicle(
+          new VehicleNumberPlate(vehicleEdit.numberPlate),
+          new VehicleCapacity(vehicleEdit.capacity),
+          vehicleEdit.driver ? new EmployeeName(vehicleEdit.driver) : undefined,
+          new KaiztenUUID(vehicleEdit.id)
+        );
+      }
+
     }
-  }
-
-  static externalValidateNumberPlate(value: string): boolean | string {
-    try {
-      new VehicleNumberPlate(value);
-      return true;
-    } catch (error: any) {
-      return error.message;
-    }
-  }
-
-  static externalValidateCapacity(value: number): boolean | string {
-    try {
-      new VehicleCapacity(value);
-      return true;
-    } catch (error: any) {
-      return error.message;
-    }
-  }
-
-  static externalValidateDriver(value: string): boolean | string {
-    try {
-      new EmployeeName(value);
-      return true;
-    } catch (error: any) {
-      return error.message;
-    }
-  }
-
-  static random(): VehicleEdit {
-    const numberPlate: = VehicleNumberPlate.random().getValue();
-    const capacity: = VehicleCapacity.random().getValue();
-    const driver: = EmployeeName.random().getValue();
-    return new VehicleEdit(numberPlate, capacity, driver);
-  }
-
-  static toVehicle(vehicleEdit: VehicleEdit): Vehicle {
-    return new Vehicle(
-      new VehicleNumberPlate(vehicleEdit.numberPlate),
-      new VehicleCapacity(vehicleEdit.capacity),
-      vehicleEdit.driver ? new EmployeeName(vehicleEdit.driver) : undefined,
-      new KaiztenUUID(vehicleEdit.id)
-    );
-  }
-
-}
-```
+    ```
 
 3. Crear DTO `EntityInfo.ts`. Su ubicación debe estar en `adapter/vuejs/dto/entity-info.ts`. Este DTO gestiona la representación de una entidad cuando se consulta su información. No incluye validaciones ni permite modificaciones, solo visualiza los datos relevantes. A continuación te paso un ejemplo ilustrativo para una entidad `Vehicle`:
 
-```ts
-export class VehicleInfo {
+    ```ts
+    export class VehicleInfo {
 
-  /**
-   * Number plate of the vehicle.
-   */
-  public numberPlate: string;
-  /**
-   * Number of seats in the vehicle.
-   */
-  public capacity: number;
-  /**
-   * Driver of the vehicle. It is an optional attribute.
-   */
-  public driver?: string;
+      /**
+       * Number plate of the vehicle.
+      */
+      public numberPlate: string;
+      /**
+       * Number of seats in the vehicle.
+      */
+      public capacity: number;
+      /**
+       * Driver of the vehicle. It is an optional attribute.
+      */
+      public driver?: string;
 
-  constructor(
-    numberPlate: string,
-    capacity: number,
-    driver?: string
-  ) {
-    this.validate<string>(
-      numberPlate,
-      Vehicle.ERROR_NUMBER_PLATE_NOT_DEFINED
-    );
-    this.validate<number>(
-      capacity,
-      Vehicle.ERROR_CAPACITY_NOT_DEFINED
-    );
-    this.numberPlate = numberPlate;
-    this.capacity = capacity;
-    this.driver = driver;
-  }
+      constructor(
+        numberPlate: string,
+        capacity: number,
+        driver?: string
+      ) {
+        this.validate<string>(
+          numberPlate,
+          Vehicle.ERROR_NUMBER_PLATE_NOT_DEFINED
+        );
+        this.validate<number>(
+          capacity,
+          Vehicle.ERROR_CAPACITY_NOT_DEFINED
+        );
+        this.numberPlate = numberPlate;
+        this.capacity = capacity;
+        this.driver = driver;
+      }
 
-  private validate<T>(
-    attribute: T | undefined,
-    errorMessage: string
-  ): asserts attribute is T {
-    if (attribute === undefined || attribute === null) {
-      throw new Error(errorMessage);
+      private validate<T>(
+        attribute: T | undefined,
+        errorMessage: string
+      ): asserts attribute is T {
+        if (attribute === undefined || attribute === null) {
+          throw new Error(errorMessage);
+        }
+      }
+
+      static random(): VehicleInfo {
+        const numberPlate: = VehicleNumberPlate.random().getValue();
+        const capacity: = VehicleCapacity.random().getValue();
+        const driver: = EmployeeName.random().getValue();
+        return new VehicleInfo(numberPlate, capacity, driver);
+      }
     }
-  }
-
-  static random(): VehicleInfo {
-    const numberPlate: = VehicleNumberPlate.random().getValue();
-    const capacity: = VehicleCapacity.random().getValue();
-    const driver: = EmployeeName.random().getValue();
-    return new VehicleInfo(numberPlate, capacity, driver);
-  }
-}
-
-```
+    ```
 
 **Aspectos a tener en cuenta:**
 
 - Separación de responsabilidades: Los DTOs evitan que las vistas interactúen directamente con las entidades del dominio, mejorando la modularidad y el mantenimiento del código. En los ejemplos expuestos hay algunas particularidades. A modo de ejemplo, el DTO de `VehicleAdd` y `VehicleEdit` son iguales. En este ejemplo no existen diferencias. No obstante, la idea de separarlos es para afianzar el uso de un DTO para cada vista de operación básica. Este debe ser nuestro estándar, al igual que implementar una vista por cada operación básica de una entidad (`add`, `edit` e `info`). 
 - Validación y uso en formularios: Los DTOs deben incluir métodos de validación para asegurar que los datos capturados en las vistas sean correctos antes de ser enviados al servidor. Los atributos de las clases DTO son públicos pues necesitamos poder asociarlos directamente a los `v-model` de los campos en los formularios de las vistas. Por esta razón, carecen de `getters` y `setters`. Además de, en los casos de `VehicleAdd` y `VehicleEdit`, disponer de métodos estáticos `externalValidate`,  que nos van a permitir validar los campos en los formularios de las vistas. Estos métodos se apoyan en la validación de los objetos valor correspondientes. En el caso del DTO `VehicleInfo` no es necesario validar, pues los formularios básicos de información solo permiten visualizar la información de una entidad. Por lo tanto, los DTOs deben ser compatibles con los formularios y las validaciones de las vistas, permitiendo una interacción fluida con los componentes de Vue.js. En el código mostrado a continuación se aprecia el uso de un DTO `const vehicleAdd: VehicleAdd ...` en un campo de un formulario:
-```ts
-        ...
-            <v-text-field
-              v-model="vehicleAdd.numberPlate"
-              :rules="[
-                (value: string) => VehicleAdd.externalValidate(value),
-              ]"
-              :label="t('numberPlate') + ' *'"
-              color="primary"
-            ></v-text-field>
-        ...
-```
+    ```ts
+    ...
+        <v-text-field
+          v-model="vehicleAdd.numberPlate"
+          :rules="[
+            (value: string) => VehicleAdd.externalValidate(value),
+          ]"
+          :label="t('numberPlate') + ' *'"
+          color="primary"
+        ></v-text-field>
+    ...
+    ```
 - Transformación a entidades del dominio: Los DTOs deben tener métodos que conviertan sus datos en entidades del dominio, manteniendo así el flujo de datos consistente con el back-end.
 
 #### Vistas
@@ -3253,555 +3235,558 @@ Objetivos:
 
 1. Generar la vista `AddEntity.vue`. La vista de añadir entidad permite al usuario agregar una nueva entidad mediante un formulario. Se utiliza un DTO para gestionar los valores y la validación de los campos.
 Aspectos a tener en cuenta:
-- Crear un componente que renderice un formulario con los campos necesarios para la entidad.
-- Asignar el formulario a un DTO específico (`EntityAdd`) que manejará los valores de los campos.
-- Implementar la validación de los campos utilizando las reglas de validación del DTO.
-- Implementar una acción para enviar los datos al servidor utilizando el store correspondiente.
-- Manejar las notificaciones en caso de éxito o error, y redirigir al usuario a la vista de la lista de entidades tras la adición exitosa.
-A continuación un ejemplo para `AddVehicle.vue`:
-```ts
-<template>
-  <subtitle-app-bar :title="t('addVehicle', 0)" :flag="true" />
-  <snackbar :notification="vehicleNotification" />
+   - Crear un componente que renderice un formulario con los campos necesarios para la entidad.
+   - Asignar el formulario a un DTO específico (`EntityAdd`) que manejará los valores de los campos.
+   - Implementar la validación de los campos utilizando las reglas de validación del DTO.
+   - Implementar una acción para enviar los datos al servidor utilizando el store correspondiente.
+   - Manejar las notificaciones en caso de éxito o error, y redirigir al usuario a la vista de la lista de entidades tras la adición exitosa.
+   A continuación un ejemplo para `AddVehicle.vue`:
+    ```ts
+    <template>
+      <subtitle-app-bar :title="t('addVehicle', 0)" :flag="true" />
+      <snackbar :notification="vehicleNotification" />
 
-  <v-row>
-    <v-col cols="12" md="12">
-      <v-card>
-        <v-card-title>
-          <v-icon>mdi-car-cog</v-icon>
-          {{ t('vehicle') }}
-        </v-card-title>
-        <v-card-text>
-          <v-form ref="VehicleForm">
-            <v-text-field
-              v-model="newVehicle.numberPlate"
-              :rules="[
-                (value: string) =>
-                  VehicleAdd.externalValidateNumberPlate(value),
-              ]"
-              :label="t('numberPlate') + ' *'"
-              color="primary"
-              required
-            ></v-text-field>
-            <v-text-field
-              v-model="newVehicle.capacity"
-              :rules="[
-                (value: number) => VehicleAdd.externalValidateCapacity(value),
-              ]"
-              :label="t('capacity') + ' *'"
-              color="primary"
-              type="number"
-              required
-            ></v-text-field>
-            <v-text-field
-              v-model="newVehicle.driver"
-              :rules="[
-                (value: string) =>
-                  !value || VehicleAdd.externalValidateDriver(value),
-              ]"
-              :label="t('driver')"
-              color="primary"
-            ></v-text-field>
-            <v-select
-              v-model="newVehicle.type"
-              :items="vehicleTypes"
-              :label="t('type')"
-              color="primary"
-              return-object
-            ></v-select>
-          </v-form>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn
-            @click="validate"
-            prepend-icon="mdi-plus"
-            variant="elevated"
-            color="success"
-          >
-            {{ t('save') }}
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-col>
-  </v-row>
-</template>
+      <v-row>
+        <v-col cols="12" md="12">
+          <v-card>
+            <v-card-title>
+              <v-icon>mdi-car-cog</v-icon>
+              {{ t('vehicle') }}
+            </v-card-title>
+            <v-card-text>
+              <v-form ref="VehicleForm">
+                <v-text-field
+                  v-model="newVehicle.numberPlate"
+                  :rules="[
+                    (value: string) =>
+                      VehicleAdd.externalValidateNumberPlate(value),
+                  ]"
+                  :label="t('numberPlate') + ' *'"
+                  color="primary"
+                  required
+                ></v-text-field>
+                <v-text-field
+                  v-model="newVehicle.capacity"
+                  :rules="[
+                    (value: number) => VehicleAdd.externalValidateCapacity(value),
+                  ]"
+                  :label="t('capacity') + ' *'"
+                  color="primary"
+                  type="number"
+                  required
+                ></v-text-field>
+                <v-text-field
+                  v-model="newVehicle.driver"
+                  :rules="[
+                    (value: string) =>
+                      !value || VehicleAdd.externalValidateDriver(value),
+                  ]"
+                  :label="t('driver')"
+                  color="primary"
+                ></v-text-field>
+                <v-select
+                  v-model="newVehicle.type"
+                  :items="vehicleTypes"
+                  :label="t('type')"
+                  color="primary"
+                  return-object
+                ></v-select>
+              </v-form>
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn
+                @click="validate"
+                prepend-icon="mdi-plus"
+                variant="elevated"
+                color="success"
+              >
+                {{ t('save') }}
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+      </v-row>
+    </template>
 
-<script lang="ts" setup>
-import { onMounted, ref, watch } from 'vue';
-import { storeToRefs } from 'pinia';
-import { useI18n } from 'vue-i18n';
-import router from '@/router';
+    <script lang="ts" setup>
+    import { onMounted, ref, watch } from 'vue';
+    import { storeToRefs } from 'pinia';
+    import { useI18n } from 'vue-i18n';
+    import router from '@/router';
 
-import { useVehicleStore } from '../../stores/vehicle-store';
-import { VehicleAdd } from '../../dto/vehicle-add';
-import SubtitleAppBar from '../../components/SubtitleAppBar.vue';
-import Snackbar from '../../components/Snackbar.vue';
-import { VehicleTypeValues } from '@/main/ts/aidel/domain/enumerate/vehicle-type';
-import { SelectorInterface } from '@kaizten/kaizten-typescript';
+    import { useVehicleStore } from '../../stores/vehicle-store';
+    import { VehicleAdd } from '../../dto/vehicle-add';
+    import SubtitleAppBar from '../../components/SubtitleAppBar.vue';
+    import Snackbar from '../../components/Snackbar.vue';
+    import { VehicleTypeValues } from '@/main/ts/aidel/domain/enumerate/vehicle-type';
+    import { SelectorInterface } from '@kaizten/kaizten-typescript';
 
-const { t } = useI18n();
-const vehicleStore = useVehicleStore();
-const { vehicleNotification } = storeToRefs(vehicleStore);
-const newVehicle = ref<VehicleAdd>(new VehicleAdd('', 0, undefined, undefined));
-const VehicleForm = ref();
-const errors = ref<string[]>([]);
-const vehicleTypes = ref<SelectorInterface[]>([]);
+    const { t } = useI18n();
+    const vehicleStore = useVehicleStore();
+    const { vehicleNotification } = storeToRefs(vehicleStore);
+    const newVehicle = ref<VehicleAdd>(new VehicleAdd('', 0, undefined, undefined));
+    const VehicleForm = ref();
+    const errors = ref<string[]>([]);
+    const vehicleTypes = ref<SelectorInterface[]>([]);
 
-onMounted(() => {
-  setVehicleTypes();
-});
+    onMounted(() => {
+      setVehicleTypes();
+    });
 
-const registerVehicle = async () => {
-  await vehicleStore.registerVehicle(
-    VehicleAdd.toVehicle(newVehicle.value as VehicleAdd)
-  );
-};
-
-const validate = async () => {
-  VehicleForm.value?.validate().then(valid => {
-    errors.value = [];
-    if (valid.valid) {
-      registerVehicle();
-    } else {
-      vehicleStore.setNotification(
-        t('messages.errorFormValidate'),
-        t('messages.checkForm'),
-        'mdi-alert-circle',
-        'error'
+    const registerVehicle = async () => {
+      await vehicleStore.registerVehicle(
+        VehicleAdd.toVehicle(newVehicle.value as VehicleAdd)
       );
-    }
-  });
-};
+    };
 
-const setVehicleTypes = () => {
-  for (let i = 0; i < Object.keys(VehicleTypeValues).length; i++) {
-    vehicleTypes.value.push(
-      new SelectorInterface(
-        t(Object.keys(VehicleTypeValues)[i].toLowerCase()),
-        Object.keys(VehicleTypeValues)[i]
-      )
+    const validate = async () => {
+      VehicleForm.value?.validate().then(valid => {
+        errors.value = [];
+        if (valid.valid) {
+          registerVehicle();
+        } else {
+          vehicleStore.setNotification(
+            t('messages.errorFormValidate'),
+            t('messages.checkForm'),
+            'mdi-alert-circle',
+            'error'
+          );
+        }
+      });
+    };
+
+    const setVehicleTypes = () => {
+      for (let i = 0; i < Object.keys(VehicleTypeValues).length; i++) {
+        vehicleTypes.value.push(
+          new SelectorInterface(
+            t(Object.keys(VehicleTypeValues)[i].toLowerCase()),
+            Object.keys(VehicleTypeValues)[i]
+          )
+        );
+      }
+    };
+
+    watch(
+      () => vehicleNotification.value,
+      newValue => {
+        if (newValue.color === 'success') {
+          setTimeout(() => {
+            router.push({ name: 'Vehicles' });
+          }, 1000);
+        }
+      }
     );
-  }
-};
+    </script>
 
-watch(
-  () => vehicleNotification.value,
-  newValue => {
-    if (newValue.color === 'success') {
-      setTimeout(() => {
-        router.push({ name: 'Vehicles' });
-      }, 1000);
-    }
-  }
-);
-</script>
-
-<style scoped></style>
-```
+    <style scoped></style>
+    ```
 > :warning: En este caso se están empleando traducciones de texto mediante `t('ETIQUETA')`. La librería [`vue-i18n`](https://www.npmjs.com/package/vue-i18n) está destinada a esto.
 
 1. Generar la vista `EditEntity.vue`. La vista de editar entidad permite al usuario modificar una entidad existente. Se utiliza un DTO (`EntityEdit`) para manejar los valores y validaciones del formulario.
 Aspectos a tener en cuenta:
-- Recuperar la entidad desde el back-end cuando se carga la vista.
-- Mostrar un formulario pre-rellenado con los datos de la entidad.
-- Implementar las reglas de validación mediante el DTO `EntityEdit`.
-- Implementar una acción para actualizar la entidad en el servidor.
-- Manejar notificaciones de éxito o error, y redirigir a la vista de la lista de entidades tras una actualización exitosa.
-A continuación un ejemplo para `EditVehicle.vue`:
-```ts
-<template>
-  <subtitle-app-bar :title="title" :flag="true" />
-  <snackbar :notification="vehicleNotification" />
-  <v-row v-if="!loading">
-    <v-col cols="12" md="12">
-      <v-card>
-        <v-card-title>
-          <v-icon>mdi-car-cog</v-icon>
-          {{ t('vehicle') }}
-        </v-card-title>
-        <v-card-text>
-          <v-form ref="VehicleForm">
-            <v-text-field
-              v-model="newVehicle!.numberPlate"
-              :rules="[
-                (value: string) =>
-                  VehicleEdit.externalValidateNumberPlate(value),
-              ]"
-              :label="t('numberPlate') + ' *'"
-              color="primary"
-            ></v-text-field>
-            <v-text-field
-              v-model="newVehicle!.capacity"
-              :rules="[
-                (value: number) => VehicleEdit.externalValidateCapacity(value),
-              ]"
-              :label="t('capacity') + ' *'"
-              color="primary"
-              type="number"
-            ></v-text-field>
-            <v-text-field
-              v-model="newVehicle!.driver"
-              :rules="[
-                (value: string) =>
-                  !value || VehicleEdit.externalValidateDriver(value),
-              ]"
-              :label="t('driver')"
-              color="primary"
-            ></v-text-field>
-            <v-select
-              v-model="newVehicle!.type"
-              :items="vehicleTypes"
-              :label="t('type')"
-              color="primary"
-              return-object
-            ></v-select>
-          </v-form>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn
-            @click="validate"
-            prepend-icon="mdi-plus"
-            variant="elevated"
-            color="success"
-          >
-            {{ t('edit') }}
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-col>
-  </v-row>
-</template>
+      - Recuperar la entidad desde el back-end cuando se carga la vista.
+      - Mostrar un formulario pre-rellenado con los datos de la entidad.
+      - Implementar las reglas de validación mediante el DTO `EntityEdit`.
+      - Implementar una acción para actualizar la entidad en el servidor.
+      - Manejar notificaciones de éxito o error, y redirigir a la vista de la lista de entidades tras una actualización exitosa.
+    
+    A continuación un ejemplo para `EditVehicle.vue`:
+    ```ts
+    <template>
+      <subtitle-app-bar :title="title" :flag="true" />
+      <snackbar :notification="vehicleNotification" />
+      <v-row v-if="!loading">
+        <v-col cols="12" md="12">
+          <v-card>
+            <v-card-title>
+              <v-icon>mdi-car-cog</v-icon>
+              {{ t('vehicle') }}
+            </v-card-title>
+            <v-card-text>
+              <v-form ref="VehicleForm">
+                <v-text-field
+                  v-model="newVehicle!.numberPlate"
+                  :rules="[
+                    (value: string) =>
+                      VehicleEdit.externalValidateNumberPlate(value),
+                  ]"
+                  :label="t('numberPlate') + ' *'"
+                  color="primary"
+                ></v-text-field>
+                <v-text-field
+                  v-model="newVehicle!.capacity"
+                  :rules="[
+                    (value: number) => VehicleEdit.externalValidateCapacity(value),
+                  ]"
+                  :label="t('capacity') + ' *'"
+                  color="primary"
+                  type="number"
+                ></v-text-field>
+                <v-text-field
+                  v-model="newVehicle!.driver"
+                  :rules="[
+                    (value: string) =>
+                      !value || VehicleEdit.externalValidateDriver(value),
+                  ]"
+                  :label="t('driver')"
+                  color="primary"
+                ></v-text-field>
+                <v-select
+                  v-model="newVehicle!.type"
+                  :items="vehicleTypes"
+                  :label="t('type')"
+                  color="primary"
+                  return-object
+                ></v-select>
+              </v-form>
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn
+                @click="validate"
+                prepend-icon="mdi-plus"
+                variant="elevated"
+                color="success"
+              >
+                {{ t('edit') }}
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+      </v-row>
+    </template>
 
-<script lang="ts" setup>
-import { onMounted, ref, watch } from 'vue';
-import { storeToRefs } from 'pinia';
-import { useI18n } from 'vue-i18n';
-import { useRoute } from 'vue-router';
-import router from '@/router';
+    <script lang="ts" setup>
+    import { onMounted, ref, watch } from 'vue';
+    import { storeToRefs } from 'pinia';
+    import { useI18n } from 'vue-i18n';
+    import { useRoute } from 'vue-router';
+    import router from '@/router';
 
-import { useVehicleStore } from '../../stores/vehicle-store';
-import { VehicleEdit } from '../../dto/vehicle-edit';
-import SubtitleAppBar from '../../components/SubtitleAppBar.vue';
-import Snackbar from '../../components/Snackbar.vue';
-import { VehicleTypeValues } from '@/main/ts/aidel/domain/enumerate/vehicle-type';
-import { SelectorInterface } from '@kaizten/kaizten-typescript';
+    import { useVehicleStore } from '../../stores/vehicle-store';
+    import { VehicleEdit } from '../../dto/vehicle-edit';
+    import SubtitleAppBar from '../../components/SubtitleAppBar.vue';
+    import Snackbar from '../../components/Snackbar.vue';
+    import { VehicleTypeValues } from '@/main/ts/aidel/domain/enumerate/vehicle-type';
+    import { SelectorInterface } from '@kaizten/kaizten-typescript';
 
-const { t } = useI18n();
-const route = useRoute();
-const vehicleStore = useVehicleStore();
-const { vehicle, vehicleNotification } = storeToRefs(vehicleStore);
-const loading = ref(true);
-const title = ref('');
-const vehicleId = ref(route.params.id.toString());
-const VehicleForm = ref();
-const newVehicle = ref<VehicleEdit>();
-const errors = ref<string[]>([]);
-const vehicleTypes = ref<SelectorInterface[]>([]);
+    const { t } = useI18n();
+    const route = useRoute();
+    const vehicleStore = useVehicleStore();
+    const { vehicle, vehicleNotification } = storeToRefs(vehicleStore);
+    const loading = ref(true);
+    const title = ref('');
+    const vehicleId = ref(route.params.id.toString());
+    const VehicleForm = ref();
+    const newVehicle = ref<VehicleEdit>();
+    const errors = ref<string[]>([]);
+    const vehicleTypes = ref<SelectorInterface[]>([]);
 
-onMounted(async () => {
-  loading.value = true;
-  await vehicleStore.getVehicleById(vehicleId.value);
-  setVehicle();
-  setVehicleTypes();
-  title.value = t('vehicle') + ' ' + vehicle.value!.getNumberPlate().getValue();
-  loading.value = false;
-});
+    onMounted(async () => {
+      loading.value = true;
+      await vehicleStore.getVehicleById(vehicleId.value);
+      setVehicle();
+      setVehicleTypes();
+      title.value = t('vehicle') + ' ' + vehicle.value!.getNumberPlate().getValue();
+      loading.value = false;
+    });
 
-const setVehicle = () => {
-  if (vehicle.value) {
-    newVehicle.value = new VehicleEdit(
-      vehicle.value.getId().getValue(),
-      vehicle.value.getNumberPlate().getValue(),
-      vehicle.value.getCapacity().getValue(),
-      vehicle.value.getDriver()
-        ? vehicle.value.getDriver()!.getValue()
-        : undefined,
-      vehicle.value.getType()
-        ? new SelectorInterface(
-            t(vehicle.value.getType()!.getValue().toLowerCase()),
-            vehicle.value.getType()!.getValue()
-          )
-        : undefined
-    );
-  }
-};
+    const setVehicle = () => {
+      if (vehicle.value) {
+        newVehicle.value = new VehicleEdit(
+          vehicle.value.getId().getValue(),
+          vehicle.value.getNumberPlate().getValue(),
+          vehicle.value.getCapacity().getValue(),
+          vehicle.value.getDriver()
+            ? vehicle.value.getDriver()!.getValue()
+            : undefined,
+          vehicle.value.getType()
+            ? new SelectorInterface(
+                t(vehicle.value.getType()!.getValue().toLowerCase()),
+                vehicle.value.getType()!.getValue()
+              )
+            : undefined
+        );
+      }
+    };
 
-const updateVehicle = async () => {
-  if (!newVehicle.value) return;
-  await vehicleStore.updateVehicle(
-    vehicleId.value,
-    VehicleEdit.toVehicle(newVehicle.value)
-  );
-};
-
-const validate = async () => {
-  VehicleForm.value?.validate().then(valid => {
-    errors.value = [];
-    if (valid.valid) {
-      updateVehicle();
-    } else {
-      vehicleStore.setNotification(
-        t('messages.errorFormValidate'),
-        t('messages.checkForm'),
-        'mdi-alert-circle',
-        'error'
+    const updateVehicle = async () => {
+      if (!newVehicle.value) return;
+      await vehicleStore.updateVehicle(
+        vehicleId.value,
+        VehicleEdit.toVehicle(newVehicle.value)
       );
-    }
-  });
-};
+    };
 
-const setVehicleTypes = () => {
-  for (let i = 0; i < Object.keys(VehicleTypeValues).length; i++) {
-    vehicleTypes.value.push(
-      new SelectorInterface(
-        t(Object.keys(VehicleTypeValues)[i].toLowerCase()),
-        Object.keys(VehicleTypeValues)[i]
-      )
+    const validate = async () => {
+      VehicleForm.value?.validate().then(valid => {
+        errors.value = [];
+        if (valid.valid) {
+          updateVehicle();
+        } else {
+          vehicleStore.setNotification(
+            t('messages.errorFormValidate'),
+            t('messages.checkForm'),
+            'mdi-alert-circle',
+            'error'
+          );
+        }
+      });
+    };
+
+    const setVehicleTypes = () => {
+      for (let i = 0; i < Object.keys(VehicleTypeValues).length; i++) {
+        vehicleTypes.value.push(
+          new SelectorInterface(
+            t(Object.keys(VehicleTypeValues)[i].toLowerCase()),
+            Object.keys(VehicleTypeValues)[i]
+          )
+        );
+      }
+    };
+
+    watch(
+      () => vehicleNotification.value,
+      newValue => {
+        if (newValue.color === 'success') {
+          setTimeout(() => {
+            router.push({ name: 'Vehicles' });
+          }, 1000);
+        }
+      }
     );
-  }
-};
+    </script>
 
-watch(
-  () => vehicleNotification.value,
-  newValue => {
-    if (newValue.color === 'success') {
-      setTimeout(() => {
-        router.push({ name: 'Vehicles' });
-      }, 1000);
+    <style scoped></style>
+    ```
+
+1. Generar la vista `ShowEntity.vue`. La vista de mostrar entidad permite al usuario visualizar los detalles de una entidad sin la opción de editarla. Los campos están deshabilitados, y solo se muestra la información de la entidad.
+Aspectos a tener en cuenta:
+      - Recuperar la entidad desde el back-end.
+      - Renderizar un formulario o campos que muestren la información de la entidad.
+      - No se requiere validación en esta vista, ya que no se permite la edición.
+      - Esta vista solo es informativa, sin acciones adicionales.
+  
+    A continuación un ejemplo para `ShowVehicle.vue`:
+    ```ts
+    <template>
+      <subtitle-app-bar :title="title" :flag="true" />
+      <v-row v-if="!loading && vehicleInfo">
+        <v-col cols="12" md="12">
+          <v-card>
+            <v-card-title>
+              <v-icon>mdi-car-cog</v-icon>
+              {{ t('vehicle') }}
+            </v-card-title>
+            <v-card-text>
+              <v-form ref="VehicleForm">
+                <v-text-field
+                  v-model="vehicleInfo!.numberPlate"
+                  :label="t('numberPlate') + ' *'"
+                  color="primary"
+                  disabled
+                ></v-text-field>
+                <v-text-field
+                  v-model="vehicleInfo!.capacity"
+                  :label="t('capacity') + ' *'"
+                  color="primary"
+                  type="number"
+                  disabled
+                ></v-text-field>
+                <v-text-field
+                  v-model="vehicleInfo!.driver"
+                  :label="t('driver')"
+                  color="primary"
+                  disabled
+                ></v-text-field>
+                <v-text-field
+                  :model-value="vehicleInfo.type ? t(vehicleInfo.type) : ''"
+                  :label="t('type')"
+                  color="primary"
+                  disabled
+                ></v-text-field>
+              </v-form>
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+    </template>
+
+    <script lang="ts" setup>
+    import { onMounted, ref } from 'vue';
+    import { storeToRefs } from 'pinia';
+    import { useI18n } from 'vue-i18n';
+    import { useRoute } from 'vue-router';
+    import { useVehicleStore } from '../../stores/vehicle-store';
+    import SubtitleAppBar from '../../components/SubtitleAppBar.vue';
+    import { VehicleInfo } from '../../dto/vehicle-info';
+    import { OrganizationInfo } from '../../dto/organization-info';
+
+    const { t } = useI18n();
+    const route = useRoute();
+    const vehicleStore = useVehicleStore();
+    const { vehicle } = storeToRefs(vehicleStore);
+    const loading = ref(true);
+    const title = ref('');
+    const vehicleId = ref(route.params.id.toString());
+    const vehicleInfo = ref<VehicleInfo>();
+
+    onMounted(async () => {
+      loading.value = true;
+      await vehicleStore.getVehicleById(vehicleId.value);
+      setVehicle();
+      title.value = t('vehicle') + ' ' + vehicle.value?.getNumberPlate().getValue();
+      loading.value = false;
+    });
+
+    const setVehicle = () => {
+      if (vehicle.value) {
+        vehicleInfo.value = new VehicleInfo(
+          vehicle.value.getId().getValue(),
+          vehicle.value.getNumberPlate().getValue(),
+          vehicle.value.getCapacity().getValue(),
+          new OrganizationInfo(
+            vehicle.value.getOrganization().getId().getValue(),
+            vehicle.value.getOrganization().getName().getValue()
+          ),
+          vehicle.value.getDriver() ? vehicle.value.getDriver()!.getValue() : '',
+          vehicle.value.getType()
+            ? vehicle.value.getType()?.getValue().toLowerCase()
+            : ''
+        );
+      }
+    };
+    </script>
+
+    <style scoped></style>
+    ```
+
+1. Generar la vista `EntitiesView.vue`. La vista de listar entidades muestra todas las entidades del sistema en forma de tabla o lista, con opciones para agregar, editar, ver y eliminar entidades.
+Aspectos a tener en cuenta:
+   - Implementar una tabla que muestre todas las entidades recuperadas desde el servidor.
+   - Añadir botones de acción para agregar, editar, ver o eliminar una entidad.
+   - Gestionar la eliminación mediante un diálogo de confirmación.
+   - Implementar paginación y filtros si es necesario.
+   - Implementar las acciones para redirigir a las vistas correspondientes de agregar, editar o mostrar.
+  
+    A continuación un ejemplo para `ShowVehicle.vue`:
+    ```ts
+    <template>
+      <subtitle-app-bar :title="t('vehicle', 0)" :flag="false" />
+      <Snackbar :notification="vehicleNotification" />
+      <div class="ma-4">
+        <v-row class="px-5">
+          <v-col cols="12" md="auto">
+            <v-btn class="mb-5" color="#124E73" @click="addVehicle()">
+              <v-icon>mdi-plus</v-icon>
+              {{ t('addVehicle') }}
+            </v-btn>
+          </v-col>
+        </v-row>
+      </div>
+      <div class="ma-4">
+        <v-data-table-server
+          v-model:items-per-page="itemsPerPage"
+          :headers="headers"
+          :items-length="serverItemsLenght"
+          :items="vehicles"
+          :loading="loading"
+          :items-per-page-options="[5, 10, 20, 50]"
+          item-value="numberPlate"
+          hover
+          @update:options="loadItems"
+        >
+          <template v-slot:item.actions="{ item }">
+            <v-icon size="small" class="me-2" @click="showItem(item.getId().getValue())" color="#049DBF">mdi-eye</v-icon>
+            <v-icon size="small" class="me-2" @click="editItem(item.getId().getValue())" color="success">mdi-pencil</v-icon>
+            <v-icon size="small" @click="deleteItem(item.getId().getValue())" color="error">mdi-delete</v-icon>
+          </template>
+        </v-data-table-server>
+      </div>
+
+      <v-dialog v-model="dialogDelete" max-width="500">
+        <v-card>
+          <v-card-title class="text-h5">{{ t('delete') }}</v-card-title>
+          <v-card-text>{{ t('deleteQuestionVehicle') }}</v-card-text>
+          <v-card-actions>
+            <v-spacer />
+            <v-btn class="mx-2" color="error" @click="dialogDelete = false">{{ t('disagree') }}</v-btn>
+            <v-btn class="mx-2" color="success" @click="clickOnDeleteDialog()">{{ t('agree') }}</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </template>
+
+    <script lang="ts" setup>
+    import { ref } from 'vue';
+    import { storeToRefs } from 'pinia';
+    import { useI18n } from 'vue-i18n';
+    import router from '@/router';
+
+    import SubtitleAppBar from '../../components/SubtitleAppBar.vue';
+    import Snackbar from '../../components/Snackbar.vue';
+
+    import { useVehicleStore } from '../../stores/vehicle-store';
+
+    const { t } = useI18n();
+    const vehicleStore = useVehicleStore();
+    const { vehicles, vehicleNotification, serverItemsLenght, itemsPerPage } = storeToRefs(vehicleStore);
+    const headers: any[] = [
+      {
+        title: t('numberPlate'),
+        align: 'start',
+        sortable: false,
+        key: 'numberPlate',
+      },
+      {
+        title: t('capacity'),
+        align: 'center',
+        sortable: false,
+        key: 'capacity',
+      },
+      { title: t('actions'), align: 'center', sortable: false, key: 'actions' },
+    ];
+    const loading = ref(true);
+    const dialogDelete = ref(false);
+    const selectedIdVehicle = ref();
+
+    const loadItems = async (options: any) => {
+      loading.value = true;
+      await vehicleStore.getVehicles(options.page, options.itemsPerPage);
+      loading.value = false;
+    };
+
+    const addVehicle = () => {
+      router.push({ name: 'AddVehicle' });
+    };
+
+    const showItem = (itemId: string) => {
+      router.push({ name: 'ShowVehicle', params: { id: itemId } });
+    };
+
+    const editItem = (itemId: string) => {
+      router.push({ name: 'EditVehicle', params: { id: itemId } });
+    };
+
+    const deleteItem = (itemId: string) => {
+      dialogDelete.value = true;
+      selectedIdVehicle.value = itemId;
+    };
+
+    const clickOnDeleteDialog = async () => {
+      await vehicleStore.deleteVehicle(selectedIdVehicle.value);
+      await vehicleStore.getVehicles();
+      dialogDelete.value = false;
+    };
+    </script>
+
+    <style scoped>
+    .th {
+      background-color: #0a3143;
     }
-  }
-);
-</script>
-
-<style scoped></style>
-```
-
-3. Generar la vista `ShowEntity.vue`. La vista de mostrar entidad permite al usuario visualizar los detalles de una entidad sin la opción de editarla. Los campos están deshabilitados, y solo se muestra la información de la entidad.
-Aspectos a tener en cuenta:
-- Recuperar la entidad desde el back-end.
-- Renderizar un formulario o campos que muestren la información de la entidad.
-- No se requiere validación en esta vista, ya que no se permite la edición.
-- Esta vista solo es informativa, sin acciones adicionales.
-A continuación un ejemplo para `ShowVehicle.vue`:
-```ts
-<template>
-  <subtitle-app-bar :title="title" :flag="true" />
-  <v-row v-if="!loading && vehicleInfo">
-    <v-col cols="12" md="12">
-      <v-card>
-        <v-card-title>
-          <v-icon>mdi-car-cog</v-icon>
-          {{ t('vehicle') }}
-        </v-card-title>
-        <v-card-text>
-          <v-form ref="VehicleForm">
-            <v-text-field
-              v-model="vehicleInfo!.numberPlate"
-              :label="t('numberPlate') + ' *'"
-              color="primary"
-              disabled
-            ></v-text-field>
-            <v-text-field
-              v-model="vehicleInfo!.capacity"
-              :label="t('capacity') + ' *'"
-              color="primary"
-              type="number"
-              disabled
-            ></v-text-field>
-            <v-text-field
-              v-model="vehicleInfo!.driver"
-              :label="t('driver')"
-              color="primary"
-              disabled
-            ></v-text-field>
-            <v-text-field
-              :model-value="vehicleInfo.type ? t(vehicleInfo.type) : ''"
-              :label="t('type')"
-              color="primary"
-              disabled
-            ></v-text-field>
-          </v-form>
-        </v-card-text>
-      </v-card>
-    </v-col>
-  </v-row>
-</template>
-
-<script lang="ts" setup>
-import { onMounted, ref } from 'vue';
-import { storeToRefs } from 'pinia';
-import { useI18n } from 'vue-i18n';
-import { useRoute } from 'vue-router';
-import { useVehicleStore } from '../../stores/vehicle-store';
-import SubtitleAppBar from '../../components/SubtitleAppBar.vue';
-import { VehicleInfo } from '../../dto/vehicle-info';
-import { OrganizationInfo } from '../../dto/organization-info';
-
-const { t } = useI18n();
-const route = useRoute();
-const vehicleStore = useVehicleStore();
-const { vehicle } = storeToRefs(vehicleStore);
-const loading = ref(true);
-const title = ref('');
-const vehicleId = ref(route.params.id.toString());
-const vehicleInfo = ref<VehicleInfo>();
-
-onMounted(async () => {
-  loading.value = true;
-  await vehicleStore.getVehicleById(vehicleId.value);
-  setVehicle();
-  title.value = t('vehicle') + ' ' + vehicle.value?.getNumberPlate().getValue();
-  loading.value = false;
-});
-
-const setVehicle = () => {
-  if (vehicle.value) {
-    vehicleInfo.value = new VehicleInfo(
-      vehicle.value.getId().getValue(),
-      vehicle.value.getNumberPlate().getValue(),
-      vehicle.value.getCapacity().getValue(),
-      new OrganizationInfo(
-        vehicle.value.getOrganization().getId().getValue(),
-        vehicle.value.getOrganization().getName().getValue()
-      ),
-      vehicle.value.getDriver() ? vehicle.value.getDriver()!.getValue() : '',
-      vehicle.value.getType()
-        ? vehicle.value.getType()?.getValue().toLowerCase()
-        : ''
-    );
-  }
-};
-</script>
-
-<style scoped></style>
-```
-
-4. Generar la vista `EntitiesView.vue`. La vista de listar entidades muestra todas las entidades del sistema en forma de tabla o lista, con opciones para agregar, editar, ver y eliminar entidades.
-Aspectos a tener en cuenta:
-- Implementar una tabla que muestre todas las entidades recuperadas desde el servidor.
-- Añadir botones de acción para agregar, editar, ver o eliminar una entidad.
-- Gestionar la eliminación mediante un diálogo de confirmación.
-- Implementar paginación y filtros si es necesario.
-- Implementar las acciones para redirigir a las vistas correspondientes de agregar, editar o mostrar.
-A continuación un ejemplo para `ShowVehicle.vue`:
-```ts
-<template>
-  <subtitle-app-bar :title="t('vehicle', 0)" :flag="false" />
-  <Snackbar :notification="vehicleNotification" />
-  <div class="ma-4">
-    <v-row class="px-5">
-      <v-col cols="12" md="auto">
-        <v-btn class="mb-5" color="#124E73" @click="addVehicle()">
-          <v-icon>mdi-plus</v-icon>
-          {{ t('addVehicle') }}
-        </v-btn>
-      </v-col>
-    </v-row>
-  </div>
-  <div class="ma-4">
-    <v-data-table-server
-      v-model:items-per-page="itemsPerPage"
-      :headers="headers"
-      :items-length="serverItemsLenght"
-      :items="vehicles"
-      :loading="loading"
-      :items-per-page-options="[5, 10, 20, 50]"
-      item-value="numberPlate"
-      hover
-      @update:options="loadItems"
-    >
-      <template v-slot:item.actions="{ item }">
-        <v-icon size="small" class="me-2" @click="showItem(item.getId().getValue())" color="#049DBF">mdi-eye</v-icon>
-        <v-icon size="small" class="me-2" @click="editItem(item.getId().getValue())" color="success">mdi-pencil</v-icon>
-        <v-icon size="small" @click="deleteItem(item.getId().getValue())" color="error">mdi-delete</v-icon>
-      </template>
-    </v-data-table-server>
-  </div>
-
-  <v-dialog v-model="dialogDelete" max-width="500">
-    <v-card>
-      <v-card-title class="text-h5">{{ t('delete') }}</v-card-title>
-      <v-card-text>{{ t('deleteQuestionVehicle') }}</v-card-text>
-      <v-card-actions>
-        <v-spacer />
-        <v-btn class="mx-2" color="error" @click="dialogDelete = false">{{ t('disagree') }}</v-btn>
-        <v-btn class="mx-2" color="success" @click="clickOnDeleteDialog()">{{ t('agree') }}</v-btn>
-      </v-card-actions>
-    </v-card>
-  </v-dialog>
-</template>
-
-<script lang="ts" setup>
-import { ref } from 'vue';
-import { storeToRefs } from 'pinia';
-import { useI18n } from 'vue-i18n';
-import router from '@/router';
-
-import SubtitleAppBar from '../../components/SubtitleAppBar.vue';
-import Snackbar from '../../components/Snackbar.vue';
-
-import { useVehicleStore } from '../../stores/vehicle-store';
-
-const { t } = useI18n();
-const vehicleStore = useVehicleStore();
-const { vehicles, vehicleNotification, serverItemsLenght, itemsPerPage } = storeToRefs(vehicleStore);
-const headers: any[] = [
-  {
-    title: t('numberPlate'),
-    align: 'start',
-    sortable: false,
-    key: 'numberPlate',
-  },
-  {
-    title: t('capacity'),
-    align: 'center',
-    sortable: false,
-    key: 'capacity',
-  },
-  { title: t('actions'), align: 'center', sortable: false, key: 'actions' },
-];
-const loading = ref(true);
-const dialogDelete = ref(false);
-const selectedIdVehicle = ref();
-
-const loadItems = async (options: any) => {
-  loading.value = true;
-  await vehicleStore.getVehicles(options.page, options.itemsPerPage);
-  loading.value = false;
-};
-
-const addVehicle = () => {
-  router.push({ name: 'AddVehicle' });
-};
-
-const showItem = (itemId: string) => {
-  router.push({ name: 'ShowVehicle', params: { id: itemId } });
-};
-
-const editItem = (itemId: string) => {
-  router.push({ name: 'EditVehicle', params: { id: itemId } });
-};
-
-const deleteItem = (itemId: string) => {
-  dialogDelete.value = true;
-  selectedIdVehicle.value = itemId;
-};
-
-const clickOnDeleteDialog = async () => {
-  await vehicleStore.deleteVehicle(selectedIdVehicle.value);
-  await vehicleStore.getVehicles();
-  dialogDelete.value = false;
-};
-</script>
-
-<style scoped>
-.th {
-  background-color: #0a3143;
-}
-</style>
-```
+    </style>
+    ```
 
 Aspectos a tener en cuenta:
 - Cada vista (`AddEntity`, `EditEntity`, `ShowEntity`, `Entities`) debe seguir las plantillas proporcionadas.
@@ -3818,110 +3803,110 @@ Hola, este issue tiene como objetivo, implementar la internacionalización de la
 
 1. Instalación de [`vue-i18n`](https://www.npmjs.com/package/vue-i18n). Primero, asegúrate de instalar la dependencia [`vue-i18n`](https://www.npmjs.com/package/vue-i18n) en tu proyecto:
 
-```shell
-yarn add vue-i18n@^10.0.4
-```
+    ```shell
+    yarn add vue-i18n@^10.0.4
+    ```
 
-2. Organización de archivos de traducción. Crea una carpeta llamada `locales` dentro de `src/adapter/vuejs` para almacenar los archivos de traducción, como `en.json` y `es.json`, que contendrán las traducciones para cada idioma. Por ejemplo:
+2. Organización de archivos de traducción. Crea una carpeta llamada `locales` dentro de `src/adapter/vuejs` para almacenar los archivos de traducción, como `en.json` y `es.json`, que contendrán las traducciones para cada idioma. Por tanto, deberías obtener algo similar a lo siguiente:
 
-Estructura de Archivos:
-```lua
-src/
-|-- adapter/
-|   |-- vuejs/
-|       |-- locales/
-|           |-- en.json
-|           |-- es.json
-```
-`src/adapter/vuejs/locales/en.json`:
+    ```lua
+    src/
+    |-- adapter/
+    |   |-- vuejs/
+    |       |-- locales/
+    |           |-- en.json
+    |           |-- es.json
+    ```
 
-```json
-{
-  "welcome": "Welcome",
-  "login": "Login",
-  "logout": "Logout"
-}
-```
+    El contenido de `src/adapter/vuejs/locales/en.json` debería ser similar a esto:
 
-`src/adapter/vuejs/locales/es.json`:
-```json
-{
-  "welcome": "Bienvenido",
-  "login": "Iniciar sesión",
-  "logout": "Cerrar sesión"
-}
-```
+    ```json
+    {
+      "welcome": "Welcome",
+      "login": "Login",
+      "logout": "Logout"
+    }
+    ```
+
+    El contenido de `src/adapter/vuejs/locales/es.json` debería ser similar a esto:
+    ```json
+    {
+      "welcome": "Bienvenido",
+      "login": "Iniciar sesión",
+      "logout": "Cerrar sesión"
+    }
+    ```
 
 3. Configuración de [`vue-i18n`](https://www.npmjs.com/package/vue-i18n) en `main.ts`. En tu archivo `main.ts`, importa [`vue-i18n`](https://www.npmjs.com/package/vue-i18n) y configura la instancia apuntando a la nueva ubicación de los archivos de traducción:
 
-```typescript
-import { createApp } from 'vue';
-import { createI18n } from 'vue-i18n';
-import App from './App.vue';
+    ```typescript
+    import { createApp } from 'vue';
+    import { createI18n } from 'vue-i18n';
+    import App from './App.vue';
 
-// Importa los archivos de traducción desde la nueva ubicación
-import en from './adapter/vuejs/locales/en.json';
-import es from './adapter/vuejs/locales/es.json';
+    // Importa los archivos de traducción desde la nueva ubicación
+    import en from './adapter/vuejs/locales/en.json';
+    import es from './adapter/vuejs/locales/es.json';
 
-// Configura `vue-i18n`
-const i18n = createI18n({
-  legacy: false, // Usa la API de composición de `vue-i18n`
-  locale: 'en', // Idioma predeterminado
-  fallbackLocale: 'en', // Idioma de respaldo en caso de que una traducción no esté disponible
-  messages: {
-    en,
-    es,
-  },
-});
+    // Configura `vue-i18n`
+    const i18n = createI18n({
+      legacy: false, // Usa la API de composición de `vue-i18n`
+      locale: 'en', // Idioma predeterminado
+      fallbackLocale: 'en', // Idioma de respaldo en caso de que una traducción no esté disponible
+      messages: {
+        en,
+        es,
+      },
+    });
 
-// Crea y monta la aplicación
-const app = createApp(App);
-app.use(i18n);
-app.mount('#app');
-```
+    // Crea y monta la aplicación
+    const app = createApp(App);
+    app.use(i18n);
+    app.mount('#app');
+    ```
 
 4. Uso de [`vue-i18n`](https://www.npmjs.com/package/vue-i18n) en los componentes y vistas. Para mostrar las traducciones en tus componentes, utiliza la función `t` proporcionada por [`vue-i18n`](https://www.npmjs.com/package/vue-i18n):
 
-```ts
-<template>
-  <div>
-    <h1>{{ t('welcome') }}</h1>
-    <button>{{ t('login') }}</button>
-  </div>
-</template>
+    ```ts
+    <template>
+      <div>
+        <h1>{{ t('welcome') }}</h1>
+        <button>{{ t('login') }}</button>
+      </div>
+    </template>
 
-<script lang="ts" setup>
-import { useI18n } from 'vue-i18n';
+    <script lang="ts" setup>
+    import { useI18n } from 'vue-i18n';
 
-const { t } = useI18n();
-</script>
-```
+    const { t } = useI18n();
+    </script>
+    ```
 
 5. Cambio dinámico de idiomas. Para permitir que los usuarios cambien el idioma de la aplicación, puedes crear un selector de idiomas y actualizar la propiedad `locale` de [`vue-i18n`](https://www.npmjs.com/package/vue-i18n):
 
-```ts
-<template>
-  <div>
-    <select @change="changeLanguage($event)">
-      <option value="en">English</option>
-      <option value="es">Español</option>
-    </select>
-  </div>
-</template>
+    ```ts
+    <template>
+      <div>
+        <select @change="changeLanguage($event)">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+        </select>
+      </div>
+    </template>
 
-<script lang="ts" setup>
-import { useI18n } from 'vue-i18n';
+    <script lang="ts" setup>
+    import { useI18n } from 'vue-i18n';
 
-const { locale } = useI18n();
+    const { locale } = useI18n();
 
-const changeLanguage = (event: Event) => {
-  const selectedLanguage = (event.target as HTMLSelectElement).value;
-  locale.value = selectedLanguage;
-};
-</script>
-```
+    const changeLanguage = (event: Event) => {
+      const selectedLanguage = (event.target as HTMLSelectElement).value;
+      locale.value = selectedLanguage;
+    };
+    </script>
+    ```
 
-La integración de [`vue-i18n`](https://www.npmjs.com/package/vue-i18n) con los archivos de traducción organizados en `src/adapter/vuejs/locales` proporciona una estructura coherente para gestionar múltiples idiomas en una aplicación `Vue.js`, facilitando la administración de las traducciones. Este enfoque mejora la experiencia del usuario y hace que la aplicación sea más accesible para una audiencia global.
+    La integración de [`vue-i18n`](https://www.npmjs.com/package/vue-i18n) con los archivos de traducción organizados en `src/adapter/vuejs/locales` proporciona una estructura coherente para gestionar múltiples idiomas en una aplicación `Vue.js`, facilitando la administración de las traducciones. Este enfoque mejora la experiencia del usuario y hace que la aplicación sea más accesible para una audiencia global.
 
 ### Integración de Vuetify
 
@@ -3943,76 +3928,78 @@ Hola, el proceso de despliegue de la aplicación involucra la creación individu
 
 La creación de un Docker Compose se presenta como una solución eficiente para simplificar el despliegue de la aplicación en su conjunto. Esta herramienta permite definir y gestionar de manera unificada los contenedores de la base de datos, el back-end y el front-end, lo que facilita su despliegue y ejecución simultánea con una sola instrucción.
 
-Para ello, crea un la raíz del repositorio un archivo llamado `docker-compose.yml` con el siguiente contenido:
-```shell
-version: "3.7"
+**Pasos a realizar:**
 
-services:
+1. Para ello, crea un la raíz del repositorio un archivo llamado `docker-compose.yml` con el siguiente contenido:
+    ```shell
+    version: "3.7"
 
-  # Front-end
-  front-end:
-    image: kaizten/<NOMBRE-PROYECTO>_front-end:latest
-    container_name: front-end
-    ports:
-      - 80:80
-    depends_on:
-      - back-end
-    profiles: ["full"]
+    services:
 
-  # Back-end
-  back-end:
-    image: kaizten/<NOMBRE-PROYECTO>_back-end:latest
-    container_name: back-end
-    ports:
-      - 8080:8080    
-    environment:
-      - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/db-application
-    depends_on:
-      - mongodb
-    profiles: ["back-end", "full"]
-  
-  # MongoDB
-  mongodb:
-    image: mongo:latest
-    container_name: mongo
-    command: mongod --port 27017
-    ports:
-      - 27017:27017
+      # Front-end
+      front-end:
+        image: kaizten/<NOMBRE-PROYECTO>_front-end:latest
+        container_name: front-end
+        ports:
+          - 80:80
+        depends_on:
+          - back-end
+        profiles: ["full"]
+
+      # Back-end
+      back-end:
+        image: kaizten/<NOMBRE-PROYECTO>_back-end:latest
+        container_name: back-end
+        ports:
+          - 8080:8080    
+        environment:
+          - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/db-application
+        depends_on:
+          - mongodb
+        profiles: ["back-end", "full"]
+      
+      # MongoDB
+      mongodb:
+        image: mongo:latest
+        container_name: mongo
+        command: mongod --port 27017
+        ports:
+          - 27017:27017
+        volumes:
+          - mongodb_volume:/data/db
+        profiles: ["database", "back-end", "full"]
+
+      # Watchtower
+      watchtower:
+        image: containrrr/watchtower
+        container_name: watchtower
+        restart: always    
+        environment:
+          WATCHTOWER_CLEANUP: "true"
+          WATCHTOWER_DEBUG: "true"
+        volumes:
+          - /var/run/docker.sock:/var/run/docker.sock
+        command: --interval 30
+
     volumes:
-      - mongodb_volume:/data/db
-    profiles: ["database", "back-end", "full"]
+      mongodb_volume: {}
 
-  # Watchtower
-  watchtower:
-    image: containrrr/watchtower
-    container_name: watchtower
-    restart: always    
-    environment:
-      WATCHTOWER_CLEANUP: "true"
-      WATCHTOWER_DEBUG: "true"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    command: --interval 30
+    networks:
+      default:
+        name: fullstack-network
+    ```
+    Es importante que sustituyas `<NOMBRE-PROYECTO>` por el nombre de tu proyecto en particular.
 
-volumes:
-  mongodb_volume: {}
+2. Una vez creado este archivo, puedes ejecutar el proyecto de la siguiente manera:
+    ```shell
+    docker compose --profile <PERFIL> up
+    ```
+    En este caso, `<PERFIL>` debe ser uno de los siguientes perfiles definidos en el archivo `docker-compose.yml`:
+      * `database`. Únicamente crea el contenedor de la base de datos. Es particularmente interesante cuando se está desarrollando el back-end.
+      * `back-end`. Crea contenedores tanto de la base de datos como del back-end, lo cual es interesante a la hora de desarrollar el front-end.
+      * `full`. Crea contenedores de la base de datos, back-end y front-end, por lo que tendrías la versión completamente desplegada.
 
-networks:
-  default:
-    name: fullstack-network
-```
-Es importante que sustituyas `<NOMBRE-PROYECTO>` por el nombre de tu proyecto en particular.
-
-Una vez creado este archivo, puedes ejecutar el proyecto de la siguiente manera:
-```shell
-docker compose --profile <PERFIL> up
-```
-En este caso, `<PERFIL>` debe ser uno de los siguientes perfiles definidos en el archivo `docker-compose.yml`:
-* `database`. Únicamente crea el contenedor de la base de datos. Es particularmente interesante cuando se está desarrollando el back-end.
-* `back-end`. Crea contenedores tanto de la base de datos como del back-end, lo cual es interesante a la hora de desarrollar el front-end.
-* `full`. Crea contenedores de la base de datos, back-end y front-end, por lo que tendrías la versión completamente desplegada.
-
-Prueba el archivo con los diferentes perfiles y avísame si te funciona correctamente o bien tienes algún problema.
+3. Prueba el archivo con los diferentes perfiles y avísame si te funciona correctamente o bien tienes algún problema.
 
 ## Algoritmo
 
@@ -4033,39 +4020,40 @@ Hola, sería necesario crear un algoritmo que reciba como entrada el JSON con lo
 
 Hola, una vez realizada la implementación del algoritmo, habría que publicarlo como servicio. El objetivo es que haya un endpoint al que pasarle un archivo con los datos de entrada y proporcione como salida otro con el resultado obtenido por el algoritmo. Para evitar tener que programar esto, te pasamos una imagen Docker que debe facilitarte la labor.
 
-Añade al archivo `docker-compose.yml` de la aplicación lo siguiente:
-```yaml
-kaizten-task-lite:
-  image: kaizten/kaizten-task-lite:latest
-  container_name: kaizten-task-lite
-  ports:
-    - 9000:8080
-  volumes:
-    - /home/user/:/tmp
-```
-En este caso, se está creando un contenedor llamado `kaizten-task-lite` en el puerto `9000`. Puedes elegir otro puerto si prefieres siempre que no se solape con los ya definidos en el archivo de Docker Compose. Por su parte, para poder usar el servicio, crea las siguientes carpetas en algún lugar de tu sistema de archivos:
-* `algorithms/`. Incluye el JAR del algoritmo creado en esta carpeta.
-* `instances/`. Es la carpeta donde debes añadir los ficheros que serán los datos de entrada del algoritmo.
-* `solutions/`. Es el lugar donde se guardarán los resultados obtenidos por el algoritmo al ejecutarse.
+**Pasos a realizar:**
 
-Debes cambiar `/home/user` por la ruta donde hayas creado las carpetas `algorithms/`, `instances/` y `solutions/`.
+1. Añade al archivo `docker-compose.yml` de la aplicación lo siguiente:
+    ```yaml
+    kaizten-task-lite:
+      image: kaizten/kaizten-task-lite:latest
+      container_name: kaizten-task-lite
+      ports:
+        - 9000:8080
+      volumes:
+        - /home/user/:/tmp
+    ```
+    En este caso, se está creando un contenedor llamado `kaizten-task-lite` en el puerto `9000`. Puedes elegir otro puerto si prefieres siempre que no se solape con los ya definidos en el archivo de Docker Compose. Por su parte, para poder usar el servicio, crea las siguientes carpetas en algún lugar de tu sistema de archivos:
+    * `algorithms/`. Incluye el JAR del algoritmo creado en esta carpeta.
+    * `instances/`. Es la carpeta donde debes añadir los ficheros que serán los datos de entrada del algoritmo.
+    * `solutions/`. Es el lugar donde se guardarán los resultados obtenidos por el algoritmo al ejecutarse.
 
-Una vez creado el contenedor Docker puedes hacer lo siguiente:
-* Consultar listado de algoritmos disponibles en `algorithms/`: `curl localhost:9000/algorithms | json_pp`. En este caso, debe proporcionar el listado de distribuciones de algoritmos que tengas guardados en la carpeta `algorithms/`. A continuación se muestra un ejemplo:
-```shell
-[
-   "/tmp/algorithms/algorithm-01.jar",
-   "/tmp/algorithms/algorithm-02.jar"
-]
-```
-* Ejecutar uno de los algoritmos: `curl -X POST -H "Content-Type: multipart/form-data" -F "instance=@/home/user/instances/test.json" http://localhost:9000/algorithms/my-algorithm.jar`. En este ejemplo, se está tratando de ejecutar `my-algorithm.jar` (debe estar disponible en la carpeta `algorithms/`) usando como datos de entrada `/home/user/instances/test.json`. Es importante que tengas presente que la petición finalizará cuando finalice la ejecución del algoritmo.
-* Consultar listado de soluciones obtenidas y guardadas en `solutions/`: `curl localhost:9000/solutions | json_pp`. A continuación se muestra un ejemplo:
-```shell
-[
-   "/tmp/solutions/solution_2023-11-26T19:51:32.701751113.json"
-]
-```
-* Descargar un archivo de solución guardado en `solutions/`: `curl localhost:9000/solutions/solution_2023-11-26T19:51:32.701751113.json --output mySolution.json`
+    Debes cambiar `/home/user` por la ruta donde hayas creado las carpetas `algorithms/`, `instances/` y `solutions/`.
+2. Una vez creado el contenedor Docker puedes hacer lo siguiente:
+   * Consultar listado de algoritmos disponibles en `algorithms/`: `curl localhost:9000/algorithms | json_pp`. En este caso, debe proporcionar el listado de distribuciones de algoritmos que tengas guardados en la carpeta `algorithms/`. A continuación se muestra un ejemplo:
+      ```shell
+      [
+        "/tmp/algorithms/algorithm-01.jar",
+        "/tmp/algorithms/algorithm-02.jar"
+      ]
+      ```
+    * Ejecutar uno de los algoritmos: `curl -X POST -H "Content-Type: multipart/form-data" -F "instance=@/home/user/instances/test.json" http://localhost:9000/algorithms/my-algorithm.jar`. En este ejemplo, se está tratando de ejecutar `my-algorithm.jar` (debe estar disponible en la carpeta `algorithms/`) usando como datos de entrada `/home/user/instances/test.json`. Es importante que tengas presente que la petición finalizará cuando finalice la ejecución del algoritmo.
+   * Consultar listado de soluciones obtenidas y guardadas en `solutions/`: `curl localhost:9000/solutions | json_pp`. A continuación se muestra un ejemplo:
+      ```shell
+      [
+        "/tmp/solutions/solution_2023-11-26T19:51:32.701751113.json"
+      ]
+      ```
+   * Descargar un archivo de solución guardado en `solutions/`: `curl localhost:9000/solutions/solution_2023-11-26T19:51:32.701751113.json --output mySolution.json`
 
 ## Grafana
 
@@ -4075,36 +4063,40 @@ Hola, [Grafana](https://grafana.com) es una plataforma de análisis y visualizac
 
 Con [Grafana](https://grafana.com), podemos crear paneles (cuadros de mando o dashboards) personalizados y tableros de control con una variedad de visualizaciones de datos, incluyendo gráficos de línea, barras, diagramas de dispersión, mapas, etc. También es compatible con una amplia gama de fuentes de datos, como bases de datos relacionales, bases de datos NoSQL, sistemas de monitorización de infraestructura, sistemas de registro de eventos y más.
 
-El primer paso para poder usar [Grafana](https://grafana.com) es crear un contenedor. Esto se hace tal como indica la propia [imagen oficial de Docker](https://hub.docker.com/r/grafana/grafana):
-```shell
-$ docker run -d --name=grafana -p 3000:3000 grafana/grafana
-```
-Si todo ha ido bien, una vez ejecutes este comando, puedes acceder a `http://localhost:3000` y se debe mostrar la página de login de [Grafana](https://grafana.com). Las credenciales de acceso por defecto son las siguientes:
-- Usuario: `admin`
-- Contraseña: `admin`
+**Pasos a realizar:**
 
-A partir de este punto, ya puedes empezar a trabajar con [Grafana](https://grafana.com) para crear cuadros de mandos. Para ello, realiza los siguientes pasos:
-- Crea una carpeta `dashboards` en el repositorio para guardar los cuadros de mandos que vayas creando.
-- Crea un primer cuadro de mandos y añade el plugin [JSON API](https://grafana.github.io/grafana-json-datasource/). Está diseñado para inyectar datos desde JSON en los cuadros de mandos. Revisa la sección [Getting started](https://grafana.github.io/grafana-json-datasource/installation) sobre cómo usarlo. Con este objetivo en mente, replica el ejemplo descrito en [este enlace del blog de Grafana](https://grafana.com/blog/2023/08/30/grafana-json-api-how-to-import-third-party-data-sources-in-grafana-cloud/). En el ejemplo tendrás que crear un gráfico extrayendo datos en formato JSON desde una API pública.
-- Exporta el cuadro de mandos en la carpeta `dashboards` previamente creada. De esta manera, cuando vuelvas a arrancar [Grafana](https://grafana.com) tendrás todo montado y no tendrás que repetir el proceso.
+1. El primer paso para poder usar [Grafana](https://grafana.com) es crear un contenedor. Esto se hace tal como indica la propia [imagen oficial de Docker](https://hub.docker.com/r/grafana/grafana):
+    ```shell
+    $ docker run -d --name=grafana -p 3000:3000 grafana/grafana
+    ```
+    Si todo ha ido bien, una vez ejecutes este comando, puedes acceder a `http://localhost:3000` y se debe mostrar la página de login de [Grafana](https://grafana.com). Las credenciales de acceso por defecto son las siguientes:
+   - Usuario: `admin`
+   - Contraseña: `admin`
+
+    A partir de este punto, ya puedes empezar a trabajar con [Grafana](https://grafana.com) para crear cuadros de mandos. Para ello, realiza los siguientes pasos.
+2. Crea una carpeta `dashboards` en el repositorio para guardar los cuadros de mandos que vayas creando.
+3. Crea un primer cuadro de mandos y añade el plugin [JSON API](https://grafana.github.io/grafana-json-datasource/). Está diseñado para inyectar datos desde JSON en los cuadros de mandos. Revisa la sección [Getting started](https://grafana.github.io/grafana-json-datasource/installation) sobre cómo usarlo. Con este objetivo en mente, replica el ejemplo descrito en [este enlace del blog de Grafana](https://grafana.com/blog/2023/08/30/grafana-json-api-how-to-import-third-party-data-sources-in-grafana-cloud/). En el ejemplo tendrás que crear un gráfico extrayendo datos en formato JSON desde una API pública.
+4. Exporta el cuadro de mandos en la carpeta `dashboards` previamente creada. De esta manera, cuando vuelvas a arrancar [Grafana](https://grafana.com) tendrás todo montado y no tendrás que repetir el proceso.
 
 ### Integración en front-end
 
-Hola, los cuadros de mandos realizados con [Grafana](https://grafana.com) pueden ser integrados en una aplicación web, incluso adaptando el estilo (tipografía, colores, logotipos, etc.). 
+Hola, los cuadros de mandos realizados con [Grafana](https://grafana.com) pueden ser integrados en una aplicación web, incluso adaptando el estilo (tipografía, colores, logotipos, etc.).
 
-Crea un componente en el front-end que integre el cuadro de mandos diseñado. Sería tal como sigue:
-```ts
-<template>
-  <div>
-    <iframe src="http://localhost:3000/d/ec6dc56d-f2e9-4701-a519-611f39913516/graphics-kaizten-traps?orgId=1&from=1544526872810&to=1702293272810"></iframe>
-  </div>
-</template>
+**Pasos a realizar:**
 
-<style scoped>
-iframe {
-  width: 100%;
-  height: 100vh;
-}
-</style>
-```
-En este caso, tendrías que modificar la URL del iframe para que haga referencia a la del cuadro de mandos.
+1. Crea un componente en el front-end que integre el cuadro de mandos diseñado. Sería tal como sigue:
+    ```ts
+    <template>
+      <div>
+        <iframe src="http://localhost:3000/d/ec6dc56d-f2e9-4701-a519-611f39913516/graphics-kaizten-traps?orgId=1&from=1544526872810&to=1702293272810"></iframe>
+      </div>
+    </template>
+
+    <style scoped>
+    iframe {
+      width: 100%;
+      height: 100vh;
+    }
+    </style>
+    ```
+    En este caso, tendrías que modificar la URL del iframe para que haga referencia a la del cuadro de mandos.
