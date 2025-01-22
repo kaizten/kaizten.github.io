@@ -1,6 +1,8 @@
 - [**Clean code guide**](clean-code-guide.md)
 
 - **Domain driven design:**
+  - **Entities**
+    - [Description](./ddd/entities.md)
   - **Enumerates:**
     - [Description](./ddd/enumerates.md)
     - [Example in Java](./ddd/OrderStatus.java)

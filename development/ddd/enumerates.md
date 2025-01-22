@@ -1,21 +1,21 @@
 # Enumerados
 
 - [Enumerados](#enumerados)
-    - [Características principales](#características-principales)
-    - [Ejemplo ilustrativo en Java](#ejemplo-ilustrativo-en-java)
+  - [Características principales](#características-principales)
+  - [Ejemplo ilustrativo en Java](#ejemplo-ilustrativo-en-java)
     - [Explicación del código](#explicación-del-código)
 
 
 En el Diseño Orientado al Dominio (DDD), los enumerados (o enums) se utilizan para representar un conjunto fijo de valores relacionados que tienen significado dentro del contexto del dominio. Los enumerados son ideales para modelar conceptos que tienen un número limitado y conocido de opciones, como el estado de un pedido o los tipos de un producto. Al usar enumerados en DDD, se mejora la claridad del código y se reduce la posibilidad de errores, ya que las opciones válidas quedan claramente definidas y centralizadas.
 
-### Características principales
+## Características principales
 
 1. **Definición del dominio.** Los enumerados ayudan a definir claramente un concepto del dominio, como los posibles estados de una entidad.
 2. **Inmutabilidad.** Los enumerados son inmutables, lo que significa que las posibles opciones no pueden cambiar una vez definidas.
 3. **Fácil de usar.** Los enumerados simplifican el uso de valores constantes en lógica de negocio.
 4. **Validación automática.** Utilizar enumerados proporciona validación implícita, ya que restringe los valores posibles a los que están definidos dentro del enumerado.
 
-### Ejemplo ilustrativo en Java
+## Ejemplo ilustrativo en Java
 
 Supongamos que estamos modelando una aplicación para gestionar órdenes de compra. Cada orden puede estar en uno de los siguientes estados: `CREATED`, `SHIPPED`, `DELIVERED`, o `CANCELLED`. Este comportamiento se puede modelar utilizando un enumerado en Java, tal como se muestra a continuación:
 
