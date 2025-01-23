@@ -60,7 +60,7 @@
 <dependency>
   <groupId>org.apache.poi</groupId>
   <artifactId>poi</artifactId>
-  <version>5.3.0</version>
+  <version>5.4.0</version>
 </dependency>
 ```
 
@@ -69,7 +69,7 @@
 <dependency>
   <groupId>org.apache.poi</groupId>
   <artifactId>poi-ooxml</artifactId>
-  <version>5.3.0</version>
+  <version>5.4.0</version>
 </dependency>
 ```
 
@@ -114,7 +114,7 @@
 <dependency>
     <groupId>org.jsoup</groupId>
     <artifactId>jsoup</artifactId>
-    <version>1.18.1</version>
+    <version>1.18.3</version>
 </dependency>
 ```
 
@@ -123,7 +123,7 @@
 <dependency>
     <groupId>com.networknt</groupId>
     <artifactId>json-schema-validator</artifactId>
-    <version>1.5.4</version>
+    <version>1.5.5</version>
 </dependency>
 ```
 
@@ -132,7 +132,7 @@
 <dependency>
     <groupId>org.json</groupId>
     <artifactId>json</artifactId>
-    <version>20240303</version>
+    <version>20250107</version>
 </dependency>
 ```
 
@@ -141,7 +141,7 @@
 <dependency>
   <groupId>org.junit.jupiter</groupId>
   <artifactId>junit-jupiter</artifactId>
-  <version>5.11.3</version>
+  <version>5.11.4</version>
 </dependency>
 ```
 
@@ -177,7 +177,7 @@
 <dependency>
     <groupId>io.micrometer</groupId>
     <artifactId>micrometer-registry-prometheus</artifactId>
-    <version>1.14.1</version>
+    <version>1.14.3</version>
 </dependency>
 ```
 
@@ -186,7 +186,7 @@
 <dependency>
     <groupId>io.minio</groupId>
     <artifactId>minio</artifactId>
-    <version>8.5.14</version>
+    <version>8.5.17</version>
 </dependency>
 ```
 
@@ -195,7 +195,7 @@
 <dependency>
     <groupId>org.mongodb</groupId>
     <artifactId>mongodb-driver-sync</artifactId>
-    <version>5.2.1</version>
+    <version>5.3.0</version>
 </dependency>
 ```
 
@@ -204,7 +204,7 @@
 <dependency>
     <groupId>org.postgresql</groupId>
     <artifactId>postgresql</artifactId>
-    <version>42.7.4</version>
+    <version>42.7.5</version>
 </dependency>
 ```
 
@@ -226,7 +226,7 @@
 </dependency>
 ```
 
-###  [SLF4J](https://mvnrepository.com/artifact/org.slf4j/slf4j-api)
+### [SLF4J](https://mvnrepository.com/artifact/org.slf4j/slf4j-api)
 ```xml
 <dependency>
     <groupId>org.slf4j</groupId>
@@ -235,7 +235,7 @@
 </dependency>
 ```
 
-###  [Spring Boot](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot)
+### [Spring Boot](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot)
 ```xml
 <dependency>
   <groupId>org.springframework.boot</groupId>
@@ -244,12 +244,12 @@
 </dependency>
 ```
 
-###  [SpringDoc OpenAPI Starter WebMVC UI](https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui)
+### [SpringDoc OpenAPI Starter WebMVC UI](https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui)
 ```xml
 <dependency>
   <groupId>org.springdoc</groupId>
   <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-  <version>2.6.0</version>
+  <version>2.8.3</version>
 </dependency>
 ```
 ###  [XML APIS](https://mvnrepository.com/artifact/xml-apis/xml-apis)
