@@ -199,10 +199,10 @@ Hola, una herramienta que será necesaria en el proyecto en [NodeJS](https://nod
     $ sudo apt-get install nodejs -y
     ```
 
-2. Una vez instalado, debes comprobar que tienes al menos la versión `20.15` de [NodeJS](https://nodejs.org) en tu máquina. Esto es:
+2. Una vez instalado, debes comprobar que tienes al menos la siguiente versión de [NodeJS](https://nodejs.org) en tu máquina:
     ```shell
     $ node -v
-    v20.15.0
+    v22.13.0
     ```
 
 ## Yarn. Instalación
