@@ -34,8 +34,10 @@
     - [Lectores](#lectores)
   - [Adaptador REST](#adaptador-rest)
     - [Controladores](#controladores)
-    - [Data transfer objects](#data-transfer-objects)
-    - [Serializadores y deserializadores](#serializadores-y-deserializadores)
+    - [Peticiones](#peticiones)
+    - [Respuestas](#respuestas)
+    - [Deserializadores](#deserializadores)
+    - [Serializadores](#serializadores)
     - [Configuración](#configuración-1)
     - [Documentación](#documentación)
   - [Operaciones bulk](#operaciones-bulk)
@@ -54,7 +56,7 @@
     - [Repositorios](#repositorios-2)
   - [Adaptador HTTP](#adaptador-http)
     - [Primeros pasos](#primeros-pasos-2)
-    - [Data transfer objects](#data-transfer-objects-1)
+    - [Data transfer objects](#data-transfer-objects)
     - [Probar adaptador HTTP](#probar-adaptador-http)
   - [Adaptador Vue.js](#adaptador-vuejs)
     - [Primeros pasos](#primeros-pasos-3)
@@ -618,7 +620,14 @@ En este ejemplo, definimos una interfaz que especifica qué debe hacer la aplica
 
 **Pasos a realizar:**
 
-1. En una implementación siguiendo la arquitectura hexagonal, los casos de uso deberían ubicarse en la carpeta correspondiente a la capa de aplicación. En este caso: `/application/usecase`. Por tanto, define todos los casos de uso del back-end.
+1. En una implementación siguiendo la arquitectura hexagonal, los casos de uso deberían ubicarse en la carpeta correspondiente a la capa de aplicación. En este caso, si no existe, crea la carpeta `application/usecase`. 
+2. Para cada entidad del dominio (`<ENTITY>`), crea los siguientes casos de uso dentro de la carpeta `application/usecase`:
+    * `Create<ENTITY>UseCase.java`
+    * `Read<ENTITY>UseCase.java`
+    * `Update<ENTITY>UseCase.java`
+    * `Delete<ENTITY>UseCase.java`
+
+    Es importante que cada caso de uso sea una interfaz de Java y defina al menos un método destinado a aplicar el caso de uso.
 
 #### Servicios
 
@@ -655,19 +664,20 @@ La idea detrás de utilizar una interfaz de repositorio es separar la lógica de
 
 **Pasos a realizar:**
 
-En base a lo anterior, por cada entidad de tu dominio, crea una interfaz `<ENTIDAD>Repository.java` dentro de la carpeta `application/repository`. Te paso un extracto básico:
-```java
-public interface <ENTITY>Repository {
+1. Si no existe previamente, crea la carpeta `application/repository`.
+2. Por cada entidad de tu dominio, crea una interfaz `<ENTIDAD>Repository.java` dentro de la carpeta `application/repository`. Te paso un extracto básico:
+    ```java
+    public interface <ENTITY>Repository {
 
-    public abstract void delete(<ENTITY> entity);
+        public abstract void delete(<ENTITY> entity);
 
-    public abstract List<<ENTITY>> fetchAll();
+        public abstract List<<ENTITY>> fetchAll();
 
-    public abstract <ENTITY> save(<ENTITY> entity);
+        public abstract <ENTITY> save(<ENTITY> entity);
 
-    ...
-}
-```
+        ...
+    }
+    ```
 
 ### Adaptador MongoDB
 
@@ -1013,672 +1023,173 @@ Hola, una [API REST](https://www.moesif.com/blog/technical/api-development/Rest-
 
 4. En base a lo anteriormente descrito, añade al back-end el controlador REST para manipular las peticiones recibidas por parte de los clientes.
 
-#### Data transfer objects
+#### Peticiones
 
-Hola, los clientes que empleen el API REST definida en el back-end deberían emplear objetos de clases diferentes a las entidades del dominio para evitar el acoplamiento así como facilitar la validación de datos. Por ello, dentro del controlador `adapter/rest` crea una carpeta `dto` donde añadir [Data Transfer Objects](https://www.baeldung.com/java-dto-pattern).
+Hola, los clientes que empleen el API REST definida en el back-end deberían emplear objetos de clases diferentes a las entidades del dominio para evitar el acoplamiento así como facilitar la validación de datos. Por ello, dentro del controlador `adapter/rest` crea una carpeta `request` donde añadir [data transfer objects](https://www.baeldung.com/java-dto-pattern) que representen los cuerpos de las peticiones REST a realizar.
 
 **Pasos a realizar:**
 
-1. Dentro de la carpeta creada, debes crear una clase `<ENTITY>PostRequestBody.java`, otra `<ENTITY>PutRequestBody.java` y otra `<ENTITY>ResponseBody.java` por cada entidad de tu dominio `<ENTITY>`. A continuación te paso un ejemplo ilustrativo para una entidad `Trap.java`:
+1. Dentro de la carpeta creada, debes crear una clase `<ENTITY>PostRequestBody.java` y otra `<ENTITY>PutRequestBody.java` por cada entidad de tu dominio `<ENTITY>`. A continuación te paso un ejemplo ilustrativo para una entidad `Trap.java`:
     ```java
     public class TrapPostRequestBody {
 
         private TrapName name;
         private TrapDescription description;
-        private TrapType type;
-        private UUID entryPoint;
-        private KaiztenGeolocationPoint geolocation;
-        private LocalDate installationDate;
-        private LocalDate leavingDate;
-        private ContactInformation contactInformation;
-        private List<Comment> comments;
-        private List<UUID> imageUUID;
-
-        public LocalDate getInstallationDate() {
-            return this.installationDate;
-        }
-
-        public void setInstallationDate(LocalDate installationDate) {
-            this.installationDate = installationDate;
-        }
-
-        public LocalDate getLeavingDate() {
-            return this.leavingDate;
-        }
-
-        public void setLeavingDate(LocalDate leavingDate) {
-            this.leavingDate = leavingDate;
-        }
-
-        public TrapName getName() {
-            return this.name;
-        }
 
         public void setName(TrapName name) {
             this.name = name;
-        }
-
-        public TrapDescription getDescription() {
-            return this.description;
         }
 
         public void setDescription(TrapDescription description) {
             this.description = description;
         }
 
-        public ContactInformation getContactInformation() {
-            return this.contactInformation;
-        }
-
-        public void setContactInformation(ContactInformation contactInformation) {
-            this.contactInformation = contactInformation;
-        }
-
-        public void setGeolocation(KaiztenGeolocationPoint geolocation) {
-            this.geolocation = geolocation;
-        }
-
-        public KaiztenGeolocationPoint getGeolocation() {
-            return this.geolocation;
-        }
-
-        public List<Comment> getComments() {
-            return this.comments;
-        }
-
-        public TrapType getType() {
-            return this.type;
-        }
-
-        public List<UUID> getImageUUID() {
-            return this.imageUUID;
-        }
-
-        public UUID getEntryPoint() {
-            return this.entryPoint;
-        }
-
-        public int getNumberOfImages() {
-            return (this.hasImages()) ? this.imageUUID.size() : 0;
-        }
-
-        private boolean hasComments() {
-            return this.comments != null && !this.comments.isEmpty();
-        }
-
-        public boolean hasImages() {
-            return this.imageUUID != null && !this.imageUUID.isEmpty();
-        }
-
-        public boolean hasGeolocation() {
-            return this.geolocation != null;
-        }
-
-        public boolean hasType() {
-            return (this.type != null);
-        }
-
-        public void setEntryPoint(UUID entryPoint) {
-            this.entryPoint = entryPoint;
-        }
-
-        public void setComments(List<Comment> comments) {
-            this.comments = comments;
-        }
-
-        public void setImageUUID(List<UUID> images) {
-            this.imageUUID = images;
-        }
-
-        public void setType(TrapType type) {
-            this.type = type;
-        }
-
-        public Trap toTrap(
-                FetchEntryPointUseCase fetchEntryPointUseCase,
-                FetchFileUseCase fetchFileUseCase,
-                JwtAuthConverter authConverter,
-                Authentication authentication) {
-            EntryPoint ep = fetchEntryPointUseCase.fetchEntryPointById(this.entryPoint).orElseThrow();
-            JwtAuthenticationToken jwtAuthenticationToken = (JwtAuthenticationToken) authentication;
-            Jwt jwt = jwtAuthenticationToken.getToken();
-            String principalAttribute = authConverter.getPrincipleClaimName(jwt);
-            KaiztenJWTPreferredUsername preferredUsername = new KaiztenJWTPreferredUsername(principalAttribute);
-            Trap trap = new Trap(
-                    this.getName(),
-                    this.getType(),
-                    ep,
-                    this.getGeolocation(),
-                    preferredUsername);
-            // Optional attributes:
-            trap.setContactInformation(this.getContactInformation());
-            trap.setDescription(this.getDescription());
-            if (this.hasComments()) {
-                for (Comment comment : this.comments) {
-                    trap.addComment(comment);
-                }
-            }
-            if (this.hasImages()) {
-                for (UUID uuid : this.imageUUID) {
-                    fetchFileUseCase.fetchFileById(uuid).ifPresent((image) -> {
-                        trap.addImage(image);
-                    });
-                }
-            }
-            trap.setInstallationDate(this.getInstallationDate());
-            trap.setLeavingDate(this.getLeavingDate());
+        public Trap toTrap() {
+            Trap trap = new Trap(this.name);
+            trap.setDescription(this.description);
             return trap;
         }
 
         public String toString() {
-            final String representationType = (this.hasType()) ? this.type.toString() : "null";
-            final String representationGeolocation = (this.hasGeolocation()) ? this.geolocation.toString() : "null";
-            final String representationImages = (this.hasImages()) ? this.imageUUID.toString() : "null";
-            return "TrapPostRequestBody={" +
-                    "name=" + this.name + "," +
-                    "contactInformation=" + this.contactInformation + "," +
-                    "description=" + this.description + "," +
-                    "type=" + representationType + "," +
-                    "entryPoint=" + this.entryPoint + "," +
-                    "geolocation=" + representationGeolocation + "," +
-                    "images=" + representationImages + "," +
-                    "installationDate=" + this.installationDate + "," +
-                    "leavingDate=" + this.leavingDate +
-                    "}";
+            return String.format("TrapPostRequestBody={name=%s, description=%s}", 
+                    this.name, this.description);
         }
     }
     ```
-    y 
+    Fíjate en la implementación del método estático que tiene la clase anterior. Está diseñado para convertir el DTO correspondiente en entidad.
+
+2. Una vez creados los DTO, debes eliminar las entidades en los **parámetros de los controladores** creados en el adaptador. Esto significa que los controladores deben recibir DTO en lugar de entidades del dominio.
+
+#### Respuestas
+
+Hola, las respuestas proporcionadas por los controladores deben ser [data transfer objects](https://www.baeldung.com/java-dto-pattern) para evitar acoplamiento entre el adaptador REST y el dominio de la aplicación.
+
+**Pasos a realizar:**
+
+1. Dentro de la carpeta creada, debes crear una clase `<ENTITY>ResponseBody.java` por cada entidad de tu dominio `<ENTITY>`. A continuación te paso un ejemplo ilustrativo para una entidad `Trap.java`:
+2. 
     ```java
     public class TrapResponseBody {
 
         private UUID id;
         private TrapName name;
         private TrapDescription description;
-        private TrapType type;
-        private UUID entryPoint;
-        private KaiztenGeolocationPoint geolocation;
-        private LocalDate installationDate;
-        private LocalDate leavingDate;
-        private ContactInformation contactInformation;
-        private List<UUID> images;
-        private List<Comment> comments;
-        private KaiztenJWTPreferredUsername creator;
-
-        public Optional<LocalDate> getInstallationDate() {
-            return Optional.ofNullable(this.installationDate);
-        }
-
-        public void setInstallationDate(LocalDate installationDate) {
-            this.installationDate = installationDate;
-        }
-
-        public Optional<LocalDate> getLeavingDate() {
-            return Optional.ofNullable(this.leavingDate);
-        }
-
-        public KaiztenJWTPreferredUsername getCreator() {
-            return this.creator;
-        }
-
-        public void setLeavingDate(LocalDate leavingDate) {
-            this.leavingDate = leavingDate;
-        }
-
-        public UUID getId() {
-            return this.id;
-        }
 
         public void setId(UUID id) {
             this.id = id;
-        }
-
-        public TrapName getName() {
-            return this.name;
         }
 
         public void setName(TrapName name) {
             this.name = name;
         }
 
-        public Optional<TrapDescription> getDescription() {
-            return Optional.ofNullable(this.description);
-        }
-
         public void setDescription(TrapDescription description) {
             this.description = description;
-        }
-
-        public Optional<ContactInformation> getContactInformation() {
-            return Optional.ofNullable(this.contactInformation);
-        }
-
-        public void setContactInformation(ContactInformation contactInformation) {
-            this.contactInformation = contactInformation;
-        }
-
-        public void setGeolocation(KaiztenGeolocationPoint geolocation) {
-            this.geolocation = geolocation;
-        }
-
-        public KaiztenGeolocationPoint getGeolocation() {
-            return this.geolocation;
-        }
-
-        public void setType(TrapType type) {
-            this.type = type;
-        }
-
-        public TrapType getType() {
-            return this.type;
-        }
-
-        public List<UUID> getImages() {
-            return this.images;
-        }
-
-        public boolean hasImages() {
-            return this.images != null;
-        }
-
-        public void setImages(List<UUID> images) {
-            this.images = images;
-        }
-
-        public List<Comment> getComments() {
-            return this.comments;
-        }
-
-        public boolean hasComments() {
-            return this.comments != null && !this.comments.isEmpty();
-        }
-
-        public void setComments(List<Comment> comments) {
-            this.comments = comments;
-        }
-
-        public UUID getEntryPoint() {
-            return this.entryPoint;
-        }
-
-        public void setEntryPoint(UUID entryPoint) {
-            this.entryPoint = entryPoint;
-        }
-
-        public void setCreator(KaiztenJWTPreferredUsername creator) {
-            this.creator = creator;
-        }
-
-        public boolean hasDescription() {
-            return this.description != null;
-        }
-
-        public boolean hasContactInformation() {
-            return this.contactInformation != null;
-        }
-
-        public boolean hasInstallationDate() {
-            return this.installationDate != null;
-        }
-
-        public boolean hasLeavingDate() {
-            return this.leavingDate != null;
         }
 
         public static TrapResponseBody from(Trap trap) {
             TrapResponseBody responseBody = new TrapResponseBody();
             responseBody.id = trap.getId();
             responseBody.name = trap.getName();
-            responseBody.type = trap.getType();
-            responseBody.entryPoint = trap.getEntryPoint().getId();
-            responseBody.geolocation = trap.getGeolocation();
-            responseBody.creator = trap.getCreator();
-            if (trap.hasImages()) {
-                responseBody.images = new ArrayList<>(trap.getNumberOfImages());
-                for (File image : trap.getImages().get()) {
-                    responseBody.images.add(image.getId());
-                }
-            }
-            if (trap.hasComments()) {
-                responseBody.comments = new ArrayList<>(trap.getNumberOfComments());
-                for (Comment comment : trap.getComments().get()) {
-                    responseBody.comments.add(comment);
-                }
-            }
-            // Optional attributes:
             trap.getDescription().ifPresent((description) -> {
                 responseBody.description = description;
-            });
-            trap.getInstallationDate().ifPresent((installationDate) -> {
-                responseBody.installationDate = installationDate;
-            });
-            trap.getLeavingDate().ifPresent((leavingDate) -> {
-                responseBody.leavingDate = leavingDate;
-            });
-            trap.getContactInformation().ifPresent((contactInformation) -> {
-                responseBody.contactInformation = contactInformation;
             });
             return responseBody;
         }
 
         public String toString() {
-            final String representationComments = (this.hasComments()) ? this.comments.toString() : "null";
-            final String imagesId = (this.hasImages()) ? this.images.toString() : "null";
-            return "TrapResponseBody={" +
-                    "id=" + this.id + "," +
-                    "name=" + this.name + "," +
-                    "contactInformation=" + this.contactInformation + "," +
-                    "description=" + this.description + "," +
-                    "type=" + type + "," +
-                    "entryPoint=" + this.entryPoint + "," +
-                    "geolocation=" + geolocation + "," +
-                    "comments=" + representationComments + "," +
-                    "images=" + imagesId + "," +
-                    "installationDate=" + this.installationDate + "," +
-                    "leavingDate=" + this.leavingDate + "," +
-                    "creator=" + this.creator +
-                    "}";
+            return String.format("TrapResponseBody={id=%s, name=%s, description=%s}", +
+                    this.id, this.name, this.description);
         }
     }
     ```
-    Fíjate en la implementación de los métodos estáticos que tienen las clases anteriores. Están diseñados para convertir el DTO correspondiente en entidad (o viceversa) así como para generar objetos aleatoriamente. También es particularmente importante en que te fijes en que se retorna `Optional` en los getters de aquellos atributos que son opcionales en la entidad.
+    Fíjate en la implementación del estático que tiene la clase anterior. Está diseñados para convertir la entidad en DTO.
 
-2. Una vez creados los DTO, debes eliminar las entidades en los parámetros y los valores de retorno de los controladores creados en el adaptador. Esto significa que los controladores deben recibir DTO y devolver DTO en lugar de entidades de tu dominio.
+3. Una vez creados los DTO, debes eliminar las entidades en los **valores de retorno** de los controladores creados en el adaptador. Esto significa que los controladores deben devolver DTO en lugar de entidades del dominio.
 
-#### Serializadores y deserializadores
+#### Deserializadores
 
-Hola, cuando el usuario realiza una petición de tipo `POST` o `PUT`, el cuerpo de esta petición es un DTO previamente definido. Sin embargo, es necesario definir lo siguiente:
-* Un deserializador que convierta el cuerpo de una petición `POST` o `PUT` en un DTO.
-* Un serializador por cada posible tipo de respuesta a devolver un controlador.
+Hola, cuando el usuario realiza una petición de tipo `POST` o `PUT`, el cuerpo de esta petición es un DTO previamente definido. Sin embargo, es necesario definir un deserializador que convierta el cuerpo de una petición `POST` o `PUT` en un DTO.
 
 **Pasos a realizar:**
 
-1. Crea una carpeta `adapter/rest/serialization`. Dentro de esta carpeta, crea un deserializador por cada DTO de petición definido en la carpeta `adapter/rest/dto`. A continuación tienes un ejemplo:
+1. Crea una carpeta `adapter/rest/deserialization`. 
+2. Dentro de la carpeta `adapter/rest/deserialization`, crea un deserializador por cada DTO de petición definido en la carpeta `adapter/rest/request`. A continuación tienes un ejemplo:
     ```java
     public class TrapPostRequestBodyDeserializer extends KaiztenJsonDeserializer<TrapPostRequestBody> {
 
         private static final Logger logger = LoggerFactory.getLogger(TrapPostRequestBodyDeserializer.class);
-        private FetchEntryPointUseCase fetchEntryPointUseCase;
-
-        public TrapPostRequestBodyDeserializer(FetchEntryPointUseCase fetchEntryPointUseCase) {
-            this.fetchEntryPointUseCase = fetchEntryPointUseCase;
-        }
 
         @Override
         protected TrapPostRequestBody parse(JsonNode trapNode) {
             // Required attributes:
-            final UUID entryPoint = UUID.fromString(trapNode.get(JsonFields.ENTRYPOINT).asText());
-            final TrapName name = new TrapName(trapNode.get(JsonFields.NAME).textValue());
-            final TrapType type = TrapType.valueOf(trapNode.get(JsonFields.TYPE).textValue().trim().toUpperCase());
-            final JsonNode nodeGeolocation = (trapNode.get(JsonFields.GEOLOCATION));
-            final KaiztenGeolocationPoint geolocation = KaiztenGeolocationPoint.from(nodeGeolocation);
-            // Optional attributes:
-            final TrapDescription description = (trapNode.has(JsonFields.DESCRIPTION)) ? new TrapDescription(trapNode.get(JsonFields.DESCRIPTION).textValue()) : null;
-            final ContactInformation contactInformation = (trapNode.has(JsonFields.CONTACT_INFORMATION)) ? new ContactInformation(trapNode.get(JsonFields.CONTACT_INFORMATION).textValue()) : null;
-            final List<Comment> comments = this.parseComments(trapNode);
-            final List<UUID> images = this.parseImages(trapNode);
-            final LocalDate installationDate = (trapNode.has(JsonFields.INSTALLATION_DATE)) ? LocalDate.parse(trapNode.get(JsonFields.INSTALLATION_DATE).textValue()) : null;
-            final LocalDate leavingDate = (trapNode.has(JsonFields.LEAVING_DATE)) ? LocalDate.parse(trapNode.get(JsonFields.LEAVING_DATE).textValue()) : null;
-            //
+            final TrapName name = super.getRequiredAttribute(JsonFields.NAME, TrapName.class);
+            final TrapDescription description = super.getOptionalAttribute(JsonFields.DESCRIPTION, TrapDescription.class);
             TrapPostRequestBody requestBody = new TrapPostRequestBody();
-            requestBody.setEntryPoint(entryPoint);
             requestBody.setName(name);
             requestBody.setDescription(description);
-            requestBody.setType(type);
-            requestBody.setGeolocation(geolocation);
-            requestBody.setContactInformation(contactInformation);
-            requestBody.setComments(comments);
-            requestBody.setImageUUID(images);
-            requestBody.setInstallationDate(installationDate);
-            requestBody.setLeavingDate(leavingDate);
             return requestBody;
         }
 
         @Override
         protected Optional<List<ApiSubError>> validate(JsonNode trap) {
             List<ApiSubError> errors = new ArrayList<>();
-            errors.addAll(this.validateEntryPoint(trap));
             errors.addAll(this.validateName(trap));
             errors.addAll(this.validateDescription(trap));
-            errors.addAll(this.validateType(trap));
-            errors.addAll(this.validateGeolocation(trap));
-            errors.addAll(this.validateContactInformation(trap));
-            errors.addAll(this.validateComments(trap));
-            errors.addAll(this.validateImages(trap));
-            errors.addAll(this.validateInstallationDate(trap));
-            errors.addAll(this.validateLeavingDate(trap));
             return (errors.isEmpty()) ? Optional.empty() : Optional.of(errors);
         }
 
-        private List<Comment> parseComments(JsonNode trapNode) {
-            List<Comment> comments = new ArrayList<>();
-            if (trapNode.has(JsonFields.COMMENTS)) {
-                ArrayNode arrayComments = (ArrayNode) trapNode.get(JsonFields.COMMENTS);
-                for (final JsonNode commentNode : arrayComments) {
-                    final CommentMessage message = new CommentMessage(commentNode.get(JsonFields.MESSAGE).asText());
-                    final ZonedDateTime zonedDateTime = ZonedDateTime.parse(commentNode.get(JsonFields.TIMESTAMP).asText(), DateTimeFormatter.ISO_DATE_TIME);
-                    final LocalDateTime date = zonedDateTime.toLocalDateTime();
-                    Comment comment = new Comment(message, date);
-                    comments.add(comment);
-                }
-            }
-            return comments;
+        public List<ApiSubError> validateName(JsonNode inputJson) {
+          final String fieldName = JsonFields.NAME;
+          return KaiztenJsonValidator
+                .validateRequiredString(inputJson, fieldName)
+                .fold(
+                        (ApiSubError error) -> List.of(error),
+                        (String value) -> {
+                            final List<ApiSubError> errors = new ArrayList<>();
+                            TrapName obtainedObject = null;
+                            try {
+                                obtainedObject = new TrapName(value);
+                            } catch (Exception exception) {
+                                errors.add(ApiSubErrorMessageRejectedValueField.of(exception, value, fieldName));
+                            }
+                            super.addRequiredAttribute(fieldName, obtainedObject);
+                            return errors;
+                        });
         }
 
-        private List<UUID> parseImages(JsonNode trapNode) {
-            List<UUID> images = new ArrayList<UUID>();
-            if (trapNode.has(JsonFields.IMAGES)) {
-                JsonNode nodeImages = (trapNode.get(JsonFields.IMAGES));
-                Iterator<JsonNode> iteratorImages = nodeImages.elements();
-                while (iteratorImages.hasNext()) {
-                    JsonNode imageNode = iteratorImages.next();
-                    UUID uuid = UUID.fromString(imageNode.textValue());
-                    images.add(uuid);
-                }
-            }
-            return images;
-        }
-
-        private List<ApiSubError> validateName(JsonNode trapNode) {
-            List<ApiSubError> errors = new ArrayList<>();
-            if (trapNode.has(JsonFields.NAME)) {
-                final String name = trapNode.get(JsonFields.NAME).textValue();
-                try {
-                    new TrapName(name);
-                } catch (Exception exception) {
-                    errors.add(new ApiSubErrorMessageRejectedValueField(
-                            exception.getMessage(),
-                            name,
-                            JsonFields.NAME));
-                }
-            } else {
-                errors.add(new ApiSubErrorMessageRejectedValueField(
-                        TrapName.ERROR_NOT_DEFINED,
-                        JsonFields.NAME));
-            }
-            return errors;
-        }
-
-        private List<ApiSubError> validateDescription(JsonNode trapNode) {
-            List<ApiSubError> errors = new ArrayList<>();
-            if (trapNode.has(JsonFields.DESCRIPTION)) {
-                final String description = trapNode.get(JsonFields.DESCRIPTION).textValue();
-                try {
-                    new TrapDescription(description);
-                } catch (Exception exception) {
-                    errors.add(new ApiSubErrorMessageRejectedValueField(
-                            exception.getMessage(),
-                            description,
-                            JsonFields.DESCRIPTION));
-                }
-            }
-            return errors;
-        }
-
-        private List<ApiSubError> validateContactInformation(JsonNode trapNode) {
-            List<ApiSubError> errors = new ArrayList<>();
-            if (trapNode.has(JsonFields.CONTACT_INFORMATION)) {
-                final String contactInformation = trapNode.get(JsonFields.CONTACT_INFORMATION).textValue();
-                try {
-                    new ContactInformation(contactInformation);
-                } catch (Exception exception) {
-                    errors.add(new ApiSubErrorMessageRejectedValueField(
-                            exception.getMessage(),
-                            contactInformation,
-                            JsonFields.CONTACT_INFORMATION));
-                }
-            }
-            return errors;
-        }
-
-        private List<ApiSubError> validateEntryPoint(JsonNode trapNode) {
-            List<ApiSubError> errors = new ArrayList<>();
-            if (trapNode.has(JsonFields.ENTRYPOINT)) {
-                try {
-                    UUID uuid = UUID.fromString(trapNode.get(JsonFields.ENTRYPOINT).asText());
-                    Optional<EntryPoint> optionalEntryPoint = this.fetchEntryPointUseCase.fetchEntryPointById(uuid);
-                    if (!optionalEntryPoint.isPresent()) {
-                        errors.add(new ApiSubErrorMessageRejectedValueField(
-                                String.format(SamplingPostRequestBodyDeserializer.ERROR_TRAP_ID_NOT_FOUND, uuid.toString()),
-                                JsonFields.TRAP_ID));
-                    }
-                } catch (IllegalArgumentException exception) {
-                    errors.add(new ApiSubErrorMessage(SamplingPostRequestBody.ERROR_TRAP_ID_WRONG_FORMAT));
-                }
-            } else {
-                errors.add(new ApiSubErrorMessageRejectedValueField(
-                        SamplingPostRequestBodyDeserializer.ERROR_TRAP_ID_NOT_DEFINED,
-                        JsonFields.TRAP_ID));
-            }
-            return errors;
-        }
-
-        private List<ApiSubError> validateType(JsonNode trapNode) {
-            List<ApiSubError> errors = new ArrayList<>();
-            if (trapNode.has(JsonFields.TYPE)) {
-                final String originalType = trapNode.get(JsonFields.TYPE).textValue();
-                final String type = originalType.trim().toUpperCase();
-                if (!TrapType.isValid(type)) {
-                    errors.add(new ApiSubErrorMessageRejectedValueField(
-                            TrapControllerValidator.ERROR_TYPE_WRONG_FORMAT,
-                            originalType,
-                            JsonFields.TYPE));
-                }
-            } else {
-                errors.add(new ApiSubErrorMessageRejectedValueField(
-                        TrapControllerValidator.ERROR_TYPE_NOT_DEFINED,
-                        JsonFields.TYPE));
-            }
-            return errors;
-        }
-
-        private List<ApiSubError> validateGeolocation(JsonNode trapNode) {
-            List<ApiSubError> errors = new ArrayList<>();
-            if (trapNode.has(JsonFields.GEOLOCATION)) {
-                final JsonNode nodeGeolocation = (trapNode.get(JsonFields.GEOLOCATION));
-                try {
-                    KaiztenGeolocationPoint.from(nodeGeolocation);
-                } catch (Exception exception) {
-                    errors.add(new ApiSubErrorMessageRejectedValueField(
-                            exception.getMessage(),
-                            JsonFields.GEOLOCATION));
-                }
-            } else {
-                errors.add(new ApiSubErrorMessageRejectedValueField(
-                        TrapControllerValidator.ERROR_GEOLOCATION_NOT_DEFINED,
-                        JsonFields.GEOLOCATION));
-            }
-            return errors;
-        }
-
-        private List<ApiSubError> validateComments(JsonNode trapNode) {
-            List<ApiSubError> errors = new ArrayList<>();
-            if (trapNode.has(JsonFields.COMMENTS)) {
-                ArrayNode comments = (ArrayNode) trapNode.get(JsonFields.COMMENTS);
-                for (final JsonNode comment : comments) {
-                    if (comment.has(JsonFields.MESSAGE)) {
-                        final String message = comment.get(JsonFields.MESSAGE).asText();
-                        try {
-                            new CommentMessage(message);
-                        } catch (Exception exception) {
-                            errors.add(new ApiSubErrorMessageRejectedValueField(
-                                    exception.getMessage(),
-                                    JsonFields.MESSAGE));
-                        }
-                    } else {
-                        errors.add(new ApiSubErrorMessageRejectedValueField(
-                                CommentMessage.ERROR_NOT_DEFINED,
-                                JsonFields.MESSAGE));
-                    }
-                }
-            }
-            return errors;
-        }
-
-        private List<ApiSubError> validateImages(JsonNode trapNode) {
-            List<ApiSubError> errors = new ArrayList<>();
-            if (trapNode.has(JsonFields.IMAGES)) {
-                JsonNode nodeImages = (trapNode.get(JsonFields.IMAGES));
-                if (nodeImages.isArray()) {
-                    Iterator<JsonNode> iteratorImages = nodeImages.elements();
-                    while (iteratorImages.hasNext()) {
-                        JsonNode imageNode = iteratorImages.next();
-                        errors.addAll(this.validateImageIdentifier(imageNode));
-                    }
-                } else {
-                    errors.add(new ApiSubErrorMessageRejectedValueField(
-                            TrapControllerValidator.ERROR_IMAGES_WRONG_FORMAT,
-                            JsonFields.IMAGES));
-                }
-            }
-            return errors;
-        }
-
-        private List<ApiSubError> validateImageIdentifier(JsonNode imageNode) {
-            List<ApiSubError> errors = new ArrayList<>();
-            if (imageNode.isTextual()) {
-                try {
-                    UUID.fromString(imageNode.textValue());
-                } catch (Exception exception) {
-                    errors.add(new ApiSubErrorMessage(TrapControllerValidator.ERROR_ID_WRONG_FORMAT));
-                }
-            } else {
-                errors.add(new ApiSubErrorMessage(TrapControllerValidator.ERROR_ID_NOT_TEXT));
-            }
-            return errors;
-        }
-
-        private List<ApiSubError> validateInstallationDate(JsonNode trapNode) {
-            List<ApiSubError> errors = new ArrayList<>();
-            if (trapNode.has(JsonFields.INSTALLATION_DATE)) {
-                final String installationDate = trapNode.get(JsonFields.INSTALLATION_DATE).textValue();
-                try {
-                    LocalDate.parse(installationDate);
-                } catch (Exception exception) {
-                    errors.add(new ApiSubErrorMessage(
-                            TrapControllerValidator.ERROR_INSTALLATION_DATE_WRONG_FORMAT));
-                }
-            }
-            return errors;
-        }
-
-        private List<ApiSubError> validateLeavingDate(JsonNode trapNode) {
-            List<ApiSubError> errors = new ArrayList<>();
-            if (trapNode.has(JsonFields.LEAVING_DATE)) {
-                final String leavingDate = trapNode.get(JsonFields.LEAVING_DATE).textValue();
-                try {
-                    LocalDate.parse(leavingDate);
-                } catch (Exception exception) {
-                    errors.add(new ApiSubErrorMessage(
-                            TrapControllerValidator.ERROR_LEAVING_DATE_WRONG_FORMAT));
-                }
-            }
-            return errors;
+        public List<ApiSubError> validateDescription(JsonNode inputJson) {
+            final String fieldName = JsonFields.DESCRIPTION;
+            return KaiztenJsonValidator
+                    .validateOptionalString(inputJson, fieldName)
+                    .fold(
+                            (ApiSubError error) -> List.of(error),
+                            (String value) -> {
+                                final List<ApiSubError> errors = new ArrayList<>();
+                                TrapDescription obtainedObject = null;
+                                if (value != null) {
+                                    try {
+                                        obtainedObject = new TrapDescription(value);
+                                    } catch (Exception exception) {
+                                        errors.add(ApiSubErrorMessageRejectedValueField.of(exception, value, fieldName));
+                                    }
+                                }
+                                super.addOptionalAttribute(fieldName, obtainedObject);
+                                return errors;
+                            });
         }
     }
     ```
 
-2. Crea un serializador por cada DTO de respuesta dentro de `adapter/rest/serialization`. A continuación tienes un ejemplo:
+    En este caso, el método `validate` está destinado a validar cada uno de los campos del JSON de la petición correspondiente. Esto se hace mediante un método independiente para cada atributo (`validateName` y `validateDescription`). Cabe señalar que en `validateName` se comprueba el campo como cadena de texto requerida. Por su parte, `validateDescription` comprueba el campo como cadena de texto opcional. Por último, el método `parse` está dedicado a construir un objeto de la petición correspondiente a partir de los datos ya validados.
+
+#### Serializadores
+
+Hola, cuando el usuario realiza una petición de tipo, espera obtener una respuesta. Estas respuestas ya están modeladas en `adapter/rest/response`. Sin embargo, hay que convertirlas en formato JSON. Por este motivo, es necesario crear un serializador por cada posible tipo de respuesta a devolver por los controladores.
+
+**Pasos a realizar:**
+
+1. Crea un serializador por cada DTO de respuesta dentro de `adapter/rest/serialization`. A continuación tienes un ejemplo:
     ```java
     public class TrapResponseBodySerializer extends StdSerializer<TrapResponseBody> {
 
@@ -1697,44 +1208,10 @@ Hola, cuando el usuario realiza una petición de tipo `POST` o `PUT`, el cuerpo 
             generator.writeStartObject();
             // Required attributes:
             generator.writeStringField(JsonFields.ID, entity.getId().toString());
-            generator.writeStringField(JsonFields.ENTRYPOINT, entity.getEntryPoint().toString());
             generator.writeStringField(JsonFields.NAME, entity.getName().getValue().toString());
-            generator.writeStringField(JsonFields.TYPE, entity.getType().toString());
-            generator.writeFieldName(JsonFields.GEOLOCATION);
-            generator.writeStartObject(JsonFields.GEOLOCATION);
-            generator.writeNumberField(JsonFields.LONGITUDE, entity.getGeolocation().getLongitude());
-            generator.writeNumberField(JsonFields.LATITUDE, entity.getGeolocation().getLatitude());
-            generator.writeEndObject();
-            generator.writeStringField(JsonFields.CREATOR, entity.getCreator().toString());
             // Optional attributes:
             if (entity.hasDescription()) {
                 generator.writeStringField(JsonFields.DESCRIPTION, entity.getDescription().get().getValue());
-            }
-            if (entity.hasContactInformation()) {
-                generator.writeStringField(JsonFields.CONTACT_INFORMATION, entity.getContactInformation().get().getValue());
-            }
-            if (entity.hasComments()) {
-                generator.writeArrayFieldStart(JsonFields.COMMENTS);
-                for (Comment comment : entity.getComments()) {
-                    generator.writeStartObject();
-                    generator.writeStringField(JsonFields.MESSAGE, comment.getMessage().getValue());
-                    generator.writeStringField(JsonFields.TIMESTAMP, comment.getTimestamp().toString());
-                    generator.writeEndObject();
-                }
-                generator.writeEndArray();
-            }
-            if (entity.hasImages()) {
-                generator.writeArrayFieldStart(JsonFields.IMAGES);
-                for (UUID imageUUID : entity.getImages()) {
-                    generator.writeString(imageUUID.toString());
-                }
-                generator.writeEndArray();
-            }
-            if (entity.hasInstallationDate()) {
-                generator.writeStringField(JsonFields.INSTALLATION_DATE, entity.getInstallationDate().get().toString());
-            }
-            if (entity.hasLeavingDate()) {
-                generator.writeStringField(JsonFields.LEAVING_DATE, entity.getLeavingDate().get().toString());
             }
             generator.writeEndObject();
         }
@@ -1797,7 +1274,6 @@ Hola, [OpenAPI](https://www.openapis.org) es una especificación de API que desc
 1. Para poder emplear OpenAPI 3.0, tendrías que añadir la dependencia correspondiente en el archivo `pom.xml` de tu back-end. Revisa el artículo anterior para esto. Una vez levantada la API, si accedes a `http://localhost:8181/v3/api-docs/` deberías ver la documentación en formato JSON. Si accedes a `http://localhost:8181/swagger-ui/index.html` debes poder ver la documentación de la API mediante `Swagger`.
 
 2. Habría que añadir a los endpoints la documentación de los mismos para que apareciera mediante esta herramienta. De esta manera podríamos publicar luego la documentación y que nosotros mismos puedan consultarla libremente.
-
 
 ### Operaciones bulk
 
