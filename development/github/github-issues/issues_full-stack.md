@@ -21,6 +21,7 @@
   - [Dockerfile](#dockerfile)
   - [GitHub action](#github-action)
   - [Dominio](#dominio)
+    - [Descripción del dominio](#descripción-del-dominio)
     - [Entidades](#entidades)
     - [Objetos valor](#objetos-valor)
   - [Aplicación](#aplicación)
@@ -574,23 +575,33 @@ Las [GitHub action](https://github.com/features/actions) se definen en la carpet
 
 ### Dominio
 
-#### Entidades
+#### Descripción del dominio
 
-Hola, en [este documento](https://docs.google.com/document/d/1gKlDYboDOnTPDRBkZLiZta-GazZWc7OZQpjMGg3yvgU/edit) se encuentra una primera versión del dominio de tu aplicación. Con seguridad, tendremos que hacerle cambios a medida que evolucione tu proyecto, pero sirve como un punto de referencia. En el documento se encuentran las principales entidades (objetos de negocio de tu aplicación) y, para cada una de ellas, se incluye un listado de propiedades que las caracterizan. Revisa con calma el documento y avisa con cualquier duda que pueda surgirte. 
+Hola, en [este documento](https://docs.google.com/document/d/1gKlDYboDOnTPDRBkZLiZta-GazZWc7OZQpjMGg3yvgU/edit) se encuentra una primera versión del dominio de tu aplicación. Con seguridad, tendremos que hacerle cambios a medida que evolucione tu proyecto, pero sirve como un punto de referencia. En el documento se encuentran las principales entidades (objetos de negocio de tu aplicación) y, para cada una de ellas, se incluye un listado de propiedades que la caracteriza.
 
 **Pasos a realizar:**
 
-1. Lee [este enlace](https://kaizten.github.io/development/ddd/entities) sobre cómo son las entidades en el contexto de [Domain-Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design) para que comprendas cómo son y cuáles son sus utilidades. Tiene un ejemplo ilustrativo sobre cómo diseñar entidades en Java.
-2. En base a lo anterior, puedes crear junto a la clase principal de tu back-end una carpeta `domain` y dentro de ésta otra carpeta `entity` en la que definir una clase Java por cada una de las entidades de tu dominio. Para cada entidad, pon los atributos indicados, los métodos get y set correspondientes y sobreescribe `toString()` para poder imprimir por la salida estándar objetos de dichas entidades. En este momento, no te preocupes demasiado por los tipos de los atributos de las entidades.
+1. Revisa con calma el documento de descripción del dominio y plantea cualquier cuestión que consideres al respecto. En particular, analiza si consideras que falta o sobra algo.
+
+#### Entidades
+
+Hola, de acuerdo a la descripción del dominio planteada, tocaría realizar la implementación de las entidades de tu dominio.
+
+**Pasos a realizar:**
+
+1. Lee [este enlace](https://kaizten.github.io/development/ddd/entities) sobre cómo son las entidades en el contexto de [Domain-Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design) para que comprendas cómo son y cuáles son sus utilidades. El enlace contiene además un ejemplo ilustrativo sobre cómo diseñar entidades en Java.
+2. Si no está creada previamente, crea junto a la clase principal de tu back-end una carpeta `domain/entity`. 
+3. Crea una clase Java por cada una de las entidades de tu dominio. Para cada entidad, pon los atributos indicados, los métodos `get` y `set` correspondientes y sobreescribe `toString()` para poder imprimir por la salida estándar objetos de dichas entidades. En este momento, no te preocupes demasiado por los tipos de los atributos de las entidades.
 
 #### Objetos valor
 
-Hola, es conveniente que los atributos de las entidades que tienes en el dominio de tu aplicación no sean tipos primitivos sino tipos definitos por ti. Es lo que denominamos objetos valor.
+Hola, es conveniente que los atributos de las entidades que tienes en el dominio de tu aplicación no sean tipos primitivos sino tipos definitos por ti. Es lo que denominamos *objetos valor*.
 
 **Pasos a realizar:**
 
-1. Lee [este enlace](https://kaizten.github.io/development/ddd/value-objects) sobre cómo son los objetos valor en el contexto de [Domain-Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design) para que comprendas cómo son y cuáles son sus utilidades. Tiene un ejemplo ilustrativo sobre cómo diseñar objetos valor en Java.
-2. Crea una carpeta `valueobject` dentro de la carpeta `domain` donde definas una clase para cada objeto valor y que las uses estos nuevos tipos definidos por ti en los atributos de las entidades de tu dominio (carpeta `domain/entity`). Debes tener en cuenta que hay tipos como `UUID` (para representar identificadores unívocos) o `LocalDateTime` (para representar instantes de tiempo) que no es necesario que definas porque ya los tenemos en el JDK de Java.
+1. Lee [este enlace](https://kaizten.github.io/development/ddd/value-objects) sobre cómo son los objetos valor en el contexto de [Domain-Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design) para que comprendas cómo son y cuáles son sus utilidades. El enlace contiene además un ejemplo ilustrativo sobre cómo diseñar objetos valor en Java.
+2. Si no está creada previamente, crea junto a la clase principal de tu back-end una carpeta `domain/valueobject`.
+3. Crea una clase Java por cada uno de los objetos valor de tu dominio. Estos objetos valores son los empleados en los atributos de las entidades de tu dominio (ubicadas en la carpeta `domain/entity`). Debes tener en cuenta que hay tipos como `UUID` (para representar identificadores unívocos) o `LocalDateTime` (para representar instantes de tiempo) que no es necesario que definas porque ya están definidos en el JDK de Java.
 
 ### Aplicación
 
