@@ -13,6 +13,7 @@
   - [Extensión `JSONata`](#extensión-jsonata)
 - [Grafana](#grafana)
   - [Primeros pasos](#primeros-pasos-1)
+  - [Variable](#variable)
 - [Servidor de JSON (File Server)](#servidor-de-json-file-server)
 - [Cuadro de mandos de instancia](#cuadro-de-mandos-de-instancia)
 - [Notebook de JSONata](#notebook-de-jsonata)
@@ -152,7 +153,16 @@ Con [Grafana](https://grafana.com), podemos crear paneles (cuadros de mando o da
 1. Crea una carpeta `dashboards` en el repositorio para guardar los cuadros de mandos que vayas creando.
 2. Crea un primer cuadro de mandos y añade el plugin [JSON API](https://grafana.github.io/grafana-json-datasource/). Está diseñado para inyectar datos desde JSON en los cuadros de mandos. Revisa la sección [Getting started](https://grafana.github.io/grafana-json-datasource/installation) sobre cómo usarlo. 
 3. Replica el ejemplo descrito en [este enlace del blog de Grafana](https://grafana.com/blog/2023/08/30/grafana-json-api-how-to-import-third-party-data-sources-in-grafana-cloud/). En el ejemplo tendrás que crear un gráfico extrayendo datos en formato JSON desde una API pública.
-4. Exporta el cuadro de mandos en formato JSON en la carpeta `dashboards` previamente creada. De esta manera, cuando vuelvas a arrancar [Grafana](https://grafana.com) tendrás todo montado y no tendrás que repetir el proceso. Los pasos para exportar 
+4. Exporta el cuadro de mandos en formato JSON en la carpeta `dashboards` previamente creada. De esta manera, cuando vuelvas a arrancar [Grafana](https://grafana.com) tendrás todo montado y no tendrás que repetir el proceso.
+
+### Variable
+
+Hola, sería necesario añadir una variable `sample` para que el usuario pueda elegir la o las muestras que desea consultar. Los gráficos del cuadro de mandos deberían actualizarse en base a los valores escogidos en el selector de la variable.
+
+**Pasos a realizar:**
+
+1. Revisa cómo se crean [variables en Grafana](https://grafana.com/docs/grafana/latest/dashboards/variables/).
+2. Añade la variable indicada en el cuadro de mandos.
 
 ## Servidor de JSON (File Server)
 
