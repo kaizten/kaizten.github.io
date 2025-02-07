@@ -43,7 +43,7 @@ public final class Address {
             + " characters in length";
     private static final String ERROR_CITY_FORMAT = "City format is invalid";
     //
-    private static final Pattern POSTAL_CODE_PATTERN = Pattern.compile("^[A-Za-z0-9\s-]+$");
+    private static final Pattern POSTAL_CODE_PATTERN = Pattern.compile("^[\d]+$");
     private static final int POSTAL_CODE_LENGTH = 5;
     private static final String ERROR_POSTAL_CODE_NOT_DEFINED = "Postal code is not defined";
     private static final String ERROR_POSTAL_CODE_FORMAT = "Postal code format is invalid";
