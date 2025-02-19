@@ -3421,8 +3421,6 @@ La creación de un Docker Compose se presenta como una solución eficiente para 
 
 1. Para ello, crea un la raíz del repositorio un archivo llamado `docker-compose.yml` con el siguiente contenido:
     ```shell
-    version: "3.7"
-
     services:
 
       # Front-end
