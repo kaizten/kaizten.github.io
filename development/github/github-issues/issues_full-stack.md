@@ -23,7 +23,11 @@
   - [Dominio](#dominio)
     - [Descripción del dominio](#descripción-del-dominio)
     - [Entidades](#entidades)
+    - [Enumerados](#enumerados)
     - [Objetos valor](#objetos-valor)
+    - [Tests de entidades](#tests-de-entidades)
+    - [Tests de los enumerados](#tests-de-los-enumerados)
+    - [Tests de objetos valor](#tests-de-objetos-valor)
   - [Aplicación](#aplicación)
     - [Casos de uso](#casos-de-uso)
     - [Servicios](#servicios)
@@ -593,6 +597,16 @@ Hola, de acuerdo a la descripción del dominio planteada, tocaría realizar la i
 2. Si no está creada previamente, crea junto a la clase principal de tu back-end una carpeta `domain/entity`. 
 3. Crea una clase Java por cada una de las entidades de tu dominio. Para cada entidad, pon los atributos indicados, los métodos `get` y `set` correspondientes y sobreescribe `toString()` para poder imprimir por la salida estándar objetos de dichas entidades. En este momento, no te preocupes demasiado por los tipos de los atributos de las entidades.
 
+#### Enumerados
+
+Hola, de acuerdo a la descripción del dominio planteada, tocaría realizar la implementación de los enumerados de tu dominio.
+
+**Pasos a realizar:**
+
+1. Lee [este enlace](https://kaizten.github.io/development/ddd/enumerates) sobre cómo son las entidades en el contexto de [Domain-Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design) para que comprendas cómo son y cuáles son sus utilidades. El enlace contiene además un ejemplo ilustrativo sobre cómo diseñar enumerados en Java.
+2. Si no está creada previamente, crea junto a la clase principal de tu back-end una carpeta `domain/enumerate`. 
+3. Crea un archivo Java por cada uno de los enumerados de tu dominio. Para cada enumerado, pon los valores correspondientes de dicho enumerado así como métodos similares a los del código de ejemplo.
+
 #### Objetos valor
 
 Hola, es conveniente que los atributos de las entidades que tienes en el dominio de tu aplicación no sean tipos primitivos sino tipos definitos por ti. Es lo que denominamos *objetos valor*.
@@ -602,6 +616,33 @@ Hola, es conveniente que los atributos de las entidades que tienes en el dominio
 1. Lee [este enlace](https://kaizten.github.io/development/ddd/value-objects) sobre cómo son los objetos valor en el contexto de [Domain-Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design) para que comprendas cómo son y cuáles son sus utilidades. El enlace contiene además un ejemplo ilustrativo sobre cómo diseñar objetos valor en Java.
 2. Si no está creada previamente, crea junto a la clase principal de tu back-end una carpeta `domain/valueobject`.
 3. Crea una clase Java por cada uno de los objetos valor de tu dominio. Estos objetos valores son los empleados en los atributos de las entidades de tu dominio (ubicadas en la carpeta `domain/entity`). Debes tener en cuenta que hay tipos como `UUID` (para representar identificadores unívocos) o `LocalDateTime` (para representar instantes de tiempo) que no es necesario que definas porque ya están definidos en el JDK de Java.
+
+#### Tests de entidades
+
+Hola, las entidades del dominio deben estar testeadas para evitar posibles errores en el funcionamiento de la aplicación. En [este enlace](https://kaizten.github.io/development/java/entity_tests.html) tienes una guía de los tests que debería tener cada entidad de tu dominio para tener una cierta garantía de que funciona correctamente.
+
+**Pasos a realizar:**
+
+1. Revisa con calma el enlace donde se describen los tests de las entidades y plantea cualquier duda que pueda surgirte.
+2. Implementa para cada entidad de tu dominio los tests correspondientes siguiendo las indicaciones del enlace anterior.
+
+#### Tests de los enumerados
+
+Hola, los enumerados del dominio deben estar testeados para evitar posibles errores en el funcionamiento de la aplicación. En [este enlace](https://kaizten.github.io/development/java/enumerate_tests.html) tienes una guía de los tests que debería tener cada enumerado de tu dominio para tener una cierta garantía de que funciona correctamente.
+
+**Pasos a realizar:**
+
+1. Revisa con calma el enlace donde se describen los tests de las enumerados y plantea cualquier duda que pueda surgirte.
+2. Implementa para cada enumerado de tu dominio los tests correspondientes siguiendo las indicaciones del enlace anterior.
+
+#### Tests de objetos valor
+
+Hola, los objetos de valor del dominio deben estar testeados para evitar posibles errores en el funcionamiento de la aplicación. En [este enlace](https://kaizten.github.io/development/java/value-object_tests.html) tienes una guía de los tests que debería tener cada objeto de valor de tu dominio para tener una cierta garantía de que funciona correctamente.
+
+**Pasos a realizar:**
+
+1. Revisa con calma el enlace donde se describen los tests de los objetos de valor y plantea cualquier duda que pueda surgirte.
+2. Implementa para cada objeto de valor de tu dominio los tests correspondientes siguiendo las indicaciones del enlace anterior.
 
 ### Aplicación
 
