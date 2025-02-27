@@ -688,12 +688,12 @@ public interface DeleteEmployee {
     Employee delete(UUID id);
 }
 ```
-En este ejemplo, definimos una interfaz por cada operación de tipo CRUD asociada a la entidad `Employee`. pque especifica qué debe hacer la aplicación: procesar un pago. Sin embargo, no incluye la implementación, ya que esta responsabilidad recae en los servicios de la aplicación que interactúan con el caso de uso.
+En este ejemplo, definimos una interfaz por cada operación de tipo CRUD asociada a la entidad `Employee` en un archivo diferente. Dado que cada caso de uso es una interfaz Java, lo único que estamos definiendo es qué va a realizarse y no cómo, dado que esta responsabilidad recae en los servicios de la aplicación.
 
 **Pasos a realizar:**
 
 1. En una implementación siguiendo la arquitectura hexagonal, los casos de uso deberían ubicarse en la carpeta correspondiente a la capa de aplicación. En este caso, si no existe, crea la carpeta `application/usecase`. 
-2. Para cada entidad del dominio (`<ENTITY>`), crea los siguientes casos de uso dentro de la carpeta `application/usecase`:
+2. Para cada entidad del dominio (`<ENTITY>`), siguiendo el ejemplo anteriormente visto, crea los siguientes casos de uso dentro de la carpeta `application/usecase`:
     * `Create<ENTITY>UseCase.java`
     * `Read<ENTITY>UseCase.java`
     * `Update<ENTITY>UseCase.java`
@@ -709,17 +709,16 @@ Hola, una vez tengas los casos de uso de la aplicación definidos sería necesar
 
 Te paso un ejemplo básico:
 ```java
-public class ProcessPaymentService {
+public class CreateEmployeeService implements CreateEmployeeUseCase {
 
     @Autowired
     private <ENTITY>Repository repository;
 
-    public class CreditCardPaymentService implements PaymentService {
-
     @Override
-    ConfirmationMessage processPayment(Amount amount, PaymentDetails paymentDetails) {
-        // use repository to access the data source
-        ...
+    Employee create(EmployeeName name, EmployeeAge age) {
+        Employee newEmployee = new Employee(name, age);
+        Employee savedEmployee = this.repository.save(newEmployee);
+        return savedEmployee;
     }
 }
 ```
