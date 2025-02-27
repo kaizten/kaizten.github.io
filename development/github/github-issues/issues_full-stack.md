@@ -656,21 +656,39 @@ Los casos de uso son esenciales para definir los requisitos funcionales de un si
 
 **Ejemplo:**
 
-A continuación, un ejemplo básico de un caso de uso para procesar pagos:
+A continuación, te paso algunos casos de uso para la realización de operaciones tipo CRUD asociadas a una entidad `Employee`:
 ```java
-public interface ProcessPaymentUseCase {
+// File CreateEmployeeUseCase.java
 
-    /**
-     * Processes the payment based on the provided amount and payment details.
-     *
-     * @param amount The total amount to be paid.
-     * @param paymentDetails The payment information (e.g., card number, expiration date).
-     * @return A confirmation message or transaction status.
-     */
-    ConfirmationMessage processPayment(Amount amount, PaymentDetails paymentDetails);
+public interface CreateEmployee {
+
+    Employee create(EmployeeName name, EmployeeAge age);
+}
+
+// File ReadEmployeeUseCase.java
+
+public interface ReadEmployee {
+
+    Employee fetch(UUID id);
+
+    List<Employee> fetchAll();
+}
+
+// File UpdateEmployeeUseCase.java
+
+public interface UpdateEmployee {
+
+    Employee update(UUID id, EmployeeName newName, EmployeeAge newAge);
+}
+
+// File DeleteEmployeeUseCase.java
+
+public interface DeleteEmployee {
+
+    Employee delete(UUID id);
 }
 ```
-En este ejemplo, definimos una interfaz que especifica qué debe hacer la aplicación: procesar un pago. Sin embargo, no incluye la implementación, ya que esta responsabilidad recae en los servicios de la aplicación que interactúan con el caso de uso.
+En este ejemplo, definimos una interfaz por cada operación de tipo CRUD asociada a la entidad `Employee`. pque especifica qué debe hacer la aplicación: procesar un pago. Sin embargo, no incluye la implementación, ya que esta responsabilidad recae en los servicios de la aplicación que interactúan con el caso de uso.
 
 **Pasos a realizar:**
 
