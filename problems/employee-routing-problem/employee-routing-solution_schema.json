@@ -8,7 +8,7 @@
       "items": {
         "type": "object",
         "properties": {
-          "vehicleId": {
+          "vehicle": {
             "type": "integer",
             "minimum": 0,
             "description": "ID of the vehicle"
@@ -18,7 +18,7 @@
             "items": {
               "type": "object",
               "properties": {
-                "pointId": {
+                "point": {
                   "type": "integer",
                   "minimum": 0,
                   "description": "ID of the point in the route"
@@ -47,17 +47,13 @@
                 }
               },
               "required": [
-                "pointId",
-                "latitude",
-                "longitude",
-                "arrivalTime",
-                "departureTime"
+                "point"
               ]
             }
           }
         },
         "required": [
-          "vehicleId",
+          "vehicle",
           "route"
         ]
       }
@@ -67,17 +63,17 @@
       "items": {
         "type": "object",
         "properties": {
-          "employeeId": {
+          "employee": {
             "type": "integer",
             "minimum": 0,
             "description": "ID of the employee"
           },
-          "assignedVehicleId": {
+          "vehicle": {
             "type": "integer",
             "minimum": 0,
             "description": "ID of the vehicle assigned to the employee"
           },
-          "pickupPointId": {
+          "pickupPoint": {
             "type": "integer",
             "minimum": 0,
             "description": "ID of the pickup point where the employee is picked up"
@@ -94,7 +90,7 @@
             "maximum": 180,
             "description": "Longitude of the pickup point"
           },
-          "targetPointId": {
+          "targetPoint": {
             "type": "integer",
             "minimum": 0,
             "description": "ID of the target point where the employee is dropped off"
@@ -123,12 +119,12 @@
           }
         },
         "required": [
-          "employeeId",
-          "assignedVehicleId",
-          "pickupPointId",
+          "employee",
+          "vehicle",
+          "pickupPoint",
           "pickupLatitude",
           "pickupLongitude",
-          "targetPointId",
+          "targetPoint",
           "targetLatitude",
           "targetLongitude",
           "pickupTime",

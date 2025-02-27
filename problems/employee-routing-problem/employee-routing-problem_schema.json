@@ -42,7 +42,7 @@
         "properties": {
           "name": {
             "type": "string",
-            "pattern": "^[a-zA-Z0-9 ]+$",
+            "pattern": "^[a-zA-Z0-9Á-Úá-ú ]+$",
             "description": "Name of the point (alphanumeric and spaces)"
           },
           "id": {
@@ -71,9 +71,7 @@
         "required": [
           "name",
           "id",
-          "time",
-          "latitude",
-          "longitude"
+          "time"
         ]
       }
     },
@@ -105,8 +103,7 @@
       },
       "required": [
         "id",
-        "latitude",
-        "longitude"
+		"name"
       ]
     },
     "vehicles": {
@@ -154,7 +151,7 @@
           },
           "name": {
             "type": "string",
-            "pattern": "^[a-zA-Z0-9 ]+$",
+            "pattern": "^[a-zA-Z0-9Á-Úá-ú ]+$",
             "description": "Name of the employee"
           },
           "pickupPoints": {
