@@ -50,7 +50,7 @@
             "minimum": 0,
             "description": "ID of the point"
           },
-          "time": {
+          "duration": {
             "type": "string",
             "format": "duration",
             "description": "Time to pick up a person at this point"
@@ -71,7 +71,7 @@
         "required": [
           "name",
           "id",
-          "time"
+          "duration"
         ]
       }
     },
