@@ -33,7 +33,8 @@
     - [Servicios](#servicios)
     - [Repositorios](#repositorios)
   - [Adaptador MongoDB](#adaptador-mongodb)
-    - [Repositorios](#repositorios-1)
+    - [Descripción general](#descripción-general)
+    - [Implementación de repositorios](#implementación-de-repositorios)
     - [Configuración](#configuración)
     - [Escritores](#escritores)
     - [Lectores](#lectores)
@@ -58,7 +59,7 @@
   - [Aplicación](#aplicación-2)
     - [Casos de uso](#casos-de-uso-1)
     - [Servicios](#servicios-1)
-    - [Repositorios](#repositorios-2)
+    - [Repositorios](#repositorios-1)
   - [Adaptador HTTP](#adaptador-http)
     - [Primeros pasos](#primeros-pasos-2)
     - [Data transfer objects](#data-transfer-objects)
@@ -88,14 +89,14 @@ Hola, en el proyecto deberíamos usar al menos [Java 17](https://www.oracle.com/
 
 **Pasos a realizar:** 
 
-1. Incluye un compilador, bibliotecas, y otras utilidades para crear, depurar y ejecutar programas Java. Puedes instalar el JDK de Java tal como sigue:
+1. El JDK incluye un compilador, bibliotecas, y otras utilidades para crear, depurar y ejecutar programas Java. Puedes instalar el JDK de Java tal como sigue:
     ```shell
     $ sudo add-apt-repository ppa:linuxuprising/java
     $ sudo apt update
     $ sudo apt install oracle-java17-installer oracle-java17-set-default
     ```
 
-2. Comprueba que tienes instalado en tu máquina al menos esta versión. Para ello, ejecuta lo siguiente:
+2. Una vez realizado el paso previo, comprueba que tienes instalado en tu máquina al menos esta versión. Para ello, ejecuta lo siguiente:
     ```shell
     $ java -version
     java version "17.0.6" 2023-01-17 LTS
@@ -103,7 +104,7 @@ Hola, en el proyecto deberíamos usar al menos [Java 17](https://www.oracle.com/
     Java HotSpot(TM) 64-Bit Server VM (build 17.0.6+9-LTS-190, mixed mode, sharing)
     ```
 
-    Cabe señalar que si tienes una versión superior de Java a la 17 no hay problema.
+    Cabe señalar que, si tienes una versión superior de Java a la `17`, no habrá problema para el desarrollo del proyecto.
 
 3. Pon un comentario en este issue mostrando la salida del comando `java -version` para comprobar que has instalado correctamente [Java 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) en tu máquina.
 
@@ -144,7 +145,7 @@ Hola, para compilar proyectos en Java se pueden usar herramientas como [Maven](h
     Default locale: en_US, platform encoding: UTF-8
     OS name: "linux", version: "6.2.0-36-generic", arch: "amd64", family: "unix"
     ```
-    Cabe señalar que si tienes una versión superior de [Maven](https://maven.apache.org) a la 3.9.5 no hay problema.
+    Cabe señalar que, si tienes una versión superior de [Maven](https://maven.apache.org) a la `3.9.5`, no habrá problema para el desarrollo del proyecto.
 
 4. Pon un comentario en este issue mostrando la salida del comando `mvn -v` para comprobar que has instalado correctamente [Maven](https://maven.apache.org) en tu máquina.
 
@@ -152,7 +153,7 @@ Hola, para compilar proyectos en Java se pueden usar herramientas como [Maven](h
 
 ### Instalación
 
-Hola, [Docker](https://www.docker.com) es una plataforma de software que permite crear, implementar y ejecutar aplicaciones en contenedores. Un contenedor es un paquete de software que incluye todo lo necesario para que una aplicación se ejecute, incluyendo el código, las bibliotecas y las dependencias. Los contenedores son independientes del sistema operativo y se pueden ejecutar en cualquier plataforma que admita Docker.
+Hola, [Docker](https://www.docker.com) es una plataforma de software que permite crear, implementar y ejecutar aplicaciones en contenedores. Un contenedor es un paquete de software que incluye todo lo necesario para que una aplicación se ejecute, incluyendo el código, las bibliotecas y las dependencias que sean necesarias. Los contenedores son independientes del sistema operativo y se pueden ejecutar en cualquier plataforma que admita Docker.
 
 **Pasos a realizar:**
 
@@ -162,7 +163,7 @@ Hola, [Docker](https://www.docker.com) es una plataforma de software que permite
     $ docker -v
     Docker version 27.2.1, build 9e34c9b
     ```
-    Comprueba que tienes al menos la versión 27 de [Docker](https://www.docker.com). 
+    Comprueba que tienes al menos la versión `27` de [Docker](https://www.docker.com). 
 
 3. Es importante que puedes ejecutar `docker` sin necesitar emplear `sudo`. Si necesitas usar `sudo`, revisa [este artículo](https://docs.docker.com/engine/install/linux-postinstall/) donde se indica cómo ejecutarlo como usuario convencional.
 
@@ -176,11 +177,11 @@ Hola, te paso [una referencia](https://www.freecodecamp.org/espanol/news/guia-de
 
 ### Docker Compose. Instalación
 
-Hola, [Docker Compose](https://docs.docker.com/compose/) es una herramienta de orquestación de contenedores que permite definir, configurar y ejecutar aplicaciones multi-contenedor Docker. Con [Docker Compose](https://docs.docker.com/compose/), se puede definir la configuración de múltiples servicios, redes y volúmenes, y luego iniciarlos y detenerlos todos juntos con un solo comando. Básicamente, [Docker Compose](https://docs.docker.com/compose/) es una herramienta que simplifica el proceso de gestión de múltiples contenedores de Docker en un entorno de producción. Permite definir la configuración de cada contenedor, así como las conexiones entre ellos, en un archivo [YAML](https://en.wikipedia.org/wiki/YAML). Esto hace que sea fácil de leer y entender, y también es fácil de compartir con otros desarrolladores.
+Hola, [Docker Compose](https://docs.docker.com/compose/) es una herramienta de orquestación de contenedores que permite definir, configurar y ejecutar aplicaciones multi-contenedor Docker. Con [Docker Compose](https://docs.docker.com/compose/), se puede definir la configuración de múltiples servicios, redes y volúmenes, y luego iniciarlos y detenerlos todos juntos con un solo comando. Básicamente, [Docker Compose](https://docs.docker.com/compose/) es una herramienta que simplifica el proceso de gestión de múltiples contenedores de [Docker](https://www.docker.com) en un entorno de producción. Permite definir la configuración de cada contenedor, así como las conexiones entre ellos, en un archivo [YAML](https://en.wikipedia.org/wiki/YAML). Esto hace que sea fácil de leer y entender, y también es fácil de compartir con otros desarrolladores.
 
 **Pasos a realizar:**
 
-1. En la siguiente página tienes los pasos para realizar la instalación de [Docker Compose](https://docs.docker.com/compose/) en tu máquina: https://docs.docker.com/compose/install/
+1. En la siguiente página tienes los pasos para realizar la instalación de [Docker Compose](https://docs.docker.com/compose/) en tu máquina: [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
 
 2. Comprueba que tienes instalado [Docker Compose](https://docs.docker.com/compose/) en tu máquina, tal como sigue:
     ```shell
@@ -240,26 +241,26 @@ Hola, para la creación del front-end será utilizar un administrador de paquete
 
 ### Instalación
 
-Hola, para poder programar de manera cómoda y eficiente es aconsejable emplear un entorno de programación integrado (IDE, por sus siglas en inglés). Actualmente uno de los IDE más versátiles es [Visual Studio Code](https://code.visualstudio.com) (VSC). [Visual Studio Code](https://code.visualstudio.com) es un IDE desarrollado por Microsoft para Windows, Linux, macOS y Web. Incluye soporte para la depuración, control integrado de [Git](https://git-scm.com), resaltado de sintaxis, finalización inteligente de código, fragmentos y refactorización (modificación del código fuente sin cambiar su comportamiento). El IDE es personalizable, por lo que sus usuarios pueden cambiar el tema del editor, los atajos de teclado y las preferencias. Es gratuito y de código abierto y es uno de los IDEs más utilizados en la actualidad. 
+Hola, para poder programar de manera cómoda y eficiente es aconsejable emplear un entorno de programación integrado (IDE, por sus siglas en inglés). Actualmente uno de los IDE más versátiles es [Visual Studio Code](https://code.visualstudio.com) (VSC). [Visual Studio Code](https://code.visualstudio.com) es un IDE desarrollado por Microsoft para Windows, Linux, macOS y Web. Incluye soporte para la depuración, control integrado de [Git](https://git-scm.com), resaltado de sintaxis, finalización inteligente de código, fragmentos y refactorización (modificación del código fuente sin cambiar su comportamiento). El IDE es personalizable, por lo que sus usuarios pueden cambiar el tema del editor, los atajos de teclado y las preferencias. Es gratuito y de código abierto y es uno de los IDE más utilizados en la actualidad. 
 
 **Pasos a realizar:**
 
 1. Si no empleas ya un IDE diferente como [NetBeans](https://netbeans.apache.org), [IntelliJ IDEA](https://www.jetbrains.com/idea/), o [Eclipse](https://eclipseide.org), entre otros, te propongo instalar [Visual Studio Code](https://code.visualstudio.com) (al menos la versión `1.96.0`) en tu máquina. 
-2. Cuando hayas instalado [Visual Studio Code](https://code.visualstudio.com), ejecuta lo siguiente desde una terminal para comprobar que se ha instalado correctamente:
+2. Cuando hayas instalado [Visual Studio Code](https://code.visualstudio.com), ejecuta el siguiente comando desde una terminal para comprobar que se ha instalado correctamente:
     ```shell
     $ code --version
     1.96.0
     138f619c86f1199955d53b4166bef66ef252935c
     x64
     ```
-3. Comprueba que puedes arrancar [Visual Studio Code](https://code.visualstudio.com), o bien haciendo doble click en el icono del programa o ejecutando lo siguiente desde una terminal:
+3. Comprueba que puedes arrancar [Visual Studio Code](https://code.visualstudio.com), o bien haciendo doble click en el icono del programa o ejecutando el siguiente comando desde una terminal:
     ```shell
     $ code 
     ```
 
 ### Extensión `Draw.io`
 
-Hola, una herramienta particularmente interesante para poder hacer diagramas sencillos es [Draw.io](https://app.diagrams.net). Es una herramienta gratuita con la que puedes realizar diagramas de una manera muy cómoda. Además, en [Visual Studio Code](https://code.visualstudio.com) hay una extensión que permite crear estos diagramas sin tener que salir de la herramienta.
+Hola, una herramienta particularmente interesante para poder hacer diagramas sencillos es [Draw.io](https://app.diagrams.net). Es una herramienta gratuita con la que puedes realizar diagramas de una manera muy cómoda. Además, en [Visual Studio Code](https://code.visualstudio.com) hay una extensión que permite crear estos diagramas sin tener que salir del IDE.
 
 **Pasos a realizar:**
 
@@ -267,9 +268,7 @@ Hola, una herramienta particularmente interesante para poder hacer diagramas sen
 
 ### Extensión `MongoDB`
 
-Hola, [MongoDB](https://www.mongodb.com) es una base de datos NoSQL que almacena datos en formato JSON flexible, y la extensión mejora la productividad al integrar la administración y consulta de bases de datos MongoDB dentro de su flujo de trabajo de desarrollo en [Visual Studio Code](https://code.visualstudio.com).
-
-Para poder trabajar con [MongoDB](https://www.mongodb.com) es necesario conectarse mediante una terminal. Sin embargo, la extensión de [MongoDB](https://marketplace.visualstudio.com/items?itemName=mongodb.mongodb-vscode) para [Visual Studio Code](https://code.visualstudio.com) es una herramienta que facilita la interacción con bases de datos MongoDB directamente desde el entorno de desarrollo integrado de [Visual Studio Code](https://code.visualstudio.com). De esta manera, será posible que accedas a [MongoDB](https://www.mongodb.com) de manera gráfica, permitiendo crear o eliminar documentos, entre otras, de una manera sencilla.
+Hola, [MongoDB](https://www.mongodb.com) es una base de datos NoSQL que almacena datos en formato JSON flexible. Por regla general, para poder trabajar con [MongoDB](https://www.mongodb.com) es necesario conectarse mediante una terminal. Sin embargo, la extensión de [MongoDB](https://marketplace.visualstudio.com/items?itemName=mongodb.mongodb-vscode) para [Visual Studio Code](https://code.visualstudio.com) es una herramienta que facilita la interacción con bases de datos [MongoDB](https://www.mongodb.com) directamente desde el IDE. De esta manera, será posible que accedas a tus bases de datos [MongoDB](https://www.mongodb.com) de manera gráfica, permitiendo crear o eliminar documentos, entre otras, de una manera sencilla.
 
 **Pasos a realizar:**
 
@@ -277,7 +276,7 @@ Para poder trabajar con [MongoDB](https://www.mongodb.com) es necesario conectar
 
 ### Extensión `Vue - Official`
 
-Hola, [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) es una extensión para [Visual Studio Code](https://code.visualstudio.com/) diseñada específicamente para mejorar el desarrollo en entornos de [Vue.js](https://vuejs.org). Esta extensión ofrece un soporte avanzado para el desarrollo de aplicaciones [Vue.js](https://vuejs.org), agilizando la escritura de código, mejorando la detección de errores y proporcionando una experiencia de desarrollo más fluida y eficiente. Si usas [Visual Studio Code](https://code.visualstudio.com) creo que sería interesante que instalar esta extensión y, de esta manera, puedas trabajar de forma más eficaz con [Vue.js](https://vuejs.org).
+Hola, [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) es una extensión para [Visual Studio Code](https://code.visualstudio.com/) diseñada específicamente para mejorar el desarrollo en entornos de [Vue.js](https://vuejs.org). Esta extensión ofrece un soporte avanzado para el desarrollo de aplicaciones [Vue.js](https://vuejs.org), agilizando la escritura de código, mejorando la detección de errores y proporcionando una experiencia de desarrollo más fluida y eficiente. Si usas [Visual Studio Code](https://code.visualstudio.com), creo que sería interesante que instalaras esta extensión y, de esta manera, puedas desarrollar de forma más eficaz aplicaciones hechas con [Vue.js](https://vuejs.org).
 
 **Pasos a realizar:**
 
@@ -296,11 +295,15 @@ La arquitectura hexagonal proporciona varios beneficios:
 - *Flexibilidad.* Facilita la adición de nuevas interfaces o adaptadores sin afectar la lógica interna. Por ejemplo, cambiar de una base de datos SQL a una NoSQL o exponer una [API REST](https://es.wikipedia.org/wiki/Transferencia_de_Estado_Representacional) y [GraphQL](https://graphql.org) al mismo tiempo.
 - *Mantenibilidad.* Al dividir las responsabilidades claramente en capas, el sistema se vuelve más fácil de entender, mantener y extender.
 
+La imagen siguiente muestra un esquema general de cómo se organiza una aplicación con arquitectura hexagonal:
+
+![Esquema general de arquitectura hexagonal](https://kaizten.github.io/images/hexagonal-architecture_overview.png)
+
 A continuación se exponen las principales capas de la arquitectura hexagonal que vamos a immplementaro:
 
 **1. Capa de adaptadores**
 
-La capa de adaptadores es el punto de entrada y salida de la aplicación. Esta capa incluye adaptadores como controladores HTTP, conectores de bases de datos, y otros componentes que interactúan con agentes externos. Los adaptadores transforman las solicitudes del mundo exterior en algo que el núcleo de la aplicación pueda entender y viceversa.
+La capa de adaptadores es el punto de entrada y salida de la aplicación. Esta capa incluye adaptadores como controladores HTTP, conectores de bases de datos, y otros componentes que interactúan con agentes externos. Los adaptadores transforman las solicitudes del mundo exterior (donde está el usuario de la aplicación) en algo que el núcleo de la aplicación pueda entender y viceversa.
 
 **2. Capa de aplicación**
 
@@ -315,13 +318,16 @@ La capa de aplicación es la encargada de coordinar las operaciones del sistema.
 La capa de dominio contiene las entidades y objetos valor que representan la lógica central del negocio. Esta capa no conoce nada sobre las capas externas y se enfoca exclusivamente en las reglas y procesos que gobiernan el sistema.
 
 - *Entidades.* Objetos que tienen una identidad única y un ciclo de vida. Ejemplo: `Pedido`, `Cliente`. Los atributos de las entidades son generalmente objetos de valor, que son descritos a continuación.
-- *Objetos de valor.* Objetos inmutables que tienen identidad propia. Ejemplo: `Dirección`, `Moneda`. Generalmente, son objetos empleados como tipo de los atributos de las entidades.
+- *Objetos de valor.* Objetos inmutables cuya identidad depende de los valores de sus atributos y no de su lugar en la memoria de la máquina. Ejemplo: `Dirección`, `Moneda`. Generalmente, son objetos empleados como tipo de los atributos de las entidades.
+- *Enumerados.* Objetos inmutables que pueden tomar un valor de un conjunto preestablecido. 
+
+Por último, en la imagen anterior aparece un elemento adicional llamado `Configuration` que es un componente general y trasversal a toda la aplicación destinado a configurar la misma y conectar cada elemento de la forma oportuna.
 
 ## Back-end
 
 ### Primeros pasos
 
-Hola, el back-end de la aplicación vamos a realizarla mediante [Spring Boot](https://spring.io/projects/spring-boot). Se trata de un framework para la creación de aplicaciones empresariales en Java y otros lenguajes compatibles con la [Java virtual machine](https://en.wikipedia.org/wiki/Java_virtual_machine).
+Hola, el back-end de la aplicación vamos a realizarla mediante [Spring Boot](https://spring.io/projects/spring-boot). Se trata de un framework para la creación de aplicaciones empresariales en Java y otros lenguajes compatibles con la [Java virtual machine](https://en.wikipedia.org/wiki/Java_virtual_machine) como Scala o Kotlin.
 
 **Pasos a realizar:**
 
@@ -337,8 +343,8 @@ Hola, el back-end de la aplicación vamos a realizarla mediante [Spring Boot](ht
         * `Packaging`: `Jar`
         * `Java`: `17`
       El resto de los campos puedes configurarlos libremente. Una vez hayas cumplimentado el formulario de [Spring Initializr](https://start.spring.io/), debes pulsar `Generate` y descarga el archivo `back-end.zip` con el proyecto [Spring Boot](https://spring.io/projects/spring-boot) creado.
-2. Descomprime `back-end.zip` dentro de la carpeta de tu repositorio. Con esto, debes tener una carpeta `back-end` en tu repositorio. 
-3. Compila el back-end:
+2. Descomprime `back-end.zip` dentro de la carpeta de tu repositorio. Con esto, debes tener una carpeta `back-end` en la raíz de tu repositorio. 
+3. Compila el back-end, tal como se muestra a continuación:
     ```shell
     $ cd back-end
     $ mvn clean package
@@ -356,16 +362,17 @@ Hola, el back-end de la aplicación vamos a realizarla mediante [Spring Boot](ht
     [INFO] Finished at: 2023-10-26T18:39:46+01:00
     [INFO] ------------------------------------------------------------------------
     ```
-1. Si todo ha ido correctamente, debes encontrar la distribución del back-end en formato JAR. Concretamente `back-end/target/back-end-1.0-SNAPSHOT.jar`. Comprueba que este archivo se encuentra disponible.
+4. Si todo ha ido correctamente, debes encontrar la distribución del back-end en formato JAR. Concretamente `back-end/target/back-end-1.0-SNAPSHOT.jar`. Comprueba que este archivo se encuentra disponible.
+5. Sube los cambios al repositorio de tu proyecto para que el back-end esté disponible.
 
 ### Dependencia: `kaizten-utils`
 
-Hola, desde hace un tiempo hemos ido trabajando en una librería de utilidades para facilitarnos la realización de proyectos en Java: `kaizten-utils`. Se trata de una pequeña librería donde hay bastantes métodos que usamos regularmente. En tu proyecto pueden ser de utilidad para validar recursos por ejemplo. Acabamos de agregarte como colaborador al repositorio para que puedas acceder a su distribución y puedas añadirla como dependencia a tu proyecto.
+Hola, desde hace un tiempo hemos ido trabajando en una librería de utilidades destinada a facilitar la realización de proyectos en Java: [`kaizten-utils`](https://github.com/kaizten/kaizten-utils). Se trata de una pequeña librería donde hay bastantes clases, interfaces, enumerados y métodos que usamos regularmente. En tu proyecto pueden ser de utilidad para validar entidades por ejemplo. Acabo de agregarte como colaborador al repositorio de [`kaizten-utils`](https://github.com/kaizten/kaizten-utils) para que puedas acceder a su distribución y puedas añadirla como dependencia a tu proyecto.
 
 **Pasos a realizar:**
 
-1. Comprueba que te ha llegado una invitación a [kaizten-utils](https://github.com/kaizten/kaizten-utils) y acéptala.
-2. Crea un token personal en tu cuenta de GitHub. Aquí tienes los [pasos](https://docs.github.com/es/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). El tipo de token que debes crear es `Personal access tokens (classic)`. Además, es importante que cuando crees el token marques la opción `read-packages`.
+1. Comprueba que te ha llegado una invitación a [`kaizten-utils`](https://github.com/kaizten/kaizten-utils) y acéptala.
+2. Crea un token personal en tu cuenta de [GitHub](https://www.github.com). Aquí tienes los [pasos](https://docs.github.com/es/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). El tipo de token que debes crear es `Personal access tokens (classic)`. Además, es importante que cuando crees el token marques la opción `read-packages`.
 3. Crea el fichero `settings.xml` en el lugar donde tengas instalado Maven. Habitualmente el lugar es `~/.m2`, de tal manera que al final tengas `~/.m2/settings.xml`. El contenido de este fichero debe ser así:
     ```xml
     <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
@@ -407,7 +414,7 @@ Hola, desde hace un tiempo hemos ido trabajando en una librería de utilidades p
     ```
     Debes sustituir `USERNAME` por tu nombre de usuario de GitHub y `TOKEN` por el valor de tu token personal (creado en el paso previo).
 
-4. Añade al archivo `pom.xml` la dependencia de `kaizten-utils`:
+4. Añade al archivo `pom.xml` de tu back-end la dependencia de [`kaizten-utils`](https://github.com/kaizten/kaizten-utils):
     ```xml
     <dependency>
       <groupId>com.kaizten</groupId>
@@ -415,7 +422,7 @@ Hola, desde hace un tiempo hemos ido trabajando en una librería de utilidades p
       <version>1.0-SNAPSHOT</version>
     </dependency>
     ```
-5. Compila el proyecto para comprobar que la dependencia está disponible: `mvn clean package`.
+5. Compila el back-end de la aplicación para comprobar que la dependencia está disponible: `mvn clean package`.
 
 ### Dockerfile
 
@@ -437,7 +444,7 @@ La dockerización del back-end requiere de un archivo `Dockerfile`. Se trata un 
 
     ENTRYPOINT ["java", "-jar", "/app.jar"]
     ```
-    Es importante que lo guardes con el nombre `Dockerfile`.
+    Es importante que lo guardes exactamente con el nombre `Dockerfile`. Esto es, no pongas extensiones en el nombre del fichero.
 
 2. Una vez creado el `Dockerfile`, puedes crear la imagen [Docker](https://www.docker.com) de tu back-end. Para ello, ejecuta lo siguiente:
     ```shell
@@ -454,7 +461,7 @@ La dockerización del back-end requiere de un archivo `Dockerfile`. Se trata un 
     ```
     Comprueba que la imagen de [Docker](https://www.docker.com) se ha creado correctamente.
 
-4. Finalmente, puedes crear un contenedor Docker de esta imagen, tal como sigue:
+4. Finalmente, puedes crear un contenedor [Docker](https://www.docker.com) de esta imagen, tal como sigue:
     ```shell
     $ docker run -p 8081:8080 --name mycontainer dockerizedbackend
     ```
@@ -462,13 +469,14 @@ La dockerización del back-end requiere de un archivo `Dockerfile`. Se trata un 
 
 ### GitHub action
 
-Hola, la compilación del back-end y la generación de la imagen [Docker](https://www.docker.com) correspondiente requieren pasos manuales, lo que puede llevar a errores, inconsistencias y pérdida de tiempo. Para mejorar este proceso, se puede implementar una [GitHub action](https://github.com/features/actions) que automatice estas tareas con cada push realizado en el repositorio.
+Hola, la compilación del back-end y la generación de la imagen [Docker](https://www.docker.com) correspondiente requieren pasos manuales, lo que puede llevar a errores, inconsistencias y pérdida de tiempo. Para mejorar este proceso, se puede implementar una [GitHub action](https://github.com/features/actions) que automatice estas tareas con cada `push` realizado en el repositorio.
 
-Las [GitHub action](https://github.com/features/actions) se definen en la carpeta `.github/workflows`. Crea esta carpeta dentro del repositorio si no la tienes aún creada. Es importante que te fijes bien en que se trata de una carpeta oculta. 
+Cabe señalar que las [GitHub action](https://github.com/features/actions) se definen en la carpeta `.github/workflows` del repositorio. 
 
 **Pasos a realizar:**
 
-1. Dentro de la carpeta `.github/workflows` crea el archivo `back-end_publish-docker-image.yml` con el siguiente contenido:
+1. En el caso de que no exista, crea la carpeta `.github/workflows` en la raíz de tu repositorio. Es importante que te fijes bien en que se trata de una carpeta oculta.
+2. Dentro de la carpeta `.github/workflows` crea el archivo `back-end_publish-docker-image.yml` con el siguiente contenido:
     ```yaml
     # GitHub action aimed at creating a Docker image of a Java project. 
     # The Docker image is pushed on DockerHub when created.
@@ -481,7 +489,7 @@ Las [GitHub action](https://github.com/features/actions) se definen en la carpet
     #   - DOCKERHUB_USERNAME. Username of the user in DockerHub.
     #   - DOCKERHUB_PASSWORD. Password of the user in DockerHub.
     #
-    # Author: Kaizten Analytics S.L. (info@kaizten.com)
+    # Author: Kaizten Analytics S.L. (development@kaizten.com)
 
     name: Back-end. Publish Docker image
 
@@ -543,7 +551,7 @@ Las [GitHub action](https://github.com/features/actions) se definen en la carpet
 
     La [GitHub action](https://github.com/features/actions) creada está destinada a que, cada vez que hagas un cambio en `back-end/` y lo subas al repositorio, se genere la imagen [Docker](https://www.docker.com) correspondiente y se publique en [Docker Hub](https://hub.docker.com). Fíjate que en el archivo hay definida una variable `DOCKER_IMAGE_NAME` que indica el nombre de la imagen [Docker](https://www.docker.com) que se genera con el lanzamiento de la [GitHub action](https://github.com/features/actions). En este punto es importante que sustituyas `<NOMBRE_PROYECTO>` por el nombre de tu proyecto.
 
-2. Antes de pasar a probar la [GitHub action](https://github.com/features/actions), debes modificar el archivo `back-end/pom.xml` añadiendo la sección `<profiles>` que se muestra a continuación:
+3. Antes de pasar a probar la [GitHub action](https://github.com/features/actions), debes modificar el archivo `back-end/pom.xml` añadiendo la sección `<profiles>` que se muestra a continuación:
     ```xml
     <project>
       ...
@@ -573,15 +581,15 @@ Las [GitHub action](https://github.com/features/actions) se definen en la carpet
     ```
     Esto se hace para que la [GitHub action](https://github.com/features/actions) sea capaz de encontrar el paquete [kaizten-utils](https://github.com/kaizten/kaizten-utils) que estás usando en el back-end.
 
-3. Revisa la [GitHub action](https://github.com/features/actions) y prueba a ejecutarla haciendo algún cambio en alguno de los archivos de `back-end/` y subiéndolos al repositorio. Indícame si se ha ejecutado correctamente (puedes verlo en la pestaña `Actions` del repositorio). En caso de que se produzca algún error en la ejecución de la [GitHub action](https://github.com/features/actions) te llegará un correo indicando el error.
+4. Revisa la [GitHub action](https://github.com/features/actions) y prueba a ejecutarla haciendo algún cambio en alguno de los archivos de `back-end/` y subiéndolos al repositorio. Indícame si se ha ejecutado correctamente (puedes verlo en la pestaña `Actions` de la página de GitHub del repositorio). En caso de que se produzca algún error en la ejecución de la [GitHub action](https://github.com/features/actions) te llegará un correo electrónico indicando el error.
 
-4. Por último, una vez se ejecute la [GitHub action](https://github.com/features/actions), comprueba que la imagen se encuentra publicada en [Docker Hub](https://hub.docker.com) con el nombre establecido por la variable `DOCKER_IMAGE_NAME`.
+5. Una vez haya finalizado correctamente la ejecución de la [GitHub action](https://github.com/features/actions), comprueba que la imagen se encuentra publicada en [Docker Hub](https://hub.docker.com) con el nombre establecido por la variable `DOCKER_IMAGE_NAME`.
 
 ### Dominio
 
 #### Descripción del dominio
 
-Hola, en [este documento](https://docs.google.com/document/d/1gKlDYboDOnTPDRBkZLiZta-GazZWc7OZQpjMGg3yvgU/edit) se encuentra una primera versión del dominio de tu aplicación. Con seguridad, tendremos que hacerle cambios a medida que evolucione tu proyecto, pero sirve como un punto de referencia. En el documento se encuentran las principales entidades (objetos de negocio de tu aplicación) y, para cada una de ellas, se incluye un listado de propiedades que la caracteriza.
+Hola, he puesto en el archivo `README.md` de tu repositorio un enlace a un documento donde se encuentra una primera versión del dominio de tu aplicación. Con seguridad, tendremos que hacerle cambios a medida que evolucione tu proyecto, pero sirve como un punto de referencia. En el documento se encuentran las principales entidades (objetos de negocio de tu aplicación) y, para cada una de ellas, se incluye un listado de propiedades que la caracteriza.
 
 **Pasos a realizar:**
 
@@ -595,7 +603,11 @@ Hola, de acuerdo a la descripción del dominio planteada, tocaría realizar la i
 
 1. Lee [este enlace](https://kaizten.github.io/development/ddd/entities) sobre cómo son las entidades en el contexto de [Domain-Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design) para que comprendas cómo son y cuáles son sus utilidades. El enlace contiene además un ejemplo ilustrativo sobre cómo diseñar entidades en Java.
 2. Si no está creada previamente, crea junto a la clase principal de tu back-end una carpeta `domain/entity`. 
-3. Crea una clase Java por cada una de las entidades de tu dominio. Para cada entidad, pon los atributos indicados, los métodos `get` y `set` correspondientes y sobreescribe `toString()` para poder imprimir por la salida estándar objetos de dichas entidades. En este momento, no te preocupes demasiado por los tipos de los atributos de las entidades.
+3. Crea un archivo Java que incluya una clase por cada una de las entidades de tu dominio. 
+4. Para cada entidad de tu dominio, pon los atributos indicados en el documento. En este momento, no te preocupes demasiado por los tipos de los atributos de las entidades. En todo caso, debes tener en cuenta que hay tipos como `UUID` (para representar identificadores unívocos) o `LocalDateTime` (para representar instantes de tiempo) que no es necesario que definas porque ya están definidos en el JDK de Java.
+5. Para cada entidad de tu dominio, incluye métodos `get` y `set` para cada uno de los atributos.
+6. Para cada entidad de tu dominio, sobreescribe el método `toString()` siguiendo el ejemplo del enlace anterior. Este método lo usaremos para poder imprimir por la salida estándar objetos de dichas entidades.
+7. Para cada entidad de tu dominio, sobreescribe el método `equals()` siguiendo el ejemplo del enlace anterior. Fíjate que tienes que comprobar si los identificadores de los objetos a comparar son o no iguales.
 
 #### Enumerados
 
@@ -603,19 +615,24 @@ Hola, de acuerdo a la descripción del dominio planteada, tocaría realizar la i
 
 **Pasos a realizar:**
 
-1. Lee [este enlace](https://kaizten.github.io/development/ddd/enumerates) sobre cómo son las entidades en el contexto de [Domain-Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design) para que comprendas cómo son y cuáles son sus utilidades. El enlace contiene además un ejemplo ilustrativo sobre cómo diseñar enumerados en Java.
+1. Lee [este enlace](https://kaizten.github.io/development/ddd/enumerates) sobre cómo son los enumerados en el contexto de [Domain-Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design) para que comprendas cómo son y cuáles son sus utilidades. El enlace contiene además un ejemplo ilustrativo sobre cómo diseñar enumerados en Java.
 2. Si no está creada previamente, crea junto a la clase principal de tu back-end una carpeta `domain/enumerate`. 
-3. Crea un archivo Java por cada uno de los enumerados de tu dominio. Para cada enumerado, pon los valores correspondientes de dicho enumerado así como métodos similares a los del código de ejemplo.
+3. Crea un archivo Java que incluya un `enum` por cada una de los enumerados de tu dominio. 
+4. Para cada enumerado de tu dominio, pon los valores correspondientes de dicho enumerado así como métodos similares a los del código de ejemplo.
 
 #### Objetos valor
 
-Hola, es conveniente que los atributos de las entidades que tienes en el dominio de tu aplicación no sean tipos primitivos sino tipos definitos por ti. Es lo que denominamos *objetos valor*.
+Hola, es conveniente que los atributos de las entidades que tienes en el dominio de tu aplicación no sean tipos primitivos sino tipos definitos por ti. Es lo que denominamos *objetos valor*. 
 
 **Pasos a realizar:**
 
 1. Lee [este enlace](https://kaizten.github.io/development/ddd/value-objects) sobre cómo son los objetos valor en el contexto de [Domain-Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design) para que comprendas cómo son y cuáles son sus utilidades. El enlace contiene además un ejemplo ilustrativo sobre cómo diseñar objetos valor en Java.
 2. Si no está creada previamente, crea junto a la clase principal de tu back-end una carpeta `domain/valueobject`.
-3. Crea una clase Java por cada uno de los objetos valor de tu dominio. Estos objetos valores son los empleados en los atributos de las entidades de tu dominio (ubicadas en la carpeta `domain/entity`). Debes tener en cuenta que hay tipos como `UUID` (para representar identificadores unívocos) o `LocalDateTime` (para representar instantes de tiempo) que no es necesario que definas porque ya están definidos en el JDK de Java.
+3. Crea un archivo Java que incluya una clase por cada una de los objetos valor de tu dominio. 
+4. Para cada objeto valor de tu dominio, pon los atributos indicados en el documento. Estos atributos sí pueden ser tipos básicos como `int`, `String` o `double`, entre otros.
+5. Para cada objeto valor de tu dominio, incluye métodos `get` para cada uno de los atributos.
+6. Para cada objeto valor de tu dominio, sobreescribe el método `toString()` siguiendo el ejemplo del enlace anterior. Este método lo usaremos para poder imprimir por la salida estándar objetos de dichas objetos valor.
+7. Para cada objeto valor de tu dominio, sobreescribe el método `equals()` siguiendo el ejemplo del enlace anterior. Fíjate que tienes que comprobar si los valores de todos los atributos son exactamente iguales en los objetos a comparar.
 
 #### Tests de entidades
 
@@ -656,39 +673,45 @@ Los casos de uso son esenciales para definir los requisitos funcionales de un si
 
 **Ejemplo:**
 
-A continuación, te paso algunos casos de uso para la realización de operaciones tipo CRUD asociadas a una entidad `Employee`:
+A continuación, te paso algunos casos de uso para la realización de operaciones tipo CRUD asociadas a una supuesta entidad `Employee`:
 ```java
-// File CreateEmployeeUseCase.java
+// .../application/usecase/CreateEmployeeUseCase.java
 
-public interface CreateEmployee {
+public interface CreateEmployeeUseCase {
 
     Employee create(EmployeeName name, EmployeeAge age);
 }
+```
 
-// File ReadEmployeeUseCase.java
+```java
+// .../application/usecase/ReadEmployeeUseCase.java
 
-public interface ReadEmployee {
+public interface ReadEmployeeUseCase {
 
     Employee fetch(UUID id);
 
     List<Employee> fetchAll();
 }
+```
 
-// File UpdateEmployeeUseCase.java
+```java
+// .../application/usecase/UpdateEmployeeUseCase.java
 
-public interface UpdateEmployee {
+public interface UpdateEmployeeUseCase {
 
     Employee update(UUID id, EmployeeName newName, EmployeeAge newAge);
 }
+```
 
-// File DeleteEmployeeUseCase.java
+```java
+// .../application/usecase/DeleteEmployeeUseCase.java
 
-public interface DeleteEmployee {
+public interface DeleteEmployeeUseCase {
 
     Employee delete(UUID id);
 }
 ```
-En este ejemplo, definimos una interfaz por cada operación de tipo CRUD asociada a la entidad `Employee` en un archivo diferente. Dado que cada caso de uso es una interfaz Java, lo único que estamos definiendo es qué va a realizarse y no cómo, dado que esta responsabilidad recae en los servicios de la aplicación.
+En este ejemplo, definimos una interfaz por cada operación de tipo CRUD asociada a la entidad `Employee` en un archivo diferente. Dado que cada caso de uso es una interfaz Java, lo único que estamos definiendo es qué va a realizarse y no cómo, dado que esta responsabilidad recae en los servicios de la capa de aplicación.
 
 **Pasos a realizar:**
 
@@ -699,7 +722,7 @@ En este ejemplo, definimos una interfaz por cada operación de tipo CRUD asociad
     * `Update<ENTITY>UseCase.java`
     * `Delete<ENTITY>UseCase.java`
 
-    Es importante que cada caso de uso sea una interfaz de Java y defina al menos un método destinado a aplicar el caso de uso.
+    Es importante que cada caso de uso sea una interfaz Java y defina al menos un método destinado a aplicar el caso de uso.
 
 #### Servicios
 
@@ -709,6 +732,8 @@ Hola, una vez tengas los casos de uso de la aplicación definidos sería necesar
 
 Te paso un ejemplo básico:
 ```java
+// .../application/service/CreateEmployeeService.java
+
 public class CreateEmployeeService implements CreateEmployeeUseCase {
 
     @Autowired
@@ -722,22 +747,32 @@ public class CreateEmployeeService implements CreateEmployeeUseCase {
     }
 }
 ```
+Tal como puede verse en el ejemplo, el servicio emplea un repositorio para acceder/persistir los datos de la aplicación. De esta forma, se consigue desacoplar los servicios de la base de datos empleada.
 
 **Pasos a realizar:**
 
-1. En este caso, debes sustituir `<ENTITY>` por el nombre la entidad correspondiente en cada caso. Al mismo tiempo, tal como aparece en los comentarios, el servicio emplea un repositorio para acceder a los datos de la aplicación. De esta forma, por ejemplo, se desacoplan los servicios de la base de datos empleada.
+1. En caso de que no exista previamente, crea la carpeta `application/service`.
+2. Para cada entidad del dominio (`<ENTITY>`), siguiendo el ejemplo anteriormente visto, crea los siguientes servicios dentro de la carpeta `application/service`:
+    * `Create<ENTITY>Service.java`
+    * `Read<ENTITY>Service.java`
+    * `Update<ENTITY>Service.java`
+    * `Delete<ENTITY>Service.java`
+
+    Es importante que cada servicio sea una clase Java que implemente el caso de uso correspondiente.
 
 #### Repositorios
 
-Hola, para que los casos de uso (servicios) estén desacoplados del lugar donde se almacenan los datos, es necesario crear [repositorios](https://our-academy.org/posts/el-patron-repository:-implementacion-y-buenas-practicas). En este contexto, un repositorio es una abstracción que define un conjunto de métodos para acceder y manipular datos en una base de datos u otro tipo de almacenamiento persistente. 
+Hola, para que los casos de uso (implementados como servicios) estén desacoplados del lugar donde se almacenan los datos, es necesario crear [repositorios](https://our-academy.org/posts/el-patron-repository:-implementacion-y-buenas-practicas). En este contexto, un repositorio es una abstracción que define un conjunto de métodos para acceder y manipular datos en una base de datos u otro tipo de almacenamiento persistente. 
 
-La idea detrás de utilizar una interfaz de repositorio es separar la lógica de acceso a datos de la lógica de negocio de una aplicación (contenido de la carpeta `application/` del back-end). Esta interfaz define métodos genéricos para realizar operaciones CRUD (Crear, Leer, Actualizar y Borrar) en los datos, como por ejemplo: crear, leer, actualizar y eliminar registros.
+La idea detrás de utilizar una interfaz de repositorio es separar la lógica de acceso a datos de la lógica de negocio de una aplicación (contenido de la carpeta `application/` del back-end). Esta interfaz define métodos genéricos para realizar operaciones CRUD (Crear, Leer, Actualizar y Borrar) sobre los datos, como por ejemplo: crear, leer, actualizar y eliminar registros.
 
 **Pasos a realizar:**
 
 1. Si no existe previamente, crea la carpeta `application/repository`.
-2. Por cada entidad de tu dominio, crea una interfaz `<ENTIDAD>Repository.java` dentro de la carpeta `application/repository`. Te paso un extracto básico:
+2. Por cada entidad de tu dominio (`<ENTITY>`), crea una interfaz `<ENTITY>Repository.java` dentro de la carpeta `application/repository`. Te paso un extracto básico:
     ```java
+    // .../application/repository/<ENTITY>Repository.java
+
     public interface <ENTITY>Repository {
 
         public abstract void delete(<ENTITY> entity);
@@ -752,7 +787,20 @@ La idea detrás de utilizar una interfaz de repositorio es separar la lógica de
 
 ### Adaptador MongoDB
 
-#### Repositorios
+#### Descripción general
+
+Hola, el adaptador de [MongoDB](https://www.mongodb.com) es el componente de tu back-end encargado de tratar con la base de datos. La siguiente imagen muestra su organización:
+
+![Adaptador MongoDB](https://kaizten.github.io/images/hexagonal-architecture_mongo-adapter.png)
+
+Tal como puede verse en la imagen, está organizado en los siguientes elementos:
+* **Implementación de repositorios**. Es la implementación particular de cómo vamos a guardar y recuperar los datos desde la base de datos. Es importante destacar aquí que los repositorios están definidos en la capa de aplicación como interfaces Java, por lo que a nivel de caso de uso no se conoce qué base de datos se va a emplear. Esto permite que fácilmente puedas cambiar de base de datos, haciendo un nuevo adaptador particular o puedas evolucionar éste sin interferir con el resto de la aplicación.
+* **Escritores**. Por cada entidad que se vaya a guardar en la base de datos, habrá un escritor que personalizará la forma en que se guarda dicha entidad en la base de datos.
+* **Lectores**. Por cada entidad que se vaya a recuperar de la base de datos, habrá un lector que personalizará la forma en que se recupera dicha entidad desde la base de datos.
+
+Teniendo esta estructura para el adaptador de [MongoDB](https://www.mongodb.com) es posible desacoplar la lógica de negocio (definida a través de los casos de uso) de la persistencia de los datos.
+
+#### Implementación de repositorios
 
 Hola, en la aplicación se empleará [MongoDB](https://www.mongodb.com) como sistema gestor de base de datos. Es un sistema de base de datos NoSQL, diseñado para manejar grandes volúmenes de datos de manera flexible y escalable. A diferencia de las bases de datos relacionales, [MongoDB](https://www.mongodb.com) utiliza un modelo de documentos, almacenando los datos en documentos similares a JSON, lo que facilita su manipulación y almacenamiento. 
 
@@ -766,15 +814,15 @@ Hola, en la aplicación se empleará [MongoDB](https://www.mongodb.com) como sis
     </dependency>
     ```
 
-2. Una vez añadida la dependencia, crea la carpeta `adapter/mongodb` dentro de tu código. En esta carpeta debes incluirse todo lo relacionado con el uso de la base de datos en el back-end. Concretamente, debes añadir la implementación de los repositorios de datos definidos en el back-end. Esto es, hay que implementar cómo realizar las operaciones CRUD (Create, Read, Update y Delete) de las diferentes entidades. 
+2. Crea la carpeta `adapter/mongodb` dentro de tu back-end. En esta carpeta debes incluirse todo lo relacionado con el uso de la base de datos en el back-end. Concretamente, debes añadir la implementación de los repositorios de datos definidos en el back-end. Esto es, hay que implementar cómo realizar las operaciones CRUD (Create, Read, Update y Delete) de las diferentes entidades. 
 
-3. En base a lo anterior, por cada repositorio definido en tu back-end añade una implementación del mismo. A continuación puedes encontrar un pequeño extracto de cómo sería:
+3. En base a lo anterior, por cada repositorio de la capa de aplicación definido en tu back-end (carpeta `application/repository`) añade una implementación del mismo. A continuación puedes encontrar un pequeño extracto de cómo sería:
     ```java
     import org.springframework.data.mongodb.core.MongoTemplate;
 
     public class <ENTITY>MongoRepository implements <ENTITY>Repository {
 
-        public static final String COLLECTION_NAME = "<ENTITY>";
+        public static final String COLLECTION_NAME = "<entities>";
         @Autowired
         private MongoTemplate mongoTemplate;
 
@@ -785,7 +833,9 @@ Hola, en la aplicación se empleará [MongoDB](https://www.mongodb.com) como sis
         ...
     }
     ```
-    En este caso, debes sustituir `<ENTITY>` por el nombre de tu entidad. Es también importante que te fijes en `mongoTemplate`, se trata del conector con [MongoDB](https://www.mongodb.com) y, por tanto, el elemento a través del cual se realizarán las consultas. Éste es el caso de `findAll`. Al mismo tiempo, está definida `COLLECTION_NAME` para simplemente explicitar el nombre de la colección donde guardar las entidades dentro de [MongoDB](https://www.mongodb.com).
+    En este caso, debes sustituir `<ENTITY>` por el nombre de tu entidad. Al mismo tiempo, en el repositorio está definida `COLLECTION_NAME` para simplemente explicitar el nombre de la colección donde guardar las entidades dentro de [MongoDB](https://www.mongodb.com). En este sentido, también sustituye `<entities>` por el nombre de la entidad en minúscula y plural. Esto último, se debe a que [MongoDB](https://www.mongodb.com) propone que los nombres de las colecciones sean de esta manera. Por ejemplo, si tu entidad es `Employee`, la colección correspondientes debería llamarse `employees`.
+    
+    Por último, es también importante que te fijes en `mongoTemplate`, se trata del conector con [MongoDB](https://www.mongodb.com) y, por tanto, el elemento a través del cual se realizarán las consultas. Éste es el caso de `findAll`.
 
 #### Configuración
 
