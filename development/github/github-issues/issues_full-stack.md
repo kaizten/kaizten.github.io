@@ -1570,6 +1570,187 @@ SonarQube es una herramienta de código abierto utilizada para la inspección co
 1. **Guardar proyecto**. Crea la carpeta `back-end/sonarqube` y guarda el proyecto creado para poder ejecutarlo de nuevo.
 1. Comenta este issue añadiendo una imagen de los resultados obtenidos mediante SonarQube en el análisis del código.
 
+
+### Websocket
+Construir un servidor WebSocket en Spring Boot que genere operaciones matemáticas aleatorias y las envíe periódicamente a todos los clientes conectados. Las operaciones pueden incluir suma (+), resta (-), multiplicación (*) y división (/) con números enteros y se enviarán en intervalos regulares.
+
+**Pasos a realizar:**
+1. Generar manualmente el proyecto con maven, usa el siguiente comando en tu terminal:
+
+```
+mvn archetype:generate -DgroupId=com.example.websocket \
+    -DartifactId=websocket-project \
+    -DarchetypeArtifactId=maven-archetype-quickstart \
+    -DinteractiveMode=false
+```
+
+Esto creará una carpeta llamada websocket-demo. Accede a ella con:
+
+`cd websocket-demo`
+
+Luego, edita el archivo pom.xml para agregar las dependencias necesarias.
+
+2. Agrega las dependencias necesarias al pom.xml. Abre el archivo pom.xml y asegúrate de incluir estas dependencias:
+   
+```xml
+<dependencies>
+    <!-- Dependencia para WebSockets en Spring Boot -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-websocket</artifactId>
+    </dependency>
+
+    <!-- Dependencia para el servidor web -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <!-- Dependencia para pruebas -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
+```
+Después, compila e instala las dependencias con:
+
+`mvn clean install`
+
+3. Configurar WebSockets en Spring Boot. Crea la siguiente clase para configurar WebSockets.
+
+`src/main/java/com/example/websocket/WebSocketConfig.java
+
+```java
+package com.example.websocket;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.socket.config.annotation.EnableWebSocket;
+import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
+import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
+
+@Configuration
+@EnableWebSocket
+public class WebSocketConfig implements WebSocketConfigurer {
+
+    @Override
+    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+        registry.addHandler(new MathWebSocketHandler(), "/math").setAllowedOrigins("*");
+    }
+}
+```
+
+4. Implementar el WebSocketHandler. Ahora, crea la lógica del servidor WebSocket que enviará operaciones matemáticas.
+
+`src/main/java/com/example/websocket/MathWebSocketHandler.java`
+
+```java
+package com.example.websocket;
+
+import org.springframework.web.socket.TextMessage;
+import org.springframework.web.socket.WebSocketSession;
+import org.springframework.web.socket.handler.TextWebSocketHandler;
+import java.io.IOException;
+import java.util.Set;
+import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.Random;
+
+public class MathWebSocketHandler extends TextWebSocketHandler {
+    private static final Set<WebSocketSession> sessions = new CopyOnWriteArraySet<>();
+    private static final Random random = new Random();
+    private static final String[] OPERATORS = {"+", "-", "*", "/"};
+
+    // Servicio que envía operaciones matemáticas periódicamente
+    private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+
+    static {
+        scheduler.scheduleAtFixedRate(MathWebSocketHandler::sendMathOperationToClients, 0, 5, TimeUnit.SECONDS);
+    }
+
+    @Override
+    public void afterConnectionEstablished(WebSocketSession session) {
+        sessions.add(session);
+        System.out.println("Cliente conectado: " + session.getId());
+    }
+
+    @Override
+    public void afterConnectionClosed(WebSocketSession session, org.springframework.web.socket.CloseStatus status) {
+        sessions.remove(session);
+        System.out.println("Cliente desconectado: " + session.getId());
+    }
+
+    private static void sendMathOperationToClients() {
+        String operation = generateMathOperation();
+        for (WebSocketSession session : sessions) {
+            try {
+                session.sendMessage(new TextMessage(operation));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private static String generateMathOperation() {
+        int num1 = random.nextInt(100) + 1;
+        int num2 = random.nextInt(100) + 1;
+        String operator = OPERATORS[random.nextInt(OPERATORS.length)];
+
+        if (operator.equals("/") && num2 == 0) {
+            num2 = 1; // Evitar divisiones por 0
+        }
+
+        return num1 + " " + operator + " " + num2;
+    }
+}
+```
+
+5. Crear la Clase Principal. En Spring Boot, necesitamos una clase con @SpringBootApplication para ejecutar el servidor.
+
+`src/main/java/com/example/websocket/WebSocketApplication.java`
+
+```java
+package com.example.websocket;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class WebSocketApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(WebSocketApplication.class, args);
+    }
+}
+```
+
+6. Ejecutar el Servidor. Ahora, ejecuta el servidor con:
+
+`mvn spring-boot:run`
+
+Verás un mensaje como:
+
+`INFO  [main] SpringApplication: Started WebSocketApplication in 2.34 seconds`
+
+7.  Probar con un Cliente WebSocket. Para probarlo, puedes usar la consola del navegador. Abre las herramientas de desarrollo (F12 en Chrome o Edge) y en la pestaña Console, ejecuta:
+
+```javascript
+let socket = new WebSocket("ws://localhost:8080/math");
+
+socket.onmessage = function(event) {
+    console.log("Operación recibida:", event.data);
+};
+
+socket.onopen = function() {
+    console.log("Conectado al WebSocket");
+};
+```
+Esto mostrará operaciones matemáticas cada 5 segundos.
+
+
+
 ## Front-end
 
 ### Primeros pasos
