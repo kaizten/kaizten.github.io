@@ -50,6 +50,7 @@
   - [Configuración](#configuración-2)
     - [Aplicación](#aplicación-1)
   - [SonarQube](#sonarqube)
+  - [SonarQube](#sonarqube)
 - [Front-end](#front-end)
   - [Primeros pasos](#primeros-pasos-1)
   - [Dependencia `kaizten-typescript`](#dependencia-kaizten-typescript)
@@ -1575,7 +1576,7 @@ SonarQube es una herramienta de código abierto utilizada para la inspección co
 Construir un servidor WebSocket en Spring Boot que genere operaciones matemáticas aleatorias y las envíe periódicamente a todos los clientes conectados. Las operaciones pueden incluir suma (+), resta (-), multiplicación (*) y división (/) con números enteros y se enviarán en intervalos regulares.
 
 **Pasos a realizar:**
-1. Generar manualmente el proyecto con maven, usa el siguiente comando en tu terminal:
+1. **Generar manualmente el proyecto con maven**, usa el siguiente comando en tu terminal:
 
 ```
 mvn archetype:generate -DgroupId=com.example.websocket \
@@ -1590,7 +1591,7 @@ Esto creará una carpeta llamada websocket-demo. Accede a ella con:
 
 Luego, edita el archivo pom.xml para agregar las dependencias necesarias.
 
-2. Agrega las dependencias necesarias al pom.xml. Abre el archivo pom.xml y asegúrate de incluir estas dependencias:
+2. **Agrega las dependencias necesarias al pom.xml**. Abre el archivo pom.xml y asegúrate de incluir estas dependencias:
    
 ```xml
 <dependencies>
@@ -1618,7 +1619,7 @@ Después, compila e instala las dependencias con:
 
 `mvn clean install`
 
-3. Configurar WebSockets en Spring Boot. Crea la siguiente clase para configurar WebSockets.
+3. **Configurar WebSockets en Spring Boot**. Crea la siguiente clase para configurar WebSockets.
 
 `src/main/java/com/example/websocket/WebSocketConfig.java
 
@@ -1641,7 +1642,7 @@ public class WebSocketConfig implements WebSocketConfigurer {
 }
 ```
 
-4. Implementar el WebSocketHandler. Ahora, crea la lógica del servidor WebSocket que enviará operaciones matemáticas.
+4. **Implementar el WebSocketHandler**. Ahora, crea la lógica del servidor WebSocket que enviará operaciones matemáticas.
 
 `src/main/java/com/example/websocket/MathWebSocketHandler.java`
 
@@ -1708,7 +1709,7 @@ public class MathWebSocketHandler extends TextWebSocketHandler {
 }
 ```
 
-5. Crear la Clase Principal. En Spring Boot, necesitamos una clase con @SpringBootApplication para ejecutar el servidor.
+5. **Crear la clase principal**. En Spring Boot, necesitamos una clase con @SpringBootApplication para ejecutar el servidor.
 
 `src/main/java/com/example/websocket/WebSocketApplication.java`
 
@@ -1726,7 +1727,7 @@ public class WebSocketApplication {
 }
 ```
 
-6. Ejecutar el Servidor. Ahora, ejecuta el servidor con:
+6. **Ejecutar el Servidor**. Ahora, ejecuta el servidor con:
 
 `mvn spring-boot:run`
 
@@ -1734,7 +1735,7 @@ Verás un mensaje como:
 
 `INFO  [main] SpringApplication: Started WebSocketApplication in 2.34 seconds`
 
-7.  Probar con un Cliente WebSocket. Para probarlo, puedes usar la consola del navegador. Abre las herramientas de desarrollo (F12 en Chrome o Edge) y en la pestaña Console, ejecuta:
+7. **Probar con un Cliente WebSocket**. Para probarlo, puedes usar la consola del navegador. Abre las herramientas de desarrollo (F12 en Chrome o Edge) y en la pestaña Console, ejecuta:
 
 ```javascript
 let socket = new WebSocket("ws://localhost:8080/math");
