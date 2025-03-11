@@ -50,6 +50,7 @@
   - [Configuración](#configuración-2)
     - [Aplicación](#aplicación-1)
   - [SonarQube](#sonarqube)
+  - [Websocket](#websocket)
 - [Front-end](#front-end)
   - [Primeros pasos](#primeros-pasos-1)
   - [Dependencia `kaizten-typescript`](#dependencia-kaizten-typescript)
