@@ -882,7 +882,7 @@ Hola, una vez definidas las implementaciones de los repositorios para [MongoDB](
                 MongoCustomConversions customConversions,
                 MongoMappingContext mappingContext) {
             DbRefResolver dbRefResolver = new DefaultDbRefResolver(mongoDbFactory());
-            MappingMongoConverter converter = new MappingMongoConverte(dbRefResolver, mappingContext);
+            MappingMongoConverter converter = new MappingMongoConverter(dbRefResolver, mappingContext);
             converter.setTypeMapper(new DefaultMongoTypeMapper(null));
             converter.setCustomConversions(customConversions());
             converter.afterPropertiesSet();
@@ -974,6 +974,7 @@ public class MongoFields {
     public static final String AREAS = "areas";
     public static final String BOX = "box";
     public static final String BYTES = "bytes";
+    public static final String ID = "_id";
     ...
 }
 ```
@@ -987,13 +988,13 @@ Como puede verse, utilizar un `@WritingConverter` es especialmente útil cuando 
 3. Añade el siguiente método a `configuration/MongoConfiguration.java`:
     ```java
     @Bean
-        public MongoCustomConversions customConversions() {
-            return new MongoCustomConversions(
-                    Arrays.asList(
-                            ...
-                            new TrapWritingConverter(this),
-                            ...));
-        }
+    public MongoCustomConversions customConversions() {
+        return new MongoCustomConversions(
+                Arrays.asList(
+                        ...
+                        new TrapWritingConverter(this),
+                        ...));
+    }
     ```
     para registrar cada uno de los conversores que escribiste previamente.
 4. Prueba cómo funciona la escritura de las entidades. Guarda alguna entidad en la base de datos y accede a [MongoDB](https://www.mongodb.com) para revisar cómo se ha persistido.
