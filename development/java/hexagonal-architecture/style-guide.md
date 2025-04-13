@@ -65,7 +65,7 @@
 
 ### Use cases
 
-* Parameters of use cases must be value objects.
+* Arguments of use cases must be value objects.
 * Return values of use cases must be value objects.
 
 ### Services

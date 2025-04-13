@@ -1,6 +1,6 @@
-# Java. Style Guide
+# Java. Style guide
 
-- [Java. Style Guide](#java-style-guide)
+- [Java. Style guide](#java-style-guide)
   - [Filenames](#filenames)
   - [Folder names](#folder-names)
   - [Language](#language)
@@ -15,7 +15,7 @@
 
 * Filenames must be written in English.
 * The name of each Java file must be in Pascal case. Underscores are not allowed.
-* The extension of each Java file must be '.java' (in lowercase).
+* The extension of each Java file must be `.java` (in lowercase).
 
 ## Folder names
 
