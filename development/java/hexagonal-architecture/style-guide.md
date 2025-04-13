@@ -11,6 +11,10 @@
     - [Value objects](#value-objects)
       - [Tests](#tests-2)
       - [Comments](#comments-1)
+  - [Application](#application)
+    - [Use cases](#use-cases)
+    - [Services](#services)
+    - [Repositories](#repositories)
   - [REST adapter](#rest-adapter)
     - [OpenAPI documentation](#openapi-documentation)
 
@@ -56,6 +60,21 @@
    * `It is a required attribute.`
    * `It is an optional attribute.`
    * `It is a computed attribute.`
+
+## Application
+
+### Use cases
+
+* Parameters of use cases must be value objects.
+* Return values of use cases must be value objects.
+
+### Services
+
+* Do not use annotation `@Service`.
+
+### Repositories
+
+* Do not use annotation `@Repository`.
 
 ## REST adapter
 
