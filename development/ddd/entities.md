@@ -79,7 +79,10 @@ public class Order {
         if (this == otherObject) {
             return true;
         }
-        if (otherObject == null || getClass() != otherObject.getClass()) {
+        if (otherObject == null) {
+            return false;
+        }
+        if (getClass() != otherObject.getClass()) {
             return false;
         }
         final Order otherOrder = (Order) otherObject;

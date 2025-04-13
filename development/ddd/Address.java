@@ -177,7 +177,7 @@ public final class Address {
         if (this.getClass() != otherObject.getClass()) {
             return false;
         }
-        Address otherAddress = (Address) otherObject;
+        final Address otherAddress = (Address) otherObject;
         return this.street.equals(otherAddress.street) &&
                 this.city.equals(otherAddress.city) &&
                 this.postalCode.equals(otherAddress.postalCode);

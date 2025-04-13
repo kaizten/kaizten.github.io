@@ -4,7 +4,7 @@
 FROM openjdk:17-alpine
 
 # Maintainer
-LABEL maintainer="info@kaizten.com"
+LABEL maintainer="development@kaizten.com"
 
 # Volume
 VOLUME /tmp

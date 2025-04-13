@@ -17,7 +17,7 @@ public class Order {
      */
     private Quantity quantity;
 
-    public Pedido(Customer customer, Quantity quantity) {
+    public Order(Customer customer, Quantity quantity) {
         this.validateCustomer(customer);
         this.id = UUID.randomUUID();
         this.customer = customer;
@@ -56,10 +56,13 @@ public class Order {
         if (this == otherObject) {
             return true;
         }
-        if (o == null || getClass() != otherObject.getClass()) {
+        if (otherObject == null) {
             return false;
         }
-        Order otherOrder = (Order) otherObject;
+        if (this.getClass() != otherObject.getClass()) {
+            return false;
+        }
+        final Order otherOrder = (Order) otherObject;
         return Objects.equals(this.id, otherOrder.id);
     }
 

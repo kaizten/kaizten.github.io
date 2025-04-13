@@ -1,4 +1,3 @@
-- [**Clean code guide**](clean-code-guide.md)
 
 - **Domain driven design:**
   - **Entities**
@@ -15,8 +14,6 @@
   - [Duration](./grafana/duration.md)
   - [State Timeline](./grafana/statetimeline.md)
 
-- [**Java**](./java/index.md)
-
 - **PostgreSQL:**
   - [Load data from Python](./postgresql/load-data-from-python.md)
   - [PostgreSQL mediante Docker](./postgresql/postgresql-docker.md)
@@ -31,3 +28,16 @@
 
 - **Windows:**
   - [Git Bash](./windows/git-bash.md)
+
+# Style guides
+
+- [**Clean code guide**](clean-code-guide.md)
+- [**Java**](./java/style-guide.md)
+  - [**Hexagonal architecture**](./java/hexagonal-architecture/style-guide.md)
+- **Entities:**
+  - [Tests](./entity_tests.md)
+- **Enumerates:**
+  - [Example](./example_enumerate.md)
+  - [Tests](./enumerate_tests.md)
+- **Value objects:**
+  - [Tests](./value-object_tests.md)

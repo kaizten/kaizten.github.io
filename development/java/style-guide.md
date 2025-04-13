@@ -2,76 +2,57 @@
 
 - [Java. Style Guide](#java-style-guide)
   - [Filenames](#filenames)
+  - [Folder names](#folder-names)
   - [Language](#language)
-  - [Entities](#entities)
-    - [Constructors](#constructors)
-    - [Tests](#tests)
-    - [Comments](#comments)
-  - [Enumerates](#enumerates)
-    - [Tests](#tests-1)
-  - [Value objects](#value-objects)
-    - [Tests](#tests-2)
-    - [Comments](#comments-1)
-  - [OpenAPI documentation](#openapi-documentation)
+  - [Attributes](#attributes)
+  - [Methods](#methods)
+  - [`hashCode()`](#hashcode)
+  - [`equals()`](#equals)
+  - [`toString()`](#tostring)
   - [`pom.xml`](#pomxml)
 
 ## Filenames
 
-1. Filenames must be written in English.
-2. Folders must be written in English.
+* Filenames must be written in English.
+* The name of each Java file must be in Pascal case. Underscores are not allowed.
+* The extension of each Java file must be '.java' (in lowercase).
+
+## Folder names
+
+* Folders must be written in English.
+* No uppercase letters are allowed in folders of Java projects.
+* No underscore are allowed in folders of Java projects.
 
 ## Language
 
-1. The source code, documentation (including source code, OpenAPI, etc.), images, and any other assets must be written in English.
+* The source code, documentation (including source code, OpenAPI, etc.), images, and any other assets must be written in English.
 
-## Entities
+## Attributes
 
-### Constructors
+* Each attribute of a Java class must be documented by Javadoc.
 
-1. Each entity must have a copy constructor.
-2. Each entity must have a restore constructor to be used exclusively by databases. The parameters of the restore constructor must be the same and provided in the same order as the attributes of the entity.
-3. The restore constructor must be commented with `Restore constructor`.
-4. The restore constructor must be documented using JavaDoc comments (`/** */`).
+## Methods
 
-### Tests
+* Each method of a Java class must be documented by Javadoc.
 
-1. The tests defined for entities defined [here](./entity_tests.md) must be implemented.
+## `hashCode()`
 
-### Comments
+* `hashCode()` method must be annotated with `@Override`.
+* If `equals()` is overriden, `hashCode()` must be also overriden.
 
-1. Each attribute must be documented using JavaDoc comments (`/** */`). 
-2. Comment of each non-static attribute must indicate if it is required, optional or computed, as follows:
-   * `It is a required attribute.`
-   * `It is an optional attribute.`
-   * `It is a computed attribute.`
+## `equals()`
 
-## Enumerates
+* `equals()` method must be annotated with `@Override`.
+* Argument of `equals()` method must be called `otherObject`.
 
-### Tests
+## `toString()`
 
-1. The tests defined for enumerates defined [here](./enumerate_tests.md) must be implemented.
-
-## Value objects
-
-### Tests
-
-1. The tests defined for value objects defined [here](./value-object_tests.md) must be implemented.
-
-### Comments
-
-1. Each attribute must be documented using JavaDoc comments (`/** */`). 
-2. Comment of each non-static attribute must indicate if it is required, optional or computed, as follows:
-   * `It is a required attribute.`
-   * `It is an optional attribute.`
-   * `It is a computed attribute.`
-
-## OpenAPI documentation
-
-1. OpenAPI documentation must be available for each REST controller.
+* `toString()` method must be annotated with `@Override`.
+* `String.format` must be used in `toString()` method.
 
 ## `pom.xml`
 
-1. `pom.xml` files must have the following features:
+* `pom.xml` files must have the following features:
   * Tag `name` should be defined.
   * Tag `description` should be defined.
   * Tag `url` should be defined. Its value must be `https://www.kaizten.com`
