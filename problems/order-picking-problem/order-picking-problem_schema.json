@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "trolleys": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "startLocation": { "type": "string" },
+          "buckets": { "type": "integer" },
+          "trolleyId": { "type": "integer" },
+          "bucketCapacity": { "type": "integer" }
+        },
+        "required": ["startLocation", "buckets", "trolleyId", "bucketCapacity"]
+      }
+    },
+    "orders": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "orderId": { "type": "integer" },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "volume": { "type": "integer" },
+                "itemId": { "type": "integer" },
+                "name": { "type": "string" },
+                "location": { "type": "string" }
+              },
+              "required": ["volume", "itemId", "name", "location"]
+            }
+          }
+        },
+        "required": ["orderId", "items"]
+      }
+    }
+  },
+  "required": ["trolleys", "orders"]
+}
