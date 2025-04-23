@@ -1,0 +1,149 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Scenario File Schema",
+  "description": "Schema for the scenario file used in simulation models.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the scenario model."
+    },
+    "description": {
+      "type": "string",
+      "description": "An optional description of the scenario model."
+    },
+    "type": {
+      "type": "string",
+      "enum": ["2D", "3D", "map"],
+      "description": "The type of the scenario model."
+    },
+    "kpis": {
+      "type": "array",
+      "description": "A list of KPIs for the scenario.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the KPI."
+          },
+          "code": {
+            "type": "string",
+            "description": "The code of the KPI."
+          }
+        },
+        "required": ["name", "code"]
+      }
+    },
+    "entities": {
+      "type": "array",
+      "description": "A list of entities for the scenario.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the entity."
+          },
+          "image": {
+            "type": "string",
+            "format": "uri",
+            "description": "The URL of the entity's image."
+          }
+        },
+        "required": ["name", "image"]
+      }
+    }
+  },
+  "required": ["name", "type"],
+  "if": {
+    "properties": {
+      "type": {
+        "const": "map"
+      }
+    }
+  },
+  "then": {
+    "required": ["geometries"],
+    "properties": {
+      "geometries": {
+        "type": "array",
+        "description": "A list of geometries for the map scenario, following GeoJSON format.",
+        "items": {
+          "type": "object",
+          "description": "A GeoJSON geometry object or Feature/FeatureCollection.",
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": ["Point", "LineString", "Polygon", "MultiPoint", "MultiLineString", "MultiPolygon", "GeometryCollection"],
+                  "description": "The type of GeoJSON geometry."
+                },
+                "coordinates": {
+                  "type": "array",
+                  "description": "The coordinates of the GeoJSON geometry, following the GeoJSON specification."
+                }
+              },
+              "required": ["type", "coordinates"]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": ["Feature"],
+                  "description": "A GeoJSON Feature object."
+                },
+                "geometry": {
+                  "type": "object",
+                  "description": "The geometry of the feature, following GeoJSON geometry specifications."
+                },
+                "properties": {
+                  "type": "object",
+                  "description": "Additional properties of the feature."
+                }
+              },
+              "required": ["type", "geometry"]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": ["FeatureCollection"],
+                  "description": "A GeoJSON FeatureCollection object."
+                },
+                "features": {
+                  "type": "array",
+                  "description": "An array of GeoJSON Feature objects.",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": ["Feature"],
+                        "description": "A GeoJSON Feature object."
+                      },
+                      "geometry": {
+                        "type": "object",
+                        "description": "The geometry of the feature, following GeoJSON geometry specifications."
+                      },
+                      "properties": {
+                        "type": "object",
+                        "description": "Additional properties of the feature."
+                      }
+                    },
+                    "required": ["type", "geometry"]
+                  }
+                }
+              },
+              "required": ["type", "features"]
+            }
+          ]
+        }
+      }
+    }
+  }
+}
