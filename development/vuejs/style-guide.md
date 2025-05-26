@@ -51,7 +51,6 @@ To ensure consistent structure and appearance across views:
    - `showGoBack`: `true`
 
 4. All form inputs **must** use components from the `@kaizten/kaizten-vue` library:
-
    - `InputTooltip` for text or numeric inputs with validation and tooltips.
    - `SelectTooltip` for dropdown selections.
    - `ButtonTooltip` for action buttons with hover explanations.
