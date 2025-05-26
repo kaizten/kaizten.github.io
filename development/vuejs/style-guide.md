@@ -45,7 +45,7 @@ To ensure consistent structure and appearance across views:
 
 2. Views must import `BasicLayout` and wrap all main content inside it.
 
-3. The `goBack` prop must be provided to define the back navigation behavior. The default style for the back button includes:
+3. If the view requires a "go back" button, the `goBack` prop must be provided to define the back navigation behavior. The default style for the back button includes:
    - `goBackText`: `"back"`
    - `goBackIcon`: `"mdi-arrow-left-circle"`
    - `showGoBack`: `true`
