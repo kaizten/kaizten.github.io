@@ -117,6 +117,7 @@ import BasicLayout from '@kaizten/kaizten-vue'
 
 const { t } = useI18n()
 const router = useRouter()
+
 const name = ref('')
 const selectedType = ref('')
 const trapTypes = [
