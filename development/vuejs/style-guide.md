@@ -152,7 +152,6 @@ function onSave() {
       - `/devices/update`
       - `/users/delete`
 
-
 ## Router
 
 1. Routes must be in [kebab-case](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case).
