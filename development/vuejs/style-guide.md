@@ -45,21 +45,26 @@ To ensure consistent structure and appearance across views:
 
 2. Views must import `BasicLayout` and wrap all main content inside it.
 
-3. If the view requires a "go back" button, the `goBack` prop must be provided to define the back navigation behavior. The default style for the back button includes:
+3. The `title` prop passed to `BasicLayout` must **always** match:
+   - The label shown in the left-side navigation menu.
+   - The name of the subfolder in the domain structure associated with the entity.
+   - For instance, if the menu item is **"Traps"**, then the URL will be `/traps`, the domain folder should be `traps`, and the `BasicLayout` title should be `"Traps"`.
+
+4. If the view requires a "go back" button, the `goBack` prop must be provided to define the back navigation behavior. The default style for the back button includes:
    - `goBackText`: `"back"`
    - `goBackIcon`: `"mdi-arrow-left-circle"`
    - `showGoBack`: `true`
 
-4. All form inputs **must** use components from the `@kaizten/kaizten-vue` library:
+5. All form inputs **must** use components from the `@kaizten/kaizten-vue` library:
    - `InputTooltip` for text or numeric inputs with validation and tooltips.
    - `SelectTooltip` for dropdown selections.
    - `ButtonTooltip` for action buttons with hover explanations.
 
-5. The default `variant` for all form fields must be `"outlined"`, unless there is a justified design exception.
+6. The default `variant` for all form fields must be `"outlined"`, unless there is a justified design exception.
 
-6. Fields should always be grouped inside `<v-row>` and placed side by side using `<v-col>` to leverage Vuetify’s grid system.
+7. Fields should always be grouped inside `<v-row>` and placed side by side using `<v-col>` to leverage Vuetify’s grid system.
 
-7. All `InputTooltip` and `SelectTooltip` components should be aligned horizontally (side by side) whenever layout space allows, especially in desktop views, to improve visual clarity and reduce vertical scroll.
+8. All `InputTooltip` and `SelectTooltip` components should be aligned horizontally (side by side) whenever layout space allows, especially in desktop views, to improve visual clarity and reduce vertical scroll.
 
 Example usage:
 
@@ -131,6 +136,21 @@ function onSave() {
 }
 </script>
 ```
+
+9. In views used to **list or display** entities —i.e., URLs such as `/traps`, `/devices`, etc.—:
+   - Action buttons like **Create**, **Edit**, **Delete**, etc. must be placed **inside** the `BasicLayout`, specifically **within** the `v-card` that includes the `toolbar-title`.
+   - These buttons **must not override or replace the `v-toolbar` slot** of `BasicLayout`.
+
+10. In **CRUD operation views** —such as `/traps/create`, `/devices/update`, etc.—:
+    - All action buttons must be placed **at the bottom of the form**.
+    - Actions with **positive intent** (e.g., Create, Update, Save) must be aligned **to the right**.
+    - Actions with **negative or neutral intent** (e.g., Clear Form, Cancel) must be aligned **to the left**.
+
+11. For **all CRUD operation views** (i.e., Create, Update, Delete), the `goBack` button in `BasicLayout` must be **enabled and visible**.
+    - The URL structure must follow the pattern `/entity/operation`. For example:
+      - `/traps/create`
+      - `/devices/update`
+      - `/users/delete`
 
 ## Router
 
