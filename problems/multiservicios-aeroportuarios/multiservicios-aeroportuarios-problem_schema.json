@@ -154,13 +154,6 @@
                             "leaveTime": {
                                 "type": "string",
                                 "format": "duration"
-                            },
-                            "notAvailableDates": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string",
-                                    "format": "date"
-                                }
                             }
                         },
                         "required": [
