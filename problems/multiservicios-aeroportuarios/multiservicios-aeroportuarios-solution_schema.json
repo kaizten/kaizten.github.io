@@ -1,0 +1,224 @@
+{
+    "title": "Multiservicios Aeroportuarios Solution",
+    "description": "Description of solutions of the Multiservicios Aeroportuarios Solution",
+    "type": "object",
+    "properties": {
+        "dates": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "date": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "employees": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 4
+                                },
+                                "flights": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "code": {
+                                                "type": "string",
+                                                "minLength": 1,
+                                                "maxLength": 7
+                                            },
+                                            "startTime": {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            },
+                                            "finishTime": {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            },
+                                            "serviceTime": {
+                                                "type": "string",
+                                                "format": "duration"
+                                            }
+                                        },
+                                        "required": [
+                                            "code",
+                                            "startTime",
+                                            "finishTime"
+                                        ]
+                                    }
+                                },
+                                "indicators": {
+                                    "type": "object",
+                                    "properties": {
+                                        "flights": {
+                                            "type": "integer",
+                                            "minimum": 0
+                                        },
+                                        "startTime": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "finishTime": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "time": {
+                                            "type": "string",
+                                            "format": "duration"
+                                        },
+                                        "serviceStartTime": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "serviceFinishTime": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "serviceTime": {
+                                            "type": "string",
+                                            "format": "duration"
+                                        },
+                                        "workingTime": {
+                                            "type": "string",
+                                            "format": "duration"
+                                        },
+                                        "breakTime": {
+                                            "type": "string",
+                                            "format": "duration"
+                                        },
+                                        "productivity": {
+                                            "type": "number",
+                                            "minimum": 0,
+                                            "maximum": 100
+                                        }
+                                    },
+                                    "required": [
+                                        "flights",
+                                        "startTime",
+                                        "finishTime",
+                                        "workingTime",
+                                        "breakTime"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "code",
+                                "flights",
+                                "indicators"
+                            ]
+                        }
+                    },
+                    "uncoveredFlights": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 7
+                        }
+                    },
+                    "indicators": {
+                        "type": "object",
+                        "properties": {
+                            "flights": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "employees": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "coveredFlights": {
+                                "type": "object",
+                                "properties": {
+                                    "absolute": {
+                                        "type": "integer",
+                                        "minimum": 0
+                                    },
+                                    "percentage": {
+                                        "type": "number"
+                                    }
+                                }
+                            },
+                            "uncoveredFlights": {
+                                "type": "object",
+                                "properties": {
+                                    "absolute": {
+                                        "type": "integer",
+                                        "minimum": 0
+                                    },
+                                    "percentage": {
+                                        "type": "number"
+                                    }
+                                }
+                            }
+                        },
+                        "required": [
+                            "flights",
+                            "employees",
+                            "coveredFlights",
+                            "uncoveredFlights"
+                        ]
+                    }
+                },
+                "required": [
+                    "date",
+                    "employees",
+                    "uncoveredFlights",
+                    "indicators"
+                ]
+            }
+        },
+        "indicators": {
+            "type": "object",
+            "properties": {
+                "flights": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "employees": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "coveredFlights": {
+                    "type": "object",
+                    "properties": {
+                        "absolute": {
+                            "type": "integer",
+                            "minimum": 0
+                        },
+                        "percentage": {
+                            "type": "number"
+                        }
+                    }
+                },
+                "uncoveredFlights": {
+                    "type": "object",
+                    "properties": {
+                        "absolute": {
+                            "type": "integer",
+                            "minimum": 0
+                        },
+                        "percentage": {
+                            "type": "number"
+                        }
+                    }
+                }
+            },
+            "required": [
+                "flights",
+                "employees",
+                "coveredFlights",
+                "uncoveredFlights"
+            ]
+        }
+    },
+    "required": [
+        "dates",
+        "indicators"
+    ]
+}
