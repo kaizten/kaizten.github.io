@@ -65,7 +65,9 @@ To ensure consistent structure and appearance across views:
 7. Fields should always be grouped inside `<v-row>` and placed side by side using `<v-col>` to leverage Vuetify’s grid system.
 
 8. All `InputTooltip` and `SelectTooltip` components should be aligned horizontally (side by side) whenever layout space allows, especially in desktop views, to improve visual clarity and reduce vertical scroll.
+
 Example usage:
+
 ```vue
 <template>
   <BasicLayout
@@ -135,7 +137,9 @@ function onSave() {
 </script>
 ```
 
+
 9. The following icons from the **Material Design Icons (mdi)** library must be used consistently for standard actions throughout the application:
+
 | Action   | Icon Name              | Preview |
 |----------|------------------------|---------|
 | Create   | `mdi-plus-circle`      | <img src="https://cdn.jsdelivr.net/npm/@mdi/svg/svg/plus-circle.svg" height="24"> |
@@ -145,17 +149,19 @@ function onSave() {
 | Save     | `mdi-content-save`     | <img src="https://cdn.jsdelivr.net/npm/@mdi/svg/svg/content-save.svg" height="24"> |
 | Import   | `mdi-import`           | <img src="https://cdn.jsdelivr.net/npm/@mdi/svg/svg/import.svg" height="24"> |
 | Export   | `mdi-export`           | <img src="https://cdn.jsdelivr.net/npm/@mdi/svg/svg/export.svg" height="24"> |
+
 These icons must be applied in **ButtonTooltip** and similar components to ensure visual consistency and intuitive recognition of actions.
 
 10. Colors defined in the Vuetify theme system must be applied consistently to ensure visual coherence across the UI. The following roles and corresponding theme colors are recommended for use in components:
-- primary: principal UI identity color, applied to top headers, brand highlights (e.g., in Header, BasicLayout, ButtonTooltip, etc.).
-- secondary: used for secondary actions or background color in elements like footers (Footer component), chips, or navigation accents.
-- tertiary: reserved for less prominent accents or descriptive content sections.
-- error: used in destructive or critical buttons and icons (e.g., delete buttons).
-- success: used for confirmed actions or completion states.
-- warning: used for alert or caution elements (e.g., notification badges).
-- info: used for neutral informative messages (e.g., tooltips, info panels).
-Each usage must rely on Vuetify’s theming system, applied via :color="'primary'", class="bg-secondary", or text-success, depending on the context. Avoid inline styles with hardcoded colors like #FF0000, unless explicitly defined as part of the design system.
+- `primary`: principal UI identity color, applied to top headers, brand highlights (e.g., in Header, BasicLayout, ButtonTooltip, etc.).
+- `secondary`: used for secondary actions or background color in elements like footers (Footer component), chips, or navigation accents.
+- `tertiary`: reserved for less prominent accents or descriptive content sections.
+- `error`: used in destructive or critical buttons and icons (e.g., delete buttons).
+- `success`: used for confirmed actions or completion states.
+- `warning`: used for alert or caution elements (e.g., notification badges).
+- `info`: used for neutral informative messages (e.g., tooltips, info panels).
+
+Each usage must rely on Vuetify’s theming system, applied via `:color="'primary'"`, `class="bg-secondary"`, or `text-success`, depending on the context. Avoid inline styles with hardcoded colors like `#FF0000`, unless explicitly defined as part of the design system.
 
 10. In views used to **list or display** entities —i.e., URLs such as `/traps`, `/devices`, etc.—:
    - Action buttons like **Create**, **Edit**, **Delete**, etc. must be placed **inside** the `BasicLayout`, specifically **within** the `v-card` that includes the `toolbar-title`.
