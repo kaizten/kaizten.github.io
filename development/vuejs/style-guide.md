@@ -137,16 +137,31 @@ function onSave() {
 </script>
 ```
 
-9. In views used to **list or display** entities —i.e., URLs such as `/traps`, `/devices`, etc.—:
+
+9. The following icons from the **Material Design Icons (mdi)** library must be used consistently for standard actions throughout the application:
+
+| Action   | Icon Name              | Preview                      |
+|----------|------------------------|------------------------------|
+| Create   | `mdi-plus-circle`      | ![mdi-plus-circle](https://cdn.jsdelivr.net/npm/@mdi/svg/svg/plus-circle.svg) |
+| Remove   | `mdi-delete`           | ![mdi-delete](https://cdn.jsdelivr.net/npm/@mdi/svg/svg/delete.svg) |
+| Edit     | `mdi-pencil`           | ![mdi-pencil](https://cdn.jsdelivr.net/npm/@mdi/svg/svg/pencil.svg) |
+| Read     | `mdi-information-variant` | ![mdi-information-variant](https://cdn.jsdelivr.net/npm/@mdi/svg/svg/information-variant.svg) |
+| Save     | `mdi-content-save`     | ![mdi-content-save](https://cdn.jsdelivr.net/npm/@mdi/svg/svg/content-save.svg) |
+| Import   | `mdi-import`           | ![mdi-import](https://cdn.jsdelivr.net/npm/@mdi/svg/svg/import.svg) |
+| Export   | `mdi-export`           | ![mdi-export](https://cdn.jsdelivr.net/npm/@mdi/svg/svg/export.svg) |
+
+These icons must be applied in **ButtonTooltip** and similar components to ensure visual consistency and intuitive recognition of actions.
+
+10. In views used to **list or display** entities —i.e., URLs such as `/traps`, `/devices`, etc.—:
    - Action buttons like **Create**, **Edit**, **Delete**, etc. must be placed **inside** the `BasicLayout`, specifically **within** the `v-card` that includes the `toolbar-title`.
    - These buttons **must not override or replace the `v-toolbar` slot** of `BasicLayout`.
 
-10. In **CRUD operation views** —such as `/traps/create`, `/devices/update`, etc.—:
+11. In **CRUD operation views** —such as `/traps/create`, `/devices/update`, etc.—:
     - All action buttons must be placed **at the bottom of the form**.
     - Actions with **positive intent** (e.g., Create, Update, Save) must be aligned **to the right**.
     - Actions with **negative or neutral intent** (e.g., Clear Form, Cancel) must be aligned **to the left**.
 
-11. For **all CRUD operation views** (i.e., Create, Update, Delete), the `goBack` button in `BasicLayout` must be **enabled and visible**.
+12. For **all CRUD operation views** (i.e., Create, Update, Delete), the `goBack` button in `BasicLayout` must be **enabled and visible**.
     - The URL structure must follow the pattern `/entity/operation`. For example:
       - `/traps/create`
       - `/devices/update`
