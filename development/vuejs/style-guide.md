@@ -140,15 +140,15 @@ function onSave() {
 
 9. The following icons from the **Material Design Icons (mdi)** library must be used consistently for standard actions throughout the application:
 
-| Action   | Icon Name              | Preview                      |
-|----------|------------------------|------------------------------|
-| Create   | `mdi-plus-circle`      | ![mdi-plus-circle](https://cdn.jsdelivr.net/npm/@mdi/svg/svg/plus-circle.svg) |
-| Remove   | `mdi-delete`           | ![mdi-delete](https://cdn.jsdelivr.net/npm/@mdi/svg/svg/delete.svg) |
-| Edit     | `mdi-pencil`           | ![mdi-pencil](https://cdn.jsdelivr.net/npm/@mdi/svg/svg/pencil.svg) |
-| Read     | `mdi-information-variant` | ![mdi-information-variant](https://cdn.jsdelivr.net/npm/@mdi/svg/svg/information-variant.svg) |
-| Save     | `mdi-content-save`     | ![mdi-content-save](https://cdn.jsdelivr.net/npm/@mdi/svg/svg/content-save.svg) |
-| Import   | `mdi-import`           | ![mdi-import](https://cdn.jsdelivr.net/npm/@mdi/svg/svg/import.svg) |
-| Export   | `mdi-export`           | ![mdi-export](https://cdn.jsdelivr.net/npm/@mdi/svg/svg/export.svg) |
+| Action   | Icon Name              | Preview |
+|----------|------------------------|---------|
+| Create   | `mdi-plus-circle`      | <img src="https://cdn.jsdelivr.net/npm/@mdi/svg/svg/plus-circle.svg" height="24"> |
+| Remove   | `mdi-delete`           | <img src="https://cdn.jsdelivr.net/npm/@mdi/svg/svg/delete.svg" height="24"> |
+| Edit     | `mdi-pencil`           | <img src="https://cdn.jsdelivr.net/npm/@mdi/svg/svg/pencil.svg" height="24"> |
+| Read     | `mdi-information-variant` | <img src="https://cdn.jsdelivr.net/npm/@mdi/svg/svg/information-variant.svg" height="24"> |
+| Save     | `mdi-content-save`     | <img src="https://cdn.jsdelivr.net/npm/@mdi/svg/svg/content-save.svg" height="24"> |
+| Import   | `mdi-import`           | <img src="https://cdn.jsdelivr.net/npm/@mdi/svg/svg/import.svg" height="24"> |
+| Export   | `mdi-export`           | <img src="https://cdn.jsdelivr.net/npm/@mdi/svg/svg/export.svg" height="24"> |
 
 These icons must be applied in **ButtonTooltip** and similar components to ensure visual consistency and intuitive recognition of actions.
 
