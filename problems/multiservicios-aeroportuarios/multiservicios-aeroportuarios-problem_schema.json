@@ -3,30 +3,6 @@
     "description": "Description of instances of the Multiservicios Aeroportuarios Problem",
     "type": "object",
     "properties": {
-		"travelTime": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"source": {
-						"type": "integer"
-					},
-					"time": {
-						"type": "integer",
-						"minimum": 1,
-                        "maximum": 100
-					},
-					"target": {
-						"type": "integer"
-					}
-				},
-				"required": [
-					"source",
-					"time",
-					"target"
-				]
-			}
-		},
         "flights": {
             "type": "array",
             "items": {
@@ -54,13 +30,18 @@
 						"type": "string",
                         "format": "duration"
                     },
+					"travelTime": {
+						"type": "string",
+						"format": "duration"
+					}
                 },
                 "required": [
                     "code",
                     "employees",                    
                     "startTime",
                     "finishTime",
-					"serviceTime"
+					"serviceTime",
+					"travelTime"
                 ]
             }
         },
@@ -206,7 +187,6 @@
         }
     },
     "required": [
-        "flights",
-		"travelTime"
+        "flights"
     ]
 }
