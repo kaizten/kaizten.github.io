@@ -1,0 +1,127 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "Kanali Problem",
+    "description": "Description of instances of the Kanali Problem",
+	"type": "object",
+	"properties": {
+		"competences": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"requiredEmployees": {
+						"type": "integer"
+					}
+				},
+				"required": [
+					"name",
+					"requiredEmployees"
+				]
+			}
+		},
+		"timeBetweenWorkingDays": {
+			"type": "string",
+            "format": "duration"
+		},
+		"shifts": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"requiredEmployees": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"number": {
+									"type": "integer"
+								},
+								"day": {
+									"type": "integer"
+								}
+							},
+							"required": [
+								"number",
+								"day"
+							]
+						}
+					}
+				},
+				"required": [
+					"name",
+					"requiredEmployees"
+				]
+			}
+		},
+		"employees": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"timePerWeek": {
+						"type": "string",
+                        "format": "duration"
+					},
+					"name": {
+						"type": "string"
+					},
+					"timePerDay": {
+						"type": "string",
+                        "format": "duration"
+					},
+					"employeeCompetences": {
+						"type": "array",
+						"items": {
+							"type": "integer"
+						}
+					},
+					"employeeFixedShifts": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"shift": {
+									"type": "integer"
+								},
+								"day": {
+									"type": "integer"
+								}
+							},
+							"required": [
+								"shift",
+								"day"
+							]
+						}
+					}
+				},
+				"required": [
+					"timePerWeek",
+					"name",
+					"timePerDay",
+					"employeeCompetences"
+				]
+			}
+		},
+		"initialDate": {
+			"type": "string",
+            "format": "date"
+		},
+		"planningHorizon": {
+			"type": "integer"
+		}
+	},
+	"required": [
+		"competences",
+		"timeBetweenWorkingDays",
+		"shifts",
+		"employees",
+		"initialDate",
+		"planningHorizon"
+	]
+}
