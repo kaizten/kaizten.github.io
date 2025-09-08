@@ -55,8 +55,8 @@ cd /opt
 
 # Update the tar command to use the constant
 echo "📂 Extracting and removing git archive..."
-tar -zxf git-$GIT_VERSION.tar.gz
-rm git-$GIT_VERSION.tar.gz
+sudo tar -zxf git-$GIT_VERSION.tar.gz
+sudo rm git-$GIT_VERSION.tar.gz
 
 echo "⚙️ Building and installing git..."
 cd git-$GIT_VERSION/

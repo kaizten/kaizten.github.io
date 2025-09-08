@@ -22,11 +22,9 @@ MIN_YARN_VERSION=1.22.22
 MIN_TSC_VERSION=5.9.2
 MIN_PYTHON_VERSION=3.12.0
 
-# This function splits the version numbers into arrays based on the '.' delimiter.
-# It then compares each segment of the version numbers sequentially. If a segment
-# in version1 is greater than the corresponding segment in version2, it returns 1.
-# If a segment in version1 is less than the corresponding segment in version2, it
-# returns -1. If all segments are equal, it returns 0.
+# This function splits the version numbers into arrays based on the '.' delimiter. It then compares each segment of the version numbers sequentially.
+# If a segment in version1 is greater than the corresponding segment in version2, it returns 1. If a segment in version1 is less than the 
+# corresponding segment in version2, it returns -1. If all segments are equal, it returns 0.
 # 
 # Arguments:
 #   version1: The first version number to compare (e.g., "1.2.3").
@@ -57,7 +55,7 @@ compare_versions() {
     echo 0
 }
 
-# Function to print status messages
+# Function to print status messages.
 #
 # Arguments:
 #   $1: Status code (0 for success, 1 for failure)
