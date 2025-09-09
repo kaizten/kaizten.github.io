@@ -2,12 +2,13 @@
 
 Para la correcta realización de tus prácticas en Kaizten Analytics debes contar con una infraestructura básica de desarrollo previamente configurada en tu equipo.
 
-En primer lugar, sería necesario tener **Ubuntu 24.04** (o superior) como sistema operativo base, ya que será el entorno de referencia utilizado durante las prácticas. Si usas otro sistema operativo, puedes crear una partición en tu disco duro o bien utilizar una máquina virtual con este sistema operativo.
+En primer lugar, sería necesario tener **Ubuntu 24.04** (o superior) como sistema operativo base, ya que será el entorno de referencia utilizado durante las prácticas. Si usas otro sistema operativo, debes crear una partición en tu disco duro con este sistema operativo.
 
 Además, entre otros, deberás tener instalados los siguientes componentes:
 
 * **JDK 17 (o superior)**: entorno de desarrollo necesario para ejecutar y compilar aplicaciones Java.
 * **Maven**: herramienta de gestión y construcción de proyectos Java.
+* **curl**: herramienta de línea de comandos utilizada para transferir datos desde o hacia un servidor.
 * **Git**: sistema de control de versiones distribuido, indispensable para la colaboración y gestión del código.
 * **yarn:** sistema de gestión de dependencias para el soporte de aplicaciones y librerías TypeScript.
 * **TypeScript**: lenguaje tipado que se compila a JavaScript y se utilizará en el desarrollo de algunos módulos.
