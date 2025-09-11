@@ -9,15 +9,14 @@
 #   Kaizten Analytics S.L. (development@kaizten.com)
 #####################################################################################################################################################
 
-
 # Required versions
-MIN_UBUNTU_VERSION=24.4
+MIN_UBUNTU_VERSION=24.04
 MIN_JAVA_VERSION=17
 MIN_MAVEN_VERSION=3.8.7
 MIN_CURL_VERSION=8.5.0
 MIN_GIT_VERSION=2.51.0
 MIN_DOCKER_VERSION=28
-MIN_DOCKER_COMPOSE_VERSION=2.27.0
+MIN_DOCKER_COMPOSE_VERSION=2.34.0
 MIN_YARN_VERSION=1.22.22
 MIN_TSC_VERSION=5.9.2
 MIN_PYTHON_VERSION=3.12.0
@@ -44,13 +43,30 @@ compare_versions() {
     for ((i=0; i<$max_length; i++)); do
         local segment1=${v1[i]:-0} # Default to 0 if segment is missing
         local segment2=${v2[i]:-0} # Default to 0 if segment is missing
-        if ((segment1 > segment2)); then
-            echo 1
-            return
-        elif ((segment1 < segment2)); then
-            echo -1
-            return
+        # Maximum length of both segments
+        local max_segment_length=${#segment1}
+        if [ ${#segment2} -gt $max_segment_length ]; then
+            max_segment_length=${#segment2}
         fi
+        # Add zeros to the right to the shortest segment
+        while [ ${#segment1} -lt $max_segment_length ]; do
+            segment1="${segment1}0"
+        done
+        while [ ${#segment2} -lt $max_segment_length ]; do
+            segment2="${segment2}0"
+        done
+        # Compare segments from left to right digit to digit
+        for ((j=0; j<${#segment1}; j++)); do
+            digit1=${segment1:j:1}
+            digit2=${segment2:j:1}
+            if ((digit1 > digit2)); then
+                echo 1
+                return
+            elif ((digit1 < digit2)); then
+                echo -1
+                return
+            fi
+        done
     done
     echo 0
 }
@@ -208,7 +224,7 @@ fi
 
 # Docker Compose installation
 test_name="Docker Compose installation"
-if command -v docker-compose &> /dev/null; then
+if command -v docker compose &> /dev/null; then
     check_status 0 "$test_name: installed"
 else
     check_status 1 "$test_name: not installed" 
@@ -216,7 +232,7 @@ fi
 
 # Docker Compose version
 test_name="Docker Compose version"
-if command -v docker-compose &> /dev/null; then
+if command -v docker compose &> /dev/null; then
     DOCKER_COMPOSE_VERSION=$(docker compose version --short)    
     result=$(compare_versions "$DOCKER_COMPOSE_VERSION" "$MIN_DOCKER_COMPOSE_VERSION")
     if [ $result -eq 0 ]; then
@@ -257,7 +273,8 @@ fi
 # Git does not require 'sudo' to run
 test_name="Git does not require 'sudo' to run"
 if command -v git &> /dev/null; then
-    if git config --global user.name &> /dev/null && git config --global user.email &> /dev/null; then
+    GIT_PATH=$(command -v git)
+    if [ -x "$GIT_PATH" ]; then
         check_status 0 "$test_name: it can be run without 'sudo'"
     else
         check_status 1 "$test_name: it cannot be run without 'sudo'"
@@ -309,6 +326,34 @@ if command -v yarn &> /dev/null; then
 else
     check_status 1 "$test_name: not installed"
 fi
+
+# Check for global Yarn auth tokens
+test_name="yarn uses global auth tokens"
+check_yarn_auth_tokens() {
+    NPMRC="$HOME/.npmrc"
+    YARNRC="$HOME/.yarnrc.yml"
+    configured_tokens=0
+    # Check ~/.npmrc (used by Yarn v1 and npm)
+    if [[ -f "$NPMRC" ]]; then
+        if grep -qE "(_authToken|npmAuthToken)" "$NPMRC"; then
+            check_status 0 "$test_name: Global auth tokens found in ~/.npmrc"
+            configured_tokens=1
+        fi
+    fi
+    # Check ~/.yarnrc.yml (used by Yarn v2+ Berry)
+    if [[ $configured_tokens -eq 0 ]]; then
+        if [[ -f "$YARNRC" ]]; then
+            if grep -qE "(_authToken|npmAuthToken)" "$YARNRC"; then
+                check_status 0 "$test_name: Global auth tokens found in ~/.yarnrc.yml"
+                configured_tokens=1
+            fi
+        fi
+    fi
+    if [[ $configured_tokens -eq 0 ]]; then
+        check_status 1 "$test_name: No global Yarn auth tokens configured."
+    fi
+}
+check_yarn_auth_tokens
 
 # TypeScript installation
 test_name="TypeScript installation"
@@ -372,7 +417,7 @@ PYTHON_VERSION_SUMMARY="Python version: $(command -v python3 &> /dev/null && pyt
 
 # Print summary
 echo ""
-echo "📜 Summary:"
+echo "📊 Summary:"
 echo "==========="
 echo "$UBUNTU_SUMMARY"
 echo "$JAVA_SUMMARY"
