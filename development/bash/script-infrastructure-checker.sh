@@ -62,12 +62,14 @@ compare_versions() {
         for ((j=0; j<${#segment1}; j++)); do
             digit1=${segment1:j:1}
             digit2=${segment2:j:1}
-            if [ "$digit1" -gt "$digit2" ]; then
-                echo 1
-                return
-            elif [ "$digit1" -lt "$digit2" ]; then
-                echo -1
-                return
+            if [[ "$digit1" =~ ^[0-9]+$ && "$digit2" =~ ^[0-9]+$ ]]; then
+                if (( digit1 > digit2 )); then
+                    echo 1
+                    return
+                elif (( digit1 < digit2 )); then
+                    echo -1
+                    return
+                fi
             fi
         done
     done
