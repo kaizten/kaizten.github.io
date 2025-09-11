@@ -31,6 +31,9 @@ MIN_PYTHON_VERSION=3.12.0
 compare_versions() {
     local version1=$1
     local version2=$2
+    # Remove '-desktop.1' or similar suffixes for Ubuntu versions
+    version1=${version1%%-*}
+    version2=${version2%%-*}
     # Split the version numbers into arrays
     IFS='.' read -r -a v1 <<< "$version1"
     IFS='.' read -r -a v2 <<< "$version2"
