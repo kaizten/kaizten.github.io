@@ -415,15 +415,28 @@ Hola, desde hace un tiempo hemos ido trabajando en una librería de utilidades d
     ```
     Debes sustituir `USERNAME` por tu nombre de usuario de GitHub y `TOKEN` por el valor de tu token personal (creado en el paso previo).
 
-4. Añade al archivo `pom.xml` de tu back-end la dependencia de [`kaizten-utils`](https://github.com/kaizten/kaizten-utils):
-    ```xml
-    <dependency>
-      <groupId>com.kaizten</groupId>
-      <artifactId>kaizten-utils</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
-    ```
-5. Compila el back-end de la aplicación para comprobar que la dependencia está disponible: `mvn clean package`.
+4. Abre una terminal y comprueba que puedes acceder al paquete publicado con las credenciales que has establecido, tal como se muestra a continuación:
+   ```sh
+   $ mvn dependency:get -DgroupId=com.kaizten -DartifactId=kaizten-utils -Dversion=1.0-SNAPSHOT
+    [INFO] Scanning for projects...
+    [INFO] 
+    [INFO] ------------------< org.apache.maven:standalone-pom >-------------------
+    [INFO] Building Maven Stub Project (No POM) 1
+    [INFO] --------------------------------[ pom ]---------------------------------
+    [INFO] 
+    [INFO] --- dependency:3.7.0:get (default-cli) @ standalone-pom ---
+    [INFO] Resolving com.kaizten:kaizten-utils:jar:1.0-SNAPSHOT with transitive dependencies
+    Downloading from github: https://maven.pkg.github.com/kaizten/*/com/kaizten/kaizten-utils/1.0-SNAPSHOT/maven-metadata.xml
+    Downloading from central: https://repo1.maven.org/maven2/com/kaizten/kaizten-utils/1.0-SNAPSHOT/maven-metadata.xml
+    Downloaded from github: https://maven.pkg.github.com/kaizten/*/com/kaizten/kaizten-utils/1.0-SNAPSHOT/maven-metadata.xml (14 kB at 8.9 kB/s)
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time:  3.102 s
+    [INFO] Finished at: 2025-09-16T17:40:18+01:00
+    [INFO] ------------------------------------------------------------------------
+   ```
+   Es importante que compruebes que la salida sea similar a la mostrada.
 
 ### Dockerfile
 
