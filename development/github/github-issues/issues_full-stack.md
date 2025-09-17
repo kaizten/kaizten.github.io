@@ -323,7 +323,8 @@ Hola, hemos creado una pequeña librería de utilidades en [TypeScript](https://
 
 **Pasos a realizar:**
 
-1. Comprueba que puedes acceder a la librería, tal como sigue:
+1. Comprueba que te ha llegado una invitación a [`kaizten-typescript`](https://github.com/kaizten/kaizten-typescript) y acéptala.
+2. Comprueba que puedes acceder a la librería, tal como sigue:
     ```sh
     $ npm install @kaizten/kaizten-typescript@1.0.0 --dry-run
     add @kaizten/kaizten-typescript 1.0.0
@@ -809,7 +810,8 @@ Hola, hemos creado una librería con algunos componentes sencillos que nos ayuda
 
 **Pasos a realizar:**
 
-1. Comprueba que puedes acceder a la librería, tal como sigue:
+1. Comprueba que te ha llegado una invitación a [`kaizten-vue`](https://github.com/kaizten/kaizten-vue) y acéptala.
+2. Comprueba que puedes acceder a la librería, tal como sigue:
     ```sh
     npm install @kaizten/kaizten-vue@1.0.0 --dry-run
     add @kaizten/kaizten-vue 1.0.0
