@@ -3,21 +3,24 @@
 - [Java](#java)
   - [Instalación de Java Development Kit](#instalación-de-java-development-kit)
   - [Instalación de Maven](#instalación-de-maven)
+  - [Comprobar acceso a dependencia: `kaizten-utils`](#comprobar-acceso-a-dependencia-kaizten-utils)
 - [Docker](#docker)
   - [Instalación](#instalación)
   - [Nociones básicas](#nociones-básicas)
   - [Docker Compose. Instalación](#docker-compose-instalación)
 - [NodeJS. Instalación](#nodejs-instalación)
-- [Yarn. Instalación](#yarn-instalación)
-- [Visual Studio Code](#visual-studio-code)
+- [Yarn](#yarn)
   - [Instalación](#instalación-1)
+  - [Comprobar acceso a dependencia: `kaizten-typescript`](#comprobar-acceso-a-dependencia-kaizten-typescript)
+- [Visual Studio Code](#visual-studio-code)
+  - [Instalación](#instalación-2)
   - [Extensión `Draw.io`](#extensión-drawio)
   - [Extensión `MongoDB`](#extensión-mongodb)
   - [Extensión `Vue - Official`](#extensión-vue---official)
 - [Arquitectura hexagonal](#arquitectura-hexagonal)
 - [Back-end](#back-end)
   - [Primeros pasos](#primeros-pasos)
-  - [Dependencia: `kaizten-utils`](#dependencia-kaizten-utils)
+  - [Añadir dependencia: `kaizten-utils`](#añadir-dependencia-kaizten-utils)
   - [Dockerfile](#dockerfile)
   - [GitHub action](#github-action)
   - [Dominio](#dominio)
@@ -53,7 +56,7 @@
   - [Websocket](#websocket)
 - [Front-end](#front-end)
   - [Primeros pasos](#primeros-pasos-1)
-  - [Dependencia `kaizten-typescript`](#dependencia-kaizten-typescript)
+  - [Añadir dependencia: `kaizten-typescript`](#añadir-dependencia-kaizten-typescript)
   - [Dockerfile](#dockerfile-1)
   - [GitHub action](#github-action-1)
   - [Dominio](#dominio-1)
@@ -150,6 +153,78 @@ Hola, para compilar proyectos en Java se pueden usar herramientas como [Maven](h
 
 4. Pon un comentario en este issue mostrando la salida del comando `mvn -v` para comprobar que has instalado correctamente [Maven](https://maven.apache.org) en tu máquina.
 
+### Comprobar acceso a dependencia: `kaizten-utils`
+
+Hola, desde hace un tiempo hemos ido trabajando en una librería de utilidades destinada a facilitar la realización de proyectos en Java: [`kaizten-utils`](https://github.com/kaizten/kaizten-utils). Se trata de una pequeña librería donde hay bastantes clases, interfaces, enumerados y métodos que usamos regularmente. En tu proyecto pueden ser de utilidad para validar entidades por ejemplo. Acabo de agregarte como colaborador al repositorio de [`kaizten-utils`](https://github.com/kaizten/kaizten-utils) para que puedas acceder a su distribución y puedas añadirla como dependencia a tu proyecto.
+
+**Pasos a realizar:**
+
+1. Comprueba que te ha llegado una invitación a [`kaizten-utils`](https://github.com/kaizten/kaizten-utils) y acéptala.
+2. Crea un token personal en tu cuenta de [GitHub](https://www.github.com). Aquí tienes los [pasos](https://docs.github.com/es/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). El tipo de token que debes crear es `Personal access tokens (classic)`. Además, es importante que cuando crees el token marques la opción `read-packages`.
+3. Crea el fichero `settings.xml` en el lugar donde tengas instalado Maven. Habitualmente el lugar es `~/.m2`, de tal manera que al final tengas `~/.m2/settings.xml`. El contenido de este fichero debe ser así:
+    ```xml
+    <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                          http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+      <activeProfiles>
+        <activeProfile>github</activeProfile>
+      </activeProfiles>
+
+      <profiles>
+        <profile>
+          <id>github</id>
+          <repositories>
+            <repository>
+              <id>central</id>
+              <url>https://repo1.maven.org/maven2</url>
+            </repository>
+            <repository>
+              <id>github</id>
+              <url>https://maven.pkg.github.com/kaizten/*</url>
+              <snapshots>
+                <enabled>true</enabled>
+              </snapshots>
+            </repository>
+          </repositories>
+        </profile>
+      </profiles>
+
+      <servers>
+        <server>
+          <id>github</id>
+          <username>USERNAME</username>
+          <password>TOKEN</password>
+        </server>
+      </servers>
+    </settings>
+    ```
+    Debes sustituir `USERNAME` por tu nombre de usuario de GitHub y `TOKEN` por el valor de tu token personal (creado en el paso previo).
+
+4. Abre una terminal y comprueba que puedes acceder al paquete publicado con las credenciales que has establecido, tal como se muestra a continuación:
+   ```sh
+   $ mvn dependency:get -DgroupId=com.kaizten -DartifactId=kaizten-utils -Dversion=1.0-SNAPSHOT
+    [INFO] Scanning for projects...
+    [INFO] 
+    [INFO] ------------------< org.apache.maven:standalone-pom >-------------------
+    [INFO] Building Maven Stub Project (No POM) 1
+    [INFO] --------------------------------[ pom ]---------------------------------
+    [INFO] 
+    [INFO] --- dependency:3.7.0:get (default-cli) @ standalone-pom ---
+    [INFO] Resolving com.kaizten:kaizten-utils:jar:1.0-SNAPSHOT with transitive dependencies
+    Downloading from github: https://maven.pkg.github.com/kaizten/*/com/kaizten/kaizten-utils/1.0-SNAPSHOT/maven-metadata.xml
+    Downloading from central: https://repo1.maven.org/maven2/com/kaizten/kaizten-utils/1.0-SNAPSHOT/maven-metadata.xml
+    Downloaded from github: https://maven.pkg.github.com/kaizten/*/com/kaizten/kaizten-utils/1.0-SNAPSHOT/maven-metadata.xml (14 kB at 8.9 kB/s)
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time:  3.102 s
+    [INFO] Finished at: 2025-09-16T17:40:18+01:00
+    [INFO] ------------------------------------------------------------------------
+   ```
+   Es importante que compruebes que la salida sea similar a la mostrada.
+
 ## Docker
 
 ### Instalación
@@ -214,7 +289,9 @@ Hola, una herramienta que será necesaria en el proyecto en [NodeJS](https://nod
     v22.13.0
     ```
 
-## Yarn. Instalación
+## Yarn
+
+### Instalación
 
 Hola, para la creación del front-end será utilizar un administrador de paquetes. [Yarn](https://yarnpkg.com) es un administrador de paquetes de código abierto utilizado en el desarrollo de software para gestionar dependencias y facilitar la construcción de proyectos en lenguajes de programación como [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript) o [TypeScript](https://www.typescriptlang.org).
 
@@ -237,6 +314,110 @@ Hola, para la creación del front-end será utilizar un administrador de paquete
     $ yarn --version
     1.22.22
     ```
+
+### Comprobar acceso a dependencia: `kaizten-typescript`
+
+Hola, hemos creado una pequeña librería de utilidades en [TypeScript](https://www.typescriptlang.org) que nos ayuda en el desarrollo de proyectos de front-end: [`kaizten-typescript`](https://github.com/kaizten/kaizten-typescript). En ella hay diversas utilidades para trabajar con fechas, conexiones a servidor, etc.
+
+**Pasos a realizar:**
+
+1. Comprueba que puedes acceder a la librería, tal como sigue:
+    ```sh
+    $ npm install kaizten/kaizten-typescript#main --dry-run
+    add isexe 2.0.0
+    add punycode 2.3.1
+    add has-flag 4.0.0
+    add shebang-regex 3.0.0
+    add callsites 3.1.0
+    add yocto-queue 0.1.0
+    add p-limit 3.1.0
+    add word-wrap 1.2.5
+    add fast-levenshtein 2.0.6
+    add deep-is 0.1.4
+    add concat-map 0.0.1
+    add balanced-match 1.0.2
+    add brace-expansion 1.1.12
+    add p-locate 5.0.0
+    add type-check 0.4.0
+    add prelude-ls 1.2.1
+    add json-buffer 3.0.1
+    add argparse 2.0.1
+    add is-extglob 2.1.1
+    add resolve-from 4.0.0
+    add parent-module 1.0.1
+    add keyv 4.5.4
+    add flatted 3.3.3
+    add path-exists 4.0.0
+    add locate-path 6.0.0
+    add flat-cache 4.0.1
+    add acorn-jsx 5.3.2
+    add acorn 8.15.0
+    add estraverse 5.3.0
+    add esrecurse 4.3.0
+    add ms 2.1.3
+    add which 2.0.2
+    add shebang-command 2.0.0
+    add path-key 3.1.1
+    add color-name 1.1.4
+    add color-convert 2.0.1
+    add supports-color 7.2.0
+    add ansi-styles 4.3.0
+    add uri-js 4.4.1
+    add json-schema-traverse 0.4.1
+    add fast-json-stable-stringify 2.1.0
+    add @humanfs/core 0.19.1
+    add levn 0.4.1
+    add strip-json-comments 3.1.1
+    add js-yaml 4.1.0
+    add import-fresh 3.3.1
+    add globals 14.0.0
+    add @eslint/object-schema 2.1.6
+    add optionator 0.9.4
+    add natural-compare 1.4.0
+    add minimatch 3.1.2
+    add lodash.merge 4.6.2
+    add json-stable-stringify-without-jsonify 1.0.1
+    add is-glob 4.0.3
+    add imurmurhash 0.1.4
+    add ignore 5.3.2
+    add glob-parent 6.0.2
+    add find-up 5.0.0
+    add file-entry-cache 8.0.0
+    add fast-deep-equal 3.1.3
+    add esutils 2.0.3
+    add esquery 1.6.0
+    add espree 10.4.0
+    add eslint-visitor-keys 4.2.1
+    add eslint-scope 8.4.0
+    add escape-string-regexp 4.0.0
+    add debug 4.4.3
+    add cross-spawn 7.0.6
+    add chalk 4.1.2
+    add ajv 6.12.6
+    add @types/json-schema 7.0.15
+    add @types/estree 1.0.8
+    add @humanwhocodes/retry 0.4.3
+    add @humanwhocodes/module-importer 1.0.1
+    add @humanfs/node 0.16.7
+    add @eslint/plugin-kit 0.3.5
+    add @eslint/js 9.35.0
+    add @eslint/eslintrc 3.3.1
+    add @eslint/core 0.15.2
+    add @eslint/config-helpers 0.3.1
+    add @eslint/config-array 0.21.0
+    add @eslint-community/regexpp 4.12.1
+    add @eslint-community/eslint-utils 4.9.0
+    add eslint-visitor-keys 3.4.3
+    add eslint 9.35.0
+    add @kaizten/kaizten-typescript 1.0.0
+
+    added 86 packages in 11s
+
+    22 packages are looking for funding
+      run `npm fund` for details
+    ```
+
+    En este caso, la librería no se instalará sino que se comprobará si es posible acceder a ella.
 
 ## Visual Studio Code
 
@@ -366,77 +547,22 @@ Hola, el back-end de la aplicación vamos a realizarla mediante [Spring Boot](ht
 4. Si todo ha ido correctamente, debes encontrar la distribución del back-end en formato JAR. Concretamente `back-end/target/back-end-1.0-SNAPSHOT.jar`. Comprueba que este archivo se encuentra disponible.
 5. Sube los cambios al repositorio de tu proyecto para que el back-end esté disponible.
 
-### Dependencia: `kaizten-utils`
+### Añadir dependencia: `kaizten-utils`
 
-Hola, desde hace un tiempo hemos ido trabajando en una librería de utilidades destinada a facilitar la realización de proyectos en Java: [`kaizten-utils`](https://github.com/kaizten/kaizten-utils). Se trata de una pequeña librería donde hay bastantes clases, interfaces, enumerados y métodos que usamos regularmente. En tu proyecto pueden ser de utilidad para validar entidades por ejemplo. Acabo de agregarte como colaborador al repositorio de [`kaizten-utils`](https://github.com/kaizten/kaizten-utils) para que puedas acceder a su distribución y puedas añadirla como dependencia a tu proyecto.
+Hola, con el objetivo de evitar reescribir código, habría que añadir [`kaizten-utils`](https://github.com/kaizten/kaizten-utils) como dependencia al back-end.
 
 **Pasos a realizar:**
 
-1. Comprueba que te ha llegado una invitación a [`kaizten-utils`](https://github.com/kaizten/kaizten-utils) y acéptala.
-2. Crea un token personal en tu cuenta de [GitHub](https://www.github.com). Aquí tienes los [pasos](https://docs.github.com/es/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). El tipo de token que debes crear es `Personal access tokens (classic)`. Además, es importante que cuando crees el token marques la opción `read-packages`.
-3. Crea el fichero `settings.xml` en el lugar donde tengas instalado Maven. Habitualmente el lugar es `~/.m2`, de tal manera que al final tengas `~/.m2/settings.xml`. El contenido de este fichero debe ser así:
-    ```xml
-    <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
-                          http://maven.apache.org/xsd/settings-1.0.0.xsd">
+1. Añade al archivo pom.xml la dependencia de kaizten-utils:
 
-      <activeProfiles>
-        <activeProfile>github</activeProfile>
-      </activeProfiles>
-
-      <profiles>
-        <profile>
-          <id>github</id>
-          <repositories>
-            <repository>
-              <id>central</id>
-              <url>https://repo1.maven.org/maven2</url>
-            </repository>
-            <repository>
-              <id>github</id>
-              <url>https://maven.pkg.github.com/kaizten/*</url>
-              <snapshots>
-                <enabled>true</enabled>
-              </snapshots>
-            </repository>
-          </repositories>
-        </profile>
-      </profiles>
-
-      <servers>
-        <server>
-          <id>github</id>
-          <username>USERNAME</username>
-          <password>TOKEN</password>
-        </server>
-      </servers>
-    </settings>
+    ```sh
+    <dependency>
+      <groupId>com.kaizten</groupId>
+      <artifactId>kaizten-utils</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
     ```
-    Debes sustituir `USERNAME` por tu nombre de usuario de GitHub y `TOKEN` por el valor de tu token personal (creado en el paso previo).
-
-4. Abre una terminal y comprueba que puedes acceder al paquete publicado con las credenciales que has establecido, tal como se muestra a continuación:
-   ```sh
-   $ mvn dependency:get -DgroupId=com.kaizten -DartifactId=kaizten-utils -Dversion=1.0-SNAPSHOT
-    [INFO] Scanning for projects...
-    [INFO] 
-    [INFO] ------------------< org.apache.maven:standalone-pom >-------------------
-    [INFO] Building Maven Stub Project (No POM) 1
-    [INFO] --------------------------------[ pom ]---------------------------------
-    [INFO] 
-    [INFO] --- dependency:3.7.0:get (default-cli) @ standalone-pom ---
-    [INFO] Resolving com.kaizten:kaizten-utils:jar:1.0-SNAPSHOT with transitive dependencies
-    Downloading from github: https://maven.pkg.github.com/kaizten/*/com/kaizten/kaizten-utils/1.0-SNAPSHOT/maven-metadata.xml
-    Downloading from central: https://repo1.maven.org/maven2/com/kaizten/kaizten-utils/1.0-SNAPSHOT/maven-metadata.xml
-    Downloaded from github: https://maven.pkg.github.com/kaizten/*/com/kaizten/kaizten-utils/1.0-SNAPSHOT/maven-metadata.xml (14 kB at 8.9 kB/s)
-    [INFO] ------------------------------------------------------------------------
-    [INFO] BUILD SUCCESS
-    [INFO] ------------------------------------------------------------------------
-    [INFO] Total time:  3.102 s
-    [INFO] Finished at: 2025-09-16T17:40:18+01:00
-    [INFO] ------------------------------------------------------------------------
-   ```
-   Es importante que compruebes que la salida sea similar a la mostrada.
+2. Compila el proyecto para comprobar que la dependencia está disponible: `mvn clean package`.
 
 ### Dockerfile
 
@@ -1798,9 +1924,7 @@ Hola, dentro del repositorio habría que crear un front-end para la aplicación 
 
 3. Comprueba que puedes acceder a la URL `http://localhost:5173/` (o a la indicada por [Vite](https://vitejs.dev) en el despliegue) a través de tu navegador. Si todo funciona correctamente, debes poder visualizar un front-end por defecto.
 
-### Dependencia `kaizten-typescript`
-
-Hola, hemos creado una pequeña librería de utilidades en [TypeScript](https://www.typescriptlang.org) que nos ayuda en el desarrollo de proyectos de front-end: [`kaizten-typescript`](https://github.com/kaizten/kaizten-typescript). En ella hay diversas utilidades para trabajar con fechas, conexiones a servidor, etc.
+### Añadir dependencia: `kaizten-typescript`
 
 **Pasos a realizar:**
 
