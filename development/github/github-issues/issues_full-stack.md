@@ -1290,7 +1290,6 @@ Hola, hemos creado una librería con algunos componentes sencillos que nos ayuda
     ```
     En este caso, la librería no se instalará sino que se comprobará si es posible acceder a ella.
 
-
 ## Visual Studio Code
 
 ### Instalación
