@@ -19,7 +19,7 @@ Por ello, si necesitas usar Ubuntu para tus prácticas y tienes Windows en tu eq
 
    * En Windows, abre “Administración de discos” (Disk Management).
    * Selecciona la partición principal (habitualmente C:).
-   * Usa la opción “Disminuir volumen” (“Shrink Volume”) para reducirla, dejando un espacio libre (unallocated) donde colocarás Ubuntu. Al menos 40-50 GB es recomendable, pero dependerá del uso que le darás. 
+   * Usa la opción “Disminuir volumen” (“Shrink Volume”) para reducirla, dejando un espacio libre (unallocated) donde colocarás Ubuntu. Al menos 60-80 GB es recomendable, pero dependerá del uso que le darás. 
 
 4. Descargar Ubuntu 24.04 y preparar USB de arranque
 
