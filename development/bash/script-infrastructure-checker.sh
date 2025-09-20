@@ -89,6 +89,18 @@ check_status() {
     fi
 }
 
+# It checks if Docker is installed.
+#
+# Return:
+#   0 if Docker is installed.
+#   1 if Docker is not installed.
+check_docker_installed() {
+    if command -v docker &> /dev/null; then
+        return 0
+    fi
+    return 1
+}
+
 # Print minimum requirements
 echo "📋 Requirements:"
 echo "================"
@@ -193,7 +205,7 @@ fi
 
 # Docker installation
 test_name="Docker installation"
-if command -v docker &> /dev/null; then
+if check_docker_installed; then
     check_status 0 "$test_name: installed"
 else
     check_status 1 "$test_name: not installed"
@@ -201,7 +213,7 @@ fi
 
 # Docker does not require 'sudo' to run
 test_name="Docker does not require 'sudo' to run"
-if command -v docker &> /dev/null; then
+if check_docker_installed; then
     if docker info &> /dev/null; then
         check_status 0 "$test_name: it can be run without 'sudo'"
     else
@@ -213,7 +225,7 @@ fi
 
 # Docker version
 test_name="Docker version"
-if command -v docker &> /dev/null; then
+if check_docker_installed; then
     DOCKER_VERSION=$(docker --version | awk '{print $3}' | sed 's/,//')
     result=$(compare_versions "$DOCKER_VERSION" "$MIN_UBUNTU_VERSION")
     if [ $result -eq 0 ]; then
@@ -229,27 +241,36 @@ fi
 
 # Docker Compose installation
 test_name="Docker Compose installation"
-if command -v docker compose &> /dev/null; then
-    check_status 0 "$test_name: installed"
+if check_docker_installed; then
+    DOCKER_COMPOSE_VERSION=$(docker compose version | awk '{print $4}' | sed 's/v//')
+    if [[ "$DOCKER_COMPOSE_VERSION" =~ ^[0-9]+(\.[0-9]+)*$ ]]; then
+        check_status 0 "$test_name: installed" 
+    else
+        check_status 1 "$test_name: invalid version format detected ('$DOCKER_COMPOSE_VERSION')"
+    fi 
 else
     check_status 1 "$test_name: not installed" 
 fi
 
 # Docker Compose version
 test_name="Docker Compose version"
-if command -v docker compose &> /dev/null; then
-    DOCKER_COMPOSE_VERSION=$(docker compose version --short)    
-    result=$(compare_versions "$DOCKER_COMPOSE_VERSION" "$MIN_DOCKER_COMPOSE_VERSION")
-    if [ $result -eq 0 ]; then
-        check_status 0 "$test_name: '$DOCKER_COMPOSE_VERSION' detected (= '$MIN_DOCKER_COMPOSE_VERSION')"
-    elif [ $result -eq 1 ]; then
-        check_status 0 "$test_name: '$DOCKER_COMPOSE_VERSION' detected (> '$MIN_DOCKER_COMPOSE_VERSION')"
+if check_docker_installed; then
+    if command -v docker compose &> /dev/null; then
+        DOCKER_COMPOSE_VERSION=$(docker compose version --short)    
+        result=$(compare_versions "$DOCKER_COMPOSE_VERSION" "$MIN_DOCKER_COMPOSE_VERSION")
+        if [ $result -eq 0 ]; then
+            check_status 0 "$test_name: '$DOCKER_COMPOSE_VERSION' detected (= '$MIN_DOCKER_COMPOSE_VERSION')"
+        elif [ $result -eq 1 ]; then
+            check_status 0 "$test_name: '$DOCKER_COMPOSE_VERSION' detected (> '$MIN_DOCKER_COMPOSE_VERSION')"
+        else
+            check_status 1 "$test_name: '$DOCKER_COMPOSE_VERSION' detected (needs '$MIN_DOCKER_COMPOSE_VERSION' or higher)"
+        fi
     else
-        check_status 1 "$test_name: '$DOCKER_COMPOSE_VERSION' detected (needs '$MIN_DOCKER_COMPOSE_VERSION' or higher)"
+        check_status 1 "$test_name: not installed"
     fi
 else
-    check_status 1 "$test_name: not installed"
-fi  
+    check_status 1 "$test_name: Docker not installed"
+fi
 
 # Git installation
 test_name="Git installation"
@@ -414,7 +435,11 @@ JAVA_SUMMARY="Java version: ${JAVA_VERSION:-Not detected}" # Default to 'Not det
 MAVEN_VERSION_SUMMARY="Maven version: ${MAVEN_VERSION:-Not detected}" # Default to 'Not detected' if not set
 CURL_VERSION_SUMMARY="curl version: ${CURL_VERSION:-Not detected}" # Default to 'Not detected' if not set
 DOCKER_VERSION_SUMMARY="Docker version: $(command -v docker &> /dev/null && docker --version | awk '{print $3}' | sed 's/,//' || echo Not detected)"
-DOCKER_COMPOSE_VERSION_SUMMARY="Docker Compose version: $(command -v docker-compose &> /dev/null && docker compose version --short || echo Not detected)"
+if check_docker_installed; then
+    DOCKER_COMPOSE_VERSION_SUMMARY="Docker Compose version: $(command -v docker-compose &> /dev/null && docker compose version --short || echo Not detected)"
+else
+    DOCKER_COMPOSE_VERSION_SUMMARY="Docker Compose version: Not detected"
+fi
 GIT_VERSION_SUMMARY="Git version: $(command -v git &> /dev/null && git --version | awk '{print $3}' || echo Not detected)"
 YARN_VERSION_SUMMARY="Yarn version: $(command -v yarn &> /dev/null && yarn --version || echo Not detected)"
 TSC_VERSION_SUMMARY="TypeScript version: $(command -v tsc &> /dev/null && tsc --version | awk '{print $2}' || echo Not detected)"
