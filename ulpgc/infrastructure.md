@@ -14,7 +14,7 @@ Además, entre otros, deberás tener instalados los siguientes componentes:
  sistema de gestión de dependencias para el soporte de aplicaciones y librerías TypeScript.
 * [TypeScript](https://www.typescriptlang.org/download/): lenguaje tipado que se compila a JavaScript y se utilizará en el desarrollo de algunos módulos.
 * [Docker](https://docs.docker.com/engine/install/ubuntu/): para la ejecución de servicios y entornos aislados.
-* [Docker Compose](https://tuadmindesistemas.com/instalar-docker-compose-en-ubuntu-24-04/): para la definición y orquestación de servicios en contenedores a través de ficheros YAML, permitiendo levantar entornos completos de desarrollo y pruebas de forma sencilla.
+* [Docker Compose](https://docs.docker.com/compose/install/linux/): para la definición y orquestación de servicios en contenedores a través de ficheros YAML, permitiendo levantar entornos completos de desarrollo y pruebas de forma sencilla.
 
 Es importante mantener estos componentes actualizados y correctamente configurados en el PATH de tu sistema para asegurar que todos los comandos y dependencias se resuelvan sin problemas.
 
