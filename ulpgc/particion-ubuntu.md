@@ -15,6 +15,7 @@ Por ello, si necesitas usar Ubuntu para tus prácticas y tienes Windows en tu eq
 2. Desactivar temporalmente BitLocker / cifrado (si aplica)
 
    Si tu Windows usa BitLocker o algún cifrado del disco, conviene desactivarlo temporalmente para evitar problemas durante la instalación.
+   
 3. Liberar espacio en Windows
 
    * En Windows, abre “Administración de discos” (Disk Management).
