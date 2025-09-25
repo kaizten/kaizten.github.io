@@ -885,13 +885,13 @@ En Kaizten Analytics hemos preparado un script estándar para gestionemos nuestr
 
 **¿Qué hace este script?**
 
-1. Hace un git pull al inicio. Esto asegura que siempre tengas la versión más reciente del repositorio antes de subir tus cambios.
+1. Hace un `git pull` al inicio. Esto asegura que siempre tengas la versión más reciente del repositorio antes de subir tus cambios. De esta manera:
     * Así evitas sobrescribir el trabajo de otros compañeros.
-    * Si hay conflictos, Git te avisará y tendrás que resolverlos antes de continuar.
+    * Si hay conflictos, `git` te avisará y tendrás que resolverlos antes de continuar.
 2. Añade todos los cambios (`git add .`):
-    * Detecta y prepara automáticamente los archivos modificados para el commit.
+    * Detecta y prepara automáticamente los archivos modificados para el `commit`.
 3. Comprueba si realmente hay cambios pendientes:
-    * Si hay cambios, te pedirá un mensaje de commit.
+    * Si hay cambios, te pedirá un mensaje de `commit`.
     * Si no hay nada nuevo, te lo indicará y no hará nada más.
 4. Sube los cambios al repositorio (`git push`):
     * Solo si todo ha ido bien, los cambios se envían al repositorio remoto.
