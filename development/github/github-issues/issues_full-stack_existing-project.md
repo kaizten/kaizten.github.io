@@ -2,6 +2,9 @@
   - [Objetos valor](#objetos-valor)
   - [Enumerados](#enumerados)
   - [Entidades](#entidades)
+    - [Tests de entidades](#tests-de-entidades)
+    - [Tests de los enumerados](#tests-de-los-enumerados)
+    - [Tests de objetos valor](#tests-de-objetos-valor)
 - [Aplicación](#aplicación)
   - [Casos de uso](#casos-de-uso)
   - [Adaptador REST](#adaptador-rest)
@@ -42,6 +45,33 @@ Hola, el elemento fundamental del dominio son las entidades. Te paso un enlace d
 Revisa con calma las entidades que tienes en el dominio del back-end y trata de corregirlos, tal como se indica en el enlace que te pasé.
 
 Indícame si te surge cualquier duda.
+
+#### Tests de entidades
+
+Hola, las entidades del dominio deben estar testeadas para evitar posibles errores en el funcionamiento de la aplicación. En [este enlace](https://kaizten.github.io/development/java/hexagonal-architecture/entity_tests.html) tienes una guía de los tests que debería tener cada entidad de tu dominio para tener una cierta garantía de que funciona correctamente.
+
+**Pasos a realizar:**
+
+1. Revisa con calma el enlace donde se describen los tests de las entidades y plantea cualquier duda que pueda surgirte.
+2. Implementa para cada entidad de tu dominio los tests correspondientes siguiendo las indicaciones del enlace anterior.
+
+#### Tests de los enumerados
+
+Hola, los enumerados del dominio deben estar testeados para evitar posibles errores en el funcionamiento de la aplicación. En [este enlace](https://kaizten.github.io/development/java/hexagonal-architecture/enumerate_tests.html) tienes una guía de los tests que debería tener cada enumerado de tu dominio para tener una cierta garantía de que funciona correctamente.
+
+**Pasos a realizar:**
+
+1. Revisa con calma el enlace donde se describen los tests de las enumerados y plantea cualquier duda que pueda surgirte.
+2. Implementa para cada enumerado de tu dominio los tests correspondientes siguiendo las indicaciones del enlace anterior.
+
+#### Tests de objetos valor
+
+Hola, los objetos de valor del dominio deben estar testeados para evitar posibles errores en el funcionamiento de la aplicación. En [este enlace](https://kaizten.github.io/development/java/hexagonal-architecture/value-object_tests.html) tienes una guía de los tests que debería tener cada objeto de valor de tu dominio para tener una cierta garantía de que funciona correctamente.
+
+**Pasos a realizar:**
+
+1. Revisa con calma el enlace donde se describen los tests de los objetos de valor y plantea cualquier duda que pueda surgirte.
+2. Implementa para cada objeto de valor de tu dominio los tests correspondientes siguiendo las indicaciones del enlace anterior.
 
 ## Aplicación
 
