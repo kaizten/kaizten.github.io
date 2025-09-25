@@ -883,7 +883,7 @@ Hola, [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.v
 
 En Kaizten Analytics hemos preparado un script estándar para gestionemos nuestros commits y pushes de manera segura y ordenada. El script se llama `script-github-commit.sh` y puedes encontrarlo en la raíz de tu repositorio de trabajo. Su función principal es subir tus cambios al repositorio remoto en [GitHub](www.github.com) evitando conflictos innecesarios.
 
-:small_blue_diamond: **¿Qué hace este script?**
+**¿Qué hace este script?**
 
 1. Hace un git pull al inicio. Esto asegura que siempre tengas la versión más reciente del repositorio antes de subir tus cambios.
     * Así evitas sobrescribir el trabajo de otros compañeros.
@@ -896,7 +896,7 @@ En Kaizten Analytics hemos preparado un script estándar para gestionemos nuestr
 4. Sube los cambios al repositorio (`git push`):
     * Solo si todo ha ido bien, los cambios se envían al repositorio remoto.
 
-:small_blue_diamond: **Algunas cuestiones importantes a tener en cuenta:**
+**Algunas cuestiones importantes a tener en cuenta:**
 
 1. Usa siempre este script para subir cambios. De esta manera garantizamos que antes de cada `push` tu copia local esté sincronizada con el repositorio remoto.
 2. Nunca fuerces subidas (`git push --force`). Forzar un `push` puede borrar el trabajo de otros compañeros. 
@@ -908,7 +908,25 @@ En Kaizten Analytics hemos preparado un script estándar para gestionemos nuestr
 1. Haz algún cambio menor en el código de tu repositorio (por ejemplo, añadir algún espacio en blanco).
 2. Ejecuta el script, tal como sigue:
     ```sh
+   ./script-github-commit.sh 
+    📥 Pulling repository...
+    Already up-to-date.
+    ✏️  Enter your message in the commit: new feature aimed at generating reports
+    [main c99075f] new feature aimed at generating reports
+    1 file changed, 32 insertions(+)
+    🚀 Pushing data to remote GitHub repository:
+    Enumerating objects: 11, done.
+    Counting objects: 100% (11/11), done.
+    Delta compression using up to 8 threads
+    Compressing objects: 100% (6/6), done.
+    Writing objects: 100% (6/6), 1.54 KiB | 262.00 KiB/s, done.
+    Total 6 (delta 5), reused 0 (delta 0), pack-reused 0 (from 0)
+    remote: Resolving deltas: 100% (5/5), completed with 5 local objects.
+    To github.com:kaizten/kaizten-base.git
+      ebc4a96..c99075f  main -> main
+    ✅ Done!
     ```
+    Comprueba que todo ha funcionado correctamente.
 
 ## Arquitectura hexagonal
 
