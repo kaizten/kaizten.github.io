@@ -18,6 +18,7 @@
   - [Extensión `Draw.io`](#extensión-drawio)
   - [Extensión `MongoDB`](#extensión-mongodb)
   - [Extensión `Vue - Official`](#extensión-vue---official)
+- [`script-github-commit.sh`](#script-github-commitsh)
 - [Arquitectura hexagonal](#arquitectura-hexagonal)
 - [Back-end](#back-end)
   - [Primeros pasos](#primeros-pasos)
@@ -877,6 +878,37 @@ Hola, [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.v
 **Pasos a realizar:**
 
 1. Instala la extensión de [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) en tu [Visual Studio Code](https://code.visualstudio.com) siguiendo los pasos descritos [aquí](https://marketplace.visualstudio.com/items?itemName=Vue.volar).
+
+## `script-github-commit.sh`
+
+En Kaizten Analytics hemos preparado un script estándar para gestionemos nuestros commits y pushes de manera segura y ordenada. El script se llama `script-github-commit.sh` y puedes encontrarlo en la raíz de tu repositorio de trabajo. Su función principal es subir tus cambios al repositorio remoto en [GitHub](www.github.com) evitando conflictos innecesarios.
+
+:small_blue_diamond: **¿Qué hace este script?**
+
+1. Hace un git pull al inicio. Esto asegura que siempre tengas la versión más reciente del repositorio antes de subir tus cambios.
+    * Así evitas sobrescribir el trabajo de otros compañeros.
+    * Si hay conflictos, Git te avisará y tendrás que resolverlos antes de continuar.
+2. Añade todos los cambios (`git add .`):
+    * Detecta y prepara automáticamente los archivos modificados para el commit.
+3. Comprueba si realmente hay cambios pendientes:
+    * Si hay cambios, te pedirá un mensaje de commit.
+    * Si no hay nada nuevo, te lo indicará y no hará nada más.
+4. Sube los cambios al repositorio (`git push`):
+    * Solo si todo ha ido bien, los cambios se envían al repositorio remoto.
+
+:small_blue_diamond: **Algunas cuestiones importantes a tener en cuenta:**
+
+1. Usa siempre este script para subir cambios. De esta manera garantizamos que antes de cada `push` tu copia local esté sincronizada con el repositorio remoto.
+2. Nunca fuerces subidas (`git push --force`). Forzar un `push` puede borrar el trabajo de otros compañeros. 
+3. No crees nuevas ramas sin avisar. Todos trabajamos en la rama definida para el proyecto (generalmente `main`). Crear ramas adicionales sin coordinación puede complicar el flujo de trabajo.
+4. Escribe mensajes de commit claros. Recuerda que el historial de commits es la memoria del proyecto. Mensajes como `cambios` o `varios` no ayudan.
+
+**Pasos a realizar:**
+
+1. Haz algún cambio menor en el código de tu repositorio (por ejemplo, añadir algún espacio en blanco).
+2. Ejecuta el script, tal como sigue:
+    ```sh
+    ```
 
 ## Arquitectura hexagonal
 
