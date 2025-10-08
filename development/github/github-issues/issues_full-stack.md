@@ -1030,13 +1030,13 @@ Hola, con el objetivo de evitar reescribir código, habría que añadir [`kaizte
 
 ### Dockerfile
 
-Hola, la dockerización del back-end de la aplicación es crucial por varias razones fundamentales que influyen directamente en la eficiencia, portabilidad y escalabilidad del sistema. En particular, con [Docker](https://www.docker.com), las dependencias del back-end (bibliotecas, frameworks, entornos, etc.) se pueden empaquetar y versionar fácilmente, lo que simplifica la gestión de dependencias y las actualizaciones del software.
+Hola, la dockerización es crucial por varias razones fundamentales que influyen directamente en la eficiencia, portabilidad y escalabilidad del sistema. En particular, con [Docker](https://www.docker.com), las dependencias del back-end (bibliotecas, frameworks, entornos, etc.) se pueden empaquetar y versionar fácilmente, lo que simplifica la gestión de dependencias y las actualizaciones del software.
 
 La dockerización del back-end requiere de un archivo `Dockerfile`. Se trata un archivo de texto que contiene instrucciones precisas para construir una imagen de [Docker](https://www.docker.com), especificando los pasos necesarios para configurar y ejecutar un entorno dentro de un contenedor. 
 
 **Pasos a realizar:**
 
-1. Para crear el `Dockerfile` tienes que crear el siguiente archivo dentro de la carpeta `back-end`:
+1. Para crear el `Dockerfile` tienes que crear el siguiente archivo dentro de la carpeta del componente:
     ```shell
     FROM openjdk:17-jdk-alpine
 
@@ -1050,7 +1050,7 @@ La dockerización del back-end requiere de un archivo `Dockerfile`. Se trata un 
     ```
     Es importante que lo guardes exactamente con el nombre `Dockerfile`. Esto es, no pongas extensiones en el nombre del fichero.
 
-2. Una vez creado el `Dockerfile`, puedes crear la imagen [Docker](https://www.docker.com) de tu back-end. Para ello, ejecuta lo siguiente:
+2. Una vez creado el `Dockerfile`, puedes crear la imagen [Docker](https://www.docker.com) de tu componente. Para ello, ejecuta lo siguiente:
     ```shell
     $ cd back-end
     $ mvn clean package
@@ -1153,7 +1153,7 @@ Cabe señalar que las [GitHub action](https://github.com/features/actions) se de
               password: ${{ secrets.DOCKERHUB_PASSWORD }}
     ```
 
-    La [GitHub action](https://github.com/features/actions) creada está destinada a que, cada vez que hagas un cambio en `back-end/` y lo subas al repositorio, se genere la imagen [Docker](https://www.docker.com) correspondiente y se publique en [Docker Hub](https://hub.docker.com). Fíjate que en el archivo hay definida una variable `DOCKER_IMAGE_NAME` que indica el nombre de la imagen [Docker](https://www.docker.com) que se genera con el lanzamiento de la [GitHub action](https://github.com/features/actions). En este punto es importante que sustituyas `<NOMBRE_PROYECTO>` por el nombre de tu proyecto.
+    La [GitHub action](https://github.com/features/actions) creada está destinada a que, cada vez que hagas un cambio en `back-end/` (salvo que estos cambios sean en archivos `.md`) y lo subas al repositorio, se genere la imagen [Docker](https://www.docker.com) correspondiente y se publique en [Docker Hub](https://hub.docker.com). Fíjate que en el archivo hay definida una variable `DOCKER_IMAGE_NAME` que indica el nombre de la imagen [Docker](https://www.docker.com) que se genera con el lanzamiento de la [GitHub action](https://github.com/features/actions). En este punto es importante que sustituyas `<NOMBRE_PROYECTO>` por el nombre de tu proyecto.
 
 3. Antes de pasar a probar la [GitHub action](https://github.com/features/actions), debes modificar el archivo `back-end/pom.xml` añadiendo la sección `<profiles>` que se muestra a continuación:
     ```xml
@@ -1185,7 +1185,7 @@ Cabe señalar que las [GitHub action](https://github.com/features/actions) se de
     ```
     Esto se hace para que la [GitHub action](https://github.com/features/actions) sea capaz de encontrar el paquete [kaizten-utils](https://github.com/kaizten/kaizten-utils) que estás usando en el back-end.
 
-4. Revisa la [GitHub action](https://github.com/features/actions) y prueba a ejecutarla haciendo algún cambio en alguno de los archivos de `back-end/` y subiéndolos al repositorio. Indícame si se ha ejecutado correctamente (puedes verlo en la pestaña `Actions` de la página de GitHub del repositorio). En caso de que se produzca algún error en la ejecución de la [GitHub action](https://github.com/features/actions) te llegará un correo electrónico indicando el error.
+4. Revisa la [GitHub action](https://github.com/features/actions) y prueba a ejecutarla haciendo algún cambio en alguno de los archivos de `back-end/` y subiéndolos al repositorio. Indícame si se ha ejecutado correctamente (puedes verlo en la pestaña `Actions` de la página de GitHub del repositorio). En caso de que se produzca algún error en la ejecución de la [GitHub action](https://github.com/features/actions) te llegará un correo electrónico indicando el error. En tal caso, procede a revisar el error y tratar de corregirlo.
 
 5. Una vez haya finalizado correctamente la ejecución de la [GitHub action](https://github.com/features/actions), comprueba que la imagen se encuentra publicada en [Docker Hub](https://hub.docker.com) con el nombre establecido por la variable `DOCKER_IMAGE_NAME`.
 
