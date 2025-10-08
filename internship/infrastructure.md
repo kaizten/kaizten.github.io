@@ -1,4 +1,4 @@
-# Infraestructura
+# Infraestructura necesaria
 
 Para la correcta realización de tus prácticas en Kaizten Analytics debes contar con una infraestructura básica de desarrollo previamente configurada en tu equipo.
 

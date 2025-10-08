@@ -1,4 +1,4 @@
-# Asignación y seguimiento de GitHub issues
+# Seguimiento de trabajo mediante GitHub issues
 
 Durante las prácticas se te irán asignando **issues** en los repositorios a los que tienes acceso. A continuación puedes ver qué forma tienen y dónde puedes encontrarlos dentro de un repositorio (pestaña `Issues`):
 
