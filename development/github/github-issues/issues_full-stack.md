@@ -49,7 +49,7 @@
     - [Respuestas](#respuestas)
     - [Deserializadores](#deserializadores)
     - [Serializadores](#serializadores)
-    - [Tests de la API REST](#tests-de-la-api-rest)
+    - [Tests](#tests)
     - [Configuración](#configuración-1)
     - [Documentación](#documentación)
   - [Operaciones bulk](#operaciones-bulk)
@@ -1945,7 +1945,7 @@ Hola, cuando el usuario realiza una petición de tipo, espera obtener una respue
     }
     ```
 
-#### Tests de la API REST
+#### Tests
 
 Actualmente el back-end cuenta con múltiples controladores que exponen endpoints REST. 
 
@@ -1972,13 +1972,15 @@ Con tests ejecutados en [Newman](https://learning.postman.com/docs/collections/u
    * `rest-api_tests.json`
    * `rest-api_environment.json` 
 4. Si no lo tienes previamente instalado, instala `newman`:
-  ```shell
-  sudo npm install -g newman
-  ```  
+  
+    ```shell
+    sudo npm install -g newman
+    ```  
 5. Ejecuta los tests creados sobre tu API REST:  
-  ```shell
-  newman run rest-api_tests.json -e rest-api_environment.json
-  ```  
+  
+    ```shell
+    newman run rest-api_tests.json -e rest-api_environment.json
+    ```  
 6. Documenta en el `README.md` cómo correr los tests localmente.  
 
 #### Configuración
@@ -2030,7 +2032,7 @@ Hola, vamos a crear un archivo de configuración del adaptador REST.
 
 #### Documentación
 
-Hola, [OpenAPI](https://www.openapis.org) es una especificación de API que describe cómo interactuar con una API RESTful (Representational State Transfer) de forma programática. Te paso un artículo sobre cómo funciona OpenAPI con Spring: https://www.baeldung.com/spring-rest-openapi-documentation Como se describe en el artículo, se puede emplear una librería que genera documentación en formato yaml de una API REST.
+Hola, [OpenAPI](https://www.openapis.org) es una especificación de API que describe cómo interactuar con una API RESTful (Representational State Transfer) de forma programática. Te paso un artículo sobre cómo funciona OpenAPI con Spring: [https://www.baeldung.com/spring-rest-openapi-documentation](https://www.baeldung.com/spring-rest-openapi-documentation). Como se describe en el artículo, se puede emplear una librería que genera documentación en formato yaml de una API REST.
 
 **Pasos a realizar:**
 
