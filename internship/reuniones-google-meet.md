@@ -1,4 +1,4 @@
-# Organización de las reuniones
+# Realización de las reuniones mediante Google Meet
 
 Con el objetivo de asegurar un adecuado seguimiento del proyecto de prácticas y ofrecer un espacio de comunicación fluida, se mantendrán **reuniones periódicas de manera online** a lo largo de todo el período de prácticas.  
 

@@ -1,4 +1,4 @@
-# Tutorial de Slack
+# Comunicación continua mediante Slack
 
 En Kaizten Analytics usamos [Slack](https://slack.com) para comunicarnos. Es la herramienta que también usarás durante las prácticas para mantenerte en contacto con tu tutor de prácticas y con el resto del equipo de la empresa.
 

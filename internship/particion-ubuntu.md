@@ -1,4 +1,4 @@
-# Crear una partición para Ubuntu
+# Crear una partición de Ubuntu
 
 En Kaizten Analytics trabajamos con Ubuntu como sistema operativo. Este sistema operativo es conocido por su estabilidad, seguridad y flexibilidad, lo que lo hace ideal para entornos de desarrollo y análisis.
 
