@@ -1,4 +1,4 @@
-# General clean code Rules
+# General clean code rules
 
 ## General rules
 
