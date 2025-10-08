@@ -1981,7 +1981,7 @@ Con tests ejecutados en [Newman](https://learning.postman.com/docs/collections/u
     ```shell
     newman run rest-api_tests.json -e rest-api_environment.json
     ```  
-6. Documenta en el `README.md` cómo correr los tests localmente.  
+6. Documenta en el `README.md` cómo correr los tests localmente.
 
 #### Configuración
 
