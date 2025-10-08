@@ -56,10 +56,11 @@ La dockerización requiere de un archivo `Dockerfile`. Se trata un archivo de te
 
 2. Una vez creado el `Dockerfile`, puedes crear la imagen [Docker](https://www.docker.com) de tu componente. Para ello, ejecuta lo siguiente:
     ```shell
-    $ cd back-end
+    $ cd <COMPONENT-FOLDER>
     $ mvn clean package
     $ docker build -t dockerizedcomponent .
     ```
+    En este caso, `<COMPONENT-FOLDER> es el nombre de tu componente.
 
 3. Si todo ha ido correctamente, debes tener la imagen [Docker](https://www.docker.com) generada en tu máquina:
     ```shell

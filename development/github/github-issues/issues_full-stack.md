@@ -49,6 +49,7 @@
     - [Respuestas](#respuestas)
     - [Deserializadores](#deserializadores)
     - [Serializadores](#serializadores)
+    - [Tests de la API REST](#tests-de-la-api-rest)
     - [Configuración](#configuración-1)
     - [Documentación](#documentación)
   - [Operaciones bulk](#operaciones-bulk)
@@ -1943,6 +1944,42 @@ Hola, cuando el usuario realiza una petición de tipo, espera obtener una respue
         }
     }
     ```
+
+#### Tests de la API REST
+
+Actualmente el back-end cuenta con múltiples controladores que exponen endpoints REST. 
+
+Para garantizar la calidad, estabilidad y correcta evolución del sistema, es necesario implementar una batería de **tests automatizados** que cubran al menos **un caso de prueba por cada endpoint disponible**.  
+
+Estos tests se ejecutarán utilizando [Newman](https://learning.postman.com/docs/collections/using-newman-cli/command-line-integration-with-newman/) (CLI de Postman), lo que permitirá detectar errores de forma temprana.  
+
+**Caso de uso:**
+
+Imaginemos que un desarrollador realiza un cambio en el controlador ficticio `UsersController` y sin darse cuenta modifica la respuesta del endpoint `GET /users/:id`.  
+
+Sin una suite de tests, este error podría llegar a producción y afectar a clientes que dependen de la estructura de la respuesta.  
+
+Con tests ejecutados en [Newman](https://learning.postman.com/docs/collections/using-newman-cli/command-line-integration-with-newman/), este tipo de cambios rompería la ejecución de la colección y se detectaría automáticamente durante el proceso de despliegue.  
+
+**Pasos a realizar:**
+
+1. Revisar controladores existentes en el back-end y listar todos los endpoints expuestos.  
+2. Crear o actualizar una colección de Postman que incluya:  
+   * Al menos un test de éxito (`200 OK` o el código esperado) para cada endpoint.  
+   * Tests de validación de estructura (JSON schema, campos obligatorios, etc.) cuando aplique.  
+   * Opcionalmente: casos de error (`400`, `404`, `500`, etc.).  
+3. Exportar la colección y el archivo de entorno de Postman:
+   * `rest-api_tests.json`
+   * `rest-api_environment.json` 
+4. Si no lo tienes previamente instalado, instala `newman`:
+  ```shell
+  sudo npm install -g newman
+  ```  
+5. Ejecuta los tests creados sobre tu API REST:  
+  ```shell
+  newman run rest-api_tests.json -e rest-api_environment.json
+  ```  
+6. Documenta en el `README.md` cómo correr los tests localmente.  
 
 #### Configuración
 
