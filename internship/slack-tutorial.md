@@ -1,6 +1,8 @@
 # Tutorial de uso de Slack en Kaizten Analytics
 
-¡Bienvenid@ a Kaizten Analytics! En este breve tutorial encontrarás lo esencial para empezar a usar Slack de forma efectiva en tu día a día.
+En Kaizten Analytics usamos [Slack](https://slack.com) para comunicarnos. Es la herramienta que también usarás durante las prácticas para mantenerte en contacto con tu tutor de prácticas y con el resto del equipo de la empresa.
+
+En este breve tutorial encontrarás lo esencial para empezar a usar [Slack](https://slack.com) de forma efectiva en tu día a día.
 
 # 1. Mensajes directos (DM)
 
