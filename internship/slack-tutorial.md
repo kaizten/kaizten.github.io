@@ -1,4 +1,4 @@
-#Tutorial de uso de Slack en Kaizten Analytics
+# Tutorial de uso de Slack en Kaizten Analytics
 
 ¡Bienvenid@ a Kaizten Analytics! En este breve tutorial encontrarás lo esencial para empezar a usar Slack de forma efectiva en tu día a día.
 
