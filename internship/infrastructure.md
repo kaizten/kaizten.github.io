@@ -2,7 +2,9 @@
 
 Para la correcta realización de tus prácticas en Kaizten Analytics debes contar con una infraestructura básica de desarrollo previamente configurada en tu equipo.
 
-En primer lugar, sería necesario tener [Ubuntu 24.04](https://ubuntu.com/download/desktop) (o superior) como sistema operativo base, ya que será el entorno de referencia utilizado durante las prácticas. Si usas otro sistema operativo, debes crear una partición en tu disco duro con este sistema operativo.
+En primer lugar, sería necesario tener [Ubuntu 24.04](https://ubuntu.com/download/desktop) (o superior) como sistema operativo base, ya que será el entorno de referencia utilizado durante las prácticas. 
+
+Si usas otro sistema operativo, debes crear *una partición en tu disco duro* con este sistema operativo. Si estás usando Windows, [aquí] tienes un tutorial básico sobre cómo crear una partición para Ubuntu.
 
 Además, entre otros, deberás tener instalados los siguientes componentes:
 
