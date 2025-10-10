@@ -51,7 +51,7 @@
     - [Serializadores](#serializadores)
     - [Tests](#tests)
     - [Configuración](#configuración-1)
-    - [Documentación](#documentación)
+    - [Documentación mediante OpenAPI](#documentación-mediante-openapi)
   - [Operaciones bulk](#operaciones-bulk)
   - [Configuración](#configuración-2)
     - [Aplicación](#aplicación-1)
@@ -2030,15 +2030,27 @@ Hola, vamos a crear un archivo de configuración del adaptador REST.
 
     Por último, `RestConfiguration.java` crea un objeto `ResponseEntityExceptionHandler` que ayuda a homogeneizar las respuestas de error que pueda emitir el back-end, así como crea los objetos `FilterConditionBuilder` y `JwtAuthConverter` que permiten gestionar filtros en las peticiones y JSON Web Token para securizar las mismas.
 
-#### Documentación
+#### Documentación mediante OpenAPI
 
 Hola, [OpenAPI](https://www.openapis.org) es una especificación de API que describe cómo interactuar con una API RESTful (Representational State Transfer) de forma programática. Te paso un artículo sobre cómo funciona OpenAPI con Spring: [https://www.baeldung.com/spring-rest-openapi-documentation](https://www.baeldung.com/spring-rest-openapi-documentation). Como se describe en el artículo, se puede emplear una librería que genera documentación en formato yaml de una API REST.
 
+**Caso de uso ilustrativo:**
+
+Imaginemos que un nuevo desarrollador se incorpora al proyecto y necesita entender cómo interactuar con nuestra API. Sin documentación adecuada, tendría que revisar manualmente los controladores, endpoints y modelos de entrada/salida. Con documentación en OpenAPI, en cambio, podrá utilizar documentación interactiva (por ejemplo, [Swagger UI](https://swagger.io/tools/swagger-ui/)), reduciendo significativamente la curva de aprendizaje.
+
 **Pasos a realizar:**
 
-1. Para poder emplear OpenAPI 3.0, tendrías que añadir la dependencia correspondiente en el archivo `pom.xml` de tu back-end. Revisa el artículo anterior para esto. Una vez levantada la API, si accedes a `http://localhost:8181/v3/api-docs/` deberías ver la documentación en formato JSON. Si accedes a `http://localhost:8181/swagger-ui/index.html` debes poder ver la documentación de la API mediante `Swagger`.
-
-2. Habría que añadir a los endpoints la documentación de los mismos para que apareciera mediante esta herramienta. De esta manera podríamos publicar luego la documentación y que nosotros mismos puedan consultarla libremente.
+1. Revisa la siguiente guía de referencia e integración: [Baeldung - Spring REST OpenAPI Documentation](https://www.baeldung.com/spring-rest-openapi-documentation).
+2. Para poder emplear OpenAPI 3.0, tendrías que añadir la dependencia correspondiente en el archivo `pom.xml` de tu back-end. Si no está ya incluida, añade la dependencia de OpenAPI/Swagger al archivo `pom.xml`:
+    ```shell
+    <dependency>
+        <groupId>org.springdoc</groupId>
+        <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+        <version>3.0.0-M1</version>
+    </dependency>
+    ```
+3. Una vez levantada la API REST, si accedes a `http://localhost:8181/v3/api-docs/` deberías ver la documentación en formato JSON. Si accedes a `http://localhost:8181/swagger-ui/index.html` debes poder ver la documentación de la API mediante [Swagger UI](https://swagger.io/tools/swagger-ui/).
+4. Añade a los endpoints, parámetros, etc. la documentación de los mismos para que aparezca mediante correctamente [Swagger UI](https://swagger.io/tools/swagger-ui/). Escribe la documentación en inglés.
 
 ### Operaciones bulk
 
