@@ -2032,16 +2032,20 @@ Hola, vamos a crear un archivo de configuración del adaptador REST.
 
 #### Documentación mediante OpenAPI
 
-Hola, [OpenAPI](https://www.openapis.org) es una especificación de API que describe cómo interactuar con una API RESTful (Representational State Transfer) de forma programática. Te paso un artículo sobre cómo funciona OpenAPI con Spring: [https://www.baeldung.com/spring-rest-openapi-documentation](https://www.baeldung.com/spring-rest-openapi-documentation). Como se describe en el artículo, se puede emplear una librería que genera documentación en formato yaml de una API REST.
+Hola, [OpenAPI](https://www.openapis.org) es una especificación de API que describe cómo interactuar con una API RESTful (Representational State Transfer) de forma programática. 
+
+A continuación, te paso un artículo sobre cómo funciona [OpenAPI](https://www.openapis.org) con [Spring Boot](https://spring.io/projects/spring-boot): [https://www.baeldung.com/spring-rest-openapi-documentation](https://www.baeldung.com/spring-rest-openapi-documentation). 
+
+Tal como se describe en el artículo, se puede emplear una librería que genera documentación en formato [JSON](https://es.wikipedia.org/wiki/JSON) o [yaml](https://es.wikipedia.org/wiki/YAML) de una API REST.
 
 **Caso de uso ilustrativo:**
 
-Imaginemos que un nuevo desarrollador se incorpora al proyecto y necesita entender cómo interactuar con nuestra API. Sin documentación adecuada, tendría que revisar manualmente los controladores, endpoints y modelos de entrada/salida. Con documentación en OpenAPI, en cambio, podrá utilizar documentación interactiva (por ejemplo, [Swagger UI](https://swagger.io/tools/swagger-ui/)), reduciendo significativamente la curva de aprendizaje.
+Imaginemos que un nuevo desarrollador se incorpora al proyecto y necesita entender cómo interactuar con nuestra API. Sin documentación adecuada, tendría que revisar manualmente los controladores, endpoints y modelos de entrada/salida. Con documentación en [OpenAPI](https://www.openapis.org), en cambio, podrá utilizar documentación interactiva (por ejemplo, [Swagger UI](https://swagger.io/tools/swagger-ui/)), reduciendo significativamente la curva de aprendizaje.
 
 **Pasos a realizar:**
 
 1. Revisa la siguiente guía de referencia e integración: [Baeldung - Spring REST OpenAPI Documentation](https://www.baeldung.com/spring-rest-openapi-documentation).
-2. Para poder emplear OpenAPI 3.0, tendrías que añadir la dependencia correspondiente en el archivo `pom.xml` de tu back-end. Si no está ya incluida, añade la dependencia de OpenAPI/Swagger al archivo `pom.xml`:
+2. Para poder emplear [OpenAPI 3](https://spec.openapis.org/oas/), tendrías que añadir la dependencia correspondiente en el archivo `pom.xml` de tu back-end. Si no está ya incluida, añade la dependencia de OpenAPI/Swagger al archivo `pom.xml`:
     ```shell
     <dependency>
         <groupId>org.springdoc</groupId>
@@ -2049,7 +2053,7 @@ Imaginemos que un nuevo desarrollador se incorpora al proyecto y necesita entend
         <version>3.0.0-M1</version>
     </dependency>
     ```
-3. Una vez levantada la API REST, si accedes a `http://localhost:8181/v3/api-docs/` deberías ver la documentación en formato JSON. Si accedes a `http://localhost:8181/swagger-ui/index.html` debes poder ver la documentación de la API mediante [Swagger UI](https://swagger.io/tools/swagger-ui/).
+3. Una vez levantada la API REST, si accedes a `http://localhost:8181/v3/api-docs/` deberías ver la documentación en formato [JSON](https://es.wikipedia.org/wiki/JSON). Si accedes a `http://localhost:8181/swagger-ui/index.html` debes poder ver la documentación de la API mediante [Swagger UI](https://swagger.io/tools/swagger-ui/).
 4. Añade a los endpoints, parámetros, etc. la documentación de los mismos para que aparezca mediante correctamente [Swagger UI](https://swagger.io/tools/swagger-ui/). Escribe la documentación en inglés.
 
 ### Operaciones bulk
@@ -2057,6 +2061,7 @@ Imaginemos que un nuevo desarrollador se incorpora al proyecto y necesita entend
 Este issue detalla el trabajo necesario para implementar operaciones bulk en la API REST, aprovechando una arquitectura hexagonal. Las operaciones bulk permiten realizar acciones sobre múltiples recursos en una sola solicitud, optimizando el rendimiento de la red al reducir el número de solicitudes HTTP y la sobrecarga de comunicación. Sin embargo, su implementación requiere modificaciones en distintas capas y adaptadores de la arquitectura hexagonal para garantizar la integración sin comprometer la consistencia y la modularidad del sistema.
 
 **Objetivo:**
+
 Agregar soporte a la API para operaciones bulk en recursos específicos, permitiendo, por ejemplo, realizar inserciones, actualizaciones o eliminaciones de múltiples instancias de un mismo recurso en una sola solicitud. Esto optimizará la comunicación y mejorará el rendimiento en operaciones de gran volumen.
 
 **Ejemplos:**
