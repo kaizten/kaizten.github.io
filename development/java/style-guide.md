@@ -1,6 +1,7 @@
 # Java. Style guide
 
 - [Java. Style guide](#java-style-guide)
+  - [Format](#format)
   - [Filenames](#filenames)
   - [Folder names](#folder-names)
   - [Language](#language)
@@ -10,6 +11,11 @@
   - [`equals()`](#equals)
   - [`toString()`](#tostring)
   - [`pom.xml`](#pomxml)
+
+## Format
+
+* Content of Java files must be formatted using 4 spaces.
+* Braces must be used in block statatements (`if-else`, `for`, `while`, etc.).
 
 ## Filenames
 
