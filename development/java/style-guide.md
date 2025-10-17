@@ -2,6 +2,7 @@
 
 - [Java. Style guide](#java-style-guide)
   - [Format](#format)
+  - [File content](#file-content)
   - [Filenames](#filenames)
   - [Folder names](#folder-names)
   - [Language](#language)
@@ -16,6 +17,11 @@
 
 * Content of Java files must be formatted using 4 spaces.
 * Braces must be used in block statatements (`if-else`, `for`, `while`, etc.).
+
+## File content
+
+* Do not define multiple classes, interfaces, records, etc. in the same file. Instead, use a file for each top-level type.
+* Do not define nested types (classes, interfaces, records, etc.).
 
 ## Filenames
 
