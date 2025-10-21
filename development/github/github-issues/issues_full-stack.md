@@ -80,6 +80,7 @@
     - [Vistas](#vistas)
     - [Internacionalización](#internacionalización)
   - [Integración de Vuetify](#integración-de-vuetify)
+- [Sheriff](#sheriff)
 - [Docker compose](#docker-compose)
 - [Algoritmo](#algoritmo)
   - [Implementación](#implementación)
@@ -4369,6 +4370,14 @@ Una alternativa es emplear librerías de componentes que ya estén consolidadada
     yarn add vuetify
     ```
 2. Revisa el listado de componentes que tiene [Vuetify](https://vuetifyjs.com) desde [aquí](https://vuetifyjs.com/en/components/all) para que te hagas una idea de qué opciones puedes considerar a la hora de diseñar la interfaz de usuario.
+
+## Sheriff
+
+Hola, en la empresa tenemos una herramienta llamada `Sheriff` para el control de calidad del código. Esta herramienta realiza diversas comprobaciones sobre los componentes de software existentes en el repositorio. Algunas de estas comprobaciones son: documentación adecuada, uso de `@Override` en métodos sobrecargados, uso de llaves en condicionales y bucles, etc.
+
+En el repositorio, puedes encontrar un script llamado `sheriff.sh`. Este script aplica `Sheriff` sobre los componentes de software de tu repositorio y, si lo hay, te muestra un listado en formato JSON con los errores y warnings detectados. También, en cada error o warning te indica cómo resolverlo para ayudarte en la mejora de la calidad del código.
+
+En base a lo anterior, ejecuta el script `sheriff.sh`. Comprueba los posibles errores que muestra y corrígelos para mejorar la calidad del código.
 
 ## Docker compose
 
