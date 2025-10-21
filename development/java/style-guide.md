@@ -8,6 +8,7 @@
   - [Language](#language)
   - [Attributes](#attributes)
   - [Methods](#methods)
+  - [Imports](#imports)
   - [`hashCode()`](#hashcode)
   - [`equals()`](#equals)
   - [`toString()`](#tostring)
@@ -46,6 +47,10 @@
 ## Methods
 
 * Each method of a Java class must be documented by Javadoc.
+
+## Imports
+
+* Imports must be sorted alphabetically.
 
 ## `hashCode()`
 
