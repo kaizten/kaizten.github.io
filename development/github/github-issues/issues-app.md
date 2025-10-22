@@ -18,10 +18,66 @@
 - [Arquitectura hexagonal](#arquitectura-hexagonal)
 - [App](#app)
   - [Crear proyecto base](#crear-proyecto-base)
+      - [2.2 Lint, Prettier y Testing](#22-lint-prettier-y-testing)
+    - [3) Scripts en `package.json`](#3-scripts-en-packagejson)
+    - [4) Estructura hexagonal y ficheros base](#4-estructura-hexagonal-y-ficheros-base)
+      - [4.1 Crear estructura](#41-crear-estructura)
+      - [4.2 `src/adapter/react-native/screens/App.tsx`](#42-srcadapterreact-nativescreensapptsx)
+      - [4.3 `index.ts` (en la **raíz del proyecto**)](#43-indexts-en-la-raíz-del-proyecto)
+      - [4.4 Ajustar la entrada de la app](#44-ajustar-la-entrada-de-la-app)
+      - [4.5 `tsconfig.json` (en la **raíz**)](#45-tsconfigjson-en-la-raíz)
+    - [5) Arranque](#5-arranque)
   - [Rutas y navegación](#rutas-y-navegación)
+    - [1) Dependencias adicionales de navegación](#1-dependencias-adicionales-de-navegación)
+    - [2) Estructura de archivos de navegación](#2-estructura-de-archivos-de-navegación)
+    - [3) Creación de pantallas de ejemplo](#3-creación-de-pantallas-de-ejemplo)
+      - [3.1 `src/adapter/react-native/screens/HomeScreen.tsx`](#31-srcadapterreact-nativescreenshomescreentsx)
+      - [3.2 `src/adapter/react-native/screens/SettingsScreen.tsx`](#32-srcadapterreact-nativescreenssettingsscreentsx)
+    - [4) Definir el contenedor de navegación](#4-definir-el-contenedor-de-navegación)
+      - [4.1 `src/adapter/react-native/navigation/AppNavigator.tsx`](#41-srcadapterreact-nativenavigationappnavigatortsx)
+    - [5) Conectar la navegación con la app principal](#5-conectar-la-navegación-con-la-app-principal)
+    - [6) Probar la navegación](#6-probar-la-navegación)
+    - [7) Revisión de la arquitectura resultante](#7-revisión-de-la-arquitectura-resultante)
   - [Capa de dominio](#capa-de-dominio)
+    - [1) Escenario A. Usar dominio existente desde un *core-typescript*](#1-escenario-a-usar-dominio-existente-desde-un-core-typescript)
+      - [1.1 Instalación de dependencias](#11-instalación-de-dependencias)
+      - [1.2 Estructura esperada](#12-estructura-esperada)
+      - [1.3 Reexportar las entidades del dominio](#13-reexportar-las-entidades-del-dominio)
+    - [2) Escenario B. Crear el dominio manualmente](#2-escenario-b-crear-el-dominio-manualmente)
+      - [2.1 Recordatorio de convenciones básicas](#21-recordatorio-de-convenciones-básicas)
+      - [2.3 Ejemplo de entidad en TypeScript](#23-ejemplo-de-entidad-en-typescript)
+      - [2.4 Ejemplo de Value Object](#24-ejemplo-de-value-object)
+      - [2.5 Ejemplo de Enumerado](#25-ejemplo-de-enumerado)
+    - [3) Consideraciones técnicas](#3-consideraciones-técnicas)
+      - [3.1 Constructor único con parámetros opcionales](#31-constructor-único-con-parámetros-opcionales)
+      - [3.2 Reglas de diseño del dominio](#32-reglas-de-diseño-del-dominio)
+    - [4) Resultado esperado](#4-resultado-esperado)
   - [Capa de aplicación](#capa-de-aplicación)
-  - [Capa de adaptadores HTTP](#capa-de-adaptadores-HTTP)
+    - [1) Escenario A. Usar capa de aplicación existente desde un *core-typescript*](#1-escenario-a-usar-capa-de-aplicación-existente-desde-un-core-typescript)
+      - [1.1 Instalación de dependencias](#11-instalación-de-dependencias-1)
+      - [1.2 Estructura esperada](#12-estructura-esperada-1)
+      - [1.3 Reexportar los componentes del core](#13-reexportar-los-componentes-del-core)
+    - [2) Escenario B. Crear la capa de aplicación manualmente](#2-escenario-b-crear-la-capa-de-aplicación-manualmente)
+      - [2.2 Principios de diseño](#22-principios-de-diseño)
+      - [2.3 Ejemplo completo — Caso de uso de login](#23-ejemplo-completo--caso-de-uso-de-login)
+        - [Definición del caso de uso](#definición-del-caso-de-uso)
+        - [Implementación del servicio](#implementación-del-servicio)
+        - [Flujo resumido](#flujo-resumido)
+      - [2.4 Ejemplo de repositorio](#24-ejemplo-de-repositorio)
+      - [2.5 Prácticas a seguir](#25-prácticas-a-seguir)
+    - [3) Resultado esperado](#3-resultado-esperado)
+  - [Capa de adaptadores HTTP](#capa-de-adaptadores-http)
+    - [1) Escenario A. Usar adaptadores HTTP existentes desde un *core-typescript*](#1-escenario-a-usar-adaptadores-http-existentes-desde-un-core-typescript)
+      - [1.1 Estructura esperada](#11-estructura-esperada)
+      - [1.2 Reexportar adaptadores y DTOs desde el *core-typescript*](#12-reexportar-adaptadores-y-dtos-desde-el-core-typescript)
+    - [2) Escenario B. Crear la capa de adaptadores HTTP manualmente](#2-escenario-b-crear-la-capa-de-adaptadores-http-manualmente)
+      - [2.1 Estructura esperada](#21-estructura-esperada)
+      - [2.2 Creación de repositorios HTTP](#22-creación-de-repositorios-http)
+        - [Ejemplo: `OrganizationHttpRepository`](#ejemplo-organizationhttprepository)
+      - [2.3 Creación de DTOs](#23-creación-de-dtos)
+        - [Ejemplo: `OrganizationPutJsonRequest`](#ejemplo-organizationputjsonrequest)
+        - [Ejemplo: `OrganizationPostJsonRequest`](#ejemplo-organizationpostjsonrequest)
+        - [Ejemplo: `OrganizationJsonResponse`](#ejemplo-organizationjsonresponse)
 <!-- /TOC -->
 
 ## Docker
@@ -92,7 +148,7 @@ Hola, una herramienta que será necesaria en el proyecto en [NodeJS](https://nod
 
 ### Instalación
 
-[Yarn](https://yarnpkg.com) es un administrador de paquetes de código abierto utilizado en el desarrollo de software para gestionar dependencias y facilitar la construcción de proyectos en lenguajes de programación como [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript) o [TypeScript](https://www.typescriptlang.org).
+Hola, [Yarn](https://yarnpkg.com) es un administrador de paquetes de código abierto utilizado en el desarrollo de software para gestionar dependencias y facilitar la construcción de proyectos en lenguajes de programación como [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript) o [TypeScript](https://www.typescriptlang.org).
 
 **Pasos a realizar:**
 
@@ -769,16 +825,23 @@ Por último, en la imagen anterior aparece un elemento adicional llamado `Config
 
 ### Crear proyecto base
 
-#### 1) Crear proyecto Expo + TypeScript
-```bash
-npx create-expo-app@latest app -t expo-template-blank-typescript
-cd app
-```
+PONER UNA DESCRIPCIÓN GENERAL
 
-> Esto crea la base con `App.tsx`, `app.json`, etc. Usaremos `App.tsx` como entrada y añadiremos un **`index.ts`** para registrar el root (opcional pero recomendado para consistencia).
+**Pasos a realizar:**
 
-#### 2) Dependencias
-##### 2.1 Navegación y UI
+1. Crear proyecto Expo + TypeScript
+
+    ```bash
+    npx create-expo-app@latest app -t expo-template-blank-typescript
+    cd app
+    ```
+
+    > Esto crea la base con `App.tsx`, `app.json`, etc. Usaremos `App.tsx` como entrada y añadiremos un **`index.ts`** para registrar el root (opcional pero recomendado para consistencia).
+
+2. Dependencias
+
+    * Navegación y UI
+
 Usa **`expo install`** para resolver versiones compatibles:
 ```bash
 # Borramos archivos lock
@@ -795,6 +858,7 @@ yarn add react-native-paper @expo/vector-icons
 ```
 
 ##### 2.2 Lint, Prettier y Testing
+
 ```bash
 # Borramos archivos lock
 rm yarn.lock
