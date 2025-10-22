@@ -21,19 +21,6 @@
   - [Rutas y navegación](#rutas-y-navegación)
   - [Capa de dominio](#capa-de-dominio)
   - [Capa de aplicación](#capa-de-aplicación)
-    - [1) Escenario A. Usar capa de aplicación existente desde un *core-typescript*](#1-escenario-a-usar-capa-de-aplicación-existente-desde-un-core-typescript)
-      - [1.1 Instalación de dependencias](#11-instalación-de-dependencias-1)
-      - [1.2 Estructura esperada](#12-estructura-esperada-1)
-      - [1.3 Reexportar los componentes del core](#13-reexportar-los-componentes-del-core)
-    - [2) Escenario B. Crear la capa de aplicación manualmente](#2-escenario-b-crear-la-capa-de-aplicación-manualmente)
-      - [2.2 Principios de diseño](#22-principios-de-diseño)
-      - [2.3 Ejemplo completo — Caso de uso de login](#23-ejemplo-completo--caso-de-uso-de-login)
-        - [Definición del caso de uso](#definición-del-caso-de-uso)
-        - [Implementación del servicio](#implementación-del-servicio)
-        - [Flujo resumido](#flujo-resumido)
-      - [2.4 Ejemplo de repositorio](#24-ejemplo-de-repositorio)
-      - [2.5 Prácticas a seguir](#25-prácticas-a-seguir)
-    - [3) Resultado esperado](#3-resultado-esperado)
   - [Capa de adaptadores HTTP](#capa-de-adaptadores-http)
     - [1) Escenario A. Usar adaptadores HTTP existentes desde un *core-typescript*](#1-escenario-a-usar-adaptadores-http-existentes-desde-un-core-typescript)
       - [1.1 Estructura esperada](#11-estructura-esperada)
@@ -791,13 +778,13 @@ Por último, en la imagen anterior aparece un elemento adicional llamado `Config
 
 ## App
 
-### Crear proyecto base
+### Crear proyecto base:
 
 En este paso se creará la **base del proyecto móvil** con **Expo + TypeScript**, siguiendo una estructura limpia y escalable alineada con la **arquitectura hexagonal**. Se establecerán las **configuraciones iniciales**, las **dependencias principales** (navegación, UI, linting y testing) y la **estructura de carpetas** que servirá como punto de partida para el desarrollo modular de la aplicación.
 
 **Pasos a realizar:**
 
-**1. Crear proyecto Expo + TypeScript**
+**1. Crear proyecto Expo + TypeScript:**
 
     ```bash
     npx create-expo-app@latest app -t expo-template-blank-typescript
@@ -806,9 +793,9 @@ En este paso se creará la **base del proyecto móvil** con **Expo + TypeScript*
 
     > Esto crea la base con `App.tsx`, `app.json`, etc. Usaremos `App.tsx` como entrada y añadiremos un **`index.ts`** para registrar el root (opcional pero recomendado para consistencia).
 
-**2. Dependencias**
+**2. Dependencias:**
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 Navegación y UI**
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 Navegación y UI:**
 
 Usa **`expo install`** para resolver versiones compatibles:
 ```bash
@@ -825,7 +812,7 @@ yarn add @react-native-async-storage/async-storage
 yarn add react-native-paper @expo/vector-icons
 ```
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 Lint, Prettier y Testing**
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 Lint, Prettier y Testing:**
 
 ```bash
 # Borramos archivos lock
@@ -851,11 +838,11 @@ Edita `package.json` y añade estos flags en scripts:
 }
 ```
 
-**4. Estructura hexagonal y ficheros base**
+**4. Estructura hexagonal y ficheros base:**
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1 Crear estructura**
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1 Crear estructura:**
 
-En la raíz del proyecto ejecuta lo siguiente para crear la **estructura base de la arquitectura hexagonal**.
+En la raíz del proyecto ejecuta lo siguiente para crear la **estructura base de la arquitectura hexagonal:**.
 ```bash
 mkdir -p src/domain/{entity,valueobject,enumerate}
 mkdir -p src/application/{usecase,service,repository}
@@ -863,7 +850,7 @@ mkdir -p src/adapter/{react-native/screens,http,persistence}
 mkdir -p src/configuration
 ```
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.2 Raíz del proyecto `src/adapter/react-native/screens/App.tsx`**
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.2 Raíz del proyecto `src/adapter/react-native/screens/App.tsx`:**
 
 El `App.tsx` generado en la raiz del proyecto pásalo a **dentro de `src/adapter/react-native/screens/App.tsx`** con el contenido que se expone a continuación, además apuntaremos la entrada a él (paso 4.3).
 
@@ -906,7 +893,7 @@ const styles = StyleSheet.create({
 });
 ```
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3 Crear `index.ts` (en la **raíz del proyecto**)**
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3 Crear `index.ts` (en la **raíz del proyecto**):**
 
 Expo puede arrancar con `App.tsx` directo, pero usamos `index.ts` para registrar el root y apuntar a nuestra `App` bajo `src/`.
 
@@ -917,7 +904,7 @@ import App from './src/adapter/react-native/screens/App';
 registerRootComponent(App);
 ```
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4 Ajustar la entrada de la app**
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4 Ajustar la entrada de la app:**
 
 Edita `app.json` para que Expo use `index.ts` como entrada (propiedad `entryPoint`):
 ```json
@@ -931,7 +918,7 @@ Edita `app.json` para que Expo use `index.ts` como entrada (propiedad `entryPoin
 ```
 > No borres otras propiedades que ya existan en tu `app.json`; añade `entryPoint`.
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.5 Crear `tsconfig.json` (en la raíz)**
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.5 Crear `tsconfig.json` (en la raíz):**
 ```json
 {
   "compilerOptions": {
@@ -958,7 +945,7 @@ Edita `app.json` para que Expo use `index.ts` como entrada (propiedad `entryPoin
 }
 ```
 
-**5. Arranque**
+**5. Arranque:**
 
 Primero instala las siguientes dependencias para el arranque web:
 ```bash
@@ -982,7 +969,7 @@ En este issue, el alumno aprenderá a **crear el sistema de navegación principa
 
 **Pasos a realizar:**
 
-**1. Dependencias adicionales de navegación**
+**1. Dependencias adicionales de navegación:**
 
 Ya que partimos del proyecto creado en el issue anterior, solo añadiremos el paquete del menú lateral.
 
@@ -994,7 +981,7 @@ yarn add @react-navigation/drawer
 > **Nota:** Ya se instalaron las dependencias base (`@react-navigation/native`, `@react-navigation/native-stack`, `react-native-screens`, `react-native-safe-area-context`, etc.) en el issue anterior.
 
 
-**2. Estructura de archivos de navegación**
+**2. Estructura de archivos de navegación:**
 
 Siguiendo la arquitectura hexagonal, la navegación se ubica dentro de la carpeta `adapter/react-native/navigation/`.
 
@@ -1011,9 +998,9 @@ src/
         SettingsScreen.tsx
 ```
 
-**3. Creación de pantallas de ejemplo**
+**3. Creación de pantallas de ejemplo:**
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.1 Crear `src/adapter/react-native/screens/HomeScreen.tsx`**
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.1 Crear `src/adapter/react-native/screens/HomeScreen.tsx`:**
 
 ```tsx
 import { StyleSheet } from 'react-native';
@@ -1039,7 +1026,7 @@ const styles = StyleSheet.create({
 });
 ```
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2 Crear `src/adapter/react-native/screens/SettingsScreen.tsx`**
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2 Crear `src/adapter/react-native/screens/SettingsScreen.tsx`:**
 
 ```tsx
 import { StyleSheet } from 'react-native';
@@ -1062,9 +1049,9 @@ const styles = StyleSheet.create({
 });
 ```
 
-**4. Definir el contenedor de navegación**
+**4. Definir el contenedor de navegación:**
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1 Crear `src/adapter/react-native/navigation/AppNavigator.tsx`**
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1 Crear `src/adapter/react-native/navigation/AppNavigator.tsx`:**
 
 Crea un contenedor que gestione las rutas y el menú lateral.
 
@@ -1117,7 +1104,7 @@ export default function AppNavigator() {
 > `PaperProvider` y `SafeAreaProvider` envuelven toda la app para estilos y zonas seguras.
 
 
-**5. Conectar la navegación con la app principal**
+**5. Conectar la navegación con la app principal:**
 
 Edita `src/adapter/react-native/screens/App.tsx` para que cargue el nuevo `AppNavigator`:
 
@@ -1130,7 +1117,7 @@ export default function App() {
 }
 ```
 
-**6. Probar la navegación**
+**6. Probar la navegación:**
 
 Ejecuta la aplicación con Expo:
 
@@ -1144,7 +1131,7 @@ Pulsa:
 Deberías ver el menú lateral con dos opciones: **Inicio** y **Configuración**.  
 Cada una muestra su respectiva pantalla.
 
-**7. Revisión de la arquitectura resultante**
+**7. Revisión de la arquitectura resultante:**
 
 ```
 src/
@@ -1167,11 +1154,11 @@ Con esto, el alumno tiene un **sistema de navegación funcional**, con menú lat
 
 En este issue, debes definir la **capa de dominio** de la aplicación móvil React Native + TypeScript dentro de la arquitectura hexagonal. El dominio representa **el corazón de la aplicación**, donde residen las entidades, objetos de valor y enumerados que modelan la realidad del problema. El objetivo es que esta capa esté completamente tipada, organizada y desacoplada de cualquier tecnología (UI, API, persistencia). Pueden darse dos escenarios en tu proyecto:
 
-**1. Escenario A. Usar dominio existente desde un *core-typescript***
+**1. Escenario A. Usar dominio existente desde un *core-typescript*:**
 
 Si el proyecto ya cuenta con un paquete `core-typescript`, **no debes duplicar** las clases, sino importar y reexportar lo necesario desde ese módulo.
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1 Instalación de dependencias**
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1 Instalación de dependencias:**
 
 ```bash
 yarn add @kaizten/core-typescript @kaizten/kaizten-typescript
@@ -1180,7 +1167,7 @@ yarn add @kaizten/core-typescript @kaizten/kaizten-typescript
 > `@kaizten/core-typescript`: contiene las entidades, value objects y enumerados compartidos con el backend.  
 > `@kaizten/kaizten-typescript`: proporciona utilidades comunes (tipos `Either`, `ApiError`, validadores, etc.).
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2 Estructura esperada**
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2 Estructura esperada:**
 
 ```
 src/
@@ -1188,7 +1175,7 @@ src/
     index.ts
 ```
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.3 Reexportar las entidades del dominio**
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.3 Reexportar las entidades del dominio:**
 
 En `src/domain/index.ts` reexporta los modelos relevantes desde el core:
 
@@ -1209,11 +1196,11 @@ import { EntityA, EntityB, EntityC, EntityD } from '@domain';
 > La principal ventaja es que el dominio queda centralizado, sin duplicar código ni generar inconsistencias entre backend y app.
 
 
-**2. Escenario B. Crear el dominio manualmente**
+**2. Escenario B. Crear el dominio manualmente:**
 
 Si no existe un paquete `core-typescript`, debes **replicar el dominio del backend Java** en TypeScript. El backend de Java debe encontrarse en la carpeta principal del repositorio en la carpeta `back-end`. Este, sigue una arquitectura hexagonal, por lo que será fácil localizar el dominio.
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 Recordatorio de convenciones básicas**
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 Recordatorio de convenciones básicas:**
 
 - **Entities (`entity/`)**: representan objetos con identidad propia y ciclo de vida (por ejemplo: `User`, `Order`, `Product`, `Organization`).
 - **Value Objects (`valueobject/`)**: representan conceptos sin identidad propia (por ejemplo: `Email`, `Money`, `Coordinates`, `OrganizationName`).
@@ -1231,7 +1218,7 @@ src/domain/
     IncidentType.ts
 ```
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 Ejemplo de entidad en TypeScript**
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 Ejemplo de entidad en TypeScript:**
 
 ```ts
 export class Organization {
@@ -1341,7 +1328,7 @@ export class Organization {
 }
 ```
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3 Ejemplo de Value Object**
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3 Ejemplo de Value Object:**
 
 ```ts
 export class OrganizationName {
@@ -1436,7 +1423,7 @@ export class OrganizationName {
 }
 ```
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.4 Ejemplo de Enumerado**
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.4 Ejemplo de Enumerado:**
 
 ```ts
 export enum IncidentTypeValues {
@@ -1526,9 +1513,9 @@ export class IncidentType {
 }
 ```
 
-**3. Consideraciones técnicas**
+**3. Consideraciones técnicas:**
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1 Constructor único con parámetros opcionales**
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1 Constructor único con parámetros opcionales:**
 
 En Java es común definir múltiples constructores; en TypeScript **esto no es posible**. Para mantener la misma funcionalidad, usa **parámetros opcionales**, por ejemplo:
 
@@ -1551,14 +1538,14 @@ export class Organization {
 }
 ```
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2 Reglas de diseño del dominio**
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2 Reglas de diseño del dominio:**
 
 - Es importante, no incluir lógica de red, almacenamiento o UI en el dominio.
 - No acceder a APIs, AsyncStorage ni repositorios directamente desde el dominio.
 - Solo debe contener la lógica de negocio pura (validaciones, comportamientos, etc.).
 - Los value objects deben ser **inmutables**.
 
-**4. Resultado esperado**
+**4. Resultado esperado:**
 
 Tras este issue, la app debe contar con una **capa de dominio limpia, coherente y aislada**, ya sea importada desde un *core-typescript* o definida manualmente.
 
@@ -1585,11 +1572,12 @@ En este issue, debes definir la **capa de aplicación** de tu app móvil React N
 
 Pueden darse dos escenarios:
 
-#### 1) Escenario A. Usar capa de aplicación existente desde un *core-typescript*
+**1. Escenario A. Usar capa de aplicación existente desde un *core-typescript*:**
 
 Si el proyecto ya cuenta con un paquete `core-typescript`, **no debes duplicar** la capa de aplicación, sino importar y reexportar lo necesario desde ese módulo.
 
-##### 1.1 Instalación de dependencias
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1 Instalación de dependencias:**
+
 ```bash
 yarn add @kaizten/core-typescript @kaizten/kaizten-typescript
 ```
@@ -1598,7 +1586,8 @@ yarn add @kaizten/core-typescript @kaizten/kaizten-typescript
 > `@kaizten/kaizten-typescript`: proporciona utilidades comunes (`Either`, `ApiError`, validadores, etc.).
 
 
-##### 1.2 Estructura esperada
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2 Estructura esperada:**
+
 ```
 src/
   application/
@@ -1607,7 +1596,8 @@ src/
     service/
 ```
 
-##### 1.3 Reexportar los componentes del core
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.3 Reexportar los componentes del core:**
+
 Ejemplo de reexportación desde el `core-typescript`:
 
 ```ts
@@ -1643,11 +1633,11 @@ export { ServiceF } from '@kaizten/core-typescript';
 export { ServiceG } from '@kaizten/core-typescript';
 ```
 
-#### 2) Escenario B. Crear la capa de aplicación manualmente
+**2. Escenario B. Crear la capa de aplicación manualmente:**
 
 Si no existe un *core-typescript*, deberás crear **repositorios**, **casos de uso** y **servicios** en tu proyecto. Esta capa actuará como **puente entre la interfaz (UI)** y la **lógica de dominio**.
 
-##### 2.2 Principios de diseño
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 Principios de diseño:**
 
 | Componente | Descripción | Ejemplo |
 |-------------|--------------|----------|
@@ -1656,9 +1646,9 @@ Si no existe un *core-typescript*, deberás crear **repositorios**, **casos de u
 | **Service** | Implementa el **cómo**: orquesta repositorios, aplica reglas, devuelve resultados tipados (`Either<ApiError, T>`). | `LogInUserService`, `CreateTaskService`, etc. |
 
 
-##### 2.3 Ejemplo completo — Caso de uso de login
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3 Ejemplo completo — Caso de uso de login:**
 
-###### Definición del caso de uso
+**Definición del caso de uso:**
 ```ts
 import { AuthLoginRequest } from '@/domain/interface/auth-login-request';
 import { AuthLoginResponse } from '@/domain/interface/auth-login-response';
@@ -1674,7 +1664,7 @@ export interface LogInUserUseCase {
 - No especifica cómo se ejecuta; eso lo hará el `Service`.
 - Retorna un `Promise<Either<ApiError, AuthLoginResponse>>`, permitiendo manejar tanto errores (`Left`) como éxitos (`Right`).
 
-###### Implementación del servicio
+**Implementación del servicio:**
 ```ts
 export class LogInUserService implements LogInUserUseCase {
   constructor(private repository: UserRepository) {}
@@ -1690,7 +1680,7 @@ export class LogInUserService implements LogInUserUseCase {
 - Inyecta un `UserRepository` para delegar el acceso a datos.
 - Devuelve el resultado como un `Either<ApiError, AuthLoginResponse>`.
 
-###### Flujo resumido
+**Flujo resumido:**
 
 ```text
  UI / Pantalla
@@ -1708,7 +1698,7 @@ export class LogInUserService implements LogInUserUseCase {
  API / DB
 ```
 
-##### 2.4 Ejemplo de repositorio
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.4 Ejemplo de repositorio:**
 ```ts
 export interface UserRepository {
   login(request: AuthLoginRequest): Promise<Either<ApiError, AuthLoginResponse>>;
@@ -1717,7 +1707,7 @@ export interface UserRepository {
 }
 ```
 
-##### 2.5 Prácticas a seguir
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.5 Prácticas a seguir:**
 
 - Cada caso de uso (`usecase`) tiene **una única responsabilidad**.  
 - Los servicios (`service`) **implementan** los casos de uso y **no acceden directamente** a la API.  
@@ -1725,7 +1715,7 @@ export interface UserRepository {
 - Devuelve siempre `Promise<Either<ApiError, T>>` para tipar correctamente errores y respuestas.  
 - Organiza los ficheros siguiendo el patrón `usecase/<action>-<entity>-use-case.ts` y `service/<action>-<entity>-service.ts`.
 
-#### 3) Resultado esperado
+**3. Resultado esperado:**
 
 Tras este issue, la app debe contar con una **capa de aplicación funcional y tipada**, que actúe como interfaz entre la lógica de dominio y la capa de infraestructura.
 
