@@ -1770,10 +1770,10 @@ src/
 
 ##### 2.2 Creación de repositorios HTTP
 
-Crea una carpeta `src/adapter/http` en el proyecto del front-end. En ella se incluirán las clases que implementan los **repositorios HTTP**, responsables de comunicar la aplicación con el backend mediante peticiones REST. Para cada entidad `<ENTITY>` definida en la capa de aplicación:
-- Crea un archivo `src/adapter/http/<entity>-http-repository.ts`.  
+Crea una carpeta `src/adapter/http/repository` en el proyecto del front-end. En ella se incluirán las clases que implementan los **repositorios HTTP**, responsables de comunicar la aplicación con el backend mediante peticiones REST. Para cada entidad `<ENTITY>` definida en la capa de aplicación:
+- Crea un archivo `src/adapter/http/repository/<entity>-http-repository.ts`.  
 - Implementa en él una clase `class <Entity>HttpRepository` que **implemente la interfaz** `<Entity>Repository` definida en issues previos en `application/repository`.  
-- Usa los **DTOs** (`<ENTITY>JsonResponse`, `<ENTITY>PostJsonRequest`, `<ENTITY>PutJsonRequest`) para convertir los datos entre la API y las entidades del dominio. Su definición se encuentra en el siguiente paso.
+- Usa los **DTOs** (`<ENTITY>JsonResponse`, `<ENTITY>PostJsonRequest`, `<ENTITY>PutJsonRequest`) para convertir los datos entre la API y las entidades del dominio. **Su definición se encuentra en el siguiente paso.**
 
 Cada repositorio debe gestionar las operaciones básicas:
 
