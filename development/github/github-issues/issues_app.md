@@ -1015,6 +1015,7 @@ const styles = StyleSheet.create({
 
 Crea un contenedor que gestione las rutas y el menú lateral.
 
+{% raw %}
 ```tsx
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
@@ -1058,6 +1059,7 @@ export default function AppNavigator() {
   );
 }
 ```
+{% endraw %}
 
 > El `Drawer.Navigator` define el menú lateral.  
 > Cada `Drawer.Screen` es una pantalla accesible desde ese menú.  
