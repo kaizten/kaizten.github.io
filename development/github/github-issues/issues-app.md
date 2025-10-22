@@ -1523,12 +1523,12 @@ src/
   configuration/
 ```
 
-> En el siguiente issue se trabajará la capa **application**, implementando repositorios, use-cases y servicios que operen sobre este dominio.
+> En el siguiente issue se trabajará la capa **application**, implementando repositorios, casos de usos y servicios que operen sobre este dominio.
 
 
 ### Capa de aplicación
 
-En este issue, debes definir la **capa de aplicación** de tu app móvil React Native + TypeScript dentro de la arquitectura hexagonal. Esta capa representa la **lógica de negocio de alto nivel**, es decir, **cómo interactúan las entidades y servicios** para cumplir con los casos de uso de la aplicación. El objetivo es estructurar los **repositorios**, **casos de uso (use-cases)** y **servicios (services)** de forma desacoplada, tipada y coherente con el dominio que ya definiste o importaste.
+En este issue, debes definir la **capa de aplicación** de tu app móvil React Native + TypeScript dentro de la arquitectura hexagonal. Esta capa representa la **lógica de negocio de alto nivel**, es decir, **cómo interactúan las entidades y servicios** para cumplir con los casos de uso de la aplicación. El objetivo es estructurar los **repositorios**, **casos de uso** y **servicios** de forma desacoplada, tipada y coherente con el dominio que ya definiste o importaste.
 
 Pueden darse dos escenarios:
 
@@ -1569,7 +1569,7 @@ export { RepositoryG } from '@kaizten/core-typescript';
 ```
 
 ```ts
-// src/application/use-case/index.ts
+// src/application/usecase/index.ts
 export { UseCaseA } from '@kaizten/core-typescript';
 export { UseCaseB } from '@kaizten/core-typescript';
 export { UseCaseC } from '@kaizten/core-typescript';
@@ -1623,12 +1623,6 @@ export interface LogInUserUseCase {
 
 ###### Implementación del servicio
 ```ts
-import { AuthLoginRequest } from '@/domain/interface/auth-login-request';
-import { AuthLoginResponse } from '@/domain/interface/auth-login-response';
-import { UserRepository } from '../repository/user-repository';
-import { LogInUserUseCase } from '../use-case/login-user-use-case';
-import { ApiError, Either } from '@kaizten/kaizten-typescript';
-
 export class LogInUserService implements LogInUserUseCase {
   constructor(private repository: UserRepository) {}
 
@@ -1663,10 +1657,6 @@ export class LogInUserService implements LogInUserUseCase {
 
 ##### 2.4 Ejemplo de repositorio
 ```ts
-import { Either, ApiError } from '@kaizten/kaizten-typescript';
-import { AuthLoginRequest } from '@/domain/interface/auth-login-request';
-import { AuthLoginResponse } from '@/domain/interface/auth-login-response';
-
 export interface UserRepository {
   login(request: AuthLoginRequest): Promise<Either<ApiError, AuthLoginResponse>>;
   refresh(token: string): Promise<Either<ApiError, { accessToken: string }>>;
@@ -1676,11 +1666,11 @@ export interface UserRepository {
 
 ##### 2.5 Prácticas a seguir
 
-- Cada caso de uso (`use-case`) tiene **una única responsabilidad**.  
+- Cada caso de uso (`usecase`) tiene **una única responsabilidad**.  
 - Los servicios (`service`) **implementan** los casos de uso y **no acceden directamente** a la API.  
 - Los repositorios definen contratos, **no implementaciones** (eso se hará más adelante en la capa de adaptadores, en la que, por ejemplo, se implementarán los **repositorios HTTP**).
 - Devuelve siempre `Promise<Either<ApiError, T>>` para tipar correctamente errores y respuestas.  
-- Organiza los ficheros siguiendo el patrón `use-case/<action>-<entity>-use-case.ts` y `service/<action>-<entity>-service.ts`.
+- Organiza los ficheros siguiendo el patrón `usecase/<action>-<entity>-use-case.ts` y `service/<action>-<entity>-service.ts`.
 
 #### 3) Resultado esperado
 
@@ -1691,7 +1681,7 @@ src/
   domain/
   application/
     repository/
-    use-case/
+    usecase/
     service/
   adapter/
   configuration/
