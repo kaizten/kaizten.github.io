@@ -17,7 +17,7 @@
 - [`script-github-commit.sh`](#script-github-commitsh)
 - [Arquitectura hexagonal](#arquitectura-hexagonal)
 - [App](#app)
-  - [Crear proyecto base:](#crear-proyecto-base)
+  - [Crear proyecto base](#crear-proyecto-base)
   - [Rutas y navegación](#rutas-y-navegación)
   - [Capa de dominio](#capa-de-dominio)
   - [Capa de aplicación](#capa-de-aplicación)
@@ -737,7 +737,7 @@ El objetivo principal de usar este tipo de arquitectura de software es crear apl
 
 ## App
 
-### Crear proyecto base:
+### Crear proyecto base
 
 En este paso se creará la **base del proyecto móvil** con **Expo + TypeScript**, siguiendo una estructura limpia y escalable alineada con la **arquitectura hexagonal**. Se establecerán las **configuraciones iniciales**, las **dependencias principales** (navegación, UI, linting y testing) y la **estructura de carpetas** que servirá como punto de partida para el desarrollo modular de la aplicación.
 
