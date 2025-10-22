@@ -825,11 +825,11 @@ Por último, en la imagen anterior aparece un elemento adicional llamado `Config
 
 ### Crear proyecto base
 
-PONER UNA DESCRIPCIÓN GENERAL
+En este paso se creará la **base del proyecto móvil** con **Expo + TypeScript**, siguiendo una estructura limpia y escalable alineada con la **arquitectura hexagonal**. Se establecerán las **configuraciones iniciales**, las **dependencias principales** (navegación, UI, linting y testing) y la **estructura de carpetas** que servirá como punto de partida para el desarrollo modular de la aplicación.
 
 **Pasos a realizar:**
 
-1. Crear proyecto Expo + TypeScript
+**1. Crear proyecto Expo + TypeScript**
 
     ```bash
     npx create-expo-app@latest app -t expo-template-blank-typescript
@@ -838,9 +838,9 @@ PONER UNA DESCRIPCIÓN GENERAL
 
     > Esto crea la base con `App.tsx`, `app.json`, etc. Usaremos `App.tsx` como entrada y añadiremos un **`index.ts`** para registrar el root (opcional pero recomendado para consistencia).
 
-2. Dependencias
+**2. Dependencias**
 
-    * Navegación y UI
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 Navegación y UI**
 
 Usa **`expo install`** para resolver versiones compatibles:
 ```bash
@@ -857,7 +857,7 @@ yarn add @react-native-async-storage/async-storage
 yarn add react-native-paper @expo/vector-icons
 ```
 
-##### 2.2 Lint, Prettier y Testing
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 Lint, Prettier y Testing**
 
 ```bash
 # Borramos archivos lock
@@ -866,8 +866,10 @@ rm yarn.lock
 yarn add -D eslint prettier @types/jest jest @testing-library/react-native
 ```
 
-#### 3) Scripts en `package.json`
+**3. Scripts en `package.json`**
+
 Edita `package.json` y añade estos flags en scripts:
+
 ```json
 {
   ...
@@ -881,9 +883,10 @@ Edita `package.json` y añade estos flags en scripts:
 }
 ```
 
-#### 4) Estructura hexagonal y ficheros base
+**4. Estructura hexagonal y ficheros base**
 
-##### 4.1 Crear estructura
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1 Crear estructura**
+
 En la raíz del proyecto ejecuta lo siguiente para crear la **estructura base de la arquitectura hexagonal**.
 ```bash
 mkdir -p src/domain/{entity,valueobject,enumerate}
@@ -892,7 +895,8 @@ mkdir -p src/adapter/{react-native/screens,http,persistence}
 mkdir -p src/configuration
 ```
 
-##### 4.2 `src/adapter/react-native/screens/App.tsx`
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.2 Raíz del proyecto `src/adapter/react-native/screens/App.tsx`**
+
 El `App.tsx` generado en la raiz del proyecto pásalo a **dentro de `src/adapter/react-native/screens/App.tsx`** con el contenido que se expone a continuación, además apuntaremos la entrada a él (paso 4.3).
 
 ```tsx
@@ -934,7 +938,8 @@ const styles = StyleSheet.create({
 });
 ```
 
-##### 4.3 `index.ts` (en la **raíz del proyecto**)
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3 Crear `index.ts` (en la **raíz del proyecto**)**
+
 Expo puede arrancar con `App.tsx` directo, pero usamos `index.ts` para registrar el root y apuntar a nuestra `App` bajo `src/`.
 
 ```ts
@@ -944,7 +949,8 @@ import App from './src/adapter/react-native/screens/App';
 registerRootComponent(App);
 ```
 
-##### 4.4 Ajustar la entrada de la app
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4 Ajustar la entrada de la app**
+
 Edita `app.json` para que Expo use `index.ts` como entrada (propiedad `entryPoint`):
 ```json
 {
@@ -957,7 +963,7 @@ Edita `app.json` para que Expo use `index.ts` como entrada (propiedad `entryPoin
 ```
 > No borres otras propiedades que ya existan en tu `app.json`; añade `entryPoint`.
 
-##### 4.5 `tsconfig.json` (en la **raíz**)
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.5 Crear `tsconfig.json` (en la raíz)**
 ```json
 {
   "compilerOptions": {
@@ -984,7 +990,8 @@ Edita `app.json` para que Expo use `index.ts` como entrada (propiedad `entryPoin
 }
 ```
 
-#### 5) Arranque
+**5. Arranque**
+
 Primero instala las siguientes dependencias para el arranque web:
 ```bash
 npx expo install react-dom react-native-web
@@ -1005,7 +1012,10 @@ Deberías ver en el navegador la pantalla inicial definida en **App.tsx**.
 
 En este issue, el alumno aprenderá a **crear el sistema de navegación principal** de la aplicación móvil Expo con arquitectura hexagonal. El objetivo es disponer de un **menú lateral (Drawer)** y varias pantallas simples para probar las rutas y el sistema de navegación.
 
-#### 1) Dependencias adicionales de navegación
+**Pasos a realizar:**
+
+**1. Dependencias adicionales de navegación**
+
 Ya que partimos del proyecto creado en el issue anterior, solo añadiremos el paquete del menú lateral.
 
 ```bash
@@ -1016,7 +1026,8 @@ yarn add @react-navigation/drawer
 > **Nota:** Ya se instalaron las dependencias base (`@react-navigation/native`, `@react-navigation/native-stack`, `react-native-screens`, `react-native-safe-area-context`, etc.) en el issue anterior.
 
 
-#### 2) Estructura de archivos de navegación
+**2. Estructura de archivos de navegación**
+
 Siguiendo la arquitectura hexagonal, la navegación se ubica dentro de la carpeta `adapter/react-native/navigation/`.
 
 Crea las siguientes rutas y archivos:
@@ -1032,9 +1043,10 @@ src/
         SettingsScreen.tsx
 ```
 
-#### 3) Creación de pantallas de ejemplo
+**3. Creación de pantallas de ejemplo**
 
-##### 3.1 `src/adapter/react-native/screens/HomeScreen.tsx`
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.1 Crear `src/adapter/react-native/screens/HomeScreen.tsx`**
+
 ```tsx
 import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -1059,7 +1071,8 @@ const styles = StyleSheet.create({
 });
 ```
 
-##### 3.2 `src/adapter/react-native/screens/SettingsScreen.tsx`
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2 Crear `src/adapter/react-native/screens/SettingsScreen.tsx`**
+
 ```tsx
 import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -1081,10 +1094,10 @@ const styles = StyleSheet.create({
 });
 ```
 
+**4. Definir el contenedor de navegación**
 
-#### 4) Definir el contenedor de navegación
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1 Crear `src/adapter/react-native/navigation/AppNavigator.tsx`**
 
-##### 4.1 `src/adapter/react-native/navigation/AppNavigator.tsx`
 Crea un contenedor que gestione las rutas y el menú lateral.
 
 ```tsx
@@ -1136,7 +1149,7 @@ export default function AppNavigator() {
 > `PaperProvider` y `SafeAreaProvider` envuelven toda la app para estilos y zonas seguras.
 
 
-#### 5) Conectar la navegación con la app principal
+**5. Conectar la navegación con la app principal**
 
 Edita `src/adapter/react-native/screens/App.tsx` para que cargue el nuevo `AppNavigator`:
 
@@ -1149,7 +1162,7 @@ export default function App() {
 }
 ```
 
-#### 6) Probar la navegación
+**6. Probar la navegación**
 
 Ejecuta la aplicación con Expo:
 
@@ -1163,7 +1176,7 @@ Pulsa:
 Deberías ver el menú lateral con dos opciones: **Inicio** y **Configuración**.  
 Cada una muestra su respectiva pantalla.
 
-#### 7) Revisión de la arquitectura resultante
+**7. Revisión de la arquitectura resultante**
 
 ```
 src/
