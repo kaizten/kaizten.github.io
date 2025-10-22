@@ -17,8 +17,8 @@
 - [`script-github-commit.sh`](#script-github-commitsh)
 - [Arquitectura hexagonal](#arquitectura-hexagonal)
 - [App](#app)
-  - [Crear proyecto de app](#crear-proyecto-de-app)
-  - [Rutas y navigation drawer](#rutas-y-navigation-drawer)
+  - [Crear proyecto base](#crear-proyecto-base)
+  - [Rutas y navegación](#rutas-y-navegación)
   - [Capa de dominio](#capa-de-dominio)
   - [Capa de aplicación](#capa-de-aplicación)
 <!-- /TOC -->
@@ -766,7 +766,7 @@ Por último, en la imagen anterior aparece un elemento adicional llamado `Config
 
 ## App
 
-### Crear proyecto de app
+### Crear proyecto base
 
 #### 1) Crear proyecto Expo + TypeScript
 ```bash
@@ -936,7 +936,7 @@ yarn start
 Deberías ver en el navegador la pantalla inicial definida en **App.tsx**.
 
 
-### Rutas y navigation drawer
+### Rutas y navegación
 
 En este issue, el alumno aprenderá a **crear el sistema de navegación principal** de la aplicación móvil Expo con arquitectura hexagonal. El objetivo es disponer de un **menú lateral (Drawer)** y varias pantallas simples para probar las rutas y el sistema de navegación.
 
