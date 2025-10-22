@@ -21,6 +21,7 @@
   - [Rutas y navegación](#rutas-y-navegación)
   - [Capa de dominio](#capa-de-dominio)
   - [Capa de aplicación](#capa-de-aplicación)
+  - [Capa de adaptadores HTTP](#capa-de-adaptadores-HTTP)
 <!-- /TOC -->
 
 ## Docker
@@ -1687,4 +1688,328 @@ src/
   configuration/
 ```
 
-> En el siguiente issue se trabajará la capa **adapter**, donde implementarás las llamadas HTTP, almacenamiento y comunicación real con la API.
+> En el siguiente issue se trabajará la capa **adapter**, donde implementarás los repositorios HTTP, entre otros adaptadores.
+
+
+### Capa de adaptadores HTTP
+
+En este issue, debes definir la **capa de adaptadores HTTP** de tu app móvil React Native + TypeScript dentro de la arquitectura hexagonal. Esta capa representa el **puente entre la aplicación y las fuentes de datos externas (API, backend, etc.)**, proporcionando una implementación concreta de los **repositorios definidos en la capa de aplicación**.
+
+El objetivo es estructurar correctamente los **repositorios HTTP**, reexportarlos desde un *core-typescript* si existen, o crearlos manualmente siguiendo buenas prácticas y usando **DTOs (Data Transfer Objects)** para desacoplar la comunicación entre capas.
+
+Pueden darse dos escenarios:
+
+#### 1) Escenario A. Usar adaptadores HTTP existentes desde un *core-typescript*
+
+Si el proyecto ya cuenta con un paquete `core-typescript`, **no debes duplicar** los adaptadores HTTP, sino importarlos y reexportarlos desde ese módulo.
+
+##### 1.1 Estructura esperada
+
+```
+src/
+└── adapter/
+    ├── http/                  ### Repositorios HTTP (infraestructura)
+        └── index.ts
+```
+
+> Esta separación permite mantener desacoplada la lógica de dominio/aplicación del framework de interfaz React Native.
+
+##### 1.2 Reexportar adaptadores y DTOs desde el *core-typescript*
+
+Ejemplo de `src/adapter/http/repository/index.ts`:
+
+```ts
+// HTTP Adapters re-exported from core-typescript
+
+// Repositories
+export { EntryPointHttpRepository } from '@kaizten/core-typescript';
+export { ZoneHttpRepository } from '@kaizten/core-typescript';
+...
+```
+
+Ejemplo de `src/adapter/http/response/index.ts`:
+```ts
+export { ZoneResponseBody } from '@kaizten/core-typescript';
+export { EntryPointResponseBody } from '@kaizten/core-typescript';
+...
+```
+
+Ejemplo de `src/adapter/http/request/index.ts`:
+```ts
+// DTOs - Zone
+export { ZoneRequestBody } from '@kaizten/core-typescript';
+export { EntryPointRequestBody } from '@kaizten/core-typescript';
+...
+```
+
+#### 2) Escenario B. Crear la capa de adaptadores HTTP manualmente
+
+Si no existe un *core-typescript*, deberás implementar los **repositorios HTTP** manualmente, siguiendo la interfaz definida en `application/repository`. Cada repositorio será responsable de interactuar con la API (GET, POST, PUT, DELETE) y devolver objetos de dominio o errores tipados mediante `Either<ApiError, T>`.
+
+##### 2.2 Creación de repositorios HTTP
+
+Crea una carpeta `src/adapter/http` en el proyecto del front-end. En ella se incluirán las clases que implementan los **repositorios HTTP**, responsables de comunicar la aplicación con el backend mediante peticiones REST. Para cada entidad `<ENTITY>` definida en la capa de aplicación:
+- Crea un archivo `src/adapter/http/<entity>-http-repository.ts`.  
+- Implementa en él una clase `class <Entity>HttpRepository` que **implemente la interfaz** `<Entity>Repository` definida en issues previos en `application/repository`.  
+- Usa los **DTOs** (`<ENTITY>JsonResponse`, `<ENTITY>PostJsonRequest`, `<ENTITY>PutJsonRequest`) para convertir los datos entre la API y las entidades del dominio. Su definición se encuentra en el siguiente paso.
+
+Cada repositorio debe gestionar las operaciones básicas:
+
+| Método | Descripción |
+|--------|--------------|
+| **`get(page?, size?, filters?)`** | Obtiene una lista paginada y/o filtrada de entidades. Construye la URL según los parámetros y devuelve `Either<ApiError, List<T>>`. |
+| **`getById(id)`** | Recupera una entidad por su identificador. Devuelve `Either<ApiError, T>`. |
+| **`create(entity)`** | Crea una nueva entidad en el sistema usando el DTO `PostJsonRequest`. |
+| **`update(id, entity)`** | Actualiza una entidad existente mediante el DTO `PutJsonRequest`. |
+| **`delete(id)`** | Elimina una entidad por su identificador. Devuelve `Either<ApiError, void>`. |
+
+###### Ejemplo: `OrganizationHttpRepository`
+
+```ts
+import { Either, type DataError, http, type ApiError, KaiztenUUID } from '@kaizten/kaizten-typescript';
+import { useKeycloakStore } from '../../vuejs/stores/keycloak-store';
+import { OrganizationJsonRequest, OrganizationJsonResponse, type Organization, type OrganizationRepository, type OrganizationsResponse } from '@kaizten/aidel_core-typescript';
+
+export class OrganizationHttpRepository implements OrganizationRepository {
+  private readonly API_URL = import.meta.env.VITE_APP_API_URL + 'organizations';
+  private headers: Headers = new Headers();
+  private keycloak = useKeycloakStore().keycloak;
+
+  constructor() {
+    this.headers.append('Authorization', `Bearer ${this.keycloak?.token}`);
+    this.headers.append('Content-Type', 'application/json');
+  }
+
+  public async readOrganizations(
+    page?: number,
+    rowsPerPage?: number,
+    filters?: string
+  ): Promise<Either<DataError, OrganizationsResponse>> {
+    let url = this.API_URL;
+    if (page != undefined && rowsPerPage != undefined) {
+      url += `?page=${page}&size=${rowsPerPage}`;
+    }
+    if (filters != undefined) {
+      url += `&${filters}`;
+    }
+    return new Promise(resolve => {
+      http
+        .get(url, this.headers)
+        .then(response => {
+          if (response.ok) {
+            response.json().then((data: OrganizationJsonResponse[]) => {
+              const totalItems: number = +(response.headers.get(
+                'Total-Count'
+              ) as string);
+              const paginationCount: number = +(response.headers.get(
+                'Pagination-Count'
+              ) as string);
+              const convertedData: Organization[] = [];
+              data.forEach(organization => {
+                convertedData.push(
+                  OrganizationJsonResponse.toOrganization(organization)
+                );
+              });
+              const organizationsResponse: OrganizationsResponse = {
+                organizations: convertedData,
+                totalItems: totalItems,
+                paginationCount: paginationCount,
+              };
+              resolve(Either.right(organizationsResponse));
+            });
+          } else {
+            response.json().then((data: ApiError) => {
+              Either.left(data);
+            });
+          }
+        })
+        .catch(error => {
+          resolve(Either.left({ kind: 'UnexpectedError', message: error }));
+        });
+    });
+  }
+
+  public async readById(
+    id: KaiztenUUID
+  ): Promise<Either<DataError, Organization>> {
+    const url = `${this.API_URL}/${id.getValue()}`;
+    return new Promise(resolve => {
+      http
+        .get(url, this.headers)
+        .then(response => {
+          if (response.ok) {
+            response.json().then((data: OrganizationJsonResponse) => {
+              resolve(
+                Either.right(OrganizationJsonResponse.toOrganization(data))
+              );
+            });
+          } else {
+            response.json().then((data: ApiError) => {
+              Either.left(data);
+            });
+          }
+        })
+        .catch(error => {
+          resolve(Either.left({ kind: 'UnexpectedError', message: error }));
+        });
+    });
+  }
+
+  public async create(
+    organization: Organization
+  ): Promise<Either<DataError, Organization>> {
+    const body = OrganizationJsonRequest.toRequest(organization);
+    return new Promise(resolve => {
+      http
+        .post(this.API_URL, body, this.headers)
+        .then(response => {
+          if (response.ok) {
+            response.json().then((data: OrganizationJsonResponse) => {
+              resolve(
+                Either.right(OrganizationJsonResponse.toOrganization(data))
+              );
+            });
+          } else {
+            response.json().then((data: ApiError) => {
+              Either.left(data);
+            });
+          }
+        })
+        .catch(error => {
+          resolve(Either.left({ kind: 'UnexpectedError', message: error }));
+        });
+    });
+  }
+
+  public async delete(
+    id: KaiztenUUID
+  ): Promise<Either<DataError, Organization>> {
+    const url = `${this.API_URL}/${id.getValue()}`;
+    return new Promise(resolve => {
+      http
+        .delete(url, this.headers)
+        .then(response => {
+          if (response.ok) {
+            response.json().then((data: OrganizationJsonResponse) => {
+              resolve(
+                Either.right(OrganizationJsonResponse.toOrganization(data))
+              );
+            });
+          } else {
+            response.json().then((data: ApiError) => {
+              data.kind = 'ApiError';
+              resolve(Either.left(data));
+            });
+          }
+        })
+        .catch(error => {
+          resolve(Either.left({ kind: 'UnexpectedError', message: error }));
+        });
+    });
+  }
+
+  public async update(
+    id: KaiztenUUID,
+    organization: Organization
+  ): Promise<Either<DataError, Organization>> {
+    const url = `${this.API_URL}/${id.getValue()}`;
+    const body = OrganizationJsonRequest.toRequest(organization);
+    return new Promise(resolve => {
+      http
+        .put(url, body, this.headers)
+        .then(response => {
+          if (response.ok) {
+            response.json().then((data: OrganizationJsonResponse) => {
+              resolve(
+                Either.right(OrganizationJsonResponse.toOrganization(data))
+              );
+            });
+          } else {
+            response.json().then((data: ApiError) => {
+              data.kind = 'ApiError';
+              resolve(Either.left(data));
+            });
+          }
+        })
+        .catch(error => {
+          resolve(Either.left({ kind: 'UnexpectedError', message: error }));
+        });
+    });
+  }
+}
+```
+
+##### 2.3 Creación de DTOs
+
+Los **DTOs (Data Transfer Objects)** permiten separar la representación de los datos entre el front-end y el dominio. Crea los DTOs dentro de las carpetas `src/adapter/http/request` y `src/adapter/http/response`. A diferencia de las entidades del dominio, los DTOs usan tipos básicos (string, number, etc.) y se encargan de traducir los datos entre el front-end y la API.
+
+Para cada entidad `<ENTITY>`, define:
+ - `<ENTITY>JsonResponse` → `src/adapter/http/response/<entity>-json-response.ts`. Representa la respuesta JSON de la API. Incluye los atributos básicos y un método estático toDomainEntity() que convierte el JSON en la entidad del dominio usando sus value objects.
+ - `<ENTITY>PostJsonRequest` → `src/adapter/http/request/<entity>-post-json-request.ts`. Define la solicitud POST para crear una nueva entidad. Incluye los campos requeridos y un método toRequest() que genera la carga útil (payload) adecuada.
+ - `<ENTITY>PutJsonRequest` → `src/adapter/http/request/<entity>-put-json-request.ts`. Representa la solicitud PUT para actualizar entidades existentes. Usa campos opcionales y un método toRequest() que serializa los datos a enviar a la API.
+
+###### Ejemplo: `OrganizationPutJsonRequest`
+```ts
+export class OrganizationPutJsonRequest {
+  public name?: string;
+  public description?: string;
+
+  constructor(name?: string, description?: string) {
+    this.name = name;
+    this.description = description;
+  }
+
+  public static toRequest(data: Organization): OrganizationPutJsonRequest {
+    return new OrganizationPutJsonRequest(
+      data.name ? data.name : undefined,
+      data.description ? data.description : undefined
+    );
+  }
+}
+```
+
+###### Ejemplo: `OrganizationPostJsonRequest`
+```ts
+export class OrganizationPostJsonRequest {
+  public name: string;
+  public description?: string;
+
+  constructor(name: string, description?: string) {
+    this.name = name;
+    this.description = description;
+  }
+
+  public static toRequest(data: Organization): OrganizationPostJsonRequest {
+    return new OrganizationPostJsonRequest(
+      data.name,
+      data.description ? data.description : undefined
+    );
+  }
+}
+```
+
+###### Ejemplo: `OrganizationJsonResponse`
+```ts
+export class OrganizationJsonResponse {
+  public id: string;
+  public name: string;
+  public description?: string;
+
+  constructor(id: string, name: string, description?: string) {
+    this.id = id;
+    this.name = name;
+    this.description = description;
+  }
+
+  public static toDomainEntity(data: OrganizationJsonResponse): Organization {
+    return new Organization(
+      new OrganizationName(data.name),
+      data.description
+        ? new OrganizationDescription(data.description)
+        : undefined,
+      new KaiztenUUID(data.id)
+    );
+  }
+}
+```
+
