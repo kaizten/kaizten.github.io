@@ -1178,7 +1178,7 @@ export { EnumerateD } from '@kaizten/core-typescript';
 ...
 ```
 
-De esta forma, cualquier parte de la app podrá importar entidades, value objects o enumerados desde `@domain`:
+De esta forma, cualquier parte de la app podrá importar entidades, value objects o enumerados desde:
 
 ```ts
 import { EntityA, EntityB, EntityC, EntityD } from '@/domain/entity/index.ts';
