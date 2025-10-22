@@ -22,17 +22,6 @@
   - [Capa de dominio](#capa-de-dominio)
   - [Capa de aplicación](#capa-de-aplicación)
   - [Capa de adaptadores HTTP](#capa-de-adaptadores-http)
-    - [1) Escenario A. Usar adaptadores HTTP existentes desde un *core-typescript*](#1-escenario-a-usar-adaptadores-http-existentes-desde-un-core-typescript)
-      - [1.1 Estructura esperada](#11-estructura-esperada)
-      - [1.2 Reexportar adaptadores y DTOs desde el *core-typescript*](#12-reexportar-adaptadores-y-dtos-desde-el-core-typescript)
-    - [2) Escenario B. Crear la capa de adaptadores HTTP manualmente](#2-escenario-b-crear-la-capa-de-adaptadores-http-manualmente)
-      - [2.1 Estructura esperada](#21-estructura-esperada)
-      - [2.2 Creación de repositorios HTTP](#22-creación-de-repositorios-http)
-        - [Ejemplo: `OrganizationHttpRepository`](#ejemplo-organizationhttprepository)
-      - [2.3 Creación de DTOs](#23-creación-de-dtos)
-        - [Ejemplo: `OrganizationPutJsonRequest`](#ejemplo-organizationputjsonrequest)
-        - [Ejemplo: `OrganizationPostJsonRequest`](#ejemplo-organizationpostjsonrequest)
-        - [Ejemplo: `OrganizationJsonResponse`](#ejemplo-organizationjsonresponse)
 <!-- /TOC -->
 
 ## Docker
@@ -1152,7 +1141,11 @@ Con esto, el alumno tiene un **sistema de navegación funcional**, con menú lat
 
 ### Capa de dominio
 
-En este issue, debes definir la **capa de dominio** de la aplicación móvil React Native + TypeScript dentro de la arquitectura hexagonal. El dominio representa **el corazón de la aplicación**, donde residen las entidades, objetos de valor y enumerados que modelan la realidad del problema. El objetivo es que esta capa esté completamente tipada, organizada y desacoplada de cualquier tecnología (UI, API, persistencia). Pueden darse dos escenarios en tu proyecto:
+En este issue, debes definir la **capa de dominio** de la aplicación móvil React Native + TypeScript dentro de la arquitectura hexagonal. El dominio representa **el corazón de la aplicación**, donde residen las entidades, objetos de valor y enumerados que modelan la realidad del problema. El objetivo es que esta capa esté completamente tipada, organizada y desacoplada de cualquier tecnología (UI, API, persistencia). 
+
+**Pasos a realizar:**
+
+Pueden darse dos escenarios en tu proyecto:
 
 **1. Escenario A. Usar dominio existente desde un *core-typescript*:**
 
@@ -1288,7 +1281,7 @@ export class Organization {
     for (let i = 0; i < this.id.getValue().length; i++) {
       const char = this.id.getValue().charCodeAt(i);
       hash = (hash << 5) - hash + char;
-      hash |= 0; // Convert to 32bit integer
+      hash |= 0;
     }
     return hash;
   }
@@ -1570,6 +1563,8 @@ src/
 
 En este issue, debes definir la **capa de aplicación** de tu app móvil React Native + TypeScript dentro de la arquitectura hexagonal. Esta capa representa la **lógica de negocio de alto nivel**, es decir, **cómo interactúan las entidades y servicios** para cumplir con los casos de uso de la aplicación. El objetivo es estructurar los **repositorios**, **casos de uso** y **servicios** de forma desacoplada, tipada y coherente con el dominio que ya definiste o importaste.
 
+**Pasos a realizar:**
+
 Pueden darse dos escenarios:
 
 **1. Escenario A. Usar capa de aplicación existente desde un *core-typescript*:**
@@ -1739,13 +1734,15 @@ En este issue, debes definir la **capa de adaptadores HTTP** de tu app móvil Re
 
 El objetivo es estructurar correctamente los **repositorios HTTP**, reexportarlos desde un *core-typescript* si existen, o crearlos manualmente siguiendo buenas prácticas y usando **DTOs (Data Transfer Objects)** para desacoplar la comunicación entre capas.
 
+**Pasos a realizar:**
+
 Pueden darse dos escenarios:
 
-#### 1) Escenario A. Usar adaptadores HTTP existentes desde un *core-typescript*
+**1. Escenario A. Usar adaptadores HTTP existentes desde un *core-typescript*:**
 
 Si el proyecto ya cuenta con un paquete `core-typescript`, **no debes duplicar** los adaptadores HTTP, sino importarlos y reexportarlos desde ese módulo.
 
-##### 1.1 Estructura esperada
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1 Estructura esperada:**
 
 ```
 src/
@@ -1761,7 +1758,7 @@ src/
 
 > Esta separación permite mantener desacoplada la lógica de dominio/aplicación del framework de interfaz React Native.
 
-##### 1.2 Reexportar adaptadores y DTOs desde el *core-typescript*
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2 Reexportar adaptadores y DTOs desde el *core-typescript*:**
 
 Ejemplo de `src/adapter/http/repository/index.ts`:
 
@@ -1785,11 +1782,11 @@ export { EntryPointRequestBody } from '@kaizten/core-typescript';
 ...
 ```
 
-#### 2) Escenario B. Crear la capa de adaptadores HTTP manualmente
+**2. Escenario B. Crear la capa de adaptadores HTTP manualmente:**
 
 Si no existe un *core-typescript*, deberás implementar los **repositorios HTTP** manualmente, siguiendo la interfaz definida en `application/repository`. Cada repositorio será responsable de interactuar con la API (GET, POST, PUT, DELETE) y devolver objetos de dominio o errores tipados mediante `Either<ApiError, T>`.
 
-##### 2.1 Estructura esperada
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 Estructura esperada:**
 
 ```
 src/
@@ -1810,7 +1807,7 @@ src/
              └── ...
 ```
 
-##### 2.2 Creación de repositorios HTTP
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 Creación de repositorios HTTP:**
 
 Crea una carpeta `src/adapter/http/repository` en el proyecto del front-end. En ella se incluirán las clases que implementan los **repositorios HTTP**, responsables de comunicar la aplicación con el backend mediante peticiones REST. Para cada entidad `<ENTITY>` definida en la capa de aplicación:
 - Crea un archivo `src/adapter/http/repository/<entity>-http-repository.ts`.  
@@ -1827,7 +1824,7 @@ Cada repositorio debe gestionar las operaciones básicas:
 | **`update(id, entity)`** | Actualiza una entidad existente mediante el DTO `PutJsonRequest`. |
 | **`delete(id)`** | Elimina una entidad por su identificador. Devuelve `Either<ApiError, void>`. |
 
-###### Ejemplo: `OrganizationHttpRepository`
+**Ejemplo: `OrganizationHttpRepository`**
 
 ```ts
 import { Either, type DataError, http, type ApiError, KaiztenUUID } from '@kaizten/kaizten-typescript';
@@ -2003,7 +2000,7 @@ export class OrganizationHttpRepository implements OrganizationRepository {
 }
 ```
 
-##### 2.3 Creación de DTOs
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3 Creación de DTOs:**
 
 Los **DTOs (Data Transfer Objects)** permiten separar la representación de los datos entre el front-end y el dominio. Crea los DTOs dentro de las carpetas `src/adapter/http/request` y `src/adapter/http/response`. A diferencia de las entidades del dominio, los DTOs usan tipos básicos (string, number, etc.) y se encargan de traducir los datos entre el front-end y la API.
 
@@ -2012,7 +2009,7 @@ Para cada entidad `<ENTITY>`, define:
  - `<ENTITY>PostJsonRequest` → `src/adapter/http/request/<entity>-post-json-request.ts`. Define la solicitud POST para crear una nueva entidad. Incluye los campos requeridos y un método toRequest() que genera la carga útil (payload) adecuada.
  - `<ENTITY>PutJsonRequest` → `src/adapter/http/request/<entity>-put-json-request.ts`. Representa la solicitud PUT para actualizar entidades existentes. Usa campos opcionales y un método toRequest() que serializa los datos a enviar a la API.
 
-###### Ejemplo: `OrganizationPutJsonRequest`
+**Ejemplo: `OrganizationPutJsonRequest`**
 ```ts
 export class OrganizationPutJsonRequest {
   public name?: string;
@@ -2032,7 +2029,7 @@ export class OrganizationPutJsonRequest {
 }
 ```
 
-###### Ejemplo: `OrganizationPostJsonRequest`
+**Ejemplo: `OrganizationPostJsonRequest`**
 ```ts
 export class OrganizationPostJsonRequest {
   public name: string;
@@ -2052,7 +2049,7 @@ export class OrganizationPostJsonRequest {
 }
 ```
 
-###### Ejemplo: `OrganizationJsonResponse`
+**Ejemplo: `OrganizationJsonResponse`**
 ```ts
 export class OrganizationJsonResponse {
   public id: string;
@@ -2076,4 +2073,3 @@ export class OrganizationJsonResponse {
   }
 }
 ```
-
