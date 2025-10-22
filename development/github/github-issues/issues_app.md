@@ -1151,7 +1151,7 @@ src/domain/
 En `src/domain/entity/index.ts` reexporta las entidades relevantes desde el core:
 
 ```ts
-// src/domain/index.ts
+// src/domain/entity/index.ts
 export { EntityA } from '@kaizten/core-typescript';
 export { EntityB } from '@kaizten/core-typescript';
 export { EntityC } from '@kaizten/core-typescript';
