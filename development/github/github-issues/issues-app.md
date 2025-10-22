@@ -1126,7 +1126,7 @@ Si el proyecto ya cuenta con un paquete `core-typescript`, **no debes duplicar**
 
 ##### 1.1 Instalación de dependencias
 ```bash
-yarn add @kaizten/core-typescript
+yarn add @kaizten/core-typescript @kaizten/kaizten-typescript
 ```
 
 > `@kaizten/core-typescript`: contiene las entidades, value objects y enumerados compartidos con el backend.  
