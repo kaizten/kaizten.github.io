@@ -20,19 +20,6 @@
   - [Crear proyecto base](#crear-proyecto-base)
   - [Rutas y navegación](#rutas-y-navegación)
   - [Capa de dominio](#capa-de-dominio)
-    - [1) Escenario A. Usar dominio existente desde un *core-typescript*](#1-escenario-a-usar-dominio-existente-desde-un-core-typescript)
-      - [1.1 Instalación de dependencias](#11-instalación-de-dependencias)
-      - [1.2 Estructura esperada](#12-estructura-esperada)
-      - [1.3 Reexportar las entidades del dominio](#13-reexportar-las-entidades-del-dominio)
-    - [2) Escenario B. Crear el dominio manualmente](#2-escenario-b-crear-el-dominio-manualmente)
-      - [2.1 Recordatorio de convenciones básicas](#21-recordatorio-de-convenciones-básicas)
-      - [2.3 Ejemplo de entidad en TypeScript](#23-ejemplo-de-entidad-en-typescript)
-      - [2.4 Ejemplo de Value Object](#24-ejemplo-de-value-object)
-      - [2.5 Ejemplo de Enumerado](#25-ejemplo-de-enumerado)
-    - [3) Consideraciones técnicas](#3-consideraciones-técnicas)
-      - [3.1 Constructor único con parámetros opcionales](#31-constructor-único-con-parámetros-opcionales)
-      - [3.2 Reglas de diseño del dominio](#32-reglas-de-diseño-del-dominio)
-    - [4) Resultado esperado](#4-resultado-esperado)
   - [Capa de aplicación](#capa-de-aplicación)
     - [1) Escenario A. Usar capa de aplicación existente desde un *core-typescript*](#1-escenario-a-usar-capa-de-aplicación-existente-desde-un-core-typescript)
       - [1.1 Instalación de dependencias](#11-instalación-de-dependencias-1)
@@ -1180,11 +1167,12 @@ Con esto, el alumno tiene un **sistema de navegación funcional**, con menú lat
 
 En este issue, debes definir la **capa de dominio** de la aplicación móvil React Native + TypeScript dentro de la arquitectura hexagonal. El dominio representa **el corazón de la aplicación**, donde residen las entidades, objetos de valor y enumerados que modelan la realidad del problema. El objetivo es que esta capa esté completamente tipada, organizada y desacoplada de cualquier tecnología (UI, API, persistencia). Pueden darse dos escenarios en tu proyecto:
 
-#### 1) Escenario A. Usar dominio existente desde un *core-typescript*
+**1. Escenario A. Usar dominio existente desde un *core-typescript***
 
 Si el proyecto ya cuenta con un paquete `core-typescript`, **no debes duplicar** las clases, sino importar y reexportar lo necesario desde ese módulo.
 
-##### 1.1 Instalación de dependencias
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1 Instalación de dependencias**
+
 ```bash
 yarn add @kaizten/core-typescript @kaizten/kaizten-typescript
 ```
@@ -1192,14 +1180,16 @@ yarn add @kaizten/core-typescript @kaizten/kaizten-typescript
 > `@kaizten/core-typescript`: contiene las entidades, value objects y enumerados compartidos con el backend.  
 > `@kaizten/kaizten-typescript`: proporciona utilidades comunes (tipos `Either`, `ApiError`, validadores, etc.).
 
-##### 1.2 Estructura esperada
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2 Estructura esperada**
+
 ```
 src/
   domain/
     index.ts
 ```
 
-##### 1.3 Reexportar las entidades del dominio
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.3 Reexportar las entidades del dominio**
+
 En `src/domain/index.ts` reexporta los modelos relevantes desde el core:
 
 ```ts
@@ -1219,11 +1209,12 @@ import { EntityA, EntityB, EntityC, EntityD } from '@domain';
 > La principal ventaja es que el dominio queda centralizado, sin duplicar código ni generar inconsistencias entre backend y app.
 
 
-#### 2) Escenario B. Crear el dominio manualmente
+**2. Escenario B. Crear el dominio manualmente**
 
 Si no existe un paquete `core-typescript`, debes **replicar el dominio del backend Java** en TypeScript. El backend de Java debe encontrarse en la carpeta principal del repositorio en la carpeta `back-end`. Este, sigue una arquitectura hexagonal, por lo que será fácil localizar el dominio.
 
-##### 2.1 Recordatorio de convenciones básicas
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 Recordatorio de convenciones básicas**
+
 - **Entities (`entity/`)**: representan objetos con identidad propia y ciclo de vida (por ejemplo: `User`, `Order`, `Product`, `Organization`).
 - **Value Objects (`valueobject/`)**: representan conceptos sin identidad propia (por ejemplo: `Email`, `Money`, `Coordinates`, `OrganizationName`).
 - **Enumerates (`enumerate/`)**: definen listas finitas de valores (por ejemplo: `OrderStatus`, `TrapType`, `IncidentType`).
@@ -1240,7 +1231,7 @@ src/domain/
     IncidentType.ts
 ```
 
-##### 2.3 Ejemplo de entidad en TypeScript
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 Ejemplo de entidad en TypeScript**
 
 ```ts
 export class Organization {
@@ -1350,7 +1341,8 @@ export class Organization {
 }
 ```
 
-##### 2.4 Ejemplo de Value Object
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3 Ejemplo de Value Object**
+
 ```ts
 export class OrganizationName {
   public static readonly MIN_LENGTH: number = 2;
@@ -1444,7 +1436,8 @@ export class OrganizationName {
 }
 ```
 
-##### 2.5 Ejemplo de Enumerado
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.4 Ejemplo de Enumerado**
+
 ```ts
 export enum IncidentTypeValues {
   SICK_LEAVE = 'SICK_LEAVE',
@@ -1533,11 +1526,11 @@ export class IncidentType {
 }
 ```
 
-#### 3) Consideraciones técnicas
+**3. Consideraciones técnicas**
 
-##### 3.1 Constructor único con parámetros opcionales
-En Java es común definir múltiples constructores; en TypeScript **esto no es posible**.  
-Para mantener la misma funcionalidad, usa **parámetros opcionales**, por ejemplo:
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1 Constructor único con parámetros opcionales**
+
+En Java es común definir múltiples constructores; en TypeScript **esto no es posible**. Para mantener la misma funcionalidad, usa **parámetros opcionales**, por ejemplo:
 
 ```ts
 export class Organization {
@@ -1558,13 +1551,14 @@ export class Organization {
 }
 ```
 
-##### 3.2 Reglas de diseño del dominio
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2 Reglas de diseño del dominio**
+
 - Es importante, no incluir lógica de red, almacenamiento o UI en el dominio.
 - No acceder a APIs, AsyncStorage ni repositorios directamente desde el dominio.
 - Solo debe contener la lógica de negocio pura (validaciones, comportamientos, etc.).
 - Los value objects deben ser **inmutables**.
 
-#### 4) Resultado esperado
+**4. Resultado esperado**
 
 Tras este issue, la app debe contar con una **capa de dominio limpia, coherente y aislada**, ya sea importada desde un *core-typescript* o definida manualmente.
 
