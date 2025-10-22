@@ -932,44 +932,14 @@ En Kaizten Analytics hemos preparado un script estándar para gestionemos nuestr
 
 ## Arquitectura hexagonal
 
-La arquitectura hexagonal es un enfoque de diseño de software que busca aislar la lógica central del negocio de las dependencias externas, como bases de datos, interfaces de usuario o servicios externos (correo electrónico, pasarelas de pago, autenticación de usuarios, etc.). Su objetivo principal es crear aplicaciones más flexibles, escalables y fáciles de probar, permitiendo que la lógica de negocio se mantenga independiente de los detalles técnicos.
+La arquitectura hexagonal es un enfoque de diseño de software que busca aislar la lógica central del negocio de las dependencias externas, como bases de datos, interfaces de usuario o servicios externos (correo electrónico, pasarelas de pago, autenticación de usuarios, etc.). 
 
-En esta arquitectura, la lógica del negocio reside en el núcleo de la aplicación, mientras que las interacciones con el mundo exterior se gestionan a través de adaptadores, garantizando que el núcleo se mantenga limpio y enfocado exclusivamente en las reglas de negocio.
+El objetivo principal de usar este tipo de arquitectura de software es crear aplicaciones más flexibles, escalables y fáciles de probar, permitiendo que la lógica de negocio se mantenga independiente de los detalles técnicos.
 
-La arquitectura hexagonal proporciona varios beneficios:
+**Pasos a realizar:**
 
-- *Desacoplamiento.* Permite separar la lógica de negocio de las capas externas (interfaces, almacenamiento, APIs externas), lo que facilita la evolución del sistema sin romper el núcleo de la aplicación.
-- *Testabilidad.* Al estar la lógica de negocio desacoplada, es más fácil escribir pruebas unitarias y pruebas de integración, ya que se pueden simular (mockear) las dependencias externas.
-- *Flexibilidad.* Facilita la adición de nuevas interfaces o adaptadores sin afectar la lógica interna. Por ejemplo, cambiar de una base de datos SQL a una NoSQL o exponer una [API REST](https://es.wikipedia.org/wiki/Transferencia_de_Estado_Representacional) y [GraphQL](https://graphql.org) al mismo tiempo.
-- *Mantenibilidad.* Al dividir las responsabilidades claramente en capas, el sistema se vuelve más fácil de entender, mantener y extender.
-
-La imagen siguiente muestra un esquema general de cómo se organiza una aplicación con arquitectura hexagonal:
-
-![Esquema general de arquitectura hexagonal](https://kaizten.github.io/images/hexagonal-architecture_overview.png)
-
-A continuación se exponen las principales capas de la arquitectura hexagonal que vamos a immplementaro:
-
-**1. Capa de adaptadores**
-
-La capa de adaptadores es el punto de entrada y salida de la aplicación. Esta capa incluye adaptadores como controladores HTTP, conectores de bases de datos, y otros componentes que interactúan con agentes externos. Los adaptadores transforman las solicitudes del mundo exterior (donde está el usuario de la aplicación) en algo que el núcleo de la aplicación pueda entender y viceversa.
-
-**2. Capa de aplicación**
-
-La capa de aplicación es la encargada de coordinar las operaciones del sistema. Se centra en qué se debe hacer, sin preocuparse de los detalles técnicos de cómo se hace. Los componentes principales en esta capa son los casos de uso, servicios y repositorios.
-
-- *Casos de uso.* Representan la lógica que resuelve tareas específicas. Son la entrada principal a la lógica de negocio.
-- *Servicios.* Implementación concreta de los casos de uso.
-- *Repositorios.* Son interfaces que proporcionan acceso a la capa de dominio, ocultando detalles de almacenamiento.
-
-**3. Capa de dominio**
-
-La capa de dominio contiene las entidades y objetos valor que representan la lógica central del negocio. Esta capa no conoce nada sobre las capas externas y se enfoca exclusivamente en las reglas y procesos que gobiernan el sistema.
-
-- *Entidades.* Objetos que tienen una identidad única y un ciclo de vida. Ejemplo: `Pedido`, `Cliente`. Los atributos de las entidades son generalmente objetos de valor, que son descritos a continuación.
-- *Objetos de valor.* Objetos inmutables cuya identidad depende de los valores de sus atributos y no de su lugar en la memoria de la máquina. Ejemplo: `Dirección`, `Moneda`. Generalmente, son objetos empleados como tipo de los atributos de las entidades.
-- *Enumerados.* Objetos inmutables que pueden tomar un valor de un conjunto preestablecido. 
-
-Por último, en la imagen anterior aparece un elemento adicional llamado `Configuration` que es un componente general y trasversal a toda la aplicación destinado a configurar la misma y conectar cada elemento de la forma oportuna.
+1. Lee detenidamente [este enlace](https://kaizten.github.io/development/hexagonal-architecture/) donde se explica qué es la arquitectura hexagonal, así como sus principales componentes.
+2. Hazme saber cualquier duda que te surja.
 
 ## Back-end
 
