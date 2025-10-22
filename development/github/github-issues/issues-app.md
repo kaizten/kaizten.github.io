@@ -1708,8 +1708,13 @@ Si el proyecto ya cuenta con un paquete `core-typescript`, **no debes duplicar**
 ```
 src/
 └── adapter/
-    ├── http/                  ### Repositorios HTTP (infraestructura)
-        └── index.ts
+    └── http/
+        ├── repository/           # Reexporta repositorios HTTP del core
+        │    └── index.ts
+        ├── request/              # Reexporta DTOs de petición (POST, PUT)
+        │    └── index.ts
+        └── response/             # Reexporta DTOs de respuesta (GET)
+             └── index.ts
 ```
 
 > Esta separación permite mantener desacoplada la lógica de dominio/aplicación del framework de interfaz React Native.
@@ -1745,6 +1750,27 @@ export { EntryPointRequestBody } from '@kaizten/core-typescript';
 #### 2) Escenario B. Crear la capa de adaptadores HTTP manualmente
 
 Si no existe un *core-typescript*, deberás implementar los **repositorios HTTP** manualmente, siguiendo la interfaz definida en `application/repository`. Cada repositorio será responsable de interactuar con la API (GET, POST, PUT, DELETE) y devolver objetos de dominio o errores tipados mediante `Either<ApiError, T>`.
+
+##### 2.1 Estructura esperada
+
+```
+src/
+└── adapter/
+    └── http/
+        ├── repository/           # Implementaciones HTTP de los repositorios
+        │    ├── organization-http-repository.ts
+        │    ├── zone-http-repository.ts
+        │    ├── trap-http-repository.ts
+        │    └── ...
+        ├── request/              # DTOs de petición (POST, PUT)
+        │    ├── organization-post-json-request.ts
+        │    ├── organization-put-json-request.ts
+        │    └── ...
+        └── response/             # DTOs de respuesta (GET)
+             ├── organization-json-response.ts
+             ├── zone-json-response.ts
+             └── ...
+```
 
 ##### 2.2 Creación de repositorios HTTP
 
