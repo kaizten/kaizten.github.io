@@ -755,7 +755,7 @@ En este paso se creará la **base del proyecto móvil** con **Expo + TypeScript*
 
 **2. Dependencias:**
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 Navegación y UI:**
+**2.1 Navegación y UI:**
 
 Usa **`expo install`** para resolver versiones compatibles:
 ```bash
@@ -772,10 +772,10 @@ yarn add @react-native-async-storage/async-storage
 yarn add react-native-paper @expo/vector-icons
 ```
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 Lint, Prettier y Testing:**
+**2.2 Lint, Prettier y Testing:**
 
 ```bash
-# Borramos archivos lock
+# Borramos archivos .lock
 rm yarn.lock
 # Añadimos dependencias
 yarn add -D eslint prettier @types/jest jest @testing-library/react-native
@@ -800,7 +800,7 @@ Edita `package.json` y añade estos flags en scripts:
 
 **4. Estructura hexagonal y ficheros base:**
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1 Crear estructura:**
+**4.1 Crear estructura:**
 
 En la raíz del proyecto ejecuta lo siguiente para crear la **estructura base de la arquitectura hexagonal:**.
 ```bash
@@ -810,7 +810,7 @@ mkdir -p src/adapter/{react-native/screens,http,persistence}
 mkdir -p src/configuration
 ```
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.2 Raíz del proyecto `src/adapter/react-native/screens/App.tsx`:**
+**4.2 Raíz del proyecto `src/adapter/react-native/screens/App.tsx`:**
 
 El `App.tsx` generado en la raiz del proyecto pásalo a **dentro de `src/adapter/react-native/screens/App.tsx`** con el contenido que se expone a continuación, además apuntaremos la entrada a él (paso 4.3).
 
@@ -853,7 +853,7 @@ const styles = StyleSheet.create({
 });
 ```
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3 Crear `index.ts` (en la **raíz del proyecto**):**
+**4.3 Crear `index.ts` (en la **raíz del proyecto**):**
 
 Expo puede arrancar con `App.tsx` directo, pero usamos `index.ts` para registrar el root y apuntar a nuestra `App` bajo `src/`.
 
@@ -864,7 +864,7 @@ import App from './src/adapter/react-native/screens/App';
 registerRootComponent(App);
 ```
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4 Ajustar la entrada de la app:**
+**4.4 Ajustar la entrada de la app:**
 
 Edita `app.json` para que Expo use `index.ts` como entrada (propiedad `entryPoint`):
 ```json
@@ -878,7 +878,7 @@ Edita `app.json` para que Expo use `index.ts` como entrada (propiedad `entryPoin
 ```
 > No borres otras propiedades que ya existan en tu `app.json`; añade `entryPoint`.
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.5 Crear `tsconfig.json` (en la raíz):**
+**4.5 Crear `tsconfig.json` (en la raíz):**
 ```json
 {
   "compilerOptions": {
@@ -960,7 +960,7 @@ src/
 
 **3. Creación de pantallas de ejemplo:**
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.1 Crear `src/adapter/react-native/screens/HomeScreen.tsx`:**
+**3.1 Crear `src/adapter/react-native/screens/HomeScreen.tsx`:**
 
 ```tsx
 import { StyleSheet } from 'react-native';
@@ -986,7 +986,7 @@ const styles = StyleSheet.create({
 });
 ```
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2 Crear `src/adapter/react-native/screens/SettingsScreen.tsx`:**
+**3.2 Crear `src/adapter/react-native/screens/SettingsScreen.tsx`:**
 
 ```tsx
 import { StyleSheet } from 'react-native';
@@ -1011,7 +1011,7 @@ const styles = StyleSheet.create({
 
 **4. Definir el contenedor de navegación:**
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1 Crear `src/adapter/react-native/navigation/AppNavigator.tsx`:**
+**4.1 Crear `src/adapter/react-native/navigation/AppNavigator.tsx`:**
 
 Crea un contenedor que gestione las rutas y el menú lateral.
 
@@ -1124,7 +1124,7 @@ Pueden darse dos escenarios en tu proyecto:
 
 Si el proyecto ya cuenta con un paquete `core-typescript`, **no debes duplicar** las clases, sino importar y reexportar lo necesario desde ese módulo.
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1 Instalación de dependencias:**
+**1.1 Instalación de dependencias:**
 
 ```bash
 yarn add @kaizten/core-typescript @kaizten/kaizten-typescript
@@ -1133,7 +1133,7 @@ yarn add @kaizten/core-typescript @kaizten/kaizten-typescript
 > `@kaizten/core-typescript`: contiene las entidades, value objects y enumerados compartidos con el backend.  
 > `@kaizten/kaizten-typescript`: proporciona utilidades comunes (tipos `Either`, `ApiError`, validadores, etc.).
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2 Estructura esperada:**
+**1.2 Estructura esperada:**
 
 ```
 src/
@@ -1141,7 +1141,7 @@ src/
     index.ts
 ```
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.3 Reexportar las entidades del dominio:**
+**1.3 Reexportar las entidades del dominio:**
 
 En `src/domain/index.ts` reexporta los modelos relevantes desde el core:
 
@@ -1166,7 +1166,7 @@ import { EntityA, EntityB, EntityC, EntityD } from '@domain';
 
 Si no existe un paquete `core-typescript`, debes **replicar el dominio del backend Java** en TypeScript. El backend de Java debe encontrarse en la carpeta principal del repositorio en la carpeta `back-end`. Este, sigue una arquitectura hexagonal, por lo que será fácil localizar el dominio.
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 Recordatorio de convenciones básicas:**
+**2.1 Recordatorio de convenciones básicas:**
 
 - **Entities (`entity/`)**: representan objetos con identidad propia y ciclo de vida (por ejemplo: `User`, `Order`, `Product`, `Organization`).
 - **Value Objects (`valueobject/`)**: representan conceptos sin identidad propia (por ejemplo: `Email`, `Money`, `Coordinates`, `OrganizationName`).
@@ -1184,7 +1184,7 @@ src/domain/
     IncidentType.ts
 ```
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 Ejemplo de entidad en TypeScript:**
+**2.2 Ejemplo de entidad en TypeScript:**
 
 ```ts
 export class Organization {
@@ -1294,7 +1294,7 @@ export class Organization {
 }
 ```
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3 Ejemplo de Value Object:**
+**2.3 Ejemplo de Value Object:**
 
 ```ts
 export class OrganizationName {
@@ -1389,7 +1389,7 @@ export class OrganizationName {
 }
 ```
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.4 Ejemplo de Enumerado:**
+**2.4 Ejemplo de Enumerado:**
 
 ```ts
 export enum IncidentTypeValues {
@@ -1481,7 +1481,7 @@ export class IncidentType {
 
 **3. Consideraciones técnicas:**
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1 Constructor único con parámetros opcionales:**
+**3.1 Constructor único con parámetros opcionales:**
 
 En Java es común definir múltiples constructores; en TypeScript **esto no es posible**. Para mantener la misma funcionalidad, usa **parámetros opcionales**, por ejemplo:
 
@@ -1504,7 +1504,7 @@ export class Organization {
 }
 ```
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2 Reglas de diseño del dominio:**
+**3.2 Reglas de diseño del dominio:**
 
 - Es importante, no incluir lógica de red, almacenamiento o UI en el dominio.
 - No acceder a APIs, AsyncStorage ni repositorios directamente desde el dominio.
@@ -1544,7 +1544,7 @@ Pueden darse dos escenarios:
 
 Si el proyecto ya cuenta con un paquete `core-typescript`, **no debes duplicar** la capa de aplicación, sino importar y reexportar lo necesario desde ese módulo.
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1 Instalación de dependencias:**
+**1.1 Instalación de dependencias:**
 
 ```bash
 yarn add @kaizten/core-typescript @kaizten/kaizten-typescript
@@ -1554,7 +1554,7 @@ yarn add @kaizten/core-typescript @kaizten/kaizten-typescript
 > `@kaizten/kaizten-typescript`: proporciona utilidades comunes (`Either`, `ApiError`, validadores, etc.).
 
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2 Estructura esperada:**
+**1.2 Estructura esperada:**
 
 ```
 src/
@@ -1564,7 +1564,7 @@ src/
     service/
 ```
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.3 Reexportar los componentes del core:**
+**1.3 Reexportar los componentes del core:**
 
 Ejemplo de reexportación desde el `core-typescript`:
 
@@ -1605,7 +1605,7 @@ export { ServiceG } from '@kaizten/core-typescript';
 
 Si no existe un *core-typescript*, deberás crear **repositorios**, **casos de uso** y **servicios** en tu proyecto. Esta capa actuará como **puente entre la interfaz (UI)** y la **lógica de dominio**.
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 Principios de diseño:**
+**2.2 Principios de diseño:**
 
 | Componente | Descripción | Ejemplo |
 |-------------|--------------|----------|
@@ -1614,7 +1614,7 @@ Si no existe un *core-typescript*, deberás crear **repositorios**, **casos de u
 | **Service** | Implementa el **cómo**: orquesta repositorios, aplica reglas, devuelve resultados tipados (`Either<ApiError, T>`). | `LogInUserService`, `CreateTaskService`, etc. |
 
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3 Ejemplo completo — Caso de uso de login:**
+**2.3 Ejemplo completo — Caso de uso de login:**
 
 **Definición del caso de uso:**
 ```ts
@@ -1666,7 +1666,7 @@ export class LogInUserService implements LogInUserUseCase {
  API / DB
 ```
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.4 Ejemplo de repositorio:**
+**2.4 Ejemplo de repositorio:**
 ```ts
 export interface UserRepository {
   login(request: AuthLoginRequest): Promise<Either<ApiError, AuthLoginResponse>>;
@@ -1675,7 +1675,7 @@ export interface UserRepository {
 }
 ```
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.5 Prácticas a seguir:**
+**2.5 Prácticas a seguir:**
 
 - Cada caso de uso (`usecase`) tiene **una única responsabilidad**.  
 - Los servicios (`service`) **implementan** los casos de uso y **no acceden directamente** a la API.  
@@ -1715,7 +1715,7 @@ Pueden darse dos escenarios:
 
 Si el proyecto ya cuenta con un paquete `core-typescript`, **no debes duplicar** los adaptadores HTTP, sino importarlos y reexportarlos desde ese módulo.
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1 Estructura esperada:**
+**1.1 Estructura esperada:**
 
 ```
 src/
@@ -1731,7 +1731,7 @@ src/
 
 > Esta separación permite mantener desacoplada la lógica de dominio/aplicación del framework de interfaz React Native.
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2 Reexportar adaptadores y DTOs desde el *core-typescript*:**
+**1.2 Reexportar adaptadores y DTOs desde el *core-typescript*:**
 
 Ejemplo de `src/adapter/http/repository/index.ts`:
 
@@ -1759,7 +1759,7 @@ export { EntryPointRequestBody } from '@kaizten/core-typescript';
 
 Si no existe un *core-typescript*, deberás implementar los **repositorios HTTP** manualmente, siguiendo la interfaz definida en `application/repository`. Cada repositorio será responsable de interactuar con la API (GET, POST, PUT, DELETE) y devolver objetos de dominio o errores tipados mediante `Either<ApiError, T>`.
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 Estructura esperada:**
+**2.1 Estructura esperada:**
 
 ```
 src/
@@ -1780,7 +1780,7 @@ src/
              └── ...
 ```
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 Creación de repositorios HTTP:**
+**2.2 Creación de repositorios HTTP:**
 
 Crea una carpeta `src/adapter/http/repository` en el proyecto del front-end. En ella se incluirán las clases que implementan los **repositorios HTTP**, responsables de comunicar la aplicación con el backend mediante peticiones REST. Para cada entidad `<ENTITY>` definida en la capa de aplicación:
 - Crea un archivo `src/adapter/http/repository/<entity>-http-repository.ts`.  
@@ -1973,7 +1973,7 @@ export class OrganizationHttpRepository implements OrganizationRepository {
 }
 ```
 
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3 Creación de DTOs:**
+**2.3 Creación de DTOs:**
 
 Los **DTOs (Data Transfer Objects)** permiten separar la representación de los datos entre el front-end y el dominio. Crea los DTOs dentro de las carpetas `src/adapter/http/request` y `src/adapter/http/response`. A diferencia de las entidades del dominio, los DTOs usan tipos básicos (string, number, etc.) y se encargan de traducir los datos entre el front-end y la API.
 
