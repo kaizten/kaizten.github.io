@@ -1136,14 +1136,19 @@ yarn add @kaizten/core-typescript @kaizten/kaizten-typescript
 **1.2 Estructura esperada:**
 
 ```
-src/
-  domain/
+src/domain/
+  entity/
     index.ts
+  valueobject/
+    index.ts
+  enumerate/
+    index.ts
+  ...
 ```
 
 **1.3 Reexportar las entidades del dominio:**
 
-En `src/domain/index.ts` reexporta los modelos relevantes desde el core:
+En `src/domain/entity/index.ts` reexporta las entidades relevantes desde el core:
 
 ```ts
 // src/domain/index.ts
@@ -1152,11 +1157,33 @@ export { EntityB } from '@kaizten/core-typescript';
 export { EntityC } from '@kaizten/core-typescript';
 export { EntityD } from '@kaizten/core-typescript';
 ```
-
-De esta forma, cualquier parte de la app podrá importar entidades o value objects desde `@domain`:
+En `src/domain/valueobject/index.ts` reexporta las entidades relevantes desde el core:
 
 ```ts
-import { EntityA, EntityB, EntityC, EntityD } from '@domain';
+// src/domain/valueobject/index.ts
+export { ValueObjectA } from '@kaizten/core-typescript';
+export { ValueObjectB } from '@kaizten/core-typescript';
+export { ValueObjectC } from '@kaizten/core-typescript';
+export { ValueObjectD } from '@kaizten/core-typescript';
+...
+```
+En `src/domain/enumerate/index.ts` reexporta las entidades relevantes desde el core:
+
+```ts
+// src/domain/enumerate/index.ts
+export { EnumerateA } from '@kaizten/core-typescript';
+export { EnumerateB } from '@kaizten/core-typescript';
+export { EnumerateC } from '@kaizten/core-typescript';
+export { EnumerateD } from '@kaizten/core-typescript';
+...
+```
+
+De esta forma, cualquier parte de la app podrá importar entidades, value objects o enumerados desde `@domain`:
+
+```ts
+import { EntityA, EntityB, EntityC, EntityD } from '@/domain/entity/index.ts';
+import { ValueObjectA, ValueObjectB, ValueObjectC, ValueObjectD } from '@/domain/valueobject/index.ts';
+import { EnumerateA, EnumerateB, EnumerateC, EnumerateD } from '@/domain/enumerate/index.ts';
 ```
 
 > La principal ventaja es que el dominio queda centralizado, sin duplicar código ni generar inconsistencias entre backend y app.
