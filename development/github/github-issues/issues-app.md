@@ -19,7 +19,8 @@
 - [App](#app)
   - [Crear proyecto de app](#crear-proyecto-de-app)
   - [Rutas y navigation drawer](#rutas-y-navigation-drawer)
-  - [Dominio](#dominio)
+  - [Capa de dominio](#capa-de-dominio)
+  - [Capa de aplicación](#capa-de-aplicación)
 <!-- /TOC -->
 
 ## Docker
@@ -1116,7 +1117,7 @@ src/
 
 Con esto, el alumno tiene un **sistema de navegación funcional**, con menú lateral y rutas integradas bajo la arquitectura hexagonal del proyecto para seguir ampliando.
 
-### Dominio
+### Capa de dominio
 
 En este issue, debes definir la **capa de dominio** de la aplicación móvil React Native + TypeScript dentro de la arquitectura hexagonal. El dominio representa **el corazón de la aplicación**, donde residen las entidades, objetos de valor y enumerados que modelan la realidad del problema. El objetivo es que esta capa esté completamente tipada, organizada y desacoplada de cualquier tecnología (UI, API, persistencia). Pueden darse dos escenarios en tu proyecto:
 
@@ -1524,3 +1525,176 @@ src/
 
 > En el siguiente issue se trabajará la capa **application**, implementando repositorios, use-cases y servicios que operen sobre este dominio.
 
+
+### Capa de aplicación
+
+En este issue, debes definir la **capa de aplicación** de tu app móvil React Native + TypeScript dentro de la arquitectura hexagonal. Esta capa representa la **lógica de negocio de alto nivel**, es decir, **cómo interactúan las entidades y servicios** para cumplir con los casos de uso de la aplicación. El objetivo es estructurar los **repositorios**, **casos de uso (use-cases)** y **servicios (services)** de forma desacoplada, tipada y coherente con el dominio que ya definiste o importaste.
+
+Pueden darse dos escenarios:
+
+#### 1) Escenario A. Usar capa de aplicación existente desde un *core-typescript*
+
+Si el proyecto ya cuenta con un paquete `core-typescript`, **no debes duplicar** la capa de aplicación, sino importar y reexportar lo necesario desde ese módulo.
+
+##### 1.1 Instalación de dependencias
+```bash
+yarn add @kaizten/core-typescript @kaizten/kaizten-typescript
+```
+
+> `@kaizten/core-typescript`: contiene los repositorios, casos de uso y servicios compartidos con el backend.  
+> `@kaizten/kaizten-typescript`: proporciona utilidades comunes (`Either`, `ApiError`, validadores, etc.).
+
+
+##### 1.2 Estructura esperada
+```
+src/
+  application/
+    repository/
+    usecase/
+    service/
+```
+
+##### 1.3 Reexportar los componentes del core
+Ejemplo de reexportación desde el `core-typescript`:
+
+```ts
+// src/application/repository/index.ts
+export { RepositoryA } from '@kaizten/core-typescript';
+export { RepositoryB } from '@kaizten/core-typescript';
+export { RepositoryC } from '@kaizten/core-typescript';
+export { RepositoryD } from '@kaizten/core-typescript';
+export { RepositoryE } from '@kaizten/core-typescript';
+export { RepositoryF } from '@kaizten/core-typescript';
+export { RepositoryG } from '@kaizten/core-typescript';
+```
+
+```ts
+// src/application/use-case/index.ts
+export { UseCaseA } from '@kaizten/core-typescript';
+export { UseCaseB } from '@kaizten/core-typescript';
+export { UseCaseC } from '@kaizten/core-typescript';
+export { UseCaseD } from '@kaizten/core-typescript';
+export { UseCaseE } from '@kaizten/core-typescript';
+export { UseCaseF } from '@kaizten/core-typescript';
+export { UseCaseG } from '@kaizten/core-typescript';
+```
+
+```ts
+// src/application/service/index.ts
+export { ServiceA } from '@kaizten/core-typescript';
+export { ServiceB } from '@kaizten/core-typescript';
+export { ServiceC } from '@kaizten/core-typescript';
+export { ServiceD } from '@kaizten/core-typescript';
+export { ServiceE } from '@kaizten/core-typescript';
+export { ServiceF } from '@kaizten/core-typescript';
+export { ServiceG } from '@kaizten/core-typescript';
+```
+
+#### 2) Escenario B. Crear la capa de aplicación manualmente
+
+Si no existe un *core-typescript*, deberás crear **repositorios**, **casos de uso** y **servicios** en tu proyecto. Esta capa actuará como **puente entre la interfaz (UI)** y la **lógica de dominio**.
+
+##### 2.2 Principios de diseño
+
+| Componente | Descripción | Ejemplo |
+|-------------|--------------|----------|
+| **Repository** | Define **qué operaciones** se necesitan para acceder a los datos. | `UserRepository`, `TaskRepository`, etc. |
+| **Use Case** | Define la **intención del usuario** (el “qué”) sin detallar el “cómo”. | `LogInUserUseCase`, `CreateTaskUseCase`, etc. |
+| **Service** | Implementa el **cómo**: orquesta repositorios, aplica reglas, devuelve resultados tipados (`Either<ApiError, T>`). | `LogInUserService`, `CreateTaskService`, etc. |
+
+
+##### 2.3 Ejemplo completo — Caso de uso de login
+
+###### Definición del caso de uso
+```ts
+import { AuthLoginRequest } from '@/domain/interface/auth-login-request';
+import { AuthLoginResponse } from '@/domain/interface/auth-login-response';
+import { ApiError, Either } from '@kaizten/kaizten-typescript';
+
+export interface LogInUserUseCase {
+  login(authLoginRequest: AuthLoginRequest): Promise<Either<ApiError, AuthLoginResponse>>;
+}
+```
+
+**Explicación:**
+- Define la **intención**: logear un usuario.
+- No especifica cómo se ejecuta; eso lo hará el `Service`.
+- Retorna un `Promise<Either<ApiError, AuthLoginResponse>>`, permitiendo manejar tanto errores (`Left`) como éxitos (`Right`).
+
+###### Implementación del servicio
+```ts
+import { AuthLoginRequest } from '@/domain/interface/auth-login-request';
+import { AuthLoginResponse } from '@/domain/interface/auth-login-response';
+import { UserRepository } from '../repository/user-repository';
+import { LogInUserUseCase } from '../use-case/login-user-use-case';
+import { ApiError, Either } from '@kaizten/kaizten-typescript';
+
+export class LogInUserService implements LogInUserUseCase {
+  constructor(private repository: UserRepository) {}
+
+  async login(authLoginRequest: AuthLoginRequest): Promise<Either<ApiError, AuthLoginResponse>> {
+    return await this.repository.login(authLoginRequest);
+  }
+}
+```
+
+**Explicación:**
+- Implementa el contrato definido en la interfaz.
+- Inyecta un `UserRepository` para delegar el acceso a datos.
+- Devuelve el resultado como un `Either<ApiError, AuthLoginResponse>`.
+
+###### Flujo resumido
+
+```text
+ UI / Pantalla
+     │
+     ▼
+ LogInUserUseCase (interface)
+     │
+     ▼
+ LogInUserService (implementación)
+     │
+     ▼
+ UserRepository (acceso a datos)
+     │
+     ▼
+ API / DB
+```
+
+##### 2.4 Ejemplo de repositorio
+```ts
+import { Either, ApiError } from '@kaizten/kaizten-typescript';
+import { AuthLoginRequest } from '@/domain/interface/auth-login-request';
+import { AuthLoginResponse } from '@/domain/interface/auth-login-response';
+
+export interface UserRepository {
+  login(request: AuthLoginRequest): Promise<Either<ApiError, AuthLoginResponse>>;
+  refresh(token: string): Promise<Either<ApiError, { accessToken: string }>>;
+  logout(): Promise<Either<ApiError, void>>;
+}
+```
+
+##### 2.5 Prácticas a seguir
+
+- Cada caso de uso (`use-case`) tiene **una única responsabilidad**.  
+- Los servicios (`service`) **implementan** los casos de uso y **no acceden directamente** a la API.  
+- Los repositorios definen contratos, **no implementaciones** (eso se hará más adelante en la capa de adaptadores, en la que, por ejemplo, se implementarán los **repositorios HTTP**).
+- Devuelve siempre `Promise<Either<ApiError, T>>` para tipar correctamente errores y respuestas.  
+- Organiza los ficheros siguiendo el patrón `use-case/<action>-<entity>-use-case.ts` y `service/<action>-<entity>-service.ts`.
+
+#### 3) Resultado esperado
+
+Tras este issue, la app debe contar con una **capa de aplicación funcional y tipada**, que actúe como interfaz entre la lógica de dominio y la capa de infraestructura.
+
+```
+src/
+  domain/
+  application/
+    repository/
+    use-case/
+    service/
+  adapter/
+  configuration/
+```
+
+> En el siguiente issue se trabajará la capa **adapter**, donde implementarás las llamadas HTTP, almacenamiento y comunicación real con la API.
