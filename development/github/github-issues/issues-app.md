@@ -1724,9 +1724,6 @@ src/
 Ejemplo de `src/adapter/http/repository/index.ts`:
 
 ```ts
-// HTTP Adapters re-exported from core-typescript
-
-// Repositories
 export { EntryPointHttpRepository } from '@kaizten/core-typescript';
 export { ZoneHttpRepository } from '@kaizten/core-typescript';
 ...
@@ -1741,7 +1738,6 @@ export { EntryPointResponseBody } from '@kaizten/core-typescript';
 
 Ejemplo de `src/adapter/http/request/index.ts`:
 ```ts
-// DTOs - Zone
 export { ZoneRequestBody } from '@kaizten/core-typescript';
 export { EntryPointRequestBody } from '@kaizten/core-typescript';
 ...
