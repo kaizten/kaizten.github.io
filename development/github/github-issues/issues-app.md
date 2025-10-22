@@ -1065,9 +1065,9 @@ export default function AppNavigator() {
 }
 ```
 
-> 🔹 El `Drawer.Navigator` define el menú lateral.  
-> 🔹 Cada `Drawer.Screen` es una pantalla accesible desde ese menú.  
-> 🔹 `PaperProvider` y `SafeAreaProvider` envuelven toda la app para estilos y zonas seguras.
+> El `Drawer.Navigator` define el menú lateral.  
+> Cada `Drawer.Screen` es una pantalla accesible desde ese menú.  
+> `PaperProvider` y `SafeAreaProvider` envuelven toda la app para estilos y zonas seguras.
 
 
 #### 5) Conectar la navegación con la app principal
