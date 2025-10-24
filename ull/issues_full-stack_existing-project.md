@@ -123,7 +123,7 @@ public class TrapPostRequestBody {
     private TrapDescription description;
     private TrapType type;
     private UUID entryPoint;
-    private KaiztenGeolocationPoint geolocation;
+    private UllGeolocationPoint geolocation;
     private LocalDate installationDate;
     private LocalDate leavingDate;
     private ContactInformation contactInformation;
@@ -170,11 +170,11 @@ public class TrapPostRequestBody {
         this.contactInformation = contactInformation;
     }
 
-    public void setGeolocation(KaiztenGeolocationPoint geolocation) {
+    public void setGeolocation(UllGeolocationPoint geolocation) {
         this.geolocation = geolocation;
     }
 
-    public KaiztenGeolocationPoint getGeolocation() {
+    public UllGeolocationPoint getGeolocation() {
         return this.geolocation;
     }
 
@@ -239,7 +239,7 @@ public class TrapPostRequestBody {
         JwtAuthenticationToken jwtAuthenticationToken = (JwtAuthenticationToken) authentication;
         Jwt jwt = jwtAuthenticationToken.getToken();
         String principalAttribute = authConverter.getPrincipleClaimName(jwt);
-        KaiztenJWTPreferredUsername preferredUsername = new KaiztenJWTPreferredUsername(principalAttribute);
+        UllJWTPreferredUsername preferredUsername = new UllJWTPreferredUsername(principalAttribute);
         Trap trap = new Trap(
                 this.getName(),
                 this.getType(),
@@ -293,13 +293,13 @@ public class TrapResponseBody {
     private TrapDescription description;
     private TrapType type;
     private UUID entryPoint;
-    private KaiztenGeolocationPoint geolocation;
+    private UllGeolocationPoint geolocation;
     private LocalDate installationDate;
     private LocalDate leavingDate;
     private ContactInformation contactInformation;
     private List<UUID> images;
     private List<Comment> comments;
-    private KaiztenJWTPreferredUsername creator;
+    private UllJWTPreferredUsername creator;
 
     public Optional<LocalDate> getInstallationDate() {
         return Optional.ofNullable(this.installationDate);
@@ -313,7 +313,7 @@ public class TrapResponseBody {
         return Optional.ofNullable(this.leavingDate);
     }
 
-    public KaiztenJWTPreferredUsername getCreator() {
+    public UllJWTPreferredUsername getCreator() {
         return this.creator;
     }
 
@@ -353,11 +353,11 @@ public class TrapResponseBody {
         this.contactInformation = contactInformation;
     }
 
-    public void setGeolocation(KaiztenGeolocationPoint geolocation) {
+    public void setGeolocation(UllGeolocationPoint geolocation) {
         this.geolocation = geolocation;
     }
 
-    public KaiztenGeolocationPoint getGeolocation() {
+    public UllGeolocationPoint getGeolocation() {
         return this.geolocation;
     }
 
@@ -401,7 +401,7 @@ public class TrapResponseBody {
         this.entryPoint = entryPoint;
     }
 
-    public void setCreator(KaiztenJWTPreferredUsername creator) {
+    public void setCreator(UllJWTPreferredUsername creator) {
         this.creator = creator;
     }
 
