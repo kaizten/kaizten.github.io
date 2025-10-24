@@ -7,8 +7,8 @@
 - [NodeJS. Instalación](#nodejs-instalación)
 - [Yarn](#yarn)
   - [Instalación](#instalación-1)
-  - [Comprobar acceso a dependencia: `kaizten-typescript`](#comprobar-acceso-a-dependencia-kaizten-typescript)
-  - [Comprobar acceso a dependencia: `kaizten-vue`](#comprobar-acceso-a-dependencia-kaizten-vue)
+  - [Comprobar acceso a dependencia: `ull-tfg-typescript`](#comprobar-acceso-a-dependencia-ull-tfg-typescript)
+  - [Comprobar acceso a dependencia: `ull-tfg-vue`](#comprobar-acceso-a-dependencia-ull-tfg-vue)
 - [Visual Studio Code](#visual-studio-code)
   - [Instalación](#instalación-2)
   - [Extensión `Draw.io`](#extensión-drawio)
@@ -114,18 +114,18 @@ Hola, [Yarn](https://yarnpkg.com) es un administrador de paquetes de código abi
     1.22.22
     ```
 
-### Comprobar acceso a dependencia: `kaizten-typescript`
+### Comprobar acceso a dependencia: `ull-tfg-typescript`
 
-Hola, hemos creado una pequeña librería de utilidades en [TypeScript](https://www.typescriptlang.org) que nos ayuda en el desarrollo de aplicaciones: [`kaizten-typescript`](https://github.com/kaizten/kaizten-typescript). En ella hay diversas utilidades para trabajar con fechas, conexiones a servidor, etc.
+Hola, hemos creado una pequeña librería de utilidades en [TypeScript](https://www.typescriptlang.org) que nos ayuda en el desarrollo de aplicaciones: [`ull-tfg-typescript`](https://github.es.ull/ull-tfg-typescript). En ella hay diversas utilidades para trabajar con fechas, conexiones a servidor, etc.
 
 **Pasos a realizar:**
 
-1. Comprueba que te ha llegado una invitación a [`kaizten-typescript`](https://github.com/kaizten/kaizten-typescript) y acéptala.
+1. Comprueba que te ha llegado una invitación a [`ull-tfg-typescript`](https://github.es.ull/ull-tfg-typescript) y acéptala.
 2. Si existe, elimina el archivo `yarn.lock` (`rm yarn.lock`).
 3. Comprueba que puedes acceder a la librería, tal como sigue:
     ```sh
-    $ npm install @kaizten/kaizten-typescript@1.0.0 --dry-run
-    add @kaizten/kaizten-typescript 1.0.0
+    $ npm install @ull-tfg/ull-tfg-typescript@1.0.0 --dry-run
+    add @ull-tfg/ull-tfg-typescript 1.0.0
     add yocto-queue 0.1.0
     add yargs-parser 21.1.1
     add yargs 17.7.2
@@ -507,10 +507,10 @@ Hola, hemos creado una pequeña librería de utilidades en [TypeScript](https://
     add @sinonjs/fake-timers 10.3.0
     add @sinonjs/commons 3.0.1
     add @sinclair/typebox 0.27.8
-    add @kaizten/kaizten-vue 1.0.0
-    add @kaizten/kaizten-visualization-typescript 1.0.0
+    add @ull-tfg/ull-tfg-vue 1.0.0
+    add @ull-tfg/ull-tfg-visualization-typescript 1.0.0
     add @types/leaflet 1.9.3
-    add @kaizten/kaizten-simulation-typescript 1.0.0
+    add @ull-tfg/ull-tfg-simulation-typescript 1.0.0
     add @jridgewell/trace-mapping 0.3.31
     add @jridgewell/sourcemap-codec 1.5.5
     add @jridgewell/resolve-uri 3.1.2
@@ -602,17 +602,17 @@ Hola, hemos creado una pequeña librería de utilidades en [TypeScript](https://
 
     En este caso, la librería no se instalará sino que se comprobará si es posible acceder a ella.
 
-### Comprobar acceso a dependencia: `kaizten-vue`
+### Comprobar acceso a dependencia: `ull-tfg-vue`
 
-Hola, hemos creado una librería con algunos componentes sencillos que nos ayudan al desarrollo de aplicaciones en Vue.js: [`kaizten-vue`](https://github.com/kaizten/kaizten-vue).
+Hola, hemos creado una librería con algunos componentes sencillos que nos ayudan al desarrollo de aplicaciones en Vue.js: [`ull-tfg-vue`](https://github.es.ull/ull-tfg-vue).
 
 **Pasos a realizar:**
 
-1. Comprueba que te ha llegado una invitación a [`kaizten-vue`](https://github.com/kaizten/kaizten-vue) y acéptala.
+1. Comprueba que te ha llegado una invitación a [`ull-tfg-vue`](https://github.es.ull/ull-tfg-vue) y acéptala.
 2. Si existe, elimina el archivo `yarn.lock` (`rm yarn.lock`).
 3. Comprueba que puedes acceder a la librería, tal como sigue:
     ```sh
-    yarn add git+ssh://git@github.com/kaizten/kaizten-vue.git --dry-run
+    yarn add git+ssh://git@github.es.ull/ull-tfg-vue.git --dry-run
     yarn add v1.22.22
     info No lockfile found.
     [1/4] Resolving packages...
@@ -623,9 +623,9 @@ Hola, hemos creado una librería con algunos componentes sencillos que nos ayuda
     success Saved lockfile.
     success Saved 1 new dependency.
     info Direct dependencies
-    └─ kaizten-vue@0.0.0
+    └─ ull-tfg-vue@0.0.0
     info All dependencies
-    └─ kaizten-vue@0.0.0
+    └─ ull-tfg-vue@0.0.0
     Done in 8.47s.
     ```
     En este caso, la librería no se instalará sino que se comprobará si es posible acceder a ella.
@@ -718,7 +718,7 @@ En Kaizten Analytics hemos preparado un script estándar para gestionemos nuestr
     Writing objects: 100% (6/6), 1.54 KiB | 262.00 KiB/s, done.
     Total 6 (delta 5), reused 0 (delta 0), pack-reused 0 (from 0)
     remote: Resolving deltas: 100% (5/5), completed with 5 local objects.
-    To github.com:kaizten/kaizten-base.git
+    To github.es.ull/kaizten-base.git
       ebc4a96..c99075f  main -> main
     ✅ Done!
     ```
@@ -1127,11 +1127,11 @@ Si el proyecto ya cuenta con un paquete `core-typescript`, **no debes duplicar**
 **1.1 Instalación de dependencias:**
 
 ```bash
-yarn add @kaizten/core-typescript @kaizten/kaizten-typescript
+yarn add @ull-tfg/ull-tfg-core-typescript @ull-tfg/ull-tfg-typescript
 ```
 
-> `@kaizten/core-typescript`: contiene las entidades, value objects y enumerados compartidos con el backend.  
-> `@kaizten/kaizten-typescript`: proporciona utilidades comunes (tipos `Either`, `ApiError`, validadores, etc.).
+> `@ull-tfg/ull-tfg-core-typescript`: contiene las entidades, value objects y enumerados compartidos con el backend.  
+> `@ull-tfg/ull-tfg-typescript`: proporciona utilidades comunes (tipos `Either`, `ApiError`, validadores, etc.).
 
 **1.2 Estructura esperada:**
 
@@ -1152,29 +1152,29 @@ En `src/domain/entity/index.ts` reexporta las entidades relevantes desde el core
 
 ```ts
 // src/domain/entity/index.ts
-export { EntityA } from '@kaizten/core-typescript';
-export { EntityB } from '@kaizten/core-typescript';
-export { EntityC } from '@kaizten/core-typescript';
-export { EntityD } from '@kaizten/core-typescript';
+export { EntityA } from '@ull-tfg/ull-tfg-core-typescript';
+export { EntityB } from '@ull-tfg/ull-tfg-core-typescript';
+export { EntityC } from '@ull-tfg/ull-tfg-core-typescript';
+export { EntityD } from '@ull-tfg/ull-tfg-core-typescript';
 ```
 En `src/domain/valueobject/index.ts` reexporta las entidades relevantes desde el core:
 
 ```ts
 // src/domain/valueobject/index.ts
-export { ValueObjectA } from '@kaizten/core-typescript';
-export { ValueObjectB } from '@kaizten/core-typescript';
-export { ValueObjectC } from '@kaizten/core-typescript';
-export { ValueObjectD } from '@kaizten/core-typescript';
+export { ValueObjectA } from '@ull-tfg/ull-tfg-core-typescript';
+export { ValueObjectB } from '@ull-tfg/ull-tfg-core-typescript';
+export { ValueObjectC } from '@ull-tfg/ull-tfg-core-typescript';
+export { ValueObjectD } from '@ull-tfg/ull-tfg-core-typescript';
 ...
 ```
 En `src/domain/enumerate/index.ts` reexporta las entidades relevantes desde el core:
 
 ```ts
 // src/domain/enumerate/index.ts
-export { EnumerateA } from '@kaizten/core-typescript';
-export { EnumerateB } from '@kaizten/core-typescript';
-export { EnumerateC } from '@kaizten/core-typescript';
-export { EnumerateD } from '@kaizten/core-typescript';
+export { EnumerateA } from '@ull-tfg/ull-tfg-core-typescript';
+export { EnumerateB } from '@ull-tfg/ull-tfg-core-typescript';
+export { EnumerateC } from '@ull-tfg/ull-tfg-core-typescript';
+export { EnumerateD } from '@ull-tfg/ull-tfg-core-typescript';
 ...
 ```
 
@@ -1223,7 +1223,7 @@ export class Organization {
   /**
    * Identifier of the organization. It is a computed attribute
    */
-  private id: KaiztenUUID;
+  private id: UllUUID;
   /**
    * Name of the organization. It is a required attribute
    */
@@ -1236,10 +1236,10 @@ export class Organization {
   constructor(
     name: OrganizationName,
     description?: OrganizationDescription,
-    id?: KaiztenUUID
+    id?: UllUUID
   ) {
-    const generatedId = id ?? KaiztenUUID.random();
-    this.validate<KaiztenUUID>(generatedId, Organization.ERROR_ID_NOT_DEFINED);
+    const generatedId = id ?? UllUUID.random();
+    this.validate<UllUUID>(generatedId, Organization.ERROR_ID_NOT_DEFINED);
     this.validate<OrganizationName>(name, Organization.ERROR_NAME_NOT_DEFINED);
     this.id = generatedId;
     this.name = name;
@@ -1286,7 +1286,7 @@ export class Organization {
     return hash;
   }
 
-  public getId(): KaiztenUUID {
+  public getId(): UllUUID {
     return this.id;
   }
 
@@ -1311,7 +1311,7 @@ export class Organization {
     return new Organization(
       OrganizationName.random(),
       OrganizationDescription.random(),
-      KaiztenUUID.random()
+      UllUUID.random()
     );
   }
 
@@ -1518,10 +1518,10 @@ export class Organization {
   constructor(
     name: OrganizationName,
     description?: OrganizationDescription,
-    id?: KaiztenUUID
+    id?: UllUUID
   ) {
-    const generatedId = id ?? KaiztenUUID.random();
-    this.validate<KaiztenUUID>(generatedId, Organization.ERROR_ID_NOT_DEFINED);
+    const generatedId = id ?? UllUUID.random();
+    this.validate<UllUUID>(generatedId, Organization.ERROR_ID_NOT_DEFINED);
     this.validate<OrganizationName>(name, Organization.ERROR_NAME_NOT_DEFINED);
     this.id = generatedId;
     this.name = name;
@@ -1574,11 +1574,11 @@ Si el proyecto ya cuenta con un paquete `core-typescript`, **no debes duplicar**
 **1.1 Instalación de dependencias:**
 
 ```bash
-yarn add @kaizten/core-typescript @kaizten/kaizten-typescript
+yarn add @ull-tfg/ull-tfg-core-typescript @ull-tfg/ull-tfg-typescript
 ```
 
-> `@kaizten/core-typescript`: contiene los repositorios, casos de uso y servicios compartidos con el backend.  
-> `@kaizten/kaizten-typescript`: proporciona utilidades comunes (`Either`, `ApiError`, validadores, etc.).
+> `@ull-tfg/ull-tfg-core-typescript`: contiene los repositorios, casos de uso y servicios compartidos con el backend.  
+> `@ull-tfg/ull-tfg-typescript`: proporciona utilidades comunes (`Either`, `ApiError`, validadores, etc.).
 
 
 **1.2 Estructura esperada:**
@@ -1597,35 +1597,35 @@ Ejemplo de reexportación desde el `core-typescript`:
 
 ```ts
 // src/application/repository/index.ts
-export { RepositoryA } from '@kaizten/core-typescript';
-export { RepositoryB } from '@kaizten/core-typescript';
-export { RepositoryC } from '@kaizten/core-typescript';
-export { RepositoryD } from '@kaizten/core-typescript';
-export { RepositoryE } from '@kaizten/core-typescript';
-export { RepositoryF } from '@kaizten/core-typescript';
-export { RepositoryG } from '@kaizten/core-typescript';
+export { RepositoryA } from '@ull-tfg/ull-tfg-core-typescript';
+export { RepositoryB } from '@ull-tfg/ull-tfg-core-typescript';
+export { RepositoryC } from '@ull-tfg/ull-tfg-core-typescript';
+export { RepositoryD } from '@ull-tfg/ull-tfg-core-typescript';
+export { RepositoryE } from '@ull-tfg/ull-tfg-core-typescript';
+export { RepositoryF } from '@ull-tfg/ull-tfg-core-typescript';
+export { RepositoryG } from '@ull-tfg/ull-tfg-core-typescript';
 ```
 
 ```ts
 // src/application/usecase/index.ts
-export { UseCaseA } from '@kaizten/core-typescript';
-export { UseCaseB } from '@kaizten/core-typescript';
-export { UseCaseC } from '@kaizten/core-typescript';
-export { UseCaseD } from '@kaizten/core-typescript';
-export { UseCaseE } from '@kaizten/core-typescript';
-export { UseCaseF } from '@kaizten/core-typescript';
-export { UseCaseG } from '@kaizten/core-typescript';
+export { UseCaseA } from '@ull-tfg/ull-tfg-core-typescript';
+export { UseCaseB } from '@ull-tfg/ull-tfg-core-typescript';
+export { UseCaseC } from '@ull-tfg/ull-tfg-core-typescript';
+export { UseCaseD } from '@ull-tfg/ull-tfg-core-typescript';
+export { UseCaseE } from '@ull-tfg/ull-tfg-core-typescript';
+export { UseCaseF } from '@ull-tfg/ull-tfg-core-typescript';
+export { UseCaseG } from '@ull-tfg/ull-tfg-core-typescript';
 ```
 
 ```ts
 // src/application/service/index.ts
-export { ServiceA } from '@kaizten/core-typescript';
-export { ServiceB } from '@kaizten/core-typescript';
-export { ServiceC } from '@kaizten/core-typescript';
-export { ServiceD } from '@kaizten/core-typescript';
-export { ServiceE } from '@kaizten/core-typescript';
-export { ServiceF } from '@kaizten/core-typescript';
-export { ServiceG } from '@kaizten/core-typescript';
+export { ServiceA } from '@ull-tfg/ull-tfg-core-typescript';
+export { ServiceB } from '@ull-tfg/ull-tfg-core-typescript';
+export { ServiceC } from '@ull-tfg/ull-tfg-core-typescript';
+export { ServiceD } from '@ull-tfg/ull-tfg-core-typescript';
+export { ServiceE } from '@ull-tfg/ull-tfg-core-typescript';
+export { ServiceF } from '@ull-tfg/ull-tfg-core-typescript';
+export { ServiceG } from '@ull-tfg/ull-tfg-core-typescript';
 ```
 
 **2. Escenario B. Crear la capa de aplicación manualmente:**
@@ -1647,7 +1647,7 @@ Si no existe un *core-typescript*, deberás crear **repositorios**, **casos de u
 ```ts
 import { AuthLoginRequest } from '@/domain/interface/auth-login-request';
 import { AuthLoginResponse } from '@/domain/interface/auth-login-response';
-import { ApiError, Either } from '@kaizten/kaizten-typescript';
+import { ApiError, Either } from '@ull-tfg/ull-tfg-typescript';
 
 export interface LogInUserUseCase {
   login(authLoginRequest: AuthLoginRequest): Promise<Either<ApiError, AuthLoginResponse>>;
@@ -1763,22 +1763,22 @@ src/
 Ejemplo de `src/adapter/http/repository/index.ts`:
 
 ```ts
-export { EntryPointHttpRepository } from '@kaizten/core-typescript';
-export { ZoneHttpRepository } from '@kaizten/core-typescript';
+export { EntryPointHttpRepository } from '@ull-tfg/ull-tfg-core-typescript';
+export { ZoneHttpRepository } from '@ull-tfg/ull-tfg-core-typescript';
 ...
 ```
 
 Ejemplo de `src/adapter/http/response/index.ts`:
 ```ts
-export { ZoneResponseBody } from '@kaizten/core-typescript';
-export { EntryPointResponseBody } from '@kaizten/core-typescript';
+export { ZoneResponseBody } from '@ull-tfg/ull-tfg-core-typescript';
+export { EntryPointResponseBody } from '@ull-tfg/ull-tfg-core-typescript';
 ...
 ```
 
 Ejemplo de `src/adapter/http/request/index.ts`:
 ```ts
-export { ZoneRequestBody } from '@kaizten/core-typescript';
-export { EntryPointRequestBody } from '@kaizten/core-typescript';
+export { ZoneRequestBody } from '@ull-tfg/ull-tfg-core-typescript';
+export { EntryPointRequestBody } from '@ull-tfg/ull-tfg-core-typescript';
 ...
 ```
 
@@ -1827,9 +1827,9 @@ Cada repositorio debe gestionar las operaciones básicas:
 **Ejemplo: `OrganizationHttpRepository`**
 
 ```ts
-import { Either, type DataError, http, type ApiError, KaiztenUUID } from '@kaizten/kaizten-typescript';
+import { Either, type DataError, http, type ApiError, UllUUID } from '@ull-tfg/ull-tfg-typescript';
 import { useKeycloakStore } from '../../vuejs/stores/keycloak-store';
-import { OrganizationJsonRequest, OrganizationJsonResponse, type Organization, type OrganizationRepository, type OrganizationsResponse } from '@kaizten/aidel_core-typescript';
+import { OrganizationJsonRequest, OrganizationJsonResponse, type Organization, type OrganizationRepository, type OrganizationsResponse } from '@ull-tfg/core-typescript';
 
 export class OrganizationHttpRepository implements OrganizationRepository {
   private readonly API_URL = import.meta.env.VITE_APP_API_URL + 'organizations';
@@ -1891,7 +1891,7 @@ export class OrganizationHttpRepository implements OrganizationRepository {
   }
 
   public async readById(
-    id: KaiztenUUID
+    id: UllUUID
   ): Promise<Either<DataError, Organization>> {
     const url = `${this.API_URL}/${id.getValue()}`;
     return new Promise(resolve => {
@@ -1943,7 +1943,7 @@ export class OrganizationHttpRepository implements OrganizationRepository {
   }
 
   public async delete(
-    id: KaiztenUUID
+    id: UllUUID
   ): Promise<Either<DataError, Organization>> {
     const url = `${this.API_URL}/${id.getValue()}`;
     return new Promise(resolve => {
@@ -1970,7 +1970,7 @@ export class OrganizationHttpRepository implements OrganizationRepository {
   }
 
   public async update(
-    id: KaiztenUUID,
+    id: UllUUID,
     organization: Organization
   ): Promise<Either<DataError, Organization>> {
     const url = `${this.API_URL}/${id.getValue()}`;
@@ -2068,7 +2068,7 @@ export class OrganizationJsonResponse {
       data.description
         ? new OrganizationDescription(data.description)
         : undefined,
-      new KaiztenUUID(data.id)
+      new UllUUID(data.id)
     );
   }
 }
