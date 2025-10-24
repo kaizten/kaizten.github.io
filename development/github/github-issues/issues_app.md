@@ -1829,7 +1829,7 @@ Cada repositorio debe gestionar las operaciones básicas:
 ```ts
 import { Either, type DataError, http, type ApiError, KaiztenUUID } from '@kaizten/kaizten-typescript';
 import { useKeycloakStore } from '../../vuejs/stores/keycloak-store';
-import { OrganizationJsonRequest, OrganizationJsonResponse, type Organization, type OrganizationRepository, type OrganizationsResponse } from '@kaizten/aidel_core-typescript';
+import { OrganizationJsonRequest, OrganizationJsonResponse, type Organization, type OrganizationRepository, type OrganizationsResponse } from '@kaizten/core-typescript';
 
 export class OrganizationHttpRepository implements OrganizationRepository {
   private readonly API_URL = import.meta.env.VITE_APP_API_URL + 'organizations';
