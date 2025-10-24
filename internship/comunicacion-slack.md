@@ -2,6 +2,14 @@
 
 En Kaizten Analytics usamos [Slack](https://slack.com) para comunicarnos. Es la herramienta que también usarás durante las prácticas para mantenerte en contacto con tu tutor de prácticas y con el resto del equipo de la empresa.
 
+Para acceder al espacio de trabajo de Kaizten Analytics en [Slack](https://slack.com) debes haber recibido una invitación:
+
+![Espacio de trabajo de Slack](https://kaizten.github.io/images/slack-workspace.png)
+
+Al acceder al espacio de trabajo de Slack lo primero que debes hacer es configurar tu perfil. Rellena tu perfil con tu nombre, apellidos y una foto para que el resto del equipo te identifique rápidamente:
+
+![Perfil de usuario](https://kaizten.github.io/images/slack-profile.png)
+
 En este breve tutorial encontrarás lo esencial para empezar a usar [Slack](https://slack.com) de forma efectiva en tu día a día.
 
 # 1. Mensajes directos (DM)
@@ -19,15 +27,15 @@ Los **canales** son espacios organizados por temas, proyectos o equipos. Son pú
 
 # 3. Escribir código fuente en mensajes
 
-En Slack es común compartir fragmentos de código o comandos. Para que se vea claro y legible:
+En [Slack](https://slack.com) es común compartir fragmentos de código o comandos. Para que se vea claro y legible:
 
-- **Fragmento corto en línea**: utiliza acentos graves (`` ` ``) alrededor del código.
-  - Ejemplo:  
+- **Fragmento corto en línea**: utiliza acentos graves (`` ` ``) alrededor del código. A continuación puedes ver un ejemplo:
+
     Escribe: `` Usa `pip install pandas` para instalarlo ``  
     Se verá como: Usa `pip install pandas` para instalarlo.
 
-- **Bloques de código**: para trozos más largos o múltiples líneas, usa triple acento grave (```` ``` ````) al inicio y al final del bloque.
-  - Ejemplo:
+- **Bloques de código**: para trozos más largos o múltiples líneas, usa triple acento grave (```` ``` ````) al inicio y al final del bloque. A continuación puedes ver un ejemplo:
+    
     ```
     def suma(a, b):
         return a + b
