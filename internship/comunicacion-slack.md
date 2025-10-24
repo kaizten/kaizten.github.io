@@ -10,7 +10,7 @@ Al acceder al espacio de trabajo de Slack lo primero que debes hacer es configur
 
 ![Perfil de usuario](https://kaizten.github.io/images/slack-profile.png)
 
-En este breve tutorial encontrarás lo esencial para empezar a usar [Slack](https://slack.com) de forma efectiva en tu día a día.
+A continuación encontrarás lo esencial para empezar a usar [Slack](https://slack.com) de forma efectiva en tu día a día.
 
 # 1. Mensajes directos (DM)
 
