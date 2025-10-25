@@ -9,6 +9,7 @@
     - [Enumerates](#enumerates)
       - [Tests](#tests-1)
     - [Value objects](#value-objects)
+      - [Attributes](#attributes)
       - [Tests](#tests-2)
       - [Comments](#comments-1)
   - [Application](#application)
@@ -48,6 +49,11 @@
 * The tests defined for enumerates defined [here](./enumerate_tests.md) must be implemented.
 
 ### Value objects
+
+#### Attributes
+
+* Required attributes must be declared as `final`.
+* `Optional` cannot be used as type of attributes.
 
 #### Tests
 
