@@ -2445,7 +2445,7 @@ Hola, habría que añadir [`kaizten-vue`](https://github.com/kaizten/kaizten-vue
 ### Configuración de alias
 
 Hola, actualmente el proyecto utiliza rutas relativas largas como `../../../` para importar módulos, lo que dificulta la lectura y el mantenimiento del código.  
-El objetivo de este issue es configurar el alias `@` para que todas las importaciones desde la carpeta `src/` sean más claras y cortas, por ejemplo `@/core/services/MyService` en lugar de `../../../core/services/MyService`.
+El objetivo de este issue es configurar el alias `@` para que todas las importaciones desde la carpeta `src/` sean más claras y cortas, por ejemplo `@/domain/entity/Employee` en lugar de `../../../domain/entity/Employee`.
 
 **Pasos a seguir:**
 
