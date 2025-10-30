@@ -61,6 +61,7 @@
   - [Primeros pasos](#primeros-pasos-1)
   - [Añadir dependencia: `kaizten-typescript`](#añadir-dependencia-kaizten-typescript)
   - [Añadir dependencia: `kaizten-vue`](#añadir-dependencia-kaizten-vue)
+  - [Configuración de alias](#configuración-de-alias)
   - [Dockerfile](#dockerfile-1)
   - [GitHub action](#github-action-1)
   - [Dominio](#dominio-1)
@@ -2440,6 +2441,93 @@ Hola, habría que añadir [`kaizten-vue`](https://github.com/kaizten/kaizten-vue
     $ echo "@kaizten:registry=https://npm.pkg.github.com" >> .npmrc
     $ yarn add @kaizten/kaizten-vue@1.0.0
     ```
+
+### Configuración de alias
+
+Hola, actualmente el proyecto utiliza rutas relativas largas como `../../../` para importar módulos, lo que dificulta la lectura y el mantenimiento del código.  
+El objetivo de este issue es configurar el alias `@` para que todas las importaciones desde la carpeta `src/` sean más claras y cortas, por ejemplo `@/core/services/MyService` en lugar de `../../../core/services/MyService`.
+
+**Pasos a seguir:**
+
+1. Abre el archivo `tsconfig.json` en la raíz del proyecto y asegúrate de tener la siguiente configuración dentro de `compilerOptions`:
+   ```json
+   {
+     "compilerOptions": {
+       "baseUrl": ".",
+       "paths": {
+         "@/*": ["src/*"]
+       }
+     }
+   }
+   ```
+   Esto indica a TypeScript que `@` apunta a la carpeta `src/`.
+
+2. Si el proyecto utiliza **Vite**, abre `vite.config.ts` y añade la siguiente configuración:
+   ```ts
+   import { defineConfig } from 'vite';
+   import vue from '@vitejs/plugin-vue';
+   import path from 'path';
+
+   export default defineConfig({
+     plugins: [vue()],
+     resolve: {
+       alias: {
+         '@': path.resolve(__dirname, './src'),
+       },
+     },
+   });
+   ```
+   Si el proyecto usa **Webpack**, añade lo mismo en `webpack.config.js`:
+   ```js
+   const path = require('path');
+
+   module.exports = {
+     resolve: {
+       alias: {
+         '@': path.resolve(__dirname, 'src'),
+       },
+       extensions: ['.ts', '.js', '.vue', '.json'],
+     },
+   };
+   ```
+
+3. Para evitar errores en ESLint, instala el resolver de TypeScript y ajusta el fichero `.eslintrc.cjs` o `.eslintrc.json`:
+   ```bash
+   yarn add -D eslint-import-resolver-typescript
+   ```
+   ```js
+   settings: {
+     'import/resolver': {
+       typescript: {
+         project: './tsconfig.json',
+       },
+     },
+   },
+   ```
+
+4. Configura VSCode para reconocer el alias y facilitar la autocompletación. En `.vscode/settings.json`, añade:
+   ```json
+   {
+     "typescript.preferences.importModuleSpecifier": "shortest",
+     "typescript.tsdk": "node_modules/typescript/lib",
+     "path-intellisense.mappings": {
+       "@": "${workspaceFolder}/src"
+     }
+   }
+   ```
+
+5. Refactoriza las importaciones existentes para reemplazar las rutas relativas por `@`.  
+   Puedes buscar todas las importaciones relativas con:
+   ```bash
+   grep -r "from '\.\./" src/
+   ```
+   O usar el buscador de VSCode con expresiones regulares:  
+   Buscar → `from ['"]\.\./([^'"]+)['"]`  
+   Reemplazar por → `from '@/'`
+
+6. Verifica que el proyecto compila correctamente y que las rutas con `@` funcionan sin errores.
+
+Una vez completado, todos los módulos deberán importarse usando `@/`, mejorando la legibilidad, el autocompletado y la consistencia del código.
 
 ### Dockerfile
 
