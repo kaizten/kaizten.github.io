@@ -2523,7 +2523,7 @@ El objetivo de este issue es configurar el alias `@` para que todas las importac
    ```
    O usar el buscador de VSCode con expresiones regulares:  
    Buscar → `from ['"]\.\./([^'"]+)['"]`  
-   Reemplazar por → `from '@/'`
+   Reemplazar por → `from '@/1'`
 
 6. Verifica que el proyecto compila correctamente y que las rutas con `@` funcionan sin errores.
 
