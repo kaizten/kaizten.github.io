@@ -3,6 +3,7 @@
 - [PostgreSQL mediante Docker Compose](#postgresql-mediante-docker-compose)
   - [Conectar al contenedor](#conectar-al-contenedor)
   - [Conectar a `psql`](#conectar-a-psql)
+  - [Verificar la conexión](#verificar-la-conexión)
 
 Crea un archivo `docker-compose.yml` como el siguiente:
 
@@ -63,3 +64,17 @@ Type "help" for help.
 
 mydb=# 
 ```
+
+## Verificar la conexión
+
+Una vez dentro del cliente `psql`, puedes comprobar que la base de datos está funcionando correctamente ejecutando:
+```shell
+SELECT NOW();
+```
+```shell
+              now              
+-------------------------------
+ 2025-11-29 14:15:02.123456+00
+(1 row)
+```
+> Si ves un resultado similar, la conexión está activa y el contenedor PostgreSQL funciona correctamente.
