@@ -23,9 +23,12 @@
 
 ### Entities
 
+* Do not use `Cloneable`. Instead, use the copy constructor to obtain a copy of an entity.
+
 #### Constructors
 
 * Each entity must have a copy constructor.
+* Each `public` constructor must have at least the required attributes as arguments. Attributes declared as `final` can be ommited as argument because are initialized in the constructor by definition.
 * Each entity must have a restore constructor to be used exclusively by databases. The parameters of the restore constructor must be the same and provided in the same order as the attributes of the entity.
 * The restore constructor must be commented with `Restore constructor`.
 * The restore constructor must be documented using JavaDoc comments (`/** */`).
