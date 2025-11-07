@@ -1011,7 +1011,7 @@ La dockerización del back-end requiere de un archivo `Dockerfile`. Se trata un 
 
 1. Para crear el `Dockerfile` tienes que crear el siguiente archivo dentro de la carpeta del componente:
     ```shell
-    FROM openjdk:17-jdk-alpine
+    FROM eclipse-temurin:17-jdk-alpine
 
     EXPOSE 8080
 
