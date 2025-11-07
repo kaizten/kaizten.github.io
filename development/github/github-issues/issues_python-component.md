@@ -1,36 +1,5 @@
-<!-- TOC -->
-
-- [Front-end](#front-end)
-  - [Primeros pasos](#primeros-pasos)
-  - [Añadir dependencia: `kaizten-typescript`](#añadir-dependencia-kaizten-typescript)
-  - [Añadir dependencia: `kaizten-vue`](#añadir-dependencia-kaizten-vue)
-  - [Dockerfile](#dockerfile-1)
-  - [GitHub action](#github-action-1)
-  - [Dominio](#dominio)
-  - [Aplicación](#aplicación-1)
-    - [Casos de uso](#casos-de-uso)
-    - [Servicios](#servicios)
-    - [Repositorios](#repositorios)
-  - [Adaptador HTTP](#adaptador-http)
-    - [Primeros pasos](#primeros-pasos-1)
-    - [Data transfer objects](#data-transfer-objects)
-    - [Probar adaptador HTTP](#probar-adaptador-http)
-  - [Adaptador Vue.js](#adaptador-vuejs)
-    - [Primeros pasos](#primeros-pasos-2)
-    - [Router](#router)
-    - [Gestor de estados](#gestor-de-estados)
-    - [Data transfer objects para vistas](#data-transfer-objects-para-vistas)
-    - [Vistas](#vistas)
-    - [Internacionalización](#internacionalización)
-  - [Integración de Vuetify](#integración-de-vuetify)
-- [Docker compose](#docker-compose)
-- [Algoritmo](#algoritmo)
-  - [Implementación](#implementación)
-  - [Algoritmo como servicio](#algoritmo-como-servicio)
-- [Grafana](#grafana)
-  - [Primeros pasos](#primeros-pasos-3)
-  - [Integración en front-end](#integración-en-front-end)
-<!-- /TOC -->
+- [Dockerfile](#dockerfile)
+- [GitHub action](#github-action)
 
 ### Dockerfile
 
@@ -42,39 +11,39 @@ La dockerización requiere de un archivo `Dockerfile`. Se trata un archivo de te
 
 1. Para crear el `Dockerfile` tienes que crear el siguiente archivo dentro de la carpeta del componente:
     ```shell
-    FROM eclipse-temurin:17-jdk-alpine
+    FROM python:3.12-slim
 
-    EXPOSE 8080
+    WORKDIR /app
 
-    ARG JAR_FILE=target/*.jar
+    COPY requirements.txt requirements.txt
+    RUN pip install --no-cache-dir -r requirements.txt
 
-    COPY ${JAR_FILE} app.jar
+    COPY . .
 
-    ENTRYPOINT ["java", "-jar", "/app.jar"]
+    CMD ["python", "main.py"]
     ```
     Es importante que lo guardes exactamente con el nombre `Dockerfile`. Esto es, no pongas extensiones en el nombre del fichero.
 
 2. Una vez creado el `Dockerfile`, puedes crear la imagen [Docker](https://www.docker.com) de tu componente. Para ello, ejecuta lo siguiente:
     ```shell
     $ cd <COMPONENT-FOLDER>
-    $ mvn clean package
-    $ docker build -t dockerizedcomponent .
+    $ docker build -t pythonizedcomponent .
     ```
-    En este caso, `<COMPONENT-FOLDER> es el nombre de tu componente.
+    En este caso, `<COMPONENT-FOLDER>` es el nombre de tu componente.
 
 3. Si todo ha ido correctamente, debes tener la imagen [Docker](https://www.docker.com) generada en tu máquina:
     ```shell
     $ docker images 
     REPOSITORY                            TAG       IMAGE ID       CREATED          SIZE
-    dockerizedcomponent                   latest    0ff1df35654b   24 seconds ago   352MB
+    pythonizedcomponent                   latest    0ff1df35654b   24 seconds ago   352MB
     ```
     Comprueba que la imagen de [Docker](https://www.docker.com) se ha creado correctamente.
 
 4. Finalmente, puedes crear un contenedor [Docker](https://www.docker.com) de esta imagen, tal como sigue:
     ```shell
-    $ docker run -p 8081:8080 --name mycontainer dockerizedcomponent
+    $ docker run -p 8081:8080 --name mypythoncontainer pythonizedcomponent
     ```
-    El resultado debe ser que el componente se ejecute de forma convencional, pero ahora no como un artefacto Java sino como un contenedor. Concretamente, se está creando un contenedor llamado `mycontainer` de la imagen previamente creada `dockerizedcomponent`.
+    El resultado debe ser que el componente se ejecute de forma convencional, pero ahora no como un script Python sino como un contenedor. Concretamente, se está creando un contenedor llamado `mypythoncontainer` de la imagen previamente creada `pythonizedcomponent`.
 
 ### GitHub action
 
@@ -85,16 +54,15 @@ Cabe señalar que las [GitHub action](https://github.com/features/actions) se de
 **Pasos a realizar:**
 
 1. En el caso de que no exista, crea la carpeta `.github/workflows` en la raíz de tu repositorio. Es importante que te fijes bien en que se trata de una carpeta oculta.
-2. Dentro de la carpeta `.github/workflows` crea el archivo `back-end_publish-docker-image.yml` con el siguiente contenido:
+   
+2. Dentro de la carpeta `.github/workflows` crea el archivo `<COMPONENT-NAME>_publish-docker-image.yml` con el siguiente contenido:
     ```yaml
-    # GitHub action aimed at creating a Docker image of a Java project. 
+    # GitHub action aimed at creating a Docker image of a Python component. 
     # The Docker image is pushed on DockerHub when created.
     #
     # Requirements:
     # - Secrets. In order to execute the GitHub action the following secrets must be set in the project
     # (Settings / Secrets / Actions):
-    #   - KAIZTEN_DEVELOPMENT_USERNAME. Username of account kaiztendevelopment.
-    #   - KAIZTEN_DEVELOPMENT_PASSWORD. Password of account kaiztendevelopment.
     #   - DOCKERHUB_USERNAME. Username of the user in DockerHub.
     #   - DOCKERHUB_PASSWORD. Password of the user in DockerHub.
     #
@@ -119,8 +87,6 @@ Cabe señalar que las [GitHub action](https://github.com/features/actions) se de
 
     # Environment variables
     env:
-      JAVA_VERSION: 17
-      WORKING_DIRECTORY: <COMPONENT-FOLDER>
       DOCKER_IMAGE_NAME: kaizten/<PROJECT-NAME>_<COMPONENT-NAME>
 
     jobs:
@@ -130,21 +96,16 @@ Cabe señalar que las [GitHub action](https://github.com/features/actions) se de
           # Checkout of the repository
           - name: Checkout
             uses: actions/checkout@v4
-          # Setting Java Development Kit
-          - name: Set up Java Development Kit
-            uses: actions/setup-java@v4
+          # Set up Python environment
+          - name: Set up Python
+            uses: actions/setup-python@v4
             with:
-              java-version: ${{ env.JAVA_VERSION }}
-              distribution: 'temurin'
-              server-id: github
-              server-username: MAVEN_USERNAME
-              server-password: MAVEN_PASSWORD
-          # Build artifact with Maven
-          - name: Build with Maven
-            run: mvn -B -Pgithub clean package
-            env:
-              MAVEN_USERNAME: ${{ secrets.KAIZTEN_DEVELOPMENT_USERNAME }}
-              MAVEN_PASSWORD: ${{ secrets.KAIZTEN_DEVELOPMENT_PASSWORD }}
+              python-version: '3.x'
+          # Install dependencies
+          - name: Install dependencies
+            run: |
+              pip install --upgrade pip
+              pip install -r requirements.txt
           # Build and publish Docker image in DockerHub
           - name: Build and push Docker image
             uses: mr-smithers-excellent/docker-build-push@v6
@@ -165,36 +126,6 @@ Cabe señalar que las [GitHub action](https://github.com/features/actions) se de
     * `<COMPONENT-NAME>` por el nombre de tu componente.
     * `<COMPONENT-FOLDER>` por el nombre de la carpeta de tu componente. 
 
-3. Antes de pasar a probar la [GitHub action](https://github.com/features/actions), debes modificar el archivo `<COMPONENT-FOLDER>/pom.xml` añadiendo la sección `<profiles>` que se muestra a continuación:
-    ```xml
-    <project>
-      ...
-      <profiles>
-        <profile>
-          <id>github</id>
-          <activation>
-            <activeByDefault>true</activeByDefault>
-          </activation>
-          <repositories>
-            <repository>
-              <id>central</id>
-              <url>https://repo1.maven.org/maven2</url>
-            </repository>
-            <repository>
-              <id>github</id>
-              <url>https://maven.pkg.github.com/kaizten/*</url>
-              <snapshots>
-                <enabled>true</enabled>
-              </snapshots>
-            </repository>
-          </repositories>
-        </profile>
-      </profiles>
-      ...
-    </project>
-    ```
-    Esto se hace para que la [GitHub action](https://github.com/features/actions) sea capaz de encontrar el paquete [kaizten-utils](https://github.com/kaizten/kaizten-utils) que estás usando en el componente.
+3. Revisa la [GitHub action](https://github.com/features/actions) y prueba a ejecutarla haciendo algún cambio en alguno de los archivos de `<COMPONENT-FOLDER>/` (salvo los archivos `.md` que han sido excluidos) y subiéndolos al repositorio. Indícame si se ha ejecutado correctamente (puedes verlo en la pestaña `Actions` de la página de GitHub del repositorio). En caso de que se produzca algún error en la ejecución de la [GitHub action](https://github.com/features/actions) te llegará un correo electrónico indicando el error. En tal caso, procede a revisar el error y tratar de corregirlo.
 
-4. Revisa la [GitHub action](https://github.com/features/actions) y prueba a ejecutarla haciendo algún cambio en alguno de los archivos de `<COMPONENT-FOLDER>/` (salvo los archivos `.md` que han sido excluídos) y subiéndolos al repositorio. Indícame si se ha ejecutado correctamente (puedes verlo en la pestaña `Actions` de la página de GitHub del repositorio). En caso de que se produzca algún error en la ejecución de la [GitHub action](https://github.com/features/actions) te llegará un correo electrónico indicando el error. En tal caso, procede a revisar el error y tratar de corregirlo.
-
-5. Una vez haya finalizado correctamente la ejecución de la [GitHub action](https://github.com/features/actions), comprueba que la imagen se encuentra publicada en [Docker Hub](https://hub.docker.com) con el nombre establecido por la variable `DOCKER_IMAGE_NAME`.
+4. Una vez haya finalizado correctamente la ejecución de la [GitHub action](https://github.com/features/actions), comprueba que la imagen se encuentra publicada en [Docker Hub](https://hub.docker.com) con el nombre establecido por la variable `DOCKER_IMAGE_NAME`.
