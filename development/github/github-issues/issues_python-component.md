@@ -1,5 +1,54 @@
+- [`requirements.txt`](#requirementstxt)
 - [Dockerfile](#dockerfile)
 - [GitHub action](#github-action)
+
+### `requirements.txt`
+
+Los archivos `requirements.txt` son esenciales en componentes de Python, ya que permiten gestionar las dependencias del proyecto de manera eficiente. Este archivo contiene una lista de paquetes y sus versiones específicas que el proyecto necesita para funcionar correctamente. Al utilizar un archivo `requirements.txt`, se asegura que cualquier desarrollador o entorno pueda instalar las mismas dependencias y versiones, garantizando consistencia y evitando problemas de compatibilidad.
+
+**¿Por qué es necesario?**
+
+1. **Consistencia:** Permite que todos los desarrolladores trabajen con las mismas versiones de las dependencias.
+2. **Portabilidad:** Facilita la instalación de dependencias en diferentes entornos, como servidores de producción o máquinas locales.
+3. **Automatización:** Herramientas como `pip` pueden leer este archivo para instalar automáticamente todas las dependencias necesarias.
+
+**Pasos a realizar:**
+
+1. **Crear el archivo `requirements.txt`:**
+    - Dentro de la carpeta del componente Python, crea un archivo llamado `requirements.txt`.
+    - Añade en este archivo todas las dependencias necesarias para el componente. Por ejemplo:
+      ```
+      flask==2.1.1
+      requests==2.28.1
+      numpy==1.23.5
+      ```
+      Asegúrate de especificar las versiones exactas de cada paquete para evitar inconsistencias.
+
+2. **Instalar las dependencias:**
+    - Una vez creado el archivo, instala las dependencias ejecutando el siguiente comando en la terminal:
+      ```bash
+      pip install -r requirements.txt
+      ```
+      Esto instalará todas las dependencias listadas en el archivo.
+
+3. **Probar que todo funciona correctamente:**
+    - Verifica que las dependencias se han instalado correctamente ejecutando el siguiente comando:
+      ```bash
+      pip freeze
+      ```
+      Este comando mostrará todas las dependencias instaladas en el entorno actual. Asegúrate de que coincidan con las listadas en el archivo `requirements.txt`.
+    - Ejecuta el componente Python para confirmar que no hay errores relacionados con las dependencias. Por ejemplo:
+      ```bash
+      python main.py
+      ```
+      Si el componente se ejecuta sin problemas, significa que las dependencias están configuradas correctamente.
+
+4. **Actualizar el archivo `requirements.txt` (opcional):**
+    - Si en el futuro necesitas añadir nuevas dependencias, instálalas con `pip install` y luego actualiza el archivo `requirements.txt` ejecutando:
+      ```bash
+      pip freeze > requirements.txt
+      ```
+      Esto sobrescribirá el archivo con todas las dependencias actuales del entorno.
 
 ### Dockerfile
 
