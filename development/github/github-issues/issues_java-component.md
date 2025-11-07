@@ -1,36 +1,5 @@
-<!-- TOC -->
-
-- [Front-end](#front-end)
-  - [Primeros pasos](#primeros-pasos)
-  - [Añadir dependencia: `kaizten-typescript`](#añadir-dependencia-kaizten-typescript)
-  - [Añadir dependencia: `kaizten-vue`](#añadir-dependencia-kaizten-vue)
-  - [Dockerfile](#dockerfile-1)
-  - [GitHub action](#github-action-1)
-  - [Dominio](#dominio)
-  - [Aplicación](#aplicación-1)
-    - [Casos de uso](#casos-de-uso)
-    - [Servicios](#servicios)
-    - [Repositorios](#repositorios)
-  - [Adaptador HTTP](#adaptador-http)
-    - [Primeros pasos](#primeros-pasos-1)
-    - [Data transfer objects](#data-transfer-objects)
-    - [Probar adaptador HTTP](#probar-adaptador-http)
-  - [Adaptador Vue.js](#adaptador-vuejs)
-    - [Primeros pasos](#primeros-pasos-2)
-    - [Router](#router)
-    - [Gestor de estados](#gestor-de-estados)
-    - [Data transfer objects para vistas](#data-transfer-objects-para-vistas)
-    - [Vistas](#vistas)
-    - [Internacionalización](#internacionalización)
-  - [Integración de Vuetify](#integración-de-vuetify)
-- [Docker compose](#docker-compose)
-- [Algoritmo](#algoritmo)
-  - [Implementación](#implementación)
-  - [Algoritmo como servicio](#algoritmo-como-servicio)
-- [Grafana](#grafana)
-  - [Primeros pasos](#primeros-pasos-3)
-  - [Integración en front-end](#integración-en-front-end)
-<!-- /TOC -->
+- [Dockerfile](#dockerfile)
+- [GitHub action](#github-action)
 
 ### Dockerfile
 
