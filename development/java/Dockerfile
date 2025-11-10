@@ -1,7 +1,7 @@
 # Author: Kaizten Analytics S.L. (development@kaizten.com)
 
 # Base image
-FROM openjdk:17-alpine
+FROM eclipse-temurin:17-jdk-alpine
 
 # Maintainer
 LABEL maintainer="development@kaizten.com"
