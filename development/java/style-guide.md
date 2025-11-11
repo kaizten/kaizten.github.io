@@ -6,6 +6,7 @@
   - [Filenames](#filenames)
   - [Folder names](#folder-names)
   - [Language](#language)
+  - [Comments](#comments)
   - [Attributes](#attributes)
   - [Methods](#methods)
   - [Imports](#imports)
@@ -18,6 +19,12 @@
 
 * Content of Java files must be formatted using 4 spaces.
 * Braces must be used in block statatements (`if-else`, `for`, `while`, etc.).
+* Content of braces must be in different lines. For example:
+  ```java
+  if (isValid) {
+      System.out.println("Condition is valid");
+  }
+  ```
 
 ## File content
 
@@ -39,6 +46,10 @@
 ## Language
 
 * The source code, documentation (including source code, OpenAPI, etc.), images, and any other assets must be written in English.
+
+## Comments
+
+* Comments inside methods must be avoided.
 
 ## Attributes
 
