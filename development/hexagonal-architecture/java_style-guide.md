@@ -4,6 +4,7 @@
   - [Domain](#domain)
     - [Entities](#entities)
       - [Constructors](#constructors)
+      - [Methods](#methods)
       - [Tests](#tests)
       - [Comments](#comments)
     - [Enumerates](#enumerates)
@@ -32,6 +33,11 @@
 * Each entity must have a restore constructor to be used exclusively by databases. The parameters of the restore constructor must be the same and provided in the same order as the attributes of the entity.
 * The restore constructor must be commented with `Restore constructor`.
 * The restore constructor must be documented using JavaDoc comments (`/** */`).
+
+#### Methods
+
+* Each entity must override `equals(Object otherObject)`. Only its identifier must be compared.
+* Each entity must override `hashCode()`. Only its identifier must be used to obtain the hash code of the object.
 
 #### Tests
 
