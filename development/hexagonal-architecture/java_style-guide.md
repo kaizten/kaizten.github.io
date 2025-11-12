@@ -24,6 +24,7 @@
 
 ### Entities
 
+* Annotations are not allowed in entity classes.
 * Do not use `Cloneable`. Instead, use the copy constructor to obtain a copy of an entity.
 
 #### Attributes
@@ -39,7 +40,7 @@
 
 #### Constructors
 
-* Annotations do not have to be used in constructors.
+* Annotations are not allowed in constructors.
 * Each entity must have a copy constructor.
 * Each `public` constructor must have at least the required attributes as arguments. Attributes declared as `final` can be ommited as argument because are initialized in the constructor by definition.
 * Each entity must have a restore constructor to be used exclusively by databases. The parameters of the restore constructor must be the same and provided in the same order as the attributes of the entity.
@@ -48,6 +49,7 @@
 
 #### Methods
 
+* Annotations are not allowed in methods.
 * Each entity must override `equals(Object otherObject)`. Only its identifier must be compared.
 * Each entity must override `hashCode()`. Only its identifier must be used to obtain the hash code of the object.
 
