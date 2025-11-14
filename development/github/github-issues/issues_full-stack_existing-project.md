@@ -1,14 +1,24 @@
-- [Dominio](#dominio)
-  - [Objetos valor](#objetos-valor)
-  - [Enumerados](#enumerados)
-  - [Entidades](#entidades)
-    - [Tests de entidades](#tests-de-entidades)
-    - [Tests de los enumerados](#tests-de-los-enumerados)
-    - [Tests de objetos valor](#tests-de-objetos-valor)
-- [Aplicación](#aplicación)
-  - [Casos de uso](#casos-de-uso)
-  - [Adaptador REST](#adaptador-rest)
-    - [DTO](#dto)
+- [Back-end](#back-end)
+  - [Dominio](#dominio)
+    - [Objetos valor](#objetos-valor)
+    - [Enumerados](#enumerados)
+    - [Entidades](#entidades)
+      - [Tests de entidades](#tests-de-entidades)
+      - [Tests de los enumerados](#tests-de-los-enumerados)
+      - [Tests de objetos valor](#tests-de-objetos-valor)
+  - [Aplicación](#aplicación)
+    - [Casos de uso](#casos-de-uso)
+    - [Adaptador REST](#adaptador-rest)
+      - [DTO](#dto)
+- [Front-end](#front-end)
+  - [Adaptadores](#adaptadores)
+    - [Vue.js](#vuejs)
+      - [Componentes](#componentes)
+        - [Header](#header)
+        - [KPI](#kpi)
+        - [Language selector](#language-selector)
+        - [Snackbar](#snackbar)
+      - [Carpeta de traducciones](#carpeta-de-traducciones)
 
 # Back-end
 
@@ -480,3 +490,55 @@ public class TrapResponseBody {
 Fíjate en la implementación de los métodos estáticos que tienen las clases anteriores. Están diseñados para convertir el DTO correspondiente en entidad (o viceversa) así como para generar objetos aleatoriamente. También es particularmente importante en que te fijes en que se retorna `Optional` en los getters de aquellos atributos que son opcionales en la entidad.
 
 2. Una vez creados los DTO, debes eliminar las entidades en los parámetros y los valores de retorno de los controladores creados en el adaptador. Esto significa que los controladores deben recibir DTO y devolver DTO en lugar de entidades de tu dominio. 
+
+# Front-end
+
+## Adaptadores
+
+### Vue.js
+
+#### Componentes
+
+##### Header
+
+Hola, en `kaizten-vue` hay un componente que permite mostrar una cabecera en la herramienta. La documentación y ejemplos de uso puedes encontrarlos [aquí](https://github.com/kaizten/kaizten-vue/tree/main/kaizten-vue/src/components/header).
+
+**Pasos a realizar:**
+
+1. Elimina el componente `NavBar.vue` y sustituye su uso por el de la librería `kaizten-vue`.
+2. Si identificas alguna necesidad o error en el uso del componente existente en `kaizten-vue`, házmelo saber para tratar de mejorarlo o corregirlo y que en tu proyecto simplemente lo uses.
+
+##### KPI
+
+Hola, en `kaizten-vue` hay un componente que permite mostrar KPIs de diferentes formatos en una vista. La documentación y ejemplos de uso puedes encontrarlos [aquí](https://github.com/kaizten/kaizten-vue/tree/main/kaizten-vue/src/components/kpi).
+
+**Pasos a realizar:**
+
+1. Elimina el componente `DisplayKPIs.vue` y sustituye su uso por el de la librería `kaizten-vue`.
+2. Si identificas alguna necesidad o error en el uso del componente existente en `kaizten-vue`, házmelo saber para tratar de mejorarlo o corregirlo y que en tu proyecto simplemente lo uses.
+
+##### Language selector
+
+Hola, en `kaizten-vue` hay un componente que permite seleccionar idiomas. La documentación y ejemplos de uso puedes encontrarlos [aquí](https://github.com/kaizten/kaizten-vue/tree/main/kaizten-vue/src/components/language-selector).
+
+**Pasos a realizar:**
+
+1. Elimina el componente `LanguageSelector.vue` y sustituye su uso por el de la librería `kaizten-vue`.
+2. Si identificas alguna necesidad o error en el uso del componente existente en `kaizten-vue`, házmelo saber para tratar de mejorarlo o corregirlo y que en tu proyecto simplemente lo uses.
+
+##### Snackbar
+
+Hola, en `kaizten-vue` hay un componente que permite mostrar mensajes rápidos al usuario (snackbar). La documentación y ejemplos de uso puedes encontrarlos [aquí](https://github.com/kaizten/kaizten-vue/tree/main/kaizten-vue/src/components/snackbar).
+
+**Pasos a realizar:**
+
+1. Elimina el componente `Snackbar.vue` y sustituye su uso por el de la librería `kaizten-vue`.
+2. Si identificas alguna necesidad o error en el uso del componente existente en `kaizten-vue`, házmelo saber para tratar de mejorarlo o corregirlo y que en tu proyecto simplemente lo uses.
+
+#### Carpeta de traducciones
+
+Hola, las traducciones es algo relativo a la visualización de elementos en pantalla. 
+
+**Pasos a realizar:**
+
+1. Pon la carpeta `locales` dentro del adaptador de Vue.js. Esto es, `adapter/vuejs/locales`.
