@@ -18,6 +18,7 @@
         - [KPI](#kpi)
         - [Language selector](#language-selector)
         - [Snackbar](#snackbar)
+        - [Theme switch](#theme-switch)
       - [Carpeta de traducciones](#carpeta-de-traducciones)
 
 # Back-end
@@ -533,6 +534,15 @@ Hola, en `kaizten-vue` hay un componente que permite mostrar mensajes rápidos a
 **Pasos a realizar:**
 
 1. Elimina el componente `Snackbar.vue` y sustituye su uso por el de la librería `kaizten-vue`.
+2. Si identificas alguna necesidad o error en el uso del componente existente en `kaizten-vue`, házmelo saber para tratar de mejorarlo o corregirlo y que en tu proyecto simplemente lo uses.
+
+##### Theme switch
+
+Hola, en `kaizten-vue` hay un componente que permite cambiar el tema de la aplicación (oscuro/claro). La documentación y ejemplos de uso puedes encontrarlos [aquí](https://github.com/kaizten/kaizten-vue/tree/main/kaizten-vue/src/components/theme-switch).
+
+**Pasos a realizar:**
+
+1. Elimina el componente `ThemeSwitch.vue` y sustituye su uso por el de la librería `kaizten-vue`.
 2. Si identificas alguna necesidad o error en el uso del componente existente en `kaizten-vue`, házmelo saber para tratar de mejorarlo o corregirlo y que en tu proyecto simplemente lo uses.
 
 #### Carpeta de traducciones
