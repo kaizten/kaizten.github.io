@@ -13,7 +13,7 @@
 
 High-level architecture diagram showing clients, Keycloak (auth), the Kaizten Task API/execution engine, MinIO (artifacts) and MongoDB (metadata), with the main data and notification flows.
 
-![Kaizten Task architecture](/images/schema.png)
+![Kaizten Task architecture](schema.png)
 
 ## Write source code
 
