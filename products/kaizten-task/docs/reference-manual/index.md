@@ -1,5 +1,5 @@
 # Kaizten Task
 
-- [Introduction](introduction.md)
-- [How it works](how-it-works.md)
-  - [JSON Web Token (JWT)](jwt.md)
+* [Introduction](introduction.md)
+* [JSON Web Token (JWT)](jwt.md)
+* [Register and execute operations](register-and-execute-operations.md)

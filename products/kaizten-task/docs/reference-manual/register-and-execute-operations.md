@@ -1,6 +1,6 @@
-# How it works
+# Register and execute operations
 
-- [How it works](#how-it-works)
+- [Register and execute operations](#register-and-execute-operations)
 	- [Write source code](#write-source-code)
 	- [Create Docker image](#create-docker-image)
 	- [Obtain JWT](#obtain-jwt)
@@ -29,7 +29,7 @@ The developer obtains an access token from Keycloak by authenticating with their
 
 ## Register operation
 
-The developer submits an operation via HTTP `POST` to `/v1/operatoins` with a JSON payload that includes the full name of the Docker image.
+The developer submits an operation via HTTP `POST` to `/v1/operatins` with a JSON payload that includes the full name of the Docker image.
 
 ## Register datasets
 

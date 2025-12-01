@@ -10,7 +10,7 @@
 
 ## Overview
 
-Kaizten Task uses [Keycloak](https://www.keycloak.org) (OpenID Connect) as the identity provider and accepts OAuth2 access tokens (JWT) for API authentication and authorization. Protected endpoints require a Bearer token in the Authorization header (Authorization: Bearer <access_token>). Tokens are issued by Keycloak and include standard claims (iss, aud, sub, exp, iat) plus realm- or client-specific claims that carry roles, scopes and other attributes used for authorization.
+Kaizten Task uses [Keycloak](https://www.keycloak.org) (OpenID Connect) as the identity provider and accepts OAuth2 access tokens (JWT) for API authentication and authorization. Protected endpoints require a Bearer token in the Authorization header (Authorization: Bearer <access_token>). Tokens are issued by [Keycloak](https://www.keycloak.org) and include standard claims (iss, aud, sub, exp, iat) plus realm- or client-specific claims that carry roles, scopes and other attributes used for authorization.
 
 The backend validates incoming tokens by:
 - verifying the JWT signature (using Keycloak's JWKS / well-known endpoint),
@@ -18,7 +18,7 @@ The backend validates incoming tokens by:
 - enforcing token expiration (exp) and not-before (nbf) constraints,
 - and evaluating roles/scopes from token claims for endpoint-level authorization.
 
-Clients should obtain tokens from [Keycloak](https://www.keycloak.org) (token endpoint) and include them on each request. Access tokens are short-lived; applications should use refresh tokens or client-credentials flows as appropriate to maintain session continuity.
+Clients must obtain tokens from [Keycloak](https://www.keycloak.org) (token endpoint) and include them on each request. Access tokens are short-lived. Therefore, applications should use refresh tokens or client-credentials flows as appropriate to maintain session continuity.
 
 ## Obtaining a JSON Web Token
 
