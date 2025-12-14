@@ -4,10 +4,9 @@
   - [Public constructors](#public-constructors)
     - [Right](#right)
     - [Undefined required attribute](#undefined-required-attribute)
-  - [Copy constructor](#copy-constructor)
-    - [Right](#right-1)
-    - [Undefined object](#undefined-object)
-  - [`clone()`](#clone)
+    - [Copy constructor](#copy-constructor)
+      - [Right](#right-1)
+      - [Undefined object](#undefined-object)
   - [`equals()`](#equals)
   - [`hashCode()`](#hashcode)
   - [State modifier](#state-modifier)
@@ -71,11 +70,11 @@ The following tests must be defined for each constructor of the entity. It shoul
     }
     ```
 
-## Copy constructor
+### Copy constructor
 
 The following tests must be defined for the copy constructor of the entity. 
 
-### Right
+#### Right
 
 * **Test name:** `copyConstructor_right()`
 * **Issues to check:**
@@ -97,7 +96,7 @@ The following tests must be defined for the copy constructor of the entity.
   }
   ```
 
-### Undefined object
+#### Undefined object
 
 * **Test name:** `copyConstructor_undefined()`
   * `CLASS`: name of the class in which the constructor is located. 
@@ -115,29 +114,6 @@ The following tests must be defined for the copy constructor of the entity.
       assertEquals(EntryPoint.ERROR_ENTRY_POINT_UNDEFINED, exception.getMessage());
     }
   ```
-
-## `clone()`
-
-* **Test name:** `cloneMethod()`
-* **Issues to check:**
-  * The object resulting from the `clone` method has a different identifier than the original object.
-  * The `clone` method creates a copy of the object by copying all its attributes.
-* **Example:**
-    ```java
-    @Test
-    void cloneMethod() {
-        EntryPoint original = EntryPoint.random();
-        EntryPoint cloned = (EntryPoint) original.clone();
-        assertNotEquals(original.getId(), cloned.getId());
-        assertEquals(original.getName(), cloned.getName());
-        assertEquals(original.getIsland(), cloned.getIsland());
-        assertEquals(original.getCreator(), cloned.getCreator());
-        assertEquals(original.getDescription(), cloned.getDescription());
-        assertEquals(original.getAreas(), cloned.getAreas());
-        assertEquals(original.getComments(), cloned.getComments());
-        assertEquals(original.getCreationTimestamp(), cloned.getCreationTimestamp());
-    }
-    ```
 
 ## `equals()`
 

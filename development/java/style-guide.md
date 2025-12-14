@@ -10,8 +10,8 @@
   - [Attributes](#attributes)
   - [Methods](#methods)
   - [Imports](#imports)
-  - [`hashCode()`](#hashcode)
   - [`equals()`](#equals)
+  - [`hashCode()`](#hashcode)
   - [`toString()`](#tostring)
   - [`pom.xml`](#pomxml)
 
@@ -19,6 +19,9 @@
 
 * Content of Java files must be formatted using 4 spaces.
 * Braces must be used in block statatements (`if-else`, `for`, `while`, etc.).
+* Do not include empty lines in the body of a method.
+* Do not include consecutive empty lines.
+* Multiple sentences in the same line must be avoided.
 * Content of braces must be in different lines. For example:
   ```java
   if (isValid) {
@@ -49,7 +52,7 @@
 
 ## Comments
 
-* Comments inside methods must be avoided.
+* Comments inside methods must be avoided. 
 
 ## Attributes
 
@@ -57,21 +60,21 @@
 
 ## Methods
 
-* Each method of a Java class must be documented by Javadoc.
+* Each method of a Java class must be documented by Javadoc. Its parameters, return value and potential thrown exceptions must be also documented.
 
 ## Imports
 
 * Imports must be sorted alphabetically.
 
-## `hashCode()`
-
-* `hashCode()` method must be annotated with `@Override`.
-* If `equals()` is overriden, `hashCode()` must be also overriden.
-
 ## `equals()`
 
 * `equals()` method must be annotated with `@Override`.
 * Argument of `equals()` method must be called `otherObject`.
+
+## `hashCode()`
+
+* `hashCode()` method must be annotated with `@Override`.
+* If `equals()` is overriden, `hashCode()` must be also overriden.
 
 ## `toString()`
 
