@@ -1732,30 +1732,17 @@ Hola, los clientes que empleen el API REST definida en el back-end deberían emp
     ```java
     public class TrapPostRequestBody {
 
-        private TrapName name;
-        private TrapDescription description;
-
-        public void setName(TrapName name) {
-            this.name = name;
-        }
-
-        public void setDescription(TrapDescription description) {
-            this.description = description;
-        }
-
-        public Trap toTrap() {
-            Trap trap = new Trap(this.name);
-            trap.setDescription(this.description);
-            return trap;
-        }
+        public TrapName name;
+        public TrapDescription description;
 
         public String toString() {
-            return String.format("TrapPostRequestBody={name=%s, description=%s}", 
+            return String.format(
+                    "TrapPostRequestBody={name=%s, description=%s}", 
                     this.name, this.description);
         }
     }
     ```
-    Fíjate en la implementación del método estático que tiene la clase anterior. Está diseñado para convertir el DTO correspondiente en entidad.
+    Es importante que te des cuenta que se están empleando atributos públicos y no se incluyen métodos (más allá de `toString`).
 
 2. Una vez creados los DTO, debes eliminar las entidades en los **parámetros de los controladores** creados en el adaptador. Esto significa que los controladores deben recibir DTO en lugar de entidades del dominio.
 
@@ -1770,39 +1757,18 @@ Hola, las respuestas proporcionadas por los controladores deben ser [data transf
     ```java
     public class TrapResponseBody {
 
-        private UUID id;
-        private TrapName name;
-        private TrapDescription description;
-
-        public void setId(UUID id) {
-            this.id = id;
-        }
-
-        public void setName(TrapName name) {
-            this.name = name;
-        }
-
-        public void setDescription(TrapDescription description) {
-            this.description = description;
-        }
-
-        public static TrapResponseBody from(Trap trap) {
-            TrapResponseBody responseBody = new TrapResponseBody();
-            responseBody.id = trap.getId();
-            responseBody.name = trap.getName();
-            trap.getDescription().ifPresent((description) -> {
-                responseBody.description = description;
-            });
-            return responseBody;
-        }
+        public UUID id;
+        public TrapName name;
+        public TrapDescription description;
 
         public String toString() {
-            return String.format("TrapResponseBody={id=%s, name=%s, description=%s}", +
+            return String.format(
+                    "TrapResponseBody={id=%s, name=%s, description=%s}", +
                     this.id, this.name, this.description);
         }
     }
     ```
-    Fíjate en la implementación del estático que tiene la clase anterior. Está diseñados para convertir la entidad en DTO.
+    La clase únicamente tiene atributos públicos y no contiene métodos (más allá de `toString`).
 
 3. Una vez creados los DTO, debes eliminar las entidades en los **valores de retorno** de los controladores creados en el adaptador. Esto significa que los controladores deben devolver DTO en lugar de entidades del dominio.
 
@@ -1825,8 +1791,8 @@ Hola, cuando el usuario realiza una petición de tipo `POST` o `PUT`, el cuerpo 
             final TrapName name = super.getRequiredAttribute(JsonFields.NAME, TrapName.class);
             final TrapDescription description = super.getOptionalAttribute(JsonFields.DESCRIPTION, TrapDescription.class);
             TrapPostRequestBody requestBody = new TrapPostRequestBody();
-            requestBody.setName(name);
-            requestBody.setDescription(description);
+            requestBody.name = name;
+            requestBody.description = description;
             return requestBody;
         }
 
