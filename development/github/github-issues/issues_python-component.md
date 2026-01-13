@@ -96,7 +96,7 @@ La dockerización requiere de un archivo `Dockerfile`. Se trata un archivo de te
 
 ### GitHub action
 
-Hola, la compilación del componente y la generación de la imagen [Docker](https://www.docker.com) correspondiente requieren pasos manuales, lo que puede llevar a errores, inconsistencias y pérdida de tiempo. Para mejorar este proceso, se puede implementar una [GitHub action](https://github.com/features/actions) que automatice estas tareas con cada `push` realizado en el repositorio.
+Hola, la generación de la imagen [Docker](https://www.docker.com) correspondiente requieren pasos manuales, lo que puede llevar a errores, inconsistencias y pérdida de tiempo. Para mejorar este proceso, se puede implementar una [GitHub action](https://github.com/features/actions) que automatice estas tareas con cada `push` realizado en el repositorio.
 
 Cabe señalar que las [GitHub action](https://github.com/features/actions) se definen en la carpeta `.github/workflows` del repositorio. 
 
