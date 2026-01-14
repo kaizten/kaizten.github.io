@@ -137,6 +137,7 @@ Cabe señalar que las [GitHub action](https://github.com/features/actions) se de
     # Environment variables
     env:
       DOCKER_IMAGE_NAME: kaizten/<PROJECT-NAME>_<COMPONENT-NAME>
+      WORKING_DIRECTORY: <COMPONENT-FOLDER>
 
     jobs:
       path-context:
