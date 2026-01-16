@@ -1654,6 +1654,10 @@ Cabe señalar que en el conversor se está empleando `MongoFields`. Se trata de 
 ```java
 public class MongoFields {
 
+    private MongoFields() {
+        throws new UnsupportedOperationException(KaiztenClass.UTILITY_CLASS)
+    }
+
     public static final String ANALYZES = "analyzes";
     public static final String AREAS = "areas";
     public static final String BOX = "box";
