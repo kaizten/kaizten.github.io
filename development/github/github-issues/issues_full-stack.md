@@ -1339,7 +1339,7 @@ Tal como puede verse en el ejemplo, el servicio emplea un repositorio para acced
 
 #### Repositorios
 
-Hola, para que los casos de uso (implementados como servicios) estén desacoplados del lugar donde se almacenan los datos, es necesario crear [repositorios](https://our-academy.org/posts/el-patron-repository:-implementacion-y-buenas-practicas). En este contexto, un repositorio es una abstracción que define un conjunto de métodos para acceder y manipular datos en una base de datos u otro tipo de almacenamiento persistente. 
+Hola, para que los casos de uso (implementados como servicios) estén desacoplados del lugar donde se almacenan los datos, es necesario crear [repositorios](https://www.arquitecturajava.com/el-patron-repository-y-la-explosion-de-metodos/). En este contexto, un repositorio es una abstracción que define un conjunto de métodos para acceder y manipular datos en una base de datos u otro tipo de almacenamiento persistente. 
 
 La idea detrás de utilizar una interfaz de repositorio es separar la lógica de acceso a datos de la lógica de negocio de una aplicación (contenido de la carpeta `application/` del back-end). Esta interfaz define métodos genéricos para realizar operaciones CRUD (Crear, Leer, Actualizar y Borrar) sobre los datos, como por ejemplo: crear, leer, actualizar y eliminar registros.
 
