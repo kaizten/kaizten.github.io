@@ -1559,7 +1559,7 @@ Como puede verse, utilizar un `@WritingConverter` es especialmente útil cuando 
 
 **Pasos a realizar:**
 
-1. Escribe una clase llamada `<ENTITY>WritingConverter.java` anotada como `@WritingConverter` para cada entidad del dominio de la aplicación dentro de la carpeta `adapter/mongodb/writter`. De este modo, se asegurará que cada entidad tiene un proceso de conversión único y bien definido.
+1. Escribe una clase llamada `<ENTITY>WritingConverter.java` anotada como `@WritingConverter` para cada entidad del dominio de la aplicación dentro de la carpeta `adapter/mongodb/writer`. De este modo, se asegurará que cada entidad tiene un proceso de conversión único y bien definido.
 2. Escribe una clase `adapter/mongodb/MongoFields.java` donde definas el conjunto de campos de los documentos a crear por los conversores.
 3. Añade el siguiente método a `configuration/MongoConfiguration.java`:
     ```java
