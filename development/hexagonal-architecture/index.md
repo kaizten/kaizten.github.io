@@ -9,7 +9,7 @@
     - [Objetos de valor](#objetos-de-valor)
     - [Enumerados](#enumerados)
   - [Capa de aplicación](#capa-de-aplicación)
-    - [Casos de uso.](#casos-de-uso)
+    - [Casos de uso](#casos-de-uso)
     - [Servicios](#servicios)
     - [Repositorios](#repositorios)
   - [Capa de adaptadores](#capa-de-adaptadores)
@@ -67,7 +67,7 @@ En [este enlace](./domain/enumerates.md) puedes encontrar una descripción compl
 
 La capa de aplicación es la encargada de coordinar las operaciones del sistema. Se centra en qué se debe hacer, sin preocuparse de los detalles técnicos de cómo se hace. Los componentes principales en esta capa son los casos de uso, servicios y repositorios.
 
-### Casos de uso.
+### Casos de uso
 
 Representan la lógica que resuelve tareas específicas. Son la entrada principal a la lógica de negocio. En [este enlace](./application/use-cases.md) puedes encontrar una descripción sobre cómo crear casos de uso.
 

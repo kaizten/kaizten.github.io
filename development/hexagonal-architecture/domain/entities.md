@@ -40,7 +40,7 @@ public class Order {
      */
     private Quantity quantity;
 
-    public Pedido(Customer customer, Quantity quantity) {
+    public Order(Customer customer, Quantity quantity) {
         this.validateCustomer(customer);
         this.id = UUID.randomUUID();
         this.customer = customer;
