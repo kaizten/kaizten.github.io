@@ -243,9 +243,9 @@ Hola, [Docker](https://www.docker.com) es una plataforma de software que permite
 2. Una vez realizados estos pasos, comprueba que tienes instalado Docker en tu máquina, tal como sigue:
     ```shell
     $ docker -v
-    Docker version 27.2.1, build 9e34c9b
+    Docker version 29.1.5, build 9e34c9b
     ```
-    Comprueba que tienes al menos la versión `27` de [Docker](https://www.docker.com). 
+    Comprueba que tienes al menos la versión `29` de [Docker](https://www.docker.com). 
 
 3. Es importante que puedes ejecutar `docker` sin necesitar emplear `sudo`. Si necesitas usar `sudo`, revisa [este artículo](https://docs.docker.com/engine/install/linux-postinstall/) donde se indica cómo ejecutarlo como usuario convencional.
 
@@ -292,7 +292,7 @@ Hola, una herramienta que será necesaria en el proyecto en [NodeJS](https://nod
 2. Una vez instalado, debes comprobar que tienes al menos la siguiente versión de [NodeJS](https://nodejs.org) en tu máquina:
     ```shell
     $ node -v
-    v22.13.0
+    v22.22.0
     ```
 
 ## Yarn
