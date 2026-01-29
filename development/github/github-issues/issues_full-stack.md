@@ -1385,8 +1385,12 @@ Hola, en la aplicación se empleará [PostgreSQL](https://www.postgresql.org) co
 
 **Pasos a realizar:**
 
-1. Para poder trabajar con [PostgreSQL](https://www.postgresql.org) en tu back-end debes modificar el archivo `pom.xml` añadiendo a la sección `<dependencies>` la siguiente dependencia:
+1. Para poder trabajar con [PostgreSQL](https://www.postgresql.org) en tu back-end debes modificar el archivo `pom.xml` añadiendo a la sección `<dependencies>` las siguientes dependencias:
     ```xml
+    <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
     <dependency>
         <groupId>org.postgresql</groupId>
         <artifactId>postgresql</artifactId>
