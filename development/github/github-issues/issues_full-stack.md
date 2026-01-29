@@ -37,10 +37,14 @@
     - [Casos de uso](#casos-de-uso)
     - [Servicios](#servicios)
     - [Repositorios](#repositorios)
-  - [Adaptador MongoDB](#adaptador-mongodb)
+  - [Adaptador PostgreSQL](#adaptador-postgresql)
     - [Descripción general](#descripción-general)
     - [Implementación de repositorios](#implementación-de-repositorios)
     - [Configuración](#configuración)
+  - [Adaptador MongoDB](#adaptador-mongodb)
+    - [Descripción general](#descripción-general-1)
+    - [Implementación de repositorios](#implementación-de-repositorios-1)
+    - [Configuración](#configuración-1)
     - [Escritores](#escritores)
     - [Lectores](#lectores)
   - [Adaptador REST](#adaptador-rest)
@@ -50,10 +54,10 @@
     - [Deserializadores](#deserializadores)
     - [Serializadores](#serializadores)
     - [Tests](#tests)
-    - [Configuración](#configuración-1)
+    - [Configuración](#configuración-2)
     - [Documentación mediante OpenAPI](#documentación-mediante-openapi)
   - [Operaciones bulk](#operaciones-bulk)
-  - [Configuración](#configuración-2)
+  - [Configuración](#configuración-3)
     - [Aplicación](#aplicación-1)
   - [SonarQube](#sonarqube)
   - [Websocket](#websocket)
@@ -1361,6 +1365,101 @@ La idea detrás de utilizar una interfaz de repositorio es separar la lógica de
         ...
     }
     ```
+
+### Adaptador PostgreSQL
+
+#### Descripción general
+
+Hola, el adaptador de [PostgreSQL](https://www.postgresql.org) es el componente de tu back-end encargado de tratar con la base de datos. La siguiente imagen muestra su organización:
+
+![Adaptador PostgreSQL](https://kaizten.github.io/images/hexagonal-architecture_postgresql-adapter.png)
+
+Tal como puede verse en la imagen, está organizado en los siguientes elementos:
+* **Implementación de repositorios**. Es la implementación particular de cómo vamos a guardar y recuperar los datos desde la base de datos. Es importante destacar aquí que los repositorios están definidos en la capa de aplicación como interfaces Java, por lo que a nivel de caso de uso no se conoce qué base de datos se va a emplear. Esto permite que fácilmente puedas cambiar de base de datos, haciendo un nuevo adaptador particular o puedas evolucionar éste sin interferir con el resto de la aplicación.
+
+Teniendo esta estructura para el adaptador de [PostgreSQL](https://www.postgresql.org) es posible desacoplar la lógica de negocio (definida a través de los casos de uso) de la persistencia de los datos.
+
+#### Implementación de repositorios
+
+Hola, en la aplicación se empleará [PostgreSQL](https://www.postgresql.org) como sistema gestor de base de datos. Es un sistema de base de datos SQL, diseñado para manejar grandes volúmenes de datos de manera flexible y escalable.
+
+**Pasos a realizar:**
+
+1. Para poder trabajar con [PostgreSQL](https://www.postgresql.org) en tu back-end debes modificar el archivo `pom.xml` añadiendo a la sección `<dependencies>` la siguiente dependencia:
+    ```xml
+    <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>${postgresql.version}</version>
+    </dependency>
+    ```
+2. Añade la versión de [PostgreSQL](https://www.postgresql.org) a emplear en la sección `<properties>` del `pom.xml`, tal como sigue:
+    ```xml
+    <properties>
+        <postgresql.version>42.7.7</postgresql.version>
+    </properties>
+    ```
+  
+3. Crea la carpeta `adapter/postgresql` dentro de tu back-end. En esta carpeta debes incluirse todo lo relacionado con el uso de la base de datos en el back-end. Concretamente, debes añadir la implementación de los repositorios de datos definidos en el back-end. Esto es, hay que implementar cómo realizar las operaciones CRUD (Create, Read, Update y Delete) de las diferentes entidades. 
+
+4. En base a lo anterior, por cada repositorio de la capa de aplicación definido en tu back-end (carpeta `application/repository`) añade una implementación del mismo. A continuación puedes encontrar un pequeño extracto de cómo sería:
+    ```java
+    public class <ENTITY>PostgreSQLRepository implements <ENTITY>Repository {
+
+        @Override
+        public List<<ENTITY>> findAll() {
+            //
+        }
+
+        ...
+    }
+    ```
+    En este caso, debes sustituir `<ENTITY>` por el nombre de tu entidad. 
+
+    Por otro lado, lo más importante es implementar los métodos definidos en el repositorio.
+
+#### Configuración
+
+Hola, una vez definidas las implementaciones de los repositorios para [PostgreSQL](https://www.postgresql.org), es necesario crear beans de éstas para que Spring Boot pueda inyectarlos oportunamente allí donde se necesiten.
+
+**Pasos a realizar:**
+
+1. Si no está creada previamente, crea la carpeta `configuration/` en el código del back-end. 
+2. Crea la clase `configuration/PostgreSQLConfiguration.java`. A continuación puedes ver un extracto de cómo sería esta clase:
+    ```java
+    import jakarta.persistence.EntityManager;
+    import jakarta.persistence.EntityManagerFactory;
+    import jakarta.persistence.PersistenceContext;
+
+    import org.springframework.context.annotation.Bean;
+    import org.springframework.context.annotation.Configuration;
+
+    @Configuration
+    public class PostgreSQLConfiguration {
+
+        @PersistenceContext
+        private EntityManager entityManager;
+        @Autowired
+        private EntityManagerFactory customEntityManagerFactory;
+        
+        @Bean
+        public <NAME_OF_REPOSITORY> <NAME_OF_REPOSITORY>() {
+            return new <NAME_OF_POSTGRESQL_REPOSITORY>();
+        }
+        ...
+    }
+    ```
+3. En esta clase de configuración se deben crear tantos beans como implementaciones de [PostgreSQL](https://www.postgresql.org) tengas en tu back-end. Además esta clase define métodos para personalizar conversiones de datos o para poder almacenar `UUID` como identificadores de las entidades del dominio. Éstos son aspectos por los que no hay que preocuparse en este momento. 
+
+4. Hay que definir en el back-end dónde encontrar la base de datos y cuál es su nombre. Estas propiedades se definen en el archivo `resources/application.yml` de tu back-end. Si tienes un archivo `resources/application.properties` simplemente cámbiale la extensión para poder trabajar con él siendo un archivo `yaml`. El contenido de este archivo debe ser el siguiente:
+    ```yaml
+    spring:
+      datasource:
+        url: jdbc:postgresql://localhost:5432/accessdb # Database name
+        username: myuser # Username
+        password: secret # Password
+    ```
+    Tal como puede verse, se está definiendo la ubicación y nombre de la base de datos. De esta forma, si la base de datos estuviera en otro lugar que no fuera la misma máquina (`localhost`) o estuviera en disponible en otro puerto (actualmente `5432`), simplemente con cambiar este archivo o sobreescribir la propiedad en cuestión al arrancar el back-end sería suficiente.
 
 ### Adaptador MongoDB
 
