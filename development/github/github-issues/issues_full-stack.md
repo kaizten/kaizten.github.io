@@ -1462,6 +1462,9 @@ Hola, una vez definidas las implementaciones de los repositorios para [PostgreSQ
         url: jdbc:postgresql://localhost:5432/accessdb # Database name
         username: myuser # Username
         password: secret # Password
+      jpa:
+        properties:
+          hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
     ```
     Tal como puede verse, se está definiendo la ubicación y nombre de la base de datos. De esta forma, si la base de datos estuviera en otro lugar que no fuera la misma máquina (`localhost`) o estuviera en disponible en otro puerto (actualmente `5432`), simplemente con cambiar este archivo o sobreescribir la propiedad en cuestión al arrancar el back-end sería suficiente.
 
