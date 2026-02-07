@@ -888,7 +888,7 @@ Hola, [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.v
 
 ## `script-github-commit.sh`
 
-En Kaizten Analytics hemos preparado un script estándar para gestionemos nuestros commits y pushes de manera segura y ordenada. El script se llama `script-github-commit.sh` y puedes encontrarlo en la raíz de tu repositorio de trabajo. Su función principal es subir tus cambios al repositorio remoto en [GitHub](www.github.com) evitando conflictos innecesarios.
+Hola, hemos preparado un script estándar para gestionemos nuestros commits y pushes de manera segura y ordenada. El script se llama `script-github-commit.sh` y puedes encontrarlo en la raíz de tu repositorio de trabajo. Su función principal es subir tus cambios al repositorio remoto en [GitHub](www.github.com) evitando conflictos innecesarios.
 
 **¿Qué hace este script?**
 
@@ -1838,13 +1838,16 @@ Hola, los clientes que empleen el API REST definida en el back-end deberían emp
 
 **Pasos a realizar:**
 
-1. Dentro de la carpeta creada, debes crear una clase `<ENTITY>PostRequestBody.java` y otra `<ENTITY>PutRequestBody.java` por cada entidad de tu dominio `<ENTITY>`. A continuación te paso un ejemplo ilustrativo para una entidad `Trap.java`:
+1. Dentro de la carpeta creada, debes crear una clase `<ENTITY>PostRequestBody.java` y otra `<ENTITY>PutRequestBody.java` por cada entidad de tu dominio `<ENTITY>`. 
+ 
+    A continuación te paso un ejemplo ilustrativo para una entidad `Trap.java`:
     ```java
     public class TrapPostRequestBody {
 
         public TrapName name;
         public TrapDescription description;
 
+        @Override
         public String toString() {
             return String.format(
                     "TrapPostRequestBody={name=%s, description=%s}", 
@@ -1852,7 +1855,24 @@ Hola, los clientes que empleen el API REST definida en el back-end deberían emp
         }
     }
     ```
-    Es importante que te des cuenta que se están empleando atributos públicos y no se incluyen métodos (más allá de `toString`).
+    ```java
+    public class TrapPutRequestBody {
+
+        public TrapName name;
+        public TrapDescription description;
+
+        @Override
+        public String toString() {
+            return String.format(
+                    "TrapPutRequestBody={name=%s, description=%s}", 
+                    this.name, this.description);
+        }
+    }
+    ```
+    Es importante que te des cuenta de lo siguiente:
+
+    1. Se están empleando atributos públicos. Esto permite un acceso directo a los datos sin necesidad de métodos `get` o `set`, lo que reduce la complejidad y facilita la serialización y deserialización en el contexto de las peticiones y respuestas de la API REST. Además, al tratarse de objetos diseñados exclusivamente para la transferencia de datos, no es necesario encapsular los atributos como se haría en entidades del dominio.
+    2. No se incluyen métodos (más allá de `toString`). Al ser un [data transfer objects](https://www.baeldung.com/java-dto-pattern) no debería contener ningún tipo de lógica.
 
 2. Una vez creados los DTO, debes eliminar las entidades en los **parámetros de los controladores** creados en el adaptador. Esto significa que los controladores deben recibir DTO en lugar de entidades del dominio.
 
@@ -1862,8 +1882,10 @@ Hola, las respuestas proporcionadas por los controladores deben ser [data transf
 
 **Pasos a realizar:**
 
-1. Dentro de la carpeta creada, debes crear una clase `<ENTITY>ResponseBody.java` por cada entidad de tu dominio `<ENTITY>`. A continuación te paso un ejemplo ilustrativo para una entidad `Trap.java`:
-2. 
+1. Dentro de la carpeta creada, debes crear una clase `<ENTITY>ResponseBody.java` por cada entidad de tu dominio `<ENTITY>`. 
+
+    A continuación te paso un ejemplo ilustrativo para una entidad `Trap.java`:
+   
     ```java
     public class TrapResponseBody {
 
@@ -1871,6 +1893,7 @@ Hola, las respuestas proporcionadas por los controladores deben ser [data transf
         public TrapName name;
         public TrapDescription description;
 
+        @Override
         public String toString() {
             return String.format(
                     "TrapResponseBody={id=%s, name=%s, description=%s}", +
@@ -1880,7 +1903,7 @@ Hola, las respuestas proporcionadas por los controladores deben ser [data transf
     ```
     La clase únicamente tiene atributos públicos y no contiene métodos (más allá de `toString`).
 
-3. Una vez creados los DTO, debes eliminar las entidades en los **valores de retorno** de los controladores creados en el adaptador. Esto significa que los controladores deben devolver DTO en lugar de entidades del dominio.
+2. Una vez creados los DTO, debes eliminar las entidades en los **valores de retorno** de los controladores creados en el adaptador. Esto significa que los controladores deben devolver DTO en lugar de entidades del dominio.
 
 #### Deserializadores
 

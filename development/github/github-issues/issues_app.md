@@ -677,7 +677,7 @@ Hola, [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.v
 
 ## `script-github-commit.sh`
 
-En Kaizten Analytics hemos preparado un script estándar para gestionemos nuestros commits y pushes de manera segura y ordenada. El script se llama `script-github-commit.sh` y puedes encontrarlo en la raíz de tu repositorio de trabajo. Su función principal es subir tus cambios al repositorio remoto en [GitHub](www.github.com) evitando conflictos innecesarios.
+Hola, hemos preparado un script estándar para gestionemos nuestros commits y pushes de manera segura y ordenada. El script se llama `script-github-commit.sh` y puedes encontrarlo en la raíz de tu repositorio de trabajo. Su función principal es subir tus cambios al repositorio remoto en [GitHub](www.github.com) evitando conflictos innecesarios.
 
 **¿Qué hace este script?**
 
