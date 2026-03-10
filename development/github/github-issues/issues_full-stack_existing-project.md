@@ -795,12 +795,12 @@ Hola, para poder programar de manera cómoda y eficiente es aconsejable emplear 
 
 **Pasos a realizar:**
 
-1. Si no empleas ya un IDE diferente como [NetBeans](https://netbeans.apache.org), [IntelliJ IDEA](https://www.jetbrains.com/idea/), o [Eclipse](https://eclipseide.org), entre otros, te propongo instalar [Visual Studio Code](https://code.visualstudio.com) (al menos la versión `1.108.2`) en tu máquina. 
+1. Si no empleas ya un IDE diferente como [NetBeans](https://netbeans.apache.org), [IntelliJ IDEA](https://www.jetbrains.com/idea/), o [Eclipse](https://eclipseide.org), entre otros, te propongo instalar [Visual Studio Code](https://code.visualstudio.com) (al menos la versión `1.111.0`) en tu máquina. 
 2. Cuando hayas instalado [Visual Studio Code](https://code.visualstudio.com), ejecuta el siguiente comando desde una terminal para comprobar que se ha instalado correctamente:
     ```shell
     $ code --version
-    1.108.2
-    4437686ffebaf200fa4a6e6e67f735f3edf24ada
+    1.111.0
+    ce099c1ed25d9eb3076c11e4a280f3eb52b4fbeb
     x64
     ```
 3. Comprueba que puedes arrancar [Visual Studio Code](https://code.visualstudio.com), o bien haciendo doble click en el icono del programa o ejecutando el siguiente comando desde una terminal:
