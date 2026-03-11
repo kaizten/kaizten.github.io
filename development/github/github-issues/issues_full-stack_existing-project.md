@@ -919,7 +919,7 @@ Indícame si te surge cualquier duda.
 
 ##### Tests de entidades
 
-Hola, las entidades del dominio deben estar testeadas para evitar posibles errores en el funcionamiento de la aplicación. En [este enlace](https://kaizten.github.io/development/java/hexagonal-architecture/entity_tests.html) tienes una guía de los tests que debería tener cada entidad de tu dominio para tener una cierta garantía de que funciona correctamente.
+Hola, las entidades del dominio deben estar testeadas para evitar posibles errores en el funcionamiento de la aplicación. En [este enlace](https://kaizten.github.io/development/hexagonal-architecture/entity_tests.html) tienes una guía de los tests que debería tener cada entidad de tu dominio para tener una cierta garantía de que funciona correctamente.
 
 **Pasos a realizar:**
 
@@ -928,7 +928,7 @@ Hola, las entidades del dominio deben estar testeadas para evitar posibles error
 
 ##### Tests de los enumerados
 
-Hola, los enumerados del dominio deben estar testeados para evitar posibles errores en el funcionamiento de la aplicación. En [este enlace](https://kaizten.github.io/development/java/hexagonal-architecture/enumerate_tests.html) tienes una guía de los tests que debería tener cada enumerado de tu dominio para tener una cierta garantía de que funciona correctamente.
+Hola, los enumerados del dominio deben estar testeados para evitar posibles errores en el funcionamiento de la aplicación. En [este enlace](https://kaizten.github.io/development/hexagonal-architecture/enumerate_tests.html) tienes una guía de los tests que debería tener cada enumerado de tu dominio para tener una cierta garantía de que funciona correctamente.
 
 **Pasos a realizar:**
 
@@ -937,7 +937,7 @@ Hola, los enumerados del dominio deben estar testeados para evitar posibles erro
 
 ##### Tests de objetos valor
 
-Hola, los objetos de valor del dominio deben estar testeados para evitar posibles errores en el funcionamiento de la aplicación. En [este enlace](https://kaizten.github.io/development/java/hexagonal-architecture/value-object_tests.html) tienes una guía de los tests que debería tener cada objeto de valor de tu dominio para tener una cierta garantía de que funciona correctamente.
+Hola, los objetos de valor del dominio deben estar testeados para evitar posibles errores en el funcionamiento de la aplicación. En [este enlace](https://kaizten.github.io/development/hexagonal-architecture/value-object_tests.html) tienes una guía de los tests que debería tener cada objeto de valor de tu dominio para tener una cierta garantía de que funciona correctamente.
 
 **Pasos a realizar:**
 
