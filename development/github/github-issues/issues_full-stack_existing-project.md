@@ -193,7 +193,7 @@ Hola, [Docker](https://www.docker.com) es una plataforma de software que permite
 2. Una vez realizados estos pasos, comprueba que tienes instalado Docker en tu máquina, tal como sigue:
     ```shell
     $ docker -v
-    Docker version 29.1.5, build 9e34c9b
+    Docker version 29.3.0, build 5927d80
     ```
     Comprueba que tienes al menos la versión `29` de [Docker](https://www.docker.com). 
 
@@ -218,7 +218,7 @@ Hola, [Docker Compose](https://docs.docker.com/compose/) es una herramienta de o
 2. Comprueba que tienes instalado [Docker Compose](https://docs.docker.com/compose/) en tu máquina, tal como sigue:
     ```shell
     $ docker compose version
-    Docker Compose version v2.31.0
+    Docker Compose version v2.35.0
     ```
 
 ## NodeJS. Instalación
