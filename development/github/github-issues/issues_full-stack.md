@@ -4528,13 +4528,14 @@ Una alternativa es emplear librerías de componentes que ya estén consolidadada
 
 ## Sheriff
 
-Hola, en la empresa tenemos una herramienta llamada `Sheriff` para el control de calidad del código. Esta herramienta realiza diversas comprobaciones sobre los componentes de software existentes en el repositorio. Algunas de estas comprobaciones son: documentación adecuada, uso de `@Override` en métodos sobrecargados, uso de llaves en condicionales y bucles, etc.
+Hola, hemos desarrollado una herramienta llamada `Sheriff` para el control de calidad del código. Esta herramienta realiza diversas comprobaciones sobre los componentes de software existentes en el repositorio. Algunas de estas comprobaciones son: documentación adecuada, uso de `@Override` en métodos Java sobrecargados, uso de llaves en condicionales y bucles, etc.
 
 En el repositorio, puedes encontrar un script llamado `sheriff.sh`. Este script aplica `Sheriff` sobre los componentes de software de tu repositorio y, si lo hay, te muestra un listado en formato JSON con los errores y warnings detectados. También, en cada error o warning te indica cómo resolverlo para ayudarte en la mejora de la calidad del código.
 
-Es importante tener en cuenta que la ejecución del script puede tardar un cierto tiempo, especialmente cuando se analiza código TypeScript. Por tanto, sé paciente cuando ejecutes el script. El aspecto positivo es que únicamente analiza los archivos de código fuente que han cambiado desde la anterior ejecución del script.
+**Pasos a realizar:**
 
-En base a lo anterior, ejecuta el script `sheriff.sh`. Comprueba los posibles errores que muestra y corrígelos para mejorar la calidad del código.
+1. Ejecuta `sheriff.sh`. Es importante tener en cuenta que la ejecución del script puede tardar un cierto tiempo, especialmente cuando se analiza código TypeScript. Por tanto, sé paciente cuando ejecutes el script. El aspecto positivo es que únicamente analiza los archivos de código fuente que han cambiado desde la anterior ejecución del script.
+2. Comprueba los posibles errores que muestra `sheriff.sh` y corrígelos para mejorar la calidad del código. Plantea cualquier duda que te surja con cualquiera de los posibles errores o warnings reportados.
 
 ## Docker compose
 
