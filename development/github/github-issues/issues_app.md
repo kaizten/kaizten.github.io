@@ -22,6 +22,7 @@
   - [Capa de dominio](#capa-de-dominio)
   - [Capa de aplicación](#capa-de-aplicación)
   - [Capa de adaptadores HTTP](#capa-de-adaptadores-http)
+- [Sheriff](#sheriff)
 <!-- /TOC -->
 
 ## Docker
@@ -653,7 +654,9 @@ Hola, para poder programar de manera cómoda y eficiente es aconsejable emplear 
 
 ### Extensión `Draw.io`
 
-Hola, una herramienta particularmente interesante para poder hacer diagramas sencillos es [Draw.io](https://app.diagrams.net). Es una herramienta gratuita con la que puedes realizar diagramas de una manera muy cómoda. Además, en [Visual Studio Code](https://code.visualstudio.com) hay una extensión que permite crear estos diagramas sin tener que salir del IDE.
+Hola, una herramienta particularmente interesante para poder hacer diagramas sencillos es [Draw.io](https://app.diagrams.net). Es una herramienta gratuita con la que puedes realizar diagramas de una manera muy cómoda. Además, en [Visual Studio Code](https://code.visualstudio.com) hay una extensión que permite crear estos diagramas sin tener que salir del IDE. A continuación puedes ver una imagen de la extensión en cuestión:
+
+![Draw.io Extension](https://kaizten.github.io/images/vscode-extension-drawio.png)
 
 **Pasos a realizar:**
 
@@ -661,7 +664,9 @@ Hola, una herramienta particularmente interesante para poder hacer diagramas sen
 
 ### Extensión `MongoDB`
 
-Hola, [MongoDB](https://www.mongodb.com) es una base de datos NoSQL que almacena datos en formato JSON flexible. Por regla general, para poder trabajar con [MongoDB](https://www.mongodb.com) es necesario conectarse mediante una terminal. Sin embargo, la extensión de [MongoDB](https://marketplace.visualstudio.com/items?itemName=mongodb.mongodb-vscode) para [Visual Studio Code](https://code.visualstudio.com) es una herramienta que facilita la interacción con bases de datos [MongoDB](https://www.mongodb.com) directamente desde el IDE. De esta manera, será posible que accedas a tus bases de datos [MongoDB](https://www.mongodb.com) de manera gráfica, permitiendo crear o eliminar documentos, entre otras, de una manera sencilla.
+Hola, [MongoDB](https://www.mongodb.com) es una base de datos NoSQL que almacena datos en formato JSON flexible. Por regla general, para poder trabajar con [MongoDB](https://www.mongodb.com) es necesario conectarse mediante una terminal. Sin embargo, la extensión de [MongoDB](https://marketplace.visualstudio.com/items?itemName=mongodb.mongodb-vscode) para [Visual Studio Code](https://code.visualstudio.com) es una herramienta que facilita la interacción con bases de datos [MongoDB](https://www.mongodb.com) directamente desde el IDE. De esta manera, será posible que accedas a tus bases de datos [MongoDB](https://www.mongodb.com) de manera gráfica, permitiendo crear o eliminar documentos, entre otras, de una manera sencilla. A continuación puedes ver una imagen de la extensión en cuestión:
+
+![MongoDB Extension](https://kaizten.github.io/images/vscode-extension-mongodb.png)
 
 **Pasos a realizar:**
 
@@ -669,7 +674,9 @@ Hola, [MongoDB](https://www.mongodb.com) es una base de datos NoSQL que almacena
 
 ### Extensión `Vue - Official`
 
-Hola, [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) es una extensión para [Visual Studio Code](https://code.visualstudio.com/) diseñada específicamente para mejorar el desarrollo en entornos de [Vue.js](https://vuejs.org). Esta extensión ofrece un soporte avanzado para el desarrollo de aplicaciones [Vue.js](https://vuejs.org), agilizando la escritura de código, mejorando la detección de errores y proporcionando una experiencia de desarrollo más fluida y eficiente. Si usas [Visual Studio Code](https://code.visualstudio.com), creo que sería interesante que instalaras esta extensión y, de esta manera, puedas desarrollar de forma más eficaz aplicaciones hechas con [Vue.js](https://vuejs.org).
+Hola, [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) es una extensión para [Visual Studio Code](https://code.visualstudio.com/) diseñada específicamente para mejorar el desarrollo en entornos de [Vue.js](https://vuejs.org). Esta extensión ofrece un soporte avanzado para el desarrollo de aplicaciones [Vue.js](https://vuejs.org), agilizando la escritura de código, mejorando la detección de errores y proporcionando una experiencia de desarrollo más fluida y eficiente. Si usas [Visual Studio Code](https://code.visualstudio.com), creo que sería interesante que instalaras esta extensión y, de esta manera, puedas desarrollar de forma más eficaz aplicaciones hechas con [Vue.js](https://vuejs.org). A continuación puedes ver una imagen de la extensión en cuestión:
+
+![Vue.js Extension](https://kaizten.github.io/images/vscode-extension-vue.png)
 
 **Pasos a realizar:**
 
@@ -2073,3 +2080,14 @@ export class OrganizationJsonResponse {
   }
 }
 ```
+
+## Sheriff
+
+Hola, hemos desarrollado una herramienta llamada `Sheriff` para el control de calidad del código. Esta herramienta realiza diversas comprobaciones sobre los componentes de software existentes en el repositorio. Algunas de estas comprobaciones son: documentación adecuada, uso de `@Override` en métodos Java sobrecargados, uso de llaves en condicionales y bucles, etc.
+
+En el repositorio, puedes encontrar un script llamado `sheriff.sh`. Este script aplica `Sheriff` sobre los componentes de software de tu repositorio y, si lo hay, te muestra un listado en formato JSON con los errores y warnings detectados. También, en cada error o warning te indica cómo resolverlo para ayudarte en la mejora de la calidad del código.
+
+**Pasos a realizar:**
+
+1. Ejecuta `sheriff.sh`. Es importante tener en cuenta que la ejecución del script puede tardar un cierto tiempo, especialmente cuando se analiza código TypeScript. Por tanto, sé paciente cuando ejecutes el script. El aspecto positivo es que únicamente analiza los archivos de código fuente que han cambiado desde la anterior ejecución del script.
+2. Comprueba los posibles errores que muestra `sheriff.sh` y corrígelos para mejorar la calidad del código. Plantea cualquier duda que te surja con cualquiera de los posibles errores o warnings reportados.
