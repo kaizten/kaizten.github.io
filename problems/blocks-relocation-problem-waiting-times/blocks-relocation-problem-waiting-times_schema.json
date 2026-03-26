@@ -1,0 +1,65 @@
+{
+	"$schema": "https://json-schema.org/draft/2019-09/schema",
+	"title": "Blocks Relocation Problem with Waiting Times",
+	"description": "Definition of instance of the Blocks Relocation Problem with Waiting Times",
+	"type": "object",
+	"properties": {
+		"tiers": {
+			"type": "integer"
+		},
+		"numBlocks": {
+			"type": "integer"
+		},
+		"stacks": {
+			"type": "integer"
+		},
+		"blocks": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"stack": {
+						"type": "integer"
+					},
+					"tier": {
+						"type": "integer"
+					},
+					"id": {
+						"type": "integer"
+					}
+				},
+				"required": [
+					"stack",
+					"tier",
+					"id"
+				]
+			}
+		},
+		"factors": {
+			"type": "object",
+			"properties": {
+				"verticalUnloaded": {
+					"type": "number"
+				},
+				"verticalLoaded": {
+					"type": "number"
+				},
+				"horizontalUnloaded": {
+					"type": "number"
+				},
+				"horizontalLoaded": {
+					"type": "number"
+				},
+				"retrievalSeparation": {
+					"type": "number"
+				}
+			}
+		}
+	},
+	"required": [
+		"tiers",
+		"numBlocks",
+		"stacks",
+		"blocks"
+	]
+}
