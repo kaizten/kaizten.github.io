@@ -244,7 +244,7 @@ Hola, [Docker](https://www.docker.com) es una plataforma de software que permite
 2. Una vez realizados estos pasos, comprueba que tienes instalado Docker en tu máquina, tal como sigue:
     ```shell
     $ docker -v
-    Docker version 29.3.0, build 5927d80
+    Docker version 29.4.3, build 055a478
     ```
     Comprueba que tienes al menos la versión `29` de [Docker](https://www.docker.com). 
 
