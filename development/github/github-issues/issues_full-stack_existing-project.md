@@ -39,6 +39,7 @@
         - [Snackbar](#snackbar)
         - [Theme switch](#theme-switch)
       - [Carpeta de traducciones](#carpeta-de-traducciones)
+  - [Actualizar dependencias](#actualizar-dependencias)
 - [Sheriff](#sheriff)
 
 ## Java
@@ -1418,6 +1419,19 @@ Hola, las traducciones es algo relativo a la visualización de elementos en pant
 **Pasos a realizar:**
 
 1. Pon la carpeta `locales` dentro del adaptador de Vue.js. Esto es, `adapter/vuejs/locales`.
+
+### Actualizar dependencias
+
+Hola, tener las dependencias del front-end actualizadas es fundamental para evitar problemas de seguridad así como asegurar la compatibilidad con las nuevas versiones de las librerías.
+
+**Pasos a realizar:**
+
+1. Un paquete muy útil para mantener las dependencias actualizadas en un proyecto TypeScript es [https://www.npmjs.com/package/npm-check-updates](https://www.npmjs.com/package/npm-check-updates). Si no lo tienes instalado, instálalo en tu equipo, tal como sigue:
+
+    ```sh
+    npm install -g npm-check-updates
+    ```
+2. Ejecuta el `ncu` en la ubicación donde está `package.json`. En el caso de que hayan dependencias por actualizar, actualízalas mediante `ncu -u`. 
 
 ## Sheriff
 
