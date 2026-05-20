@@ -40,6 +40,7 @@
         - [Theme switch](#theme-switch)
       - [Carpeta de traducciones](#carpeta-de-traducciones)
   - [Actualizar dependencias](#actualizar-dependencias)
+  - [Tema](#tema)
 - [Sheriff](#sheriff)
 
 ## Java
@@ -1432,6 +1433,14 @@ Hola, tener las dependencias del front-end actualizadas es fundamental para evit
     npm install -g npm-check-updates
     ```
 2. Ejecuta el `ncu` en la ubicación donde está `package.json`. En el caso de que hayan dependencias por actualizar, actualízalas mediante `ncu -u`. 
+
+### Tema
+
+Hola, para darle homogeneidad al front-end, es conveniente definir un tema de [Vuetify](https://vuetifyjs.com). 
+
+**Pasos a realizar:**
+
+1. Crea un tema donde establezcan fundamentalmente el color primario, secundario, etc. Puedes encontrar cómo crear un tema propio en [esta referencia](https://vuetifyjs.com/en/features/theme/#custom-themes).
 
 ## Sheriff
 

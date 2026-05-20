@@ -83,6 +83,7 @@
     - [Vistas](#vistas)
     - [Internacionalización](#internacionalización)
   - [Integración de Vuetify](#integración-de-vuetify)
+  - [Tema](#tema)
 - [Sheriff](#sheriff)
 - [Docker compose](#docker-compose)
 - [Algoritmo](#algoritmo)
@@ -4530,6 +4531,14 @@ Una alternativa es emplear librerías de componentes que ya estén consolidadada
     yarn add vuetify
     ```
 2. Revisa el listado de componentes que tiene [Vuetify](https://vuetifyjs.com) desde [aquí](https://vuetifyjs.com/en/components/all) para que te hagas una idea de qué opciones puedes considerar a la hora de diseñar la interfaz de usuario.
+
+### Tema
+
+Hola, para darle homogeneidad al front-end, es conveniente definir un tema de [Vuetify](https://vuetifyjs.com). 
+
+**Pasos a realizar:**
+
+1. Crea un tema donde establezcan fundamentalmente el color primario, secundario, etc. Puedes encontrar cómo crear un tema propio en [esta referencia](https://vuetifyjs.com/en/features/theme/#custom-themes).
 
 ## Sheriff
 
