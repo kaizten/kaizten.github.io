@@ -1,0 +1,19 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="m_ks7WiwZBrPUC7Xmv3k">
+    <mxGraphModel dx="1414" dy="791" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ZGGrWeOy2UxihYUBtCxs-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="360" width="600" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZGGrWeOy2UxihYUBtCxs-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;b&gt;Comparar conjuntos de datos&lt;/b&gt;" vertex="1">
+          <mxGeometry height="360" width="120" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZGGrWeOy2UxihYUBtCxs-4" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;div&gt;(Stepper de Vuetify)&lt;/div&gt;Paso 1: elegir primer dataset&lt;div&gt;Paso 2: elegir segudno dataset&lt;/div&gt;&lt;div&gt;Paso 3: case sensitive, línea de comienzo, etc.&lt;/div&gt;&lt;div&gt;PASO 4: resumen de lo que se va a ejecutar y BOTÓN DE EJECUTAR -&amp;gt; (i) mostrar mensaje de confirmación o de error al lanzar la ejecución y (ii)&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;REDIRIGIR A /tasks&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="360" width="480" x="160" y="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
