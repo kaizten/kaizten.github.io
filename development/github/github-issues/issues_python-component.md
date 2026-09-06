@@ -145,7 +145,7 @@ Cabe señalar que las [GitHub action](https://github.com/features/actions) se de
         steps:
           # Checkout of the repository
           - name: Checkout
-            uses: actions/checkout@v4
+            uses: actions/checkout@v7.0.1
           # Set up Python environment
           - name: Set up Python
             uses: actions/setup-python@v4

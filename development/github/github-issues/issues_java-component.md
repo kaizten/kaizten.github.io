@@ -98,10 +98,10 @@ Cabe señalar que las [GitHub action](https://github.com/features/actions) se de
         steps:
           # Checkout of the repository
           - name: Checkout
-            uses: actions/checkout@v4
+            uses: actions/checkout@v7.0.1
           # Setting Java Development Kit
           - name: Set up Java Development Kit
-            uses: actions/setup-java@v4
+            uses: actions/setup-java@v6.0.0
             with:
               java-version: ${{ env.JAVA_VERSION }}
               distribution: 'temurin'
