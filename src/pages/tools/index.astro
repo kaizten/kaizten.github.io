@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionIndex from "../../components/SectionIndex.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import { getSection, titleFromSlug } from "../../data/sections";
+
+const base = import.meta.env.BASE_URL;
+const section = getSection("tools");
+const pages = section.pages.map((slug) => ({
+  title: titleFromSlug(slug),
+  url: `${base}${section.slug}/${slug}/`,
+}));
+---
+
+<BaseLayout title="Tools | Kaizten Analytics">
+  <SiteHeader />
+  <main>
+    <SectionIndex title="Tools" pages={pages} />
+  </main>
+  <SiteFooter />
+</BaseLayout>

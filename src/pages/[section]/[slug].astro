@@ -1,0 +1,24 @@
+---
+import MarkdownLayout from "../../layouts/MarkdownLayout.astro";
+import { sections, titleFromSlug } from "../../data/sections";
+
+const markdownPages = import.meta.glob("../../content/**/*.md", { eager: true });
+
+export function getStaticPaths() {
+  return sections.flatMap((section) =>
+    section.pages.map((slug) => ({
+      params: { section: section.slug, slug },
+      props: { section, slug },
+    })),
+  );
+}
+
+const { section, slug } = Astro.props;
+const page = markdownPages[`../../content/${section.slug}/${slug}.md`];
+const Content = page.Content;
+const title = `${titleFromSlug(slug)} | ${section.label} | Kaizten Analytics`;
+---
+
+<MarkdownLayout title={title}>
+  <Content />
+</MarkdownLayout>

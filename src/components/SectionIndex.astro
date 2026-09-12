@@ -1,0 +1,21 @@
+---
+const { eyebrow = "Kaizten Analytics", title, pages = [] } = Astro.props;
+---
+
+<section class="section-page" aria-labelledby="page-title">
+  <p class="eyebrow">{eyebrow}</p>
+  <h1 id="page-title">{title}</h1>
+
+  <div class="content-list" aria-label={`${title} content`}>
+    {
+      pages.map((page) => (
+        <a class="content-link" href={page.url}>
+          <span>
+            <strong>{page.title}</strong>
+          </span>
+          <span aria-hidden="true">-></span>
+        </a>
+      ))
+    }
+  </div>
+</section>

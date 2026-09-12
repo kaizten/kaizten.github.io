@@ -1,0 +1,39 @@
+---
+const base = import.meta.env.BASE_URL;
+const navItems = [
+  { href: `${base}tools/`, label: "Tools" },
+  { href: `${base}development/`, label: "Development" },
+  { href: `${base}problems/`, label: "Problems" },
+  { href: `${base}internship/`, label: "Internship" },
+  { href: `${base}teaching/`, label: "Teaching" },
+];
+---
+
+<header class="site-header">
+  <a class="brand" href={base} aria-label="Kaizten Analytics home">
+    <span class="brand-mark" aria-hidden="true">K</span>
+    <span>Kaizten Analytics</span>
+  </a>
+
+  <button
+    class="nav-toggle"
+    type="button"
+    aria-expanded="false"
+    aria-controls="site-navigation"
+  >
+    <span class="nav-toggle-line"></span>
+    <span class="nav-toggle-line"></span>
+    <span class="nav-toggle-line"></span>
+    <span class="sr-only">Toggle navigation</span>
+  </button>
+
+  <nav class="site-nav" id="site-navigation" aria-label="Primary navigation">
+    {
+      navItems.map((item) => (
+        <a href={item.href}>{item.label}</a>
+      ))
+    }
+  </nav>
+</header>
+
+<script is:inline src={`${base}scripts/navigation.js`}></script>
