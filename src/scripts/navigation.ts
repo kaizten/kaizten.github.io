@@ -1,5 +1,5 @@
-const toggle = document.querySelector(".nav-toggle");
-const navigation = document.querySelector("#site-navigation");
+const toggle = document.querySelector<HTMLButtonElement>(".nav-toggle");
+const navigation = document.querySelector<HTMLElement>("#site-navigation");
 
 if (toggle && navigation) {
   toggle.addEventListener("click", () => {
