@@ -61,16 +61,33 @@ export const sections: Section[] = [
     ],
   },
   {
+    slug: "partners",
+    label: "Partners",
+    showInMenu: true,
+    pages: [
+      "sagulpa", 
+      "la-gaviota"
+    ],
+  },
+  {
     slug: "internship",
     label: "Internship",
     showInMenu: true,
-    pages: ["projects", "requirements", "topics"],
+    pages: [
+      "projects", 
+      "requirements", 
+      "topics"
+    ],
   },
   {
     slug: "teaching",
     label: "Teaching",
     showInMenu: true,
-    pages: ["courses", "materials", "sessions"],
+    pages: [
+      "courses", 
+      "materials", 
+      "sessions"
+    ],
   },
   {
     slug: "problems",

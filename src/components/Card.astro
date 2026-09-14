@@ -1,0 +1,30 @@
+---
+type Props = {
+  icon: string;
+  title: string;
+  description: string;
+  href?: string;
+};
+
+const { icon, title, description, href } = Astro.props;
+---
+
+{
+  href ? (
+    <a class="info-card" href={href}>
+      <span class="info-card-icon" aria-hidden="true">{icon}</span>
+      <span class="info-card-body">
+        <strong class="info-card-title">{title}</strong>
+        <span class="info-card-description">{description}</span>
+      </span>
+    </a>
+  ) : (
+    <article class="info-card">
+      <span class="info-card-icon" aria-hidden="true">{icon}</span>
+      <span class="info-card-body">
+        <strong class="info-card-title">{title}</strong>
+        <span class="info-card-description">{description}</span>
+      </span>
+    </article>
+  )
+}

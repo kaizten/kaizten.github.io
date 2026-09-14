@@ -6,24 +6,17 @@ import SiteFooter from "../../components/SiteFooter.astro";
 import { getSection, titleFromSlug } from "../../data/sections";
 
 const base = import.meta.env.BASE_URL;
-const section = getSection("internship");
+const section = getSection("partners");
 const pages = section.pages.map((slug) => ({
   title: titleFromSlug(slug),
   url: `${base}${section.slug}/${slug}/`,
 }));
 ---
 
-<BaseLayout title="Internship | Kaizten Analytics">
+<BaseLayout title="Partners | Kaizten Analytics">
   <SiteHeader />
   <main>
-    <section class="section-page tools-page" aria-labelledby="page-title">
-      <p class="eyebrow">Kaizten Analytics</p>
-      <h1 id="page-title">Internship</h1>
-      <ul>
-        <li>xxx</li>
-        <li>xxx</li>
-      </ul>
-    </section>
+    <SectionIndex title="Partners" pages={pages} />
   </main>
   <SiteFooter />
 </BaseLayout>

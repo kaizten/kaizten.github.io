@@ -1,22 +1,72 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import SectionIndex from "../../components/SectionIndex.astro";
+import Card from "../../components/Card.astro";
 import SiteHeader from "../../components/SiteHeader.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import { getSection, titleFromSlug } from "../../data/sections";
 
 const base = import.meta.env.BASE_URL;
 const section = getSection("tools");
-const pages = section.pages.map((slug) => ({
-  title: titleFromSlug(slug),
-  url: `${base}${section.slug}/${slug}/`,
-}));
+const toolMetadata: Record<string, { icon: string; description: string }> = {
+  "dataset-diff": { icon: "DIFF", description: "Compare datasets and highlight changes between versions." },
+  "dockerfile-with-entrypoint": { icon: "DOCK", description: "Create Dockerfiles with predictable entrypoint behavior." },
+  "file-server": { icon: "FILE", description: "Serve local files through a lightweight HTTP endpoint." },
+  "github-issue-manager": { icon: "GH", description: "Organize and track GitHub issues from a focused workflow." },
+  "grafana-json-rest-plugin": { icon: "GRAF", description: "Connect Grafana dashboards to JSON REST data sources." },
+  "json-validator": { icon: "JSON", description: "Validate JSON payloads and catch malformed structures." },
+  "kaizten-control-center": { icon: "CTRL", description: "Coordinate Kaizten services from a central control surface." },
+  "kaizten-copilot-extension": { icon: "AI", description: "Extend editor workflows with Kaizten Copilot support." },
+  "kaizten-request-tool": { icon: "REQ", description: "Build, send, and inspect structured service requests." },
+  "kaizten-task-lite": { icon: "TASK", description: "Manage lightweight task workflows for Kaizten projects." },
+  "kaizten-signature-sheets-generator": { icon: "SIGN", description: "Generate signature sheets for operational documents." },
+  "openapi-code-generator": { icon: "API", description: "Generate code artifacts from OpenAPI specifications." },
+  "openapi-viewer": { icon: "VIEW", description: "Browse OpenAPI definitions in a readable interface." },
+  "sheriff": { icon: "QA", description: "Review project conventions and enforce quality checks." },
+  "tabular-analyzer": { icon: "TAB", description: "Inspect tabular data and summarize its structure." },
+  "tabular-merge": { icon: "MERG", description: "Combine compatible tabular files into one dataset." },
+  "tabular-sampler": { icon: "SAMP", description: "Extract representative samples from tabular data." },
+  "tabular-splitter": { icon: "SPLT", description: "Split tabular files into smaller focused outputs." },
+  "tabular-to-json": { icon: "CONV", description: "Convert tabular data into JSON documents." },
+  "test-simulation": { icon: "SIM", description: "Run simulation-oriented checks for test scenarios." },
+  "uri-content-to-output": { icon: "URI", description: "Fetch URI content and write it to an output target." },
+  "websocket-client": { icon: "WS", description: "Connect to WebSocket endpoints and inspect messages." },
+  "yaml-validator": { icon: "YAML", description: "Validate YAML documents and surface syntax issues." },
+};
+const tools = section.pages.map((slug) => {
+  const metadata = toolMetadata[slug] ?? {
+    icon: "TOOL",
+    description: "Open this tool page for details.",
+  };
+
+  return {
+    icon: metadata.icon,
+    title: titleFromSlug(slug),
+    description: metadata.description,
+    url: `${base}${section.slug}/${slug}/`,
+  };
+});
 ---
 
 <BaseLayout title="Tools | Kaizten Analytics">
   <SiteHeader />
   <main>
-    <SectionIndex title="Tools" pages={pages} />
+    <section class="section-page tools-page" aria-labelledby="page-title">
+      <p class="eyebrow">Kaizten Analytics</p>
+      <h1 id="page-title">Tools</h1>
+
+      <div class="card-grid" aria-label="Tools content">
+        {
+          tools.map((tool) => (
+            <Card
+              icon={tool.icon}
+              title={tool.title}
+              description={tool.description}
+              href={tool.url}
+            />
+          ))
+        }
+      </div>
+    </section>
   </main>
   <SiteFooter />
 </BaseLayout>
