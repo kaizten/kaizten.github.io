@@ -76,7 +76,7 @@ export const sections: Section[] = [
     slug: "problems",
     label: "Problems",
     showInMenu: false,
-    pages: ["platform", "services", "solutions"],
+    pages: ["datasets", "cases", "models"],
   },
 ];
 
