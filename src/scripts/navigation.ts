@@ -7,3 +7,4 @@ if (toggle && navigation) {
     toggle.setAttribute("aria-expanded", String(isOpen));
   });
 }
+
