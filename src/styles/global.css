@@ -356,6 +356,22 @@ a.info-card:focus-visible,
   margin-bottom: 24px;
 }
 
+.markdown-page a,
+.section-page ul a {
+  color: var(--accent-strong);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.markdown-page a:hover,
+.markdown-page a:focus-visible,
+.section-page ul a:hover,
+.section-page ul a:focus-visible {
+  color: var(--accent-strong);
+  text-decoration-thickness: 0.12em;
+}
+
 .site-footer {
   display: flex;
   align-items: center;

@@ -104,8 +104,8 @@ export const sections: Section[] = [
     ],
   },
   {
-    slug: "Company identity",
-    label: "Company Identity",
+    slug: "Brand identity",
+    label: "Brand Identity",
     showInMenu: true,
     pages: [
     ],
