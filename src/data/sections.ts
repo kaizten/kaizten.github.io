@@ -11,8 +11,8 @@ export const sections: Section[] = [
     label: "Tools",
     showInMenu: true,
     pages: [
-      "dataset-diff", 
-      "dockerfile-with-entrypoint", 
+      "dataset-diff",
+      "dockerfile-with-entrypoint",
       "file-server",
       "github-issue-manager",
       "grafana-json-rest-plugin",
@@ -40,7 +40,11 @@ export const sections: Section[] = [
     slug: "development",
     label: "Development",
     showInMenu: true,
-    pages: ["apis", "guides", "releases"],
+    pages: [
+      "apis",
+      "guides",
+      "releases"
+    ],
   },
   {
     slug: "products",
@@ -51,9 +55,9 @@ export const sections: Section[] = [
       "aidel",
       "entomology-manager",
       "itinerary-planner",
-      "kaizten-task", 
+      "kaizten-task",
       "kalyptia",
-      "kentaro", 
+      "kentaro",
       "pit-manager",
       "portalis",
       "scenario-editor",
@@ -65,7 +69,7 @@ export const sections: Section[] = [
     label: "Partners",
     showInMenu: true,
     pages: [
-      "sagulpa", 
+      "sagulpa",
       "la-gaviota"
     ],
   },
@@ -74,8 +78,8 @@ export const sections: Section[] = [
     label: "Internship",
     showInMenu: true,
     pages: [
-      "projects", 
-      "requirements", 
+      "projects",
+      "requirements",
       "topics"
     ],
   },
@@ -84,8 +88,8 @@ export const sections: Section[] = [
     label: "Teaching",
     showInMenu: true,
     pages: [
-      "courses", 
-      "materials", 
+      "courses",
+      "materials",
       "sessions"
     ],
   },
@@ -93,7 +97,21 @@ export const sections: Section[] = [
     slug: "problems",
     label: "Problems",
     showInMenu: false,
-    pages: ["datasets", "cases", "models"],
+    pages: [
+      "datasets",
+      "cases",
+      "models"
+    ],
+  },
+  {
+    slug: "Company identity",
+    label: "Company Identity",
+    showInMenu: true,
+    pages: [
+      "projects",
+      "requirements",
+      "topics"
+    ],
   },
 ];
 

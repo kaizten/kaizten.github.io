@@ -271,10 +271,28 @@ h1 {
 }
 
 a.info-card:hover,
-a.info-card:focus-visible {
+a.info-card:focus-visible,
+.info-card-content:hover,
+.info-card-content:focus-visible {
   border-color: rgba(92, 6, 140, 0.36);
   color: var(--accent-strong);
   transform: translateY(-2px);
+}
+
+.info-card:has(.info-card-button) {
+  grid-template-rows: 1fr auto;
+  align-content: stretch;
+}
+
+.info-card-content {
+  display: grid;
+  gap: 18px;
+  color: inherit;
+}
+
+.info-card-content:hover,
+.info-card-content:focus-visible {
+  transform: none;
 }
 
 .info-card-icon {
@@ -302,6 +320,32 @@ a.info-card:focus-visible {
   color: var(--muted);
   font-size: 0.95rem;
   line-height: 1.55;
+}
+
+.info-card-button {
+  display: inline-flex;
+  justify-self: end;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid rgba(92, 6, 140, 0.2);
+  border-radius: 8px;
+  color: var(--accent-strong);
+  background: rgba(255, 255, 255, 0.72);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.info-card-button:hover,
+.info-card-button:focus-visible {
+  border-color: rgba(92, 6, 140, 0.42);
+  background: rgba(92, 6, 140, 0.08);
+}
+
+.info-card-button-icon {
+  font-size: 0.72rem;
+  font-weight: 800;
 }
 
 .markdown-page {

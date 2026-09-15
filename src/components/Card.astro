@@ -4,13 +4,41 @@ type Props = {
   title: string;
   description: string;
   href?: string;
+  buttonHref?: string;
+  buttonIcon?: string;
+  buttonText?: string;
 };
 
-const { icon, title, description, href } = Astro.props;
+const { icon, title, description, href, buttonHref, buttonIcon, buttonText } = Astro.props;
+const hasButton = Boolean(buttonHref && buttonText);
 ---
 
 {
-  href ? (
+  hasButton ? (
+    <article class="info-card">
+      {href ? (
+        <a class="info-card-content" href={href}>
+          <span class="info-card-icon" aria-hidden="true">{icon}</span>
+          <span class="info-card-body">
+            <strong class="info-card-title">{title}</strong>
+            <span class="info-card-description">{description}</span>
+          </span>
+        </a>
+      ) : (
+        <span class="info-card-content">
+          <span class="info-card-icon" aria-hidden="true">{icon}</span>
+          <span class="info-card-body">
+            <strong class="info-card-title">{title}</strong>
+            <span class="info-card-description">{description}</span>
+          </span>
+        </span>
+      )}
+      <a class="info-card-button" href={buttonHref}>
+        {buttonIcon && <span class="info-card-button-icon" aria-hidden="true">{buttonIcon}</span>}
+        <span>{buttonText}</span>
+      </a>
+    </article>
+  ) : href ? (
     <a class="info-card" href={href}>
       <span class="info-card-icon" aria-hidden="true">{icon}</span>
       <span class="info-card-body">

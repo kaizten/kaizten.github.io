@@ -43,6 +43,7 @@ const tools = section.pages.map((slug) => {
     title: titleFromSlug(slug),
     description: metadata.description,
     url: `${base}${section.slug}/${slug}/`,
+    repositoryUrl: `https://github.com/kaizten/${slug}`,
   };
 });
 ---
@@ -62,6 +63,9 @@ const tools = section.pages.map((slug) => {
               title={tool.title}
               description={tool.description}
               href={tool.url}
+              buttonHref={tool.repositoryUrl}
+              buttonIcon="GH"
+              buttonText="GitHub"
             />
           ))
         }
