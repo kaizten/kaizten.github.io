@@ -108,11 +108,8 @@ export const sections: Section[] = [
     label: "Company Identity",
     showInMenu: true,
     pages: [
-      "projects",
-      "requirements",
-      "topics"
     ],
-  },
+  }
 ];
 
 export function getSection(slug: string): Section | undefined {
