@@ -356,6 +356,12 @@ a.info-card:focus-visible,
   margin-bottom: 24px;
 }
 
+.tool-subpage-nav {
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
 .markdown-page a,
 .section-page ul a {
   color: var(--accent-strong);
