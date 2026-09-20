@@ -1,0 +1,49 @@
+---
+import MarkdownLayout from "../../../layouts/MarkdownLayout.astro";
+import { internships } from "../../../data/internships";
+
+const markdownPages = import.meta.glob("../../../content/internship/*/*.md", { eager: true });
+
+export function getStaticPaths() {
+  return internships.flatMap((institution) => [
+    {
+      params: { institution: institution.slug, subpage: undefined },
+      props: { institution, subpage: undefined },
+    },
+    ...institution.pages.map((page) => ({
+      params: { institution: institution.slug, subpage: page.slug },
+      props: { institution, subpage: page.slug },
+    })),
+  ]);
+}
+
+const { institution, subpage } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const currentPage = institution.pages.find((page) => page.slug === subpage);
+const pageTitle = currentPage?.title ?? institution.title;
+const title = `${pageTitle} | Internship | Kaizten Analytics`;
+const page = subpage ? markdownPages[`../../../content/internship/${institution.slug}/${subpage}.md`] : undefined;
+const Content = page?.Content;
+---
+
+{
+  Content ? (
+    <MarkdownLayout title={title}>
+      <Content />
+    </MarkdownLayout>
+  ) : (
+    <MarkdownLayout title={title}>
+      <h1>{institution.title}</h1>
+      <h2>Table of contents</h2>
+      <ul>
+        {
+          institution.pages.map((page) => (
+            <li>
+              <a href={`${base}internship/${institution.slug}/${page.slug}/`}>{page.title}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </MarkdownLayout>
+  )
+}
