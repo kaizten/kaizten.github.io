@@ -1,6 +1,6 @@
 ## Control y mejora de la calidad del código con Sheriff
 
-Hemos desarrollado una herramienta denominada `Sheriff` para comprobar automáticamente el cumplimiento de diferentes reglas de calidad, estilo y arquitectura en los componentes de software de nuestros proyectos.
+`Sheriff` es una herramienta desarrollada para comprobar automáticamente el cumplimiento de diferentes reglas de calidad, estilo y arquitectura en los componentes de software de nuestros proyectos.
 
 Sheriff realiza comprobaciones sobre código Java, TypeScript, Vue y otros elementos del proyecto. Entre otras cuestiones, comprueba aspectos relacionados con documentación, formato y estructura del código, uso correcto de `@Override`, uso de llaves en estructuras de control, imports, reglas de arquitectura hexagonal, entidades y value objects, OpenAPI, ESLint, componentes Vue, traducciones, tests, etc.
 
@@ -12,7 +12,7 @@ Por tanto, el flujo general de trabajo será:
 
 **analizar → aplicar fixers → utilizar Codex cuando corresponda → revisar cambios → compilar/testear → levantar y comprobar la aplicación → ejecutar Sheriff nuevamente**.
 
-El objetivo de este issue no es únicamente conseguir que desaparezcan los errores reportados por Sheriff, sino mejorar el código manteniendo correctamente el comportamiento, los contratos y la arquitectura del software.
+El objetivo no es únicamente conseguir que desaparezcan los errores reportados por Sheriff, sino mejorar el código manteniendo correctamente el comportamiento, los contratos y la arquitectura del software.
 
 ### Procedimiento
 
@@ -155,7 +155,7 @@ El objetivo de este issue no es únicamente conseguir que desaparezcan los error
 
    o mediante el mecanismo seguro utilizado habitualmente en el entorno de desarrollo.
 
-   **No incluyas nunca una API key directamente en el código, en un commit, en el issue ni en documentación compartida.**
+   **No incluyas nunca una API key directamente en el código, en un commit, en tickets, comentarios, documentación compartida o cualquier otro contenido que pueda quedar almacenado en el repositorio.**
 
    Sheriff utilizará el siguiente orden de actuación para cada problema:
 
@@ -271,7 +271,7 @@ El objetivo de este issue no es únicamente conseguir que desaparezcan los error
 
     Si una regla no se entiende, parece incorrecta para el caso concreto, genera un falso positivo o requiere una decisión de arquitectura que no esté clara, **no fuerces la corrección únicamente para hacer desaparecer el error**.
 
-    Coméntalo en el issue indicando al menos:
+    En estos casos, consulta con el equipo responsable del proyecto o de Sheriff proporcionando, al menos:
 
     * `referenceCode`;
     * fichero afectado;
@@ -285,13 +285,13 @@ El objetivo de este issue no es únicamente conseguir que desaparezcan los error
 
     **corregir → revisar `git diff` → compilar/testear → levantar y comprobar → ejecutar Sheriff nuevamente**.
 
-    Cuando utilices mecanismos automáticos, el flujo recomendado es:
+    Cuando utilices mecanismos automáticos, el orden recomendado es:
 
-    **Sheriff fixer → Codex, si no existe fixer → corrección manual, si sigue siendo necesario.**
+    **fixer específico de Sheriff → Codex, si no existe fixer → corrección manual, si sigue siendo necesario.**
 
 ### Resultado esperado
 
-El issue se considerará terminado cuando:
+El proceso puede considerarse finalizado cuando:
 
 * se haya ejecutado Sheriff sobre los componentes correspondientes del proyecto;
 * se hayan revisado los errores y warnings detectados;
