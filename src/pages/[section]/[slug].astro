@@ -6,7 +6,7 @@ const markdownPages = import.meta.glob("../../content/**/*.md", { eager: true })
 
 export function getStaticPaths() {
   return sections.flatMap((section) =>
-    ["tools", "partners", "internship", "development"].includes(section.slug) ? [] : section.pages.map((slug) => ({
+    ["tools", "partners", "internship", "development", "products"].includes(section.slug) ? [] : section.pages.map((slug) => ({
       params: { section: section.slug, slug },
       props: { section, slug },
     })),

@@ -3,69 +3,9 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Card from "../../components/Card.astro";
 import SiteHeader from "../../components/SiteHeader.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
-import { getSection, titleFromSlug } from "../../data/sections";
+import { products } from "../../data/products";
 
 const base = import.meta.env.BASE_URL;
-const section = getSection("products");
-const productMetadata: Record<string, { icon: string; description: string }> = {
-  "agriculture-manager": {
-    icon: "AG",
-    description: "Support agricultural planning, monitoring, and operational decisions.",
-  },
-  aidel: {
-    icon: "AI",
-    description: "Apply intelligent assistance to data-driven analysis workflows.",
-  },
-  "entomology-manager": {
-    icon: "ENTO",
-    description: "Manage entomology data, observations, and related field operations.",
-  },
-  "itinerary-planner": {
-    icon: "PLAN",
-    description: "Design and organize itineraries with structured planning support.",
-  },
-  "kaizten-task": {
-    icon: "TASK",
-    description: "Coordinate tasks, priorities, and execution across Kaizten projects.",
-  },
-  kalyptia: {
-    icon: "KAL",
-    description: "Explore specialized analytics capabilities for Kaizten workflows.",
-  },
-  kentaro: {
-    icon: "KEN",
-    description: "Support optimization and decision-making scenarios.",
-  },
-  "pit-manager": {
-    icon: "PIT",
-    description: "Manage pit operations with structured planning and control tools.",
-  },
-  portalis: {
-    icon: "PORT",
-    description: "Provide portal-style access to Kaizten information and services.",
-  },
-  "scenario-editor": {
-    icon: "SCEN",
-    description: "Create, adjust, and inspect scenarios for analysis workflows.",
-  },
-  "simulation-modeler": {
-    icon: "SIM",
-    description: "Build and manage simulation models for operational experiments.",
-  },
-};
-const products = section.pages.map((slug) => {
-  const metadata = productMetadata[slug] ?? {
-    icon: "PROD",
-    description: "Open this product page for details.",
-  };
-
-  return {
-    icon: metadata.icon,
-    title: titleFromSlug(slug),
-    description: metadata.description,
-    url: `${base}${section.slug}/${slug}/`,
-  };
-});
 ---
 
 <BaseLayout title="Products | Kaizten Analytics">
@@ -82,7 +22,7 @@ const products = section.pages.map((slug) => {
               icon={product.icon}
               title={product.title}
               description={product.description}
-              href={product.url}
+              href={`${base}products/${product.slug}/`}
             />
           ))
         }
