@@ -47,7 +47,13 @@ const toolMetadata: Record<string, { icon: string; description: string; subpages
   "kaizten-signature-sheets-generator": { icon: "SIGN", description: "Generate signature sheets for operational documents." },
   "openapi-code-generator": { icon: "API", description: "Generate code artifacts from OpenAPI specifications." },
   "openapi-viewer": { icon: "VIEW", description: "Browse OpenAPI definitions in a readable interface." },
-  "sheriff": { icon: "QA", description: "Review project conventions and enforce quality checks." },
+  "sheriff": { 
+    icon: "QA", 
+    description: "Review project conventions and enforce quality checks.",
+    subpages: [
+      { slug: "description", title: "Description" }
+    ]
+  },
   "tabular-analyzer": { icon: "TAB", description: "Inspect tabular data and summarize its structure." },
   "tabular-merge": { icon: "MERG", description: "Combine compatible tabular files into one dataset." },
   "tabular-sampler": { icon: "SAMP", description: "Extract representative samples from tabular data." },
