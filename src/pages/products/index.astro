@@ -23,6 +23,9 @@ const base = import.meta.env.BASE_URL;
               title={product.title}
               description={product.description}
               href={`${base}products/${product.slug}/`}
+              buttonHref={product.repositoryUrl}
+              buttonIconSrc={`${base}assets/icons/github.svg`}
+              buttonText="GitHub"
             />
           ))
         }

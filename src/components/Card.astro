@@ -6,10 +6,11 @@ type Props = {
   href?: string;
   buttonHref?: string;
   buttonIcon?: string;
+  buttonIconSrc?: string;
   buttonText?: string;
 };
 
-const { icon, title, description, href, buttonHref, buttonIcon, buttonText } = Astro.props;
+const { icon, title, description, href, buttonHref, buttonIcon, buttonIconSrc, buttonText } = Astro.props;
 const hasButton = Boolean(buttonHref && buttonText);
 ---
 
@@ -34,7 +35,11 @@ const hasButton = Boolean(buttonHref && buttonText);
         </span>
       )}
       <a class="info-card-button" href={buttonHref}>
-        {buttonIcon && <span class="info-card-button-icon" aria-hidden="true">{buttonIcon}</span>}
+        {buttonIconSrc ? (
+          <img class="info-card-button-icon" src={buttonIconSrc} alt="" aria-hidden="true" />
+        ) : (
+          buttonIcon && <span class="info-card-button-icon" aria-hidden="true">{buttonIcon}</span>
+        )}
         <span>{buttonText}</span>
       </a>
     </article>

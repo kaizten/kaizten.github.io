@@ -10,6 +10,7 @@ export type Product = {
   title: string;
   icon: string;
   description: string;
+  repositoryUrl: string;
   subpages: ProductSubpage[];
 };
 
@@ -84,6 +85,7 @@ export const products: Product[] = (productsSection?.pages ?? []).map((slug) => 
     title: titleFromSlug(slug),
     icon: metadata.icon,
     description: metadata.description,
+    repositoryUrl: `https://github.com/kaizten/${slug}`,
     subpages: metadata.subpages ?? defaultProductSubpages,
   };
 });

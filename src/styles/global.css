@@ -344,6 +344,10 @@ a.info-card:focus-visible,
 }
 
 .info-card-button-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
   font-size: 0.72rem;
   font-weight: 800;
 }
