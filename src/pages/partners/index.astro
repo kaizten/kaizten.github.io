@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Card from "../../components/Card.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import { partners } from "../../data/partners";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Partners | Kaizten Analytics">
+  <SiteHeader />
+  <main>
+    <section class="section-page tools-page" aria-labelledby="page-title">
+      <p class="eyebrow">Kaizten Analytics</p>
+      <h1 id="page-title">Partners</h1>
+
+      <div class="card-grid" aria-label="Partners content">
+        {
+          partners.map((partner) => (
+            <Card
+              icon={partner.icon}
+              title={partner.title}
+              description={partner.description}
+              href={`${base}partners/${partner.slug}/`}
+            />
+          ))
+        }
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</BaseLayout>

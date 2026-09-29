@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Card from "../../components/Card.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import { products } from "../../data/products";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Products | Kaizten Analytics">
+  <SiteHeader />
+  <main>
+    <section class="section-page products-page" aria-labelledby="page-title">
+      <p class="eyebrow">Kaizten Analytics</p>
+      <h1 id="page-title">Products</h1>
+
+      <div class="card-grid" aria-label="Products content">
+        {
+          products.map((product) => (
+            <Card
+              icon={product.icon}
+              title={product.title}
+              description={product.description}
+              href={`${base}products/${product.slug}/`}
+              buttonHref={product.repositoryUrl}
+              buttonIconSrc={`${base}assets/icons/github.svg`}
+              buttonText="GitHub"
+            />
+          ))
+        }
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</BaseLayout>

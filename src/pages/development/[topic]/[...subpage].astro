@@ -1,0 +1,59 @@
+---
+import MarkdownLayout from "../../../layouts/MarkdownLayout.astro";
+import { developmentRootPages, developmentTopics } from "../../../data/development";
+
+const markdownPages = import.meta.glob("../../../content/development/**/*.md", { eager: true });
+
+export function getStaticPaths() {
+  return [
+    ...developmentRootPages.map((page) => ({
+      params: { topic: page.slug, subpage: undefined },
+      props: { rootPage: page, topic: undefined, subpage: undefined },
+    })),
+    ...developmentTopics.flatMap((topic) => [
+      {
+        params: { topic: topic.slug, subpage: undefined },
+        props: { rootPage: undefined, topic, subpage: undefined },
+      },
+      ...topic.pages.map((page) => ({
+        params: { topic: topic.slug, subpage: page.slug },
+        props: { rootPage: undefined, topic, subpage: page.slug },
+      })),
+    ]),
+  ];
+}
+
+const { rootPage, topic, subpage } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const currentPage = topic?.pages.find((page) => page.slug === subpage);
+const pageTitle = rootPage?.title ?? currentPage?.title ?? topic.title;
+const title = `${pageTitle} | Development | Kaizten Analytics`;
+const page = rootPage
+  ? markdownPages[`../../../content/development/${rootPage.slug}.md`]
+  : subpage
+    ? markdownPages[`../../../content/development/${topic.slug}/${subpage}.md`]
+    : undefined;
+const Content = page?.Content;
+---
+
+{
+  Content ? (
+    <MarkdownLayout title={title}>
+      <Content />
+    </MarkdownLayout>
+  ) : (
+    <MarkdownLayout title={title}>
+      <h1>{topic.title}</h1>
+      <h2>Table of contents</h2>
+      <ul>
+        {
+          topic.pages.map((page) => (
+            <li>
+              <a href={`${base}development/${topic.slug}/${page.slug}/`}>{page.title}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </MarkdownLayout>
+  )
+}

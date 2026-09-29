@@ -1,0 +1,51 @@
+---
+import MarkdownLayout from "../../../layouts/MarkdownLayout.astro";
+import { partners } from "../../../data/partners";
+
+const markdownPages = import.meta.glob("../../../content/partners/*/*.md", { eager: true });
+
+export function getStaticPaths() {
+  return partners.flatMap((partner) => [
+    {
+      params: { partner: partner.slug, subpage: undefined },
+      props: { partner, subpage: undefined },
+    },
+    ...partner.pages
+      .filter((page) => !page.href)
+      .map((page) => ({
+        params: { partner: partner.slug, subpage: page.slug },
+        props: { partner, subpage: page.slug },
+      })),
+  ]);
+}
+
+const { partner, subpage } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const currentPage = partner.pages.find((page) => page.slug === subpage);
+const pageTitle = currentPage?.title ?? partner.title;
+const title = `${pageTitle} | Partners | Kaizten Analytics`;
+const page = subpage ? markdownPages[`../../../content/partners/${partner.slug}/${subpage}.md`] : undefined;
+const Content = page?.Content;
+---
+
+{
+  Content ? (
+    <MarkdownLayout title={title}>
+      <Content />
+    </MarkdownLayout>
+  ) : (
+    <MarkdownLayout title={title}>
+      <h1>{partner.title}</h1>
+      <h2>Table of contents</h2>
+      <ul>
+        {
+          partner.pages.map((page) => (
+            <li>
+              <a href={`${base}partners/${partner.slug}/${page.href ?? `${page.slug}/`}`}>{page.title}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </MarkdownLayout>
+  )
+}

@@ -1,0 +1,31 @@
+---
+import MarkdownLayout from "../../../layouts/MarkdownLayout.astro";
+import { products } from "../../../data/products";
+
+const markdownPages = import.meta.glob("../../../content/products/**/*.md", { eager: true });
+
+export function getStaticPaths() {
+  return products.flatMap((product) => [
+    {
+      params: { product: product.slug, subpage: undefined },
+      props: { product, subpage: undefined },
+    },
+    ...product.subpages.map((subpage) => ({
+      params: { product: product.slug, subpage: subpage.slug },
+      props: { product, subpage: subpage.slug },
+    })),
+  ]);
+}
+
+const { product, subpage } = Astro.props;
+const pageSlug = subpage ?? "index";
+const page = markdownPages[`../../../content/products/${product.slug}/${pageSlug}.md`];
+const currentSubpage = product.subpages.find((page) => page.slug === subpage);
+const pageTitle = currentSubpage?.title ?? product.title;
+const title = `${pageTitle} | Products | Kaizten Analytics`;
+const Content = page.Content;
+---
+
+<MarkdownLayout title={title}>
+  <Content />
+</MarkdownLayout>

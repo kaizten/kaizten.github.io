@@ -1,0 +1,18 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+
+const { title = "Kaizten Analytics" } = Astro.props;
+---
+
+<BaseLayout title={title}>
+  <SiteHeader />
+  <main>
+    <article class="markdown-page">
+      <p class="eyebrow">Kaizten Analytics</p>
+      <slot />
+    </article>
+  </main>
+  <SiteFooter />
+</BaseLayout>
