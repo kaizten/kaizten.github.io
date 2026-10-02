@@ -10,7 +10,7 @@ export function getStaticPaths() {
       params: { institution: institution.slug, subpage: undefined },
       props: { institution, subpage: undefined },
     },
-    ...institution.pages.map((page) => ({
+    ...institution.pages.filter((page) => !page.href).map((page) => ({
       params: { institution: institution.slug, subpage: page.slug },
       props: { institution, subpage: page.slug },
     })),
@@ -39,7 +39,9 @@ const Content = page?.Content;
         {
           institution.pages.map((page) => (
             <li>
-              <a href={`${base}internship/${institution.slug}/${page.slug}/`}>{page.title}</a>
+              <a href={`${base}${page.href ? page.href : `internship/${institution.slug}/${page.slug}/`}`}>
+                {page.title}
+              </a>
             </li>
           ))
         }

@@ -3,6 +3,7 @@ import { titleFromSlug } from "./sections";
 export type InternshipPage = {
   slug: string;
   title: string;
+  href?: string;
 };
 
 export type InternshipInstitution = {
@@ -18,13 +19,20 @@ const markdownPages = import.meta.glob("../content/internship/*/*.md", { eager: 
 
 const institutionMetadata: Record<
   string,
-  { title: string; icon: string; description: string; websiteUrl: string }
+  { title: string; icon: string; description: string; websiteUrl: string, pages?: InternshipPage[] }
 > = {
   ull: {
     title: "Universidad de La Laguna",
     icon: "ULL",
     description: "Internship documentation and onboarding material for ULL students.",
     websiteUrl: "https://www.ull.es",
+    /*pages: [
+      {
+        slug: "script-infrastructure-checker",
+        title: "Infrastructure checker script",
+        href: "assets/development/script-infrastructure-checker.sh",
+      },
+    ]*/
   },
   ulpgc: {
     title: "Universidad de Las Palmas de Gran Canaria",
@@ -79,12 +87,15 @@ export const internships: InternshipInstitution[] = Object.entries(institutionsB
     return {
       slug,
       ...metadata,
-      pages: Array.from(pageSlugs)
-        .sort()
-        .map((pageSlug) => ({
-          slug: pageSlug,
-          title: pageTitleMetadata[pageSlug] ?? titleFromSlug(pageSlug.replaceAll("_", "-")),
-        })),
+      pages: [
+        ...Array.from(pageSlugs)
+          .sort()
+          .map((pageSlug) => ({
+            slug: pageSlug,
+            title: pageTitleMetadata[pageSlug] ?? titleFromSlug(pageSlug.replaceAll("_", "-")),
+          })),
+        ...(metadata.pages ?? []),
+      ],
     };
   })
   .sort((first, second) => {
