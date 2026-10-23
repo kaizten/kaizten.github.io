@@ -151,13 +151,13 @@ Hola, para compilar proyectos en Java se pueden usar herramientas como [Maven](h
     A continuación tienes un ejemplo de cómo debería estar tu máquina:
     ```shell
     $ mvn -v
-    Apache Maven 3.9.5 (57804ffe001d7215b5e7bcb531cf83df38f93546)
-    Maven home: /opt/maven
-    Java version: 17.0.6, vendor: Ubuntu, runtime: /usr/lib/jvm/java-17-oracle
-    Default locale: en_US, platform encoding: UTF-8
-    OS name: "linux", version: "6.2.0-36-generic", arch: "amd64", family: "unix"
+    Apache Maven 3.10.0 (c43a36b8d67be7e0805a411bc0898af1a51f5472)
+    Maven home: /usr/share/java/maven
+    Java version: 17.0.20.1, vendor: Arch Linux, runtime: /usr/lib/jvm/java-17-openjdk
+    Default locale: es_ES, platform encoding: UTF-8, time zone: Atlantic/Canary
+    OS name: "linux", version: "7.2.9-1-cachyos", arch: "amd64", family: "unix"
     ```
-    Cabe señalar que, si tienes una versión superior de [Maven](https://maven.apache.org) a la `3.9.5`, no habrá problema para el desarrollo del proyecto.
+    Cabe señalar que, si tienes una versión superior de [Maven](https://maven.apache.org) a la `3.10.0`, no habrá problema para el desarrollo del proyecto.
 
 4. Pon un comentario en este issue mostrando la salida del comando `mvn -v` para comprobar que has instalado correctamente [Maven](https://maven.apache.org) en tu máquina.
 
@@ -245,7 +245,7 @@ Hola, [Docker](https://www.docker.com) es una plataforma de software que permite
 2. Una vez realizados estos pasos, comprueba que tienes instalado Docker en tu máquina, tal como sigue:
     ```shell
     $ docker -v
-    Docker version 29.4.3, build 055a478
+    Docker version 29.9.1, build dfc520dcc2
     ```
     Comprueba que tienes al menos la versión `29` de [Docker](https://www.docker.com). 
 
@@ -270,7 +270,7 @@ Hola, [Docker Compose](https://docs.docker.com/compose/) es una herramienta de o
 2. Comprueba que tienes instalado [Docker Compose](https://docs.docker.com/compose/) en tu máquina, tal como sigue:
     ```shell
     $ docker compose version
-    Docker Compose version v2.35.0
+    Docker Compose version 5.6.0
     ```
 
 ## NodeJS. Instalación
